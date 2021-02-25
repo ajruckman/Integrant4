@@ -1,0 +1,10 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+/Integrant4.Dominant_/
+/Integrant4.Infrastructure_/
+/Integrant4.API.Dominant_/
+/Integrant4.API.Element_/
+/Integrant4.Element_/

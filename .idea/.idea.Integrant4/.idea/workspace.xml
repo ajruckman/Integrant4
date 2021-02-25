@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9277e4c3-3bfc-4fa2-8194-d2bfb10c118e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Integrant4.API.Dominant_/IHTMLInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.API.Dominant_/IRequirableInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.API.Element_/IBit.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.API.Element_/IConstruct.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.API.Element_/ILayout.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant_/Extensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant_/HTMLDateInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant_/HTMLTextInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant_/HTMLTimeInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant_/InputBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant_/Managers/InputDisabledManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant_/ResourceSets.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant_/wwwroot/Dominant.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Arrangements/VeritcallyCenteredRow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/BitBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/BitBuilder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/BitGetters.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/BitSpec.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/Arrow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/BitGroup.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/Button.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/Checkbox.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/Chip.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/ExternalComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/Filler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/Heading.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/Icon.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/Image.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/Link.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/MonoBlock.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/Separator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/Space.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/Spinner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/TextLine.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Bits/Title.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Components/CenteredSpinner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Components/Combobox/Combobox.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Components/Modal/Modal.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Components/Modal/ModalContent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Components/Modal/ModalHeading.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Components/Multibox/Multibox.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Components/NavigationWatcher.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Components/TabbedPanel/TabbedPanelContainer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Components/TabbedPanel/TabbedPanelPanel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Components/TabbedPanel/TabbedPanelTab.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Components/TabbedPanel/TabbedPanelTabRow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Constructs/ButtonGroup.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Constructs/Dropdown.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Constructs/Header.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Constructs/HeaderGroup.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Constructs/ToggleButton.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Display.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Interop.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Layouts/LinearLayout.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Layouts/VerticalLayout.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Option.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Overrides/InternetExplorerNotice.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/ResourceSets.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/Size.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Arrangements/Arrangements.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Arrangements/Arrangements.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Arrangements/Arrangements.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Bits/Bits.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Bits/Bits.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Bits/Bits.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Bits/Spinner.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Bits/Spinner.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Bits/Spinner.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Components/Combobox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Components/Combobox.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Components/Combobox.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Components/Components.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Components/Components.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Components/Components.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Components/Modal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Components/Modal.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Components/Modal.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Components/Multibox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Components/Multibox.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Components/Multibox.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Components/TabbedPanel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Components/TabbedPanel.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Components/TabbedPanel.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Constructs/ButtonGroup.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Constructs/ButtonGroup.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Constructs/ButtonGroup.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Constructs/Dropdown.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Constructs/Dropdown.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Constructs/Dropdown.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Constructs/Header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Constructs/Header.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Constructs/Header.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Constructs/HeaderGroup.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Constructs/HeaderGroup.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Constructs/HeaderGroup.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Layouts/LinearLayout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Layouts/LinearLayout.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Layouts/LinearLayout.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Layouts/VerticalLayout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Layouts/VerticalLayout.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Layouts/VerticalLayout.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/BlazorErrorUI.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/BlazorErrorUI.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/BlazorErrorUI.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/BlazorReconnectModal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/BlazorReconnectModal.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/BlazorReconnectModal.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/Buttons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/Buttons.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/Buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/Inputs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/Inputs.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/Inputs.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/InternetExplorerNotice.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/InternetExplorerNotice.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/InternetExplorerNotice.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/VariantLoader.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/VariantLoader.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/Overrides/VariantLoader.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/_build.ps1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/_composite/Bits.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/_composite/Bits.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/_composite/Bits.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/_composite/Components.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/_composite/Components.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/_composite/Components.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/_composite/Constructs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/_composite/Constructs.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/_composite/Constructs.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/_composite/Layouts.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/_composite/Layouts.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/css/_composite/Layouts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/js/Bits/Tooltip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/js/Components/Combobox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element_/wwwroot/js/Components/Modal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Infrastructure_/ClassSet.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Infrastructure_/ClickArgs.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Infrastructure_/Content.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Infrastructure_/IOption.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Structurant/Structure.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Link.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.API.Element_/ILayout.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Arrow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/BitBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Image.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/BitBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/BitGetters.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Filler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Interop.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Heading.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Option.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/ResourceSets.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/BitGroup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Checkbox.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/MonoBlock.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Overrides/InternetExplorerNotice.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.API.Dominant_/IHTMLInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.API.Dominant_/IRequirableInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Dominant_/Extensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Dominant_/HTMLDateInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Dominant_/HTMLTextInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Dominant_/HTMLTimeInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Dominant_/InputBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Chip.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.API.Element_/IBit.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Icon.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.API.Element_/IConstruct.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Integrant4.Dominant/Integrant4.Dominant.csproj" />
+      <option value="$PROJECT_DIR$/Integrant4.Dominant/ResourceSets.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Class1.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Infrastructure/Class1.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Infrastructure/ClassSet.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Infrastructure/Content.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/BitGetters.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Interop.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/ResourceSets.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Infrastructure/IOption.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Option.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/BitBuilder.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.API.Element/Class1.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.API.Element/IBit.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Overrides/InternetExplorerNotice.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Integrant4.Element.csproj" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/BitBase.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Layouts/LinearLayout.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Layouts/VerticalLayout.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Constructs/Header.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Constructs/ToggleButton.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Button.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Constructs/HeaderGroup.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Constructs/ButtonGroup.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Components/Modal/Modal.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Components/Modal/ModalContent.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Constructs/Dropdown.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Components/Combobox/Combobox.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Components/Modal/ModalHeading.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Components/TabbedPanel/TabbedPanelPanel.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Components/TabbedPanel/TabbedPanelTab.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Components/TabbedPanel/TabbedPanelTabRow.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Components/TabbedPanel/TabbedPanelContainer.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Components/CenteredSpinner.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Components/NavigationWatcher.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Spinner.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Components/Multibox/Multibox.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Arrow.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/BitGroup.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Checkbox.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Chip.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Filler.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Heading.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Icon.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Image.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/MonoBlock.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Infrastructure/ClickArgs.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Structurant/Class1.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Structurant/Integrant4.Structurant.csproj" />
+      <option value="$PROJECT_DIR$/Integrant4.Structurant/Structure.cs" />
+      <option value="$PROJECT_DIR$/.gitignore" />
+    </changedPaths>
+  </component>
+  <component name="ProjectId" id="1oytO5GsSkqE3cJQicmQKc883qe" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9277e4c3-3bfc-4fa2-8194-d2bfb10c118e" name="Default Changelist" comment="" />
+      <created>1614270622723</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614270622723</updated>
+      <workItem from="1614270627384" duration="9000" />
+      <workItem from="1614270656672" duration="8195000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
