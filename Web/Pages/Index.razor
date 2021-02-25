@@ -1,0 +1,6 @@
+﻿@page "/"
+@using Integrant4.Dominant.Contracts
+
+<h1>Web</h1>
+
+@(((IHTMLInput<string>) _structureInstance.GetTyped<string>(nameof(Dog.NameFirst)).Input).Render())

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Integrant4.API;
 using Microsoft.JSInterop;
 
 namespace Integrant4.Structurant
@@ -42,11 +43,11 @@ namespace Integrant4.Structurant
         /// <summary>
         /// Register a new member.
         /// </summary>
-        /// <param name="id">The unique ID of the member.</param>
         /// <typeparam name="TValue">The type of the value that this member controls.</typeparam>
         public void Register<TValue>
         (
-            string id
+            string                                            id,
+            Callbacks.InputCallback<TObject, TState, TValue>? inputCallback = null
         )
         {
             if (_instantiated)
@@ -59,15 +60,15 @@ namespace Integrant4.Structurant
                 throw new Exception("Attempted to register member with the same ID as an existing member.");
             }
 
-            Member<TObject, TState, TValue> member = new(this, id);
+            Member<TObject, TState, TValue> member = new(this, id, inputCallback);
             _members.Add(member);
             _memberDictionary[id] = member;
         }
 
         public StructureInstance<TObject, TState> Instantiate
         (
-            TState     state,
-            IJSRuntime jsRuntime
+            TState      state,
+            IJSRuntime? jsRuntime
         )
         {
             _instantiated = true;
@@ -79,7 +80,8 @@ namespace Integrant4.Structurant
         where TObject : class
         where TState : class
     {
-        private readonly IJSRuntime                                           _jsRuntime;
+        public readonly IJSRuntime? JSRuntime;
+
         private readonly Dictionary<string, IMemberInstance<TObject, TState>> _memberInstanceDictionary;
         private readonly List<IMemberInstance<TObject, TState>>               _memberInstances;
 
@@ -87,11 +89,11 @@ namespace Integrant4.Structurant
         (
             Structure<TObject, TState> definition,
             TState                     state,
-            IJSRuntime                 jsRuntime
+            IJSRuntime?                jsRuntime
         )
         {
             Definition = definition;
-            _jsRuntime = jsRuntime;
+            JSRuntime  = jsRuntime;
 
             _memberInstanceDictionary = new Dictionary<string, IMemberInstance<TObject, TState>>();
             _memberInstances          = new List<IMemberInstance<TObject, TState>>();
@@ -103,6 +105,9 @@ namespace Integrant4.Structurant
             foreach (IMember<TObject, TState> member in definition.Members)
             {
                 IMemberInstance<TObject, TState> inst = member.Instantiate(this);
+
+                inst.OnValueChangeUntyped += v => OnMemberValueChange?.Invoke(inst, v);
+
                 _memberInstances.Add(inst);
                 _memberInstanceDictionary[inst.Definition.ID] = inst;
             }
@@ -113,6 +118,8 @@ namespace Integrant4.Structurant
         public IReadOnlyList<IMemberInstance<TObject, TState>> MemberInstances => _memberInstances;
 
         public TState State { get; }
+
+        public event Action<IMemberInstance<TObject, TState>, object?> OnMemberValueChange;
 
         public IMemberInstance<TObject, TState>? Get(string id)
         {
@@ -129,6 +136,14 @@ namespace Integrant4.Structurant
         public TObject Construct()
         {
             return Definition.ResultConstructor.Invoke(this);
+        }
+
+        public void ResetAllMemberInputValues()
+        {
+            foreach (IMemberInstance<TObject, TState> inst in _memberInstances)
+            {
+                inst.ResetInputValue();
+            }
         }
     }
 
@@ -151,13 +166,17 @@ namespace Integrant4.Structurant
     {
         internal Member
         (
-            Structure<TObject, TState> structure,
-            string                     id
+            Structure<TObject, TState>                        structure,
+            string                                            id,
+            Callbacks.InputCallback<TObject, TState, TValue>? inputCallback
         )
         {
-            ID        = id;
-            Structure = structure;
+            ID            = id;
+            InputCallback = inputCallback;
+            Structure     = structure;
         }
+
+        public Callbacks.InputCallback<TObject, TState, TValue>? InputCallback { get; }
 
         public Structure<TObject, TState> Structure { get; }
         public string                     ID        { get; }
@@ -173,32 +192,71 @@ namespace Integrant4.Structurant
         where TState : class
     {
         IMember<TObject, TState> Definition { get; }
+
+        void ResetInputValue();
+
+        event Action<object?>? OnValueChangeUntyped;
     }
 
     public class MemberInstance<TObject, TState, TValue> : IMemberInstance<TObject, TState>
         where TObject : class
         where TState : class
     {
-        private readonly Member<TObject, TState, TValue>    _member;
-        private readonly StructureInstance<TObject, TState> _structureInstance;
+        private readonly Member<TObject, TState, TValue> _member;
 
         internal MemberInstance
         (
             Member<TObject, TState, TValue>    member,
-            StructureInstance<TObject, TState> structureInstance
+            StructureInstance<TObject, TState> structureStructureInstance
         )
         {
-            _member            = member;
-            _structureInstance = structureInstance;
+            _member           = member;
+            StructureInstance = structureStructureInstance;
+
+            if (member.InputCallback != null)
+            {
+                Input = member.InputCallback.Invoke(this);
+                Input.OnChange += v =>
+                {
+                    Value = v;
+                    OnValueChangeUntyped?.Invoke(Value);
+                    OnValueChange?.Invoke(Value);
+                };
+            }
         }
 
-        public TValue? Value { get; private set; }
+        public StructureInstance<TObject, TState> StructureInstance { get; }
 
-        public IMember<TObject, TState> Definition => _member;
+        public TValue? Value { get; private set; }
 
         // public void AttachInput(IInput<TValue> input)
         // {
         //     input.OnChange += v => Value = v;
         // }
+
+        //
+
+        public IInput<TValue>? Input { get; }
+
+        public IMember<TObject, TState> Definition => _member;
+
+        // public IInput<TValue>? Input()
+        // {
+        //     if (_inputCallback == null) return null;
+        //
+        //     IInput<TValue> input = _inputCallback.Invoke();
+        //     AttachInput(input);
+        //
+        //     return input;
+        // }
+
+        public void ResetInputValue()
+        {
+            Input?.SetValue(Value);
+        }
+
+        public event Action<object?>? OnValueChangeUntyped;
+
+        public event Action<TValue?>? OnValueChange;
     }
 }

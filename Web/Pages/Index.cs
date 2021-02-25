@@ -1,18 +1,21 @@
-﻿using Integrant4.Dominant;
+using System;
+using Integrant4.Dominant;
 using Integrant4.Structurant;
+using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
-namespace Program
+namespace Web.Pages
 {
-    internal static class Program
+    public partial class Index
     {
-        private static void Main()
-        {
-            // Expression<Func<Dog, int>> dogExpression;
-            // Dog d = new();
-            // dogExpression = _ => d.Age;
-            // Console.WriteLine(dogExpression.Body);
+        [Inject] public IJSRuntime JSRuntime { get; set; }
 
-            Structure<Dog, DogState> structure = new(inst =>
+        private Structure<Dog, DogState>         _structure;
+        private StructureInstance<Dog, DogState> _structureInstance;
+
+        protected override void OnInitialized()
+        {
+            _structure = new(inst =>
             {
                 string nameFirst = inst.GetTyped<string>(nameof(Dog.NameFirst))!.Value;
                 string nameLast  = inst.GetTyped<string>(nameof(Dog.NameLast))!.Value;
@@ -21,7 +24,7 @@ namespace Program
                 return new Dog(nameFirst, nameLast, age);
             });
 
-            structure.Register<string>(nameof(Dog.NameFirst),
+            _structure.Register<string>(nameof(Dog.NameFirst),
                 inputCallback: inst => new HTMLTextInput
                 (
                     inst.StructureInstance.JSRuntime!,
@@ -30,11 +33,14 @@ namespace Program
                     false,
                     null
                 ));
-            structure.Register<string>(nameof(Dog.NameLast));
+            _structure.Register<string>(nameof(Dog.NameLast));
+            _structure.Register<int>(nameof(Dog.Age));
 
-            StructureInstance<Dog, DogState> structureInstance = structure.Instantiate(new DogState(), null!);
+            _structureInstance = _structure.Instantiate(new DogState(), JSRuntime);
 
-            structureInstance.Construct();
+            _structureInstance.Construct();
+
+            _structureInstance.OnMemberValueChange += (m, v) => Console.WriteLine($"{m.Definition.ID} -> {v}");
         }
     }
 
