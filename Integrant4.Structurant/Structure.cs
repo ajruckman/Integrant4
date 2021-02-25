@@ -8,15 +8,21 @@ namespace Integrant4.Structurant
         where TObject : class
         where TState : class
     {
+        public delegate TObject ResultConstructorCallback(StructureInstance<TObject, TState> instance);
+
         private readonly Dictionary<string, IMember<TObject, TState>> _memberDictionary;
         private readonly List<IMember<TObject, TState>>               _members;
 
+        internal readonly ResultConstructorCallback ResultConstructor;
+
         private bool _instantiated;
 
-        public Structure()
+        public Structure(ResultConstructorCallback resultConstructor)
         {
             _members          = new List<IMember<TObject, TState>>();
             _memberDictionary = new Dictionary<string, IMember<TObject, TState>>();
+
+            ResultConstructor = resultConstructor;
         }
 
         public IReadOnlyList<IMember<TObject, TState>> Members => _members;
@@ -33,20 +39,29 @@ namespace Integrant4.Structurant
             return member as Member<TObject, TState, TValue>;
         }
 
-        public void Register<TValue>(Member<TObject, TState, TValue> member)
+        /// <summary>
+        /// Register a new member.
+        /// </summary>
+        /// <param name="id">The unique ID of the member.</param>
+        /// <typeparam name="TValue">The type of the value that this member controls.</typeparam>
+        public void Register<TValue>
+        (
+            string id
+        )
         {
             if (_instantiated)
             {
                 throw new Exception("Attempted to register member after structure has been instantiated.");
             }
 
-            if (_memberDictionary.ContainsKey(member.ID))
+            if (_memberDictionary.ContainsKey(id))
             {
                 throw new Exception("Attempted to register member with the same ID as an existing member.");
             }
 
+            Member<TObject, TState, TValue> member = new(this, id);
             _members.Add(member);
-            _memberDictionary[member.ID] = member;
+            _memberDictionary[id] = member;
         }
 
         public StructureInstance<TObject, TState> Instantiate
@@ -110,16 +125,21 @@ namespace Integrant4.Structurant
             _memberInstanceDictionary.TryGetValue(id, out IMemberInstance<TObject, TState>? inst);
             return inst as MemberInstance<TObject, TState, TValue>;
         }
+
+        public TObject Construct()
+        {
+            return Definition.ResultConstructor.Invoke(this);
+        }
     }
 
     public interface IMember<TObject, TState>
         where TObject : class
         where TState : class
     {
-        public Structure<TObject, TState> Structure { get; }
-        public string                     ID        { get; }
+        Structure<TObject, TState> Structure { get; }
+        string                     ID        { get; }
 
-        public IMemberInstance<TObject, TState> Instantiate
+        IMemberInstance<TObject, TState> Instantiate
         (
             StructureInstance<TObject, TState> structureInstance
         );
@@ -129,7 +149,11 @@ namespace Integrant4.Structurant
         where TObject : class
         where TState : class
     {
-        public Member(Structure<TObject, TState> structure, string id)
+        internal Member
+        (
+            Structure<TObject, TState> structure,
+            string                     id
+        )
         {
             ID        = id;
             Structure = structure;
@@ -148,7 +172,7 @@ namespace Integrant4.Structurant
         where TObject : class
         where TState : class
     {
-        public IMember<TObject, TState> Definition { get; }
+        IMember<TObject, TState> Definition { get; }
     }
 
     public class MemberInstance<TObject, TState, TValue> : IMemberInstance<TObject, TState>
@@ -168,6 +192,13 @@ namespace Integrant4.Structurant
             _structureInstance = structureInstance;
         }
 
+        public TValue? Value { get; private set; }
+
         public IMember<TObject, TState> Definition => _member;
+
+        // public void AttachInput(IInput<TValue> input)
+        // {
+        //     input.OnChange += v => Value = v;
+        // }
     }
 }

@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integrant4.Structurant", "Integrant4.Structurant\Integrant4.Structurant.csproj", "{C4617E63-272A-44A5-92B7-FFE74D26040B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program", "Program\Program.csproj", "{F5763208-313A-4172-8FA4-16ED0DEA8369}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{C4617E63-272A-44A5-92B7-FFE74D26040B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4617E63-272A-44A5-92B7-FFE74D26040B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4617E63-272A-44A5-92B7-FFE74D26040B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5763208-313A-4172-8FA4-16ED0DEA8369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5763208-313A-4172-8FA4-16ED0DEA8369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5763208-313A-4172-8FA4-16ED0DEA8369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5763208-313A-4172-8FA4-16ED0DEA8369}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
