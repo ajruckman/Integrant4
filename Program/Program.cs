@@ -1,4 +1,4 @@
-﻿using Integrant4.Dominant;
+﻿using Integrant4.Element.Inputs;
 using Integrant4.Structurant;
 
 namespace Program
@@ -22,7 +22,7 @@ namespace Program
             });
 
             structure.Register<string>(nameof(Dog.NameFirst),
-                inputCallback: inst => new HTMLTextInput
+                inputCallback: inst => new TextInput
                 (
                     inst.StructureInstance.JSRuntime!,
                     inst.Value,

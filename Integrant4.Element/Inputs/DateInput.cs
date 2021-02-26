@@ -1,34 +1,34 @@
 using System;
 using System.Globalization;
 using System.Threading.Tasks;
-using Integrant4.Dominant.Contracts;
-using Integrant4.Dominant.Managers;
+using Integrant4.Element.Inputs.Managers;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.JSInterop;
 
-namespace Integrant4.Dominant
+namespace Integrant4.Element.Inputs
 {
-    public partial class HTMLTimeInput : InputBase<DateTime?>, IHTMLInput<DateTime?>, IInputRequirable,
-        IInputDisableable
+    public partial class DateInput : InputBase<DateTime?>, IInputRequirable, IInputDisableable
     {
-        public HTMLTimeInput(IJSRuntime jsRuntime, DateTime? value, bool disabled, bool required)
+        public DateInput(IJSRuntime jsRuntime, DateTime? value, bool disabled, bool required)
             : base(jsRuntime, value)
         {
             _inputDisabledManager = new InputDisabledManager(jsRuntime, disabled);
             _inputRequiredManager = new InputRequiredManager(jsRuntime, required);
         }
 
-        public RenderFragment Render()
+        public override RenderFragment Render()
         {
             void Fragment(RenderTreeBuilder builder)
             {
                 var seq = -1;
 
                 builder.OpenElement(++seq, "input");
-                builder.AddAttribute(++seq, "type", "time");
-                builder.AddAttribute(++seq, "value", Value?.ToString("HH:mm"));
+                builder.AddAttribute(++seq, "type", "date");
+                builder.AddAttribute(++seq, "value", Serialize(Value));
                 builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
+                builder.AddAttribute(++seq, "disabled", _inputDisabledManager.IsDisabled());
+                builder.AddAttribute(++seq, "required", _inputRequiredManager.IsRequired());
 
                 builder.AddElementReferenceCapture(++seq, r => Reference = r);
                 builder.CloseElement();
@@ -37,25 +37,22 @@ namespace Integrant4.Dominant
             return Fragment;
         }
 
-        private void Change(ChangeEventArgs args) => InvokeOnChange(Parse(args.Value?.ToString()));
+        private void Change(ChangeEventArgs args) => InvokeOnChange(Deserialize(args.Value?.ToString()));
 
-        protected override DateTime? Parse(string? v) =>
+        protected override string Serialize(DateTime? v) => v?.ToString("yyyy-MM-dd") ?? "";
+
+        protected override DateTime? Deserialize(string? v) =>
             string.IsNullOrEmpty(v)
                 ? null
-                : DateTime.ParseExact(v, v.Split(':').Length == 2
-                        ? "HH:mm"
-                        : "HH:mm:ss",
-                    new DateTimeFormatInfo());
+                : DateTime.ParseExact(v, "yyyy-MM-dd", new DateTimeFormatInfo());
 
-        protected override string Encode(DateTime? v) => v?.ToString("HH:mm") ?? "";
-
-        protected override DateTime? NullCheck(DateTime? v) =>
-            v == null || v == DateTime.MinValue
+        protected override DateTime? Nullify(DateTime? v) =>
+            v == null || v.Value == DateTime.MinValue
                 ? null
                 : v.Value;
     }
 
-    public partial class HTMLTimeInput
+    public partial class DateInput
     {
         private readonly InputDisabledManager _inputDisabledManager;
 
@@ -64,7 +61,7 @@ namespace Integrant4.Dominant
         public async Task       Enable()     => await _inputDisabledManager.Enable(Reference);
     }
 
-    public partial class HTMLTimeInput
+    public partial class DateInput
     {
         private readonly InputRequiredManager _inputRequiredManager;
 

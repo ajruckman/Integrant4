@@ -1,14 +1,7 @@
 using System.Threading.Tasks;
-using Integrant4.API;
-using Microsoft.AspNetCore.Components;
 
-namespace Integrant4.Dominant.Contracts
+namespace Integrant4.Element.Inputs
 {
-    public interface IHTMLInput<T> : IInput<T>
-    {
-        RenderFragment Render();
-    }
-
     public interface IInputRequirable
     {
         Task<bool> IsRequired();

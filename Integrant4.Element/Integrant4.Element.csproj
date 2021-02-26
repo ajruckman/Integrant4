@@ -6,21 +6,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <SupportedPlatform Include="browser" />
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.3" />
         <PackageReference Include="Superset" Version="1.17.2-alpha" />
     </ItemGroup>
 
     <ItemGroup>
-        <_ContentIncludedByDefault Remove="wwwroot\background.png" />
-        <_ContentIncludedByDefault Remove="wwwroot\exampleJsInterop.js" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Integrant4.API\Integrant4.API.csproj" />
+        <ProjectReference Include="..\Integrant4.API\Integrant4.API.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,5 +1,5 @@
 using System;
-using Integrant4.Dominant;
+using Integrant4.Element.Inputs;
 using Integrant4.Structurant;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -8,10 +8,10 @@ namespace Web.Pages
 {
     public partial class Index
     {
-        [Inject] public IJSRuntime JSRuntime { get; set; }
+        [Inject] public IJSRuntime JSRuntime { get; set; } = null!;
 
-        private Structure<Dog, DogState>         _structure;
-        private StructureInstance<Dog, DogState> _structureInstance;
+        private Structure<Dog, DogState>         _structure         = null!;
+        private StructureInstance<Dog, DogState> _structureInstance = null!;
 
         protected override void OnInitialized()
         {
@@ -25,7 +25,7 @@ namespace Web.Pages
             });
 
             _structure.Register<string>(nameof(Dog.NameFirst),
-                inputCallback: inst => new HTMLTextInput
+                inputCallback: inst => new TextInput
                 (
                     inst.StructureInstance.JSRuntime!,
                     inst.Value,

@@ -5,27 +5,37 @@
     <projectFile>Web/Web.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9277e4c3-3bfc-4fa2-8194-d2bfb10c118e" name="Default Changelist" comment="Base structure, before adding inputs">
-      <change afterPath="$PROJECT_DIR$/Integrant4.API/IInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant/Contracts/IHTMLInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant/Contracts/IRequirableInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant/Extensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant/HTMLDateInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant/HTMLTextInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant/HTMLTimeInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant/InputBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant/Managers/InputDisabledManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant/ResourceSets.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrant4.Dominant/wwwroot/Dominant.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/Pages/Index.cs" afterDir="false" />
+    <list default="true" id="9277e4c3-3bfc-4fa2-8194-d2bfb10c118e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/CheckboxInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/DecimalInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/Managers/InputPlaceholderManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/Managers/InputRequiredManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element/wwwroot/Inputs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Web/Configuration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Web/Pages/Elements.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Web/Pages/Elements.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Integrant4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Integrant4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.Structurant/Callbacks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Structurant/Callbacks.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.Structurant/Integrant4.Structurant.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Structurant/Integrant4.Structurant.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrant4.API/IInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.API/IInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrant4.API/Integrant4.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.API/Integrant4.API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/Contracts/IHTMLInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/InputTypes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/Contracts/IRequirableInput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/Extensions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/HTMLDateInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/DateInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/HTMLTextInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/TextInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/HTMLTimeInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/TimeInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/InputBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/InputBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/Integrant4.Dominant.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/Managers/InputDisabledManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/Managers/InputDisabledManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/ResourceSets.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/ResourceSets.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/wwwroot/Dominant.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Integrant4.Structurant/Structure.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Structurant/Structure.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Integrant4.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.sln.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.sln.DotSettings" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program/Program.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Program/Program.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/Pages/Index.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Web/Pages/Index.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Web/Pages/Index.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/Shared/MainLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Web/Shared/MainLayout.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/Web.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Web/Web.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,62 +45,54 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Link.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.API.Element_/ILayout.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element/Inputs/InputBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Arrow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/BitBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Image.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/BitBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/BitGetters.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element/Inputs/Managers/InputDisabledManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Filler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Interop.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Heading.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element/Inputs/InputTypes.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Option.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/ResourceSets.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/BitGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Checkbox.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/MonoBlock.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Overrides/InternetExplorerNotice.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D3E4F924-833B-483D-9594-90D56ECDF031/81/6dadada7/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.API.Dominant_/IHTMLInput.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.API.Dominant_/IRequirableInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Dominant_/Extensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Dominant_/HTMLDateInput.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Dominant_/HTMLTextInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Dominant_/HTMLTimeInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Dominant_/InputBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element/Inputs/DateInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Chip.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.API.Element_/IBit.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element/Inputs/TextInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Icon.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.API.Element_/IConstruct.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrant4.Element/Inputs/TimeInput.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Integrant4.Element/Constructs/HeaderGroup.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Constructs/ButtonGroup.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Components/Modal/Modal.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Components/Modal/ModalContent.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Constructs/Dropdown.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Components/Combobox/Combobox.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Components/Modal/ModalHeading.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Components/TabbedPanel/TabbedPanelPanel.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Components/TabbedPanel/TabbedPanelTab.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Components/TabbedPanel/TabbedPanelTabRow.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Components/TabbedPanel/TabbedPanelContainer.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Components/CenteredSpinner.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Components/NavigationWatcher.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Spinner.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Components/Multibox/Multibox.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Arrow.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/BitGroup.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Checkbox.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Chip.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Filler.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Heading.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Icon.cs" />
       <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Image.cs" />
       <option value="$PROJECT_DIR$/Integrant4.Element/Bits/MonoBlock.cs" />
       <option value="$PROJECT_DIR$/Integrant4.Infrastructure/ClickArgs.cs" />
@@ -103,23 +105,45 @@
       <option value="$PROJECT_DIR$/Integrant4.Dominant/Contracts/IRequirableInput.cs" />
       <option value="$PROJECT_DIR$/Integrant4.Dominant/Integrant4.Dominant.csproj" />
       <option value="$PROJECT_DIR$/Integrant4.API/Class1.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.API/IInput.cs" />
       <option value="$PROJECT_DIR$/Integrant4.Dominant/HTMLDateInput.cs" />
       <option value="$PROJECT_DIR$/Integrant4.Dominant/HTMLTextInput.cs" />
       <option value="$PROJECT_DIR$/Integrant4.Dominant/HTMLTimeInput.cs" />
       <option value="$PROJECT_DIR$/Integrant4.Dominant/ResourceSets.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Dominant/Contracts/IHTMLInput.cs" />
       <option value="$PROJECT_DIR$/Integrant4.Dominant/InputBase.cs" />
       <option value="$PROJECT_DIR$/Integrant4.Structurant/Callbacks.cs" />
-      <option value="$PROJECT_DIR$/Program/Program.cs" />
-      <option value="$PROJECT_DIR$/Web/Shared/MainLayout.razor" />
       <option value="$PROJECT_DIR$/Web/Web.csproj" />
       <option value="$PROJECT_DIR$/Web/Startup.cs" />
       <option value="$PROJECT_DIR$/Web/Program.cs" />
-      <option value="$PROJECT_DIR$/Web/Pages/Index.razor" />
       <option value="$PROJECT_DIR$/Web/Properties/launchSettings.json" />
-      <option value="$PROJECT_DIR$/Integrant4.Structurant/Structure.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Class1.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Dominant/Contracts/IHTMLInput.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/IHTMLInput.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/HTMLTextInput.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/HTMLDateInput.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/HTMLTimeInput.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/Managers/InputDisabledManager.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/wwwroot/Dominant.js" />
+      <option value="$PROJECT_DIR$/Integrant4.Dominant/Extensions.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/ResourceSets.cs" />
+      <option value="$PROJECT_DIR$/Web/Pages/Index.razor" />
+      <option value="$PROJECT_DIR$/Program/Program.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/InputInterfaces.cs" />
+      <option value="$PROJECT_DIR$/Web/Configuration.cs" />
+      <option value="$PROJECT_DIR$/Web/Shared/MainLayout.razor" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Integrant4.Element.csproj" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/NumberInput.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.API/IInput.cs" />
       <option value="$PROJECT_DIR$/Web/Pages/Index.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Structurant/Structure.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/TimeInput.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/TextInput.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/DateInput.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/InputBase.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/DecimalInput.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/wwwroot/Inputs.js" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/CheckboxInput.cs" />
+      <option value="$PROJECT_DIR$/Web/Pages/Elements.razor" />
+      <option value="$PROJECT_DIR$/Web/Pages/Elements.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oytO5GsSkqE3cJQicmQKc883qe" />
@@ -141,7 +165,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys_rider" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Web">
@@ -203,7 +227,8 @@
       <option name="presentableId" value="Default" />
       <updated>1614270622723</updated>
       <workItem from="1614270627384" duration="9000" />
-      <workItem from="1614270656672" duration="18156000" />
+      <workItem from="1614270656672" duration="18284000" />
+      <workItem from="1614347457042" duration="14881000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1614280727564</created>
@@ -219,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614284926598</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Initial work on inputs">
+      <created>1614290497468</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1614290497468</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,12 +267,14 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Base structure, before adding inputs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Base structure, before adding inputs" />
+    <MESSAGE value="Initial work on inputs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial work on inputs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -250,13 +284,26 @@
           <line>37</line>
           <properties documentPath="$PROJECT_DIR$/Program/Program.cs" initialLine="14" containingFunctionPresentation="method 'Main'">
             <startOffsets>
-              <option value="1302" />
+              <option value="1304" />
             </startOffsets>
             <endOffsets>
-              <option value="1303" />
+              <option value="1305" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Integrant4.Element/Inputs/CheckboxInput.cs</url>
+          <line>54</line>
+          <properties documentPath="$PROJECT_DIR$/Integrant4.Element/Inputs/CheckboxInput.cs" initialLine="36" containingFunctionPresentation="method 'GetValue'">
+            <startOffsets>
+              <option value="1842" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1936" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
