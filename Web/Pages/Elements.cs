@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Integrant4.Element.Bits;
 using Integrant4.Element.Inputs;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -37,11 +38,21 @@ namespace Web.Pages
 
             //
 
-            _checkboxInput = new CheckboxInput(JSRuntime, false);
+            _checkboxInput = new CheckboxInput(JSRuntime, false, () => false, () => true);
 
             void PrintB(bool v) => Console.WriteLine($"bool -> {v}");
 
             _checkboxInput.OnChange += PrintB;
+
+            //
+
+            Chip c = new(new Chip.Spec
+            (
+                () => "asdf"
+            )
+            {
+                PixelsWidth = () => 24,
+            });
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)

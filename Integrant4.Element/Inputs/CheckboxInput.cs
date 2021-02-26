@@ -19,15 +19,15 @@ namespace Integrant4.Element.Inputs
 
         public CheckboxInput
         (
-            IJSRuntime jsRuntime,        bool value,
-            bool       disabled = false, bool required = false
+            IJSRuntime               jsRuntime,  bool value, 
+            Callbacks.Callback<bool> isDisabled, Callbacks.Callback<bool> isRequired
         )
         {
             _jsRuntime = jsRuntime;
             _value     = value;
 
-            _inputDisabledManager = new InputDisabledManager(jsRuntime, disabled);
-            _inputRequiredManager = new InputRequiredManager(jsRuntime, required);
+            _inputDisabledManager = new InputDisabledManager(jsRuntime, isDisabled.Invoke());
+            _inputRequiredManager = new InputRequiredManager(jsRuntime, isRequired.Invoke());
         }
 
         public RenderFragment Render()

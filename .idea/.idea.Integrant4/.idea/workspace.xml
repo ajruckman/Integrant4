@@ -5,37 +5,13 @@
     <projectFile>Web/Web.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9277e4c3-3bfc-4fa2-8194-d2bfb10c118e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/CheckboxInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/DecimalInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/Managers/InputPlaceholderManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/Managers/InputRequiredManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrant4.Element/wwwroot/Inputs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/Configuration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/Pages/Elements.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/Pages/Elements.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Integrant4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Integrant4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.API/IInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.API/IInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.API/Integrant4.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.API/Integrant4.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/Contracts/IHTMLInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/InputTypes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/Contracts/IRequirableInput.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/Extensions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/HTMLDateInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/DateInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/HTMLTextInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/TextInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/HTMLTimeInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/TimeInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/InputBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/InputBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/Integrant4.Dominant.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/Managers/InputDisabledManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/Managers/InputDisabledManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/ResourceSets.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/ResourceSets.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.Dominant/wwwroot/Dominant.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.Structurant/Structure.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Structurant/Structure.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrant4.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program/Program.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Program/Program.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/Pages/Index.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Web/Pages/Index.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Web/Pages/Index.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/Shared/MainLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Web/Shared/MainLayout.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/Web.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Web/Web.csproj" afterDir="false" />
+    <list default="true" id="9277e4c3-3bfc-4fa2-8194-d2bfb10c118e" name="Default Changelist" comment="Refactored project structure; added more inputs; move to attach IInputs in Structures&#10;Inputs need to be redefined to use callbacks for attribute values, so that they are consistent with future IBits">
+      <change afterPath="$PROJECT_DIR$/Integrant4.API/Content.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element/Bits/Chip.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrant4.Element/Callbacks.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrant4.Element/Inputs/CheckboxInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/Inputs/CheckboxInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrant4.Element/Integrant4.Element.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Integrant4.Element/Integrant4.Element.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/Pages/Elements.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Web/Pages/Elements.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,10 +50,13 @@
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/BitGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/Checkbox.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Bits/MonoBlock.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///data/code/dev/dotnet/Integrant4/Integrant4.Structurant/Structure.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Element_/Overrides/InternetExplorerNotice.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D3E4F924-833B-483D-9594-90D56ECDF031/81/6dadada7/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///data/code/dev/dotnet/Integrant4/Web/Shared/MainLayout.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.API.Dominant_/IHTMLInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.API.Dominant_/IRequirableInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Element/_Imports.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Dominant_/Extensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Dominant_/HTMLDateInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrant4.Dominant_/HTMLTextInput.cs" root0="SKIP_HIGHLIGHTING" />
@@ -93,11 +72,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Image.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/MonoBlock.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Infrastructure/ClickArgs.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Structurant/Class1.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Structurant/Integrant4.Structurant.csproj" />
       <option value="$PROJECT_DIR$/.git/info/exclude" />
       <option value="$PROJECT_DIR$/.gitignore" />
       <option value="$PROJECT_DIR$/Integrant4.Structurant/Getters.cs" />
@@ -140,10 +114,15 @@
       <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/DateInput.cs" />
       <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/InputBase.cs" />
       <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/DecimalInput.cs" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/wwwroot/Inputs.js" />
-      <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/CheckboxInput.cs" />
       <option value="$PROJECT_DIR$/Web/Pages/Elements.razor" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/wwwroot/Inputs.js" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Callback.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Common.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Inputs/CheckboxInput.cs" />
       <option value="$PROJECT_DIR$/Web/Pages/Elements.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Bits/Chip.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.Element/Callbacks.cs" />
+      <option value="$PROJECT_DIR$/Integrant4.API/Content.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oytO5GsSkqE3cJQicmQKc883qe" />
@@ -228,7 +207,7 @@
       <updated>1614270622723</updated>
       <workItem from="1614270627384" duration="9000" />
       <workItem from="1614270656672" duration="18284000" />
-      <workItem from="1614347457042" duration="14881000" />
+      <workItem from="1614347457042" duration="16733000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1614280727564</created>
@@ -251,7 +230,21 @@
       <option name="project" value="LOCAL" />
       <updated>1614290497468</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Refactored project structure; added more inputs; move to attach IInputs in Structures&#10;Inputs need to be redefined to use callbacks for attribute values, so that they are consistent with future IBits">
+      <created>1614365456883</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1614365456883</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Refactored project structure; added more inputs; move to attach IInputs in Structures&#10;Inputs need to be redefined to use callbacks for attribute values, so that they are consistent with future IBits">
+      <created>1614365470232</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1614365470232</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,7 +267,8 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Base structure, before adding inputs" />
     <MESSAGE value="Initial work on inputs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial work on inputs" />
+    <MESSAGE value="Refactored project structure; added more inputs; move to attach IInputs in Structures&#10;Inputs need to be redefined to use callbacks for attribute values, so that they are consistent with future IBits" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored project structure; added more inputs; move to attach IInputs in Structures&#10;Inputs need to be redefined to use callbacks for attribute values, so that they are consistent with future IBits" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -297,10 +291,10 @@
           <line>54</line>
           <properties documentPath="$PROJECT_DIR$/Integrant4.Element/Inputs/CheckboxInput.cs" initialLine="36" containingFunctionPresentation="method 'GetValue'">
             <startOffsets>
-              <option value="1842" />
+              <option value="1895" />
             </startOffsets>
             <endOffsets>
-              <option value="1936" />
+              <option value="1989" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="8" />
