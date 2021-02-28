@@ -3,3 +3,12 @@ code {
   background-color: rgba(27, 31, 35, 0.05);
   padding: 0.2rem 0.4rem;
   font-family: monospace; }
+
+.MVisibleOnHover {
+  display: none; }
+  .MVisibleOnHover .MVisibleOnParentHover {
+    display: none; }
+  .MVisibleOnHover:hover {
+    display: unset; }
+    .MVisibleOnHover:hover .MVisibleOnParentHover {
+      display: unset; }

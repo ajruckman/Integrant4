@@ -35,18 +35,18 @@ namespace Integrant4.Structurant
         internal MemberInstance
         (
             Member<TObject, TState, TValue>    definition,
-            StructureInstance<TObject, TState> structureStructureInstance
+            StructureInstance<TObject, TState> structureInstance
         )
         {
-            _definition = definition;
+            _definition       = definition;
+            StructureInstance = structureInstance;
+
             _debouncer = new Utility.Debouncer<TValue?>
             (
                 OnInputChangeDebounced,
                 definition.ValueGetter.Invoke(this),
                 definition.InputDebounceMilliseconds
             );
-
-            StructureInstance = structureStructureInstance;
 
             if (definition.InputGetter != null)
             {

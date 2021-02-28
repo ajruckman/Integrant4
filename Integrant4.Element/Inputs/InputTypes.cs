@@ -21,4 +21,9 @@ namespace Integrant4.Element.Inputs
         Task<string?> GetPlaceholder();
         Task          SetPlaceholder(string? placeholder);
     }
+
+    public interface ICachingInput
+    {
+        void InvalidateCache();
+    }
 }

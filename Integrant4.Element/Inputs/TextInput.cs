@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Integrant4.API;
 using Integrant4.Element.Inputs.Managers;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
@@ -11,9 +10,15 @@ namespace Integrant4.Element.Inputs
     public partial class TextInput : InputBase<string?>, IInputRequirable, IInputDisableable,
         IInputWithPlaceholder
     {
-        public TextInput(IJSRuntime jsRuntime, string? value, bool disabled, bool required, string? placeholder)
+        public TextInput
+        (
+            IJSRuntime jsRuntime,
+            string?    value,
+            bool       disabled,
+            bool       required,
+            string?    placeholder
+        )
             : base(jsRuntime, value)
-
         {
             _inputDisabledManager    = new InputDisabledManager(jsRuntime, disabled);
             _inputRequiredManager    = new InputRequiredManager(jsRuntime, required);

@@ -49,10 +49,12 @@ namespace Integrant4.Structurant
         /// <typeparam name="TValue">The type of the value that this member controls.</typeparam>
         public void Register<TValue>
         (
-            Member<TObject, TState, TValue> member
-            // string                                                      id,
-            // Member<TObject, TState, TValue>.Callbacks.InputGetter?      inputGetter      = null,
-            // Member<TObject, TState, TValue>.Callbacks.ValidationGetter? validationGetter = null
+            string                                                      id,
+            Member<TObject, TState, TValue>.Callbacks.ValueGetter       valueGetter,
+            Member<TObject, TState, TValue>.Callbacks.ValueSetter       valueSetter,
+            ushort                                                      inputDebounceMilliseconds = 200,
+            Member<TObject, TState, TValue>.Callbacks.InputGetter?      inputGetter               = null,
+            Member<TObject, TState, TValue>.Callbacks.ValidationGetter? validationGetter          = null
         )
         {
             if (_instantiated)
@@ -60,12 +62,22 @@ namespace Integrant4.Structurant
                 throw new Exception("Attempted to register member after structure has been instantiated.");
             }
 
-            if (_memberDictionary.ContainsKey(member.ID))
+            if (_memberDictionary.ContainsKey(id))
             {
                 throw new Exception("Attempted to register member with the same ID as an existing member.");
             }
 
-            // Member<TObject, TState, TValue> member = new(this, id, inputGetter, validationGetter);
+            Member<TObject, TState, TValue> member = new Member<TObject, TState, TValue>
+            (
+                this,
+                id,
+                valueGetter,
+                valueSetter,
+                inputDebounceMilliseconds,
+                inputGetter,
+                validationGetter
+            );
+            
             _members.Add(member);
             _memberDictionary[member.ID] = member;
         }

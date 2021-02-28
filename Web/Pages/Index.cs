@@ -15,28 +15,56 @@ namespace Web.Pages
 
         protected override void OnInitialized()
         {
-            _structure = new(inst =>
-            {
-                string nameFirst = inst.GetTyped<string>(nameof(Dog.NameFirst))!.Value;
-                string nameLast  = inst.GetTyped<string>(nameof(Dog.NameLast))!.Value;
-                int    age       = inst.GetTyped<int>(nameof(Dog.Age))!.Value;
+            _structure = new Structure<Dog, DogState>(inst =>
+                new Dog(inst.State.NameFirst!, inst.State.NameLast!, inst.State.Age!.Value));
 
-                return new Dog(nameFirst, nameLast, age);
-            });
-
-            _structure.Register<string>(new Member<Dog, DogState, string>(nameof(Dog.NameFirst),
+            _structure.Register<string?>
+            (
+                nameof(Dog.NameFirst),
+                inst => inst.StructureInstance.State.NameFirst,
+                (inst, v) => inst.StructureInstance.State.NameFirst = v,
                 inputGetter: inst => new TextInput
                 (
                     inst.StructureInstance.JSRuntime!,
-                    inst.Value,
+                    inst.Value(),
                     false,
                     false,
                     null
-                )));
-            _structure.Register<string>(new Member<Dog, DogState, string>(nameof(Dog.NameLast)));
-            _structure.Register<int>(new Member<Dog, DogState, int>(nameof(Dog.Age)));
+                )
+            );
 
-            _structureInstance = _structure.Instantiate(new DogState(), JSRuntime);
+            _structure.Register<string?>
+            (
+                nameof(Dog.NameLast),
+                inst => inst.StructureInstance.State.NameLast,
+                (inst, v) => inst.StructureInstance.State.NameLast = v,
+                inputGetter: inst => new TextInput
+                (
+                    inst.StructureInstance.JSRuntime!,
+                    inst.Value(),
+                    false,
+                    false,
+                    null
+                )
+            );
+
+            _structure.Register<int?>
+            (
+                nameof(Dog.Age),
+                inst => inst.StructureInstance.State.Age,
+                (inst, v) => inst.StructureInstance.State.Age = v,
+                inputGetter: inst => new IntegerInput
+                (
+                    inst.StructureInstance.JSRuntime!, inst.Value(), false, false, true
+                )
+            );
+
+            _structureInstance = _structure.Instantiate(new DogState()
+            {
+                NameFirst = "Rosie",
+                NameLast  = "Ruckman",
+                Age       = 10,
+            }, JSRuntime);
 
             _structureInstance.Construct();
 
@@ -60,5 +88,8 @@ namespace Web.Pages
 
     public class DogState
     {
+        public string? NameFirst { get; set; }
+        public string? NameLast  { get; set; }
+        public int?    Age       { get; set; }
     }
 }

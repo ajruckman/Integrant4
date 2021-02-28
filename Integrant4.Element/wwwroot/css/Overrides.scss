@@ -5,3 +5,19 @@ code {
   padding: 0.2rem 0.4rem;
   font-family: monospace;
 }
+
+.MVisibleOnHover {
+  display: none;
+
+  .MVisibleOnParentHover {
+    display: none;
+  }
+
+  &:hover {
+    display: unset;
+
+    .MVisibleOnParentHover {
+      display: unset;
+    }
+  }
+}
