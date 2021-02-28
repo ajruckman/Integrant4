@@ -12,4 +12,9 @@ namespace Integrant4.API
 
         event Action<TValue?> OnChange;
     }
+
+    public interface IValidatableInput<TValue> : IInput<TValue>
+    {
+        // delegate 
+    }
 }

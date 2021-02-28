@@ -24,17 +24,17 @@ namespace Web.Pages
                 return new Dog(nameFirst, nameLast, age);
             });
 
-            _structure.Register<string>(nameof(Dog.NameFirst),
-                inputCallback: inst => new TextInput
+            _structure.Register<string>(new Member<Dog, DogState, string>(nameof(Dog.NameFirst),
+                inputGetter: inst => new TextInput
                 (
                     inst.StructureInstance.JSRuntime!,
                     inst.Value,
                     false,
                     false,
                     null
-                ));
-            _structure.Register<string>(nameof(Dog.NameLast));
-            _structure.Register<int>(nameof(Dog.Age));
+                )));
+            _structure.Register<string>(new Member<Dog, DogState, string>(nameof(Dog.NameLast)));
+            _structure.Register<int>(new Member<Dog, DogState, int>(nameof(Dog.Age)));
 
             _structureInstance = _structure.Instantiate(new DogState(), JSRuntime);
 

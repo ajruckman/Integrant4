@@ -14,22 +14,25 @@ namespace Program
 
             Structure<Dog, DogState> structure = new(inst =>
             {
-                string nameFirst = inst.GetTyped<string>(nameof(Dog.NameFirst))!.Value;
-                string nameLast  = inst.GetTyped<string>(nameof(Dog.NameLast))!.Value;
-                int    age       = inst.GetTyped<int>(nameof(Dog.Age))!.Value;
+                string nameFirst = inst.GetTyped<string>(nameof(Dog.NameFirst)).Value();
+                string nameLast  = inst.GetTyped<string>(nameof(Dog.NameLast)).Value();
+                int    age       = inst.GetTyped<int>(nameof(Dog.Age)).Value();
 
                 return new Dog(nameFirst, nameLast, age);
             });
 
-            structure.Register<string>(nameof(Dog.NameFirst),
-                inputCallback: inst => new TextInput
+            structure.Register<string>(new Member<Dog, DogState, string>
+                (
+                nameof(Dog.NameFirst),
+                : inst => new TextInput
                 (
                     inst.StructureInstance.JSRuntime!,
                     inst.Value,
                     false,
                     false,
                     null
-                ));
+                ))
+            );
             structure.Register<string>(nameof(Dog.NameLast));
 
             StructureInstance<Dog, DogState> structureInstance = structure.Instantiate(new DogState(), null!);
