@@ -1,33 +1,31 @@
 using System;
 using System.Threading.Tasks;
 using Integrant4.API;
-using Integrant4.Element.Inputs.Managers;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
-using Superset.Web.Markup;
 
 namespace Integrant4.Element.Inputs
 {
-    public partial class CheckboxInput : IInput<bool>, IInputDisableable, IInputRequirable
+    public class CheckboxInput : IInput<bool>
     {
-        private readonly IJSRuntime _jsRuntime;
+        private readonly IJSRuntime                _jsRuntime;
+        private readonly Callbacks.Callback<bool>? _isDisabled;
+        private readonly Callbacks.Callback<bool>? _isRequired;
 
         private bool             _value;
         private ElementReference _reference;
 
         public CheckboxInput
         (
-            IJSRuntime               jsRuntime,  bool value, 
-            Callbacks.Callback<bool> isDisabled, Callbacks.Callback<bool> isRequired
+            IJSRuntime jsRuntime,
+            bool       value, Callbacks.Callback<bool>? isDisabled = null, Callbacks.Callback<bool>? isRequired = null
         )
         {
-            _jsRuntime = jsRuntime;
-            _value     = value;
-
-            _inputDisabledManager = new InputDisabledManager(jsRuntime, isDisabled.Invoke());
-            _inputRequiredManager = new InputRequiredManager(jsRuntime, isRequired.Invoke());
+            _jsRuntime  = jsRuntime;
+            _value      = value;
+            _isDisabled = isDisabled;
+            _isRequired = isRequired;
         }
 
         public RenderFragment Render()
@@ -40,8 +38,8 @@ namespace Integrant4.Element.Inputs
                 builder.AddAttribute(++seq, "type", "checkbox");
                 builder.AddAttribute(++seq, "checked", _value);
                 builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
-                builder.AddAttribute(++seq, "disabled", _inputDisabledManager.IsDisabled());
-                builder.AddAttribute(++seq, "required", _inputRequiredManager.IsRequired());
+                builder.AddAttribute(++seq, "disabled", _isDisabled?.Invoke());
+                builder.AddAttribute(++seq, "required", _isRequired?.Invoke());
 
                 builder.AddElementReferenceCapture(++seq, r => _reference = r);
                 builder.CloseElement();
@@ -52,8 +50,7 @@ namespace Integrant4.Element.Inputs
 
         public async Task<bool> GetValue()
         {
-            var v = await _jsRuntime.InvokeAsync<bool>("window.I4.Element.Inputs.GetChecked", _reference);
-            throw new NotImplementedException();
+            return await _jsRuntime.InvokeAsync<bool>("window.I4.Element.Inputs.GetChecked", _reference);
         }
 
         public async Task SetValue(bool value)
@@ -74,23 +71,5 @@ namespace Integrant4.Element.Inputs
                 "True"  => true,
                 _       => throw new ArgumentOutOfRangeException(),
             };
-    }
-
-    public partial class CheckboxInput
-    {
-        private readonly InputDisabledManager _inputDisabledManager;
-
-        public       Task<bool> IsDisabled() => Task.FromResult(_inputDisabledManager.IsDisabled());
-        public async Task       Disable()    => await _inputDisabledManager.Disable(_reference);
-        public async Task       Enable()     => await _inputDisabledManager.Enable(_reference);
-    }
-
-    public partial class CheckboxInput
-    {
-        private readonly InputRequiredManager _inputRequiredManager;
-
-        public       Task<bool> IsRequired() => Task.FromResult(_inputRequiredManager.IsRequired());
-        public async Task       Require()    => await _inputRequiredManager.Require(_reference);
-        public async Task       Unrequire()  => await _inputRequiredManager.Unrequire(_reference);
     }
 }

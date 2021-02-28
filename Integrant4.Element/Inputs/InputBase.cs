@@ -9,15 +9,15 @@ namespace Integrant4.Element.Inputs
 {
     public abstract class InputBase<T> : IInput<T>
     {
-        protected readonly IJSRuntime       JSRuntime;
-        protected          ElementReference Reference;
-        protected          T                Value;
+        protected readonly IJSRuntime JSRuntime;
+
+        protected ElementReference Reference;
+        protected T?               Value;
 
         [SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
-        protected InputBase(IJSRuntime jsRuntime, T value)
+        protected InputBase(IJSRuntime jsRuntime)
         {
             JSRuntime = jsRuntime;
-            Value     = Nullify(value);
         }
 
         public async Task<T?> GetValue()
@@ -36,9 +36,9 @@ namespace Integrant4.Element.Inputs
 
         public abstract RenderFragment Render();
 
-        protected void InvokeOnChange(T value) => OnChange?.Invoke(Nullify(value));
-
         public event Action<T?>? OnChange;
+
+        protected void InvokeOnChange(T value) => OnChange?.Invoke(Nullify(value));
 
         protected abstract string Serialize(T?        v);
         protected abstract T      Deserialize(string? v);

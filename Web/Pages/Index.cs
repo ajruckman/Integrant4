@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Integrant4.Element.Inputs;
 using Integrant4.Structurant;
 using Microsoft.AspNetCore.Components;
@@ -27,9 +28,8 @@ namespace Web.Pages
                 (
                     inst.StructureInstance.JSRuntime!,
                     inst.Value(),
-                    false,
-                    false,
-                    null
+                    () => false,
+                    () => false
                 )
             );
 
@@ -42,9 +42,8 @@ namespace Web.Pages
                 (
                     inst.StructureInstance.JSRuntime!,
                     inst.Value(),
-                    false,
-                    false,
-                    null
+                    () => false,
+                    () => false
                 )
             );
 
@@ -55,7 +54,27 @@ namespace Web.Pages
                 (inst, v) => inst.StructureInstance.State.Age = v,
                 inputGetter: inst => new IntegerInput
                 (
-                    inst.StructureInstance.JSRuntime!, inst.Value(), false, false, true
+                    inst.StructureInstance.JSRuntime!, inst.Value(), () => false, () => false, () => true
+                )
+            );
+
+            _structure.Register<string?>
+            (
+                nameof(Dog.Breed),
+                inst => inst.StructureInstance.State.Breed,
+                (inst, v) => inst.StructureInstance.State.Breed = v,
+                inputGetter: inst => new SelectInput<string>
+                (
+                    inst.StructureInstance.JSRuntime!,
+                    null,
+                    () => new List<IOption<string>>
+                    {
+                        new Option<string>("Unknown", "Unknown"),
+                        new Option<string>("Boxer", "Boxer"),
+                        new Option<string>("Yorkie", "Yorkie"),
+                        new Option<string>("Chihuahua", "Chihuahua"),
+                        new Option<string>("Other", "Other"),
+                    }
                 )
             );
 
@@ -84,6 +103,7 @@ namespace Web.Pages
         public string NameFirst { get; }
         public string NameLast  { get; }
         public int    Age       { get; }
+        public string Breed     { get; }
     }
 
     public class DogState
@@ -91,5 +111,6 @@ namespace Web.Pages
         public string? NameFirst { get; set; }
         public string? NameLast  { get; set; }
         public int?    Age       { get; set; }
+        public string  Breed     { get; set; }
     }
 }

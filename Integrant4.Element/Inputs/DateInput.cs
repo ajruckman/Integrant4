@@ -1,20 +1,29 @@
 using System;
 using System.Globalization;
-using System.Threading.Tasks;
-using Integrant4.Element.Inputs.Managers;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Inputs
 {
-    public partial class DateInput : InputBase<DateTime?>, IInputRequirable, IInputDisableable
+    public class DateInput : InputBase<DateTime?>
     {
-        public DateInput(IJSRuntime jsRuntime, DateTime? value, bool disabled, bool required)
-            : base(jsRuntime, value)
+        private readonly Callbacks.Callback<bool>? _isDisabled;
+        private readonly Callbacks.Callback<bool>? _isRequired;
+
+        public DateInput
+        (
+            IJSRuntime                jsRuntime,
+            DateTime?                 value,
+            Callbacks.Callback<bool>? isDisabled = null,
+            Callbacks.Callback<bool>? isRequired = null
+        )
+            : base(jsRuntime)
         {
-            _inputDisabledManager = new InputDisabledManager(jsRuntime, disabled);
-            _inputRequiredManager = new InputRequiredManager(jsRuntime, required);
+            _isDisabled = isDisabled;
+            _isRequired = isRequired;
+
+            Value = Nullify(value);
         }
 
         public override RenderFragment Render()
@@ -27,8 +36,8 @@ namespace Integrant4.Element.Inputs
                 builder.AddAttribute(++seq, "type", "date");
                 builder.AddAttribute(++seq, "value", Serialize(Value));
                 builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
-                builder.AddAttribute(++seq, "disabled", _inputDisabledManager.IsDisabled());
-                builder.AddAttribute(++seq, "required", _inputRequiredManager.IsRequired());
+                builder.AddAttribute(++seq, "disabled", _isDisabled?.Invoke());
+                builder.AddAttribute(++seq, "required", _isRequired?.Invoke());
 
                 builder.AddElementReferenceCapture(++seq, r => Reference = r);
                 builder.CloseElement();
@@ -46,27 +55,9 @@ namespace Integrant4.Element.Inputs
                 ? null
                 : DateTime.ParseExact(v, "yyyy-MM-dd", new DateTimeFormatInfo());
 
-        protected override DateTime? Nullify(DateTime? v) =>
+        protected sealed override DateTime? Nullify(DateTime? v) =>
             v == null || v.Value == DateTime.MinValue
                 ? null
                 : v.Value;
-    }
-
-    public partial class DateInput
-    {
-        private readonly InputDisabledManager _inputDisabledManager;
-
-        public       Task<bool> IsDisabled() => Task.FromResult(_inputDisabledManager.IsDisabled());
-        public async Task       Disable()    => await _inputDisabledManager.Disable(Reference);
-        public async Task       Enable()     => await _inputDisabledManager.Enable(Reference);
-    }
-
-    public partial class DateInput
-    {
-        private readonly InputRequiredManager _inputRequiredManager;
-
-        public       Task<bool> IsRequired() => Task.FromResult(_inputRequiredManager.IsRequired());
-        public async Task       Require()    => await _inputRequiredManager.Require(Reference);
-        public async Task       Unrequire()  => await _inputRequiredManager.Unrequire(Reference);
     }
 }

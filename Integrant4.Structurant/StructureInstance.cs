@@ -62,11 +62,11 @@ namespace Integrant4.Structurant
             if (inst == null)
                 throw new ArgumentException($"No member with passed ID '{id}' has been registered.",
                     nameof(id));
-            
+
             if (inst is not MemberInstance<TObject, TState, TValue> instT)
                 throw new ArgumentException("TValue passed to GetTyped<TValue>() was incorrect for this member ID.",
                     nameof(TValue));
-            
+
             return instT;
         }
 

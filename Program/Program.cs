@@ -21,19 +21,18 @@ namespace Program
                 return new Dog(nameFirst, nameLast, age);
             });
 
-            structure.Register<string>(new Member<Dog, DogState, string>
-                (
-                nameof(Dog.NameFirst),
-                : inst => new TextInput
-                (
-                    inst.StructureInstance.JSRuntime!,
-                    inst.Value,
-                    false,
-                    false,
-                    null
-                ))
-            );
-            structure.Register<string>(nameof(Dog.NameLast));
+            // structure.Register<string>(new Member<Dog, DogState, string>
+            //     (
+            //     nameof(Dog.NameFirst),
+            //     : inst => new TextInput
+            //     (
+            //         inst.StructureInstance.JSRuntime!,
+            //         inst.Value,
+            //         () => false,
+            //         () => false
+            //     ))
+            // );
+            // structure.Register<string>(nameof(Dog.NameLast));
 
             StructureInstance<Dog, DogState> structureInstance = structure.Instantiate(new DogState(), null!);
 
