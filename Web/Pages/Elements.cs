@@ -1,7 +1,10 @@
 using System;
 using System.Threading.Tasks;
+using Integrant4.API;
 using Integrant4.Element.Bits;
 using Integrant4.Element.Inputs;
+using Integrant4.Fundament;
+using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
@@ -14,6 +17,12 @@ namespace Web.Pages
         private DecimalInput _decimalInput        = null!;
         private DecimalInput _decimalInput0Null   = null!;
         private DecimalInput _decimalInputStepped = null!;
+
+        private Button _buttonNoIcon   = null!;
+        private Button _buttonOnlyIcon = null!;
+        private Button _buttonIconFirst = null!;
+        private Button _buttonIconLast = null!;
+        private Button _buttonIconAll = null!;
 
         private CheckboxInput _checkboxInput = null!;
 
@@ -47,13 +56,33 @@ namespace Web.Pages
 
             //
 
-            Chip c = new(new Chip.Spec
-            (
-                () => "asdf"
-            )
+            _buttonNoIcon    = new Button(() => "asdf".AsContent());
+            _buttonOnlyIcon  = new Button(() => new BootstrapIcon("chevron-right", 24));
+            _buttonIconFirst = new Button(() => new IRenderable[]
             {
-                PixelsWidth = () => 24,
+                new BootstrapIcon("chevron-left", 24),
+                "asdf left".AsContent()
             });
+            _buttonIconLast = new Button(() => new IRenderable[]
+            {
+                "asdf right".AsContent(),
+                new BootstrapIcon("chevron-right", 24)
+            });
+            _buttonIconAll = new Button(() => new IRenderable[]
+            {
+                new BootstrapIcon("chevron-left", 24),
+                new BootstrapIcon("chevron-right", 24)
+            });
+
+            // Chip c = new(new Chip.Spec
+            // (
+            //     () => "asdf"
+            // )
+            // {
+            //     PixelsWidth = () => 24,
+            // });
+
+            //
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)

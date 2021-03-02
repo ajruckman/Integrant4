@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.3" />
+        <PackageReference Include="Superset" Version="1.17.2-alpha" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Integrant4.API\Integrant4.API.csproj" />
+    </ItemGroup>
+
+</Project>

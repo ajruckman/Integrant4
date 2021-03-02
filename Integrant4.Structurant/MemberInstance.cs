@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Integrant4.API;
+using Integrant4.Fundament;
 
 namespace Integrant4.Structurant
 {
@@ -30,7 +31,7 @@ namespace Integrant4.Structurant
         where TState : class
     {
         private readonly Member<TObject, TState, TValue> _definition;
-        private readonly Utility.Debouncer<TValue?>      _debouncer;
+        private readonly Utility.Debouncer<TValue?>            _debouncer;
 
         internal MemberInstance
         (

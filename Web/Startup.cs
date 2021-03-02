@@ -1,3 +1,5 @@
+using Blazored.LocalStorage;
+using Integrant4.Fundament;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +23,10 @@ namespace Web
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddBlazoredLocalStorage();
+
+            services.AddScoped(_ => new ResourceService(Web.Configuration.ResourceSet));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,3 +1,15 @@
-﻿@inherits LayoutComponentBase
-@Configuration.ResourceSet.Render()
-@Body
+﻿@using Blazored.LocalStorage
+@inherits LayoutComponentBase
+@inject ILocalStorageService StorageService
+@ResourceService.RenderInvariableResources()
+@_solidsVariantLoader.RenderStylesheets()
+@if (_defaultVariantLoader.Complete)
+{
+    @ResourceService.RenderVariableResources(variables: new Dictionary<string, string>
+    {
+        {"ThemeVariant", _defaultVariantLoader.Variant!}
+    })
+    @_defaultVariantLoader.RenderStylesheets()
+    @Body
+    @_defaultVariantLoader.RenderDropdown()
+}
