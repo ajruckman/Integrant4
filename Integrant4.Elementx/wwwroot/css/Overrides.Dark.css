@@ -1,0 +1,17 @@
+button[class^="I4E.Button"]:not(#_):not([class$="--Filled"]) {
+  background-color: transparent;
+  color: var(--Colorant_Default_Accent_5); }
+  button[class^="I4E.Button"]:not(#_):not([class$="--Filled"]):hover, button[class^="I4E.Button"]:not(#_):not([class$="--Filled"]):active {
+    color: var(--Colorant_Default_Accent_6); }
+
+button[class^="I4E.Button"][class$="--Filled"]:not(#_) {
+  background-color: var(--Colorant_Solids_Opaque_White_2);
+  color: var(--Colorant_Default_Text_6); }
+  button[class^="I4E.Button"][class$="--Filled"]:not(#_):hover, button[class^="I4E.Button"][class$="--Filled"]:not(#_):active {
+    color: var(--Colorant_Default_Text_6); }
+
+button[class^="I4E.Button"]:not(#_):hover {
+  background-color: var(--Colorant_Solids_Opaque_White_3); }
+
+button[class^="I4E.Button"]:not(#_):active {
+  background-color: var(--Colorant_Solids_Opaque_White_2); }
