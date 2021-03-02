@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Integrant4.API\Integrant4.API.csproj" />
+      <ProjectReference Include="..\Integrant4.Fundament\Integrant4.Fundament.csproj" />
     </ItemGroup>
 
 </Project>

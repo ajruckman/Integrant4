@@ -1,23 +1,80 @@
 // https://getantibody.github.io/
 code {
-  border: 1px solid #DEE2E6;
-  background-color: rgba(27, 31, 35, 0.05);
-  padding: 0.2rem 0.4rem;
-  font-family: monospace;
+    border: 1px solid #DEE2E6;
+    background-color: rgba(27, 31, 35, 0.05);
+    padding: 0.2rem 0.4rem;
+    font-family: monospace;
 }
 
 .MVisibleOnHover {
-  display: none;
-
-  .MVisibleOnParentHover {
     display: none;
-  }
-
-  &:hover {
-    display: unset;
 
     .MVisibleOnParentHover {
-      display: unset;
+        display: none;
     }
-  }
+
+    &:hover {
+        display: unset;
+
+        .MVisibleOnParentHover {
+            display: unset;
+        }
+    }
+}
+
+button[class~="I4E.Button"] {
+    font-weight: 600;
+    user-select: none;
+    border-radius: 4px;
+    border: none;
+    height: 30px;
+    //padding: 0 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+
+    padding: 0;
+
+    //&[class~="I4E.Button--Icon"] { }
+
+    &:not([class~="I4E.Button--IconFirst"]) {
+        padding-left: 10px;
+    }
+
+    &:not([class~="I4E.Button--IconLast"]) {
+        padding-right: 10px;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+// Default colors
+button[class~="I4E.Button"] {
+    &:not([class~="I4E.Button--Filled"]) {
+        background-color: transparent;
+        color: var(--Colorant_Default_Accent_5);
+
+        &:hover, &:active {
+            color: var(--Colorant_Default_Accent_6);
+        }
+    }
+
+    &[class~="I4E.Button--Filled"] {
+        background-color: var(--Colorant_Solids_Opaque_White_2);
+        color: var(--Colorant_Default_Text_6);
+
+        &:hover, &:active {
+            color: var(--Colorant_Default_Text_6);
+        }
+    }
+
+    &:hover {
+        background-color: var(--Colorant_Solids_Opaque_White_3);
+    }
+
+    &:active {
+        background-color: var(--Colorant_Solids_Opaque_White_2);
+    }
 }

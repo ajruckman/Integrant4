@@ -25,7 +25,7 @@ window.I4.Element.Inputs.SetPlaceholder = window.I4.Element.Inputs.SetPlaceholde
 //
 
 window.I4.Element.Inputs.GetChecked = window.I4.Element.Inputs.GetChecked || function (ref) {
-    return ref.checked ? 'True' : 'False';
+    return ref.checked;
 };
 
 window.I4.Element.Inputs.SetChecked = window.I4.Element.Inputs.SetChecked || function (ref, checked) {

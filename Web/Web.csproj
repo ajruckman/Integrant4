@@ -7,9 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Integrant4.Dominant\Integrant4.Dominant.csproj" />
-      <ProjectReference Include="..\Integrant4.Element\Integrant4.Element.csproj" />
-      <ProjectReference Include="..\Integrant4.Structurant\Integrant4.Structurant.csproj" />
+        <ProjectReference Include="..\Integrant4.Colorant\Integrant4.Colorant.csproj" />
+        <ProjectReference Include="..\Integrant4.Element\Integrant4.Element.csproj" />
+        <ProjectReference Include="..\Integrant4.Resources\Integrant4.Resources.csproj" />
+        <ProjectReference Include="..\Integrant4.Structurant\Integrant4.Structurant.csproj" />
     </ItemGroup>
-
+    
 </Project>

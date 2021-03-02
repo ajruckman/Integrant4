@@ -1,4 +1,5 @@
-﻿using Integrant4.Element.Inputs;
+﻿using Integrant4.Element.Bits;
+using Integrant4.Resources.Icons;
 using Integrant4.Structurant;
 
 namespace Program
@@ -7,6 +8,11 @@ namespace Program
     {
         private static void Main()
         {
+            new Button(() => new BootstrapIcon("arrow-right").Renderer());
+            
+            RunColorant.Run();
+            return;
+
             // Expression<Func<Dog, int>> dogExpression;
             // Dog d = new();
             // dogExpression = _ => d.Age;

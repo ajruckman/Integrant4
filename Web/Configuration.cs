@@ -1,5 +1,7 @@
 using System.Collections.Generic;
-using Superset.Web.Resources;
+using Integrant4.Element;
+using Integrant4.Fundament;
+using Integrant4.Resources;
 
 namespace Web
 {
@@ -10,9 +12,21 @@ namespace Web
         static Configuration()
         {
             ResourceSet = new ResourceSet(nameof(Web), nameof(Configuration),
+                stylesheetsExternal: new HashSet<string>
+                {
+                    "css/Local.css",
+                    "css/Local.{{ThemeVariant}}.css",
+                },
                 dependencies: new List<ResourceSet>
                 {
-                    Integrant4.Element.ResourceSets.Inputs.Interop,
+                    ResourceSets.Inputs.Interop,
+                    ResourceSets.Overrides,
+
+                    Resources.Icons.Bootstrap,
+                    Resources.Fonts.SansSerif.Inter,
+                    Resources.Fonts.Monospace.JetBrainsMono,
+
+                    // ResourceSets.LocalCSS,
                 });
         }
     }

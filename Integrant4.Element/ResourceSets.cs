@@ -1,4 +1,5 @@
-using Superset.Web.Resources;
+using System.Collections.Generic;
+using Integrant4.Fundament;
 
 namespace Integrant4.Element
 {
@@ -10,8 +11,15 @@ namespace Integrant4.Element
             (
                 $"{nameof(Integrant4)}.{nameof(Element)}",
                 $"{nameof(Inputs)}.{nameof(Interop)}",
-                scripts: new[] {"Inputs.js"}
+                scriptsInternal: new HashSet<string> {"Inputs.js"}
             );
         }
+
+        public static readonly ResourceSet Overrides = new
+        (
+            $"{nameof(Integrant4)}.{nameof(Element)}",
+            $"{nameof(Overrides)}",
+            stylesheetsInternal: new HashSet<string> {"css/Overrides.css", "css/Overrides.{{ThemeVariant}}.css"}
+        );
     }
 }
