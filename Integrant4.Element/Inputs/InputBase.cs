@@ -20,14 +20,14 @@ namespace Integrant4.Element.Inputs
             JSRuntime = jsRuntime;
         }
 
-        public async Task<T?> GetValue()
+        public virtual async Task<T?> GetValue()
         {
             var v = await JSRuntime.InvokeAsync<string>("window.I4.Element.Inputs.GetValue", Reference);
             Value = Nullify(Deserialize(v));
             return Value;
         }
 
-        public async Task SetValue(T? value)
+        public virtual async Task SetValue(T? value)
         {
             Value = Nullify(value);
             await JSRuntime.InvokeVoidAsync("window.I4.Element.Inputs.SetValue", Reference, Serialize(Value));

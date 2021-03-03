@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using Integrant4.API;
-using Integrant4.Element;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.JSInterop;

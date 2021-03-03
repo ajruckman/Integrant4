@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Threading.Tasks;
 using Integrant4.API;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
@@ -9,113 +12,81 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace Integrant4.Element.Bits
 {
-    public class Button : BitBase
+    public partial class Button : BitBase
     {
-        public delegate Style ColorGetter();
-
-        public enum Style
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+        [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
+        public class ButtonSpec
         {
-            Default,
-            Filled,
-            Blue,
-            Green,
-            Orange,
-            Purple,
-            Red,
-            Yellow,
-        }
+            public StyleGetter? Style { get; init; }
 
-        private readonly ColorGetter _color;
+            public Callbacks.BitIsVisible?  IsVisible  { get; init; }
+            public Callbacks.BitIsDisabled? IsDisabled { get; init; }
+            public Callbacks.BitID?         ID         { get; init; }
+            public Callbacks.BitClasses?    Classes    { get; init; }
+            public Callbacks.BitSize?       Margin     { get; init; }
+            public Callbacks.BitSize?       Padding    { get; init; }
+            public Callbacks.BitREM?        FontSize   { get; init; }
+            public Callbacks.BitWeight?     FontWeight { get; init; }
+            public Callbacks.BitDisplay?    Display    { get; init; }
+            public Callbacks.BitData?       Data       { get; init; }
+            public Callbacks.BitTooltip?    Tooltip    { get; init; }
 
-        public Button
-        (
-            Callbacks.BitContent     content,
-            ColorGetter?             color           = null,
-            bool                     isStatic        = false,
-            Callbacks.BitIsVisible?  isVisible       = null,
-            Callbacks.BitIsDisabled? isDisabled      = null,
-            Callbacks.BitClasses?    classes         = null,
-            Callbacks.BitSize?       margin          = null,
-            Callbacks.BitSize?       padding         = null,
-            Callbacks.BitColor?      foregroundColor = null,
-            Callbacks.BitColor?      backgroundColor = null,
-            Callbacks.BitPixels?     pixelsHeight    = null,
-            Callbacks.BitPixels?     pixelsWidth     = null,
-            Callbacks.BitREM?        fontSize        = null,
-            Callbacks.BitWeight?     fontWeight      = null,
-            Callbacks.BitDisplay?    display         = null,
-            Callbacks.BitData?       data            = null,
-            Callbacks.BitTooltip?    tooltip         = null
-        ) : this(content.AsContents(), color, isStatic, isVisible, isDisabled, classes, margin, padding,
-            foregroundColor, backgroundColor, pixelsHeight, pixelsWidth, fontSize, fontWeight, display, data, tooltip)
-        {
-        }
-
-        public Button
-        (
-            Callbacks.BitContents    contents,
-            ColorGetter?             color           = null,
-            bool                     isStatic        = false,
-            Callbacks.BitIsVisible?  isVisible       = null,
-            Callbacks.BitIsDisabled? isDisabled      = null,
-            Callbacks.BitClasses?    classes         = null,
-            Callbacks.BitSize?       margin          = null,
-            Callbacks.BitSize?       padding         = null,
-            Callbacks.BitColor?      foregroundColor = null,
-            Callbacks.BitColor?      backgroundColor = null,
-            Callbacks.BitPixels?     pixelsHeight    = null,
-            Callbacks.BitPixels?     pixelsWidth     = null,
-            Callbacks.BitREM?        fontSize        = null,
-            Callbacks.BitWeight?     fontWeight      = null,
-            Callbacks.BitDisplay?    display         = null,
-            Callbacks.BitData?       data            = null,
-            Callbacks.BitTooltip?    tooltip         = null
-        ) : base
-        (
-            new BitSpec(contents)
+            internal BitSpec ToBitSpec() => new()
             {
-                IsStatic        = isStatic,
-                IsVisible       = isVisible,
-                IsDisabled      = isDisabled,
-                Classes         = classes,
-                Margin          = margin,
-                Padding         = padding,
-                ForegroundColor = foregroundColor,
-                BackgroundColor = backgroundColor,
-                Height          = pixelsHeight,
-                Width           = pixelsWidth,
-                FontSize        = fontSize,
-                FontWeight      = fontWeight,
-                Display         = display,
-                Data            = data,
-                Tooltip         = tooltip,
-            }, new ClassSet("I4E." + nameof(Button))
-        )
+                IsVisible  = IsVisible,
+                IsDisabled = IsDisabled,
+                ID         = ID,
+                Classes    = Classes,
+                Margin     = Margin,
+                Padding    = Padding,
+                FontSize   = FontSize,
+                FontWeight = FontWeight,
+                Display    = Display,
+                Data       = Data,
+                Tooltip    = Tooltip,
+            };
+        }
+    }
+
+    public partial class Button
+    {
+        private readonly Callbacks.BitContents _contents;
+
+        public Button(Callbacks.BitContent content, ButtonSpec? spec = null)
+            : this(content.AsContents(), spec)
         {
-            _color = color ?? DefaultStyleGetter;
         }
 
-        private static Style DefaultStyleGetter() => Style.Default;
-
-        private string[] LocalClasses(IRenderable[] contents)
+        public Button(Callbacks.BitContents contents, ButtonSpec? spec = null)
+            : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(Button)))
         {
-            string[] result = {"I4E." + nameof(Button) + ":" + _color.Invoke()};
-
-            if (contents.First() is IIcon) result = result.Append("I4E.Button--IconFirst").ToArray();
-            if (contents.Last() is IIcon) result  = result.Append("I4E.Button--IconLast").ToArray();
-
-            return result;
+            _contents    = contents;
+            _styleGetter = spec?.Style ?? DefaultStyleGetter;
         }
+    }
 
+    public partial class Button
+    {
         public override RenderFragment Renderer()
         {
             void Fragment(RenderTreeBuilder builder)
             {
+                IRenderable[] contents = _contents.Invoke().ToArray();
+
+                List<string> acl = new() {"I4E.Bit.Button--" + _styleGetter.Invoke()};
+
+                if (contents.First() is IIcon) acl.Add("I4E.Bit.Button--NoPadLeft");
+                if (contents.Last() is IIcon) acl.Add("I4E.Bit.Button--NoPadRight");
+
+                string[] ac = acl.ToArray();
+
+                //
+
                 int seq = -1;
+                builder.OpenElement(++seq, "button");
 
-                IRenderable[] contents = Spec.Contents.Invoke().ToArray();
-
-                BitBuilder.OpenElement(builder, ref seq, "button", this, null, LocalClasses(contents));
+                BitBuilder.ApplyAttributes(this, builder, ref seq, ac, null);
 
                 builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, Click));
 
@@ -124,7 +95,7 @@ namespace Integrant4.Element.Bits
                     builder.AddContent(++seq, renderable.Renderer());
                 }
 
-                BitBuilder.CloseElement(builder);
+                builder.CloseElement();
             }
 
             return Fragment;
@@ -132,7 +103,7 @@ namespace Integrant4.Element.Bits
 
         public event Action<ClickArgs>? OnClick;
 
-        private void Click(MouseEventArgs args)
+        private async Task Click(MouseEventArgs args)
         {
             if (Spec.IsDisabled?.Invoke() == true) return;
 
@@ -145,5 +116,27 @@ namespace Integrant4.Element.Bits
                 args.CtrlKey
             ));
         }
+    }
+
+    public partial class Button
+    {
+        public delegate Style StyleGetter();
+
+        public enum Style
+        {
+            Default,
+            Accent,
+            Transparent,
+            Blue,
+            Green,
+            Orange,
+            Purple,
+            Red,
+            Yellow,
+        }
+
+        private readonly StyleGetter _styleGetter;
+
+        private static StyleGetter DefaultStyleGetter => () => Style.Default;
     }
 }

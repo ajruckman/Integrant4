@@ -1,27 +1,35 @@
-button[class~="I4E.Button"]:not(#_) {
-    &:not([class~="I4E.Button--Filled"]) {
-        background-color: transparent;
-        color: var(--Colorant_Default_Accent_5);
-
-        &:hover, &:active {
-            color: var(--Colorant_Default_Accent_6);
-        }
-    }
-
-    &[class~="I4E.Button--Filled"] {
+button[class~="I4E.Bit.Button"]:not(#_) {
+    &[class~="I4E.Bit.Button--Default"] {
         background-color: var(--Colorant_Solids_Opaque_Black_0);
         color: var(--Colorant_Default_Text_6);
 
         &:hover, &:active {
             color: var(--Colorant_Default_Text_6);
         }
+
+        &:hover {
+            background-color: var(--Colorant_Solids_Opaque_Black_1);
+        }
+
+        &:active {
+            background-color: var(--Colorant_Solids_Opaque_Black_0);
+        }
     }
 
-    &:hover {
-        background-color: var(--Colorant_Solids_Opaque_Black_1);
-    }
+    &[class~="I4E.Bit.Button--Transparent"] {
+        background-color: transparent;
+        color: var(--Colorant_Default_Accent_5);
 
-    &:active {
-        background-color: var(--Colorant_Solids_Opaque_Black_0);
+        &:hover, &:active {
+            color: var(--Colorant_Default_Accent_6);
+        }
+
+        &:hover {
+            background-color: var(--Colorant_Solids_Opaque_Black_1);
+        }
+
+        &:active {
+            background-color: var(--Colorant_Solids_Opaque_Black_0);
+        }
     }
 }

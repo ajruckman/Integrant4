@@ -1,17 +1,19 @@
-button[class~="I4E.Button"]:not(#_):not([class~="I4E.Button--Filled"]) {
-  background-color: transparent;
-  color: var(--Colorant_Default_Accent_5); }
-  button[class~="I4E.Button"]:not(#_):not([class~="I4E.Button--Filled"]):hover, button[class~="I4E.Button"]:not(#_):not([class~="I4E.Button--Filled"]):active {
-    color: var(--Colorant_Default_Accent_6); }
-
-button[class~="I4E.Button"][class~="I4E.Button--Filled"]:not(#_) {
+button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Default"]:not(#_) {
   background-color: var(--Colorant_Solids_Opaque_White_2);
   color: var(--Colorant_Default_Text_6); }
-  button[class~="I4E.Button"][class~="I4E.Button--Filled"]:not(#_):hover, button[class~="I4E.Button"][class~="I4E.Button--Filled"]:not(#_):active {
+  button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Default"]:not(#_):hover, button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Default"]:not(#_):active {
     color: var(--Colorant_Default_Text_6); }
+  button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Default"]:not(#_):hover {
+    background-color: var(--Colorant_Solids_Opaque_White_3); }
+  button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Default"]:not(#_):active {
+    background-color: var(--Colorant_Solids_Opaque_White_2); }
 
-button[class~="I4E.Button"]:not(#_):hover {
-  background-color: var(--Colorant_Solids_Opaque_White_3); }
-
-button[class~="I4E.Button"]:not(#_):active {
-  background-color: var(--Colorant_Solids_Opaque_White_2); }
+button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Transparent"]:not(#_) {
+  background-color: transparent;
+  color: var(--Colorant_Default_Accent_5); }
+  button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Transparent"]:not(#_):hover, button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Transparent"]:not(#_):active {
+    color: var(--Colorant_Default_Accent_6); }
+  button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Transparent"]:not(#_):hover {
+    background-color: var(--Colorant_Solids_Opaque_White_3); }
+  button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Transparent"]:not(#_):active {
+    background-color: var(--Colorant_Solids_Opaque_White_2); }

@@ -83,6 +83,10 @@ namespace Integrant4.Colorant.Themes.Default
         public const string Accent_7_Text = "var(--Colorant_Default_Accent_7_Text)";
         public const string Accent_8 = "var(--Colorant_Default_Accent_8)";
         public const string Accent_8_Text = "var(--Colorant_Default_Accent_8_Text)";
+        public const string Accent_9 = "var(--Colorant_Default_Accent_9)";
+        public const string Accent_9_Text = "var(--Colorant_Default_Accent_9_Text)";
+        public const string Accent_10 = "var(--Colorant_Default_Accent_10)";
+        public const string Accent_10_Text = "var(--Colorant_Default_Accent_10_Text)";
         public const string Text_0 = "var(--Colorant_Default_Text_0)";
         public const string Text_1 = "var(--Colorant_Default_Text_1)";
         public const string Text_2 = "var(--Colorant_Default_Text_2)";

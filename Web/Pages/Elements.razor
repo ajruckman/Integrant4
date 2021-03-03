@@ -1,4 +1,5 @@
 @page "/elements"
+@using Integrant4.Element.Bits
 
 <ul>
     <li>@_intInput.Render()</li>
@@ -15,4 +16,16 @@
     <li>@_buttonOnlyIcon.Renderer()</li>
     <li>@_buttonIconFirst.Renderer()</li>
     <li>@_buttonIconLast.Renderer()</li>
+</ul>
+
+<ul>
+    @foreach (Button button in _buttonsColored)
+    {
+        <li>@button.Renderer()</li>
+    }
+</ul>
+
+<ul>
+    <li>@_chip.Renderer()</li>
+    <li>@_chipLink.Renderer()</li>
 </ul>
