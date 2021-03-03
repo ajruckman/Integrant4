@@ -1,0 +1,34 @@
+[class~="I4E.Bit"] {
+    &[hidden] {
+        display: none !important;
+    }
+}
+
+div[class~="I4E.Bit.Chip"], a[class~="I4E.Bit.Chip"] {
+    background-color: var(--Colorant_Solids_Opaque_White_2);
+    border-radius: 5000px;
+    box-shadow: var(--Colorant_Default_Shadow_0);
+    box-sizing: border-box;
+    display: inline-block;
+    font-weight: 600;
+    padding: 2px 9px;
+    vertical-align: middle;
+
+    &[class~="I4E.Bit.Chip--Link"] {
+        color: var(--Colorant_Default_PageText);
+        text-decoration: none;
+
+        &:visited {
+            color: var(--Colorant_Default_PageText);
+        }
+
+        &:hover {
+            background-color: var(--Colorant_Solids_Opaque_White_3);
+        }
+
+        &:focus {
+            background-color: var(--Colorant_Solids_Opaque_White_2);
+            outline: none;
+        }
+    }
+}

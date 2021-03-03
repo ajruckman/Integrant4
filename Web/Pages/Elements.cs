@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Integrant4.API;
 using Integrant4.Element.Bits;
@@ -18,11 +20,16 @@ namespace Web.Pages
         private DecimalInput _decimalInput0Null   = null!;
         private DecimalInput _decimalInputStepped = null!;
 
-        private Button _buttonNoIcon   = null!;
-        private Button _buttonOnlyIcon = null!;
+        private Button _buttonNoIcon    = null!;
+        private Button _buttonOnlyIcon  = null!;
         private Button _buttonIconFirst = null!;
-        private Button _buttonIconLast = null!;
-        private Button _buttonIconAll = null!;
+        private Button _buttonIconLast  = null!;
+        private Button _buttonIconAll   = null!;
+
+        private Chip _chip     = null!;
+        private Chip _chipLink = null!;
+
+        private readonly List<Button> _buttonsColored = new();
 
         private CheckboxInput _checkboxInput = null!;
 
@@ -56,8 +63,8 @@ namespace Web.Pages
 
             //
 
-            _buttonNoIcon    = new Button(() => "asdf".AsContent());
-            _buttonOnlyIcon  = new Button(() => new BootstrapIcon("chevron-right", 24));
+            _buttonNoIcon   = new Button(() => "asdf".AsContent());
+            _buttonOnlyIcon = new Button(() => new BootstrapIcon("chevron-right", 24));
             _buttonIconFirst = new Button(() => new IRenderable[]
             {
                 new BootstrapIcon("chevron-left", 24),
@@ -74,6 +81,20 @@ namespace Web.Pages
                 new BootstrapIcon("chevron-right", 24)
             });
 
+            foreach (Button.Style style in Enum.GetValues<Button.Style>())
+            {
+                var b = new Button(() => ("Color: " + style).AsContent(), new Button.ButtonSpec
+                {
+                    Style = () => style,
+                });
+
+                // b.OnActivate += () => Console.WriteLine($"Activate: {style}");
+                b.OnClick += _ => Console.WriteLine($"Click: {style}");
+                // b.OnKeyUp += _ => Console.WriteLine($"KeyPress: {style}");
+
+                _buttonsColored.Add(b);
+            }
+
             // Chip c = new(new Chip.Spec
             // (
             //     () => "asdf"
@@ -83,13 +104,24 @@ namespace Web.Pages
             // });
 
             //
+
+            _chip = new Chip(() => "Chip 1".AsContent(), new Chip.ChipSpec
+            {
+                Height = () => 24,
+            });
+
+            _chipLink = new Chip(() => "Chip 1".AsContent(), new Chip.ChipSpec
+            {
+                HREF   = () => "/",
+                Height = () => 24,
+            });
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             var v = await _intInput.GetValue();
             Console.WriteLine(v);
-            
+
             Console.WriteLine(await _checkboxInput.GetValue());
         }
     }

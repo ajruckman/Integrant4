@@ -4,6 +4,7 @@ using Integrant4.Element.Inputs;
 using Integrant4.Structurant;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using TextInput = Integrant4.Element.Inputs.TextInput;
 
 namespace Web.Pages
 {

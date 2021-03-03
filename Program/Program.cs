@@ -8,8 +8,8 @@ namespace Program
     {
         private static void Main()
         {
-            new Button(() => new BootstrapIcon("arrow-right").Renderer());
-            
+            new Button(() => new BootstrapIcon("arrow-right"));
+
             RunColorant.Run();
             return;
 
