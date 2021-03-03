@@ -20,7 +20,7 @@ namespace Web
                 dependencies: new List<ResourceSet>
                 {
                     ResourceSets.Inputs.Interop,
-                    ResourceSets.Overrides,
+                    ResourceSets.Bits,
 
                     Resources.Icons.Bootstrap,
                     Resources.Fonts.SansSerif.Inter,

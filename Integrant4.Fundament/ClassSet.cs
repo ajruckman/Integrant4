@@ -53,6 +53,6 @@ namespace Integrant4.Fundament
         public IEnumerator<string> GetEnumerator() => _classes.GetEnumerator();
         IEnumerator IEnumerable.   GetEnumerator() => GetEnumerator();
 
-        public ClassSet Clone() => new(_classes.ToList());
+        public readonly ClassSet Clone() => new(_classes.ToList());
     }
 }

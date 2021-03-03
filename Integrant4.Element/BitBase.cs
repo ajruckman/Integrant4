@@ -6,43 +6,29 @@ namespace Integrant4.Element
 {
     public abstract class BitBase : IBit
     {
-        internal BitSpec Spec = null!;
+        protected static readonly Exception ReconstructedException = new(
+            "This Bit was reconstructed in the render tree. "                                        +
+            "Construct and assign and instance of this Bit once outside of the render tree builder " +
+            "and call its '.Render()' method to render it into the tree."
+        );
 
-        protected ClassSet ConstantClasses;
-        protected string?  CachedStyle;
+        internal readonly BitSpec Spec;
+
+        private readonly ClassSet _constantClasses;
+
+        private string? _cachedStyle;
+
+        internal BitBase(BitSpec spec, ClassSet constantClasses)
+        {
+            Spec             = spec;
+            _constantClasses = constantClasses;
+        }
 
         public abstract RenderFragment Renderer();
 
-        protected void Cache
-        (
-            string[]? additionalStyle   = null,
-            string[]? additionalClasses = null
-        )
+        protected internal string Classes(string[]? additional = null)
         {
-            if (Spec.IsStatic)
-            {
-                Style(true, additionalStyle);
-
-                Class(true, additionalClasses);
-            }
-        }
-
-        protected internal string? Style(bool initial, string[]? additional = null)
-        {
-            if (Spec.IsStatic && !initial)
-                return CachedStyle;
-
-            string? r = BitBuilder.StyleAttribute(Spec, additional);
-
-            if (Spec.IsStatic)
-                CachedStyle = r;
-
-            return r;
-        }
-
-        protected internal string Class(bool initial, string[]? additional = null)
-        {
-            ClassSet c = ConstantClasses.Clone();
+            ClassSet c = _constantClasses.Clone();
 
             if (additional != null)
                 c.AddRange(additional);
@@ -56,10 +42,17 @@ namespace Integrant4.Element
             return c.ToString();
         }
 
-        protected static readonly Exception ReconstructedException = new(
-            "This Bit was reconstructed in the render tree. "                                        +
-            "Construct and assign and instance of this Bit once outside of the render tree builder " +
-            "and call its '.Render()' method to render it into the tree."
-        );
+        protected internal string? Styles(bool initial, string[]? additional = null)
+        {
+            if (Spec.IsStatic && !initial)
+                return _cachedStyle;
+
+            string? r = BitBuilder.StyleAttribute(Spec, additional);
+
+            if (Spec.IsStatic)
+                _cachedStyle = r;
+
+            return r;
+        }
     }
 }

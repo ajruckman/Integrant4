@@ -16,8 +16,8 @@ namespace Integrant4.Element
         )
         {
             builder.OpenElement(++seq, element);
-            builder.AddAttribute(++seq, "style", bitBase.Style(false, additionalStyle));
-            builder.AddAttribute(++seq, "class", bitBase.Class(false, additionalClasses));
+            builder.AddAttribute(++seq, "class", bitBase.Classes(additionalClasses));
+            builder.AddAttribute(++seq, "style", bitBase.Styles(false, additionalStyle));
 
             builder.AddAttribute(++seq, "hidden", bitBase.Spec.IsVisible?.Invoke() == false);
             

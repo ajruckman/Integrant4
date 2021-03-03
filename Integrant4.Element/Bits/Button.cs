@@ -11,11 +11,12 @@ namespace Integrant4.Element.Bits
 {
     public class Button : BitBase
     {
-        public delegate Color ColorGetter();
+        public delegate Style ColorGetter();
 
-        public enum Color
+        public enum Style
         {
             Default,
+            Filled,
             Blue,
             Green,
             Orange,
@@ -23,8 +24,6 @@ namespace Integrant4.Element.Bits
             Red,
             Yellow,
         }
-
-        private static Color DefaultColorGetter() => Color.Default;
 
         private readonly ColorGetter _color;
 
@@ -71,9 +70,9 @@ namespace Integrant4.Element.Bits
             Callbacks.BitDisplay?    display         = null,
             Callbacks.BitData?       data            = null,
             Callbacks.BitTooltip?    tooltip         = null
-        )
-        {
-            Spec = new BitSpec(contents)
+        ) : base
+        (
+            new BitSpec(contents)
             {
                 IsStatic        = isStatic,
                 IsVisible       = isVisible,
@@ -90,12 +89,13 @@ namespace Integrant4.Element.Bits
                 Display         = display,
                 Data            = data,
                 Tooltip         = tooltip,
-            };
-
-            ConstantClasses = new ClassSet("I4E." + nameof(Button));
-
-            _color = color ?? DefaultColorGetter;
+            }, new ClassSet("I4E." + nameof(Button))
+        )
+        {
+            _color = color ?? DefaultStyleGetter;
         }
+
+        private static Style DefaultStyleGetter() => Style.Default;
 
         private string[] LocalClasses(IRenderable[] contents)
         {
@@ -116,6 +116,7 @@ namespace Integrant4.Element.Bits
                 IRenderable[] contents = Spec.Contents.Invoke().ToArray();
 
                 BitBuilder.OpenElement(builder, ref seq, "button", this, null, LocalClasses(contents));
+
                 builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, Click));
 
                 foreach (IRenderable renderable in contents)
@@ -123,19 +124,17 @@ namespace Integrant4.Element.Bits
                     builder.AddContent(++seq, renderable.Renderer());
                 }
 
-                builder.CloseElement();
+                BitBuilder.CloseElement(builder);
             }
 
             return Fragment;
         }
 
-        // private readonly Func<ClickArgs, Task> _onClick;
-
         public event Action<ClickArgs>? OnClick;
 
         private void Click(MouseEventArgs args)
         {
-            // if (Spec.IsDisabled?.Invoke() == true) return;
+            if (Spec.IsDisabled?.Invoke() == true) return;
 
             OnClick?.Invoke(new ClickArgs
             (
