@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Integrant4.API;
 using Integrant4.Element;
 using Integrant4.Element.Bits;
+using Integrant4.Element.Constructs;
 using Integrant4.Element.Inputs;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
@@ -41,6 +42,8 @@ namespace Web.Pages
         private Link _link3 = null!;
 
         private Dropdown _dropdown1 = null!;
+
+        private Header _header1 = null!;
 
         [Inject] public IJSRuntime     JSRuntime      { get; set; } = null!;
         [Inject] public ElementService ElementService { get; set; } = null!;
@@ -158,7 +161,7 @@ namespace Web.Pages
                     {
                         "Dropdown 1".AsContent(),
                         new BootstrapIcon("chevron-down"),
-                    }, new TextBlock.Spec{IsHoverable = () => true}),
+                    }, new TextBlock.Spec {IsHoverable = () => true}),
                 },
                 () => new IRenderable[]
                 {
@@ -199,6 +202,16 @@ namespace Web.Pages
                             }, new Link.Spec(() => "/") {IsButton = () => true}),
                         }, new Dropdown.Spec(ElementService) {PlacementGetter = () => Dropdown.Placement.RightStart}),
                 }, new Dropdown.Spec(ElementService));
+
+            _header1 = new Header(() => new IRenderable[]
+            {
+                new TextBlock(() => new IRenderable[]
+                {
+                    "Integrant 4".AsContent(),
+                }, new TextBlock.Spec {IsTitle = () => true}),
+                new Filler(),
+                _dropdown1,
+            });
         }
 
         private bool _checked = true;

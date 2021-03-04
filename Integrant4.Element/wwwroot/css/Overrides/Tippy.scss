@@ -1,0 +1,11 @@
+.tippy-box {
+    background-color: var(--Colorant_Default_Text_5);
+    box-shadow: var(--Colorant_Default_Shadow_0);
+    color: var(--Colorant_Default_Background_13);
+    font-family: var(--I4R_SansSerifFont);
+    font-weight: 600;
+
+    .tippy-arrow {
+        color: var(--Colorant_Default_Text_5);
+    }
+}

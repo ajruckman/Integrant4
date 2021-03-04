@@ -208,6 +208,9 @@ div[class~="I4E.Bit.Dropdown"] {
       box-sizing: border-box;
       width: 100%; }
 
+div[class~="I4E.Bit.Filler"] {
+  flex-grow: 100; }
+
 div[class~="I4E.Bit.HorizontalLine"] {
   background-color: var(--Colorant_Default_Background_14);
   height: 1px;
@@ -281,10 +284,13 @@ div[class~="I4E.Bit.TextBlock"] {
   padding: 0;
   user-select: none; }
   div[class~="I4E.Bit.TextBlock"] > span[class~="I4E.Bit.TextBlock.Content"] {
-    display: inline-flex;
-    align-items: center; }
+    align-items: center;
+    display: inline-flex; }
     div[class~="I4E.Bit.TextBlock"] > span[class~="I4E.Bit.TextBlock.Content"]:not(:last-child) {
       margin-right: 5px; }
+  div[class~="I4E.Bit.TextBlock"][class~="I4E.Bit.TextBlock--Title"] {
+    font-size: 21px;
+    font-weight: 600; }
   div[class~="I4E.Bit.TextBlock"]:not([class~="I4E.Bit.Button--IconLeft"]) {
     padding-left: 10px; }
   div[class~="I4E.Bit.TextBlock"][class~="I4E.Bit.Button--IconLeft"] {

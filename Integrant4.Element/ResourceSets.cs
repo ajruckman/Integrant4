@@ -15,6 +15,16 @@ namespace Integrant4.Element
             );
         }
 
+        public static readonly ResourceSet Constructs = new
+        (
+            $"{nameof(Integrant4)}.{nameof(Element)}",
+            $"{nameof(Constructs)}",
+            stylesheetsInternal: new HashSet<string>
+            {
+                "css/Constructs/Constructs.css", "css/Constructs/Constructs.{{ThemeVariant}}.css",
+            }
+        );
+
         public static readonly ResourceSet Bits = new
         (
             $"{nameof(Integrant4)}.{nameof(Element)}",
@@ -40,6 +50,16 @@ namespace Integrant4.Element
                     Resources.Resources.Libraries.MiniBar,
                 },
                 stylesheetsInternal: new HashSet<string> {"css/Overrides/MiniBar.css"}
+            );
+
+            public static readonly ResourceSet Tippy = new
+            ($"{nameof(Integrant4)}.{nameof(Element)}",
+                $"{nameof(Overrides)}.{nameof(Tippy)}",
+                dependencies: new[]
+                {
+                    Resources.Resources.Libraries.Tippy,
+                },
+                stylesheetsInternal: new HashSet<string> {"css/Overrides/Tippy.css"}
             );
         }
     }

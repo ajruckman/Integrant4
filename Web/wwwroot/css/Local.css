@@ -1,7 +1,8 @@
 body {
   background-color: var(--Colorant_Default_PageBackground);
   color: var(--Colorant_Default_PageText);
-  font-family: var(--I4R_SansSerifFont); }
+  font-family: var(--I4R_SansSerifFont);
+  margin: 0; }
 
 :root {
   --color-hinted-grey-1: #0e0e10;

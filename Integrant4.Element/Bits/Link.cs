@@ -104,7 +104,7 @@ namespace Integrant4.Element.Bits
                 builder.OpenElement(++seq, "a");
                 builder.AddAttribute(++seq, "href", BaseSpec.HREF!.Invoke());
 
-                BitBuilder.ApplyAttributes(this, builder, ref seq, ac.Any() ? ac.ToArray() : null, null);
+                BitBuilder.ApplyAttributes(this, builder, ref seq, ac.ToArray(), null);
 
                 foreach (IRenderable renderable in contents)
                 {

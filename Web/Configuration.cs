@@ -21,12 +21,14 @@ namespace Web
                 {
                     ResourceSets.Inputs.Interop,
                     ResourceSets.Bits,
+                    ResourceSets.Constructs,
 
                     Resources.Icons.Bootstrap,
                     Resources.Fonts.SansSerif.Inter,
                     Resources.Fonts.Monospace.JetBrainsMono,
 
                     Integrant4.Element.ResourceSets.Overrides.MiniBar,
+                    Integrant4.Element.ResourceSets.Overrides.Tippy,
                     Resources.Libraries.Tippy,
 
                     // ResourceSets.LocalCSS,

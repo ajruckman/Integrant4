@@ -9,12 +9,17 @@ div[class~="I4E.Bit.TextBlock"] {
     user-select: none;
 
     > span[class~="I4E.Bit.TextBlock.Content"] {
-        display: inline-flex;
         align-items: center;
+        display: inline-flex;
 
         &:not(:last-child) {
             margin-right: 5px;
         }
+    }
+
+    &[class~="I4E.Bit.TextBlock--Title"] {
+        font-size: 21px;
+        font-weight: 600;
     }
 
     //

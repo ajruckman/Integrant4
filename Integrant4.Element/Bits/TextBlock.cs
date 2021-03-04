@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Integrant4.API;
 using Integrant4.Fundament;
@@ -15,6 +16,7 @@ namespace Integrant4.Element.Bits
             public ElementService? ElementService { get; init; }
 
             public Callbacks.Callback<bool>? IsHoverable { get; init; }
+            public Callbacks.Callback<bool>? IsTitle     { get; init; }
 
             public Callbacks.BitIsVisible?  IsVisible       { get; init; }
             public Callbacks.BitIsDisabled? IsDisabled      { get; init; }
@@ -60,12 +62,14 @@ namespace Integrant4.Element.Bits
     {
         private readonly Callbacks.BitContents     _contents;
         private readonly Callbacks.Callback<bool>? _isHoverable;
+        private readonly Callbacks.Callback<bool>? _isTitle;
 
         public TextBlock(Callbacks.BitContents contents, Spec? spec = null)
             : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(TextBlock)))
         {
             _contents    = contents;
             _isHoverable = spec?.IsHoverable;
+            _isTitle     = spec?.IsTitle;
         }
     }
 
@@ -79,9 +83,11 @@ namespace Integrant4.Element.Bits
 
                 builder.OpenElement(++seq, "div");
 
-                string[]? ac = _isHoverable?.Invoke() == true ? new[] {"I4E.Bit.TextBlock--Hoverable"} : null;
+                List<string> ac = new();
+                if (_isHoverable?.Invoke() == true) ac.Add("I4E.Bit.TextBlock--Hoverable");
+                if (_isTitle?.Invoke()     == true) ac.Add("I4E.Bit.TextBlock--Title");
 
-                BitBuilder.ApplyAttributes(this, builder, ref seq, ac, null);
+                BitBuilder.ApplyAttributes(this, builder, ref seq, ac.ToArray(), null);
 
                 foreach (IRenderable renderable in _contents.Invoke())
                 {
@@ -90,9 +96,9 @@ namespace Integrant4.Element.Bits
                     builder.AddContent(++seq, renderable.Renderer());
                     builder.CloseElement();
                 }
-                
+
                 builder.CloseElement();
-                
+
                 QueueTooltip();
             }
 
