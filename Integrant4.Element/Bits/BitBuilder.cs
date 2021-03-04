@@ -17,23 +17,23 @@ namespace Integrant4.Element.Bits
             string[]?         additionalStyles
         )
         {
-            builder.AddAttribute(++seq, "class", ClassAttribute(bitBase.BaseClasses, bitBase.Spec, additionalClasses));
-            builder.AddAttribute(++seq, "style", StyleAttribute(bitBase.Spec, additionalStyles));
+            builder.AddAttribute(++seq, "class", ClassAttribute(bitBase.BaseClasses, bitBase.BaseSpec, additionalClasses));
+            builder.AddAttribute(++seq, "style", StyleAttribute(bitBase.BaseSpec, additionalStyles));
 
             ++seq;
-            if (bitBase.Spec.IsVisible?.Invoke() == false)
+            if (bitBase.BaseSpec.IsVisible?.Invoke() == false)
                 builder.AddAttribute(seq, "hidden", true);
 
             ++seq;
-            if (bitBase.Spec.Tooltip != null)
-                builder.AddAttribute(seq, "data-i4e.tooltip", bitBase.Spec.Tooltip.Invoke());
+            if (bitBase.BaseSpec.Tooltip != null)
+                builder.AddAttribute(seq, "data-i4e.tooltip", bitBase.BaseSpec.Tooltip.Invoke());
 
             ++seq;
-            if (bitBase.Spec.ID != null)
-                builder.AddAttribute(seq, "id", bitBase.Spec.ID.Invoke());
+            if (bitBase.BaseSpec.ID != null)
+                builder.AddAttribute(seq, "id", bitBase.BaseSpec.ID.Invoke());
             
-            if (bitBase.Spec.Data != null)
-                foreach ((string name, Callbacks.DataValue getter) in bitBase.Spec.Data.Invoke())
+            if (bitBase.BaseSpec.Data != null)
+                foreach ((string name, Callbacks.DataValue getter) in bitBase.BaseSpec.Data.Invoke())
                     builder.AddAttribute(++seq, "data-" + name, getter.Invoke());
         }
 

@@ -9,7 +9,7 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class FillerSpec
+        public class Spec
         {
             public Callbacks.BitIsVisible? IsVisible { get; init; }
 
@@ -22,7 +22,7 @@ namespace Integrant4.Element.Bits
 
     public partial class Filler
     {
-        public Filler(FillerSpec? spec = null)
+        public Filler(Spec? spec = null)
             : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit.Filler"))
         {
         }

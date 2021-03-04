@@ -10,14 +10,15 @@ namespace Integrant4.Element.Bits
     [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
     public partial class Link : BitBase
     {
-        public class LinkSpec
+        public class Spec
         {
-            public LinkSpec(Callbacks.BitHREF href)
+            public Spec(Callbacks.BitHREF href)
             {
                 HREF = href;
             }
 
-            public Callbacks.BitHREF HREF { get; }
+            public Callbacks.BitHREF        HREF     { get; }
+            public Callbacks.Callback<bool> Accented { get; init; }
 
             public Callbacks.BitIsVisible?  IsVisible       { get; init; }
             public Callbacks.BitIsDisabled? IsDisabled      { get; init; }
@@ -55,17 +56,19 @@ namespace Integrant4.Element.Bits
 
     public partial class Link
     {
-        private readonly Callbacks.BitContents _contents;
+        private readonly Callbacks.BitContents     _contents;
+        private readonly Callbacks.Callback<bool>? _accented;
 
-        public Link(Callbacks.BitContent content, LinkSpec? spec = null)
+        public Link(Callbacks.BitContent content, Spec spec)
             : this(content.AsContents(), spec)
         {
         }
 
-        public Link(Callbacks.BitContents contents, LinkSpec? spec = null)
+        public Link(Callbacks.BitContents contents, Spec spec)
             : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(Link)))
         {
             _contents = contents;
+            _accented = spec?.Accented;
         }
     }
 
@@ -77,9 +80,13 @@ namespace Integrant4.Element.Bits
             {
                 int seq = -1;
                 builder.OpenElement(++seq, "a");
-                builder.AddAttribute(++seq, "href", Spec.HREF!.Invoke());
+                builder.AddAttribute(++seq, "href", BaseSpec.HREF!.Invoke());
 
-                BitBuilder.ApplyAttributes(this, builder, ref seq, null, null);
+                string[]? ac = null;
+                if (_accented?.Invoke() == true)
+                    ac = new[] {"I4E.Bit." + nameof(Link) + "--Accented"};
+
+                BitBuilder.ApplyAttributes(this, builder, ref seq, ac, null);
 
                 foreach (IRenderable renderable in _contents.Invoke())
                 {

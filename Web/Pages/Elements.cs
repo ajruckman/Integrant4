@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using Integrant4.API;
+using Integrant4.Element;
 using Integrant4.Element.Bits;
 using Integrant4.Element.Inputs;
 using Integrant4.Fundament;
@@ -35,6 +36,10 @@ namespace Web.Pages
         private readonly List<Button> _buttonsColored = new();
 
         private CheckboxInput _checkboxInput = null!;
+
+        private Link _link1 = null!;
+        private Link _link2 = null!;
+        private Link _link3 = null!;
 
         [Inject] public IJSRuntime JSRuntime { get; set; } = null!;
 
@@ -91,7 +96,7 @@ namespace Web.Pages
                         ("Color: " + style).AsContent(),
                         new BootstrapIcon("caret-down-fill", 16),
                     },
-                    new Button.ButtonSpec
+                    new Button.Spec
                     {
                         Style = () => style,
                     });
@@ -113,23 +118,33 @@ namespace Web.Pages
 
             //
 
-            _chip = new Chip(() => "Chip 1".AsContent(), new Chip.ChipSpec
+            _chip = new Chip(() => "Chip 1".AsContent(), new Chip.Spec
             {
                 Height = () => 24,
             });
 
-            _chipLink = new Chip(() => "Chip 1".AsContent(), new Chip.ChipSpec
+            _chipLink = new Chip(() => "Chip 1".AsContent(), new Chip.Spec
             {
                 HREF   = () => "/",
                 Height = () => 24,
             });
 
-            _checkbox = new Checkbox(new Checkbox.CheckboxSpec
+            _checkbox = new Checkbox(new Checkbox.Spec
             {
                 IsChecked  = () => _checked,
                 IsDisabled = () => _checked,
             });
             _checkbox.OnToggle += PrintB;
+
+            _link1 = new Link(() => "Link 1".AsContent(), new Link.Spec(() => "/"));
+            _link2 = new Link(() => "Link 2".AsContent(), new Link.Spec(() => "/")
+            {
+                FontWeight = () => FontWeight.SemiBold,
+            });
+            _link3 = new Link(() => "Link 3".AsContent(), new Link.Spec(() => "/")
+            {
+                Accented = () => true,
+            });
         }
 
         private bool _checked = true;

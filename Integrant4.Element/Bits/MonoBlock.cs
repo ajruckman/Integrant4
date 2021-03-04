@@ -10,7 +10,7 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class MonoBlockSpec
+        public class Spec
         {
             public Callbacks.BitIsVisible? IsVisible       { get; init; }
             public Callbacks.BitID?        ID              { get; init; }
@@ -47,12 +47,12 @@ namespace Integrant4.Element.Bits
     {
         private readonly Callbacks.BitContents _contents;
 
-        public MonoBlock(Callbacks.BitContent content, MonoBlockSpec? spec = null)
+        public MonoBlock(Callbacks.BitContent content, Spec? spec = null)
             : this(content.AsContents(), spec)
         {
         }
 
-        public MonoBlock(Callbacks.BitContents contents, MonoBlockSpec? spec = null)
+        public MonoBlock(Callbacks.BitContents contents, Spec? spec = null)
             : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(MonoBlock)))
         {
             _contents = contents;

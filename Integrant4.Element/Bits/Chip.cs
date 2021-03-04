@@ -10,7 +10,7 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class ChipSpec
+        public class Spec
         {
             public Callbacks.BitIsVisible? IsVisible       { get; init; }
             public Callbacks.BitID?        ID              { get; init; }
@@ -53,12 +53,12 @@ namespace Integrant4.Element.Bits
     {
         private readonly Callbacks.BitContents _contents;
 
-        public Chip(Callbacks.BitContent content, ChipSpec? spec = null)
+        public Chip(Callbacks.BitContent content, Spec? spec = null)
             : this(content.AsContents(), spec)
         {
         }
 
-        public Chip(Callbacks.BitContents contents, ChipSpec? spec = null)
+        public Chip(Callbacks.BitContents contents, Spec? spec = null)
             : base(spec?.ToBitSpec(),
                 new ClassSet("I4E.Bit", "I4E.Bit." + nameof(Chip),
                     spec?.HREF == null
@@ -77,14 +77,14 @@ namespace Integrant4.Element.Bits
             {
                 int seq = -1;
 
-                if (Spec.HREF == null)
+                if (BaseSpec.HREF == null)
                 {
                     builder.OpenElement(++seq, "div");
                 }
                 else
                 {
                     builder.OpenElement(++seq, "a");
-                    builder.AddAttribute(++seq, "href", Spec.HREF.Invoke());
+                    builder.AddAttribute(++seq, "href", BaseSpec.HREF.Invoke());
                 }
 
                 BitBuilder.ApplyAttributes(this, builder, ref seq, null, null);

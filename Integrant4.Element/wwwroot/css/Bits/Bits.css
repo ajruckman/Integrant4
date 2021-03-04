@@ -200,6 +200,23 @@ div[class~="I4E.Bit.Chip"], a[class~="I4E.Bit.Chip"] {
       background-color: var(--Colorant_Solids_Opaque_White_2);
       outline: none; }
 
+a[class~="I4E.Bit.Link"] {
+  color: var(--Colorant_Default_PageText);
+  text-decoration: none; }
+  a[class~="I4E.Bit.Link"]:not([class~="I4E.Bit.Link--Accented"]) {
+    color: var(--Colorant_Default_PageText); }
+    a[class~="I4E.Bit.Link"]:not([class~="I4E.Bit.Link--Accented"]):visited {
+      color: var(--Colorant_Default_PageText); }
+  a[class~="I4E.Bit.Link"][class~="I4E.Bit.Link--Accented"] {
+    color: var(--Colorant_Default_Accent_7); }
+    a[class~="I4E.Bit.Link"][class~="I4E.Bit.Link--Accented"]:visited {
+      color: var(--Colorant_Default_Accent_7); }
+  a[class~="I4E.Bit.Link"]:not(#_):hover {
+    color: var(--Colorant_Default_Accent_8);
+    text-decoration: underline; }
+  a[class~="I4E.Bit.Link"]:not(#_):focus {
+    color: var(--Colorant_Default_Accent_9); }
+
 code {
   border: 1px solid #DEE2E6;
   background-color: rgba(27, 31, 35, 0.05);

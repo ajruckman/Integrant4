@@ -5,7 +5,7 @@ namespace Integrant4.Element.Bits
 {
     public abstract class BitBase : IBit
     {
-        internal readonly BitSpec  Spec;
+        internal readonly BitSpec  BaseSpec;
         internal readonly ClassSet BaseClasses;
 
         // protected string? _cachedClassAttribute;
@@ -13,7 +13,7 @@ namespace Integrant4.Element.Bits
 
         internal BitBase(BitSpec? spec, ClassSet baseClasses)
         {
-            Spec        = spec ?? new BitSpec();
+            BaseSpec    = spec ?? new BitSpec();
             BaseClasses = baseClasses;
 
             // if (spec.IsStatic)

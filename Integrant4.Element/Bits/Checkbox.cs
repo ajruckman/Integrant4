@@ -12,7 +12,7 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class CheckboxSpec
+        public class Spec
         {
             public Callbacks.Callback<ushort>? Size { get; init; }
 
@@ -53,7 +53,7 @@ namespace Integrant4.Element.Bits
 
     public partial class Checkbox
     {
-        public Checkbox(CheckboxSpec? spec = null)
+        public Checkbox(Spec? spec = null)
             : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit.Checkbox"))
         {
             _size     = spec?.Size                ?? (() => 25);
@@ -71,7 +71,7 @@ namespace Integrant4.Element.Bits
 
         private void OnClick(MouseEventArgs args)
         {
-            if (Spec.IsDisabled?.Invoke() == true)
+            if (BaseSpec.IsDisabled?.Invoke() == true)
                 return;
 
             IsChecked = !IsChecked;
@@ -82,7 +82,7 @@ namespace Integrant4.Element.Bits
 
         public void Reset()
         {
-            IsChecked = Spec.IsChecked?.Invoke() ?? false;
+            IsChecked = BaseSpec.IsChecked?.Invoke() ?? false;
             (_stateHasChanged ?? throw new ArgumentNullException()).Invoke();
         }
 

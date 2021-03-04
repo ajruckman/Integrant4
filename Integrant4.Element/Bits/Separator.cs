@@ -9,7 +9,7 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class SeparatorSpec
+        public class Spec
         {
             public Callbacks.BitIsVisible? IsVisible { get; init; }
             public Callbacks.BitID?        ID        { get; init; }
@@ -30,7 +30,7 @@ namespace Integrant4.Element.Bits
 
     public partial class Separator
     {
-        public Separator(SeparatorSpec? spec = null)
+        public Separator(Spec? spec = null)
             : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(Separator)))
         {
         }

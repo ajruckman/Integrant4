@@ -16,7 +16,7 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class ButtonSpec
+        public class Spec
         {
             public StyleGetter? Style { get; init; }
 
@@ -53,12 +53,12 @@ namespace Integrant4.Element.Bits
     {
         private readonly Callbacks.BitContents _contents;
 
-        public Button(Callbacks.BitContent content, ButtonSpec? spec = null)
+        public Button(Callbacks.BitContent content, Spec? spec = null)
             : this(content.AsContents(), spec)
         {
         }
 
-        public Button(Callbacks.BitContents contents, ButtonSpec? spec = null)
+        public Button(Callbacks.BitContents contents, Spec? spec = null)
             : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(Button)))
         {
             _contents    = contents;
@@ -108,7 +108,7 @@ namespace Integrant4.Element.Bits
 
         private async Task Click(MouseEventArgs args)
         {
-            if (Spec.IsDisabled?.Invoke() == true) return;
+            if (BaseSpec.IsDisabled?.Invoke() == true) return;
 
             OnClick?.Invoke(new ClickArgs
             (

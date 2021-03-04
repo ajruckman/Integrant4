@@ -1,0 +1,29 @@
+a[class~="I4E.Bit.Link"] {
+    color: var(--Colorant_Default_PageText);
+    text-decoration: none;
+
+    &:not([class~="I4E.Bit.Link--Accented"]) {
+        color: var(--Colorant_Default_PageText);
+
+        &:visited {
+            color: var(--Colorant_Default_PageText);
+        }
+    }
+
+    &[class~="I4E.Bit.Link--Accented"] {
+        color: var(--Colorant_Default_Accent_7);
+
+        &:visited {
+            color: var(--Colorant_Default_Accent_7);
+        }
+    }
+
+    &:not(#_):hover {
+        color: var(--Colorant_Default_Accent_8);
+        text-decoration: underline;
+    }
+
+    &:not(#_):focus {
+        color: var(--Colorant_Default_Accent_9);
+    }
+}

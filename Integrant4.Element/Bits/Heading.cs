@@ -10,7 +10,7 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class HeadingSpec
+        public class Spec
         {
             public SizeGetter? Size { get; init; }
 
@@ -43,12 +43,12 @@ namespace Integrant4.Element.Bits
     {
         private readonly Callbacks.BitContents _contents;
 
-        public Heading(Callbacks.BitContent content, HeadingSpec? spec = null)
+        public Heading(Callbacks.BitContent content, Spec? spec = null)
             : this(content.AsContents(), spec)
         {
         }
 
-        public Heading(Callbacks.BitContents contents, HeadingSpec? spec = null)
+        public Heading(Callbacks.BitContents contents, Spec? spec = null)
             : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(Heading)))
         {
             _contents   = contents;
