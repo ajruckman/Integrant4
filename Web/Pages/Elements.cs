@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using Integrant4.API;
@@ -41,7 +40,10 @@ namespace Web.Pages
         private Link _link2 = null!;
         private Link _link3 = null!;
 
-        [Inject] public IJSRuntime JSRuntime { get; set; } = null!;
+        private Dropdown _dropdown1 = null!;
+
+        [Inject] public IJSRuntime     JSRuntime      { get; set; } = null!;
+        [Inject] public ElementService ElementService { get; set; } = null!;
 
         protected override void OnInitialized()
         {
@@ -98,7 +100,9 @@ namespace Web.Pages
                     },
                     new Button.Spec
                     {
-                        Style = () => style,
+                        ElementService = ElementService,
+                        Style          = () => style,
+                        Tooltip        = () => $"{style} {_checked}",
                     });
 
                 // b.OnActivate += () => Console.WriteLine($"Activate: {style}");
@@ -145,6 +149,56 @@ namespace Web.Pages
             {
                 Accented = () => true,
             });
+
+            _dropdown1 = new Dropdown
+            (
+                () => new IRenderable[]
+                {
+                    new TextBlock(() => new IRenderable[]
+                    {
+                        "Dropdown 1".AsContent(),
+                        new BootstrapIcon("chevron-down"),
+                    }, new TextBlock.Spec{IsHoverable = () => true}),
+                },
+                () => new IRenderable[]
+                {
+                    "asdf".AsContent(),
+                    new HorizontalLine(),
+                    "asdf".AsContent(),
+                    new Link(() => new IRenderable[]
+                    {
+                        new BootstrapIcon("gear"),
+                        "Settings".AsContent(),
+                    }, new Link.Spec(() => "/") {IsButton = () => true}),
+                    new Link(() => new IRenderable[]
+                    {
+                        new BootstrapIcon("gear-fill"),
+                        "Settings 2".AsContent(),
+                    }, new Link.Spec(() => "/") {IsButton = () => true}),
+                    new HorizontalLine(),
+                    new Dropdown
+                    (
+                        () => new IRenderable[]
+                        {
+                            new TextBlock(() => new IRenderable[]
+                            {
+                                "Dropdown 2".AsContent(),
+                                new BootstrapIcon("chevron-right"),
+                            }, new TextBlock.Spec {IsHoverable = () => true}),
+                        },
+                        () => new IRenderable[]
+                        {
+                            "asdf".AsContent(),
+                            new HorizontalLine(),
+                            "asdf".AsContent(),
+                            new HorizontalLine(),
+                            new Link(() => new IRenderable[]
+                            {
+                                new BootstrapIcon("chevron-right"),
+                                "Chevron".AsContent(),
+                            }, new Link.Spec(() => "/") {IsButton = () => true}),
+                        }, new Dropdown.Spec(ElementService) {PlacementGetter = () => Dropdown.Placement.RightStart}),
+                }, new Dropdown.Spec(ElementService));
         }
 
         private bool _checked = true;
@@ -154,14 +208,22 @@ namespace Web.Pages
             var v = await _intInput.GetValue();
             Console.WriteLine(v);
 
-            Task.Run(() =>
-            {
-                Thread.Sleep(2500);
-                _checked = false;
-                _checkbox.Reset();
-            });
+            if (firstRender)
+                Task.Run(() =>
+                {
+                    Thread.Sleep(2500);
+                    _checked = false;
+                    _checkbox.Reset();
+                    InvokeAsync(StateHasChanged);
+                });
 
             Console.WriteLine(await _checkboxInput.GetValue());
+
+            // await JSRuntime.InvokeVoidAsync("window.LoadAllScrollbars");
+
+            await ElementService.ProcessJobs();
+
+            // await Interop.CreateBitTooltips(JSRuntime, _id);
         }
     }
 }

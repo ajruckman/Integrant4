@@ -17,7 +17,6 @@ namespace Integrant4.Element
         public delegate bool     BitIsDisabled();
         public delegate bool     BitIsRequired();
         public delegate bool     BitIsChecked();
-        public delegate string   BitID();
         public delegate ClassSet BitClasses();
         public delegate string   BitHREF();
 
@@ -39,26 +38,16 @@ namespace Integrant4.Element
         //
 
         public static BitContents AsContents(this BitContent bitContent) => () => new[] {bitContent.Invoke()};
-        // public static IEnumerable<IRenderable> ToContents(this IRenderable renderable) => new[] {renderable};
-        // public static IEnumerable<IRenderable> ToContents(this Content     content)    => new IRenderable[] {content};
     }
 
     internal class BitSpec
     {
-        // internal BitSpec(Callbacks.BitContents contents)
-        // {
-        // Contents = contents;
-        // }
-
-        internal bool IsStatic { get; init; }
-
-        // internal Callbacks.BitContents Contents { get; }
+        public ElementService? ElementService { get; init; }
 
         internal Callbacks.BitIsVisible?  IsVisible  { get; init; }
         internal Callbacks.BitIsDisabled? IsDisabled { get; init; }
         internal Callbacks.BitIsRequired? IsRequired { get; init; }
         internal Callbacks.BitIsChecked?  IsChecked  { get; init; }
-        internal Callbacks.BitID?         ID         { get; init; }
         internal Callbacks.BitClasses?    Classes    { get; init; }
         internal Callbacks.BitHREF?       HREF       { get; init; }
 

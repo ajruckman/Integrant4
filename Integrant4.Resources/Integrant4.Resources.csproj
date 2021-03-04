@@ -20,6 +20,8 @@
 
     <ItemGroup>
       <Folder Include="wwwroot\Fonts" />
+      <Folder Include="wwwroot\Libraries\Popper" />
+      <Folder Include="wwwroot\Libraries\Tippy" />
     </ItemGroup>
 
 </Project>

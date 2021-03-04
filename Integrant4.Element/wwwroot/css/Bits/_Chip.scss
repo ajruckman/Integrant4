@@ -18,17 +18,22 @@ div[class~="I4E.Bit.Chip"], a[class~="I4E.Bit.Chip"] {
         color: var(--Colorant_Default_PageText);
         text-decoration: none;
 
+        &:focus {
+            outline: none;
+        }
+
         &:visited {
             color: var(--Colorant_Default_PageText);
         }
 
+        // Default colors
+        
         &:hover {
             background-color: var(--Colorant_Solids_Opaque_White_3);
         }
 
         &:focus {
             background-color: var(--Colorant_Solids_Opaque_White_2);
-            outline: none;
         }
     }
 }

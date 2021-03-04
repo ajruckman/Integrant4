@@ -21,7 +21,7 @@ namespace Integrant4.Element.Bits
 
             public Callbacks.BitIsVisible?  IsVisible       { get; init; }
             public Callbacks.BitIsDisabled? IsDisabled      { get; init; }
-            public Callbacks.BitID?         ID              { get; init; }
+            // public Callbacks.BitID?         ID              { get; init; }
             public Callbacks.BitClasses?    Classes         { get; init; }
             public Callbacks.BitSize?       Margin          { get; init; }
             public Callbacks.BitSize?       Padding         { get; init; }
@@ -38,7 +38,7 @@ namespace Integrant4.Element.Bits
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
                 HREF            = HREF,
-                ID              = ID,
+                // ID              = ID,
                 Classes         = Classes,
                 Margin          = Margin,
                 Padding         = Padding,

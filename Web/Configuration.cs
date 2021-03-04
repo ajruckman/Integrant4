@@ -17,7 +17,7 @@ namespace Web
                     "css/Local.css",
                     "css/Local.{{ThemeVariant}}.css",
                 },
-                dependencies: new List<ResourceSet>
+                dependencies: new[]
                 {
                     ResourceSets.Inputs.Interop,
                     ResourceSets.Bits,
@@ -25,6 +25,9 @@ namespace Web
                     Resources.Icons.Bootstrap,
                     Resources.Fonts.SansSerif.Inter,
                     Resources.Fonts.Monospace.JetBrainsMono,
+
+                    Integrant4.Element.ResourceSets.Overrides.MiniBar,
+                    Resources.Libraries.Tippy,
 
                     // ResourceSets.LocalCSS,
                 });

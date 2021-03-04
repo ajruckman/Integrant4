@@ -9,7 +9,7 @@ namespace Integrant4.Resources.Icons
         {
         }
 
-        public BootstrapIcon(string name, ushort size = 32, string? color = null)
+        public BootstrapIcon(string name, ushort size = 16, string? color = null)
         {
             Name  = name;
             Size  = size;

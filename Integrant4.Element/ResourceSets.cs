@@ -11,7 +11,7 @@ namespace Integrant4.Element
             (
                 $"{nameof(Integrant4)}.{nameof(Element)}",
                 $"{nameof(Inputs)}.{nameof(Interop)}",
-                scriptsInternal: new HashSet<string> {"Inputs.js"}
+                scriptsInternal: new HashSet<string> {"js/Inputs.js"}
             );
         }
 
@@ -21,8 +21,26 @@ namespace Integrant4.Element
             $"{nameof(Bits)}",
             stylesheetsInternal: new HashSet<string>
             {
-                "css/Bits/Bits.css", "css/Bits/Bits.{{ThemeVariant}}.css"
+                "css/Bits/Bits.css", "css/Bits/Bits.{{ThemeVariant}}.css",
+            },
+            scriptsInternal: new HashSet<string>
+            {
+                "js/Dropdowns.js",
+                "js/Tooltips.js",
             }
         );
+
+        public static class Overrides
+        {
+            public static readonly ResourceSet MiniBar = new
+            ($"{nameof(Integrant4)}.{nameof(Element)}",
+                $"{nameof(Overrides)}.{nameof(MiniBar)}",
+                dependencies: new[]
+                {
+                    Resources.Resources.Libraries.MiniBar,
+                },
+                stylesheetsInternal: new HashSet<string> {"css/Overrides/MiniBar.css"}
+            );
+        }
     }
 }

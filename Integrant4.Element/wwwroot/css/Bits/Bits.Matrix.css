@@ -1,3 +1,6 @@
+button[class~="I4E.Bit.Button"]:not(#_):not([class~="I4E.Bit.Button--Transparent"]) {
+  box-shadow: var(--Colorant_Default_Shadow_0); }
+
 button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Default"]:not(#_) {
   background-color: var(--Colorant_Solids_Opaque_White_2);
   color: var(--Colorant_Default_Text_6); }
@@ -17,3 +20,22 @@ button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Transparent"]:not(#_) {
     background-color: var(--Colorant_Solids_Opaque_White_3); }
   button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Transparent"]:not(#_):active {
     background-color: var(--Colorant_Solids_Opaque_White_2); }
+
+a[class~="I4E.Bit.Chip--Link"]:not(#_):hover {
+  background-color: var(--Colorant_Solids_Opaque_White_3); }
+
+a[class~="I4E.Bit.Chip--Link"]:not(#_):focus {
+  background-color: var(--Colorant_Solids_Opaque_White_2); }
+
+a[class~="I4E.Bit.Link--Button"]:not(#_):hover, a[class~="I4E.Bit.Link--Button"]:not(#_):active {
+  box-shadow: var(--Colorant_Default_Shadow_0); }
+
+a[class~="I4E.Bit.Link--Button"]:not(#_):hover {
+  background-color: var(--Colorant_Solids_Opaque_White_3); }
+
+a[class~="I4E.Bit.Link--Button"]:not(#_):active {
+  background-color: var(--Colorant_Solids_Opaque_White_2); }
+
+div[class~="I4E.Bit.TextBlock--Hoverable"]:not(#_):hover {
+  background-color: var(--Colorant_Solids_Opaque_White_3);
+  box-shadow: var(--Colorant_Default_Shadow_0); }

@@ -20,7 +20,7 @@ namespace Integrant4.Element.Bits
             public Callbacks.BitIsDisabled? IsDisabled      { get; init; }
             public Callbacks.BitIsChecked?  IsChecked       { get; init; }
             public Callbacks.BitIsRequired? IsRequired      { get; init; }
-            public Callbacks.BitID?         ID              { get; init; }
+            // public Callbacks.BitID?         ID              { get; init; }
             public Callbacks.BitClasses?    Classes         { get; init; }
             public Callbacks.BitSize?       Margin          { get; init; }
             public Callbacks.BitSize?       Padding         { get; init; }
@@ -37,7 +37,7 @@ namespace Integrant4.Element.Bits
                 IsDisabled      = IsDisabled,
                 IsChecked       = IsChecked,
                 IsRequired      = IsRequired,
-                ID              = ID,
+                // ID              = ID,
                 Classes         = Classes,
                 Margin          = Margin,
                 Padding         = Padding,

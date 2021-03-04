@@ -20,23 +20,28 @@ namespace Integrant4.Element.Bits
         {
             public StyleGetter? Style { get; init; }
 
-            public Callbacks.BitIsVisible?  IsVisible  { get; init; }
+            public Callbacks.BitIsVisible? IsVisible { get; init; }
+
             public Callbacks.BitIsDisabled? IsDisabled { get; init; }
-            public Callbacks.BitID?         ID         { get; init; }
-            public Callbacks.BitClasses?    Classes    { get; init; }
-            public Callbacks.BitSize?       Margin     { get; init; }
-            public Callbacks.BitSize?       Padding    { get; init; }
-            public Callbacks.BitREM?        FontSize   { get; init; }
-            public Callbacks.BitWeight?     FontWeight { get; init; }
-            public Callbacks.BitDisplay?    Display    { get; init; }
-            public Callbacks.BitData?       Data       { get; init; }
-            public Callbacks.BitTooltip?    Tooltip    { get; init; }
+
+            // public Callbacks.BitID?         ID         { get; init; }
+            public Callbacks.BitClasses? Classes    { get; init; }
+            public Callbacks.BitSize?    Margin     { get; init; }
+            public Callbacks.BitSize?    Padding    { get; init; }
+            public Callbacks.BitREM?     FontSize   { get; init; }
+            public Callbacks.BitWeight?  FontWeight { get; init; }
+            public Callbacks.BitDisplay? Display    { get; init; }
+            public Callbacks.BitData?    Data       { get; init; }
+            public Callbacks.BitTooltip? Tooltip    { get; init; }
+
+            public ElementService? ElementService { get; init; }
 
             internal BitSpec ToBitSpec() => new()
             {
-                IsVisible  = IsVisible,
-                IsDisabled = IsDisabled,
-                ID         = ID,
+                ElementService = ElementService,
+                IsVisible      = IsVisible,
+                IsDisabled     = IsDisabled,
+                // ID         = ID,
                 Classes    = Classes,
                 Margin     = Margin,
                 Padding    = Padding,
@@ -74,19 +79,17 @@ namespace Integrant4.Element.Bits
             {
                 IRenderable[] contents = _contents.Invoke().ToArray();
 
-                List<string> acl = new() {"I4E.Bit.Button--" + _styleGetter.Invoke()};
+                List<string> ac = new() {"I4E.Bit.Button--" + _styleGetter.Invoke()};
 
-                if (contents.First() is IIcon) acl.Add("I4E.Bit.Button--IconLeft");
-                if (contents.Last() is IIcon) acl.Add("I4E.Bit.Button--IconRight");
-
-                string[] ac = acl.ToArray();
+                if (contents.First() is IIcon) ac.Add("I4E.Bit.Button--IconLeft");
+                if (contents.Last() is IIcon) ac.Add("I4E.Bit.Button--IconRight");
 
                 //
 
                 int seq = -1;
                 builder.OpenElement(++seq, "button");
 
-                BitBuilder.ApplyAttributes(this, builder, ref seq, ac, null);
+                BitBuilder.ApplyAttributes(this, builder, ref seq, ac.ToArray(), null);
 
                 builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, Click));
 
@@ -99,6 +102,8 @@ namespace Integrant4.Element.Bits
                 }
 
                 builder.CloseElement();
+
+                QueueTooltip();
             }
 
             return Fragment;

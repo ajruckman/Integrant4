@@ -14,7 +14,7 @@ button[class~="I4E.Bit.Button"] {
         align-items: center;
         
         &:not(:last-child) {
-            margin-right: 3px;
+            margin-right: 5px;
         }
     }
 
@@ -50,7 +50,6 @@ button[class~="I4E.Bit.Button"] {
 
     &[class~="I4E.Bit.Button--Default"] {
         background-color: var(--Colorant_Solids_Opaque_White_2);
-        box-shadow: var(--Colorant_Default_Shadow_0);
         color: var(--Colorant_Default_Text_6);
 
         &:hover, &:active {
@@ -60,7 +59,6 @@ button[class~="I4E.Bit.Button"] {
 
     &[class~="I4E.Bit.Button--Accent"] {
         background-color: var(--Colorant_Default_Accent_5);
-        box-shadow: var(--Colorant_Default_Shadow_0);
         color: var(--Colorant_Default_Accent_6_Text);
 
         &:hover {
@@ -77,7 +75,6 @@ button[class~="I4E.Bit.Button"] {
         color: var(--Colorant_Default_Accent_5);
 
         &:hover, &:active {
-            box-shadow: var(--Colorant_Default_Shadow_0);
             color: var(--Colorant_Default_Accent_6);
         }
     }
@@ -101,7 +98,6 @@ button[class~="I4E.Bit.Button"] {
         background-color: $normalBackground;
         border: 1px solid $normalBorder;
         color: $normalColor;
-        box-shadow: var(--Colorant_Default_Shadow_0);
 
         &:hover, &:focus {
             background-color: $focusBackground;

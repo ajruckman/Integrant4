@@ -12,13 +12,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Web</title>
     <base href="~/"/>
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css"/>
-    <link href="css/site.css" rel="stylesheet"/>
-    <link href="Web.styles.css" rel="stylesheet"/>
 </head>
 <body>
 <component type="typeof(App)" render-mode="ServerPrerendered"/>
 
+<script>
+// window.LoadAllScrollbars = function () {
+//     Array.prototype.forEach.call(
+//       document.querySelectorAll('.sbar'),
+//       el => {
+//           console.log(el);
+//           new MiniBar(el);
+//       }
+//     );
+// };
+</script>
 <div id="blazor-error-ui">
     <environment include="Staging,Production">
         An error has occurred. This application may no longer respond until reloaded.

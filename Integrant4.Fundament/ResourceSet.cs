@@ -30,13 +30,13 @@ namespace Integrant4.Fundament
 
         public ResourceSet
         (
-            string                    assembly,
-            string                    id,
-            HashSet<string>?          scriptsInternal     = null,
-            HashSet<string>?          scriptsExternal     = null,
-            HashSet<string>?          stylesheetsInternal = null,
-            HashSet<string>?          stylesheetsExternal = null,
-            IEnumerable<ResourceSet>? dependencies        = null
+            string           assembly,
+            string           id,
+            HashSet<string>? scriptsInternal     = null,
+            HashSet<string>? scriptsExternal     = null,
+            HashSet<string>? stylesheetsInternal = null,
+            HashSet<string>? stylesheetsExternal = null,
+            ResourceSet[]?   dependencies        = null
         )
         {
             Assembly    = assembly;

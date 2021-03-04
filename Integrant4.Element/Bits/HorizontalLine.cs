@@ -5,38 +5,36 @@ using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Integrant4.Element.Bits
 {
-    public partial class Separator : BitBase
+    public partial class HorizontalLine : BitBase
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
             public Callbacks.BitIsVisible? IsVisible { get; init; }
-            // public Callbacks.BitID?        ID        { get; init; }
-            public Callbacks.BitClasses?   Classes   { get; init; }
             public Callbacks.BitSize?      Margin    { get; init; }
+            public Callbacks.BitColor?     Color     { get; init; }
             public Callbacks.BitPixels?    Height    { get; init; }
 
             internal BitSpec ToBitSpec() => new()
             {
-                IsVisible = IsVisible,
-                // ID        = ID,
-                Classes   = Classes,
-                Margin    = Margin,
-                Height    = Height,
+                IsVisible       = IsVisible,
+                Margin          = Margin,
+                BackgroundColor = Color,
+                Height          = Height,
             };
         }
     }
 
-    public partial class Separator
+    public partial class HorizontalLine
     {
-        public Separator(Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(Separator)))
+        public HorizontalLine(Spec? spec = null)
+            : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit.HorizontalLine"))
         {
         }
     }
 
-    public partial class Separator
+    public partial class HorizontalLine
     {
         public override RenderFragment Renderer()
         {
@@ -46,9 +44,6 @@ namespace Integrant4.Element.Bits
                 builder.OpenElement(++seq, "div");
 
                 BitBuilder.ApplyAttributes(this, builder, ref seq, null, null);
-
-                builder.OpenElement(++seq, "span");
-                builder.CloseElement();
 
                 builder.CloseElement();
             }

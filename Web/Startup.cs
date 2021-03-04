@@ -1,4 +1,5 @@
 using Blazored.LocalStorage;
+using Integrant4.Element;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,6 +27,7 @@ namespace Web
 
             services.AddBlazoredLocalStorage();
 
+            services.AddScoped<ElementService>();
             services.AddScoped(_ => new ResourceService(Web.Configuration.ResourceSet));
         }
 

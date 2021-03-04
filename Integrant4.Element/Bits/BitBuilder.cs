@@ -19,6 +19,7 @@ namespace Integrant4.Element.Bits
         {
             builder.AddAttribute(++seq, "class", ClassAttribute(bitBase.BaseClasses, bitBase.BaseSpec, additionalClasses));
             builder.AddAttribute(++seq, "style", StyleAttribute(bitBase.BaseSpec, additionalStyles));
+            builder.AddAttribute(++seq, "id", bitBase.ID);
 
             ++seq;
             if (bitBase.BaseSpec.IsVisible?.Invoke() == false)
@@ -28,10 +29,6 @@ namespace Integrant4.Element.Bits
             if (bitBase.BaseSpec.Tooltip != null)
                 builder.AddAttribute(seq, "data-i4e.tooltip", bitBase.BaseSpec.Tooltip.Invoke());
 
-            ++seq;
-            if (bitBase.BaseSpec.ID != null)
-                builder.AddAttribute(seq, "id", bitBase.BaseSpec.ID.Invoke());
-            
             if (bitBase.BaseSpec.Data != null)
                 foreach ((string name, Callbacks.DataValue getter) in bitBase.BaseSpec.Data.Invoke())
                     builder.AddAttribute(++seq, "data-" + name, getter.Invoke());

@@ -1,29 +1,20 @@
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Integrant4.API;
 using Integrant4.Fundament;
-using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Integrant4.Element.Bits
 {
-    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-    [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-    public partial class Link : BitBase
+    public partial class TextBlock : BitBase
     {
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+        [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public Spec(Callbacks.BitHREF href)
-            {
-                HREF = href;
-            }
+            public ElementService? ElementService { get; init; }
 
-            public Callbacks.BitHREF HREF { get; }
-
-            public Callbacks.Callback<bool> Accented { get; init; }
-            public Callbacks.Callback<bool> IsButton { get; init; }
+            public Callbacks.Callback<bool>? IsHoverable { get; init; }
 
             public Callbacks.BitIsVisible?  IsVisible       { get; init; }
             public Callbacks.BitIsDisabled? IsDisabled      { get; init; }
@@ -32,6 +23,10 @@ namespace Integrant4.Element.Bits
             public Callbacks.BitSize?       Padding         { get; init; }
             public Callbacks.BitColor?      BackgroundColor { get; init; }
             public Callbacks.BitColor?      ForegroundColor { get; init; }
+            public Callbacks.BitPixels?     Height          { get; init; }
+            public Callbacks.BitPixels?     HeightMax       { get; init; }
+            public Callbacks.BitPixels?     Width           { get; init; }
+            public Callbacks.BitPixels?     WidthMax        { get; init; }
             public Callbacks.BitREM?        FontSize        { get; init; }
             public Callbacks.BitWeight?     FontWeight      { get; init; }
             public Callbacks.BitDisplay?    Display         { get; init; }
@@ -40,14 +35,18 @@ namespace Integrant4.Element.Bits
 
             internal BitSpec ToBitSpec() => new()
             {
+                ElementService  = ElementService,
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
-                HREF            = HREF,
                 Classes         = Classes,
                 Margin          = Margin,
                 Padding         = Padding,
                 BackgroundColor = BackgroundColor,
                 ForegroundColor = ForegroundColor,
+                Height          = Height,
+                HeightMax       = HeightMax,
+                Width           = Width,
+                WidthMax        = WidthMax,
                 FontSize        = FontSize,
                 FontWeight      = FontWeight,
                 Display         = Display,
@@ -57,64 +56,44 @@ namespace Integrant4.Element.Bits
         }
     }
 
-    public partial class Link
+    public partial class TextBlock
     {
         private readonly Callbacks.BitContents     _contents;
-        private readonly Callbacks.Callback<bool>? _accented;
-        private readonly Callbacks.Callback<bool>? _isButton;
+        private readonly Callbacks.Callback<bool>? _isHoverable;
 
-        public Link(Callbacks.BitContent content, Spec spec)
-            : this(content.AsContents(), spec)
+        public TextBlock(Callbacks.BitContents contents, Spec? spec = null)
+            : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(TextBlock)))
         {
-        }
-
-        public Link(Callbacks.BitContents contents, Spec spec)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(Link)))
-        {
-            _contents = contents;
-            _accented = spec?.Accented;
-            _isButton = spec?.IsButton;
+            _contents    = contents;
+            _isHoverable = spec?.IsHoverable;
         }
     }
 
-    public partial class Link
+    public partial class TextBlock
     {
         public override RenderFragment Renderer()
         {
             void Fragment(RenderTreeBuilder builder)
             {
-                IRenderable[] contents = _contents.Invoke().ToArray();
-
-                List<string> ac = new();
-
-                if (_accented?.Invoke() == true)
-                    ac.Add("I4E.Bit.Link--Accented");
-
-                if (_isButton?.Invoke() == true)
-                {
-                    ac.Add("I4E.Bit.Link--Button");
-
-                    if (contents.First() is IIcon) ac.Add("I4E.Bit.Link--Button--IconLeft");
-                    if (contents.Last() is IIcon) ac.Add("I4E.Bit.Link--Button--IconRight");
-                }
-
-                //
-
                 int seq = -1;
-                builder.OpenElement(++seq, "a");
-                builder.AddAttribute(++seq, "href", BaseSpec.HREF!.Invoke());
 
-                BitBuilder.ApplyAttributes(this, builder, ref seq, ac.Any() ? ac.ToArray() : null, null);
+                builder.OpenElement(++seq, "div");
 
-                foreach (IRenderable renderable in contents)
+                string[]? ac = _isHoverable?.Invoke() == true ? new[] {"I4E.Bit.TextBlock--Hoverable"} : null;
+
+                BitBuilder.ApplyAttributes(this, builder, ref seq, ac, null);
+
+                foreach (IRenderable renderable in _contents.Invoke())
                 {
                     builder.OpenElement(++seq, "span");
-                    builder.AddAttribute(++seq, "class", "I4E.Bit.Button.Content");
+                    builder.AddAttribute(++seq, "class", "I4E.Bit.TextBlock.Content");
                     builder.AddContent(++seq, renderable.Renderer());
                     builder.CloseElement();
                 }
-
+                
                 builder.CloseElement();
+                
+                QueueTooltip();
             }
 
             return Fragment;

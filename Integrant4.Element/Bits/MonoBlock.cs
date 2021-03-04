@@ -13,7 +13,7 @@ namespace Integrant4.Element.Bits
         public class Spec
         {
             public Callbacks.BitIsVisible? IsVisible       { get; init; }
-            public Callbacks.BitID?        ID              { get; init; }
+            // public Callbacks.BitID?        ID              { get; init; }
             public Callbacks.BitClasses?   Classes         { get; init; }
             public Callbacks.BitSize?      Margin          { get; init; }
             public Callbacks.BitSize?      Padding         { get; init; }
@@ -28,7 +28,7 @@ namespace Integrant4.Element.Bits
             internal BitSpec ToBitSpec() => new()
             {
                 IsVisible       = IsVisible,
-                ID              = ID,
+                // ID              = ID,
                 Classes         = Classes,
                 Margin          = Margin,
                 Padding         = Padding,

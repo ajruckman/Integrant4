@@ -36,14 +36,54 @@ namespace Integrant4.Resources
 
         public static class Icons
         {
-            public static readonly ResourceSet Bootstrap = new ResourceSet
-            (
+            public static readonly ResourceSet Bootstrap = new(
                 $"{nameof(Integrant4)}.{nameof(Resources)}",
                 $"{nameof(Icons)}.{nameof(Bootstrap)}",
                 stylesheetsInternal: new HashSet<string>
                 {
                     "Icons/Icons.css",
                     "Icons/Bootstrap/bootstrap-icons.css"
+                }
+            );
+        }
+
+        public static class Libraries
+        {
+            public static readonly ResourceSet MiniBar = new
+            (
+                $"{nameof(Integrant4)}.{nameof(Resources)}",
+                $"{nameof(Libraries)}.{nameof(MiniBar)}",
+                stylesheetsInternal: new HashSet<string>
+                {
+                    "Libraries/MiniBar/minibar.min.css",
+                },
+                scriptsInternal: new HashSet<string>
+                {
+                    "Libraries/MiniBar/minibar.min.js",
+                }
+            );
+
+            public static readonly ResourceSet Popper = new
+            (
+                $"{nameof(Integrant4)}.{nameof(Resources)}",
+                $"{nameof(Libraries)}.{nameof(Popper)}",
+                scriptsInternal: new HashSet<string>
+                {
+                    "Libraries/Popper/popper.min.js",
+                }
+            );
+
+            public static readonly ResourceSet Tippy = new
+            (
+                $"{nameof(Integrant4)}.{nameof(Resources)}",
+                $"{nameof(Libraries)}.{nameof(Tippy)}",
+                scriptsInternal: new HashSet<string>
+                {
+                    "Libraries/Tippy/tippy-bundle.umd.min.js",
+                },
+                dependencies: new[]
+                {
+                    Popper,
                 }
             );
         }

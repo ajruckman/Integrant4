@@ -1,3 +1,4 @@
+using System;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 
@@ -7,22 +8,32 @@ namespace Integrant4.Element.Bits
     {
         internal readonly BitSpec  BaseSpec;
         internal readonly ClassSet BaseClasses;
-
-        // protected string? _cachedClassAttribute;
-        // protected string? _cachedStyleAttribute;
+        internal readonly string   ID;
 
         internal BitBase(BitSpec? spec, ClassSet baseClasses)
         {
             BaseSpec    = spec ?? new BitSpec();
             BaseClasses = baseClasses;
+            ID          = RandomIDGenerator.Generate();
 
-            // if (spec.IsStatic)
-            // {
-            //     _cachedClassAttribute = BitBuilder.ClassAttribute(baseClasses, spec, additionalClasses);
-            //     _cachedStyleAttribute = BitBuilder.StyleAttribute(spec);
-            // }
+            EnsureServicesAvailable();
         }
 
         public abstract RenderFragment Renderer();
+
+        protected void QueueTooltip()
+        {
+            if (BaseSpec.Tooltip == null) return;
+            
+            BaseSpec.ElementService!.AddJob(v => Interop.CreateBitTooltips(v, ID));
+        }
+
+        private void EnsureServicesAvailable()
+        {
+            if (BaseSpec.ElementService != null) return;
+
+            if (BaseSpec.Tooltip != null)
+                throw new Exception($"Bit has a tooltip callback set, but no ElementService was supplied.");
+        }
     }
 }
