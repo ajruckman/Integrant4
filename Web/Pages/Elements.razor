@@ -1,6 +1,13 @@
 @page "/elements"
 @using Integrant4.Element.Bits
 
+<style>
+    li {
+        margin: 3px 0;
+        vertical-align: middle;
+    }
+</style>
+
 <ul>
     <li>@_intInput.Render()</li>
     <li>@_intInput0Null.Render()</li>
@@ -28,4 +35,6 @@
 <ul>
     <li>@_chip.Renderer()</li>
     <li>@_chipLink.Renderer()</li>
+    <li></li>
+    <li>@_checkbox.Renderer()</li>
 </ul>

@@ -8,14 +8,35 @@ button[class~="I4E.Bit.Button"] {
     height: 30px;
     padding: 0;
     user-select: none;
+    
+    > span[class~="I4E.Bit.Button.Content"] {
+        display: inline-flex;
+        align-items: center;
+        
+        &:not(:last-child) {
+            margin-right: 3px;
+        }
+    }
 
-    &:not([class~="I4E.Bit.Button--NoPadLeft"]) {
+    //
+    
+    &:not([class~="I4E.Bit.Button--IconLeft"]) {
         padding-left: 10px;
     }
 
-    &:not([class~="I4E.Bit.Button--NoPadRight"]) {
+    &[class~="I4E.Bit.Button--IconLeft"] {
+        padding-left: 5px;
+    }
+
+    &:not([class~="I4E.Bit.Button--IconRight"]) {
         padding-right: 10px;
     }
+
+    &[class~="I4E.Bit.Button--IconRight"] {
+        padding-right: 5px;
+    }
+    
+    //
 
     &:focus {
         outline: none;

@@ -76,8 +76,8 @@ namespace Integrant4.Element.Bits
 
                 List<string> acl = new() {"I4E.Bit.Button--" + _styleGetter.Invoke()};
 
-                if (contents.First() is IIcon) acl.Add("I4E.Bit.Button--NoPadLeft");
-                if (contents.Last() is IIcon) acl.Add("I4E.Bit.Button--NoPadRight");
+                if (contents.First() is IIcon) acl.Add("I4E.Bit.Button--IconLeft");
+                if (contents.Last() is IIcon) acl.Add("I4E.Bit.Button--IconRight");
 
                 string[] ac = acl.ToArray();
 
@@ -92,7 +92,10 @@ namespace Integrant4.Element.Bits
 
                 foreach (IRenderable renderable in contents)
                 {
+                    builder.OpenElement(++seq, "span");
+                    builder.AddAttribute(++seq, "class", "I4E.Bit.Button.Content");
                     builder.AddContent(++seq, renderable.Renderer());
+                    builder.CloseElement();
                 }
 
                 builder.CloseElement();

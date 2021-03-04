@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Threading;
 using System.Threading.Tasks;
 using Integrant4.API;
 using Integrant4.Element.Bits;
@@ -28,6 +29,8 @@ namespace Web.Pages
 
         private Chip _chip     = null!;
         private Chip _chipLink = null!;
+
+        private Checkbox _checkbox = null!;
 
         private readonly List<Button> _buttonsColored = new();
 
@@ -64,29 +67,34 @@ namespace Web.Pages
             //
 
             _buttonNoIcon   = new Button(() => "asdf".AsContent());
-            _buttonOnlyIcon = new Button(() => new BootstrapIcon("chevron-right", 24));
+            _buttonOnlyIcon = new Button(() => new BootstrapIcon("caret-right-fill", 16));
             _buttonIconFirst = new Button(() => new IRenderable[]
             {
-                new BootstrapIcon("chevron-left", 24),
-                "asdf left".AsContent()
+                new BootstrapIcon("caret-left-fill", 16),
+                "asdf left".AsContent(),
             });
             _buttonIconLast = new Button(() => new IRenderable[]
             {
                 "asdf right".AsContent(),
-                new BootstrapIcon("chevron-right", 24)
+                new BootstrapIcon("caret-right-fill", 16),
             });
             _buttonIconAll = new Button(() => new IRenderable[]
             {
-                new BootstrapIcon("chevron-left", 24),
-                new BootstrapIcon("chevron-right", 24)
+                new BootstrapIcon("caret-left-fill", 16),
+                new BootstrapIcon("caret-right-fill", 16),
             });
 
             foreach (Button.Style style in Enum.GetValues<Button.Style>())
             {
-                var b = new Button(() => ("Color: " + style).AsContent(), new Button.ButtonSpec
-                {
-                    Style = () => style,
-                });
+                var b = new Button(() => new IRenderable[]
+                    {
+                        ("Color: " + style).AsContent(),
+                        new BootstrapIcon("caret-down-fill", 16),
+                    },
+                    new Button.ButtonSpec
+                    {
+                        Style = () => style,
+                    });
 
                 // b.OnActivate += () => Console.WriteLine($"Activate: {style}");
                 b.OnClick += _ => Console.WriteLine($"Click: {style}");
@@ -115,12 +123,28 @@ namespace Web.Pages
                 HREF   = () => "/",
                 Height = () => 24,
             });
+
+            _checkbox = new Checkbox(new Checkbox.CheckboxSpec
+            {
+                IsChecked  = () => _checked,
+                IsDisabled = () => _checked,
+            });
+            _checkbox.OnToggle += PrintB;
         }
+
+        private bool _checked = true;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             var v = await _intInput.GetValue();
             Console.WriteLine(v);
+
+            Task.Run(() =>
+            {
+                Thread.Sleep(2500);
+                _checked = false;
+                _checkbox.Reset();
+            });
 
             Console.WriteLine(await _checkboxInput.GetValue());
         }

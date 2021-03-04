@@ -8,10 +8,19 @@ button[class~="I4E.Bit.Button"] {
   height: 30px;
   padding: 0;
   user-select: none; }
-  button[class~="I4E.Bit.Button"]:not([class~="I4E.Bit.Button--NoPadLeft"]) {
+  button[class~="I4E.Bit.Button"] > span[class~="I4E.Bit.Button.Content"] {
+    display: inline-flex;
+    align-items: center; }
+    button[class~="I4E.Bit.Button"] > span[class~="I4E.Bit.Button.Content"]:not(:last-child) {
+      margin-right: 3px; }
+  button[class~="I4E.Bit.Button"]:not([class~="I4E.Bit.Button--IconLeft"]) {
     padding-left: 10px; }
-  button[class~="I4E.Bit.Button"]:not([class~="I4E.Bit.Button--NoPadRight"]) {
+  button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--IconLeft"] {
+    padding-left: 5px; }
+  button[class~="I4E.Bit.Button"]:not([class~="I4E.Bit.Button--IconRight"]) {
     padding-right: 10px; }
+  button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--IconRight"] {
+    padding-right: 5px; }
   button[class~="I4E.Bit.Button"]:focus {
     outline: none; }
   button[class~="I4E.Bit.Button"]:focus-visible {
@@ -155,6 +164,19 @@ button[class~="I4E.Bit.Button--Yellow"][class~="Integrant.Element.Bit:Disabled"]
   border: 1px solid var(--Colorant_Default_Border_6);
   color: var(--Colorant_Default_Text_0); }
 
+div[class~="I4E.Bit.Checkbox"] {
+  display: inline-block; }
+  div[class~="I4E.Bit.Checkbox"]:not([class~="I4E.Bit.IsDisabled"]) {
+    color: var(--Colorant_Solids_Opaque_White_14);
+    cursor: pointer; }
+    div[class~="I4E.Bit.Checkbox"]:not([class~="I4E.Bit.IsDisabled"]):hover {
+      color: var(--Colorant_Solids_Opaque_White_13); }
+    div[class~="I4E.Bit.Checkbox"]:not([class~="I4E.Bit.IsDisabled"]):active {
+      color: var(--Colorant_Solids_Opaque_White_12); }
+  div[class~="I4E.Bit.Checkbox"][class~="I4E.Bit.IsDisabled"] {
+    color: var(--Colorant_Solids_Opaque_White_9);
+    cursor: not-allowed; }
+
 [class~="I4E.Bit"][hidden] {
   display: none !important; }
 
@@ -165,7 +187,7 @@ div[class~="I4E.Bit.Chip"], a[class~="I4E.Bit.Chip"] {
   box-sizing: border-box;
   display: inline-block;
   font-weight: 600;
-  padding: 2px 9px;
+  padding: 2px 7px;
   vertical-align: middle; }
   div[class~="I4E.Bit.Chip"][class~="I4E.Bit.Chip--Link"], a[class~="I4E.Bit.Chip"][class~="I4E.Bit.Chip--Link"] {
     color: var(--Colorant_Default_PageText);
