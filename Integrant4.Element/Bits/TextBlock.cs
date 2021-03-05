@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Integrant4.API;
 using Integrant4.Fundament;
+using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
@@ -16,7 +18,7 @@ namespace Integrant4.Element.Bits
             public ElementService? ElementService { get; init; }
 
             public Callbacks.Callback<bool>? IsHoverable { get; init; }
-            public Callbacks.Callback<bool>? IsTitle     { get; init; }
+            // public Callbacks.Callback<bool>? IsHeading   { get; init; }
 
             public Callbacks.BitIsVisible?  IsVisible       { get; init; }
             public Callbacks.BitIsDisabled? IsDisabled      { get; init; }
@@ -62,14 +64,14 @@ namespace Integrant4.Element.Bits
     {
         private readonly Callbacks.BitContents     _contents;
         private readonly Callbacks.Callback<bool>? _isHoverable;
-        private readonly Callbacks.Callback<bool>? _isTitle;
+        // private readonly Callbacks.Callback<bool>? _isHeading;
 
         public TextBlock(Callbacks.BitContents contents, Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(TextBlock)))
+            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)))
         {
             _contents    = contents;
             _isHoverable = spec?.IsHoverable;
-            _isTitle     = spec?.IsTitle;
+            // _isHeading   = spec?.IsHeading;
         }
     }
 
@@ -79,20 +81,35 @@ namespace Integrant4.Element.Bits
         {
             void Fragment(RenderTreeBuilder builder)
             {
+                IRenderable[] contents = _contents.Invoke().ToArray();
+
+                List<string> ac = new();
+
+                if (_isHoverable?.Invoke() == true)
+                {
+                    ac.Add("I4E-Bit-TextBlock--Hoverable");
+
+                    if (contents.First() is IIcon) ac.Add("I4E-Bit-TextBlock--Hoverable--IconLeft");
+                    if (contents.Last() is IIcon) ac.Add("I4E-Bit-TextBlock--Hoverable--IconRight");
+                }
+
+                // if (_isHeading?.Invoke() == true)
+                // {
+                //     ac.Add("I4E-Bit-TextBlock--Heading");
+                // }
+
+                //
+
                 int seq = -1;
 
                 builder.OpenElement(++seq, "div");
-
-                List<string> ac = new();
-                if (_isHoverable?.Invoke() == true) ac.Add("I4E.Bit.TextBlock--Hoverable");
-                if (_isTitle?.Invoke()     == true) ac.Add("I4E.Bit.TextBlock--Title");
 
                 BitBuilder.ApplyAttributes(this, builder, ref seq, ac.ToArray(), null);
 
                 foreach (IRenderable renderable in _contents.Invoke())
                 {
                     builder.OpenElement(++seq, "span");
-                    builder.AddAttribute(++seq, "class", "I4E.Bit.TextBlock.Content");
+                    builder.AddAttribute(++seq, "class", "I4E-Bit-TextBlock-Content");
                     builder.AddContent(++seq, renderable.Renderer());
                     builder.CloseElement();
                 }

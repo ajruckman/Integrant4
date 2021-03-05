@@ -1,10 +1,11 @@
-a[class~="I4E.Bit.Link"] {
+a.I4E-Bit-Link {
     align-items: center;
+    border-bottom: 1px solid transparent;
     color: var(--I4C_Default_PageText);
     display: inline-flex;
     text-decoration: none;
 
-    > span[class~="I4E.Bit.Button.Content"] {
+    > span.I4E-Bit-Button-Content {
         align-items: center;
         display: inline-flex;
 
@@ -13,9 +14,19 @@ a[class~="I4E.Bit.Link"] {
         }
     }
 
+    &.I4E-Bit-Link--Title {
+        font-size: 21px;
+        font-weight: 600;
+    }
+
+    &.I4E-Bit-Link--PageLink {
+        font-size: 17px;
+        font-weight: 500;
+    }
+
     // Default colors
 
-    &:not([class~="I4E.Bit.Link--Accented"]) {
+    &:not(.I4E-Bit-Link--Accented):not(.I4E-Bit-Link--Highlighted) {
         color: var(--I4C_Default_PageText);
 
         &:visited {
@@ -23,15 +34,66 @@ a[class~="I4E.Bit.Link"] {
         }
     }
 
-    &[class~="I4E.Bit.Link--Accented"] {
-        color: var(--I4C_Default_Accent_7);
+    &:not(#_):hover:not(.I4E-Bit-Link--PageLink):not(.I4E-Bit-Link--Title):not(.I4E-Bit-Link--Button) {
+        border-bottom: 1px solid;
+        color: var(--I4C_Default_Accent_8);
+    }
 
-        &:visited {
-            color: var(--I4C_Default_Accent_7);
+    &:not(#_):active:not(.I4E-Bit-Link--PageLink):not(.I4E-Bit-Link--Title):not(.I4E-Bit-Link--Button) {
+        border-bottom: 1px solid;
+        color: var(--I4C_Default_Accent_9);
+    }
+
+    &.I4E-Bit-Link--Title {
+
+    }
+
+    &.I4E-Bit-Link--Accented {
+        color: var(--I4C_Default_Accent_7);
+    }
+
+    &.I4E-Bit-Link--Highlighted:not(.I4E-Bit-Link--PageLink):not(.I4E-Bit-Link--Title) {
+        border-bottom: 1px solid;
+        color: var(--I4C_Default_Accent_7);
+    }
+
+    &.I4E-Bit-Link--PageLink, &.I4E-Bit-Link--Title {
+        position: relative;
+
+        &::after {
+            bottom: -5px;
+            content: '';
+            display: block;
+            height: 4px;
+            left: -3px;
+            position: absolute;
+            width: calc(100% + 6px);
+        }
+
+        &:hover:not(#_) {
+            color: var(--I4C_Default_Accent_8);
+
+            &::after {
+                background-color: var(--I4C_Default_Accent_8);
+            }
+        }
+
+        &:active:not(#_) {
+            color: var(--I4C_Default_Accent_9);
+
+            &::after {
+                background-color: var(--I4C_Default_Accent_9);
+            }
+        }
+
+        &.I4E-Bit-Link--Highlighted {
+            &::after {
+                background-color: var(--I4C_Default_Accent_7);
+            }
         }
     }
 
-    &[class~="I4E.Bit.Link--Button"] {
+    &.I4E-Bit-Link--Button {
         align-items: center;
         background-color: transparent;
         border: none;
@@ -44,7 +106,7 @@ a[class~="I4E.Bit.Link"] {
         padding: 0;
         user-select: none;
 
-        > span[class~="I4E.Bit.Link.Content"] {
+        > span.I4E-Bit-Link-Content {
             align-items: center;
             display: inline-flex;
 
@@ -55,20 +117,19 @@ a[class~="I4E.Bit.Link"] {
 
         //
 
-
-        &:not([class~="I4E.Bit.Link--Button--IconLeft"]) {
+        &:not(.I4E-Bit-Link--Button--IconLeft) {
             padding-left: 10px;
         }
 
-        &[class~="I4E.Bit.Link--Button--IconLeft"] {
+        &.I4E-Bit-Link--Button--IconLeft {
             padding-left: 5px;
         }
 
-        &:not([class~="I4E.Bit.Link--Button--IconRight"]) {
+        &:not(.I4E-Bit-Link--Button--IconRight) {
             padding-right: 10px;
         }
 
-        &[class~="I4E.Bit.Link--Button--IconRight"] {
+        &.I4E-Bit-Link--Button--IconRight {
             padding-right: 5px;
         }
 
@@ -91,16 +152,7 @@ a[class~="I4E.Bit.Link"] {
         }
     }
 
-    &:not(#_):hover:not([class~="I4E.Bit.Link--Button"]) {
-        color: var(--I4C_Default_Accent_8);
-        text-decoration: underline;
-    }
-
-    &:not(#_):hover:not([class~="I4E.Bit.Link--Button"]) {
-        color: var(--I4C_Default_Accent_9);
-    }
-
-    &:not(#_):hover[class~="I4E.Bit.Link--Button"] {
+    &:hover.I4E-Bit-Link--Button {
 
     }
 }

@@ -64,7 +64,7 @@ namespace Integrant4.Element.Bits
         }
 
         public Button(Callbacks.BitContents contents, Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(Button)))
+            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Button)))
         {
             _contents    = contents;
             _styleGetter = spec?.Style ?? DefaultStyleGetter;
@@ -79,10 +79,10 @@ namespace Integrant4.Element.Bits
             {
                 IRenderable[] contents = _contents.Invoke().ToArray();
 
-                List<string> ac = new() {"I4E.Bit.Button--" + _styleGetter.Invoke()};
+                List<string> ac = new() {"I4E-Bit-Button--" + _styleGetter.Invoke()};
 
-                if (contents.First() is IIcon) ac.Add("I4E.Bit.Button--IconLeft");
-                if (contents.Last() is IIcon) ac.Add("I4E.Bit.Button--IconRight");
+                if (contents.First() is IIcon) ac.Add("I4E-Bit-Button--IconLeft");
+                if (contents.Last() is IIcon) ac.Add("I4E-Bit-Button--IconRight");
 
                 //
 
@@ -96,7 +96,7 @@ namespace Integrant4.Element.Bits
                 foreach (IRenderable renderable in contents)
                 {
                     builder.OpenElement(++seq, "span");
-                    builder.AddAttribute(++seq, "class", "I4E.Bit.Button.Content");
+                    builder.AddAttribute(++seq, "class", "I4E-Bit-Button-Content");
                     builder.AddContent(++seq, renderable.Renderer());
                     builder.CloseElement();
                 }

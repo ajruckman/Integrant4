@@ -48,7 +48,7 @@ namespace Integrant4.Element.Bits
             Callbacks.BitContents childContents,
             Spec                  spec
         ) : base(spec.ToBitSpec(),
-            new ClassSet("I4E.Bit", "I4E.Bit.Dropdown"))
+            new ClassSet("I4E-Bit", "I4E-Bit-Dropdown"))
         {
             _headContents    = headContents;
             _childContents   = childContents;
@@ -90,13 +90,13 @@ namespace Integrant4.Element.Bits
 
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "id", Dropdown.ID + ".Head");
-                builder.AddAttribute(++seq, "class", "I4E.Bit.Dropdown.Head");
+                builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Head");
                 builder.AddElementReferenceCapture(++seq, r => _toggleRef = r);
 
                 foreach (IRenderable renderable in Dropdown._headContents.Invoke())
                 {
                     builder.OpenElement(++seq, "div");
-                    builder.AddAttribute(++seq, "class", "I4E.Bit.Dropdown.Content");
+                    builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Content");
                     builder.AddContent(++seq, renderable.Renderer());
                     builder.CloseElement();
                 }
@@ -107,14 +107,14 @@ namespace Integrant4.Element.Bits
 
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "id", Dropdown.ID + ".Contents");
-                builder.AddAttribute(++seq, "class", "I4E.Bit.Dropdown.Children");
+                builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Children");
                 builder.AddAttribute(++seq, "data-popper-placement", Map(Dropdown._placementGetter.Invoke()));
                 builder.AddElementReferenceCapture(++seq, r => _contentsRef = r);
 
                 foreach (IRenderable renderable in Dropdown._childContents.Invoke())
                 {
                     builder.OpenElement(++seq, "div");
-                    builder.AddAttribute(++seq, "class", "I4E.Bit.Dropdown.Content");
+                    builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Content");
                     builder.AddContent(++seq, renderable.Renderer());
                     builder.CloseElement();
                 }

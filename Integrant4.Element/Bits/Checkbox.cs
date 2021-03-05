@@ -54,7 +54,7 @@ namespace Integrant4.Element.Bits
     public partial class Checkbox
     {
         public Checkbox(Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit.Checkbox"))
+            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-Checkbox"))
         {
             _size     = spec?.Size                ?? (() => 25);
             IsChecked = spec?.IsChecked?.Invoke() ?? false;
@@ -130,7 +130,7 @@ namespace Integrant4.Element.Bits
                 builder.AddAttribute(++seq, "onclick",
                     EventCallback.Factory.Create<MouseEventArgs>(this, Checkbox.OnClick));
 
-                string[] ac = {!Checkbox.IsChecked ? "I4E.Bit.Checkbox--Unchecked" : "I4E.Bit.Checkbox--Checked"};
+                string[] ac = {!Checkbox.IsChecked ? "I4E-Bit-Checkbox--Unchecked" : "I4E-Bit-Checkbox--Checked"};
                 BitBuilder.ApplyAttributes(Checkbox, builder, ref seq, ac, null);
 
                 builder.OpenComponent<BootstrapIcon>(++seq);

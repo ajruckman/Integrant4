@@ -53,7 +53,7 @@ namespace Integrant4.Element.Bits
         }
 
         public MonoBlock(Callbacks.BitContents contents, Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(MonoBlock)))
+            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(MonoBlock)))
         {
             _contents = contents;
         }

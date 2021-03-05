@@ -23,12 +23,12 @@ namespace Integrant4.Element.Constructs
                 int seq = -1;
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E.Construct I4E.Construct.Header");
+                builder.AddAttribute(++seq, "class", "I4E-Construct I4E-Construct-Header");
 
                 foreach (IRenderable renderable in _contents.Invoke())
                 {
                     builder.OpenElement(++seq, "span");
-                    builder.AddAttribute(++seq, "class", "I4E.Construct.Header.Content");
+                    builder.AddAttribute(++seq, "class", "I4E-Construct-Header-Content");
                     builder.AddContent(++seq, renderable.Renderer());
                     builder.CloseElement();
                 }

@@ -22,8 +22,11 @@ namespace Integrant4.Element.Bits
 
             public Callbacks.BitHREF HREF { get; }
 
-            public Callbacks.Callback<bool>? IsAccented { get; init; }
-            public Callbacks.Callback<bool>? IsButton   { get; init; }
+            public Callbacks.Callback<bool>? IsTitle       { get; init; }
+            public Callbacks.Callback<bool>? IsPageLink    { get; init; }
+            public Callbacks.Callback<bool>? IsAccented    { get; init; }
+            public Callbacks.Callback<bool>? IsHighlighted { get; init; }
+            public Callbacks.Callback<bool>? IsButton      { get; init; }
 
             public Callbacks.BitIsVisible?  IsVisible       { get; init; }
             public Callbacks.BitIsDisabled? IsDisabled      { get; init; }
@@ -68,8 +71,11 @@ namespace Integrant4.Element.Bits
     public partial class Link
     {
         private readonly Callbacks.BitContents     _contents;
-        private readonly Callbacks.Callback<bool>? _accented;
+        private readonly Callbacks.Callback<bool>? _isTitle;
+        private readonly Callbacks.Callback<bool>? _isPageLink;
+        private readonly Callbacks.Callback<bool>? _isAccented;
         private readonly Callbacks.Callback<bool>? _isButton;
+        private readonly Callbacks.Callback<bool>? _isHighlighted;
 
         public Link(Callbacks.BitContent content, Spec spec)
             : this(content.AsContents(), spec)
@@ -77,11 +83,14 @@ namespace Integrant4.Element.Bits
         }
 
         public Link(Callbacks.BitContents contents, Spec spec)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(Link)))
+            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Link)))
         {
-            _contents = contents;
-            _accented = spec?.IsAccented;
-            _isButton = spec?.IsButton;
+            _contents      = contents;
+            _isTitle       = spec?.IsTitle;
+            _isPageLink    = spec?.IsPageLink;
+            _isAccented    = spec?.IsAccented;
+            _isHighlighted = spec?.IsHighlighted;
+            _isButton      = spec?.IsButton;
         }
     }
 
@@ -95,15 +104,24 @@ namespace Integrant4.Element.Bits
 
                 List<string> ac = new();
 
-                if (_accented?.Invoke() == true)
-                    ac.Add("I4E.Bit.Link--Accented");
+                if (_isTitle?.Invoke() == true)
+                    ac.Add("I4E-Bit-Link--Title");
+
+                if (_isPageLink?.Invoke() == true)
+                    ac.Add("I4E-Bit-Link--PageLink");
+
+                if (_isAccented?.Invoke() == true)
+                    ac.Add("I4E-Bit-Link--Accented");
+
+                if (_isHighlighted?.Invoke() == true)
+                    ac.Add("I4E-Bit-Link--Highlighted");
 
                 if (_isButton?.Invoke() == true)
                 {
-                    ac.Add("I4E.Bit.Link--Button");
+                    ac.Add("I4E-Bit-Link--Button");
 
-                    if (contents.First() is IIcon) ac.Add("I4E.Bit.Link--Button--IconLeft");
-                    if (contents.Last() is IIcon) ac.Add("I4E.Bit.Link--Button--IconRight");
+                    if (contents.First() is IIcon) ac.Add("I4E-Bit-Link--Button--IconLeft");
+                    if (contents.Last() is IIcon) ac.Add("I4E-Bit-Link--Button--IconRight");
                 }
 
                 //
@@ -117,7 +135,7 @@ namespace Integrant4.Element.Bits
                 foreach (IRenderable renderable in contents)
                 {
                     builder.OpenElement(++seq, "span");
-                    builder.AddAttribute(++seq, "class", "I4E.Bit.Button.Content");
+                    builder.AddAttribute(++seq, "class", "I4E-Bit-Button-Content");
                     builder.AddContent(++seq, renderable.Renderer());
                     builder.CloseElement();
                 }

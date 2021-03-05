@@ -1,9 +1,9 @@
-button[class~="I4E.Bit.Button"]:not(#_) {
-    &:not([class~="I4E.Bit.Button--Transparent"]) {
+button.I4E-Bit-Button:not(#_) {
+    &:not(.I4E-Bit-Button--Transparent) {
         box-shadow: var(--I4C_Default_Shadow_0);
     }
 
-    &[class~="I4E.Bit.Button--Filled"] {
+    &.I4E-Bit-Button--Filled {
         background-color: var(--I4C_Solids_Opaque_White_2);
         color: var(--I4C_Default_Text_6);
 
@@ -20,7 +20,7 @@ button[class~="I4E.Bit.Button"]:not(#_) {
         }
     }
 
-    &[class~="I4E.Bit.Button--Transparent"] {
+    &.I4E-Bit-Button--Transparent {
         background-color: transparent;
         color: var(--I4C_Default_Accent_5);
 
@@ -38,7 +38,7 @@ button[class~="I4E.Bit.Button"]:not(#_) {
     }
 }
 
-a[class~="I4E.Bit.Chip--Link"]:not(#_) {
+a.I4E-Bit-Chip--Link:not(#_) {
     &:hover {
         background-color: var(--I4C_Solids_Opaque_White_3);
     }
@@ -48,7 +48,7 @@ a[class~="I4E.Bit.Chip--Link"]:not(#_) {
     }
 }
 
-a[class~="I4E.Bit.Link--Button"]:not(#_) {
+a.I4E-Bit-Link--Button:not(#_) {
     &:hover, &:active {
         box-shadow: var(--I4C_Default_Shadow_0);
     }
@@ -62,7 +62,7 @@ a[class~="I4E.Bit.Link--Button"]:not(#_) {
     }
 }
 
-div[class~="I4E.Bit.TextBlock--Hoverable"]:not(#_) {
+div.I4E-Bit-TextBlock--Hoverable:not(#_) {
     &:hover {
         background-color: var(--I4C_Solids_Opaque_White_3);
         box-shadow: var(--I4C_Default_Shadow_0);

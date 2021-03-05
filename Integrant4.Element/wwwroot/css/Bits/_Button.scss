@@ -1,4 +1,4 @@
-button[class~="I4E.Bit.Button"] {
+button.I4E-Bit-Button {
     align-items: center;
     border: none;
     border-radius: 4px;
@@ -9,7 +9,7 @@ button[class~="I4E.Bit.Button"] {
     padding: 0;
     user-select: none;
     
-    > span[class~="I4E.Bit.Button.Content"] {
+    > span.I4E-Bit-Button-Content {
         display: inline-flex;
         align-items: center;
         
@@ -20,19 +20,19 @@ button[class~="I4E.Bit.Button"] {
 
     //
     
-    &:not([class~="I4E.Bit.Button--IconLeft"]) {
+    &:not(.I4E-Bit-Button--IconLeft) {
         padding-left: 10px;
     }
 
-    &[class~="I4E.Bit.Button--IconLeft"] {
+    &.I4E-Bit-Button--IconLeft {
         padding-left: 5px;
     }
 
-    &:not([class~="I4E.Bit.Button--IconRight"]) {
+    &:not(.I4E-Bit-Button--IconRight) {
         padding-right: 10px;
     }
 
-    &[class~="I4E.Bit.Button--IconRight"] {
+    &.I4E-Bit-Button--IconRight {
         padding-right: 5px;
     }
     
@@ -48,7 +48,7 @@ button[class~="I4E.Bit.Button"] {
 
     // Default colors
 
-    &[class~="I4E.Bit.Button--Default"] {
+    &.I4E-Bit-Button--Default {
         background-color: var(--I4C_Solids_Opaque_White_2);
         color: var(--I4C_Default_Text_6);
 
@@ -57,7 +57,7 @@ button[class~="I4E.Bit.Button"] {
         }
     }
 
-    &[class~="I4E.Bit.Button--Accent"] {
+    &.I4E-Bit-Button--Accent {
         background-color: var(--I4C_Default_Accent_5);
         color: var(--I4C_Default_Accent_6_Text);
 
@@ -70,7 +70,7 @@ button[class~="I4E.Bit.Button"] {
         }
     }
 
-    &[class~="I4E.Bit.Button--Transparent"] {
+    &.I4E-Bit-Button--Transparent {
         background-color: transparent;
         color: var(--I4C_Default_Accent_5);
 
@@ -94,7 +94,7 @@ button[class~="I4E.Bit.Button"] {
     $activeBackground, $activeBorder, $activeColor,
     $disabledBackground, $disabledBorder, $disabledColor,
 ) {
-    &:not([class~="Integrant.Element.Bit:Disabled"]):not(:disabled) {
+    &:not(.I4E-Bit-IsDisabled):not(:disabled) {
         background-color: $normalBackground;
         border: 1px solid $normalBorder;
         color: $normalColor;
@@ -112,14 +112,14 @@ button[class~="I4E.Bit.Button"] {
         }
     }
 
-    &[class~="Integrant.Element.Bit:Disabled"], &:disabled {
+    &.I4E-Bit-IsDisabled, &:disabled {
         background-color: $disabledBackground;
         border: 1px solid $disabledBorder;
         color: $disabledColor;
     }
 }
 
-button[class~="I4E.Bit.Button--Blue"] {
+button.I4E-Bit-Button--Blue {
     @include _ColorButton(
                     var(--I4C_Solids_Blue_6),
                     var(--I4C_Solids_Blue_6),
@@ -139,7 +139,7 @@ button[class~="I4E.Bit.Button--Blue"] {
     );
 }
 
-button[class~="I4E.Bit.Button--Green"] {
+button.I4E-Bit-Button--Green {
     @include _ColorButton(
                     var(--I4C_Solids_Green_9),
                     var(--I4C_Solids_Green_9),
@@ -159,7 +159,7 @@ button[class~="I4E.Bit.Button--Green"] {
     );
 }
 
-button[class~="I4E.Bit.Button--Orange"] {
+button.I4E-Bit-Button--Orange {
     @include _ColorButton(
                     var(--I4C_Solids_Orange_8),
                     var(--I4C_Solids_Orange_8),
@@ -179,7 +179,7 @@ button[class~="I4E.Bit.Button--Orange"] {
     );
 }
 
-button[class~="I4E.Bit.Button--Purple"] {
+button.I4E-Bit-Button--Purple {
     @include _ColorButton(
                     var(--I4C_Solids_Purple_9),
                     var(--I4C_Solids_Purple_9),
@@ -199,7 +199,7 @@ button[class~="I4E.Bit.Button--Purple"] {
     );
 }
 
-button[class~="I4E.Bit.Button--Red"] {
+button.I4E-Bit-Button--Red {
     @include _ColorButton(
                     var(--I4C_Solids_Red_9),
                     var(--I4C_Solids_Red_9),
@@ -219,7 +219,7 @@ button[class~="I4E.Bit.Button--Red"] {
     );
 }
 
-button[class~="I4E.Bit.Button--Yellow"] {
+button.I4E-Bit-Button--Yellow {
     @include _ColorButton(
                     var(--I4C_Solids_Yellow_6),
                     var(--I4C_Solids_Yellow_6),

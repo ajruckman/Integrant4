@@ -24,7 +24,7 @@ window.I4.Element.CreateBitTooltips = window.I4.Element.CreateBitTooltips || fun
 
     window.I4.Element.InitTooltip(bit);
     
-    // const bits = document.querySelectorAll('[class~="I4E.Bit"]');
+    // const bits = document.querySelectorAll('[class~="I4E-Bit"]');
     //
     // function createTooltip(v) {
     //     if (!v.hasOwnProperty('I4EBitTooltip')) {

@@ -31,7 +31,7 @@ namespace Integrant4.Element.Bits
     public partial class Separator
     {
         public Separator(Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(Separator)))
+            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Separator)))
         {
         }
     }

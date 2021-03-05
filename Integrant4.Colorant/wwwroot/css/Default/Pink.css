@@ -93,11 +93,11 @@
 	--I4C_Default_Text_6: #51042d;
 	--I4C_Default_Text_7: #2a0117;
 	--I4C_Default_Text_8: #000000;
-	--I4C_Default_Shadow_0: 0 1px 2px rgba(0, 0, 0, 0.15), 0 0px 2px rgba(0, 0, 0, 0.1);
-	--I4C_Default_Shadow_1: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0px 4px rgba(0, 0, 0, 0.05);
-	--I4C_Default_Shadow_2: 0 6px 16px rgba(0, 0, 0, 0.2), 0 0px 4px rgba(0, 0, 0, 0.05);
-	--I4C_Default_Shadow_3: 0 12px 32px rgba(0, 0, 0, 0.2), 0 0px 8px rgba(0, 0, 0, 0.05);
-	--I4C_Default_Shadow_4: 0 32px 64px rgba(0, 0, 0, 0.2), 0 0px 16px rgba(0, 0, 0, 0.05);
+	--I4C_Default_Shadow_0: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0px 2px rgba(0, 0, 0, 0.2);
+	--I4C_Default_Shadow_1: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0px 4px rgba(0, 0, 0, 0.1);
+	--I4C_Default_Shadow_2: 0 6px 16px rgba(0, 0, 0, 0.3), 0 0px 4px rgba(0, 0, 0, 0.1);
+	--I4C_Default_Shadow_3: 0 12px 32px rgba(0, 0, 0, 0.3), 0 0px 8px rgba(0, 0, 0, 0.1);
+	--I4C_Default_Shadow_4: 0 32px 64px rgba(0, 0, 0, 0.3), 0 0px 16px rgba(0, 0, 0, 0.1);
 	--I4C_Default_TableRow_0: #fff7fb;
 	--I4C_Default_TableRow_1: #faf2f6;
 	--I4C_Default_TableRow_2: #f6eff3;

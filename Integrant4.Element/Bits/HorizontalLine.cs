@@ -29,7 +29,7 @@ namespace Integrant4.Element.Bits
     public partial class HorizontalLine
     {
         public HorizontalLine(Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit.HorizontalLine"))
+            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-HorizontalLine"))
         {
         }
     }

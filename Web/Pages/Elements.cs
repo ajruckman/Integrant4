@@ -40,6 +40,7 @@ namespace Web.Pages
         private Link _link1 = null!;
         private Link _link2 = null!;
         private Link _link3 = null!;
+        private Link _link4 = null!;
 
         private Dropdown _dropdown1 = null!;
 
@@ -152,6 +153,10 @@ namespace Web.Pages
             {
                 IsAccented = () => true,
             });
+            _link4 = new Link(() => "Link 4 (highlighted)".AsContent(), new Link.Spec(() => "/")
+            {
+                IsHighlighted = () => true,
+            });
 
             _dropdown1 = new Dropdown
             (
@@ -205,12 +210,58 @@ namespace Web.Pages
 
             _header1 = new Header(() => new IRenderable[]
             {
-                new TextBlock(() => new IRenderable[]
+                new Link(() => new IRenderable[]
                 {
                     "Integrant 4".AsContent(),
-                }, new TextBlock.Spec {IsTitle = () => true}),
+                }, new Link.Spec(() => "/") {IsTitle = () => true}),
                 new Filler(),
-                _dropdown1,
+                new Link(() => new IRenderable[]
+                {
+                    "Elements".AsContent(),
+                }, new Link.Spec(() => "/elements") {IsPageLink = () => true}),
+                new VerticalLine(),
+                new Link(() => new IRenderable[]
+                {
+                    "Google".AsContent(),
+                }, new Link.Spec(() => "https://google.com") {IsPageLink = () => true}),
+                new VerticalLine(),
+                new Link(() => new IRenderable[]
+                {
+                    "Google".AsContent(),
+                }, new Link.Spec(() => "https://google.com") {IsPageLink = () => true}),
+                new VerticalLine(),
+                new Link(() => new IRenderable[]
+                {
+                    "Google".AsContent(),
+                }, new Link.Spec(() => "https://google.com") {IsPageLink = () => true, IsHighlighted = () => true}),
+                new VerticalLine(),
+                new Link(() => new IRenderable[]
+                {
+                    "Google".AsContent(),
+                }, new Link.Spec(() => "https://google.com") {IsPageLink = () => true}),
+                new VerticalLine(),
+                new Link(() => new IRenderable[]
+                {
+                    "Google".AsContent(),
+                }, new Link.Spec(() => "https://google.com") {IsPageLink = () => true}),
+                new VerticalLine(),
+                new Dropdown
+                (
+                    () => new IRenderable[]
+                    {
+                        new TextBlock(() => new IRenderable[]
+                        {
+                            "Heading dropdown".AsContent(),
+                            new BootstrapIcon("arrow-down"),
+                        }, new TextBlock.Spec {/*IsHeading = () => true*/}),
+                    },
+                    () => new IRenderable[]
+                    {
+                        new TextBlock(() => new IRenderable[] {"Content".AsContent()}),
+                        new HorizontalLine(),
+                        new TextBlock(() => new IRenderable[] {"Content 2".AsContent()}),
+                    }, new Dropdown.Spec(ElementService)
+                ),
             });
         }
 

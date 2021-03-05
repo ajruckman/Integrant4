@@ -49,7 +49,7 @@ namespace Integrant4.Element.Bits
         }
 
         public Heading(Callbacks.BitContents contents, Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(Heading)))
+            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Heading)))
         {
             _contents   = contents;
             _sizeGetter = spec?.Size ?? DefaultSizeGetter;

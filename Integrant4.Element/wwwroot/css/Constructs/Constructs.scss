@@ -1,14 +1,48 @@
-div[class~="I4E.Construct.Header"] {
+div.I4E-Construct-Header {
     align-items: center;
     background-color: var(--I4C_Default_Background_6);
     box-shadow: var(--I4C_Default_Shadow_0);
     box-sizing: border-box;
     display: flex;
-    min-height: 50px;
-    padding: 0 10px 0 7px;
+    flex-wrap: wrap;
+    min-height: calc(50px - 10px - 10px);
+    padding: 10px 10px 10px 15px;
     width: 100%;
 
-    span[class~="I4E.Construct.Header.Content"] {
+    > span.I4E-Construct-Header-Content {
         display: contents;
+
+        > .I4E-Bit-Link--Title {
+            margin-right: 15px;
+        }
+    }
+
+    // Child overrides
+
+    > span.I4E-Construct-Header-Content {
+        > div.I4E-Bit-Dropdown {
+            > div.I4E-Bit-Dropdown-Head {
+                > div.I4E-Bit-Dropdown-Content {
+                    > div.I4E-Bit-TextBlock--Heading {
+                        font-size: 17px;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+    > span.I4E-Construct-Header-Content {
+        > a.I4E-Bit-Link--PageLink.I4E-Bit-Link--Highlighted {
+            //border-bottom: none;
+            
+            //> div.I4E-Bit-Dropdown-Head {
+            //    > div.I4E-Bit-Dropdown-Content {
+            //        > div.I4E-Bit-TextBlock--Heading {
+            //            font-size: 17px;
+            //            font-weight: 500;
+            //        }
+            //    }
+            //}
+        }
     }
 }

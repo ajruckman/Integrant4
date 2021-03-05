@@ -31,7 +31,7 @@ namespace Integrant4.Element.Bits
     public partial class Space
     {
         public Space(Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(Space)))
+            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Space)))
         {
         }
     }

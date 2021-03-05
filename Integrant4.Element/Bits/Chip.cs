@@ -60,10 +60,10 @@ namespace Integrant4.Element.Bits
 
         public Chip(Callbacks.BitContents contents, Spec? spec = null)
             : base(spec?.ToBitSpec(),
-                new ClassSet("I4E.Bit", "I4E.Bit." + nameof(Chip),
+                new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Chip),
                     spec?.HREF == null
-                        ? "I4E.Bit." + nameof(Chip) + "--Static"
-                        : "I4E.Bit." + nameof(Chip) + "--Link"))
+                        ? "I4E-Bit-" + nameof(Chip) + "--Static"
+                        : "I4E-Bit-" + nameof(Chip) + "--Link"))
         {
             _contents = contents;
         }

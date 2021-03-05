@@ -1,10 +1,10 @@
-[class~="I4E.Bit"] {
+.I4E-Bit {
     &[hidden] {
         display: none !important;
     }
 }
 
-div[class~="I4E.Bit.Chip"], a[class~="I4E.Bit.Chip"] {
+div.I4E-Bit-Chip, a.I4E-Bit-Chip {
     background-color: var(--I4C_Solids_Opaque_White_2);
     border-radius: 5000px;
     box-shadow: var(--I4C_Default_Shadow_0);
@@ -14,7 +14,7 @@ div[class~="I4E.Bit.Chip"], a[class~="I4E.Bit.Chip"] {
     padding: 2px 7px;
     vertical-align: middle;
 
-    &[class~="I4E.Bit.Chip--Link"] {
+    &.I4E-Bit-Chip--Link {
         color: var(--I4C_Default_PageText);
         text-decoration: none;
 
