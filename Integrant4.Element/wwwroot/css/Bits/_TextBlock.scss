@@ -2,11 +2,9 @@ div[class~="I4E.Bit.TextBlock"] {
     align-items: center;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
     display: inline-flex;
     height: 30px;
     padding: 0;
-    user-select: none;
 
     > span[class~="I4E.Bit.TextBlock.Content"] {
         align-items: center;

@@ -72,12 +72,12 @@ namespace Integrant4.Colorant.Services
                 int seq = -1;
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "id", $"Integrant.Colorant.Component.{nameof(VariantLoader)}");
+                builder.AddAttribute(++seq, "id", $"I4C.Component.{nameof(VariantLoader)}");
 
                 builder.OpenElement(++seq, "span");
 
                 builder.OpenElement(++seq, "label");
-                builder.AddAttribute(++seq, "for", $"Integrant.Colorant.Component.{nameof(VariantLoader)}");
+                builder.AddAttribute(++seq, "for", $"I4C.Component.{nameof(VariantLoader)}");
                 builder.AddContent(++seq, "Theme");
                 builder.CloseElement();
 
@@ -87,7 +87,7 @@ namespace Integrant4.Colorant.Services
                 {
                     builder2.OpenElement(++seq, "select");
                     builder2.AddAttribute(++seq, "id",
-                        $"Integrant.Colorant.Component.{nameof(VariantLoader)}.Dropdown");
+                        $"I4C.Component.{nameof(VariantLoader)}.Dropdown");
                     builder2.AddAttribute(
                         ++seq,
                         "onchange",
@@ -116,11 +116,11 @@ namespace Integrant4.Colorant.Services
 
         public async Task Load()
         {
-            var variant = await _localStorage.GetItemAsync<string>($"Integrant.Colorant.Variant.{_theme.Name}");
+            var variant = await _localStorage.GetItemAsync<string>($"I4C.Variant.{_theme.Name}");
             if (string.IsNullOrEmpty(variant))
             {
                 _variant = _defaultVariant;
-                await _localStorage.SetItemAsync($"Integrant.Colorant.Variant.{_theme.Name}", _variant);
+                await _localStorage.SetItemAsync($"I4C.Variant.{_theme.Name}", _variant);
             }
             else
             {
@@ -136,7 +136,7 @@ namespace Integrant4.Colorant.Services
         {
             var variant = args.Value!.ToString()!;
             _variant = variant;
-            await _localStorage.SetItemAsync($"Integrant.Colorant.Variant.{_theme.Name}", _variant);
+            await _localStorage.SetItemAsync($"I4C.Variant.{_theme.Name}", _variant);
             _update.Trigger();
             OnVariantChange?.Invoke(variant);
         }

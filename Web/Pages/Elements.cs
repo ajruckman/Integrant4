@@ -150,7 +150,7 @@ namespace Web.Pages
             });
             _link3 = new Link(() => "Link 3".AsContent(), new Link.Spec(() => "/")
             {
-                Accented = () => true,
+                IsAccented = () => true,
             });
 
             _dropdown1 = new Dropdown

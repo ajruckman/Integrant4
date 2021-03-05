@@ -22,8 +22,8 @@ namespace Integrant4.Element.Bits
 
             public Callbacks.BitHREF HREF { get; }
 
-            public Callbacks.Callback<bool> Accented { get; init; }
-            public Callbacks.Callback<bool> IsButton { get; init; }
+            public Callbacks.Callback<bool>? IsAccented { get; init; }
+            public Callbacks.Callback<bool>? IsButton   { get; init; }
 
             public Callbacks.BitIsVisible?  IsVisible       { get; init; }
             public Callbacks.BitIsDisabled? IsDisabled      { get; init; }
@@ -32,6 +32,10 @@ namespace Integrant4.Element.Bits
             public Callbacks.BitSize?       Padding         { get; init; }
             public Callbacks.BitColor?      BackgroundColor { get; init; }
             public Callbacks.BitColor?      ForegroundColor { get; init; }
+            public Callbacks.BitPixels?     Height          { get; init; }
+            public Callbacks.BitPixels?     HeightMax       { get; init; }
+            public Callbacks.BitPixels?     Width           { get; init; }
+            public Callbacks.BitPixels?     WidthMax        { get; init; }
             public Callbacks.BitREM?        FontSize        { get; init; }
             public Callbacks.BitWeight?     FontWeight      { get; init; }
             public Callbacks.BitDisplay?    Display         { get; init; }
@@ -48,6 +52,10 @@ namespace Integrant4.Element.Bits
                 Padding         = Padding,
                 BackgroundColor = BackgroundColor,
                 ForegroundColor = ForegroundColor,
+                Height          = Height,
+                HeightMax       = HeightMax,
+                Width           = Width,
+                WidthMax        = WidthMax,
                 FontSize        = FontSize,
                 FontWeight      = FontWeight,
                 Display         = Display,
@@ -72,7 +80,7 @@ namespace Integrant4.Element.Bits
             : base(spec?.ToBitSpec(), new ClassSet("I4E.Bit", "I4E.Bit." + nameof(Link)))
         {
             _contents = contents;
-            _accented = spec?.Accented;
+            _accented = spec?.IsAccented;
             _isButton = spec?.IsButton;
         }
     }
