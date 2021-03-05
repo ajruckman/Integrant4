@@ -43,48 +43,48 @@ button[class~="I4E.Bit.Button"] {
     }
 
     &:focus-visible {
-        box-shadow: 0 0 1px 0 var(--Colorant_Default_Accent_5);
+        box-shadow: 0 0 1px 0 var(--I4C_Default_Accent_5);
     }
 
     // Default colors
 
     &[class~="I4E.Bit.Button--Default"] {
-        background-color: var(--Colorant_Solids_Opaque_White_2);
-        color: var(--Colorant_Default_Text_6);
+        background-color: var(--I4C_Solids_Opaque_White_2);
+        color: var(--I4C_Default_Text_6);
 
         &:hover, &:active {
-            color: var(--Colorant_Default_Text_6);
+            color: var(--I4C_Default_Text_6);
         }
     }
 
     &[class~="I4E.Bit.Button--Accent"] {
-        background-color: var(--Colorant_Default_Accent_5);
-        color: var(--Colorant_Default_Accent_6_Text);
+        background-color: var(--I4C_Default_Accent_5);
+        color: var(--I4C_Default_Accent_6_Text);
 
         &:hover {
-            background-color: var(--Colorant_Default_Accent_4);
+            background-color: var(--I4C_Default_Accent_4);
         }
 
         &:active {
-            background-color: var(--Colorant_Default_Accent_3);
+            background-color: var(--I4C_Default_Accent_3);
         }
     }
 
     &[class~="I4E.Bit.Button--Transparent"] {
         background-color: transparent;
-        color: var(--Colorant_Default_Accent_5);
+        color: var(--I4C_Default_Accent_5);
 
         &:hover, &:active {
-            color: var(--Colorant_Default_Accent_6);
+            color: var(--I4C_Default_Accent_6);
         }
     }
 
     &:hover {
-        background-color: var(--Colorant_Solids_Opaque_White_3);
+        background-color: var(--I4C_Solids_Opaque_White_3);
     }
 
     &:active {
-        background-color: var(--Colorant_Solids_Opaque_White_2);
+        background-color: var(--I4C_Solids_Opaque_White_2);
     }
 }
 
@@ -121,120 +121,120 @@ button[class~="I4E.Bit.Button"] {
 
 button[class~="I4E.Bit.Button--Blue"] {
     @include _ColorButton(
-                    var(--Colorant_Solids_Blue_6),
-                    var(--Colorant_Solids_Blue_6),
+                    var(--I4C_Solids_Blue_6),
+                    var(--I4C_Solids_Blue_6),
                     white,
                 //
-                    var(--Colorant_Solids_Blue_8),
-                    var(--Colorant_Solids_Blue_8),
+                    var(--I4C_Solids_Blue_8),
+                    var(--I4C_Solids_Blue_8),
                     white,
                 //
-                    var(--Colorant_Solids_Blue_10),
-                    var(--Colorant_Solids_Blue_0),
+                    var(--I4C_Solids_Blue_10),
+                    var(--I4C_Solids_Blue_0),
                     white,
                 //
                     transparent,
-                    var(--Colorant_Default_Border_6),
-                    var(--Colorant_Default_Text_0)
+                    var(--I4C_Default_Border_6),
+                    var(--I4C_Default_Text_0)
     );
 }
 
 button[class~="I4E.Bit.Button--Green"] {
     @include _ColorButton(
-                    var(--Colorant_Solids_Green_9),
-                    var(--Colorant_Solids_Green_9),
+                    var(--I4C_Solids_Green_9),
+                    var(--I4C_Solids_Green_9),
                     white,
                 //
-                    var(--Colorant_Solids_Green_7),
-                    var(--Colorant_Solids_Green_7),
+                    var(--I4C_Solids_Green_7),
+                    var(--I4C_Solids_Green_7),
                     white,
                 //
-                    var(--Colorant_Solids_Green_5),
-                    var(--Colorant_Solids_Green_4),
+                    var(--I4C_Solids_Green_5),
+                    var(--I4C_Solids_Green_4),
                     white,
                 //
                     transparent,
-                    var(--Colorant_Default_Border_6),
-                    var(--Colorant_Default_Text_0)
+                    var(--I4C_Default_Border_6),
+                    var(--I4C_Default_Text_0)
     );
 }
 
 button[class~="I4E.Bit.Button--Orange"] {
     @include _ColorButton(
-                    var(--Colorant_Solids_Orange_8),
-                    var(--Colorant_Solids_Orange_8),
+                    var(--I4C_Solids_Orange_8),
+                    var(--I4C_Solids_Orange_8),
                     white,
                 //
-                    var(--Colorant_Solids_Orange_6),
-                    var(--Colorant_Solids_Orange_6),
+                    var(--I4C_Solids_Orange_6),
+                    var(--I4C_Solids_Orange_6),
                     white,
                 //
-                    var(--Colorant_Solids_Orange_4),
-                    var(--Colorant_Solids_Orange_3),
+                    var(--I4C_Solids_Orange_4),
+                    var(--I4C_Solids_Orange_3),
                     white,
                 //
                     transparent,
-                    var(--Colorant_Default_Border_6),
-                    var(--Colorant_Default_Text_0)
+                    var(--I4C_Default_Border_6),
+                    var(--I4C_Default_Text_0)
     );
 }
 
 button[class~="I4E.Bit.Button--Purple"] {
     @include _ColorButton(
-                    var(--Colorant_Solids_Purple_9),
-                    var(--Colorant_Solids_Purple_9),
+                    var(--I4C_Solids_Purple_9),
+                    var(--I4C_Solids_Purple_9),
                     white,
                 //
-                    var(--Colorant_Solids_Purple_7),
-                    var(--Colorant_Solids_Purple_7),
+                    var(--I4C_Solids_Purple_7),
+                    var(--I4C_Solids_Purple_7),
                     white,
                 //
-                    var(--Colorant_Solids_Purple_5),
-                    var(--Colorant_Solids_Purple_4),
+                    var(--I4C_Solids_Purple_5),
+                    var(--I4C_Solids_Purple_4),
                     white,
                 //
                     transparent,
-                    var(--Colorant_Default_Border_6),
-                    var(--Colorant_Default_Text_0)
+                    var(--I4C_Default_Border_6),
+                    var(--I4C_Default_Text_0)
     );
 }
 
 button[class~="I4E.Bit.Button--Red"] {
     @include _ColorButton(
-                    var(--Colorant_Solids_Red_9),
-                    var(--Colorant_Solids_Red_9),
+                    var(--I4C_Solids_Red_9),
+                    var(--I4C_Solids_Red_9),
                     white,
                 //
-                    var(--Colorant_Solids_Red_7),
-                    var(--Colorant_Solids_Red_7),
+                    var(--I4C_Solids_Red_7),
+                    var(--I4C_Solids_Red_7),
                     white,
                 //
-                    var(--Colorant_Solids_Red_5),
-                    var(--Colorant_Solids_Red_4),
+                    var(--I4C_Solids_Red_5),
+                    var(--I4C_Solids_Red_4),
                     white,
                 //
                     transparent,
-                    var(--Colorant_Default_Border_6),
-                    var(--Colorant_Default_Text_0)
+                    var(--I4C_Default_Border_6),
+                    var(--I4C_Default_Text_0)
     );
 }
 
 button[class~="I4E.Bit.Button--Yellow"] {
     @include _ColorButton(
-                    var(--Colorant_Solids_Yellow_6),
-                    var(--Colorant_Solids_Yellow_6),
+                    var(--I4C_Solids_Yellow_6),
+                    var(--I4C_Solids_Yellow_6),
                     black,
                 //
-                    var(--Colorant_Solids_Yellow_5),
-                    var(--Colorant_Solids_Yellow_5),
+                    var(--I4C_Solids_Yellow_5),
+                    var(--I4C_Solids_Yellow_5),
                     black,
                 //
-                    var(--Colorant_Solids_Yellow_3),
-                    var(--Colorant_Solids_Yellow_2),
+                    var(--I4C_Solids_Yellow_3),
+                    var(--I4C_Solids_Yellow_2),
                     black,
                 //
                     transparent,
-                    var(--Colorant_Default_Border_6),
-                    var(--Colorant_Default_Text_0)
+                    var(--I4C_Default_Border_6),
+                    var(--I4C_Default_Text_0)
     );
 }

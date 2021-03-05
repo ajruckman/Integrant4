@@ -19,12 +19,12 @@ namespace Integrant4.Colorant
                 foreach (string id in block.IDs)
                 {
                     constLines.Add(
-                        C + $"{block.Name}_{id} = \"var(--Colorant_{theme.Name}_{block.Name}_{id})\";");
+                        C + $"{block.Name}_{id} = \"var(--I4C_{theme.Name}_{block.Name}_{id})\";");
 
                     if (!block.CreateDisplayTextVariables) continue;
 
                     constLines.Add(
-                        C + $"{block.Name}_{id}_Text = \"var(--Colorant_{theme.Name}_{block.Name}_{id}_Text)\";");
+                        C + $"{block.Name}_{id}_Text = \"var(--I4C_{theme.Name}_{block.Name}_{id}_Text)\";");
                 }
             }
 
@@ -115,14 +115,14 @@ namespace Integrant4.Colorant
                     foreach (var (id, color) in variant.Colors[block.Name])
                     {
                         cssLines.Add(
-                            $"\t--Colorant_{theme.Name}_{block.Name}_{id}: {color};");
+                            $"\t--I4C_{theme.Name}_{block.Name}_{id}: {color};");
                     }
                 }
 
                 foreach (Alias alias in theme.Aliases)
                 {
                     cssLines.Add(
-                        $"\t--Colorant_{theme.Name}_{alias.Key}: {alias.Value};");
+                        $"\t--I4C_{theme.Name}_{alias.Key}: {alias.Value};");
                 }
 
                 cssLines.Add("}");

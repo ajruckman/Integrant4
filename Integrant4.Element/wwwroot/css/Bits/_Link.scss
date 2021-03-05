@@ -1,6 +1,6 @@
 a[class~="I4E.Bit.Link"] {
     align-items: center;
-    color: var(--Colorant_Default_PageText);
+    color: var(--I4C_Default_PageText);
     display: inline-flex;
     text-decoration: none;
 
@@ -16,18 +16,18 @@ a[class~="I4E.Bit.Link"] {
     // Default colors
 
     &:not([class~="I4E.Bit.Link--Accented"]) {
-        color: var(--Colorant_Default_PageText);
+        color: var(--I4C_Default_PageText);
 
         &:visited {
-            color: var(--Colorant_Default_PageText);
+            color: var(--I4C_Default_PageText);
         }
     }
 
     &[class~="I4E.Bit.Link--Accented"] {
-        color: var(--Colorant_Default_Accent_7);
+        color: var(--I4C_Default_Accent_7);
 
         &:visited {
-            color: var(--Colorant_Default_Accent_7);
+            color: var(--I4C_Default_Accent_7);
         }
     }
 
@@ -36,7 +36,7 @@ a[class~="I4E.Bit.Link"] {
         background-color: transparent;
         border: none;
         border-radius: 4px;
-        color: var(--Colorant_Default_Accent_5);
+        color: var(--I4C_Default_Accent_5);
         cursor: pointer;
         display: inline-flex;
         font-weight: 600;
@@ -79,25 +79,25 @@ a[class~="I4E.Bit.Link"] {
         }
 
         &:focus-visible {
-            box-shadow: 0 0 1px 0 var(--Colorant_Default_Accent_5);
+            box-shadow: 0 0 1px 0 var(--I4C_Default_Accent_5);
         }
 
         &:hover {
-            background-color: var(--Colorant_Solids_Opaque_White_3);
+            background-color: var(--I4C_Solids_Opaque_White_3);
         }
 
         &:active {
-            background-color: var(--Colorant_Solids_Opaque_White_2);
+            background-color: var(--I4C_Solids_Opaque_White_2);
         }
     }
 
     &:not(#_):hover:not([class~="I4E.Bit.Link--Button"]) {
-        color: var(--Colorant_Default_Accent_8);
+        color: var(--I4C_Default_Accent_8);
         text-decoration: underline;
     }
 
     &:not(#_):hover:not([class~="I4E.Bit.Link--Button"]) {
-        color: var(--Colorant_Default_Accent_9);
+        color: var(--I4C_Default_Accent_9);
     }
 
     &:not(#_):hover[class~="I4E.Bit.Link--Button"] {

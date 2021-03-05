@@ -1,70 +1,70 @@
 button[class~="I4E.Bit.Button"]:not(#_) {
     &:not([class~="I4E.Bit.Button--Transparent"]) {
-        box-shadow: var(--Colorant_Default_Shadow_0);
+        box-shadow: var(--I4C_Default_Shadow_0);
     }
 
     &[class~="I4E.Bit.Button--Default"] {
-        background-color: var(--Colorant_Solids_Opaque_White_2);
-        color: var(--Colorant_Default_Text_6);
+        background-color: var(--I4C_Solids_Opaque_White_2);
+        color: var(--I4C_Default_Text_6);
 
         &:hover, &:active {
-            color: var(--Colorant_Default_Text_6);
+            color: var(--I4C_Default_Text_6);
         }
 
         &:hover {
-            background-color: var(--Colorant_Solids_Opaque_White_3);
+            background-color: var(--I4C_Solids_Opaque_White_3);
         }
 
         &:active {
-            background-color: var(--Colorant_Solids_Opaque_White_2);
+            background-color: var(--I4C_Solids_Opaque_White_2);
         }
     }
 
     &[class~="I4E.Bit.Button--Transparent"] {
         background-color: transparent;
-        color: var(--Colorant_Default_Accent_5);
+        color: var(--I4C_Default_Accent_5);
 
         &:hover, &:active {
-            color: var(--Colorant_Default_Accent_6);
+            color: var(--I4C_Default_Accent_6);
         }
 
         &:hover {
-            background-color: var(--Colorant_Solids_Opaque_White_3);
+            background-color: var(--I4C_Solids_Opaque_White_3);
         }
 
         &:active {
-            background-color: var(--Colorant_Solids_Opaque_White_2);
+            background-color: var(--I4C_Solids_Opaque_White_2);
         }
     }
 }
 
 a[class~="I4E.Bit.Chip--Link"]:not(#_) {
     &:hover {
-        background-color: var(--Colorant_Solids_Opaque_White_3);
+        background-color: var(--I4C_Solids_Opaque_White_3);
     }
 
     &:focus {
-        background-color: var(--Colorant_Solids_Opaque_White_2);
+        background-color: var(--I4C_Solids_Opaque_White_2);
     }
 }
 
 a[class~="I4E.Bit.Link--Button"]:not(#_) {
     &:hover, &:active {
-        box-shadow: var(--Colorant_Default_Shadow_0);
+        box-shadow: var(--I4C_Default_Shadow_0);
     }
 
     &:hover {
-        background-color: var(--Colorant_Solids_Opaque_White_3);
+        background-color: var(--I4C_Solids_Opaque_White_3);
     }
 
     &:active {
-        background-color: var(--Colorant_Solids_Opaque_White_2);
+        background-color: var(--I4C_Solids_Opaque_White_2);
     }
 }
 
 div[class~="I4E.Bit.TextBlock--Hoverable"]:not(#_) {
     &:hover {
-        background-color: var(--Colorant_Solids_Opaque_White_3);
-        box-shadow: var(--Colorant_Default_Shadow_0);
+        background-color: var(--I4C_Solids_Opaque_White_3);
+        box-shadow: var(--I4C_Default_Shadow_0);
     }
 }

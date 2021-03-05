@@ -2,20 +2,20 @@ div[class~="I4E.Bit.Checkbox"] {
     display: inline-block;
 
     &:not([class~="I4E.Bit.IsDisabled"]) {
-        color: var(--Colorant_Default_Text_7);
+        color: var(--I4C_Default_Text_7);
         cursor: pointer;
 
         &:hover {
-            color: var(--Colorant_Default_Text_5);
+            color: var(--I4C_Default_Text_5);
         }
 
         &:active {
-            color: var(--Colorant_Default_Text_4);
+            color: var(--I4C_Default_Text_4);
         }
     }
 
     &[class~="I4E.Bit.IsDisabled"] {
-        color: var(--Colorant_Default_Text_1);
+        color: var(--I4C_Default_Text_1);
         cursor: not-allowed;
     }
 }

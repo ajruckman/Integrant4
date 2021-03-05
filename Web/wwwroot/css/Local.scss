@@ -1,6 +1,6 @@
 body {
-    background-color: var(--Colorant_Default_PageBackground);
-    color: var(--Colorant_Default_PageText);
+    background-color: var(--I4C_Default_PageBackground);
+    color: var(--I4C_Default_PageText);
     font-family: var(--I4R_SansSerifFont);
     margin: 0;
 }
@@ -148,24 +148,24 @@ body {
 .TransparentButton {
     @include ButtonBase;
     background-color: transparent;
-    color: var(--Colorant_Default_Accent_5);
+    color: var(--I4C_Default_Accent_5);
 
     &:hover {
-        //background-color: var(--Colorant_Solids_Opaque_White_3);
-        background-color: var(--Colorant_Solids_Opaque_Black_1);
-        //color: var(--Colorant_Default_Accent_6);
+        //background-color: var(--I4C_Solids_Opaque_White_3);
+        background-color: var(--I4C_Solids_Opaque_Black_1);
+        //color: var(--I4C_Default_Accent_6);
     }
 
     &:active {
-        //background-color: var(--Colorant_Solids_Opaque_White_2);
-        background-color: var(--Colorant_Solids_Opaque_Black_0);
-        //color: var(--Colorant_Default_Accent_6);
+        //background-color: var(--I4C_Solids_Opaque_White_2);
+        background-color: var(--I4C_Solids_Opaque_Black_0);
+        //color: var(--I4C_Default_Accent_6);
     }
 }
 
 .FilledButton {
     @include ButtonBase;
-    background-color: var(--Colorant_Solids_Opaque_White_2);
+    background-color: var(--I4C_Solids_Opaque_White_2);
 }
 
 .ShadowPanel {
@@ -194,11 +194,11 @@ body {
 
 .Panel {
     margin: 5px;
-    background-color: var(--Colorant_Default_Background_6);
+    background-color: var(--I4C_Default_Background_6);
     padding: 5px 10px;
     border-radius: 4px;
 
-    box-shadow: var(--Colorant_Default_Shadow_2);
+    box-shadow: var(--I4C_Default_Shadow_2);
 
     h1 {
         margin: 3px;

@@ -1,34 +1,34 @@
 button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Default"]:not(#_) {
-  background-color: var(--Colorant_Solids_Opaque_Black_0);
-  color: var(--Colorant_Default_Text_6); }
+  background-color: var(--I4C_Solids_Opaque_Black_0);
+  color: var(--I4C_Default_Text_6); }
   button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Default"]:not(#_):hover, button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Default"]:not(#_):active {
-    color: var(--Colorant_Default_Text_6); }
+    color: var(--I4C_Default_Text_6); }
   button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Default"]:not(#_):hover {
-    background-color: var(--Colorant_Solids_Opaque_Black_1); }
+    background-color: var(--I4C_Solids_Opaque_Black_1); }
   button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Default"]:not(#_):active {
-    background-color: var(--Colorant_Solids_Opaque_Black_0); }
+    background-color: var(--I4C_Solids_Opaque_Black_0); }
 
 button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Transparent"]:not(#_) {
   background-color: transparent;
-  color: var(--Colorant_Default_Accent_5); }
+  color: var(--I4C_Default_Accent_5); }
   button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Transparent"]:not(#_):hover, button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Transparent"]:not(#_):active {
-    color: var(--Colorant_Default_Accent_6); }
+    color: var(--I4C_Default_Accent_6); }
   button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Transparent"]:not(#_):hover {
-    background-color: var(--Colorant_Solids_Opaque_Black_1); }
+    background-color: var(--I4C_Solids_Opaque_Black_1); }
   button[class~="I4E.Bit.Button"][class~="I4E.Bit.Button--Transparent"]:not(#_):active {
-    background-color: var(--Colorant_Solids_Opaque_Black_0); }
+    background-color: var(--I4C_Solids_Opaque_Black_0); }
 
 a[class~="I4E.Bit.Chip--Link"]:not(#_):hover {
-  background-color: var(--Colorant_Solids_Opaque_Black_0); }
+  background-color: var(--I4C_Solids_Opaque_Black_0); }
 
 a[class~="I4E.Bit.Chip--Link"]:not(#_):focus {
-  background-color: var(--Colorant_Solids_Opaque_Black_1); }
+  background-color: var(--I4C_Solids_Opaque_Black_1); }
 
 a[class~="I4E.Bit.Link--Button"]:not(#_):hover {
-  background-color: var(--Colorant_Solids_Opaque_Black_1); }
+  background-color: var(--I4C_Solids_Opaque_Black_1); }
 
 a[class~="I4E.Bit.Link--Button"]:not(#_):active {
-  background-color: var(--Colorant_Solids_Opaque_Black_0); }
+  background-color: var(--I4C_Solids_Opaque_Black_0); }
 
 div[class~="I4E.Bit.TextBlock--Hoverable"]:not(#_):hover {
-  background-color: var(--Colorant_Solids_Opaque_Black_1); }
+  background-color: var(--I4C_Solids_Opaque_Black_1); }

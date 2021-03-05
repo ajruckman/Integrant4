@@ -42,27 +42,27 @@ button[class^="I4E.Button"] {
 button[class^="I4E.Button"] {
   &:not([class$="--Filled"]) {
     background-color: transparent;
-    color: var(--Colorant_Default_Accent_5);
+    color: var(--I4C_Default_Accent_5);
 
     &:hover, &:active {
-      color: var(--Colorant_Default_Accent_6);
+      color: var(--I4C_Default_Accent_6);
     }
   }
 
   &[class$="--Filled"] {
-    background-color: var(--Colorant_Solids_Opaque_White_2);
-    color: var(--Colorant_Default_Text_6);
+    background-color: var(--I4C_Solids_Opaque_White_2);
+    color: var(--I4C_Default_Text_6);
 
     &:hover, &:active {
-      color: var(--Colorant_Default_Text_6);
+      color: var(--I4C_Default_Text_6);
     }
   }
 
   &:hover {
-    background-color: var(--Colorant_Solids_Opaque_White_3);
+    background-color: var(--I4C_Solids_Opaque_White_3);
   }
 
   &:active {
-    background-color: var(--Colorant_Solids_Opaque_White_2);
+    background-color: var(--I4C_Solids_Opaque_White_2);
   }
 }

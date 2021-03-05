@@ -1,7 +1,7 @@
 div[class~="I4E.Construct.Header"] {
   align-items: center;
-  background-color: var(--Colorant_Default_Background_6);
-  box-shadow: var(--Colorant_Default_Shadow_0);
+  background-color: var(--I4C_Default_Background_6);
+  box-shadow: var(--I4C_Default_Shadow_0);
   box-sizing: border-box;
   display: flex;
   min-height: 50px;

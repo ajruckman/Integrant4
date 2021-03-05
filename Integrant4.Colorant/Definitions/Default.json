@@ -500,11 +500,11 @@
     "Aliases":  [
         {
             "Key":   "PageBackground",
-            "Value": "var(--Colorant_Default_Background_3)"
+            "Value": "var(--I4C_Default_Background_3)"
         },
         {
             "Key":   "PageText",
-            "Value": "var(--Colorant_Default_Text_6)"
+            "Value": "var(--I4C_Default_Text_6)"
         }
     ]
 }

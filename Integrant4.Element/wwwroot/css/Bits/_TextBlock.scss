@@ -45,14 +45,14 @@ div[class~="I4E.Bit.TextBlock"] {
     }
 
     &:focus-visible {
-        box-shadow: 0 0 1px 0 var(--Colorant_Default_Accent_5);
+        box-shadow: 0 0 1px 0 var(--I4C_Default_Accent_5);
     }
 
     //
 
     &[class~="I4E.Bit.TextBlock--Hoverable"] {
         &:hover {
-            background-color: var(--Colorant_Solids_Opaque_White_3);
+            background-color: var(--I4C_Solids_Opaque_White_3);
         }
     }
 }
