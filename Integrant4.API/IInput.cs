@@ -4,11 +4,10 @@ using Microsoft.AspNetCore.Components;
 
 namespace Integrant4.API
 {
-    public interface IInput<TValue>
+    public interface IInput<TValue> : IRenderable
     {
-        Task<TValue?>  GetValue();
-        Task           SetValue(TValue? value);
-        RenderFragment Render();
+        Task<TValue?> GetValue();
+        Task          SetValue(TValue? value);
 
         event Action<TValue?> OnChange;
     }

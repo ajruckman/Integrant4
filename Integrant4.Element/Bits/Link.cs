@@ -15,37 +15,35 @@ namespace Integrant4.Element.Bits
     {
         public class Spec
         {
-            public Spec(Callbacks.BitHREF href)
+            public Spec(Callbacks.HREF href)
             {
                 HREF = href;
             }
 
-            public Callbacks.BitHREF HREF { get; }
+            public Callbacks.HREF HREF { get; }
 
-            public Callbacks.Callback<bool>? IsTitle       { get; init; }
-            public Callbacks.Callback<bool>? IsPageLink    { get; init; }
             public Callbacks.Callback<bool>? IsAccented    { get; init; }
             public Callbacks.Callback<bool>? IsHighlighted { get; init; }
             public Callbacks.Callback<bool>? IsButton      { get; init; }
 
-            public Callbacks.BitIsVisible?  IsVisible       { get; init; }
-            public Callbacks.BitIsDisabled? IsDisabled      { get; init; }
-            public Callbacks.BitClasses?    Classes         { get; init; }
-            public Callbacks.BitSize?       Margin          { get; init; }
-            public Callbacks.BitSize?       Padding         { get; init; }
-            public Callbacks.BitColor?      BackgroundColor { get; init; }
-            public Callbacks.BitColor?      ForegroundColor { get; init; }
-            public Callbacks.BitPixels?     Height          { get; init; }
-            public Callbacks.BitPixels?     HeightMax       { get; init; }
-            public Callbacks.BitPixels?     Width           { get; init; }
-            public Callbacks.BitPixels?     WidthMax        { get; init; }
-            public Callbacks.BitREM?        FontSize        { get; init; }
-            public Callbacks.BitWeight?     FontWeight      { get; init; }
-            public Callbacks.BitDisplay?    Display         { get; init; }
-            public Callbacks.BitData?       Data            { get; init; }
-            public Callbacks.BitTooltip?    Tooltip         { get; init; }
+            public Callbacks.IsVisible?  IsVisible       { get; init; }
+            public Callbacks.IsDisabled? IsDisabled      { get; init; }
+            public Callbacks.Classes?    Classes         { get; init; }
+            public Callbacks.Size?       Margin          { get; init; }
+            public Callbacks.Size?       Padding         { get; init; }
+            public Callbacks.Color?      BackgroundColor { get; init; }
+            public Callbacks.Color?      ForegroundColor { get; init; }
+            public Callbacks.Pixels?     Height          { get; init; }
+            public Callbacks.Pixels?     HeightMax       { get; init; }
+            public Callbacks.Pixels?     Width           { get; init; }
+            public Callbacks.Pixels?     WidthMax        { get; init; }
+            public Callbacks.REM?        FontSize        { get; init; }
+            public Callbacks.FontWeight?     FontWeight      { get; init; }
+            public Callbacks.Display?    Display         { get; init; }
+            public Callbacks.Data?       Data            { get; init; }
+            public Callbacks.Tooltip?    Tooltip         { get; init; }
 
-            internal BitSpec ToBitSpec() => new()
+            internal BaseSpec ToBaseSpec() => new()
             {
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
@@ -71,8 +69,6 @@ namespace Integrant4.Element.Bits
     public partial class Link
     {
         private readonly Callbacks.BitContents     _contents;
-        private readonly Callbacks.Callback<bool>? _isTitle;
-        private readonly Callbacks.Callback<bool>? _isPageLink;
         private readonly Callbacks.Callback<bool>? _isAccented;
         private readonly Callbacks.Callback<bool>? _isButton;
         private readonly Callbacks.Callback<bool>? _isHighlighted;
@@ -83,12 +79,10 @@ namespace Integrant4.Element.Bits
         }
 
         public Link(Callbacks.BitContents contents, Spec spec)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Link)))
+            : base(spec.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Link)))
         {
             _contents      = contents;
-            _isTitle       = spec?.IsTitle;
-            _isPageLink    = spec?.IsPageLink;
-            _isAccented    = spec?.IsAccented;
+            _isAccented    = spec.IsAccented;
             _isHighlighted = spec?.IsHighlighted;
             _isButton      = spec?.IsButton;
         }
@@ -103,12 +97,6 @@ namespace Integrant4.Element.Bits
                 IRenderable[] contents = _contents.Invoke().ToArray();
 
                 List<string> ac = new();
-
-                if (_isTitle?.Invoke() == true)
-                    ac.Add("I4E-Bit-Link--Title");
-
-                if (_isPageLink?.Invoke() == true)
-                    ac.Add("I4E-Bit-Link--PageLink");
 
                 if (_isAccented?.Invoke() == true)
                     ac.Add("I4E-Bit-Link--Accented");
@@ -135,7 +123,7 @@ namespace Integrant4.Element.Bits
                 foreach (IRenderable renderable in contents)
                 {
                     builder.OpenElement(++seq, "span");
-                    builder.AddAttribute(++seq, "class", "I4E-Bit-Button-Content");
+                    builder.AddAttribute(++seq, "class", "I4E-Bit-Link-Content");
                     builder.AddContent(++seq, renderable.Renderer());
                     builder.CloseElement();
                 }

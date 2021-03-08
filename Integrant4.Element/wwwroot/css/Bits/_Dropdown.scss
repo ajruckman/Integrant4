@@ -1,6 +1,6 @@
 div.I4E-Bit-Dropdown {
     display: inline-block;
-    
+
     div.I4E-Bit-Dropdown-Head {
         cursor: pointer;
     }
@@ -10,9 +10,9 @@ div.I4E-Bit-Dropdown {
         border-radius: 5px;
         box-shadow: var(--I4C_Default_Shadow_1);
 
+        display: none;
         margin: 17px;
         padding: 10px;
-        display: none;
         position: absolute;
 
         &[data-show] {

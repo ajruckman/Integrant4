@@ -1,0 +1,51 @@
+a.I4E-Bit-Title {
+    align-items: center;
+    border-bottom: 1px solid transparent;
+    color: var(--I4C_Default_PageText);
+    display: inline-flex;
+    font-size: 21px;
+    font-weight: 600;
+    position: relative;
+    text-decoration: none;
+
+    &::after {
+        bottom: -5px;
+        content: '';
+        display: block;
+        height: 4px;
+        left: -3px;
+        position: absolute;
+        width: calc(100% + 6px);
+    }
+
+    &:hover:not(#_) {
+        color: var(--I4C_Default_Accent_8);
+
+        &::after {
+            background-color: var(--I4C_Default_Accent_8);
+        }
+    }
+
+    &:active:not(#_) {
+        color: var(--I4C_Default_Accent_9);
+
+        &::after {
+            background-color: var(--I4C_Default_Accent_9);
+        }
+    }
+
+    &.I4E-Bit-Title--Highlighted {
+        &::after {
+            background-color: var(--I4C_Default_Accent_7);
+        }
+    }
+
+    > span.I4E-Bit-Title-Content {
+        align-items: center;
+        display: inline-flex;
+
+        &:not(:last-child) {
+            margin-right: 5px;
+        }
+    }
+}

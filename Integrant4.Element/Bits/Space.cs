@@ -11,13 +11,13 @@ namespace Integrant4.Element.Bits
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public Callbacks.BitIsVisible? IsVisible { get; init; }
+            public Callbacks.IsVisible? IsVisible { get; init; }
             // public Callbacks.BitID?        ID        { get; init; }
-            public Callbacks.BitClasses?   Classes   { get; init; }
-            public Callbacks.BitPixels?    Height    { get; init; }
-            public Callbacks.BitPixels?    Width     { get; init; }
+            public Callbacks.Classes?   Classes   { get; init; }
+            public Callbacks.Pixels?    Height    { get; init; }
+            public Callbacks.Pixels?    Width     { get; init; }
 
-            internal BitSpec ToBitSpec() => new()
+            internal BaseSpec ToBaseSpec() => new()
             {
                 IsVisible = IsVisible,
                 // ID        = ID,
@@ -31,7 +31,7 @@ namespace Integrant4.Element.Bits
     public partial class Space
     {
         public Space(Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Space)))
+            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Space)))
         {
         }
     }

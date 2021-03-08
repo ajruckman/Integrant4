@@ -5,15 +5,15 @@ namespace Integrant4.Element
 {
     public static class ResourceSets
     {
-        public static class Inputs
-        {
-            public static readonly ResourceSet Interop = new ResourceSet
-            (
-                $"{nameof(Integrant4)}.{nameof(Element)}",
-                $"{nameof(Inputs)}.{nameof(Interop)}",
-                scriptsInternal: new HashSet<string> {"js/Inputs.js"}
-            );
-        }
+        public static readonly ResourceSet I4App = new
+        (
+            $"{nameof(Integrant4)}.{nameof(Element)}",
+            $"{nameof(I4App)}",
+            stylesheetsInternal: new HashSet<string>
+            {
+                "css/I4App.css",
+            }
+        );
 
         public static readonly ResourceSet Constructs = new
         (
@@ -37,6 +37,28 @@ namespace Integrant4.Element
             {
                 "js/Dropdowns.js",
                 "js/Tooltips.js",
+            }
+        );
+
+        public static class Inputs
+        {
+            public static readonly ResourceSet Interop = new ResourceSet
+            (
+                $"{nameof(Integrant4)}.{nameof(Element)}",
+                $"{nameof(Inputs)}.{nameof(Interop)}",
+                stylesheetsInternal: new HashSet<string> {"css/Inputs/Inputs.css"},
+                scriptsInternal: new HashSet<string> {"js/Inputs.js"}
+            );
+        }
+
+        public static readonly ResourceSet Layouts = new ResourceSet
+        (
+            $"{nameof(Integrant4)}.{nameof(Element)}",
+            $"{nameof(Layouts)}",
+            stylesheetsInternal: new HashSet<string>
+            {
+                "css/Layouts/Layouts.css",
+                "css/Layouts/Layouts.{{ThemeVariant}}.css",
             }
         );
 

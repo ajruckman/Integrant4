@@ -5,9 +5,13 @@ div.I4E-Construct-Header {
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
-    min-height: calc(50px - 10px - 10px);
-    padding: 10px 10px 10px 15px;
+    //min-height: calc(50px - 10px - 10px);
+    padding: 0 10px 0 15px;
+    min-height: 50px;
     width: 100%;
+
+    position: sticky;
+    top: 0;
 
     > span.I4E-Construct-Header-Content {
         display: contents;
@@ -31,10 +35,11 @@ div.I4E-Construct-Header {
             }
         }
     }
+
     > span.I4E-Construct-Header-Content {
         > a.I4E-Bit-Link--PageLink.I4E-Bit-Link--Highlighted {
             //border-bottom: none;
-            
+
             //> div.I4E-Bit-Dropdown-Head {
             //    > div.I4E-Bit-Dropdown-Content {
             //        > div.I4E-Bit-TextBlock--Heading {
@@ -46,3 +51,17 @@ div.I4E-Construct-Header {
         }
     }
 }
+
+//div.I4-App {
+//    &[data-i4-theme-variant="Dark"] {
+//        div.I4E-Construct-Header {
+//            background-color: var(--I4C_Default_Background_8);
+//        }
+//    }
+//
+//    &[data-i4-theme-variant="Matrix"] {
+//        div.I4E-Construct-Header {
+//            background-color: var(--I4C_Default_Background_8);
+//        }
+//    }
+//}

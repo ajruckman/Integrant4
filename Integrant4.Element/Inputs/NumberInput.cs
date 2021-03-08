@@ -1,26 +1,24 @@
+using Integrant4.Element.Bits;
+using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Inputs
 {
-    public abstract class NumberInput<T> : InputBase<T>
+    public abstract partial class NumberInput<T>
     {
-        protected readonly Callbacks.Callback<bool>? IsDisabled;
-        protected readonly Callbacks.Callback<bool>? IsRequired;
-        protected readonly Callbacks.Callback<bool>  Consider0Null;
+    }
 
-        protected NumberInput
+    public partial class NumberInput<T> : StandardInput<T>
+    {
+        internal NumberInput
         (
-            IJSRuntime                jsRuntime,
-            T                         value,
-            Callbacks.Callback<bool>? isDisabled,
-            Callbacks.Callback<bool>? isRequired,
-            Callbacks.Callback<bool>? consider0Null
-        ) : base(jsRuntime)
+            IJSRuntime jsRuntime,
+            ClassSet   classSet,
+            BaseSpec?  spec = null
+        )
+            : base(jsRuntime, spec, classSet)
         {
-            IsDisabled    = isDisabled;
-            IsRequired    = isRequired;
-            Consider0Null = consider0Null ?? (() => false);
         }
 
         protected override string Serialize(T? v) => v?.ToString() ?? "";

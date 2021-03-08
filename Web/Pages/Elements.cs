@@ -16,11 +16,12 @@ namespace Web.Pages
 {
     public partial class Elements
     {
-        private IntegerInput _intInput            = null!;
-        private IntegerInput _intInput0Null       = null!;
-        private DecimalInput _decimalInput        = null!;
-        private DecimalInput _decimalInput0Null   = null!;
-        private DecimalInput _decimalInputStepped = null!;
+        private readonly List<Button> _buttonsColored      = new();
+        private          IntegerInput _intInput            = null!;
+        private          IntegerInput _intInput0Null       = null!;
+        private          DecimalInput _decimalInput        = null!;
+        private          DecimalInput _decimalInput0Null   = null!;
+        private          DecimalInput _decimalInputStepped = null!;
 
         private Button _buttonNoIcon    = null!;
         private Button _buttonOnlyIcon  = null!;
@@ -33,8 +34,6 @@ namespace Web.Pages
 
         private Checkbox _checkbox = null!;
 
-        private readonly List<Button> _buttonsColored = new();
-
         private CheckboxInput _checkboxInput = null!;
 
         private Link _link1 = null!;
@@ -46,17 +45,21 @@ namespace Web.Pages
 
         private Header _header1 = null!;
 
+        private bool _checked = true;
+
         [Inject] public IJSRuntime     JSRuntime      { get; set; } = null!;
         [Inject] public ElementService ElementService { get; set; } = null!;
 
         protected override void OnInitialized()
         {
-            _intInput          = new IntegerInput(JSRuntime, 0, () => false, () => false);
-            _intInput0Null     = new IntegerInput(JSRuntime, 0, () => false, () => false, () => true);
-            _decimalInput      = new DecimalInput(JSRuntime, (decimal) 0.0, () => false, () => false);
-            _decimalInput0Null = new DecimalInput(JSRuntime, (decimal) 0.0, () => false, () => false, () => true);
+            _intInput = new IntegerInput(JSRuntime, 0);
+            _intInput0Null = new IntegerInput(JSRuntime, 0,
+                new IntegerInput.Spec {Consider0Null = Always.True});
+            _decimalInput = new DecimalInput(JSRuntime, (decimal) 0.0);
+            _decimalInput0Null = new DecimalInput(JSRuntime, (decimal) 0.0,
+                new DecimalInput.Spec {Consider0Null = Always.True});
             _decimalInputStepped =
-                new DecimalInput(JSRuntime, (decimal) 0.0, () => false, () => false, step: () => "0.01");
+                new DecimalInput(JSRuntime, (decimal) 0.0, new DecimalInput.Spec {Step = () => "0.01"});
 
             void PrintI(int?     v) => Console.WriteLine($"int -> {v}");
             void PrintD(decimal? v) => Console.WriteLine($"decimal -> {v}");
@@ -69,7 +72,7 @@ namespace Web.Pages
 
             //
 
-            _checkboxInput = new CheckboxInput(JSRuntime, false, () => false, () => true);
+            _checkboxInput = new CheckboxInput(JSRuntime, false, new CheckboxInput.Spec {IsRequired = Always.True});
 
             void PrintB(bool v) => Console.WriteLine($"bool -> {v}");
 
@@ -151,22 +154,22 @@ namespace Web.Pages
             });
             _link3 = new Link(() => "Link 3".AsContent(), new Link.Spec(() => "/")
             {
-                IsAccented = () => true,
+                IsAccented = Always.True,
             });
             _link4 = new Link(() => "Link 4 (highlighted)".AsContent(), new Link.Spec(() => "/")
             {
-                IsHighlighted = () => true,
+                IsHighlighted = Always.True,
             });
 
             _dropdown1 = new Dropdown
             (
                 () => new IRenderable[]
                 {
-                    new TextBlock(() => new IRenderable[]
+                    new Link(() => new IRenderable[]
                     {
                         "Dropdown 1".AsContent(),
                         new BootstrapIcon("chevron-down"),
-                    }, new TextBlock.Spec {IsHoverable = () => true}),
+                    }, new Link.Spec(() => "/elements")),
                 },
                 () => new IRenderable[]
                 {
@@ -177,22 +180,22 @@ namespace Web.Pages
                     {
                         new BootstrapIcon("gear"),
                         "Settings".AsContent(),
-                    }, new Link.Spec(() => "/") {IsButton = () => true}),
+                    }, new Link.Spec(() => "/") {IsButton = Always.True}),
                     new Link(() => new IRenderable[]
                     {
                         new BootstrapIcon("gear-fill"),
                         "Settings 2".AsContent(),
-                    }, new Link.Spec(() => "/") {IsButton = () => true}),
+                    }, new Link.Spec(() => "/") {IsButton = Always.True}),
                     new HorizontalLine(),
                     new Dropdown
                     (
                         () => new IRenderable[]
                         {
-                            new TextBlock(() => new IRenderable[]
+                            new Link(() => new IRenderable[]
                             {
-                                "Dropdown 2".AsContent(),
-                                new BootstrapIcon("chevron-right"),
-                            }, new TextBlock.Spec {IsHoverable = () => true}),
+                                "Dropdown 1".AsContent(),
+                                new BootstrapIcon("chevron-down"),
+                            }, new Link.Spec(() => "/elements")),
                         },
                         () => new IRenderable[]
                         {
@@ -204,56 +207,56 @@ namespace Web.Pages
                             {
                                 new BootstrapIcon("chevron-right"),
                                 "Chevron".AsContent(),
-                            }, new Link.Spec(() => "/") {IsButton = () => true}),
+                            }, new Link.Spec(() => "/") {IsButton = Always.True}),
                         }, new Dropdown.Spec(ElementService) {PlacementGetter = () => Dropdown.Placement.RightStart}),
                 }, new Dropdown.Spec(ElementService));
 
             _header1 = new Header(() => new IRenderable[]
             {
-                new Link(() => new IRenderable[]
+                new Title(() => new IRenderable[]
                 {
                     "Integrant 4".AsContent(),
-                }, new Link.Spec(() => "/") {IsTitle = () => true}),
+                }, new Title.Spec(() => "/")),
                 new Filler(),
-                new Link(() => new IRenderable[]
+                new PageLink(() => new IRenderable[]
                 {
                     "Elements".AsContent(),
-                }, new Link.Spec(() => "/elements") {IsPageLink = () => true}),
+                }, new PageLink.Spec(() => "/elements")),
                 new VerticalLine(),
-                new Link(() => new IRenderable[]
+                new PageLink(() => new IRenderable[]
                 {
                     "Google".AsContent(),
-                }, new Link.Spec(() => "https://google.com") {IsPageLink = () => true}),
+                }, new PageLink.Spec(() => "https://google.com")),
                 new VerticalLine(),
-                new Link(() => new IRenderable[]
+                new PageLink(() => new IRenderable[]
                 {
                     "Google".AsContent(),
-                }, new Link.Spec(() => "https://google.com") {IsPageLink = () => true}),
+                }, new PageLink.Spec(() => "https://google.com")),
                 new VerticalLine(),
-                new Link(() => new IRenderable[]
+                new PageLink(() => new IRenderable[]
                 {
                     "Google".AsContent(),
-                }, new Link.Spec(() => "https://google.com") {IsPageLink = () => true, IsHighlighted = () => true}),
+                }, new PageLink.Spec(() => "https://google.com") {IsHighlighted = Always.True}),
                 new VerticalLine(),
-                new Link(() => new IRenderable[]
+                new PageLink(() => new IRenderable[]
                 {
                     "Google".AsContent(),
-                }, new Link.Spec(() => "https://google.com") {IsPageLink = () => true}),
+                }, new PageLink.Spec(() => "https://google.com")),
                 new VerticalLine(),
-                new Link(() => new IRenderable[]
+                new PageLink(() => new IRenderable[]
                 {
                     "Google".AsContent(),
-                }, new Link.Spec(() => "https://google.com") {IsPageLink = () => true}),
+                }, new PageLink.Spec(() => "https://google.com")),
                 new VerticalLine(),
                 new Dropdown
                 (
                     () => new IRenderable[]
                     {
-                        new TextBlock(() => new IRenderable[]
+                        new PageLink(() => new IRenderable[]
                         {
-                            "Heading dropdown".AsContent(),
-                            new BootstrapIcon("arrow-down"),
-                        }, new TextBlock.Spec {/*IsHeading = () => true*/}),
+                            "Dropdown 1".AsContent(),
+                            new BootstrapIcon("chevron-down"),
+                        }, new PageLink.Spec(() => "/elements")),
                     },
                     () => new IRenderable[]
                     {
@@ -264,8 +267,6 @@ namespace Web.Pages
                 ),
             });
         }
-
-        private bool _checked = true;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {

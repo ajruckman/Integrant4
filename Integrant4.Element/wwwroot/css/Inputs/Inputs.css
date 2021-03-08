@@ -1,0 +1,24 @@
+div.I4E-Input-Select select, div.I4E-Input-Checkbox input, div.I4E-Input-Date input, div.I4E-Input-Decimal input, div.I4E-Input-Integer input, div.I4E-Input-Text input, div.I4E-Input-Time input {
+  background-color: var(--I4C_Default_Background_4);
+  border: 1px solid var(--I4C_Default_Border_6);
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: var(--I4C_Default_Text_6);
+  outline: none;
+  transition: background-color 75ms ease-in, border 75ms ease-in; }
+  div.I4E-Input-Select select:hover, div.I4E-Input-Checkbox input:hover, div.I4E-Input-Date input:hover, div.I4E-Input-Decimal input:hover, div.I4E-Input-Integer input:hover, div.I4E-Input-Text input:hover, div.I4E-Input-Time input:hover {
+    border-color: var(--I4C_Default_Border_11);
+    transition: background-color 75ms ease-in, border 75ms ease-in; }
+  div.I4E-Input-Select select:focus, div.I4E-Input-Checkbox input:focus, div.I4E-Input-Date input:focus, div.I4E-Input-Decimal input:focus, div.I4E-Input-Integer input:focus, div.I4E-Input-Text input:focus, div.I4E-Input-Time input:focus {
+    background-color: var(--I4C_Default_Background_8);
+    border-color: var(--I4C_Default_Accent_7);
+    box-shadow: var(--I4C_Default_Shadow_0);
+    transition: background-color 75ms ease-in, border 75ms ease-in; }
+
+div.I4E-Input-Checkbox input, div.I4E-Input-Date input, div.I4E-Input-Decimal input, div.I4E-Input-Integer input, div.I4E-Input-Text input, div.I4E-Input-Time input {
+  padding: 4px 6px; }
+  div.I4E-Input-Checkbox input::-webkit-inner-spin-button, div.I4E-Input-Checkbox input::-webkit-outer-spin-button, div.I4E-Input-Date input::-webkit-inner-spin-button, div.I4E-Input-Date input::-webkit-outer-spin-button, div.I4E-Input-Decimal input::-webkit-inner-spin-button, div.I4E-Input-Decimal input::-webkit-outer-spin-button, div.I4E-Input-Integer input::-webkit-inner-spin-button, div.I4E-Input-Integer input::-webkit-outer-spin-button, div.I4E-Input-Text input::-webkit-inner-spin-button, div.I4E-Input-Text input::-webkit-outer-spin-button, div.I4E-Input-Time input::-webkit-inner-spin-button, div.I4E-Input-Time input::-webkit-outer-spin-button {
+    color: green !important; }
+
+div.I4E-Input-Select select {
+  padding: 3px 2px; }

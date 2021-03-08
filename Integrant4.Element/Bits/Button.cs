@@ -20,23 +20,23 @@ namespace Integrant4.Element.Bits
         {
             public StyleGetter? Style { get; init; }
 
-            public Callbacks.BitIsVisible? IsVisible { get; init; }
+            public Callbacks.IsVisible? IsVisible { get; init; }
 
-            public Callbacks.BitIsDisabled? IsDisabled { get; init; }
+            public Callbacks.IsDisabled? IsDisabled { get; init; }
 
             // public Callbacks.BitID?         ID         { get; init; }
-            public Callbacks.BitClasses? Classes    { get; init; }
-            public Callbacks.BitSize?    Margin     { get; init; }
-            public Callbacks.BitSize?    Padding    { get; init; }
-            public Callbacks.BitREM?     FontSize   { get; init; }
-            public Callbacks.BitWeight?  FontWeight { get; init; }
-            public Callbacks.BitDisplay? Display    { get; init; }
-            public Callbacks.BitData?    Data       { get; init; }
-            public Callbacks.BitTooltip? Tooltip    { get; init; }
+            public Callbacks.Classes? Classes    { get; init; }
+            public Callbacks.Size?    Margin     { get; init; }
+            public Callbacks.Size?    Padding    { get; init; }
+            public Callbacks.REM?     FontSize   { get; init; }
+            public Callbacks.FontWeight?  FontWeight { get; init; }
+            public Callbacks.Display? Display    { get; init; }
+            public Callbacks.Data?    Data       { get; init; }
+            public Callbacks.Tooltip? Tooltip    { get; init; }
 
             public ElementService? ElementService { get; init; }
 
-            internal BitSpec ToBitSpec() => new()
+            internal BaseSpec ToBaseSpec() => new()
             {
                 ElementService = ElementService,
                 IsVisible      = IsVisible,
@@ -64,7 +64,7 @@ namespace Integrant4.Element.Bits
         }
 
         public Button(Callbacks.BitContents contents, Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Button)))
+            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Button)))
         {
             _contents    = contents;
             _styleGetter = spec?.Style ?? DefaultStyleGetter;
@@ -103,7 +103,7 @@ namespace Integrant4.Element.Bits
 
                 builder.CloseElement();
 
-                QueueTooltip();
+                BaseSpec.QueueTooltip(BaseSpec, ID);
             }
 
             return Fragment;

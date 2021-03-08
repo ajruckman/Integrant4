@@ -1,11 +1,19 @@
 ﻿@page "/"
 @using Integrant4.API
+@using Integrant4.Element.Inputs.Wrappers
+<div class="I4E-Layout-Panel">
+    <h1>Web</h1>
 
-<h1>Web</h1>
+    <ul>
+        <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameFirst)).Input!.Renderer())</li>
+        <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameLast)).Input!.Renderer())</li>
+        <li>@(_structureInstance.GetTyped<int?>(nameof(Dog.Age)).Input!.Renderer())</li>
+        <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.Breed)).Input!.Renderer())</li>
+    </ul>
+    
+    <ul>
+        @* <li><I4ETextInput/></li> *@
+    </ul>
 
-<ul>
-    <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameFirst)).Input!.Render())</li>
-    <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameLast)).Input!.Render())</li>
-    <li>@(_structureInstance.GetTyped<int?>(nameof(Dog.Age)).Input!.Render())</li>
-    <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.Breed)).Input!.Render())</li>
-</ul>
+    <button @onclick="@Reset">Reset</button>
+</div>

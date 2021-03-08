@@ -19,9 +19,12 @@ namespace Web
                 },
                 dependencies: new[]
                 {
+                    ResourceSets.I4App,
+
                     ResourceSets.Inputs.Interop,
                     ResourceSets.Bits,
                     ResourceSets.Constructs,
+                    ResourceSets.Layouts,
 
                     Resources.Icons.Bootstrap,
                     Resources.Fonts.SansSerif.Inter,

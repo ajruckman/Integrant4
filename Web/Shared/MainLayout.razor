@@ -10,6 +10,8 @@
         {"ThemeVariant", _defaultVariantLoader.Variant!}
     })
     @_defaultVariantLoader.RenderStylesheets()
-    @Body
+    <div class="I4-App" data-i4-theme-variant="@_defaultVariantLoader.Variant">
+        @Body
+    </div>
     @_defaultVariantLoader.RenderDropdown()
 }

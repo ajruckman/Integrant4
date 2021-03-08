@@ -1,9 +1,6 @@
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Integrant4.API;
 using Integrant4.Fundament;
-using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
@@ -17,27 +14,27 @@ namespace Integrant4.Element.Bits
         {
             public ElementService? ElementService { get; init; }
 
-            public Callbacks.Callback<bool>? IsHoverable { get; init; }
+            // public Callbacks.Callback<bool>? IsHoverable { get; init; }
             // public Callbacks.Callback<bool>? IsHeading   { get; init; }
 
-            public Callbacks.BitIsVisible?  IsVisible       { get; init; }
-            public Callbacks.BitIsDisabled? IsDisabled      { get; init; }
-            public Callbacks.BitClasses?    Classes         { get; init; }
-            public Callbacks.BitSize?       Margin          { get; init; }
-            public Callbacks.BitSize?       Padding         { get; init; }
-            public Callbacks.BitColor?      BackgroundColor { get; init; }
-            public Callbacks.BitColor?      ForegroundColor { get; init; }
-            public Callbacks.BitPixels?     Height          { get; init; }
-            public Callbacks.BitPixels?     HeightMax       { get; init; }
-            public Callbacks.BitPixels?     Width           { get; init; }
-            public Callbacks.BitPixels?     WidthMax        { get; init; }
-            public Callbacks.BitREM?        FontSize        { get; init; }
-            public Callbacks.BitWeight?     FontWeight      { get; init; }
-            public Callbacks.BitDisplay?    Display         { get; init; }
-            public Callbacks.BitData?       Data            { get; init; }
-            public Callbacks.BitTooltip?    Tooltip         { get; init; }
+            public Callbacks.IsVisible?  IsVisible       { get; init; }
+            public Callbacks.IsDisabled? IsDisabled      { get; init; }
+            public Callbacks.Classes?    Classes         { get; init; }
+            public Callbacks.Size?       Margin          { get; init; }
+            public Callbacks.Size?       Padding         { get; init; }
+            public Callbacks.Color?      BackgroundColor { get; init; }
+            public Callbacks.Color?      ForegroundColor { get; init; }
+            public Callbacks.Pixels?     Height          { get; init; }
+            public Callbacks.Pixels?     HeightMax       { get; init; }
+            public Callbacks.Pixels?     Width           { get; init; }
+            public Callbacks.Pixels?     WidthMax        { get; init; }
+            public Callbacks.REM?        FontSize        { get; init; }
+            public Callbacks.FontWeight? FontWeight      { get; init; }
+            public Callbacks.Display?    Display         { get; init; }
+            public Callbacks.Data?       Data            { get; init; }
+            public Callbacks.Tooltip?    Tooltip         { get; init; }
 
-            internal BitSpec ToBitSpec() => new()
+            internal BaseSpec ToBaseSpec() => new()
             {
                 ElementService  = ElementService,
                 IsVisible       = IsVisible,
@@ -62,15 +59,15 @@ namespace Integrant4.Element.Bits
 
     public partial class TextBlock
     {
-        private readonly Callbacks.BitContents     _contents;
-        private readonly Callbacks.Callback<bool>? _isHoverable;
+        private readonly Callbacks.BitContents _contents;
+        // private readonly Callbacks.Callback<bool>? _isHoverable;
         // private readonly Callbacks.Callback<bool>? _isHeading;
 
         public TextBlock(Callbacks.BitContents contents, Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)))
+            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)))
         {
-            _contents    = contents;
-            _isHoverable = spec?.IsHoverable;
+            _contents = contents;
+            // _isHoverable = spec?.IsHoverable;
             // _isHeading   = spec?.IsHeading;
         }
     }
@@ -81,17 +78,13 @@ namespace Integrant4.Element.Bits
         {
             void Fragment(RenderTreeBuilder builder)
             {
-                IRenderable[] contents = _contents.Invoke().ToArray();
-
-                List<string> ac = new();
-
-                if (_isHoverable?.Invoke() == true)
-                {
-                    ac.Add("I4E-Bit-TextBlock--Hoverable");
-
-                    if (contents.First() is IIcon) ac.Add("I4E-Bit-TextBlock--Hoverable--IconLeft");
-                    if (contents.Last() is IIcon) ac.Add("I4E-Bit-TextBlock--Hoverable--IconRight");
-                }
+                // if (_isHoverable?.Invoke() == true)
+                // {
+                //     ac.Add("I4E-Bit-TextBlock--Hoverable");
+                //
+                //     if (contents.First() is IIcon) ac.Add("I4E-Bit-TextBlock--Hoverable--IconLeft");
+                //     if (contents.Last() is IIcon) ac.Add("I4E-Bit-TextBlock--Hoverable--IconRight");
+                // }
 
                 // if (_isHeading?.Invoke() == true)
                 // {
@@ -104,7 +97,7 @@ namespace Integrant4.Element.Bits
 
                 builder.OpenElement(++seq, "div");
 
-                BitBuilder.ApplyAttributes(this, builder, ref seq, ac.ToArray(), null);
+                BitBuilder.ApplyAttributes(this, builder, ref seq, null, null);
 
                 foreach (IRenderable renderable in _contents.Invoke())
                 {
@@ -116,7 +109,7 @@ namespace Integrant4.Element.Bits
 
                 builder.CloseElement();
 
-                QueueTooltip();
+                BaseSpec.QueueTooltip(BaseSpec, ID);
             }
 
             return Fragment;

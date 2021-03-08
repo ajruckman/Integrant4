@@ -1,0 +1,42 @@
+%_InputBase {
+    background-color: var(--I4C_Default_Background_4);
+    border: 1px solid var(--I4C_Default_Border_6);
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: var(--I4C_Default_Text_6);
+    outline: none;
+    transition: background-color 75ms ease-in, border 75ms ease-in;
+
+    &:hover {
+        border-color: var(--I4C_Default_Border_11);
+        transition: background-color 75ms ease-in, border 75ms ease-in;
+    }
+
+    &:focus {
+        background-color: var(--I4C_Default_Background_8);
+        border-color: var(--I4C_Default_Accent_7);
+        box-shadow: var(--I4C_Default_Shadow_0);
+        transition: background-color 75ms ease-in, border 75ms ease-in;
+    }
+}
+
+div.I4E-Input-Checkbox, div.I4E-Input-Date, div.I4E-Input-Decimal, div.I4E-Input-Integer, div.I4E-Input-Text, div.I4E-Input-Time {
+    input {
+        padding: 4px 6px;
+
+        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+            color: green !important;
+        }
+
+        @extend %_InputBase;
+    }
+}
+
+div.I4E-Input-Select {
+    select {
+        padding: 3px 2px;
+
+        @extend %_InputBase;
+    }
+}
+

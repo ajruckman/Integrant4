@@ -23,11 +23,11 @@ namespace Integrant4.Element.Bits
 
             public PlacementGetter? PlacementGetter { get; init; }
 
-            public Callbacks.BitClasses? Classes { get; init; }
-            public Callbacks.BitSize?    Margin  { get; init; }
-            public Callbacks.BitSize?    Padding { get; init; }
+            public Callbacks.Classes? Classes { get; init; }
+            public Callbacks.Size?    Margin  { get; init; }
+            public Callbacks.Size?    Padding { get; init; }
 
-            internal BitSpec ToBitSpec() => new()
+            internal BaseSpec ToBaseSpec() => new()
             {
                 ElementService = ElementService,
                 Classes        = Classes,
@@ -47,7 +47,7 @@ namespace Integrant4.Element.Bits
             Callbacks.BitContents headContents,
             Callbacks.BitContents childContents,
             Spec                  spec
-        ) : base(spec.ToBitSpec(),
+        ) : base(spec.ToBaseSpec(),
             new ClassSet("I4E-Bit", "I4E-Bit-Dropdown"))
         {
             _headContents    = headContents;

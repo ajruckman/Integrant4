@@ -14,17 +14,17 @@ namespace Integrant4.Element.Bits
         {
             public SizeGetter? Size { get; init; }
 
-            public Callbacks.BitIsVisible? IsVisible       { get; init; }
+            public Callbacks.IsVisible? IsVisible       { get; init; }
             // public Callbacks.BitID?        ID              { get; init; }
-            public Callbacks.BitClasses?   Classes         { get; init; }
-            public Callbacks.BitSize?      Margin          { get; init; }
-            public Callbacks.BitColor?     BackgroundColor { get; init; }
-            public Callbacks.BitColor?     ForegroundColor { get; init; }
-            public Callbacks.BitDisplay?   Display         { get; init; }
-            public Callbacks.BitData?      Data            { get; init; }
-            public Callbacks.BitTooltip?   Tooltip         { get; init; }
+            public Callbacks.Classes?   Classes         { get; init; }
+            public Callbacks.Size?      Margin          { get; init; }
+            public Callbacks.Color?     BackgroundColor { get; init; }
+            public Callbacks.Color?     ForegroundColor { get; init; }
+            public Callbacks.Display?   Display         { get; init; }
+            public Callbacks.Data?      Data            { get; init; }
+            public Callbacks.Tooltip?   Tooltip         { get; init; }
 
-            internal BitSpec ToBitSpec() => new()
+            internal BaseSpec ToBaseSpec() => new()
             {
                 IsVisible       = IsVisible,
                 // ID              = ID,
@@ -49,7 +49,7 @@ namespace Integrant4.Element.Bits
         }
 
         public Heading(Callbacks.BitContents contents, Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Heading)))
+            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Heading)))
         {
             _contents   = contents;
             _sizeGetter = spec?.Size ?? DefaultSizeGetter;

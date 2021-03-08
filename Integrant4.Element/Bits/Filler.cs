@@ -11,9 +11,9 @@ namespace Integrant4.Element.Bits
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public Callbacks.BitIsVisible? IsVisible { get; init; }
+            public Callbacks.IsVisible? IsVisible { get; init; }
 
-            internal BitSpec ToBitSpec() => new()
+            internal BaseSpec ToBaseSpec() => new()
             {
                 IsVisible = IsVisible,
             };
@@ -23,7 +23,7 @@ namespace Integrant4.Element.Bits
     public partial class Filler
     {
         public Filler(Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-Filler"))
+            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-Filler"))
         {
         }
     }

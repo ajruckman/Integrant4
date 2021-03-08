@@ -1,0 +1,31 @@
+div.I4E-Layout-Panel {
+    background-color: white;
+    border: 1px solid var(--I4C_Default_Border_6);
+    border-radius: 4px;
+    box-shadow: var(--I4C_Default_Shadow_2);
+    margin: 7px;
+    padding: 7px;
+}
+
+div.I4E-Layout-VAlign {
+    align-items: center;
+    display: flex;
+}
+
+div.I4E-Layout-VAlign-Filler {
+    flex-grow: 9999;
+}
+
+//div.I4-App {
+//    &[data-i4-theme-variant="Dark"] {
+//        div.I4E-Construct-Header {
+//            background-color: var(--I4C_Default_Background_8);
+//        }
+//    }
+//
+//    &[data-i4-theme-variant="Matrix"] {
+//        div.I4E-Construct-Header {
+//            background-color: var(--I4C_Default_Background_8);
+//        }
+//    }
+//}

@@ -12,20 +12,20 @@ namespace Integrant4.Element.Bits
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public Callbacks.BitIsVisible? IsVisible       { get; init; }
+            public Callbacks.IsVisible? IsVisible       { get; init; }
             // public Callbacks.BitID?        ID              { get; init; }
-            public Callbacks.BitClasses?   Classes         { get; init; }
-            public Callbacks.BitSize?      Margin          { get; init; }
-            public Callbacks.BitSize?      Padding         { get; init; }
-            public Callbacks.BitColor?     BackgroundColor { get; init; }
-            public Callbacks.BitColor?     ForegroundColor { get; init; }
-            public Callbacks.BitREM?       FontSize        { get; init; }
-            public Callbacks.BitWeight?    FontWeight      { get; init; }
-            public Callbacks.BitDisplay?   Display         { get; init; }
-            public Callbacks.BitData?      Data            { get; init; }
-            public Callbacks.BitTooltip?   Tooltip         { get; init; }
+            public Callbacks.Classes?   Classes         { get; init; }
+            public Callbacks.Size?      Margin          { get; init; }
+            public Callbacks.Size?      Padding         { get; init; }
+            public Callbacks.Color?     BackgroundColor { get; init; }
+            public Callbacks.Color?     ForegroundColor { get; init; }
+            public Callbacks.REM?       FontSize        { get; init; }
+            public Callbacks.FontWeight?    FontWeight      { get; init; }
+            public Callbacks.Display?   Display         { get; init; }
+            public Callbacks.Data?      Data            { get; init; }
+            public Callbacks.Tooltip?   Tooltip         { get; init; }
 
-            internal BitSpec ToBitSpec() => new()
+            internal BaseSpec ToBaseSpec() => new()
             {
                 IsVisible       = IsVisible,
                 // ID              = ID,
@@ -53,7 +53,7 @@ namespace Integrant4.Element.Bits
         }
 
         public MonoBlock(Callbacks.BitContents contents, Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(MonoBlock)))
+            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(MonoBlock)))
         {
             _contents = contents;
         }

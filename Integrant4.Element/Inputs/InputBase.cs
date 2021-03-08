@@ -1,47 +1,48 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Integrant4.API;
+using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Inputs
 {
-    public abstract class InputBase<T> : IInput<T>
+    public abstract partial class InputBase<T> : IInput<T>
     {
         protected readonly IJSRuntime JSRuntime;
 
         protected ElementReference Reference;
         protected T?               Value;
 
-        [SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
-        protected InputBase(IJSRuntime jsRuntime)
+        internal InputBase(IJSRuntime jsRuntime, BaseSpec? spec, ClassSet classes)
         {
             JSRuntime = jsRuntime;
+
+            BaseSpec    = spec ?? new BaseSpec();
+            BaseClasses = classes;
+            ID          = RandomIDGenerator.Generate();
+
+            BaseSpec.EnsureServicesAvailable(BaseSpec);
         }
 
-        public virtual async Task<T?> GetValue()
+        public abstract RenderFragment Renderer();
+
+        public abstract Task<T?>          GetValue();
+        public abstract Task              SetValue(T? value);
+        public abstract event Action<T?>? OnChange;
+    }
+
+    public partial class InputBase<T>
+    {
+        internal readonly BaseSpec BaseSpec;
+        internal readonly ClassSet BaseClasses;
+        internal readonly string   ID;
+
+        protected void QueueTooltip()
         {
-            var v = await JSRuntime.InvokeAsync<string>("window.I4.Element.Inputs.GetValue", Reference);
-            Value = Nullify(Deserialize(v));
-            return Value;
+            if (BaseSpec.Tooltip == null) return;
+
+            BaseSpec.ElementService!.AddJob(v => Interop.CreateBitTooltips(v, ID));
         }
-
-        public virtual async Task SetValue(T? value)
-        {
-            Value = Nullify(value);
-            await JSRuntime.InvokeVoidAsync("window.I4.Element.Inputs.SetValue", Reference, Serialize(Value));
-            OnChange?.Invoke(Value);
-        }
-
-        public abstract RenderFragment Render();
-
-        public event Action<T?>? OnChange;
-
-        protected void InvokeOnChange(T value) => OnChange?.Invoke(Nullify(value));
-
-        protected abstract string Serialize(T?        v);
-        protected abstract T      Deserialize(string? v);
-        protected abstract T      Nullify(T?          v);
     }
 }

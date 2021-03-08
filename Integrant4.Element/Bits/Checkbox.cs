@@ -16,22 +16,22 @@ namespace Integrant4.Element.Bits
         {
             public Callbacks.Callback<ushort>? Size { get; init; }
 
-            public Callbacks.BitIsVisible?  IsVisible       { get; init; }
-            public Callbacks.BitIsDisabled? IsDisabled      { get; init; }
-            public Callbacks.BitIsChecked?  IsChecked       { get; init; }
-            public Callbacks.BitIsRequired? IsRequired      { get; init; }
+            public Callbacks.IsVisible?  IsVisible       { get; init; }
+            public Callbacks.IsDisabled? IsDisabled      { get; init; }
+            public Callbacks.IsChecked?  IsChecked       { get; init; }
+            public Callbacks.IsRequired? IsRequired      { get; init; }
             // public Callbacks.BitID?         ID              { get; init; }
-            public Callbacks.BitClasses?    Classes         { get; init; }
-            public Callbacks.BitSize?       Margin          { get; init; }
-            public Callbacks.BitSize?       Padding         { get; init; }
-            public Callbacks.BitColor?      ForegroundColor { get; init; }
-            public Callbacks.BitPixels?     Height          { get; init; }
-            public Callbacks.BitPixels?     Width           { get; init; }
-            public Callbacks.BitDisplay?    Display         { get; init; }
-            public Callbacks.BitData?       Data            { get; init; }
-            public Callbacks.BitTooltip?    Tooltip         { get; init; }
+            public Callbacks.Classes?    Classes         { get; init; }
+            public Callbacks.Size?       Margin          { get; init; }
+            public Callbacks.Size?       Padding         { get; init; }
+            public Callbacks.Color?      ForegroundColor { get; init; }
+            public Callbacks.Pixels?     Height          { get; init; }
+            public Callbacks.Pixels?     Width           { get; init; }
+            public Callbacks.Display?    Display         { get; init; }
+            public Callbacks.Data?       Data            { get; init; }
+            public Callbacks.Tooltip?    Tooltip         { get; init; }
 
-            internal BitSpec ToBitSpec() => new()
+            internal BaseSpec ToBaseSpec() => new()
             {
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
@@ -54,7 +54,7 @@ namespace Integrant4.Element.Bits
     public partial class Checkbox
     {
         public Checkbox(Spec? spec = null)
-            : base(spec?.ToBitSpec(), new ClassSet("I4E-Bit", "I4E-Bit-Checkbox"))
+            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-Checkbox"))
         {
             _size     = spec?.Size                ?? (() => 25);
             IsChecked = spec?.IsChecked?.Invoke() ?? false;

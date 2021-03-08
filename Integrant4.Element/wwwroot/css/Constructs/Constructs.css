@@ -5,9 +5,11 @@ div.I4E-Construct-Header {
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
-  min-height: calc(50px - 10px - 10px);
-  padding: 10px 10px 10px 15px;
-  width: 100%; }
+  padding: 0 10px 0 15px;
+  min-height: 50px;
+  width: 100%;
+  position: sticky;
+  top: 0; }
   div.I4E-Construct-Header > span.I4E-Construct-Header-Content {
     display: contents; }
     div.I4E-Construct-Header > span.I4E-Construct-Header-Content > .I4E-Bit-Link--Title {
