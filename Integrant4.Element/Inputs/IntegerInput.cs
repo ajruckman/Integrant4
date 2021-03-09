@@ -13,9 +13,9 @@ namespace Integrant4.Element.Inputs
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public ElementService? ElementService { get; init; }
-
             public Callbacks.Callback<bool>? Consider0Null { get; init; }
+            public Callbacks.Callback<int>?  Min           { get; init; }
+            public Callbacks.Callback<int>?  Max           { get; init; }
 
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -37,7 +37,6 @@ namespace Integrant4.Element.Inputs
 
             internal BaseSpec ToBaseSpec() => new()
             {
-                ElementService  = ElementService,
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
                 IsRequired      = IsRequired,
@@ -62,6 +61,8 @@ namespace Integrant4.Element.Inputs
     public partial class IntegerInput
     {
         private readonly Callbacks.Callback<bool> _consider0Null;
+        private readonly Callbacks.Callback<int>? _min;
+        private readonly Callbacks.Callback<int>? _max;
 
         public IntegerInput
         (
@@ -72,6 +73,8 @@ namespace Integrant4.Element.Inputs
             : base(jsRuntime, new ClassSet("I4E-Input", "I4E-Input-Integer"), spec?.ToBaseSpec())
         {
             _consider0Null = spec?.Consider0Null ?? (() => false);
+            _min           = spec?.Min;
+            _max           = spec?.Max;
 
             Value = Nullify(value);
         }
@@ -80,7 +83,6 @@ namespace Integrant4.Element.Inputs
         {
             void Fragment(RenderTreeBuilder builder)
             {
-                Console.WriteLine("RENDER");
                 var seq = -1;
 
                 builder.OpenElement(++seq, "div");
@@ -93,10 +95,15 @@ namespace Integrant4.Element.Inputs
                 builder.AddAttribute(++seq, "value", Serialize(Value));
                 builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
 
+                if (_min != null) builder.AddAttribute(++seq, "min", _min.Invoke());
+                if (_max != null) builder.AddAttribute(++seq, "max", _max.Invoke());
+
                 builder.AddElementReferenceCapture(++seq, r => Reference = r);
                 builder.CloseElement();
 
                 builder.CloseElement();
+
+                InputBuilder.ScheduleElementJobs(this, builder, ref seq);
             }
 
             return Fragment;

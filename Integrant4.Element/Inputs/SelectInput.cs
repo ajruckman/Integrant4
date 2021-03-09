@@ -53,8 +53,6 @@ namespace Integrant4.Element.Inputs
                 OptionGetter = optionGetter;
             }
 
-            public ElementService? ElementService { get; init; }
-
             public OptionGetter            OptionGetter           { get; }
             public OptionEqualityComparer? OptionEqualityComparer { get; init; }
 
@@ -78,7 +76,6 @@ namespace Integrant4.Element.Inputs
 
             internal BaseSpec ToBaseSpec() => new()
             {
-                ElementService  = ElementService,
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
                 IsRequired      = IsRequired,
@@ -194,6 +191,8 @@ namespace Integrant4.Element.Inputs
                     builder2.CloseElement();
                 }));
                 builder.CloseComponent();
+
+                InputBuilder.ScheduleElementJobs(this, builder, ref seq);
             }
 
             return Fragment;

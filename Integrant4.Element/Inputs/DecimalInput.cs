@@ -13,10 +13,10 @@ namespace Integrant4.Element.Inputs
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public ElementService? ElementService { get; init; }
-
-            public Callbacks.Callback<bool>?   Consider0Null { get; init; }
-            public Callbacks.Callback<string>? Step          { get; init; }
+            public Callbacks.Callback<bool>?    Consider0Null { get; init; }
+            public Callbacks.Callback<decimal>? Min           { get; init; }
+            public Callbacks.Callback<decimal>? Max           { get; init; }
+            public Callbacks.Callback<decimal>? Step          { get; init; }
 
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -38,7 +38,6 @@ namespace Integrant4.Element.Inputs
 
             internal BaseSpec ToBaseSpec() => new()
             {
-                ElementService  = ElementService,
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
                 IsRequired      = IsRequired,
@@ -62,8 +61,10 @@ namespace Integrant4.Element.Inputs
 
     public partial class DecimalInput
     {
-        private readonly Callbacks.Callback<bool> _consider0Null;
-        private readonly Callbacks.Callback<string> _step;
+        private readonly Callbacks.Callback<bool>     _consider0Null;
+        private readonly Callbacks.Callback<decimal>? _min;
+        private readonly Callbacks.Callback<decimal>? _max;
+        private readonly Callbacks.Callback<decimal>  _step;
 
         public DecimalInput
         (
@@ -74,7 +75,9 @@ namespace Integrant4.Element.Inputs
             : base(jsRuntime, new ClassSet("I4E-Input", "I4E-Input-Decimal"), spec?.ToBaseSpec())
         {
             _consider0Null = spec?.Consider0Null ?? (() => false);
-            _step          = spec?.Step          ?? (() => "0.1");
+            _min           = spec?.Min;
+            _max           = spec?.Max;
+            _step          = spec?.Step ?? (() => 0.1m);
 
             Value = Nullify(value);
         }
@@ -83,7 +86,6 @@ namespace Integrant4.Element.Inputs
         {
             void Fragment(RenderTreeBuilder builder)
             {
-                Console.WriteLine("RENDER");
                 var seq = -1;
 
                 builder.OpenElement(++seq, "div");
@@ -92,14 +94,20 @@ namespace Integrant4.Element.Inputs
                 builder.OpenElement(++seq, "input");
                 InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
 
+                builder.AddAttribute(++seq, "type", "number");
                 builder.AddAttribute(++seq, "value", Serialize(Value));
                 builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
+
+                if (_min != null) builder.AddAttribute(++seq, "min", _min.Invoke());
+                if (_max != null) builder.AddAttribute(++seq, "max", _max.Invoke());
                 builder.AddAttribute(++seq, "step", _step.Invoke());
 
                 builder.AddElementReferenceCapture(++seq, r => Reference = r);
                 builder.CloseElement();
 
                 builder.CloseElement();
+
+                InputBuilder.ScheduleElementJobs(this, builder, ref seq);
             }
 
             return Fragment;

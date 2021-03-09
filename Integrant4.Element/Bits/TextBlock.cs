@@ -12,8 +12,6 @@ namespace Integrant4.Element.Bits
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public ElementService? ElementService { get; init; }
-
             // public Callbacks.Callback<bool>? IsHoverable { get; init; }
             // public Callbacks.Callback<bool>? IsHeading   { get; init; }
 
@@ -36,7 +34,6 @@ namespace Integrant4.Element.Bits
 
             internal BaseSpec ToBaseSpec() => new()
             {
-                ElementService  = ElementService,
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
                 Classes         = Classes,
@@ -108,8 +105,8 @@ namespace Integrant4.Element.Bits
                 }
 
                 builder.CloseElement();
-
-                BaseSpec.QueueTooltip(BaseSpec, ID);
+                
+                BitBuilder.ScheduleElementJobs(this, builder, ref seq);
             }
 
             return Fragment;

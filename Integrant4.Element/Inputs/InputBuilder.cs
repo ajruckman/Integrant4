@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Integrant4.Element.Inputs
@@ -40,6 +43,19 @@ namespace Integrant4.Element.Inputs
             builder.AddAttribute(++seq, "id", $"{inputBase.ID}.Inner");
             builder.AddAttribute(++seq, "style",
                 ElementBuilder.StyleAttribute(inputBase.BaseSpec, additionalStyles));
+        }
+
+        internal static void ScheduleElementJobs<T>(InputBase<T> inputBase, RenderTreeBuilder builder, ref int seq)
+        {
+            if (inputBase.BaseSpec.Tooltip == null) return;
+
+            List<Action<ElementService>> jobs = new();
+
+            if (inputBase.BaseSpec.Tooltip != null)
+                jobs.Add(v => v.AddJob(x => Interop.CreateTooltips(x, inputBase.ID)));
+
+            if (jobs.Count > 0)
+                ServiceInjector<ElementService>.Inject(builder, ref seq, jobs.ToArray());
         }
     }
 }

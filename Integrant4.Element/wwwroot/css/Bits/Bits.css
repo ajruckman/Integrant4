@@ -209,6 +209,8 @@ div.I4E-Bit-Dropdown {
     div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children div.I4E-Bit-Dropdown-Content > * {
       box-sizing: border-box;
       width: 100%; }
+  div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Head[data-contents-shown] a.I4E-Bit-PageLink {
+    color: var(--I4C_Default_Accent_8); }
 
 div.I4E-Bit-Filler {
   flex-grow: 100; }
@@ -289,7 +291,7 @@ a.I4E-Bit-PageLink {
   a.I4E-Bit-PageLink:active:not(#_) {
     border-bottom-color: var(--I4C_Default_Accent_9);
     color: var(--I4C_Default_Accent_9); }
-  a.I4E-Bit-PageLink.I4E-Bit-PageLink--Highlighted {
+  a.I4E-Bit-PageLink.I4E-Bit-PageLink--Highlighted, a.I4E-Bit-PageLink[data-highlighted] {
     border-bottom-color: var(--I4C_Default_Accent_7); }
   a.I4E-Bit-PageLink > span.I4E-Bit-PageLink-Content {
     align-items: center;

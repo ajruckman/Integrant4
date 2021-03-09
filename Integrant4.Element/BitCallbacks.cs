@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Integrant4.API;
 using Integrant4.Fundament;
@@ -34,7 +33,7 @@ namespace Integrant4.Element
 
         public delegate string?                        DataValue();
         public delegate IDictionary<string, DataValue> Data();
-        public delegate string?                        Tooltip();
+        public delegate Element.Tooltip?               Tooltip();
 
         //
 
@@ -49,8 +48,6 @@ namespace Integrant4.Element
 
     internal class BaseSpec
     {
-        public ElementService? ElementService { get; init; }
-
         internal Callbacks.IsVisible?  IsVisible  { get; init; }
         internal Callbacks.IsDisabled? IsDisabled { get; init; }
         internal Callbacks.IsRequired? IsRequired { get; init; }
@@ -72,20 +69,5 @@ namespace Integrant4.Element
 
         internal Callbacks.Data?    Data    { get; init; }
         internal Callbacks.Tooltip? Tooltip { get; init; }
-
-        internal static void EnsureServicesAvailable(BaseSpec spec)
-        {
-            if (spec.ElementService != null) return;
-
-            if (spec.Tooltip != null)
-                throw new Exception($"Input has a tooltip callback set, but no ElementService was supplied.");
-        }
-
-        internal static void QueueTooltip(BaseSpec spec, string id)
-        {
-            if (spec.Tooltip == null) return;
-
-            spec.ElementService!.AddJob(v => Interop.CreateBitTooltips(v, id));
-        }
     }
 }

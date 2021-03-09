@@ -9,7 +9,6 @@ div.I4E-Bit-Dropdown {
         background-color: var(--I4C_Default_Background_6);
         border-radius: 5px;
         box-shadow: var(--I4C_Default_Shadow_1);
-
         display: none;
         margin: 17px;
         padding: 10px;
@@ -24,6 +23,14 @@ div.I4E-Bit-Dropdown {
                 box-sizing: border-box;
                 width: 100%;
             }
+        }
+    }
+
+    // Descendent overrides
+
+    div.I4E-Bit-Dropdown-Head[data-contents-shown] {
+        a.I4E-Bit-PageLink {
+            color: var(--I4C_Default_Accent_8);
         }
     }
 }

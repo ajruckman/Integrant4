@@ -76,7 +76,9 @@ namespace Web.Pages
                 (inst, v) => inst.StructureInstance.State.Age = v,
                 inputGetter: inst => new IntegerInput
                 (
-                    inst.StructureInstance.JSRuntime!, inst.Value(), new IntegerInput.Spec {Consider0Null = Always.True}
+                    inst.StructureInstance.JSRuntime!,
+                    inst.Value(),
+                    new IntegerInput.Spec {Consider0Null = Always.True, Width = () => 50}
                 )
             );
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Integrant4.API;
 using Integrant4.Fundament;
@@ -14,14 +15,7 @@ namespace Integrant4.Element.Bits
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public Spec(ElementService elementService)
-            {
-                ElementService = elementService;
-            }
-
-            public ElementService ElementService { get; init; }
-
-            public PlacementGetter? PlacementGetter { get; init; }
+            public PlacementExtensions.PlacementGetter? PlacementGetter { get; init; }
 
             public Callbacks.Classes? Classes { get; init; }
             public Callbacks.Size?    Margin  { get; init; }
@@ -29,10 +23,9 @@ namespace Integrant4.Element.Bits
 
             internal BaseSpec ToBaseSpec() => new()
             {
-                ElementService = ElementService,
-                Classes        = Classes,
-                Margin         = Margin,
-                Padding        = Padding,
+                Classes = Classes,
+                Margin  = Margin,
+                Padding = Padding,
             };
         }
     }
@@ -46,13 +39,13 @@ namespace Integrant4.Element.Bits
         (
             Callbacks.BitContents headContents,
             Callbacks.BitContents childContents,
-            Spec                  spec
-        ) : base(spec.ToBaseSpec(),
+            Spec?                 spec = null
+        ) : base(spec?.ToBaseSpec(),
             new ClassSet("I4E-Bit", "I4E-Bit-Dropdown"))
         {
             _headContents    = headContents;
             _childContents   = childContents;
-            _placementGetter = spec.PlacementGetter ?? DefaultPlacementGetter;
+            _placementGetter = spec?.PlacementGetter;
         }
     }
 
@@ -79,6 +72,7 @@ namespace Integrant4.Element.Bits
 
             private ElementReference? _toggleRef;
             private ElementReference? _contentsRef;
+            private ElementService?   _elementService;
 
             protected override void BuildRenderTree(RenderTreeBuilder builder)
             {
@@ -108,7 +102,8 @@ namespace Integrant4.Element.Bits
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "id", Dropdown.ID + ".Contents");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Children");
-                builder.AddAttribute(++seq, "data-popper-placement", Map(Dropdown._placementGetter.Invoke()));
+                builder.AddAttribute(++seq, "data-popper-placement",
+                    (Dropdown._placementGetter?.Invoke() ?? Placement.Bottom).Map());
                 builder.AddElementReferenceCapture(++seq, r => _contentsRef = r);
 
                 foreach (IRenderable renderable in Dropdown._childContents.Invoke())
@@ -123,6 +118,8 @@ namespace Integrant4.Element.Bits
 
                 builder.CloseElement();
 
+                ServiceInjector<ElementService>.Inject(builder, ref seq, v => _elementService = v);
+
                 // if (_toggleRef != null && _contentsRef != null)
                 // BaseSpec.ElementService!.AddJob(async v =>
                 // await v.InvokeVoidAsync("I4.Element.InitDropdown", _toggleRef!, _contentsRef!));
@@ -131,7 +128,7 @@ namespace Integrant4.Element.Bits
             protected override void OnAfterRender(bool firstRender)
             {
                 if (firstRender)
-                    Dropdown.BaseSpec.ElementService!.AddJob(async v =>
+                    _elementService!.AddJob(async v =>
                         await v.InvokeVoidAsync("I4.Element.InitDropdown", _toggleRef!, _contentsRef!));
             }
         }
@@ -139,45 +136,6 @@ namespace Integrant4.Element.Bits
 
     public partial class Dropdown
     {
-        public delegate Placement PlacementGetter();
-
-        public enum Placement
-        {
-            Auto,
-            TopStart,
-            Top,
-            TopEnd,
-            RightStart,
-            Right,
-            RightEnd,
-            BottomEnd,
-            Bottom,
-            BottomStart,
-            LeftEnd,
-            Left,
-            LeftStart,
-        }
-
-        private static readonly PlacementGetter DefaultPlacementGetter = () => Placement.Bottom;
-
-        private readonly PlacementGetter _placementGetter;
-
-        private static string Map(Placement placement) => placement switch
-        {
-            Placement.Auto        => "auto",
-            Placement.TopStart    => "top-start",
-            Placement.Top         => "top",
-            Placement.TopEnd      => "top-end",
-            Placement.RightStart  => "right-start",
-            Placement.Right       => "right",
-            Placement.RightEnd    => "right-end",
-            Placement.BottomEnd   => "bottom-end",
-            Placement.Bottom      => "bottom",
-            Placement.BottomStart => "bottom-start",
-            Placement.LeftEnd     => "left-end",
-            Placement.Left        => "left",
-            Placement.LeftStart   => "left-start",
-            _                     => throw new ArgumentOutOfRangeException(nameof(placement), placement, null),
-        };
+        private readonly PlacementExtensions.PlacementGetter? _placementGetter;
     }
 }

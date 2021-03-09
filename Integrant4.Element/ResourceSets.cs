@@ -8,7 +8,7 @@ namespace Integrant4.Element
         public static readonly ResourceSet I4App = new
         (
             $"{nameof(Integrant4)}.{nameof(Element)}",
-            $"{nameof(I4App)}",
+            nameof(I4App),
             stylesheetsInternal: new HashSet<string>
             {
                 "css/I4App.css",
@@ -18,43 +18,36 @@ namespace Integrant4.Element
         public static readonly ResourceSet Constructs = new
         (
             $"{nameof(Integrant4)}.{nameof(Element)}",
-            $"{nameof(Constructs)}",
+            nameof(Constructs),
             stylesheetsInternal: new HashSet<string>
             {
-                "css/Constructs/Constructs.css", "css/Constructs/Constructs.{{ThemeVariant}}.css",
+                "css/Constructs/Constructs.css",
             }
         );
 
         public static readonly ResourceSet Bits = new
         (
             $"{nameof(Integrant4)}.{nameof(Element)}",
-            $"{nameof(Bits)}",
+            nameof(Bits),
             stylesheetsInternal: new HashSet<string>
             {
                 "css/Bits/Bits.css", "css/Bits/Bits.{{ThemeVariant}}.css",
             },
-            scriptsInternal: new HashSet<string>
-            {
-                "js/Dropdowns.js",
-                "js/Tooltips.js",
-            }
+            scriptsInternal: new HashSet<string> {"js/Elements.js"}
         );
 
-        public static class Inputs
-        {
-            public static readonly ResourceSet Interop = new ResourceSet
-            (
-                $"{nameof(Integrant4)}.{nameof(Element)}",
-                $"{nameof(Inputs)}.{nameof(Interop)}",
-                stylesheetsInternal: new HashSet<string> {"css/Inputs/Inputs.css"},
-                scriptsInternal: new HashSet<string> {"js/Inputs.js"}
-            );
-        }
+        public static readonly ResourceSet Inputs = new
+        (
+            $"{nameof(Integrant4)}.{nameof(Element)}",
+            nameof(Inputs),
+            stylesheetsInternal: new HashSet<string> {"css/Inputs/Inputs.css"},
+            scriptsInternal: new HashSet<string> {"js/Elements.js", "js/Inputs.js"}
+        );
 
         public static readonly ResourceSet Layouts = new ResourceSet
         (
             $"{nameof(Integrant4)}.{nameof(Element)}",
-            $"{nameof(Layouts)}",
+            nameof(Layouts),
             stylesheetsInternal: new HashSet<string>
             {
                 "css/Layouts/Layouts.css",

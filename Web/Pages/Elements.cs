@@ -43,8 +43,6 @@ namespace Web.Pages
 
         private Dropdown _dropdown1 = null!;
 
-        private Header _header1 = null!;
-
         private bool _checked = true;
 
         [Inject] public IJSRuntime     JSRuntime      { get; set; } = null!;
@@ -55,11 +53,20 @@ namespace Web.Pages
             _intInput = new IntegerInput(JSRuntime, 0);
             _intInput0Null = new IntegerInput(JSRuntime, 0,
                 new IntegerInput.Spec {Consider0Null = Always.True});
-            _decimalInput = new DecimalInput(JSRuntime, (decimal) 0.0);
-            _decimalInput0Null = new DecimalInput(JSRuntime, (decimal) 0.0,
-                new DecimalInput.Spec {Consider0Null = Always.True});
+            _decimalInput = new DecimalInput(JSRuntime, 0.0m);
+            _decimalInput0Null = new DecimalInput(JSRuntime, 0.0m,
+                new DecimalInput.Spec {Consider0Null = Always.True, Min = () => -2.5m, Max = () => 2.5m});
+
+            decimal? _decimalInputSteppedV = null;
             _decimalInputStepped =
-                new DecimalInput(JSRuntime, (decimal) 0.0, new DecimalInput.Spec {Step = () => "0.01"});
+                new DecimalInput(JSRuntime, 0.0m,
+                    new DecimalInput.Spec
+                        {Step = () => 0.01m, Tooltip = () => new Tooltip(_decimalInputSteppedV?.ToString() ?? "")});
+            _decimalInputStepped.OnChange += v =>
+            {
+                _decimalInputSteppedV = v;
+                InvokeAsync(StateHasChanged);
+            };
 
             void PrintI(int?     v) => Console.WriteLine($"int -> {v}");
             void PrintD(decimal? v) => Console.WriteLine($"decimal -> {v}");
@@ -107,31 +114,21 @@ namespace Web.Pages
                     },
                     new Button.Spec
                     {
-                        ElementService = ElementService,
-                        Style          = () => style,
-                        Tooltip        = () => $"{style} {_checked}",
+                        Style   = () => style,
+                        Tooltip = () => new Tooltip($"{style} {_checked}", 500, Placement.Right),
                     });
 
-                // b.OnActivate += () => Console.WriteLine($"Activate: {style}");
                 b.OnClick += _ => Console.WriteLine($"Click: {style}");
-                // b.OnKeyUp += _ => Console.WriteLine($"KeyPress: {style}");
 
                 _buttonsColored.Add(b);
             }
-
-            // Chip c = new(new Chip.Spec
-            // (
-            //     () => "asdf"
-            // )
-            // {
-            //     PixelsWidth = () => 24,
-            // });
 
             //
 
             _chip = new Chip(() => "Chip 1".AsContent(), new Chip.Spec
             {
-                Height = () => 24,
+                Height  = () => 24,
+                Tooltip = () => new Tooltip("Tooltip"),
             });
 
             _chipLink = new Chip(() => "Chip 1".AsContent(), new Chip.Spec
@@ -208,64 +205,8 @@ namespace Web.Pages
                                 new BootstrapIcon("chevron-right"),
                                 "Chevron".AsContent(),
                             }, new Link.Spec(() => "/") {IsButton = Always.True}),
-                        }, new Dropdown.Spec(ElementService) {PlacementGetter = () => Dropdown.Placement.RightStart}),
-                }, new Dropdown.Spec(ElementService));
-
-            _header1 = new Header(() => new IRenderable[]
-            {
-                new Title(() => new IRenderable[]
-                {
-                    "Integrant 4".AsContent(),
-                }, new Title.Spec(() => "/")),
-                new Filler(),
-                new PageLink(() => new IRenderable[]
-                {
-                    "Elements".AsContent(),
-                }, new PageLink.Spec(() => "/elements")),
-                new VerticalLine(),
-                new PageLink(() => new IRenderable[]
-                {
-                    "Google".AsContent(),
-                }, new PageLink.Spec(() => "https://google.com")),
-                new VerticalLine(),
-                new PageLink(() => new IRenderable[]
-                {
-                    "Google".AsContent(),
-                }, new PageLink.Spec(() => "https://google.com")),
-                new VerticalLine(),
-                new PageLink(() => new IRenderable[]
-                {
-                    "Google".AsContent(),
-                }, new PageLink.Spec(() => "https://google.com") {IsHighlighted = Always.True}),
-                new VerticalLine(),
-                new PageLink(() => new IRenderable[]
-                {
-                    "Google".AsContent(),
-                }, new PageLink.Spec(() => "https://google.com")),
-                new VerticalLine(),
-                new PageLink(() => new IRenderable[]
-                {
-                    "Google".AsContent(),
-                }, new PageLink.Spec(() => "https://google.com")),
-                new VerticalLine(),
-                new Dropdown
-                (
-                    () => new IRenderable[]
-                    {
-                        new PageLink(() => new IRenderable[]
-                        {
-                            "Dropdown 1".AsContent(),
-                            new BootstrapIcon("chevron-down"),
-                        }, new PageLink.Spec(() => "/elements")),
-                    },
-                    () => new IRenderable[]
-                    {
-                        new TextBlock(() => new IRenderable[] {"Content".AsContent()}),
-                        new HorizontalLine(),
-                        new TextBlock(() => new IRenderable[] {"Content 2".AsContent()}),
-                    }, new Dropdown.Spec(ElementService)
-                ),
-            });
+                        }, new Dropdown.Spec {PlacementGetter = () => Placement.RightStart}),
+                });
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)

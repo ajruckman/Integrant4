@@ -18,8 +18,11 @@ a.I4E-Bit-PageLink {
         color: var(--I4C_Default_Accent_9);
     }
 
-    &.I4E-Bit-PageLink--Highlighted {
+    &.I4E-Bit-PageLink--Highlighted, &[data-highlighted] {
         border-bottom-color: var(--I4C_Default_Accent_7);
+    }
+
+    &[data-highlighted] {
     }
 
     > span.I4E-Bit-PageLink-Content {

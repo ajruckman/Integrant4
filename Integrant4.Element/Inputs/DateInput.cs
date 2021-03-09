@@ -15,8 +15,6 @@ namespace Integrant4.Element.Inputs
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public ElementService? ElementService { get; init; }
-
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
             public Callbacks.IsRequired? IsRequired      { get; init; }
@@ -37,7 +35,6 @@ namespace Integrant4.Element.Inputs
 
             internal BaseSpec ToBaseSpec() => new()
             {
-                ElementService  = ElementService,
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
                 IsRequired      = IsRequired,
@@ -94,6 +91,8 @@ namespace Integrant4.Element.Inputs
                 builder.CloseElement();
 
                 builder.CloseElement();
+
+                InputBuilder.ScheduleElementJobs(this, builder, ref seq);
             }
 
             return Fragment;

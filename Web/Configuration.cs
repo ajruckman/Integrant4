@@ -21,7 +21,7 @@ namespace Web
                 {
                     ResourceSets.I4App,
 
-                    ResourceSets.Inputs.Interop,
+                    ResourceSets.Inputs,
                     ResourceSets.Bits,
                     ResourceSets.Constructs,
                     ResourceSets.Layouts,

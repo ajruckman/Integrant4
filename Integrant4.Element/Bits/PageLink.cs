@@ -1,10 +1,13 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Threading.Tasks;
 using Integrant4.API;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
+using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Bits
 {
@@ -49,6 +52,9 @@ namespace Integrant4.Element.Bits
     {
         private readonly Callbacks.BitContents     _contents;
         private readonly Callbacks.Callback<bool>? _isHighlighted;
+        private readonly bool                      _doAutoHighlight;
+
+        private bool? _isCurrentPage;
 
         public PageLink(Callbacks.BitContent content, Spec spec)
             : this(content.AsContents(), spec)
@@ -56,33 +62,73 @@ namespace Integrant4.Element.Bits
         }
 
         public PageLink(Callbacks.BitContents contents, Spec spec)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(PageLink)))
+            : base(spec.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(PageLink)))
         {
-            _contents      = contents;
-            _isHighlighted = spec?.IsHighlighted;
+            _contents = contents;
+
+            if (spec.IsHighlighted == null)
+            {
+                _isHighlighted   = () => _isCurrentPage == true;
+                _doAutoHighlight = true;
+            }
+            else
+            {
+                _isHighlighted   = spec.IsHighlighted;
+                _doAutoHighlight = false;
+            }
         }
     }
 
     public partial class PageLink
     {
-        public override RenderFragment Renderer()
+        public override RenderFragment Renderer() => builder =>
         {
-            void Fragment(RenderTreeBuilder builder)
+            builder.OpenComponent<Component>(0);
+            builder.AddAttribute(1, "PageLink", this);
+            builder.CloseComponent();
+        };
+
+        private async Task CheckPage(IJSRuntime jsRuntime, NavigationManager navMgr)
+        {
+            string currentURL = "/" + navMgr.ToBaseRelativePath(navMgr.Uri);
+
+            bool isCurrentPage = currentURL.StartsWith(BaseSpec.HREF!.Invoke());
+
+            if (isCurrentPage != _isCurrentPage)
             {
-                IRenderable[] contents = _contents.Invoke().ToArray();
+                _isCurrentPage = isCurrentPage;
+                await Interop.HighlightPageLink(jsRuntime, ID, isCurrentPage);
+            }
+
+            Console.WriteLine($"{currentURL}, {BaseSpec.HREF!.Invoke()}, {_isCurrentPage}");
+        }
+    }
+
+    public partial class PageLink
+    {
+        private class Component : ComponentBase
+        {
+            [Parameter] public PageLink PageLink { get; set; } = null!;
+
+            [Inject] public IJSRuntime        JSRuntime         { get; set; } = null!;
+            [Inject] public NavigationManager NavigationManager { get; set; } = null!;
+
+            protected override void BuildRenderTree(RenderTreeBuilder builder)
+            {
+                IRenderable[] contents = PageLink._contents.Invoke().ToArray();
 
                 List<string> ac = new();
 
-                if (_isHighlighted?.Invoke() == true)
+                if (PageLink._isHighlighted?.Invoke() == true)
                     ac.Add("I4E-Bit-PageLink--Highlighted");
 
                 //
 
                 int seq = -1;
                 builder.OpenElement(++seq, "a");
-                builder.AddAttribute(++seq, "href", BaseSpec.HREF!.Invoke());
+                builder.AddAttribute(++seq, "href", PageLink.BaseSpec.HREF!.Invoke());
 
-                BitBuilder.ApplyAttributes(this, builder, ref seq, ac.ToArray(), null);
+                BitBuilder.ApplyAttributes(PageLink, builder, ref seq, ac.ToArray(), null);
 
                 foreach (IRenderable renderable in contents)
                 {
@@ -93,9 +139,27 @@ namespace Integrant4.Element.Bits
                 }
 
                 builder.CloseElement();
+
+                // if (PageLink._doAutoHighlight)
+                // {
+                //     ServiceInjector<IJSRuntime>.Inject(builder, ref seq, v => _jsRuntime = v);
+                //     ServiceInjector<NavigationManager>.Inject(builder, ref seq, v =>
+                //     {
+                //         _navMgr                 =  v;
+                //         _navMgr.LocationChanged += async (_, _) => await CheckPage();
+                //     });
+                // }
             }
 
-            return Fragment;
+            protected override async Task OnAfterRenderAsync(bool firstRender)
+            {
+                if (!firstRender || !PageLink._doAutoHighlight) return;
+
+                NavigationManager.LocationChanged +=
+                    async (_, _) => await PageLink.CheckPage(JSRuntime, NavigationManager);
+
+                await PageLink.CheckPage(JSRuntime, NavigationManager);
+            }
         }
     }
 }
