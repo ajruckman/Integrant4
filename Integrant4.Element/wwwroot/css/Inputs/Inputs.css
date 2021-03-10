@@ -28,17 +28,17 @@ div.I4E-Input-Select select {
   padding: 3px 2px; }
 
 div.I4-App[data-i4-theme-variant="Dark"], div.I4-App[data-i4-theme-variant="Matrix"] {
-  --I4E_InputBase_Background_Normal: var(--I4C_Default_Background_8);
-  --I4E_InputBase_Background_Hover: var(--I4C_Default_Background_9);
-  --I4E_InputBase_Background_Focus: var(--I4C_Default_Background_10);
-  --I4E_InputBase_Border_Normal: var(--I4C_Default_Border_4);
-  --I4E_InputBase_Border_Hover: var(--I4C_Default_Border_11);
+  --I4E_InputBase_Background_Normal: var(--I4C_Default_Background_10);
+  --I4E_InputBase_Background_Hover: var(--I4C_Default_Background_8);
+  --I4E_InputBase_Background_Focus: var(--I4C_Default_Background_0);
+  --I4E_InputBase_Border_Normal: var(--I4C_Default_Border_11);
+  --I4E_InputBase_Border_Hover: var(--I4C_Default_Border_13);
   --I4E_InputBase_Border_Focus: var(--I4C_Default_Accent_7); }
 
 div.I4-App[data-i4-theme-variant="Pink"], div.I4-App[data-i4-theme-variant="White"] {
-  --I4E_InputBase_Background_Normal: var(--I4C_Default_Background_2);
-  --I4E_InputBase_Background_Hover: var(--I4C_Default_Background_1);
+  --I4E_InputBase_Background_Normal: var(--I4C_Default_Background_5);
+  --I4E_InputBase_Background_Hover: var(--I4C_Default_Background_2);
   --I4E_InputBase_Background_Focus: var(--I4C_Default_Background_0);
-  --I4E_InputBase_Border_Normal: var(--I4C_Default_Border_4);
-  --I4E_InputBase_Border_Hover: var(--I4C_Default_Border_11);
+  --I4E_InputBase_Border_Normal: var(--I4C_Default_Border_5);
+  --I4E_InputBase_Border_Hover: var(--I4C_Default_Border_10);
   --I4E_InputBase_Border_Focus: var(--I4C_Default_Accent_7); }

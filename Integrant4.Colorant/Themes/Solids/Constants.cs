@@ -182,35 +182,5 @@ namespace Integrant4.Colorant.Themes.Solids
         public const string Yellow_13_Text = "var(--I4C_Solids_Yellow_13_Text)";
         public const string Yellow_14 = "var(--I4C_Solids_Yellow_14)";
         public const string Yellow_14_Text = "var(--I4C_Solids_Yellow_14_Text)";
-        public const string Opaque_White_0 = "var(--I4C_Solids_Opaque_White_0)";
-        public const string Opaque_White_1 = "var(--I4C_Solids_Opaque_White_1)";
-        public const string Opaque_White_2 = "var(--I4C_Solids_Opaque_White_2)";
-        public const string Opaque_White_3 = "var(--I4C_Solids_Opaque_White_3)";
-        public const string Opaque_White_4 = "var(--I4C_Solids_Opaque_White_4)";
-        public const string Opaque_White_5 = "var(--I4C_Solids_Opaque_White_5)";
-        public const string Opaque_White_6 = "var(--I4C_Solids_Opaque_White_6)";
-        public const string Opaque_White_7 = "var(--I4C_Solids_Opaque_White_7)";
-        public const string Opaque_White_8 = "var(--I4C_Solids_Opaque_White_8)";
-        public const string Opaque_White_9 = "var(--I4C_Solids_Opaque_White_9)";
-        public const string Opaque_White_10 = "var(--I4C_Solids_Opaque_White_10)";
-        public const string Opaque_White_11 = "var(--I4C_Solids_Opaque_White_11)";
-        public const string Opaque_White_12 = "var(--I4C_Solids_Opaque_White_12)";
-        public const string Opaque_White_13 = "var(--I4C_Solids_Opaque_White_13)";
-        public const string Opaque_White_14 = "var(--I4C_Solids_Opaque_White_14)";
-        public const string Opaque_Black_0 = "var(--I4C_Solids_Opaque_Black_0)";
-        public const string Opaque_Black_1 = "var(--I4C_Solids_Opaque_Black_1)";
-        public const string Opaque_Black_2 = "var(--I4C_Solids_Opaque_Black_2)";
-        public const string Opaque_Black_3 = "var(--I4C_Solids_Opaque_Black_3)";
-        public const string Opaque_Black_4 = "var(--I4C_Solids_Opaque_Black_4)";
-        public const string Opaque_Black_5 = "var(--I4C_Solids_Opaque_Black_5)";
-        public const string Opaque_Black_6 = "var(--I4C_Solids_Opaque_Black_6)";
-        public const string Opaque_Black_7 = "var(--I4C_Solids_Opaque_Black_7)";
-        public const string Opaque_Black_8 = "var(--I4C_Solids_Opaque_Black_8)";
-        public const string Opaque_Black_9 = "var(--I4C_Solids_Opaque_Black_9)";
-        public const string Opaque_Black_10 = "var(--I4C_Solids_Opaque_Black_10)";
-        public const string Opaque_Black_11 = "var(--I4C_Solids_Opaque_Black_11)";
-        public const string Opaque_Black_12 = "var(--I4C_Solids_Opaque_Black_12)";
-        public const string Opaque_Black_13 = "var(--I4C_Solids_Opaque_Black_13)";
-        public const string Opaque_Black_14 = "var(--I4C_Solids_Opaque_Black_14)";
     }
 }

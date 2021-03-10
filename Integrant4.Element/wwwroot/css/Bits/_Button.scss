@@ -12,11 +12,11 @@ button.I4E-Bit-Button {
         cursor: pointer;
 
         &:hover {
-            background-color: var(--I4C_Solids_Opaque_White_3);
+            background-color: var(--I4C_Default_Opaque_White_3);
         }
 
         &:active {
-            background-color: var(--I4C_Solids_Opaque_White_2);
+            background-color: var(--I4C_Default_Opaque_White_2);
         }
     }
 
@@ -101,17 +101,17 @@ div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
         button.I4E-Bit-Button {
             &.I4E-Bit-Button--Default {
-                background-color: var(--I4C_Solids_Opaque_White_2);
+                background-color: var(--I4C_Default_Opaque_White_2);
                 box-shadow: var(--I4C_Default_Shadow_0);
                 color: var(--I4C_Default_Text_6);
 
                 &:hover:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Solids_Opaque_White_3);
+                    background-color: var(--I4C_Default_Opaque_White_3);
                     color: var(--I4C_Default_Text_6);
                 }
 
                 &:active:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Solids_Opaque_White_2);
+                    background-color: var(--I4C_Default_Opaque_White_2);
                     color: var(--I4C_Default_Text_6);
                 }
             }
@@ -120,12 +120,12 @@ div.I4-App {
                 color: var(--I4C_Default_Accent_5);
 
                 &:hover:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Solids_Opaque_White_3);
+                    background-color: var(--I4C_Default_Opaque_White_3);
                     color: var(--I4C_Default_Accent_6);
                 }
 
                 &:active:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Solids_Opaque_White_2);
+                    background-color: var(--I4C_Default_Opaque_White_2);
                     color: var(--I4C_Default_Accent_6);
                 }
             }
@@ -135,16 +135,16 @@ div.I4-App {
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
         button.I4E-Bit-Button {
             &.I4E-Bit-Button--Default {
-                background-color: var(--I4C_Solids_Opaque_Black_1);
+                background-color: var(--I4C_Default_Opaque_Black_1);
                 color: var(--I4C_Default_Text_6);
 
                 &:hover:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Solids_Opaque_Black_2);
+                    background-color: var(--I4C_Default_Opaque_Black_2);
                     color: var(--I4C_Default_Text_6);
                 }
 
                 &:active:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Solids_Opaque_Black_1);
+                    background-color: var(--I4C_Default_Opaque_Black_1);
                     color: var(--I4C_Default_Text_6);
                 }
             }
@@ -153,12 +153,12 @@ div.I4-App {
                 color: var(--I4C_Default_Accent_5);
 
                 &:hover:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Solids_Opaque_Black_1);
+                    background-color: var(--I4C_Default_Opaque_Black_1);
                     color: var(--I4C_Default_Accent_6);
                 }
 
                 &:active:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Solids_Opaque_Black_0);
+                    background-color: var(--I4C_Default_Opaque_Black_0);
                     color: var(--I4C_Default_Accent_6);
                 }
             }

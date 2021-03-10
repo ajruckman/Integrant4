@@ -5,7 +5,7 @@
 }
 
 div.I4E-Bit-Chip, a.I4E-Bit-Chip {
-    background-color: var(--I4C_Solids_Opaque_White_2);
+    background-color: var(--I4C_Default_Opaque_White_2);
     border-radius: 5000px;
     box-shadow: var(--I4C_Default_Shadow_0);
     box-sizing: border-box;
@@ -29,11 +29,11 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
         // Default colors
         
         &:hover {
-            background-color: var(--I4C_Solids_Opaque_White_3);
+            background-color: var(--I4C_Default_Opaque_White_3);
         }
 
         &:focus {
-            background-color: var(--I4C_Solids_Opaque_White_2);
+            background-color: var(--I4C_Default_Opaque_White_2);
         }
     }
 }

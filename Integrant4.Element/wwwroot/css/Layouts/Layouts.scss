@@ -8,15 +8,18 @@ div.I4E-Layout-Panel {
     div.I4E-Layout-Panel-Inner {
         overflow: visible;
         padding: 7px;
+
+        > h1, > h2, > h3, > h4, > h5, > h6 {
+            margin: 0 7px;
+        }
     }
 
     // Descendent overrides
 
-    div.I4E-Construct-Header {
-        border-bottom: 1px solid var(--I4C_Default_Border_6);
-        //border-top-left-radius: 4px;
-        //border-top-right-radius: 4px;
+    > div.I4E-Construct-Header {
+        border-bottom: 1px solid var(--I4C_Default_Border_4);
         box-shadow: none;
+        padding: 0 11px;
     }
 }
 
@@ -28,17 +31,3 @@ div.I4E-Layout-VAlign {
 div.I4E-Layout-VAlign-Filler {
     flex-grow: 9999;
 }
-
-//div.I4-App {
-//    &[data-i4-theme-variant="Dark"] {
-//        div.I4E-Construct-Header {
-//            background-color: var(--I4C_Default_Background_8);
-//        }
-//    }
-//
-//    &[data-i4-theme-variant="Matrix"] {
-//        div.I4E-Construct-Header {
-//            background-color: var(--I4C_Default_Background_8);
-//        }
-//    }
-//}

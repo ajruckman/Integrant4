@@ -34,13 +34,13 @@ namespace Web.Shared
                 Integrant4.Colorant.Themes.Solids.Variants.Normal.ToString());
 
             //
-            
+
             _header = new Header(() => new IRenderable[]
             {
                 new PageLink(() => new IRenderable[]
                 {
                     "Integrant 4".AsContent(),
-                }, new PageLink.Spec(() => "/"){IsTitle = Always.True}),
+                }, new PageLink.Spec(() => "/") {IsTitle = Always.True}),
                 new Filler(),
                 new PageLink(() => new IRenderable[]
                 {

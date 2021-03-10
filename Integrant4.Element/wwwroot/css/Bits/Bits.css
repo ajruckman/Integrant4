@@ -10,9 +10,9 @@ button.I4E-Bit-Button {
   button.I4E-Bit-Button:not(.I4E-Bit--Disabled) {
     cursor: pointer; }
     button.I4E-Bit-Button:not(.I4E-Bit--Disabled):hover {
-      background-color: var(--I4C_Solids_Opaque_White_3); }
+      background-color: var(--I4C_Default_Opaque_White_3); }
     button.I4E-Bit-Button:not(.I4E-Bit--Disabled):active {
-      background-color: var(--I4C_Solids_Opaque_White_2); }
+      background-color: var(--I4C_Default_Opaque_White_2); }
   button.I4E-Bit-Button.I4E-Bit--Disabled {
     cursor: not-allowed; }
   button.I4E-Bit-Button > span.I4E-Bit-Button-Content {
@@ -49,42 +49,42 @@ button.I4E-Bit-Button {
       opacity: 0.5; }
 
 div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default {
-  background-color: var(--I4C_Solids_Opaque_White_2);
+  background-color: var(--I4C_Default_Opaque_White_2);
   box-shadow: var(--I4C_Default_Shadow_0);
   color: var(--I4C_Default_Text_6); }
   div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Solids_Opaque_White_3);
+    background-color: var(--I4C_Default_Opaque_White_3);
     color: var(--I4C_Default_Text_6); }
   div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Solids_Opaque_White_2);
+    background-color: var(--I4C_Default_Opaque_White_2);
     color: var(--I4C_Default_Text_6); }
 
 div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent {
   color: var(--I4C_Default_Accent_5); }
   div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Solids_Opaque_White_3);
+    background-color: var(--I4C_Default_Opaque_White_3);
     color: var(--I4C_Default_Accent_6); }
   div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Solids_Opaque_White_2);
+    background-color: var(--I4C_Default_Opaque_White_2);
     color: var(--I4C_Default_Accent_6); }
 
 div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default {
-  background-color: var(--I4C_Solids_Opaque_Black_1);
+  background-color: var(--I4C_Default_Opaque_Black_1);
   color: var(--I4C_Default_Text_6); }
   div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Solids_Opaque_Black_2);
+    background-color: var(--I4C_Default_Opaque_Black_2);
     color: var(--I4C_Default_Text_6); }
   div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Solids_Opaque_Black_1);
+    background-color: var(--I4C_Default_Opaque_Black_1);
     color: var(--I4C_Default_Text_6); }
 
 div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent, div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent {
   color: var(--I4C_Default_Accent_5); }
   div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Solids_Opaque_Black_1);
+    background-color: var(--I4C_Default_Opaque_Black_1);
     color: var(--I4C_Default_Accent_6); }
   div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Solids_Opaque_Black_0);
+    background-color: var(--I4C_Default_Opaque_Black_0);
     color: var(--I4C_Default_Accent_6); }
 
 button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled) {
@@ -218,7 +218,7 @@ div.I4E-Bit-Checkbox {
   display: none !important; }
 
 div.I4E-Bit-Chip, a.I4E-Bit-Chip {
-  background-color: var(--I4C_Solids_Opaque_White_2);
+  background-color: var(--I4C_Default_Opaque_White_2);
   border-radius: 5000px;
   box-shadow: var(--I4C_Default_Shadow_0);
   box-sizing: border-box;
@@ -234,9 +234,9 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
     div.I4E-Bit-Chip.I4E-Bit-Chip--Link:visited, a.I4E-Bit-Chip.I4E-Bit-Chip--Link:visited {
       color: var(--I4C_Default_PageText); }
     div.I4E-Bit-Chip.I4E-Bit-Chip--Link:hover, a.I4E-Bit-Chip.I4E-Bit-Chip--Link:hover {
-      background-color: var(--I4C_Solids_Opaque_White_3); }
+      background-color: var(--I4C_Default_Opaque_White_3); }
     div.I4E-Bit-Chip.I4E-Bit-Chip--Link:focus, a.I4E-Bit-Chip.I4E-Bit-Chip--Link:focus {
-      background-color: var(--I4C_Solids_Opaque_White_2); }
+      background-color: var(--I4C_Default_Opaque_White_2); }
 
 div.I4E-Bit-Dropdown {
   display: inline-block; }
@@ -324,9 +324,9 @@ a.I4E-Bit-Link {
     a.I4E-Bit-Link.I4E-Bit-Link--Button:focus-visible {
       box-shadow: 0 0 1px 0 var(--I4C_Default_Accent_5); }
     a.I4E-Bit-Link.I4E-Bit-Link--Button:hover {
-      background-color: var(--I4C_Solids_Opaque_White_3); }
+      background-color: var(--I4C_Default_Opaque_White_3); }
     a.I4E-Bit-Link.I4E-Bit-Link--Button:active {
-      background-color: var(--I4C_Solids_Opaque_White_2); }
+      background-color: var(--I4C_Default_Opaque_White_2); }
 
 a.I4E-Bit-PageLink {
   align-items: center;

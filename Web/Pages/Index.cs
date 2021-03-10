@@ -18,8 +18,10 @@ namespace Web.Pages
     {
         private StructureInstance<Dog, DogState> _structureInstance = null!;
 
-        private         Header     _header = null!;
-        [Inject] public IJSRuntime JSRuntime { get; set; } = null!;
+        private Header _header = null!;
+
+        [Inject] public IJSRuntime     JSRuntime      { get; set; } = null!;
+        [Inject] public ElementService ElementService { get; set; } = null!;
 
         protected override void OnInitialized()
         {
@@ -48,6 +50,11 @@ namespace Web.Pages
         private async Task Reset()
         {
             _structureInstance.ResetAllMemberInputValues();
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender) await ElementService.ProcessJobs();
         }
     }
 

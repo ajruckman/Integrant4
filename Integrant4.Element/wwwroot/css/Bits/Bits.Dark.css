@@ -1,18 +1,18 @@
 a.I4E-Bit-Chip--Link:not(#_):hover {
-  background-color: var(--I4C_Solids_Opaque_White_3); }
+  background-color: var(--I4C_Default_Opaque_White_3); }
 
 a.I4E-Bit-Chip--Link:not(#_):focus {
-  background-color: var(--I4C_Solids_Opaque_White_2); }
+  background-color: var(--I4C_Default_Opaque_White_2); }
 
 a.I4E-Bit-Link--Button:not(#_):hover, a.I4E-Bit-Link--Button:not(#_):active {
   box-shadow: var(--I4C_Default_Shadow_0); }
 
 a.I4E-Bit-Link--Button:not(#_):hover {
-  background-color: var(--I4C_Solids_Opaque_White_3); }
+  background-color: var(--I4C_Default_Opaque_White_3); }
 
 a.I4E-Bit-Link--Button:not(#_):active {
-  background-color: var(--I4C_Solids_Opaque_White_2); }
+  background-color: var(--I4C_Default_Opaque_White_2); }
 
 div.I4E-Bit-TextBlock--Hoverable:not(#_):hover {
-  background-color: var(--I4C_Solids_Opaque_White_3);
+  background-color: var(--I4C_Default_Opaque_White_3);
   box-shadow: var(--I4C_Default_Shadow_0); }
