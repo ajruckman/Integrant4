@@ -2,24 +2,39 @@ button.I4E-Bit-Button {
     align-items: center;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
     display: inline-flex;
     font-weight: 600;
     height: 30px;
     padding: 0;
     user-select: none;
-    
+
+    &:not(.I4E-Bit--Disabled) {
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--I4C_Solids_Opaque_White_3);
+        }
+
+        &:active {
+            background-color: var(--I4C_Solids_Opaque_White_2);
+        }
+    }
+
+    &.I4E-Bit--Disabled {
+        cursor: not-allowed;
+    }
+
     > span.I4E-Bit-Button-Content {
-        display: inline-flex;
         align-items: center;
-        
+        display: inline-flex;
+
         &:not(:last-child) {
             margin-right: 5px;
         }
     }
 
     //
-    
+
     &:not(.I4E-Bit-Button--IconLeft) {
         padding-left: 10px;
     }
@@ -35,7 +50,7 @@ button.I4E-Bit-Button {
     &.I4E-Bit-Button--IconRight {
         padding-right: 5px;
     }
-    
+
     //
 
     &:focus {
@@ -49,11 +64,8 @@ button.I4E-Bit-Button {
     // Default colors
 
     &.I4E-Bit-Button--Default {
-        background-color: var(--I4C_Solids_Opaque_White_2);
-        color: var(--I4C_Default_Text_6);
-
-        &:hover, &:active {
-            color: var(--I4C_Default_Text_6);
+        &.I4E-Bit--Disabled {
+            opacity: 0.5;
         }
     }
 
@@ -61,32 +73,100 @@ button.I4E-Bit-Button {
         background-color: var(--I4C_Default_Accent_5);
         color: var(--I4C_Default_Accent_6_Text);
 
-        &:hover {
+        &:hover:not(.I4E-Bit--Disabled) {
             background-color: var(--I4C_Default_Accent_4);
         }
 
-        &:active {
+        &:active:not(.I4E-Bit--Disabled) {
             background-color: var(--I4C_Default_Accent_3);
+        }
+
+        &.I4E-Bit--Disabled {
+            opacity: 0.5;
         }
     }
 
     &.I4E-Bit-Button--Transparent {
         background-color: transparent;
-        color: var(--I4C_Default_Accent_5);
 
-        &:hover, &:active {
-            color: var(--I4C_Default_Accent_6);
+        &.I4E-Bit--Disabled {
+            opacity: 0.5;
+        }
+    }
+}
+
+// Variable colors
+
+div.I4-App {
+    &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
+        button.I4E-Bit-Button {
+            &.I4E-Bit-Button--Default {
+                background-color: var(--I4C_Solids_Opaque_White_2);
+                box-shadow: var(--I4C_Default_Shadow_0);
+                color: var(--I4C_Default_Text_6);
+
+                &:hover:not(.I4E-Bit--Disabled) {
+                    background-color: var(--I4C_Solids_Opaque_White_3);
+                    color: var(--I4C_Default_Text_6);
+                }
+
+                &:active:not(.I4E-Bit--Disabled) {
+                    background-color: var(--I4C_Solids_Opaque_White_2);
+                    color: var(--I4C_Default_Text_6);
+                }
+            }
+
+            &.I4E-Bit-Button--Transparent {
+                color: var(--I4C_Default_Accent_5);
+
+                &:hover:not(.I4E-Bit--Disabled) {
+                    background-color: var(--I4C_Solids_Opaque_White_3);
+                    color: var(--I4C_Default_Accent_6);
+                }
+
+                &:active:not(.I4E-Bit--Disabled) {
+                    background-color: var(--I4C_Solids_Opaque_White_2);
+                    color: var(--I4C_Default_Accent_6);
+                }
+            }
         }
     }
 
-    &:hover {
-        background-color: var(--I4C_Solids_Opaque_White_3);
-    }
+    &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
+        button.I4E-Bit-Button {
+            &.I4E-Bit-Button--Default {
+                background-color: var(--I4C_Solids_Opaque_Black_1);
+                color: var(--I4C_Default_Text_6);
 
-    &:active {
-        background-color: var(--I4C_Solids_Opaque_White_2);
+                &:hover:not(.I4E-Bit--Disabled) {
+                    background-color: var(--I4C_Solids_Opaque_Black_2);
+                    color: var(--I4C_Default_Text_6);
+                }
+
+                &:active:not(.I4E-Bit--Disabled) {
+                    background-color: var(--I4C_Solids_Opaque_Black_1);
+                    color: var(--I4C_Default_Text_6);
+                }
+            }
+
+            &.I4E-Bit-Button--Transparent {
+                color: var(--I4C_Default_Accent_5);
+
+                &:hover:not(.I4E-Bit--Disabled) {
+                    background-color: var(--I4C_Solids_Opaque_Black_1);
+                    color: var(--I4C_Default_Accent_6);
+                }
+
+                &:active:not(.I4E-Bit--Disabled) {
+                    background-color: var(--I4C_Solids_Opaque_Black_0);
+                    color: var(--I4C_Default_Accent_6);
+                }
+            }
+        }
     }
 }
+
+//
 
 @mixin _ColorButton(
     $normalBackground, $normalBorder, $normalColor, 
@@ -94,8 +174,9 @@ button.I4E-Bit-Button {
     $activeBackground, $activeBorder, $activeColor,
     $disabledBackground, $disabledBorder, $disabledColor,
 ) {
-    &:not(.I4E-Bit-IsDisabled):not(:disabled) {
+    &:not(.I4E-Bit--Disabled):not(:disabled) {
         background-color: $normalBackground;
+        box-shadow: var(--I4C_Default_Shadow_0);
         border: 1px solid $normalBorder;
         color: $normalColor;
 
@@ -112,7 +193,7 @@ button.I4E-Bit-Button {
         }
     }
 
-    &.I4E-Bit-IsDisabled, &:disabled {
+    &.I4E-Bit--Disabled, &:disabled {
         background-color: $disabledBackground;
         border: 1px solid $disabledBorder;
         color: $disabledColor;
@@ -134,7 +215,7 @@ button.I4E-Bit-Button--Blue {
                     white,
                 //
                     transparent,
-                    var(--I4C_Default_Border_6),
+                    var(--I4C_Default_Border_4),
                     var(--I4C_Default_Text_0)
     );
 }
@@ -154,7 +235,7 @@ button.I4E-Bit-Button--Green {
                     white,
                 //
                     transparent,
-                    var(--I4C_Default_Border_6),
+                    var(--I4C_Default_Border_4),
                     var(--I4C_Default_Text_0)
     );
 }
@@ -174,7 +255,7 @@ button.I4E-Bit-Button--Orange {
                     white,
                 //
                     transparent,
-                    var(--I4C_Default_Border_6),
+                    var(--I4C_Default_Border_4),
                     var(--I4C_Default_Text_0)
     );
 }
@@ -194,7 +275,7 @@ button.I4E-Bit-Button--Purple {
                     white,
                 //
                     transparent,
-                    var(--I4C_Default_Border_6),
+                    var(--I4C_Default_Border_4),
                     var(--I4C_Default_Text_0)
     );
 }
@@ -214,7 +295,7 @@ button.I4E-Bit-Button--Red {
                     white,
                 //
                     transparent,
-                    var(--I4C_Default_Border_6),
+                    var(--I4C_Default_Border_4),
                     var(--I4C_Default_Text_0)
     );
 }
@@ -234,7 +315,7 @@ button.I4E-Bit-Button--Yellow {
                     black,
                 //
                     transparent,
-                    var(--I4C_Default_Border_6),
+                    var(--I4C_Default_Border_4),
                     var(--I4C_Default_Text_0)
     );
 }

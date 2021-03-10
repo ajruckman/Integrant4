@@ -9,8 +9,6 @@ namespace Integrant4.Element.Bits
         internal readonly ClassSet BaseClasses;
         internal readonly string   ID;
 
-        protected ElementService? ElementService;
-
         internal BitBase(BaseSpec? spec, ClassSet classes)
         {
             BaseSpec    = spec ?? new BaseSpec();

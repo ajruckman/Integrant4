@@ -31,7 +31,7 @@ namespace Integrant4.Element
             nameof(Bits),
             stylesheetsInternal: new HashSet<string>
             {
-                "css/Bits/Bits.css", "css/Bits/Bits.{{ThemeVariant}}.css",
+                "css/Bits/Bits.css", "css/Bits/Bits.{{ThemeVariant}}.css"
             },
             scriptsInternal: new HashSet<string> {"js/Elements.js"}
         );

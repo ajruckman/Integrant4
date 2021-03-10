@@ -37,10 +37,10 @@ namespace Web.Shared
             
             _header = new Header(() => new IRenderable[]
             {
-                new Title(() => new IRenderable[]
+                new PageLink(() => new IRenderable[]
                 {
                     "Integrant 4".AsContent(),
-                }, new Title.Spec(() => "/")),
+                }, new PageLink.Spec(() => "/"){IsTitle = Always.True}),
                 new Filler(),
                 new PageLink(() => new IRenderable[]
                 {

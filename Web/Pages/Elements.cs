@@ -16,12 +16,15 @@ namespace Web.Pages
 {
     public partial class Elements
     {
-        private readonly List<Button> _buttonsColored      = new();
-        private          IntegerInput _intInput            = null!;
-        private          IntegerInput _intInput0Null       = null!;
-        private          DecimalInput _decimalInput        = null!;
-        private          DecimalInput _decimalInput0Null   = null!;
-        private          DecimalInput _decimalInputStepped = null!;
+        private readonly List<Button> _buttonsColored = new();
+
+        private Header _header = null!;
+
+        private IntegerInput _intInput            = null!;
+        private IntegerInput _intInput0Null       = null!;
+        private DecimalInput _decimalInput        = null!;
+        private DecimalInput _decimalInput0Null   = null!;
+        private DecimalInput _decimalInputStepped = null!;
 
         private Button _buttonNoIcon    = null!;
         private Button _buttonOnlyIcon  = null!;
@@ -50,6 +53,14 @@ namespace Web.Pages
 
         protected override void OnInitialized()
         {
+            _header = new Header(() => new IRenderable[]
+            {
+                new PageLink(() => "Secondary header".AsContent(),
+                    new PageLink.Spec(() => "/elements") {IsTitle = Always.True}),
+                new Filler(),
+                new PageLink(() => "Normal link".AsContent(), new PageLink.Spec(() => "/elements")),
+            }, Header.Style.Secondary);
+
             _intInput = new IntegerInput(JSRuntime, 0);
             _intInput0Null = new IntegerInput(JSRuntime, 0,
                 new IntegerInput.Spec {Consider0Null = Always.True});
@@ -120,7 +131,20 @@ namespace Web.Pages
 
                 b.OnClick += _ => Console.WriteLine($"Click: {style}");
 
+                var b2 = new Button(() => new IRenderable[]
+                    {
+                        ("Color: " + style).AsContent(),
+                        new BootstrapIcon("slash-circle-fill", 16),
+                    },
+                    new Button.Spec
+                    {
+                        Style      = () => style,
+                        Tooltip    = () => new Tooltip($"{style} {_checked}", 500, Placement.Right),
+                        IsDisabled = () => true,
+                    });
+
                 _buttonsColored.Add(b);
+                _buttonsColored.Add(b2);
             }
 
             //

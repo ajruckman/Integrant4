@@ -1,10 +1,23 @@
 div.I4E-Layout-Panel {
     background-color: white;
     border: 1px solid var(--I4C_Default_Border_6);
-    border-radius: 4px;
     box-shadow: var(--I4C_Default_Shadow_2);
     margin: 7px;
-    padding: 7px;
+    overflow: hidden;
+
+    div.I4E-Layout-Panel-Inner {
+        overflow: visible;
+        padding: 7px;
+    }
+
+    // Descendent overrides
+
+    div.I4E-Construct-Header {
+        border-bottom: 1px solid var(--I4C_Default_Border_6);
+        //border-top-left-radius: 4px;
+        //border-top-right-radius: 4px;
+        box-shadow: none;
+    }
 }
 
 div.I4E-Layout-VAlign {

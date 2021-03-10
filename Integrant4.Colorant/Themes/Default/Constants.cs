@@ -113,5 +113,7 @@ namespace Integrant4.Colorant.Themes.Default
         public const string TableRow_Red_1 = "var(--I4C_Default_TableRow_Red_1)";
         public const string TableRow_Red_2 = "var(--I4C_Default_TableRow_Red_2)";
         public const string TableRow_Red_3 = "var(--I4C_Default_TableRow_Red_3)";
+        public const string Alias_PageBackground = "var(--I4C_Default_Alias_PageBackground)";
+        public const string Alias_PageText = "var(--I4C_Default_Alias_PageText)";
     }
 }

@@ -15,9 +15,9 @@ namespace Integrant4.Element
                 c.AddRange(additional);
 
             if (spec.IsDisabled?.Invoke() == true)
-                c.Add("I4E-Bit-IsDisabled");
+                c.Add("I4E-Bit--Disabled");
             if (spec.IsRequired?.Invoke() == true)
-                c.Add("I4E-Bit-IsRequired");
+                c.Add("I4E-Bit--Required");
 
             return c.ToString();
         }

@@ -1,26 +1,3 @@
-button.I4E-Bit-Button:not(#_):not(.I4E-Bit-Button--Transparent) {
-  box-shadow: var(--I4C_Default_Shadow_0); }
-
-button.I4E-Bit-Button.I4E-Bit-Button--Default:not(#_) {
-  background-color: var(--I4C_Solids_Opaque_White_2);
-  color: var(--I4C_Default_Text_6); }
-  button.I4E-Bit-Button.I4E-Bit-Button--Default:not(#_):hover, button.I4E-Bit-Button.I4E-Bit-Button--Default:not(#_):active {
-    color: var(--I4C_Default_Text_6); }
-  button.I4E-Bit-Button.I4E-Bit-Button--Default:not(#_):hover {
-    background-color: var(--I4C_Solids_Opaque_White_3); }
-  button.I4E-Bit-Button.I4E-Bit-Button--Default:not(#_):active {
-    background-color: var(--I4C_Solids_Opaque_White_2); }
-
-button.I4E-Bit-Button.I4E-Bit-Button--Transparent:not(#_) {
-  background-color: transparent;
-  color: var(--I4C_Default_Accent_5); }
-  button.I4E-Bit-Button.I4E-Bit-Button--Transparent:not(#_):hover, button.I4E-Bit-Button.I4E-Bit-Button--Transparent:not(#_):active {
-    color: var(--I4C_Default_Accent_6); }
-  button.I4E-Bit-Button.I4E-Bit-Button--Transparent:not(#_):hover {
-    background-color: var(--I4C_Solids_Opaque_White_3); }
-  button.I4E-Bit-Button.I4E-Bit-Button--Transparent:not(#_):active {
-    background-color: var(--I4C_Solids_Opaque_White_2); }
-
 a.I4E-Bit-Chip--Link:not(#_):hover {
   background-color: var(--I4C_Solids_Opaque_White_3); }
 

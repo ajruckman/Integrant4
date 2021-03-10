@@ -1,20 +1,26 @@
 %_InputBase {
-    background-color: var(--I4C_Default_Background_4);
-    border: 1px solid var(--I4C_Default_Border_6);
+    background-color: var(--I4E_InputBase_Background_Normal);
+    border: 1px solid var(--I4E_InputBase_Border_Normal);
     border-radius: 3px;
     box-sizing: border-box;
     color: var(--I4C_Default_Text_6);
     outline: none;
     transition: background-color 75ms ease-in, border 75ms ease-in;
 
-    &:hover {
-        border-color: var(--I4C_Default_Border_11);
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    &:hover:not(:disabled) {
+        background-color: var(--I4E_InputBase_Background_Hover);
+        border-color: var(--I4E_InputBase_Border_Hover);
         transition: background-color 75ms ease-in, border 75ms ease-in;
     }
 
-    &:focus {
-        background-color: var(--I4C_Default_Background_8);
-        border-color: var(--I4C_Default_Accent_7);
+    &:focus:not(:disabled) {
+        background-color: var(--I4E_InputBase_Background_Focus);
+        border-color: var(--I4E_InputBase_Border_Focus);
         box-shadow: var(--I4C_Default_Shadow_0);
         transition: background-color 75ms ease-in, border 75ms ease-in;
     }
@@ -40,3 +46,26 @@ div.I4E-Input-Select {
     }
 }
 
+// Variable colors
+
+div.I4-App {
+    &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
+        --I4E_InputBase_Background_Normal: var(--I4C_Default_Background_8);
+        --I4E_InputBase_Background_Hover: var(--I4C_Default_Background_9);
+        --I4E_InputBase_Background_Focus: var(--I4C_Default_Background_10);
+
+        --I4E_InputBase_Border_Normal: var(--I4C_Default_Border_4);
+        --I4E_InputBase_Border_Hover: var(--I4C_Default_Border_11);
+        --I4E_InputBase_Border_Focus: var(--I4C_Default_Accent_7);
+    }
+
+    &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
+        --I4E_InputBase_Background_Normal: var(--I4C_Default_Background_2);
+        --I4E_InputBase_Background_Hover: var(--I4C_Default_Background_1);
+        --I4E_InputBase_Background_Focus: var(--I4C_Default_Background_0);
+
+        --I4E_InputBase_Border_Normal: var(--I4C_Default_Border_4);
+        --I4E_InputBase_Border_Hover: var(--I4C_Default_Border_11);
+        --I4E_InputBase_Border_Focus: var(--I4C_Default_Accent_7);
+    }
+}

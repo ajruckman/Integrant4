@@ -1,8 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Integrant4.API;
 using Integrant4.Element;
+using Integrant4.Element.Bits;
+using Integrant4.Element.Constructs;
 using Integrant4.Element.Inputs;
+using Integrant4.Fundament;
 using Integrant4.Structurant;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -12,9 +16,10 @@ namespace Web.Pages
 {
     public partial class Index
     {
-        [Inject] public IJSRuntime JSRuntime { get; set; } = null!;
-
         private StructureInstance<Dog, DogState> _structureInstance = null!;
+
+        private         Header     _header = null!;
+        [Inject] public IJSRuntime JSRuntime { get; set; } = null!;
 
         protected override void OnInitialized()
         {
@@ -28,6 +33,16 @@ namespace Web.Pages
             _structureInstance.Construct();
 
             _structureInstance.OnMemberValueChange += (m, v) => Console.WriteLine($"{m.Definition.ID} -> {v}");
+
+            //
+
+            _header = new Header(() => new IRenderable[]
+            {
+                new PageLink(() => "Secondary header".AsContent(),
+                    new PageLink.Spec(() => "/elements") {IsTitle = Always.True}),
+                new Filler(),
+                new PageLink(() => "Normal link".AsContent(), new PageLink.Spec(() => "/elements")),
+            }, Header.Style.Secondary);
         }
 
         private async Task Reset()
@@ -65,7 +80,8 @@ namespace Web.Pages
                 inputGetter: inst => new TextInput
                 (
                     inst.StructureInstance.JSRuntime!,
-                    inst.Value()
+                    inst.Value(),
+                    new TextInput.Spec {IsDisabled = Always.True}
                 )
             );
 

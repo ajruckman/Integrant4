@@ -1,19 +1,33 @@
 ﻿@page "/"
 @using Integrant4.API
 @using Integrant4.Element.Inputs.Wrappers
+
+<style>
+    li {
+        margin: 3px 0;
+        vertical-align: middle;
+    }
+</style>
+
 <div class="I4E-Layout-Panel">
-    <h1>Web</h1>
-
-    <ul>
-        <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameFirst)).Input!.Renderer())</li>
-        <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameLast)).Input!.Renderer())</li>
-        <li>@(_structureInstance.GetTyped<int?>(nameof(Dog.Age)).Input!.Renderer())</li>
-        <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.Breed)).Input!.Renderer())</li>
-    </ul>
+    @_header.Renderer()
     
-    <ul>
-        @* <li><I4ETextInput/></li> *@
-    </ul>
+    <div class="I4E-Layout-Panel-Inner">
+        <h1>Web</h1>
 
-    <button @onclick="@Reset">Reset</button>
+        <ul>
+            <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameFirst)).Input!.Renderer())</li>
+            <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameFirst)).Input!.Renderer())</li>
+            <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameFirst)).Input!.Renderer())</li>
+            <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameLast)).Input!.Renderer())</li>
+            <li>@(_structureInstance.GetTyped<int?>(nameof(Dog.Age)).Input!.Renderer())</li>
+            <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.Breed)).Input!.Renderer())</li>
+        </ul>
+
+        <ul>
+            @* <li><I4ETextInput/></li> *@
+        </ul>
+
+        <button class="I4E-Bit-Button I4E-Bit-Button--Default" @onclick="@Reset">Reset</button>
+    </div>
 </div>

@@ -2,15 +2,22 @@ button.I4E-Bit-Button {
   align-items: center;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
   display: inline-flex;
   font-weight: 600;
   height: 30px;
   padding: 0;
   user-select: none; }
+  button.I4E-Bit-Button:not(.I4E-Bit--Disabled) {
+    cursor: pointer; }
+    button.I4E-Bit-Button:not(.I4E-Bit--Disabled):hover {
+      background-color: var(--I4C_Solids_Opaque_White_3); }
+    button.I4E-Bit-Button:not(.I4E-Bit--Disabled):active {
+      background-color: var(--I4C_Solids_Opaque_White_2); }
+  button.I4E-Bit-Button.I4E-Bit--Disabled {
+    cursor: not-allowed; }
   button.I4E-Bit-Button > span.I4E-Bit-Button-Content {
-    display: inline-flex;
-    align-items: center; }
+    align-items: center;
+    display: inline-flex; }
     button.I4E-Bit-Button > span.I4E-Bit-Button-Content:not(:last-child) {
       margin-right: 5px; }
   button.I4E-Bit-Button:not(.I4E-Bit-Button--IconLeft) {
@@ -25,134 +32,173 @@ button.I4E-Bit-Button {
     outline: none; }
   button.I4E-Bit-Button:focus-visible {
     box-shadow: 0 0 1px 0 var(--I4C_Default_Accent_5); }
-  button.I4E-Bit-Button.I4E-Bit-Button--Default {
-    background-color: var(--I4C_Solids_Opaque_White_2);
-    color: var(--I4C_Default_Text_6); }
-    button.I4E-Bit-Button.I4E-Bit-Button--Default:hover, button.I4E-Bit-Button.I4E-Bit-Button--Default:active {
-      color: var(--I4C_Default_Text_6); }
+  button.I4E-Bit-Button.I4E-Bit-Button--Default.I4E-Bit--Disabled {
+    opacity: 0.5; }
   button.I4E-Bit-Button.I4E-Bit-Button--Accent {
     background-color: var(--I4C_Default_Accent_5);
     color: var(--I4C_Default_Accent_6_Text); }
-    button.I4E-Bit-Button.I4E-Bit-Button--Accent:hover {
+    button.I4E-Bit-Button.I4E-Bit-Button--Accent:hover:not(.I4E-Bit--Disabled) {
       background-color: var(--I4C_Default_Accent_4); }
-    button.I4E-Bit-Button.I4E-Bit-Button--Accent:active {
+    button.I4E-Bit-Button.I4E-Bit-Button--Accent:active:not(.I4E-Bit--Disabled) {
       background-color: var(--I4C_Default_Accent_3); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Accent.I4E-Bit--Disabled {
+      opacity: 0.5; }
   button.I4E-Bit-Button.I4E-Bit-Button--Transparent {
-    background-color: transparent;
-    color: var(--I4C_Default_Accent_5); }
-    button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover, button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active {
-      color: var(--I4C_Default_Accent_6); }
-  button.I4E-Bit-Button:hover {
-    background-color: var(--I4C_Solids_Opaque_White_3); }
-  button.I4E-Bit-Button:active {
-    background-color: var(--I4C_Solids_Opaque_White_2); }
+    background-color: transparent; }
+    button.I4E-Bit-Button.I4E-Bit-Button--Transparent.I4E-Bit--Disabled {
+      opacity: 0.5; }
 
-button.I4E-Bit-Button--Blue:not(.I4E-Bit-IsDisabled):not(:disabled) {
+div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default {
+  background-color: var(--I4C_Solids_Opaque_White_2);
+  box-shadow: var(--I4C_Default_Shadow_0);
+  color: var(--I4C_Default_Text_6); }
+  div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C_Solids_Opaque_White_3);
+    color: var(--I4C_Default_Text_6); }
+  div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C_Solids_Opaque_White_2);
+    color: var(--I4C_Default_Text_6); }
+
+div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent {
+  color: var(--I4C_Default_Accent_5); }
+  div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C_Solids_Opaque_White_3);
+    color: var(--I4C_Default_Accent_6); }
+  div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C_Solids_Opaque_White_2);
+    color: var(--I4C_Default_Accent_6); }
+
+div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default {
+  background-color: var(--I4C_Solids_Opaque_Black_1);
+  color: var(--I4C_Default_Text_6); }
+  div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C_Solids_Opaque_Black_2);
+    color: var(--I4C_Default_Text_6); }
+  div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C_Solids_Opaque_Black_1);
+    color: var(--I4C_Default_Text_6); }
+
+div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent, div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent {
+  color: var(--I4C_Default_Accent_5); }
+  div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C_Solids_Opaque_Black_1);
+    color: var(--I4C_Default_Accent_6); }
+  div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C_Solids_Opaque_Black_0);
+    color: var(--I4C_Default_Accent_6); }
+
+button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled) {
   background-color: var(--I4C_Solids_Blue_6);
+  box-shadow: var(--I4C_Default_Shadow_0);
   border: 1px solid var(--I4C_Solids_Blue_6);
   color: white; }
-  button.I4E-Bit-Button--Blue:not(.I4E-Bit-IsDisabled):not(:disabled):hover, button.I4E-Bit-Button--Blue:not(.I4E-Bit-IsDisabled):not(:disabled):focus {
+  button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):focus {
     background-color: var(--I4C_Solids_Blue_8);
     border: 1px solid var(--I4C_Solids_Blue_8);
     color: white; }
-  button.I4E-Bit-Button--Blue:not(.I4E-Bit-IsDisabled):not(:disabled):active {
+  button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):active {
     background-color: var(--I4C_Solids_Blue_10);
     border: 1px solid var(--I4C_Solids_Blue_0);
     color: white; }
 
-button.I4E-Bit-Button--Blue.I4E-Bit-IsDisabled, button.I4E-Bit-Button--Blue:disabled {
+button.I4E-Bit-Button--Blue.I4E-Bit--Disabled, button.I4E-Bit-Button--Blue:disabled {
   background-color: transparent;
-  border: 1px solid var(--I4C_Default_Border_6);
+  border: 1px solid var(--I4C_Default_Border_4);
   color: var(--I4C_Default_Text_0); }
 
-button.I4E-Bit-Button--Green:not(.I4E-Bit-IsDisabled):not(:disabled) {
+button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled) {
   background-color: var(--I4C_Solids_Green_9);
+  box-shadow: var(--I4C_Default_Shadow_0);
   border: 1px solid var(--I4C_Solids_Green_9);
   color: white; }
-  button.I4E-Bit-Button--Green:not(.I4E-Bit-IsDisabled):not(:disabled):hover, button.I4E-Bit-Button--Green:not(.I4E-Bit-IsDisabled):not(:disabled):focus {
+  button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):focus {
     background-color: var(--I4C_Solids_Green_7);
     border: 1px solid var(--I4C_Solids_Green_7);
     color: white; }
-  button.I4E-Bit-Button--Green:not(.I4E-Bit-IsDisabled):not(:disabled):active {
+  button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):active {
     background-color: var(--I4C_Solids_Green_5);
     border: 1px solid var(--I4C_Solids_Green_4);
     color: white; }
 
-button.I4E-Bit-Button--Green.I4E-Bit-IsDisabled, button.I4E-Bit-Button--Green:disabled {
+button.I4E-Bit-Button--Green.I4E-Bit--Disabled, button.I4E-Bit-Button--Green:disabled {
   background-color: transparent;
-  border: 1px solid var(--I4C_Default_Border_6);
+  border: 1px solid var(--I4C_Default_Border_4);
   color: var(--I4C_Default_Text_0); }
 
-button.I4E-Bit-Button--Orange:not(.I4E-Bit-IsDisabled):not(:disabled) {
+button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled) {
   background-color: var(--I4C_Solids_Orange_8);
+  box-shadow: var(--I4C_Default_Shadow_0);
   border: 1px solid var(--I4C_Solids_Orange_8);
   color: white; }
-  button.I4E-Bit-Button--Orange:not(.I4E-Bit-IsDisabled):not(:disabled):hover, button.I4E-Bit-Button--Orange:not(.I4E-Bit-IsDisabled):not(:disabled):focus {
+  button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):focus {
     background-color: var(--I4C_Solids_Orange_6);
     border: 1px solid var(--I4C_Solids_Orange_6);
     color: white; }
-  button.I4E-Bit-Button--Orange:not(.I4E-Bit-IsDisabled):not(:disabled):active {
+  button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):active {
     background-color: var(--I4C_Solids_Orange_4);
     border: 1px solid var(--I4C_Solids_Orange_3);
     color: white; }
 
-button.I4E-Bit-Button--Orange.I4E-Bit-IsDisabled, button.I4E-Bit-Button--Orange:disabled {
+button.I4E-Bit-Button--Orange.I4E-Bit--Disabled, button.I4E-Bit-Button--Orange:disabled {
   background-color: transparent;
-  border: 1px solid var(--I4C_Default_Border_6);
+  border: 1px solid var(--I4C_Default_Border_4);
   color: var(--I4C_Default_Text_0); }
 
-button.I4E-Bit-Button--Purple:not(.I4E-Bit-IsDisabled):not(:disabled) {
+button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled) {
   background-color: var(--I4C_Solids_Purple_9);
+  box-shadow: var(--I4C_Default_Shadow_0);
   border: 1px solid var(--I4C_Solids_Purple_9);
   color: white; }
-  button.I4E-Bit-Button--Purple:not(.I4E-Bit-IsDisabled):not(:disabled):hover, button.I4E-Bit-Button--Purple:not(.I4E-Bit-IsDisabled):not(:disabled):focus {
+  button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):focus {
     background-color: var(--I4C_Solids_Purple_7);
     border: 1px solid var(--I4C_Solids_Purple_7);
     color: white; }
-  button.I4E-Bit-Button--Purple:not(.I4E-Bit-IsDisabled):not(:disabled):active {
+  button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):active {
     background-color: var(--I4C_Solids_Purple_5);
     border: 1px solid var(--I4C_Solids_Purple_4);
     color: white; }
 
-button.I4E-Bit-Button--Purple.I4E-Bit-IsDisabled, button.I4E-Bit-Button--Purple:disabled {
+button.I4E-Bit-Button--Purple.I4E-Bit--Disabled, button.I4E-Bit-Button--Purple:disabled {
   background-color: transparent;
-  border: 1px solid var(--I4C_Default_Border_6);
+  border: 1px solid var(--I4C_Default_Border_4);
   color: var(--I4C_Default_Text_0); }
 
-button.I4E-Bit-Button--Red:not(.I4E-Bit-IsDisabled):not(:disabled) {
+button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled) {
   background-color: var(--I4C_Solids_Red_9);
+  box-shadow: var(--I4C_Default_Shadow_0);
   border: 1px solid var(--I4C_Solids_Red_9);
   color: white; }
-  button.I4E-Bit-Button--Red:not(.I4E-Bit-IsDisabled):not(:disabled):hover, button.I4E-Bit-Button--Red:not(.I4E-Bit-IsDisabled):not(:disabled):focus {
+  button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):focus {
     background-color: var(--I4C_Solids_Red_7);
     border: 1px solid var(--I4C_Solids_Red_7);
     color: white; }
-  button.I4E-Bit-Button--Red:not(.I4E-Bit-IsDisabled):not(:disabled):active {
+  button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):active {
     background-color: var(--I4C_Solids_Red_5);
     border: 1px solid var(--I4C_Solids_Red_4);
     color: white; }
 
-button.I4E-Bit-Button--Red.I4E-Bit-IsDisabled, button.I4E-Bit-Button--Red:disabled {
+button.I4E-Bit-Button--Red.I4E-Bit--Disabled, button.I4E-Bit-Button--Red:disabled {
   background-color: transparent;
-  border: 1px solid var(--I4C_Default_Border_6);
+  border: 1px solid var(--I4C_Default_Border_4);
   color: var(--I4C_Default_Text_0); }
 
-button.I4E-Bit-Button--Yellow:not(.I4E-Bit-IsDisabled):not(:disabled) {
+button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled) {
   background-color: var(--I4C_Solids_Yellow_6);
+  box-shadow: var(--I4C_Default_Shadow_0);
   border: 1px solid var(--I4C_Solids_Yellow_6);
   color: black; }
-  button.I4E-Bit-Button--Yellow:not(.I4E-Bit-IsDisabled):not(:disabled):hover, button.I4E-Bit-Button--Yellow:not(.I4E-Bit-IsDisabled):not(:disabled):focus {
+  button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):focus {
     background-color: var(--I4C_Solids_Yellow_5);
     border: 1px solid var(--I4C_Solids_Yellow_5);
     color: black; }
-  button.I4E-Bit-Button--Yellow:not(.I4E-Bit-IsDisabled):not(:disabled):active {
+  button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):active {
     background-color: var(--I4C_Solids_Yellow_3);
     border: 1px solid var(--I4C_Solids_Yellow_2);
     color: black; }
 
-button.I4E-Bit-Button--Yellow.I4E-Bit-IsDisabled, button.I4E-Bit-Button--Yellow:disabled {
+button.I4E-Bit-Button--Yellow.I4E-Bit--Disabled, button.I4E-Bit-Button--Yellow:disabled {
   background-color: transparent;
-  border: 1px solid var(--I4C_Default_Border_6);
+  border: 1px solid var(--I4C_Default_Border_4);
   color: var(--I4C_Default_Text_0); }
 
 div.I4E-Bit-Checkbox {
@@ -211,6 +257,12 @@ div.I4E-Bit-Dropdown {
       width: 100%; }
   div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Head[data-contents-shown] a.I4E-Bit-PageLink {
     color: var(--I4C_Default_Accent_8); }
+
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children {
+  background-color: var(--I4C_Default_Background_6); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children, div.I4-App[data-i4-theme-variant="White"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children {
+  background-color: var(--I4C_Default_Background_0); }
 
 div.I4E-Bit-Filler {
   flex-grow: 100; }
@@ -282,9 +334,13 @@ a.I4E-Bit-PageLink {
   border-top: 4px solid transparent;
   color: var(--I4C_Default_PageText);
   display: inline-flex;
-  font-size: 17px;
-  font-weight: 500;
   text-decoration: none; }
+  a.I4E-Bit-PageLink:not(.I4E-Bit-PageLink--Title) {
+    font-size: 15px;
+    font-weight: 500; }
+  a.I4E-Bit-PageLink.I4E-Bit-PageLink--Title {
+    font-size: 17px;
+    font-weight: 600; }
   a.I4E-Bit-PageLink:hover:not(#_) {
     border-bottom-color: var(--I4C_Default_Accent_8);
     color: var(--I4C_Default_Accent_8); }
@@ -295,8 +351,7 @@ a.I4E-Bit-PageLink {
     border-bottom-color: var(--I4C_Default_Accent_7); }
   a.I4E-Bit-PageLink > span.I4E-Bit-PageLink-Content {
     align-items: center;
-    display: inline-flex;
-    min-height: 42px; }
+    display: inline-flex; }
     a.I4E-Bit-PageLink > span.I4E-Bit-PageLink-Content:not(:last-child) {
       margin-right: 5px; }
 

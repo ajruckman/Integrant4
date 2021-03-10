@@ -41,23 +41,23 @@ namespace Integrant4.Colorant
 
             //
 
-            var aliasLines = new List<string>();
-
-            foreach (Alias alias in theme.Aliases)
-            {
-                aliasLines.Add(C + $"{alias.Key} = \"{alias.Value}\";");
-            }
-
-            File.WriteAllLines($"Themes/{theme.Name}/Aliases.cs", new List<string>
-            {
-                $"namespace {assembly}.Themes.{theme.Name}",
-                "{",
-                I + "public static class Aliases",
-                I + "{",
-                string.Join('\n', aliasLines),
-                I + "}",
-                "}",
-            });
+            // var aliasLines = new List<string>();
+            //
+            // foreach (Alias alias in theme.Aliases)
+            // {
+            //     aliasLines.Add(C + $"{alias.Key} = \"{alias.Value}\";");
+            // }
+            //
+            // File.WriteAllLines($"Themes/{theme.Name}/Aliases.cs", new List<string>
+            // {
+            //     $"namespace {assembly}.Themes.{theme.Name}",
+            //     "{",
+            //     I + "public static class Aliases",
+            //     I + "{",
+            //     string.Join('\n', aliasLines),
+            //     I + "}",
+            //     "}",
+            // });
 
             //
 
@@ -119,11 +119,11 @@ namespace Integrant4.Colorant
                     }
                 }
 
-                foreach (Alias alias in theme.Aliases)
-                {
-                    cssLines.Add(
-                        $"\t--I4C_{theme.Name}_{alias.Key}: {alias.Value};");
-                }
+                // foreach (Alias alias in theme.Aliases)
+                // {
+                //     cssLines.Add(
+                //         $"\t--I4C_{theme.Name}_{alias.Key}: {alias.Value};");
+                // }
 
                 cssLines.Add("}");
 

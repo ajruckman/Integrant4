@@ -24,6 +24,7 @@ namespace Integrant4.Element.Bits
 
             public Callbacks.HREF HREF { get; }
 
+            public Callbacks.Callback<bool>? IsTitle       { get; init; }
             public Callbacks.Callback<bool>? IsHighlighted { get; init; }
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
@@ -51,6 +52,7 @@ namespace Integrant4.Element.Bits
     public partial class PageLink
     {
         private readonly Callbacks.BitContents     _contents;
+        private readonly Callbacks.Callback<bool>? _isTitle;
         private readonly Callbacks.Callback<bool>? _isHighlighted;
         private readonly bool                      _doAutoHighlight;
 
@@ -65,6 +67,7 @@ namespace Integrant4.Element.Bits
             : base(spec.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(PageLink)))
         {
             _contents = contents;
+            _isTitle  = spec.IsTitle;
 
             if (spec.IsHighlighted == null)
             {
@@ -91,8 +94,9 @@ namespace Integrant4.Element.Bits
         private async Task CheckPage(IJSRuntime jsRuntime, NavigationManager navMgr)
         {
             string currentURL = "/" + navMgr.ToBaseRelativePath(navMgr.Uri);
+            string href       = BaseSpec.HREF!.Invoke();
 
-            bool isCurrentPage = currentURL.StartsWith(BaseSpec.HREF!.Invoke());
+            bool isCurrentPage = currentURL == href;
 
             if (isCurrentPage != _isCurrentPage)
             {
@@ -119,6 +123,9 @@ namespace Integrant4.Element.Bits
 
                 List<string> ac = new();
 
+                if (PageLink._isTitle?.Invoke() == true)
+                    ac.Add("I4E-Bit-PageLink--Title");
+                
                 if (PageLink._isHighlighted?.Invoke() == true)
                     ac.Add("I4E-Bit-PageLink--Highlighted");
 

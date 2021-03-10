@@ -7,17 +7,15 @@ namespace Integrant4.Colorant.Schema
     public class ThemeDefinition
     {
         [JsonConstructor]
-        public ThemeDefinition(string name, List<Block> blocks, List<Alias> aliases, List<Variant> variants)
+        public ThemeDefinition(string name, List<Block> blocks, List<Variant> variants)
         {
             Name     = name;
             Blocks   = blocks;
-            Aliases  = aliases;
             Variants = variants;
         }
 
         public string        Name     { get; }
         public List<Block>   Blocks   { get; }
-        public List<Alias>   Aliases  { get; }
         public List<Variant> Variants { get; }
     }
 
@@ -52,9 +50,7 @@ namespace Integrant4.Colorant.Schema
     [JsonConverter(typeof(StringEnumConverter))]
     public enum VariantBlockColorSource
     {
-        Undefined,
-        Given,
-        Range,
+        Undefined, Given, Range,
     }
 
     public class Variant

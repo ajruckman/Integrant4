@@ -5,6 +5,8 @@ window.I4.Element = window.I4.Element || {};
 
 window.I4.Element.InitTooltip = window.I4.Element.InitTooltip || function (id) {
     const el = document.getElementById(id);
+    if (el == null) return;
+
     if (!el.hasOwnProperty('I4EBitTooltip')) {
         if (el.dataset.hasOwnProperty('i4e.tooltipText')) {
             el.I4EBitTooltip = tippy(el, {
@@ -44,7 +46,7 @@ window.I4.Element.InitDropdown = window.I4.Element.InitDropdown || function (tog
                     modifiers: [{name: 'eventListeners', enabled: true}],
                 });
 
-                contents.style.minWidth = toggle.clientWidth + 'px';
+                contents.style.minWidth = (toggle.clientWidth - 4) + 'px';
 
                 toggle.I4EBitDropdown.update();
             });
@@ -67,8 +69,7 @@ window.I4.Element.InitDropdown = window.I4.Element.InitDropdown || function (tog
 
 window.I4.Element.HighlightPageLink = window.I4.Element.HighlightPageLink || function (id, highlighted) {
     const el = document.getElementById(id);
-
-    console.log(id + " -> " + highlighted)
+    if (el == null) return;
 
     if (highlighted) {
         el.dataset['highlighted'] = '';

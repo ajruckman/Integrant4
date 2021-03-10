@@ -110,6 +110,6 @@
 	--I4C_Default_TableRow_Red_1: #280000;
 	--I4C_Default_TableRow_Red_2: #2c0000;
 	--I4C_Default_TableRow_Red_3: #2e0000;
-	--I4C_Default_PageBackground: var(--I4C_Default_Background_3);
-	--I4C_Default_PageText: var(--I4C_Default_Text_6);
+	--I4C_Default_Alias_PageBackground: var(--I4C_Default_Background_3);
+	--I4C_Default_Alias_PageText: var(--I4C_Default_Text_6);
 }

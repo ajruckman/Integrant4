@@ -40,6 +40,11 @@
             "Name":                       "TableRow_Red",
             "IDs":                        ["0", "1", "2", "3"],
             "CreateDisplayTextVariables": false
+        },
+        {
+            "Name":                       "Alias",
+            "IDs":                        ["PageBackground", "PageText"],
+            "CreateDisplayTextVariables": false
         }
     ],
     "Variants": [
@@ -56,7 +61,8 @@
                 "Shadow":         "Given",
                 "TableRow":       "Range",
                 "TableRow_Green": "Range",
-                "TableRow_Red":   "Range"
+                "TableRow_Red":   "Range",
+                "Alias":          "Given"
             },
             "BlockColorsGiven":      {
                 "Shadow": {
@@ -65,6 +71,10 @@
                     "2": "0 6px 16px rgba(0, 0, 0, 0.5), 0 0 4px rgba(0, 0, 0, 0.4)",
                     "3": "0 12px 32px rgba(0, 0, 0, 0.5), 0 0 8px rgba(0, 0, 0, 0.4)",
                     "4": "0 32px 64px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 0, 0, 0.4)"
+                },
+                "Alias":  {
+                    "PageBackground": "var(--I4C_Default_Background_3)",
+                    "PageText":       "var(--I4C_Default_Text_6)"
                 }
             },
             "BlockColorsRange":      {
@@ -170,15 +180,20 @@
                 "Shadow":         "Given",
                 "TableRow":       "Range",
                 "TableRow_Green": "Range",
-                "TableRow_Red":   "Range"
+                "TableRow_Red":   "Range",
+                "Alias":          "Given"
             },
             "BlockColorsGiven":      {
                 "Shadow": {
-                    "0": "0 1px 2px rgba(0, 0, 0, 0.15), 0 0px 2px rgba(0, 0, 0, 0.1)",
-                    "1": "0 4px 8px rgba(0, 0, 0, 0.2), 0 0px 4px rgba(0, 0, 0, 0.05)",
-                    "2": "0 6px 16px rgba(0, 0, 0, 0.2), 0 0px 4px rgba(0, 0, 0, 0.05)",
-                    "3": "0 12px 32px rgba(0, 0, 0, 0.2), 0 0px 8px rgba(0, 0, 0, 0.05)",
-                    "4": "0 32px 64px rgba(0, 0, 0, 0.2), 0 0px 16px rgba(0, 0, 0, 0.05)"
+                    "0": "0 1px 2px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.1)",
+                    "1": "0 4px 8px rgba(0, 0, 0, 0.2), 0 0 4px rgba(0, 0, 0, 0.05)",
+                    "2": "0 6px 16px rgba(0, 0, 0, 0.2), 0 0 4px rgba(0, 0, 0, 0.05)",
+                    "3": "0 12px 32px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 0, 0, 0.05)",
+                    "4": "0 32px 64px rgba(0, 0, 0, 0.2), 0 0 16px rgba(0, 0, 0, 0.05)"
+                },
+                "Alias":  {
+                    "PageBackground": "var(--I4C_Default_Background_2)",
+                    "PageText":       "var(--I4C_Default_Text_6)"
                 }
             },
             "BlockColorsRange":      {
@@ -283,7 +298,8 @@
                 "Shadow":         "Given",
                 "TableRow":       "Range",
                 "TableRow_Green": "Range",
-                "TableRow_Red":   "Range"
+                "TableRow_Red":   "Range",
+                "Alias":          "Given"
             },
             "BlockColorsGiven":      {
                 "Shadow": {
@@ -292,6 +308,10 @@
                     "2": "0 6px 16px rgba(0, 0, 0, 0.5), 0 0 4px rgba(0, 0, 0, 0.4)",
                     "3": "0 12px 32px rgba(0, 0, 0, 0.5), 0 0 8px rgba(0, 0, 0, 0.4)",
                     "4": "0 32px 64px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 0, 0, 0.4)"
+                },
+                "Alias":  {
+                    "PageBackground": "var(--I4C_Default_Background_3)",
+                    "PageText":       "var(--I4C_Default_Text_6)"
                 }
             },
             "BlockColorsRange":      {
@@ -396,15 +416,20 @@
                 "Shadow":         "Given",
                 "TableRow":       "Range",
                 "TableRow_Green": "Range",
-                "TableRow_Red":   "Range"
+                "TableRow_Red":   "Range",
+                "Alias":          "Given"
             },
             "BlockColorsGiven":      {
                 "Shadow": {
-                    "0": "0 1px 2px rgba(0, 0, 0, 0.15), 0 0px 2px rgba(0, 0, 0, 0.1)",
-                    "1": "0 4px 8px rgba(0, 0, 0, 0.2), 0 0px 4px rgba(0, 0, 0, 0.05)",
-                    "2": "0 6px 16px rgba(0, 0, 0, 0.2), 0 0px 4px rgba(0, 0, 0, 0.05)",
-                    "3": "0 12px 32px rgba(0, 0, 0, 0.2), 0 0px 8px rgba(0, 0, 0, 0.05)",
-                    "4": "0 32px 64px rgba(0, 0, 0, 0.2), 0 0px 16px rgba(0, 0, 0, 0.05)"
+                    "0": "0 1px 2px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.1)",
+                    "1": "0 4px 8px rgba(0, 0, 0, 0.2), 0 0 4px rgba(0, 0, 0, 0.05)",
+                    "2": "0 6px 16px rgba(0, 0, 0, 0.2), 0 0 4px rgba(0, 0, 0, 0.05)",
+                    "3": "0 12px 32px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 0, 0, 0.05)",
+                    "4": "0 32px 64px rgba(0, 0, 0, 0.2), 0 0 16px rgba(0, 0, 0, 0.05)"
+                },
+                "Alias":  {
+                    "PageBackground": "var(--I4C_Default_Background_2)",
+                    "PageText":       "var(--I4C_Default_Text_6)"
                 }
             },
             "BlockColorsRange":      {
@@ -495,16 +520,6 @@
                     "LumCurve": "easeInQuad"
                 }
             }
-        }
-    ],
-    "Aliases":  [
-        {
-            "Key":   "PageBackground",
-            "Value": "var(--I4C_Default_Background_3)"
-        },
-        {
-            "Key":   "PageText",
-            "Value": "var(--I4C_Default_Text_6)"
         }
     ]
 }

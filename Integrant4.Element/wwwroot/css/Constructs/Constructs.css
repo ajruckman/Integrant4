@@ -1,19 +1,41 @@
 div.I4E-Construct-Header {
   align-items: center;
-  background-color: var(--I4C_Default_Background_6);
   box-shadow: var(--I4C_Default_Shadow_0);
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   padding: 0 10px 0 15px;
-  min-height: 50px;
-  width: 100%;
-  position: sticky;
-  top: 0; }
+  width: 100%; }
+  div.I4E-Construct-Header--Primary {
+    min-height: 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1; }
+  div.I4E-Construct-Header--Secondary {
+    min-height: 35px; }
   div.I4E-Construct-Header > span.I4E-Construct-Header-Content {
     display: contents; }
     div.I4E-Construct-Header > span.I4E-Construct-Header-Content > .I4E-Bit-Link--Title {
       margin-right: 15px; }
-  div.I4E-Construct-Header > span.I4E-Construct-Header-Content > div.I4E-Bit-Dropdown > div.I4E-Bit-Dropdown-Head > div.I4E-Bit-Dropdown-Content > div.I4E-Bit-TextBlock--Heading {
+  div.I4E-Construct-Header--Primary a.I4E-Bit-PageLink:not(.I4E-Bit-PageLink--Title) {
     font-size: 17px;
     font-weight: 500; }
+  div.I4E-Construct-Header--Primary a.I4E-Bit-PageLink.I4E-Bit-PageLink--Title {
+    font-size: 21px;
+    font-weight: 600; }
+  div.I4E-Construct-Header--Primary a.I4E-Bit-PageLink span.I4E-Bit-PageLink-Content {
+    min-height: calc(50px - 8px); }
+  div.I4E-Construct-Header--Secondary a.I4E-Bit-PageLink span.I4E-Bit-PageLink-Content {
+    min-height: calc(35px - 8px); }
+
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Header--Primary, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Header--Primary {
+  background-color: var(--I4C_Default_Background_6); }
+
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Header--Secondary, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Header--Secondary {
+  background-color: var(--I4C_Default_Background_7); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Header--Primary, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Header--Primary {
+  background-color: var(--I4C_Default_Background_0); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Header--Secondary, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Header--Secondary {
+  background-color: var(--I4C_Default_Background_4); }

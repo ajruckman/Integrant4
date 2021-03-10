@@ -21,7 +21,7 @@ namespace Integrant4.Colorant.ColorGeneratorInterop
                     RedirectStandardOutput = true,
                     FileName               = "node",
                     Arguments              = "./ColorGenerator/index.js",
-                }
+                },
             };
             _p.Start();
         }

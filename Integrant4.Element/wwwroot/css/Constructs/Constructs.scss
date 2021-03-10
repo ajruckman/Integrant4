@@ -1,17 +1,22 @@
 div.I4E-Construct-Header {
     align-items: center;
-    background-color: var(--I4C_Default_Background_6);
     box-shadow: var(--I4C_Default_Shadow_0);
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
-    //min-height: calc(50px - 10px - 10px);
     padding: 0 10px 0 15px;
-    min-height: 50px;
     width: 100%;
 
-    position: sticky;
-    top: 0;
+    &--Primary {
+        min-height: 50px;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    &--Secondary {
+        min-height: 35px;
+    }
 
     > span.I4E-Construct-Header-Content {
         display: contents;
@@ -21,47 +26,61 @@ div.I4E-Construct-Header {
         }
     }
 
-    // Child overrides
+    // Descendent overrides
 
-    > span.I4E-Construct-Header-Content {
-        > div.I4E-Bit-Dropdown {
-            > div.I4E-Bit-Dropdown-Head {
-                > div.I4E-Bit-Dropdown-Content {
-                    > div.I4E-Bit-TextBlock--Heading {
-                        font-size: 17px;
-                        font-weight: 500;
-                    }
-                }
+    &--Primary {
+        a.I4E-Bit-PageLink {
+            &:not(.I4E-Bit-PageLink--Title) {
+                font-size: 17px;
+                font-weight: 500;
+            }
+
+            &.I4E-Bit-PageLink--Title {
+                font-size: 21px;
+                font-weight: 600;
+            }
+
+            //
+
+            span.I4E-Bit-PageLink-Content {
+                min-height: calc(50px - 8px);
             }
         }
     }
 
-    > span.I4E-Construct-Header-Content {
-        > a.I4E-Bit-Link--PageLink.I4E-Bit-Link--Highlighted {
-            //border-bottom: none;
-
-            //> div.I4E-Bit-Dropdown-Head {
-            //    > div.I4E-Bit-Dropdown-Content {
-            //        > div.I4E-Bit-TextBlock--Heading {
-            //            font-size: 17px;
-            //            font-weight: 500;
-            //        }
-            //    }
-            //}
+    &--Secondary {
+        a.I4E-Bit-PageLink {
+            span.I4E-Bit-PageLink-Content {
+                min-height: calc(35px - 8px);
+            }
         }
     }
 }
 
-//div.I4-App {
-//    &[data-i4-theme-variant="Dark"] {
-//        div.I4E-Construct-Header {
-//            background-color: var(--I4C_Default_Background_8);
-//        }
-//    }
-//
-//    &[data-i4-theme-variant="Matrix"] {
-//        div.I4E-Construct-Header {
-//            background-color: var(--I4C_Default_Background_8);
-//        }
-//    }
-//}
+// Variable colors
+
+div.I4-App {
+    &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
+        div.I4E-Construct-Header {
+            &--Primary {
+                background-color: var(--I4C_Default_Background_6);
+            }
+
+            &--Secondary {
+                background-color: var(--I4C_Default_Background_7);
+            }
+        }
+    }
+
+    &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
+        div.I4E-Construct-Header {
+            &--Primary {
+                background-color: var(--I4C_Default_Background_0);
+            }
+
+            &--Secondary {
+                background-color: var(--I4C_Default_Background_4);
+            }
+        }
+    }
+}

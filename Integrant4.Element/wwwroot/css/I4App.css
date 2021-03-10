@@ -1,6 +1,6 @@
 body {
-  background-color: var(--I4C_Default_PageBackground);
-  color: var(--I4C_Default_PageText);
+  background-color: var(--I4C_Default_Alias_PageBackground);
+  color: var(--I4C_Default_Text_6);
   font-size: 14px;
   margin: 0;
   overflow-y: scroll;
