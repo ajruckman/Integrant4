@@ -1,13 +1,12 @@
 ﻿@using Blazored.LocalStorage
 @inherits LayoutComponentBase
 @inject ILocalStorageService StorageService
-@ResourceService.RenderInvariableResources()
 @_solidsVariantLoader.RenderStylesheets()
 @if (_defaultVariantLoader.Complete)
 {
-    @ResourceService.RenderVariableResources(variables: new Dictionary<string, string>
+    @Configuration.ResourceSet.RenderVariableResources(new Dictionary<string, string>
     {
-        {"ThemeVariant", _defaultVariantLoader.Variant!}
+        {"ThemeVariant", _defaultVariantLoader.Variant!},
     })
     @_defaultVariantLoader.RenderStylesheets()
     <div class="I4-App" data-i4-theme-variant="@_defaultVariantLoader.Variant">

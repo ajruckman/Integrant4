@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -25,7 +24,7 @@ namespace Integrant4.Element.Bits
             public Callbacks.HREF HREF { get; }
 
             public Callbacks.Callback<bool>? IsTitle       { get; init; }
-            public Callbacks.Callback<bool>? IsHighlighted { get; init; }
+            public Callbacks.Callback<bool>?         IsHighlighted { get; init; }
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
             public Callbacks.IsDisabled? IsDisabled { get; init; }
@@ -53,7 +52,7 @@ namespace Integrant4.Element.Bits
     {
         private readonly Callbacks.BitContents     _contents;
         private readonly Callbacks.Callback<bool>? _isTitle;
-        private readonly Callbacks.Callback<bool>? _isHighlighted;
+        private readonly Callbacks.Callback<bool>?         _isHighlighted;
         private readonly bool                      _doAutoHighlight;
 
         private bool? _isCurrentPage;
@@ -103,8 +102,6 @@ namespace Integrant4.Element.Bits
                 _isCurrentPage = isCurrentPage;
                 await Interop.HighlightPageLink(jsRuntime, ID, isCurrentPage);
             }
-
-            Console.WriteLine($"{currentURL}, {BaseSpec.HREF!.Invoke()}, {_isCurrentPage}");
         }
     }
 

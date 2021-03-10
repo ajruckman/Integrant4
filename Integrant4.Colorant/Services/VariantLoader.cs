@@ -72,12 +72,12 @@ namespace Integrant4.Colorant.Services
                 int seq = -1;
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "id", $"I4C.Component.{nameof(VariantLoader)}");
+                builder.AddAttribute(++seq, "id", $"I4C-Component-{nameof(VariantLoader)}");
 
                 builder.OpenElement(++seq, "span");
 
                 builder.OpenElement(++seq, "label");
-                builder.AddAttribute(++seq, "for", $"I4C.Component.{nameof(VariantLoader)}");
+                builder.AddAttribute(++seq, "for", $"I4C-Component-{nameof(VariantLoader)}");
                 builder.AddContent(++seq, "Theme");
                 builder.CloseElement();
 
@@ -87,7 +87,7 @@ namespace Integrant4.Colorant.Services
                 {
                     builder2.OpenElement(++seq, "select");
                     builder2.AddAttribute(++seq, "id",
-                        $"I4C.Component.{nameof(VariantLoader)}.Dropdown");
+                        $"I4C-Component-{nameof(VariantLoader)}-Dropdown");
                     builder2.AddAttribute(
                         ++seq,
                         "onchange",

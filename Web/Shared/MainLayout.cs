@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Integrant4.API;
 using Integrant4.Colorant.Services;
@@ -7,7 +9,6 @@ using Integrant4.Element.Bits;
 using Integrant4.Element.Constructs;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
-using Microsoft.AspNetCore.Components;
 
 namespace Web.Shared
 {
@@ -18,14 +19,22 @@ namespace Web.Shared
 
         private Header _header = null!;
 
-        [Inject] public ResourceService ResourceService { get; set; } = null!;
+        private Stopwatch _stopwatch = new();
 
         protected override void OnInitialized()
         {
+            _stopwatch.Start();
+            
             _defaultVariantLoader = new VariantLoader(StorageService, new Theme(),
                 Variants.Dark.ToString());
 
-            _defaultVariantLoader.OnComplete      += _ => InvokeAsync(StateHasChanged);
+            _defaultVariantLoader.OnComplete      += _ =>
+            {
+                InvokeAsync(StateHasChanged);
+                
+                _stopwatch.Stop();
+                Console.WriteLine(_stopwatch.ElapsedMilliseconds);
+            };
             _defaultVariantLoader.OnVariantChange += _ => InvokeAsync(StateHasChanged);
 
             //
@@ -96,8 +105,10 @@ namespace Web.Shared
         {
             if (firstRender)
             {
-                // await _themeLoader.Load();
                 await _defaultVariantLoader.Load();
+
+                // Thread.Sleep(100);
+                // throw new Exception();
             }
         }
     }

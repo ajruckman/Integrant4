@@ -25,15 +25,33 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
         &:visited {
             color: var(--I4C_Default_PageText);
         }
+    }
+}
 
-        // Default colors
-        
-        &:hover {
-            background-color: var(--I4C_Default_Opaque_White_3);
+// Variable colors
+
+div.I4-App {
+    &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
+        a.I4E-Bit-Chip--Link {
+            &:hover {
+                background-color: var(--I4C_Default_Opaque_White_3);
+            }
+
+            &:focus {
+                background-color: var(--I4C_Default_Opaque_White_2);
+            }
         }
+    }
 
-        &:focus {
-            background-color: var(--I4C_Default_Opaque_White_2);
+    &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
+        a.I4E-Bit-Chip--Link {
+            &:hover {
+                background-color: var(--I4C_Default_Opaque_Black_0);
+            }
+
+            &:focus {
+                background-color: var(--I4C_Default_Opaque_Black_1);
+            }
         }
     }
 }

@@ -28,7 +28,6 @@ namespace Web
             services.AddBlazoredLocalStorage();
 
             services.AddScoped<ElementService>();
-            services.AddScoped(_ => new ResourceService(Web.Configuration.ResourceSet));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

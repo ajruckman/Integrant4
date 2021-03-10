@@ -97,3 +97,35 @@ a.I4E-Bit-Link {
 
     }
 }
+
+// Variable colors
+
+div.I4-App {
+    &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
+        a.I4E-Bit-Link--Button {
+            &:hover {
+                background-color: var(--I4C_Default_Opaque_White_3);
+            }
+
+            &:active {
+                background-color: var(--I4C_Default_Opaque_White_2);
+            }
+
+            &:hover, &:active {
+                box-shadow: var(--I4C_Default_Shadow_0);
+            }
+        }
+    }
+
+    &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
+        a.I4E-Bit-Link--Button {
+            &:hover {
+                background-color: var(--I4C_Default_Opaque_Black_1);
+            }
+
+            &:active {
+                background-color: var(--I4C_Default_Opaque_Black_0);
+            }
+        }
+    }
+}

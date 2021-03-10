@@ -10,7 +10,7 @@ div.I4E-Layout-Panel {
         padding: 7px;
 
         > h1, > h2, > h3, > h4, > h5, > h6 {
-            margin: 0 7px;
+            margin: 0 calc(11px - 7px);
         }
     }
 

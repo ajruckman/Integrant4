@@ -8,7 +8,7 @@ div.I4E-Layout-Panel {
     overflow: visible;
     padding: 7px; }
     div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner > h1, div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner > h2, div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner > h3, div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner > h4, div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner > h5, div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner > h6 {
-      margin: 0 7px; }
+      margin: 0 calc(11px - 7px); }
   div.I4E-Layout-Panel > div.I4E-Construct-Header {
     border-bottom: 1px solid var(--I4C_Default_Border_4);
     box-shadow: none;

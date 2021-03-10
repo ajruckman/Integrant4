@@ -5,9 +5,9 @@ using Integrant4.Resources;
 
 namespace Web
 {
-    internal static class Configuration
+    public static class Configuration
     {
-        internal static readonly ResourceSet ResourceSet;
+        public static readonly ResourceSet ResourceSet;
 
         static Configuration()
         {
@@ -30,8 +30,10 @@ namespace Web
                     Resources.Fonts.SansSerif.Inter,
                     Resources.Fonts.Monospace.JetBrainsMono,
 
-                    Integrant4.Element.ResourceSets.Overrides.MiniBar,
-                    Integrant4.Element.ResourceSets.Overrides.Tippy,
+                    ResourceSets.Overrides.Blazor,
+                    ResourceSets.Overrides.MiniBar,
+                    ResourceSets.Overrides.Tippy,
+                    ResourceSets.Overrides.VariantLoader,
                     Resources.Libraries.Tippy,
 
                     // ResourceSets.LocalCSS,

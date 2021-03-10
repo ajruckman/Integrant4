@@ -1,15 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
+using Microsoft.AspNetCore.Html;
 using Superset.Web.State;
 
 namespace Integrant4.Fundament
 {
     public class ResourceSet
     {
+        private static readonly Regex MatchVariableKeys =
+            new("^.*{{(\\w+)}}.*$", RegexOptions.Multiline | RegexOptions.Compiled);
+
         private readonly HashSet<string> _scriptsInvariable;
         private readonly HashSet<string> _stylesheetsInvariable;
 
@@ -18,15 +23,11 @@ namespace Integrant4.Fundament
 
         private readonly Dictionary<string, ResourceSet> _dependencies;
 
-        // private readonly Dictionary<string, string>      _variables;
-        private readonly UpdateTrigger _trigger = new();
-
         public readonly string Assembly;
         public readonly string ID;
         public readonly string CompositeID;
 
-        private static readonly Regex MatchVariableKeys =
-            new("^.*{{(\\w+)}}.*$", RegexOptions.Multiline | RegexOptions.Compiled);
+        private IHtmlContent? _invariableResourceHTMLCache;
 
         public ResourceSet
         (
@@ -124,7 +125,7 @@ namespace Integrant4.Fundament
 
         //
 
-        internal RenderFragment RenderInvariableResources()
+        public RenderFragment RenderInvariableResources()
         {
             void Fragment(RenderTreeBuilder builder)
             {
@@ -145,7 +146,25 @@ namespace Integrant4.Fundament
             return Fragment;
         }
 
-        internal RenderFragment RenderVariableResources(Dictionary<string, string> variables)
+        public IHtmlContent RenderInvariableResourcesAsHTML()
+        {
+            if (_invariableResourceHTMLCache != null) return _invariableResourceHTMLCache;
+
+            StringBuilder sb = new();
+
+            sb.Append($"<section hidden='hidden'>ID: {CompositeID}</section>");
+
+            foreach (string script in EnumerateScriptsInvariable())
+                sb.Append(RenderScriptString(script));
+
+            foreach (string stylesheet in EnumerateStylesheetsInvariable())
+                sb.Append(RenderStylesheetString(stylesheet));
+
+            _invariableResourceHTMLCache = new HtmlString(sb.ToString());
+            return _invariableResourceHTMLCache;
+        }
+
+        public RenderFragment RenderVariableResources(Dictionary<string, string> variables)
         {
             void Fragment(RenderTreeBuilder builder)
             {
@@ -166,37 +185,39 @@ namespace Integrant4.Fundament
             return Fragment;
         }
 
-        private HashSet<string> EnumerateScriptsInvariable()
-        {
-            HashSet<string> result = new();
+        //
 
-            foreach (string script in _scriptsInvariable)
-                result.Add(script);
+        private List<string> EnumerateScriptsInvariable()
+        {
+            List<string> result = new();
 
             foreach (ResourceSet dependency in _dependencies.Values)
             foreach (string script in dependency.EnumerateScriptsInvariable())
                 result.Add(script);
 
-            return result;
-        }
-
-        private HashSet<string> EnumerateScriptsVariable(Dictionary<string, string> variables)
-        {
-            HashSet<string> result = new();
-
-            foreach (string script in _scriptsVariable)
-                result.Add(Expand(variables, script));
-
-            foreach (ResourceSet dependency in _dependencies.Values)
-            foreach (string script in dependency.EnumerateScriptsVariable(variables))
+            foreach (string script in _scriptsInvariable)
                 result.Add(script);
 
             return result;
         }
 
-        private HashSet<string> EnumerateStylesheetsInvariable()
+        private List<string> EnumerateScriptsVariable(Dictionary<string, string> variables)
         {
-            HashSet<string> result = new();
+            List<string> result = new();
+
+            foreach (ResourceSet dependency in _dependencies.Values)
+            foreach (string script in dependency.EnumerateScriptsVariable(variables))
+                result.Add(script);
+
+            foreach (string script in _scriptsVariable)
+                result.Add(Expand(variables, script));
+
+            return result;
+        }
+
+        private List<string> EnumerateStylesheetsInvariable()
+        {
+            List<string> result = new();
 
             foreach (string stylesheet in _stylesheetsInvariable)
                 result.Add(stylesheet);
@@ -208,9 +229,9 @@ namespace Integrant4.Fundament
             return result;
         }
 
-        private HashSet<string> EnumerateStylesheetsVariable(Dictionary<string, string> variables)
+        private List<string> EnumerateStylesheetsVariable(Dictionary<string, string> variables)
         {
-            HashSet<string> result = new();
+            List<string> result = new();
 
             foreach (string stylesheet in _stylesheetsVariable)
                 result.Add(Expand(variables, stylesheet));
@@ -259,6 +280,12 @@ namespace Integrant4.Fundament
             b.AddAttribute(3, "href", href);
             b.CloseElement();
         };
+
+        private static string RenderScriptString(string src) =>
+            new($"<script src='{src}'></script>");
+
+        private static string RenderStylesheetString(string href) =>
+            new($"<link rel='stylesheet' type='text/css' href='{href}'/>");
 
         //
 

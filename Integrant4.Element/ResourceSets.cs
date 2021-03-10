@@ -29,10 +29,11 @@ namespace Integrant4.Element
         (
             $"{nameof(Integrant4)}.{nameof(Element)}",
             nameof(Bits),
-            stylesheetsInternal: new HashSet<string>
+            dependencies: new[]
             {
-                "css/Bits/Bits.css", "css/Bits/Bits.{{ThemeVariant}}.css"
+                Resources.Resources.Libraries.Tippy,
             },
+            stylesheetsInternal: new HashSet<string> {"css/Bits/Bits.css"},
             scriptsInternal: new HashSet<string> {"js/Elements.js"}
         );
 
@@ -57,6 +58,16 @@ namespace Integrant4.Element
 
         public static class Overrides
         {
+            public static readonly ResourceSet Blazor = new
+            ($"{nameof(Integrant4)}.{nameof(Element)}",
+                $"{nameof(Overrides)}.{nameof(Blazor)}",
+                dependencies: new[]
+                {
+                    Resources.Resources.Libraries.MiniBar,
+                },
+                stylesheetsInternal: new HashSet<string> {"css/Overrides/Blazor.css"}
+            );
+
             public static readonly ResourceSet MiniBar = new
             ($"{nameof(Integrant4)}.{nameof(Element)}",
                 $"{nameof(Overrides)}.{nameof(MiniBar)}",
@@ -75,6 +86,12 @@ namespace Integrant4.Element
                     Resources.Resources.Libraries.Tippy,
                 },
                 stylesheetsInternal: new HashSet<string> {"css/Overrides/Tippy.css"}
+            );
+
+            public static readonly ResourceSet VariantLoader = new
+            ($"{nameof(Integrant4)}.{nameof(Element)}",
+                $"{nameof(Overrides)}.{nameof(VariantLoader)}",
+                stylesheetsInternal: new HashSet<string> {"css/Overrides/VariantLoader.css"}
             );
         }
     }

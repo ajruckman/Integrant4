@@ -233,10 +233,18 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
       outline: none; }
     div.I4E-Bit-Chip.I4E-Bit-Chip--Link:visited, a.I4E-Bit-Chip.I4E-Bit-Chip--Link:visited {
       color: var(--I4C_Default_PageText); }
-    div.I4E-Bit-Chip.I4E-Bit-Chip--Link:hover, a.I4E-Bit-Chip.I4E-Bit-Chip--Link:hover {
-      background-color: var(--I4C_Default_Opaque_White_3); }
-    div.I4E-Bit-Chip.I4E-Bit-Chip--Link:focus, a.I4E-Bit-Chip.I4E-Bit-Chip--Link:focus {
-      background-color: var(--I4C_Default_Opaque_White_2); }
+
+div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Chip--Link:hover, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Chip--Link:hover {
+  background-color: var(--I4C_Default_Opaque_White_3); }
+
+div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Chip--Link:focus, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Chip--Link:focus {
+  background-color: var(--I4C_Default_Opaque_White_2); }
+
+div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Chip--Link:hover, div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Chip--Link:hover {
+  background-color: var(--I4C_Default_Opaque_Black_0); }
+
+div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Chip--Link:focus, div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Chip--Link:focus {
+  background-color: var(--I4C_Default_Opaque_Black_1); }
 
 div.I4E-Bit-Dropdown {
   display: inline-block; }
@@ -328,6 +336,21 @@ a.I4E-Bit-Link {
     a.I4E-Bit-Link.I4E-Bit-Link--Button:active {
       background-color: var(--I4C_Default_Opaque_White_2); }
 
+div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Link--Button:hover, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Link--Button:hover {
+  background-color: var(--I4C_Default_Opaque_White_3); }
+
+div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Link--Button:active, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Link--Button:active {
+  background-color: var(--I4C_Default_Opaque_White_2); }
+
+div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Link--Button:hover, div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Link--Button:active, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Link--Button:hover, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Link--Button:active {
+  box-shadow: var(--I4C_Default_Shadow_0); }
+
+div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Link--Button:hover, div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Link--Button:hover {
+  background-color: var(--I4C_Default_Opaque_Black_1); }
+
+div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Link--Button:active, div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Link--Button:active {
+  background-color: var(--I4C_Default_Opaque_Black_0); }
+
 a.I4E-Bit-PageLink {
   align-items: center;
   border-bottom: 4px solid transparent;
@@ -373,6 +396,13 @@ div.I4E-Bit-TextBlock {
     outline: none; }
   div.I4E-Bit-TextBlock:focus-visible {
     box-shadow: 0 0 1px 0 var(--I4C_Default_Accent_5); }
+
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Bit-TextBlock--Hoverable:not(#_):hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Bit-TextBlock--Hoverable:not(#_):hover {
+  background-color: var(--I4C_Default_Opaque_White_3);
+  box-shadow: var(--I4C_Default_Shadow_0); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Bit-TextBlock--Hoverable:not(#_):hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Bit-TextBlock--Hoverable:not(#_):hover {
+  background-color: var(--I4C_Default_Opaque_Black_1); }
 
 a.I4E-Bit-Title {
   align-items: center;
