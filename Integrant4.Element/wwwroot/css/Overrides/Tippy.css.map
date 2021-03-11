@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "Tippy.css",
+	"sources": [
+		"Tippy.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,UAAU,CAAC;EACP,gBAAgB,EAAE,kCAAkC;EACpD,UAAU,EAAE,2BAA2B;EACvC,KAAK,EAAE,kCAAkC;EACzC,WAAW,EAAE,wBAAwB;EACrC,WAAW,EAAE,GAAG,GAKnB;EAVD,AAOI,UAPM,CAON,YAAY,CAAC;IACT,KAAK,EAAE,kCAAkC,GAC5C"
+}

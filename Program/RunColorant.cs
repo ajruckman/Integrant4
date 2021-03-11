@@ -1,5 +1,6 @@
 using System.IO;
 using Integrant4.Colorant;
+using Integrant4.Colorant.ColorGeneratorSupport;
 using Integrant4.Colorant.Schema;
 using Newtonsoft.Json;
 

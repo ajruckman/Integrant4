@@ -27,9 +27,10 @@ namespace Web.Pages
         {
             _structureInstance = Structure.Instantiate(new DogState()
             {
-                NameFirst = "Rosie",
+                NameFirst = "Annabell",
                 NameLast  = "Ruckman",
                 Age       = 10,
+                Breed     = "Rat Terrier",
             }, JSRuntime);
 
             _structureInstance.Construct();
@@ -116,11 +117,12 @@ namespace Web.Pages
                     null,
                     new SelectInput<string>.Spec(() => new List<IOption<string>>
                         {
-                            new Option<string>("Unknown", "Unknown"),
-                            new Option<string>("Boxer", "Boxer"),
-                            new Option<string>("Yorkie", "Yorkie"),
-                            new Option<string>("Chihuahua", "Chihuahua"),
-                            new Option<string>(null, "Other"),
+                            new Option<string>("Unknown",     "Unknown"),
+                            new Option<string>("Rat Terrier", "Rat Terrier"),
+                            new Option<string>("Boxer",       "Boxer"),
+                            new Option<string>("Yorkie",      "Yorkie"),
+                            new Option<string>("Chihuahua",   "Chihuahua"),
+                            new Option<string>(null,          "Other"),
                         }
                     )
                 )

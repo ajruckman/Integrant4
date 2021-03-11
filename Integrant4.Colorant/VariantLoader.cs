@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Superset.Web.State;
 
-namespace Integrant4.Colorant.Services
+namespace Integrant4.Colorant
 {
     public sealed class VariantLoader
     {

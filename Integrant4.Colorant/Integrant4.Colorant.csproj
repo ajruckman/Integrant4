@@ -5,15 +5,31 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-        <SupportedPlatform Include="browser"/>
+    <PropertyGroup>
+        <VersionPrefix>1.0.0</VersionPrefix>
+        <VersionSuffix>alpha</VersionSuffix>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Packing)'=='true'">
+        <DefaultItemExcludes>$(DefaultItemExcludes);ColorGenerator/**/*.json;Definitions/**/*.json;Themes/**/*.json</DefaultItemExcludes>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(Packing)'=='true'">
+        <Compile Remove="ColorGeneratorSupport/Caller.cs" />
+        <Compile Remove="ColorGeneratorSupport/Generator.cs" />
+        <Compile Remove="ColorGeneratorSupport/Writer.cs" />
+        <Compile Remove="Schema/Color.cs" />
+        <Compile Remove="Schema/ColorRange.cs" />
+        <Compile Remove="Schema/ThemeDefinition.cs" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Blazored.LocalStorage" Version="3.0.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.3"/>
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.3"/>
-        <PackageReference Include="Superset" Version="1.17.2-alpha"/>
+        <PackageReference Include="Blazored.LocalStorage" Version="3.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.4" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+        <PackageReference Include="Superset" Version="1.17.2-alpha" />
     </ItemGroup>
 
 </Project>

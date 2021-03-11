@@ -4,13 +4,13 @@ using System.Diagnostics;
 using Integrant4.Colorant.Schema;
 using Newtonsoft.Json;
 
-namespace Integrant4.Colorant.ColorGeneratorInterop
+namespace Integrant4.Colorant.ColorGeneratorSupport
 {
-    internal sealed class ColorGeneratorCaller
+    internal sealed class Caller
     {
         private readonly Process _p;
 
-        public ColorGeneratorCaller()
+        public Caller()
         {
             _p = new Process
             {

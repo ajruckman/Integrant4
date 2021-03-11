@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using Integrant4.Colorant.Schema;
 
-namespace Integrant4.Colorant
+namespace Integrant4.Colorant.ColorGeneratorSupport
 {
     public static class Writer
     {

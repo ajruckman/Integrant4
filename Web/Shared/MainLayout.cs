@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Integrant4.API;
-using Integrant4.Colorant.Services;
+using Integrant4.Colorant;
 using Integrant4.Colorant.Themes.Default;
 using Integrant4.Element;
 using Integrant4.Element.Bits;

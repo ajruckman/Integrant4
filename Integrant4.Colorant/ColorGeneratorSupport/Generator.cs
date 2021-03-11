@@ -1,15 +1,14 @@
 using System;
 using System.Collections.Generic;
-using Integrant4.Colorant.ColorGeneratorInterop;
 using Integrant4.Colorant.Schema;
 
-namespace Integrant4.Colorant
+namespace Integrant4.Colorant.ColorGeneratorSupport
 {
     public sealed class Generator
     {
         public void Generate(ThemeDefinition themeDefinition)
         {
-            var caller = new ColorGeneratorCaller();
+            var caller = new Caller();
 
             foreach (Variant variant in themeDefinition.Variants)
             {

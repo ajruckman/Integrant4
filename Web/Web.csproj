@@ -4,6 +4,7 @@
         <TargetFramework>net5.0</TargetFramework>
         <UserSecretsId>aspnet-Web-4402E631-0FC4-4583-9604-9CC132CA00CC</UserSecretsId>
         <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
