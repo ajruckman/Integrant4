@@ -38,7 +38,7 @@ namespace Integrant4.Element.Bits
             public Callbacks.Pixels?     Width           { get; init; }
             public Callbacks.Pixels?     WidthMax        { get; init; }
             public Callbacks.REM?        FontSize        { get; init; }
-            public Callbacks.FontWeight?     FontWeight      { get; init; }
+            public Callbacks.FontWeight? FontWeight      { get; init; }
             public Callbacks.Display?    Display         { get; init; }
             public Callbacks.Data?       Data            { get; init; }
             public Callbacks.Tooltip?    Tooltip         { get; init; }

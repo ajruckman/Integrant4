@@ -19,7 +19,7 @@ namespace Web.Shared
 
         private Header _header = null!;
 
-        private Stopwatch _stopwatch = new();
+        private readonly Stopwatch _stopwatch = new();
 
         protected override void OnInitialized()
         {

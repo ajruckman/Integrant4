@@ -9,14 +9,13 @@ div#I4C-Component-VariantLoader {
     div#I4C-Component-VariantLoader span * {
       color: var(--I4C_Default_Text_2); }
     div#I4C-Component-VariantLoader span label, div#I4C-Component-VariantLoader span select {
-      font-family: var(--Integrant_MonospacedFont);
-      font-size: 12px;
+      font-size: 15px;
       line-height: 1rem; }
     div#I4C-Component-VariantLoader span select {
       background-color: transparent;
       border: 1px solid transparent;
       border-radius: 2px;
-      color: var(--I4C_Default_Text_4);
+      font-family: var(--I4R_MonoFont);
       margin-left: 2px;
       outline: none; }
       div#I4C-Component-VariantLoader span select option {

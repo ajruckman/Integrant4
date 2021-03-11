@@ -1,5 +1,6 @@
+@import "_ListTable.scss";
+
 div.I4E-Layout-Panel {
-    background-color: white;
     border: 1px solid var(--I4C_Default_Border_6);
     box-shadow: var(--I4C_Default_Shadow_2);
     margin: 7px;
@@ -30,4 +31,53 @@ div.I4E-Layout-VAlign {
 
 div.I4E-Layout-VAlign-Filler {
     flex-grow: 9999;
+}
+
+div.I4E-Layout-InfoTable {
+    border: 1px solid var(--I4C_Default_Border_11);
+    border-radius: 4px;
+    box-shadow: var(--I4C_Default_Shadow_1);
+    display: inline-block;
+
+    table.I4E-Layout-InfoTable-Inner {
+        tr {
+            td {
+                padding: 5px;
+
+                &.Mono {
+                    font-family: var(--I4R_MonoFont);
+                }
+
+                &:nth-child(1) {
+                    color: var(--I4C_Default_Text_2);
+                    font-weight: 700;
+                    padding-right: 7px;
+                }
+            }
+        }
+    }
+}
+
+// Variable colors
+
+div.I4-App {
+    &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
+        div.I4E-Layout-Panel {
+            background-color: var(--I4C_Default_Background_6);
+        }
+
+        div.I4E-Layout-InfoTable {
+            background-color: var(--I4C_Default_Background_7);
+        }
+    }
+
+    &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
+        div.I4E-Layout-Panel {
+            background-color: var(--I4C_Default_Background_0);
+        }
+
+        div.I4E-Layout-InfoTable {
+            background-color: var(--I4C_Default_Background_1);
+        }
+    }
 }

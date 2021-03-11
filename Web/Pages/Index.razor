@@ -1,6 +1,5 @@
 ﻿@page "/"
-@using Integrant4.API
-@using Integrant4.Element.Inputs.Wrappers
+@using System.Security.Cryptography
 
 <style>
     li {
@@ -11,7 +10,7 @@
 
 <div class="I4E-Layout-Panel">
     @_header.Renderer()
-    
+
     <div class="I4E-Layout-Panel-Inner">
         <h1>Web</h1>
 
@@ -29,5 +28,81 @@
         </ul>
 
         <button class="I4E-Bit-Button I4E-Bit-Button--Default" @onclick="@Reset">Reset</button>
+
+        <br>
+        <br>
+        <br>
+
+        <div class="I4E-Layout-InfoTable">
+            <table class="I4E-Layout-InfoTable-Inner">
+                <tr>
+                    <td>First name</td>
+                    <td>Annabell</td>
+                </tr>
+                <tr>
+                    <td>Last name</td>
+                    <td>Ruckman</td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>Breed</td>
+                    <td>Rat Terrier</td>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <div class="I4E-Layout-ListTable">
+            <table class="I4E-Layout-ListTable-Inner">
+                <thead>
+                <tr>
+                    <th>Head 1</th>
+                    <th>Head 2</th>
+                    <th>Head 3</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                @for (var i = 1; i <= 5; i++)
+                {
+                    <tr>
+                        <td>Value @i.1</td>
+                        <td>Value @i.2</td>
+                        <td class="Mono">Value @i.3</td>
+                    </tr>
+                }
+                @for (var i = 1; i <= 5; i++)
+                {
+                    <tr class="Green">
+                        <td>Green @i.1</td>
+                        <td class="PreWrap">Green @i.2</td>
+                        <td>Green @i.3</td>
+                    </tr>
+                }
+                @for (var i = 1; i <= 5; i++)
+                {
+                    <tr class="Red">
+                        <td class="Center">Red @i.1</td>
+                        <td>Red @i.2</td>
+                        <td>Red @i.3</td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="3" class="Empty">No results</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
     </div>
 </div>

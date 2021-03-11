@@ -49,11 +49,7 @@ namespace Integrant4.Element
         (
             $"{nameof(Integrant4)}.{nameof(Element)}",
             nameof(Layouts),
-            stylesheetsInternal: new HashSet<string>
-            {
-                "css/Layouts/Layouts.css",
-                "css/Layouts/Layouts.{{ThemeVariant}}.css",
-            }
+            stylesheetsInternal: new HashSet<string> {"css/Layouts/Layouts.css"}
         );
 
         public static class Overrides

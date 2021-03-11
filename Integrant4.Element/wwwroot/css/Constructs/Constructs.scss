@@ -21,7 +21,7 @@ div.I4E-Construct-Header {
     > span.I4E-Construct-Header-Content {
         display: contents;
 
-        > .I4E-Bit-Link--Title {
+        > .I4E-Bit-PageLink--Title {
             margin-right: 15px;
         }
     }
@@ -31,7 +31,7 @@ div.I4E-Construct-Header {
     &--Primary {
         a.I4E-Bit-PageLink {
             &:not(.I4E-Bit-PageLink--Title) {
-                font-size: 17px;
+                font-size: 18px;
                 font-weight: 500;
             }
 

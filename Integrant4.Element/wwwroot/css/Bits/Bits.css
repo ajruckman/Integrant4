@@ -3,6 +3,7 @@ button.I4E-Bit-Button {
   border: none;
   border-radius: 4px;
   display: inline-flex;
+  font-size: 15px;
   font-weight: 600;
   height: 30px;
   padding: 0;
@@ -359,10 +360,10 @@ a.I4E-Bit-PageLink {
   display: inline-flex;
   text-decoration: none; }
   a.I4E-Bit-PageLink:not(.I4E-Bit-PageLink--Title) {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500; }
   a.I4E-Bit-PageLink.I4E-Bit-PageLink--Title {
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600; }
   a.I4E-Bit-PageLink:hover:not(#_) {
     border-bottom-color: var(--I4C_Default_Accent_8);
@@ -457,3 +458,5 @@ code {
     display: unset; }
     .MVisibleOnHover:hover .MVisibleOnParentHover {
       display: unset; }
+
+/*# sourceMappingURL=Bits.css.map */
