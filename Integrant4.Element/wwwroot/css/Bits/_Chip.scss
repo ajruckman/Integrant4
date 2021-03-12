@@ -11,7 +11,7 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
     box-sizing: border-box;
     display: inline-block;
     font-weight: 600;
-    padding: 2px 7px;
+    padding: calc(1em * (2 / 15)) calc(1em * (7 / 15));
     vertical-align: middle;
 
     &.I4E-Bit-Chip--Link {

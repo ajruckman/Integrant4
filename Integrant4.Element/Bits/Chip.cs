@@ -23,7 +23,7 @@ namespace Integrant4.Element.Bits
             public Callbacks.Color?      ForegroundColor { get; init; }
             public Callbacks.Pixels?     Height          { get; init; }
             public Callbacks.Pixels?     Width           { get; init; }
-            public Callbacks.REM?        FontSize        { get; init; }
+            public Callbacks.REM?        Scale           { get; init; }
             public Callbacks.FontWeight? FontWeight      { get; init; }
             public Callbacks.Display?    Display         { get; init; }
             public Callbacks.Data?       Data            { get; init; }
@@ -41,7 +41,7 @@ namespace Integrant4.Element.Bits
                 ForegroundColor = ForegroundColor,
                 Height          = Height,
                 Width           = Width,
-                FontSize        = FontSize,
+                FontSize        = Scale,
                 FontWeight      = FontWeight,
                 Display         = Display,
                 Data            = Data,
@@ -55,9 +55,7 @@ namespace Integrant4.Element.Bits
         private readonly Callbacks.BitContents _contents;
 
         public Chip(Callbacks.BitContent content, Spec? spec = null)
-            : this(content.AsContents(), spec)
-        {
-        }
+            : this(content.AsContents(), spec) { }
 
         public Chip(Callbacks.BitContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(),

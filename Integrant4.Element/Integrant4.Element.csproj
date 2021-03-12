@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <VersionPrefix>1.0.0</VersionPrefix>
+        <VersionPrefix>1.0.2</VersionPrefix>
         <VersionSuffix>alpha</VersionSuffix>
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
@@ -23,6 +23,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Integrant4.API\Integrant4.API.csproj" />
+        <ProjectReference Include="..\Integrant4.Colorant\Integrant4.Colorant.csproj" />
         <ProjectReference Include="..\Integrant4.Fundament\Integrant4.Fundament.csproj" />
         <ProjectReference Include="..\Integrant4.Resources\Integrant4.Resources.csproj" />
     </ItemGroup>

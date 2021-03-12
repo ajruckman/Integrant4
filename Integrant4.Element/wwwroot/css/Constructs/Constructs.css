@@ -25,6 +25,8 @@ div.I4E-Construct-Header {
     font-weight: 600; }
   div.I4E-Construct-Header--Primary a.I4E-Bit-PageLink span.I4E-Bit-PageLink-Content {
     min-height: calc(50px - 8px); }
+  div.I4E-Construct-Header--Primary div.I4E-Bit-VerticalLine {
+    height: 30px; }
   div.I4E-Construct-Header--Secondary a.I4E-Bit-PageLink span.I4E-Bit-PageLink-Content {
     min-height: calc(35px - 8px); }
 

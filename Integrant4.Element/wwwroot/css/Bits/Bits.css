@@ -1,11 +1,9 @@
 button.I4E-Bit-Button {
   align-items: center;
   border: none;
-  border-radius: 4px;
+  border-radius: calc(1em * (4 / 15));
   display: inline-flex;
-  font-size: 15px;
   font-weight: 600;
-  height: 30px;
   padding: 0;
   user-select: none; }
   button.I4E-Bit-Button:not(.I4E-Bit--Disabled) {
@@ -20,15 +18,27 @@ button.I4E-Bit-Button {
     align-items: center;
     display: inline-flex; }
     button.I4E-Bit-Button > span.I4E-Bit-Button-Content:not(:last-child) {
-      margin-right: 5px; }
-  button.I4E-Bit-Button:not(.I4E-Bit-Button--IconLeft) {
-    padding-left: 10px; }
-  button.I4E-Bit-Button.I4E-Bit-Button--IconLeft {
-    padding-left: 5px; }
-  button.I4E-Bit-Button:not(.I4E-Bit-Button--IconRight) {
-    padding-right: 10px; }
-  button.I4E-Bit-Button.I4E-Bit-Button--IconRight {
-    padding-right: 5px; }
+      margin-right: calc(1em * (5 / 15)); }
+  button.I4E-Bit-Button:not(.I4E-Bit-Button--Small) {
+    height: 2em; }
+    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft) {
+      padding-left: calc(1em * (10 / 15)); }
+    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft {
+      padding-left: calc(1em * (5 / 15)); }
+    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight) {
+      padding-right: calc(1em * (10 / 15)); }
+    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight {
+      padding-right: calc(1em * (5 / 15)); }
+  button.I4E-Bit-Button.I4E-Bit-Button--Small {
+    height: 1.5em; }
+    button.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconLeft) {
+      padding-left: calc(1em * (6 / 15)); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconLeft {
+      padding-left: calc(1em * (3 / 15)); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconRight) {
+      padding-right: calc(1em * (6 / 15)); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconRight {
+      padding-right: calc(1em * (3 / 15)); }
   button.I4E-Bit-Button:focus {
     outline: none; }
   button.I4E-Bit-Button:focus-visible {
@@ -225,7 +235,7 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
   box-sizing: border-box;
   display: inline-block;
   font-weight: 600;
-  padding: 2px 7px;
+  padding: calc(1em * (2 / 15)) calc(1em * (7 / 15));
   vertical-align: middle; }
   div.I4E-Bit-Chip.I4E-Bit-Chip--Link, a.I4E-Bit-Chip.I4E-Bit-Chip--Link {
     color: var(--I4C_Default_PageText);
@@ -292,7 +302,7 @@ a.I4E-Bit-Link {
     align-items: center;
     display: inline-flex; }
     a.I4E-Bit-Link > span.I4E-Bit-Link-Content:not(:last-child) {
-      margin-right: 5px; }
+      margin-right: calc(1em * (5 / 15)); }
   a.I4E-Bit-Link:not(.I4E-Bit-Link--Accented):not(.I4E-Bit-Link--Highlighted) {
     color: var(--I4C_Default_PageText); }
     a.I4E-Bit-Link:not(.I4E-Bit-Link--Accented):not(.I4E-Bit-Link--Highlighted):visited {
@@ -312,22 +322,22 @@ a.I4E-Bit-Link {
     align-items: center;
     background-color: transparent;
     border: none;
-    border-radius: 4px;
+    border-radius: calc(1em * (4 / 15));
     color: var(--I4C_Default_Accent_5);
     cursor: pointer;
     display: inline-flex;
     font-weight: 600;
-    height: 30px;
+    height: 2em;
     padding: 0;
     user-select: none; }
     a.I4E-Bit-Link.I4E-Bit-Link--Button:not(.I4E-Bit-Link--Button--IconLeft) {
-      padding-left: 10px; }
+      padding-left: calc(1em * (10 / 15)); }
     a.I4E-Bit-Link.I4E-Bit-Link--Button.I4E-Bit-Link--Button--IconLeft {
-      padding-left: 5px; }
+      padding-left: calc(1em * (5 / 15)); }
     a.I4E-Bit-Link.I4E-Bit-Link--Button:not(.I4E-Bit-Link--Button--IconRight) {
-      padding-right: 10px; }
+      padding-right: calc(1em * (10 / 15)); }
     a.I4E-Bit-Link.I4E-Bit-Link--Button.I4E-Bit-Link--Button--IconRight {
-      padding-right: 5px; }
+      padding-right: calc(1em * (5 / 15)); }
     a.I4E-Bit-Link.I4E-Bit-Link--Button:focus {
       outline: none; }
     a.I4E-Bit-Link.I4E-Bit-Link--Button:focus-visible {
@@ -378,6 +388,9 @@ a.I4E-Bit-PageLink {
     display: inline-flex; }
     a.I4E-Bit-PageLink > span.I4E-Bit-PageLink-Content:not(:last-child) {
       margin-right: 5px; }
+
+div.I4E-Bit-Space {
+  width: 5px; }
 
 div.I4E-Bit-TextBlock {
   align-items: center;
@@ -440,7 +453,7 @@ a.I4E-Bit-Title {
 
 div.I4E-Bit-VerticalLine {
   background-color: var(--I4C_Default_Background_14);
-  height: 30px;
+  height: 20px;
   margin: 0 1rem;
   width: 1px; }
 
@@ -458,5 +471,3 @@ code {
     display: unset; }
     .MVisibleOnHover:hover .MVisibleOnParentHover {
       display: unset; }
-
-/*# sourceMappingURL=Bits.css.map */

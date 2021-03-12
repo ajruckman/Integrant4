@@ -10,7 +10,7 @@ a.I4E-Bit-Link {
         display: inline-flex;
 
         &:not(:last-child) {
-            margin-right: 5px;
+            margin-right: calc(1em * (5 / 15));
         }
     }
 
@@ -47,31 +47,31 @@ a.I4E-Bit-Link {
         align-items: center;
         background-color: transparent;
         border: none;
-        border-radius: 4px;
+        border-radius: calc(1em * (4 / 15));
         color: var(--I4C_Default_Accent_5);
         cursor: pointer;
         display: inline-flex;
         font-weight: 600;
-        height: 30px;
+        height: 2em;
         padding: 0;
         user-select: none;
 
         //
 
         &:not(.I4E-Bit-Link--Button--IconLeft) {
-            padding-left: 10px;
+            padding-left: calc(1em * (10 / 15));
         }
 
         &.I4E-Bit-Link--Button--IconLeft {
-            padding-left: 5px;
+            padding-left: calc(1em * (5 / 15));
         }
 
         &:not(.I4E-Bit-Link--Button--IconRight) {
-            padding-right: 10px;
+            padding-right: calc(1em * (10 / 15));
         }
 
         &.I4E-Bit-Link--Button--IconRight {
-            padding-right: 5px;
+            padding-right: calc(1em * (5 / 15));
         }
 
         //

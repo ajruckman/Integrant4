@@ -1,11 +1,9 @@
 button.I4E-Bit-Button {
     align-items: center;
     border: none;
-    border-radius: 4px;
+    border-radius: calc(1em * (4 / 15));
     display: inline-flex;
-    font-size: 15px;
     font-weight: 600;
-    height: 30px;
     padding: 0;
     user-select: none;
 
@@ -30,26 +28,50 @@ button.I4E-Bit-Button {
         display: inline-flex;
 
         &:not(:last-child) {
-            margin-right: 5px;
+            margin-right: calc(1em * (5 / 15));
         }
     }
 
     //
 
-    &:not(.I4E-Bit-Button--IconLeft) {
-        padding-left: 10px;
+    &:not(.I4E-Bit-Button--Small) {
+        height: 2em;
+
+        &:not(.I4E-Bit-Button--IconLeft) {
+            padding-left: calc(1em * (10 / 15));
+        }
+
+        &.I4E-Bit-Button--IconLeft {
+            padding-left: calc(1em * (5 / 15));
+        }
+
+        &:not(.I4E-Bit-Button--IconRight) {
+            padding-right: calc(1em * (10 / 15));
+        }
+
+        &.I4E-Bit-Button--IconRight {
+            padding-right: calc(1em * (5 / 15));
+        }
     }
 
-    &.I4E-Bit-Button--IconLeft {
-        padding-left: 5px;
-    }
+    &.I4E-Bit-Button--Small {
+        height: 1.5em;
 
-    &:not(.I4E-Bit-Button--IconRight) {
-        padding-right: 10px;
-    }
+        &:not(.I4E-Bit-Button--IconLeft) {
+            padding-left: calc(1em * (6 / 15));
+        }
 
-    &.I4E-Bit-Button--IconRight {
-        padding-right: 5px;
+        &.I4E-Bit-Button--IconLeft {
+            padding-left: calc(1em * (3 / 15));
+        }
+
+        &:not(.I4E-Bit-Button--IconRight) {
+            padding-right: calc(1em * (6 / 15));
+        }
+
+        &.I4E-Bit-Button--IconRight {
+            padding-right: calc(1em * (3 / 15));
+        }
     }
 
     //

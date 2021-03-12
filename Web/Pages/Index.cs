@@ -55,7 +55,7 @@ namespace Web.Pages
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            if (firstRender) await ElementService.ProcessJobs();
+            await ElementService.ProcessJobs();
         }
     }
 

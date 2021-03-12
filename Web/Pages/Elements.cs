@@ -48,6 +48,10 @@ namespace Web.Pages
 
         private bool _checked = true;
 
+        private readonly List<Button> _buttonsScaled = new();
+        private readonly List<Chip>   _chipsScaled   = new();
+        private readonly List<Link>   _linksScaled   = new();
+
         [Inject] public IJSRuntime     JSRuntime      { get; set; } = null!;
         [Inject] public ElementService ElementService { get; set; } = null!;
 
@@ -112,7 +116,7 @@ namespace Web.Pages
             });
             _buttonIconAll = new Button(() => new IRenderable[]
             {
-                new BootstrapIcon("caret-left-fill", 16),
+                new BootstrapIcon("caret-left-fill",  16),
                 new BootstrapIcon("caret-right-fill", 16),
             });
 
@@ -231,6 +235,43 @@ namespace Web.Pages
                             }, new Link.Spec(() => "/") {IsButton = Always.True}),
                         }, new Dropdown.Spec {PlacementGetter = () => Placement.RightStart}),
                 });
+            
+            //
+            
+            for (double i = 0; i < 3; i += 0.1)
+            {
+                double i1 = i;
+                _buttonsScaled.Add(new Button(() => new IRenderable[]
+                {
+                    $"Button content {i1}".AsContent(),
+                }, new Button.Spec
+                {
+                    Scale = () => i1,
+                }));
+                _buttonsScaled.Add(new Button(() => new IRenderable[]
+                {
+                    $"Button content {i1}".AsContent(),
+                }, new Button.Spec
+                {
+                    Scale = () => i1,
+                    IsSmall  = () => true,
+                }));
+                _chipsScaled.Add(new Chip(() => new IRenderable[]
+                {
+                    $"Chip content {i1}".AsContent(),
+                }, new Chip.Spec
+                {
+                    Scale = () => i1,
+                }));
+                _linksScaled.Add(new Link(() => new IRenderable[]
+                {
+                    $"Link content {i1}".AsContent(),
+                }, new Link.Spec(() => "/elements")
+                {
+                    Scale = () => i1,
+                    IsButton = () => true,
+                }));
+            }
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)

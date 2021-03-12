@@ -20,13 +20,15 @@ namespace Integrant4.Element.Bits
         {
             public StyleGetter? Style { get; init; }
 
+            public Callbacks.Callback<bool> IsSmall { get; init; }
+
             public Callbacks.IsVisible?  IsVisible  { get; init; }
             public Callbacks.IsDisabled? IsDisabled { get; init; }
 
             public Callbacks.Classes?    Classes    { get; init; }
             public Callbacks.Size?       Margin     { get; init; }
             public Callbacks.Size?       Padding    { get; init; }
-            public Callbacks.REM?        FontSize   { get; init; }
+            public Callbacks.REM?        Scale      { get; init; }
             public Callbacks.FontWeight? FontWeight { get; init; }
             public Callbacks.Display?    Display    { get; init; }
             public Callbacks.Data?       Data       { get; init; }
@@ -39,7 +41,7 @@ namespace Integrant4.Element.Bits
                 Classes    = Classes,
                 Margin     = Margin,
                 Padding    = Padding,
-                FontSize   = FontSize,
+                FontSize   = Scale,
                 FontWeight = FontWeight,
                 Display    = Display,
                 Data       = Data,
@@ -50,18 +52,18 @@ namespace Integrant4.Element.Bits
 
     public partial class Button
     {
-        private readonly Callbacks.BitContents _contents;
+        private readonly Callbacks.BitContents     _contents;
+        private readonly Callbacks.Callback<bool>? _isSmall;
 
         public Button(Callbacks.BitContent content, Spec? spec = null)
-            : this(content.AsContents(), spec)
-        {
-        }
+            : this(content.AsContents(), spec) { }
 
         public Button(Callbacks.BitContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Button)))
         {
             _contents    = contents;
             _styleGetter = spec?.Style ?? DefaultStyleGetter;
+            _isSmall     = spec?.IsSmall;
         }
     }
 
@@ -77,6 +79,7 @@ namespace Integrant4.Element.Bits
 
                 if (contents.First() is IIcon) ac.Add("I4E-Bit-Button--IconLeft");
                 if (contents.Last() is IIcon) ac.Add("I4E-Bit-Button--IconRight");
+                if (_isSmall?.Invoke() == true) ac.Add("I4E-Bit-Button--Small");
 
                 //
 

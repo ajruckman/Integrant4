@@ -97,3 +97,19 @@
     <div>a</div>
     <div>a</div>
 </div>
+
+
+<ul>
+    @foreach (Button button in _buttonsScaled)
+    {
+        <li>@button.Renderer()</li>
+    }
+    @foreach (Chip chip in _chipsScaled)
+    {
+        <li>@chip.Renderer()</li>
+    }
+    @foreach (Link link in _linksScaled)
+    {
+        <li>@link.Renderer()</li>
+    }
+</ul>

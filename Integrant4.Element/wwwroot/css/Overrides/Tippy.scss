@@ -1,11 +1,12 @@
 .tippy-box {
-    background-color: var(--I4C_Default_Opaque_White_13);
-    box-shadow: var(--I4C_Default_Shadow_1);
-    color: var(--I4C_Default_Opaque_Black_14);
-    font-family: var(--I4R_SansSerifFont);
-    font-weight: 600;
+    background-color: var(--I4C_Default_Alias_PageBackground);
+    box-shadow:       var(--I4C_Default_Shadow_0), var(--I4C_Default_Shadow_1);
+    color:            var(--I4C_Default_Alias_PageText);
+    font-family:      var(--I4R_SansSerifFont);
+    font-weight:      600;
+    opacity:          0.95;
 
     .tippy-arrow {
-        color: var(--I4C_Default_Opaque_White_13);
+        color: var(--I4C_Default_Alias_PageBackground);
     }
 }
