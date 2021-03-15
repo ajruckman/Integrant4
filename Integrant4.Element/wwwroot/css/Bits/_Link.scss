@@ -28,12 +28,12 @@ a.I4E-Bit-Link {
         }
     }
 
-    &:not(#_):hover:not(.I4E-Bit-Link--Button) {
+    &:not(#_):hover {
         border-bottom: 1px solid;
         color: var(--I4C_Default_Accent_8);
     }
 
-    &:not(#_):active:not(.I4E-Bit-Link--Button) {
+    &:not(#_):active {
         border-bottom: 1px solid;
         color: var(--I4C_Default_Accent_9);
     }
@@ -45,91 +45,5 @@ a.I4E-Bit-Link {
     &.I4E-Bit-Link--Highlighted {
         border-bottom: 1px solid;
         color: var(--I4C_Default_Accent_7);
-    }
-
-    &.I4E-Bit-Link--Button {
-        align-items: center;
-        background-color: transparent;
-        border: none;
-        border-radius: calc(1em * (4 / 15));
-        color: var(--I4C_Default_Accent_5);
-        cursor: pointer;
-        display: inline-flex;
-        font-weight: 600;
-        height: 2em;
-        padding: 0;
-        user-select: none;
-
-        //
-
-        &:not(.I4E-Bit-Link--Button--IconLeft) {
-            padding-left: calc(1em * (10 / 15));
-        }
-
-        &.I4E-Bit-Link--Button--IconLeft {
-            padding-left: calc(1em * (5 / 15));
-        }
-
-        &:not(.I4E-Bit-Link--Button--IconRight) {
-            padding-right: calc(1em * (10 / 15));
-        }
-
-        &.I4E-Bit-Link--Button--IconRight {
-            padding-right: calc(1em * (5 / 15));
-        }
-
-        //
-
-        &:focus {
-            outline: none;
-        }
-
-        &:focus-visible {
-            box-shadow: 0 0 1px 0 var(--I4C_Default_Accent_5);
-        }
-
-        &:hover {
-            background-color: var(--I4C_Default_Opaque_White_3);
-        }
-
-        &:active {
-            background-color: var(--I4C_Default_Opaque_White_2);
-        }
-    }
-
-    &:hover.I4E-Bit-Link--Button {
-
-    }
-}
-
-// Variable colors
-
-div.I4-App {
-    &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
-        a.I4E-Bit-Link--Button {
-            &:hover {
-                background-color: var(--I4C_Default_Opaque_White_3);
-            }
-
-            &:active {
-                background-color: var(--I4C_Default_Opaque_White_2);
-            }
-
-            &:hover, &:active {
-                box-shadow: var(--I4C_Default_Shadow_0);
-            }
-        }
-    }
-
-    &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
-        a.I4E-Bit-Link--Button {
-            &:hover {
-                background-color: var(--I4C_Default_Opaque_Black_1);
-            }
-
-            &:active {
-                background-color: var(--I4C_Default_Opaque_Black_0);
-            }
-        }
     }
 }

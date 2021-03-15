@@ -24,7 +24,6 @@ namespace Integrant4.Element.Bits
 
             public Callbacks.Callback<bool>? IsAccented    { get; init; }
             public Callbacks.Callback<bool>? IsHighlighted { get; init; }
-            public Callbacks.Callback<bool>? IsButton      { get; init; }
 
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -73,7 +72,6 @@ namespace Integrant4.Element.Bits
     {
         private readonly Callbacks.BitContents     _contents;
         private readonly Callbacks.Callback<bool>? _isAccented;
-        private readonly Callbacks.Callback<bool>? _isButton;
         private readonly Callbacks.Callback<bool>? _isHighlighted;
 
         public Link(Callbacks.BitContent content, Spec spec)
@@ -84,8 +82,7 @@ namespace Integrant4.Element.Bits
         {
             _contents      = contents;
             _isAccented    = spec.IsAccented;
-            _isHighlighted = spec?.IsHighlighted;
-            _isButton      = spec?.IsButton;
+            _isHighlighted = spec.IsHighlighted;
         }
     }
 
@@ -104,14 +101,6 @@ namespace Integrant4.Element.Bits
 
                 if (_isHighlighted?.Invoke() == true)
                     ac.Add("I4E-Bit-Link--Highlighted");
-
-                if (_isButton?.Invoke() == true)
-                {
-                    ac.Add("I4E-Bit-Link--Button");
-
-                    if (contents.First() is IIcon) ac.Add("I4E-Bit-Link--Button--IconLeft");
-                    if (contents.Last() is IIcon) ac.Add("I4E-Bit-Link--Button--IconRight");
-                }
 
                 //
 

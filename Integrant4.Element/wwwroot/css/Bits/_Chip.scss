@@ -5,7 +5,6 @@
 }
 
 div.I4E-Bit-Chip, a.I4E-Bit-Chip {
-    background-color: var(--I4C_Default_Opaque_White_2);
     border-radius: 5000px;
     box-shadow: var(--I4C_Default_Shadow_0);
     box-sizing: border-box;
@@ -37,6 +36,10 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
 
 div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
+        div.I4E-Bit-Chip, a.I4E-Bit-Chip {
+            background-color: var(--I4C_Default_Background_12);
+        }
+
         a.I4E-Bit-Chip--Link {
             &:hover {
                 background-color: var(--I4C_Default_Opaque_White_3);
@@ -49,6 +52,10 @@ div.I4-App {
     }
 
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
+        div.I4E-Bit-Chip, a.I4E-Bit-Chip {
+            background-color: var(--I4C_Default_Background_0);
+        }
+
         a.I4E-Bit-Chip--Link {
             &:hover {
                 background-color: var(--I4C_Default_Opaque_Black_0);

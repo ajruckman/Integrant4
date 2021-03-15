@@ -108,11 +108,17 @@ namespace Web.Pages
             {
                 new BootstrapIcon("caret-left-fill", 16),
                 "asdf left".AsContent(),
+            }, new Button.Spec
+            {
+                HREF = () => "/asdf/left",
             });
             _buttonIconLast = new Button(() => new IRenderable[]
             {
                 "asdf right".AsContent(),
                 new BootstrapIcon("caret-right-fill", 16),
+            }, new Button.Spec()
+            {
+                HREF = () => "/asdf/left",
             });
             _buttonIconAll = new Button(() => new IRenderable[]
             {
@@ -201,16 +207,16 @@ namespace Web.Pages
                     "asdf".AsContent(),
                     new HorizontalLine(),
                     "asdf".AsContent(),
-                    new Link(() => new IRenderable[]
+                    new Button(() => new IRenderable[]
                     {
                         new BootstrapIcon("gear"),
                         "Settings".AsContent(),
-                    }, new Link.Spec(() => "/") {IsButton = Always.True}),
-                    new Link(() => new IRenderable[]
+                    }, new Button.Spec {HREF = () => "/", Style = () => Button.Style.Transparent}),
+                    new Button(() => new IRenderable[]
                     {
                         new BootstrapIcon("gear-fill"),
                         "Settings 2".AsContent(),
-                    }, new Link.Spec(() => "/") {IsButton = Always.True}),
+                    }, new Button.Spec {HREF = () => "/", Style = () => Button.Style.Transparent}),
                     new HorizontalLine(),
                     new Dropdown
                     (
@@ -228,11 +234,11 @@ namespace Web.Pages
                             new HorizontalLine(),
                             "asdf".AsContent(),
                             new HorizontalLine(),
-                            new Link(() => new IRenderable[]
+                            new Button(() => new IRenderable[]
                             {
                                 new BootstrapIcon("chevron-right"),
                                 "Chevron".AsContent(),
-                            }, new Link.Spec(() => "/") {IsButton = Always.True}),
+                            }, new Button.Spec {HREF = () => "/", Style = () => Button.Style.Transparent}),
                         }, new Dropdown.Spec {PlacementGetter = () => Placement.RightStart}),
                 });
 
@@ -268,8 +274,7 @@ namespace Web.Pages
                     $"Link content {i1}".AsContent(),
                 }, new Link.Spec(() => "/elements")
                 {
-                    Scale    = () => i1,
-                    IsButton = () => true,
+                    Scale = () => i1,
                 }));
             }
         }

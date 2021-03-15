@@ -26,6 +26,7 @@ namespace Integrant4.Element.Bits
             public Callbacks.IsDisabled? IsDisabled { get; init; }
 
             public Callbacks.Classes?    Classes    { get; init; }
+            public Callbacks.HREF?       HREF       { get; init; }
             public Callbacks.Size?       Margin     { get; init; }
             public Callbacks.Size?       Padding    { get; init; }
             public Callbacks.Scale?      Scale      { get; init; }
@@ -40,6 +41,7 @@ namespace Integrant4.Element.Bits
                 Scaled     = true,
                 IsVisible  = IsVisible,
                 IsDisabled = IsDisabled,
+                HREF       = HREF,
                 Classes    = Classes,
                 Margin     = Margin,
                 Padding    = Padding,
@@ -87,7 +89,16 @@ namespace Integrant4.Element.Bits
                 //
 
                 int seq = -1;
-                builder.OpenElement(++seq, "button");
+
+                if (BaseSpec.HREF == null)
+                {
+                    builder.OpenElement(++seq, "button");
+                }
+                else
+                {
+                    builder.OpenElement(++seq, "a");
+                    builder.AddAttribute(++seq, "href", BaseSpec.HREF.Invoke());
+                }
 
                 BitBuilder.ApplyAttributes(this, builder, ref seq, ac.ToArray(), null);
 
@@ -142,6 +153,7 @@ namespace Integrant4.Element.Bits
             Default,
             Accent,
             Transparent,
+            AccentTransparent,
             Blue,
             Green,
             Orange,

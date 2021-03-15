@@ -1,9 +1,17 @@
-button.I4E-Bit-Button {
+button.I4E-Bit-Button, a.I4E-Bit-Button {
     border: none;
     border-radius: calc(1em * (4 / 15));
+    display: inline-block;
     font-weight: 600;
     padding: 0;
+    text-decoration: none;
     user-select: none;
+
+    @at-root a {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 
     &:not(.I4E-Bit--Disabled) {
         cursor: pointer;
@@ -39,6 +47,7 @@ button.I4E-Bit-Button {
 
     &:not(.I4E-Bit-Button--Small) {
         height: 2em;
+        line-height: 2em;
 
         &:not(.I4E-Bit-Button--IconLeft) {
             padding-left: calc(1em * (10 / 15));
@@ -59,6 +68,7 @@ button.I4E-Bit-Button {
 
     &.I4E-Bit-Button--Small {
         height: 1.5em;
+        line-height: 1.5em;
 
         &:not(.I4E-Bit-Button--IconLeft) {
             padding-left: calc(1em * (6 / 15));
@@ -125,7 +135,7 @@ button.I4E-Bit-Button {
 
 div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
-        button.I4E-Bit-Button {
+        button.I4E-Bit-Button, a.I4E-Bit-Button {
             &.I4E-Bit-Button--Default {
                 background-color: var(--I4C_Default_Opaque_White_2);
                 box-shadow: var(--I4C_Default_Shadow_0);
@@ -143,6 +153,18 @@ div.I4-App {
             }
 
             &.I4E-Bit-Button--Transparent {
+                &:hover:not(.I4E-Bit--Disabled) {
+                    background-color: var(--I4C_Default_Opaque_White_3);
+                    color: var(--I4C_Default_Accent_6);
+                }
+
+                &:active:not(.I4E-Bit--Disabled) {
+                    background-color: var(--I4C_Default_Opaque_White_2);
+                    color: var(--I4C_Default_Accent_6);
+                }
+            }
+
+            &.I4E-Bit-Button--AccentTransparent {
                 color: var(--I4C_Default_Accent_5);
 
                 &:hover:not(.I4E-Bit--Disabled) {
@@ -159,7 +181,7 @@ div.I4-App {
     }
 
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
-        button.I4E-Bit-Button {
+        button.I4E-Bit-Button, a.I4E-Bit-Button {
             &.I4E-Bit-Button--Default {
                 background-color: var(--I4C_Default_Opaque_Black_1);
                 color: var(--I4C_Default_Text_6);
@@ -176,6 +198,18 @@ div.I4-App {
             }
 
             &.I4E-Bit-Button--Transparent {
+                &:hover:not(.I4E-Bit--Disabled) {
+                    background-color: var(--I4C_Default_Opaque_Black_1);
+                    color: var(--I4C_Default_Accent_6);
+                }
+
+                &:active:not(.I4E-Bit--Disabled) {
+                    background-color: var(--I4C_Default_Opaque_Black_0);
+                    color: var(--I4C_Default_Accent_6);
+                }
+            }
+
+            &.I4E-Bit-Button--AccentTransparent {
                 color: var(--I4C_Default_Accent_5);
 
                 &:hover:not(.I4E-Bit--Disabled) {
@@ -226,7 +260,7 @@ div.I4-App {
     }
 }
 
-button.I4E-Bit-Button--Blue {
+button.I4E-Bit-Button--Blue, a.I4E-Bit-Button--Blue {
     @include _ColorButton(
                     var(--I4C_Solids_Blue_6),
                     var(--I4C_Solids_Blue_6),
@@ -246,7 +280,7 @@ button.I4E-Bit-Button--Blue {
     );
 }
 
-button.I4E-Bit-Button--Green {
+button.I4E-Bit-Button--Green, a.I4E-Bit-Button--Green {
     @include _ColorButton(
                     var(--I4C_Solids_Green_9),
                     var(--I4C_Solids_Green_9),
@@ -266,7 +300,7 @@ button.I4E-Bit-Button--Green {
     );
 }
 
-button.I4E-Bit-Button--Orange {
+button.I4E-Bit-Button--Orange, a.I4E-Bit-Button--Orange {
     @include _ColorButton(
                     var(--I4C_Solids_Orange_8),
                     var(--I4C_Solids_Orange_8),
@@ -286,7 +320,7 @@ button.I4E-Bit-Button--Orange {
     );
 }
 
-button.I4E-Bit-Button--Purple {
+button.I4E-Bit-Button--Purple, a.I4E-Bit-Button--Purple {
     @include _ColorButton(
                     var(--I4C_Solids_Purple_9),
                     var(--I4C_Solids_Purple_9),
@@ -306,7 +340,7 @@ button.I4E-Bit-Button--Purple {
     );
 }
 
-button.I4E-Bit-Button--Red {
+button.I4E-Bit-Button--Red, a.I4E-Bit-Button--Red {
     @include _ColorButton(
                     var(--I4C_Solids_Red_9),
                     var(--I4C_Solids_Red_9),
@@ -326,7 +360,7 @@ button.I4E-Bit-Button--Red {
     );
 }
 
-button.I4E-Bit-Button--Yellow {
+button.I4E-Bit-Button--Yellow, a.I4E-Bit-Button--Yellow {
     @include _ColorButton(
                     var(--I4C_Solids_Yellow_6),
                     var(--I4C_Solids_Yellow_6),
