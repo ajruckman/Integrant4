@@ -1,7 +1,8 @@
 button.I4E-Bit-Button, a.I4E-Bit-Button {
   border: none;
   border-radius: calc(1em * (4 / 15));
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-size: 1rem;
   font-weight: 600;
   padding: 0;
@@ -27,8 +28,6 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
         margin-right: calc(1em * (5 / 15)); }
   button.I4E-Bit-Button:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small) {
     height: 2em; }
-    a {
-      line-height: 2em; }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft) {
       padding-left: calc(1em * (10 / 15)); }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft {
@@ -39,8 +38,6 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
       padding-right: calc(1em * (5 / 15)); }
   button.I4E-Bit-Button.I4E-Bit-Button--Small, a.I4E-Bit-Button.I4E-Bit-Button--Small {
     height: 1.5em; }
-    a {
-      line-height: 1.5em; }
     button.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconLeft) {
       padding-left: calc(1em * (6 / 15)); }
     button.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconLeft, a.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconLeft {

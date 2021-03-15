@@ -1,7 +1,8 @@
 button.I4E-Bit-Button, a.I4E-Bit-Button {
     border: none;
     border-radius: calc(1em * (4 / 15));
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     font-size: 1rem;
     font-weight: 600;
     padding: 0;
@@ -49,10 +50,6 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
     &:not(.I4E-Bit-Button--Small) {
         height: 2em;
 
-        @at-root a {
-            line-height: 2em;
-        }
-
         &:not(.I4E-Bit-Button--IconLeft) {
             padding-left: calc(1em * (10 / 15));
         }
@@ -72,10 +69,6 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
 
     &.I4E-Bit-Button--Small {
         height: 1.5em;
-
-        @at-root a {
-            line-height: 1.5em;
-        }
 
         &:not(.I4E-Bit-Button--IconLeft) {
             padding-left: calc(1em * (6 / 15));

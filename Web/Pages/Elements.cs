@@ -253,6 +253,7 @@ namespace Web.Pages
                 }, new Button.Spec
                 {
                     Scale = () => i1,
+                    HREF  = () => "/elements",
                 }));
                 _buttonsScaled.Add(new Button(() => new IRenderable[]
                 {
