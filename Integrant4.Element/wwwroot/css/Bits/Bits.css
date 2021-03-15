@@ -1,8 +1,6 @@
 button.I4E-Bit-Button {
-  align-items: center;
   border: none;
   border-radius: calc(1em * (4 / 15));
-  display: inline-flex;
   font-weight: 600;
   padding: 0;
   user-select: none; }
@@ -14,11 +12,14 @@ button.I4E-Bit-Button {
       background-color: var(--I4C_Default_Opaque_White_2); }
   button.I4E-Bit-Button.I4E-Bit--Disabled {
     cursor: not-allowed; }
-  button.I4E-Bit-Button > span.I4E-Bit-Button-Content {
+  button.I4E-Bit-Button > span.I4E-Bit-Button-Contents {
     align-items: center;
-    display: inline-flex; }
-    button.I4E-Bit-Button > span.I4E-Bit-Button-Content:not(:last-child) {
-      margin-right: calc(1em * (5 / 15)); }
+    display: flex; }
+    button.I4E-Bit-Button > span.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content {
+      align-items: center;
+      display: inline-flex; }
+      button.I4E-Bit-Button > span.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child) {
+        margin-right: calc(1em * (5 / 15)); }
   button.I4E-Bit-Button:not(.I4E-Bit-Button--Small) {
     height: 2em; }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft) {
@@ -244,6 +245,9 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
       outline: none; }
     div.I4E-Bit-Chip.I4E-Bit-Chip--Link:visited, a.I4E-Bit-Chip.I4E-Bit-Chip--Link:visited {
       color: var(--I4C_Default_PageText); }
+  div.I4E-Bit-Chip > span.I4E-Bit-Chip-Contents, a.I4E-Bit-Chip > span.I4E-Bit-Chip-Contents {
+    align-items: center;
+    display: flex; }
 
 div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Chip--Link:hover, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Chip--Link:hover {
   background-color: var(--I4C_Default_Opaque_White_3); }
@@ -293,16 +297,17 @@ div.I4E-Bit-HorizontalLine {
   width: 100%; }
 
 a.I4E-Bit-Link {
-  align-items: center;
   border-bottom: 1px solid transparent;
   color: var(--I4C_Default_PageText);
-  display: inline-flex;
   text-decoration: none; }
-  a.I4E-Bit-Link > span.I4E-Bit-Link-Content {
+  a.I4E-Bit-Link > span.I4E-Bit-Link-Contents {
     align-items: center;
-    display: inline-flex; }
-    a.I4E-Bit-Link > span.I4E-Bit-Link-Content:not(:last-child) {
-      margin-right: calc(1em * (5 / 15)); }
+    display: flex; }
+    a.I4E-Bit-Link > span.I4E-Bit-Link-Contents > span.I4E-Bit-Link-Content {
+      align-items: center;
+      display: inline-flex; }
+      a.I4E-Bit-Link > span.I4E-Bit-Link-Contents > span.I4E-Bit-Link-Content:not(:last-child) {
+        margin-right: calc(1em * (5 / 15)); }
   a.I4E-Bit-Link:not(.I4E-Bit-Link--Accented):not(.I4E-Bit-Link--Highlighted) {
     color: var(--I4C_Default_PageText); }
     a.I4E-Bit-Link:not(.I4E-Bit-Link--Accented):not(.I4E-Bit-Link--Highlighted):visited {
@@ -471,3 +476,5 @@ code {
     display: unset; }
     .MVisibleOnHover:hover .MVisibleOnParentHover {
       display: unset; }
+
+/*# sourceMappingURL=Bits.css.map */

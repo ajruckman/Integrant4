@@ -235,9 +235,9 @@ namespace Web.Pages
                             }, new Link.Spec(() => "/") {IsButton = Always.True}),
                         }, new Dropdown.Spec {PlacementGetter = () => Placement.RightStart}),
                 });
-            
+
             //
-            
+
             for (double i = 0; i < 3; i += 0.1)
             {
                 double i1 = i;
@@ -253,8 +253,8 @@ namespace Web.Pages
                     $"Button content {i1}".AsContent(),
                 }, new Button.Spec
                 {
-                    Scale = () => i1,
-                    IsSmall  = () => true,
+                    Scale   = () => i1,
+                    IsSmall = () => true,
                 }));
                 _chipsScaled.Add(new Chip(() => new IRenderable[]
                 {
@@ -268,7 +268,7 @@ namespace Web.Pages
                     $"Link content {i1}".AsContent(),
                 }, new Link.Spec(() => "/elements")
                 {
-                    Scale = () => i1,
+                    Scale    = () => i1,
                     IsButton = () => true,
                 }));
             }

@@ -68,11 +68,6 @@ namespace Integrant4.Element
                 result.Add($"max-width: {spec.WidthMax.Invoke()}px;");
             }
 
-            if (spec.FontSize != null)
-            {
-                result.Add($"font-size: {spec.FontSize.Invoke()}rem;");
-            }
-
             if (spec.FontWeight != null)
             {
                 result.Add($"font-weight: {(int) spec.FontWeight.Invoke()};");
@@ -98,10 +93,32 @@ namespace Integrant4.Element
 
             //
 
+            if (!spec.Scaled)
+            {
+                if (spec.FontSize != null)
+                {
+                    result.Add($"font-size: {spec.FontSize.Invoke()}rem;");
+                }
+            }
+            else
+            {
+                if (spec.Scale != null)
+                {
+                    result.Add($"font-size: {spec.Scale.Invoke()}rem;");
+                }
+            }
+
+            //
+
             if (additional != null)
                 result.AddRange(additional);
 
             return result.Any() ? string.Join(' ', result) : null;
+        }
+
+        internal static string? ContentStyleAttribute(BaseSpec spec)
+        {
+            return spec.FontSize != null ? $"font-size: {spec.FontSize.Invoke()}rem;" : null;
         }
     }
 }

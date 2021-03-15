@@ -1,18 +1,22 @@
 a.I4E-Bit-Link {
-    align-items: center;
     border-bottom: 1px solid transparent;
     color: var(--I4C_Default_PageText);
-    display: inline-flex;
     text-decoration: none;
 
-    > span.I4E-Bit-Link-Content {
+    > span.I4E-Bit-Link-Contents {
         align-items: center;
-        display: inline-flex;
+        display: flex;
 
-        &:not(:last-child) {
-            margin-right: calc(1em * (5 / 15));
+        > span.I4E-Bit-Link-Content {
+            align-items: center;
+            display: inline-flex;
+
+            &:not(:last-child) {
+                margin-right: calc(1em * (5 / 15));
+            }
         }
     }
+
 
     // Default colors
 

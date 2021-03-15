@@ -28,7 +28,8 @@ namespace Integrant4.Element.Bits
             public Callbacks.Classes?    Classes    { get; init; }
             public Callbacks.Size?       Margin     { get; init; }
             public Callbacks.Size?       Padding    { get; init; }
-            public Callbacks.REM?        Scale      { get; init; }
+            public Callbacks.Scale?      Scale      { get; init; }
+            public Callbacks.REM?        FontSize   { get; init; }
             public Callbacks.FontWeight? FontWeight { get; init; }
             public Callbacks.Display?    Display    { get; init; }
             public Callbacks.Data?       Data       { get; init; }
@@ -36,12 +37,14 @@ namespace Integrant4.Element.Bits
 
             internal BaseSpec ToBaseSpec() => new()
             {
+                Scaled     = Scale != null,
                 IsVisible  = IsVisible,
                 IsDisabled = IsDisabled,
                 Classes    = Classes,
                 Margin     = Margin,
                 Padding    = Padding,
-                FontSize   = Scale,
+                Scale      = Scale,
+                FontSize   = FontSize,
                 FontWeight = FontWeight,
                 Display    = Display,
                 Data       = Data,
@@ -90,6 +93,11 @@ namespace Integrant4.Element.Bits
 
                 builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, Click));
 
+                builder.OpenElement(++seq, "span");
+                builder.AddAttribute(++seq, "class", "I4E-Bit-Button-Contents");
+
+                BitBuilder.ApplyContentAttributes(this, builder, ref seq);
+
                 foreach (IRenderable renderable in contents)
                 {
                     builder.OpenElement(++seq, "span");
@@ -97,6 +105,8 @@ namespace Integrant4.Element.Bits
                     builder.AddContent(++seq, renderable.Renderer());
                     builder.CloseElement();
                 }
+
+                builder.CloseElement();
 
                 builder.CloseElement();
 

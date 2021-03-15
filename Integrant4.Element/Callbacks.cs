@@ -8,32 +8,47 @@ namespace Integrant4.Element
     {
         public delegate T Callback<out T>();
 
-        public delegate IRenderable              BitContent();
+        public delegate IRenderable BitContent();
+
         public delegate IEnumerable<IRenderable> BitContents();
 
         //
 
-        public delegate bool     IsVisible();
-        public delegate bool     IsDisabled();
-        public delegate bool     IsRequired();
-        public delegate bool     IsChecked();
+        public delegate bool IsVisible();
+
+        public delegate bool IsDisabled();
+
+        public delegate bool IsRequired();
+
+        public delegate bool IsChecked();
+
         public delegate ClassSet Classes();
-        public delegate string   HREF();
+
+        public delegate string HREF();
 
         //
 
-        public delegate Element.Size       Size();
-        public delegate string             Color();
-        public delegate double             Pixels();
-        public delegate double             REM();
+        public delegate Element.Size Size();
+
+        public delegate string Color();
+
+        public delegate double Pixels();
+
+        public delegate double Scale();
+
+        public delegate double REM();
+
         public delegate Element.FontWeight FontWeight();
-        public delegate Element.Display    Display();
+
+        public delegate Element.Display Display();
 
         //
 
-        public delegate string?                        DataValue();
+        public delegate string? DataValue();
+
         public delegate IDictionary<string, DataValue> Data();
-        public delegate Element.Tooltip?               Tooltip();
+
+        public delegate Element.Tooltip? Tooltip();
 
         //
 
@@ -48,6 +63,8 @@ namespace Integrant4.Element
 
     internal class BaseSpec
     {
+        internal bool Scaled { get; init; } = false;
+
         internal Callbacks.IsVisible?  IsVisible  { get; init; }
         internal Callbacks.IsDisabled? IsDisabled { get; init; }
         internal Callbacks.IsRequired? IsRequired { get; init; }
@@ -63,6 +80,7 @@ namespace Integrant4.Element
         internal Callbacks.Pixels?     HeightMax       { get; init; }
         internal Callbacks.Pixels?     Width           { get; init; }
         internal Callbacks.Pixels?     WidthMax        { get; init; }
+        internal Callbacks.Scale?      Scale           { get; init; }
         internal Callbacks.REM?        FontSize        { get; init; }
         internal Callbacks.FontWeight? FontWeight      { get; init; }
         internal Callbacks.Display?    Display         { get; init; }
