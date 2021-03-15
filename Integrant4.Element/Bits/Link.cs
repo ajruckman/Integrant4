@@ -37,7 +37,8 @@ namespace Integrant4.Element.Bits
             public Callbacks.Pixels?     HeightMax       { get; init; }
             public Callbacks.Pixels?     Width           { get; init; }
             public Callbacks.Pixels?     WidthMax        { get; init; }
-            public Callbacks.REM?        Scale           { get; init; }
+            public Callbacks.Scale?      Scale           { get; init; }
+            public Callbacks.REM?        FontSize        { get; init; }
             public Callbacks.FontWeight? FontWeight      { get; init; }
             public Callbacks.Display?    Display         { get; init; }
             public Callbacks.Data?       Data            { get; init; }
@@ -45,6 +46,7 @@ namespace Integrant4.Element.Bits
 
             internal BaseSpec ToBaseSpec() => new()
             {
+                Scaled          = true,
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
                 HREF            = HREF,
@@ -57,7 +59,8 @@ namespace Integrant4.Element.Bits
                 HeightMax       = HeightMax,
                 Width           = Width,
                 WidthMax        = WidthMax,
-                FontSize        = Scale,
+                Scale           = Scale,
+                FontSize        = FontSize,
                 FontWeight      = FontWeight,
                 Display         = Display,
                 Data            = Data,
@@ -118,6 +121,11 @@ namespace Integrant4.Element.Bits
 
                 BitBuilder.ApplyAttributes(this, builder, ref seq, ac.ToArray(), null);
 
+                builder.OpenElement(++seq, "span");
+                builder.AddAttribute(++seq, "class", "I4E-Bit-Link-Contents");
+
+                BitBuilder.ApplyContentAttributes(this, builder, ref seq);
+
                 foreach (IRenderable renderable in contents)
                 {
                     builder.OpenElement(++seq, "span");
@@ -125,6 +133,8 @@ namespace Integrant4.Element.Bits
                     builder.AddContent(++seq, renderable.Renderer());
                     builder.CloseElement();
                 }
+
+                builder.CloseElement();
 
                 builder.CloseElement();
             }

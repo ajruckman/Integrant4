@@ -26,6 +26,11 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
             color: var(--I4C_Default_PageText);
         }
     }
+
+    > span.I4E-Bit-Chip-Contents {
+        align-items: center;
+        display: flex;
+    }
 }
 
 // Variable colors

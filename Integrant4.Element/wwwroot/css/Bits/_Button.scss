@@ -1,8 +1,6 @@
 button.I4E-Bit-Button {
-    align-items: center;
     border: none;
     border-radius: calc(1em * (4 / 15));
-    display: inline-flex;
     font-weight: 600;
     padding: 0;
     user-select: none;
@@ -23,12 +21,17 @@ button.I4E-Bit-Button {
         cursor: not-allowed;
     }
 
-    > span.I4E-Bit-Button-Content {
+    > span.I4E-Bit-Button-Contents {
         align-items: center;
-        display: inline-flex;
+        display: flex;
 
-        &:not(:last-child) {
-            margin-right: calc(1em * (5 / 15));
+        > span.I4E-Bit-Button-Content {
+            align-items: center;
+            display: inline-flex;
+
+            &:not(:last-child) {
+                margin-right: calc(1em * (5 / 15));
+            }
         }
     }
 

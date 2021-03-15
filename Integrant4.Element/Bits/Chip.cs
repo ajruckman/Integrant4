@@ -14,7 +14,6 @@ namespace Integrant4.Element.Bits
         {
             public Callbacks.IsVisible? IsVisible { get; init; }
 
-            // public Callbacks.BitID?        ID              { get; init; }
             public Callbacks.Classes?    Classes         { get; init; }
             public Callbacks.HREF?       HREF            { get; init; }
             public Callbacks.Size?       Margin          { get; init; }
@@ -23,7 +22,8 @@ namespace Integrant4.Element.Bits
             public Callbacks.Color?      ForegroundColor { get; init; }
             public Callbacks.Pixels?     Height          { get; init; }
             public Callbacks.Pixels?     Width           { get; init; }
-            public Callbacks.REM?        Scale           { get; init; }
+            public Callbacks.Scale?      Scale           { get; init; }
+            public Callbacks.REM?        FontSize        { get; init; }
             public Callbacks.FontWeight? FontWeight      { get; init; }
             public Callbacks.Display?    Display         { get; init; }
             public Callbacks.Data?       Data            { get; init; }
@@ -31,8 +31,8 @@ namespace Integrant4.Element.Bits
 
             internal BaseSpec ToBaseSpec() => new()
             {
-                IsVisible = IsVisible,
-                // ID              = ID,
+                Scaled          = true,
+                IsVisible       = IsVisible,
                 Classes         = Classes,
                 HREF            = HREF,
                 Margin          = Margin,
@@ -41,7 +41,8 @@ namespace Integrant4.Element.Bits
                 ForegroundColor = ForegroundColor,
                 Height          = Height,
                 Width           = Width,
-                FontSize        = Scale,
+                Scale           = Scale,
+                FontSize        = FontSize,
                 FontWeight      = FontWeight,
                 Display         = Display,
                 Data            = Data,
@@ -88,10 +89,17 @@ namespace Integrant4.Element.Bits
 
                 BitBuilder.ApplyAttributes(this, builder, ref seq, null, null);
 
+                builder.OpenElement(++seq, "span");
+                builder.AddAttribute(++seq, "class", "I4E-Bit-Chip-Contents");
+
+                BitBuilder.ApplyContentAttributes(this, builder, ref seq);
+
                 foreach (IRenderable renderable in _contents.Invoke())
                 {
                     builder.AddContent(++seq, renderable.Renderer());
                 }
+
+                builder.CloseElement();
 
                 builder.CloseElement();
 
