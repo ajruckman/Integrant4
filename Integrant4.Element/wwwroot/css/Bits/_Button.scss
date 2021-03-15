@@ -2,6 +2,7 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
     border: none;
     border-radius: calc(1em * (4 / 15));
     display: inline-block;
+    font-size: 1rem;
     font-weight: 600;
     padding: 0;
     text-decoration: none;
@@ -47,7 +48,10 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
 
     &:not(.I4E-Bit-Button--Small) {
         height: 2em;
-        line-height: 2em;
+
+        @at-root a {
+            line-height: 2em;
+        }
 
         &:not(.I4E-Bit-Button--IconLeft) {
             padding-left: calc(1em * (10 / 15));
@@ -68,7 +72,10 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
 
     &.I4E-Bit-Button--Small {
         height: 1.5em;
-        line-height: 1.5em;
+
+        @at-root a {
+            line-height: 1.5em;
+        }
 
         &:not(.I4E-Bit-Button--IconLeft) {
             padding-left: calc(1em * (6 / 15));
@@ -109,6 +116,10 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
         background-color: var(--I4C_Default_Accent_5);
         color: var(--I4C_Default_Accent_6_Text);
 
+        &:visited {
+            color: var(--I4C_Default_Accent_6_Text);
+        }
+
         &:hover:not(.I4E-Bit--Disabled) {
             background-color: var(--I4C_Default_Accent_4);
         }
@@ -124,6 +135,11 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
 
     &.I4E-Bit-Button--Transparent {
         background-color: transparent;
+        color: var(--I4C_Default_PageText);
+
+        &:visited {
+            color: var(--I4C_Default_PageText);
+        }
 
         &.I4E-Bit--Disabled {
             opacity: 0.5;
@@ -140,6 +156,10 @@ div.I4-App {
                 background-color: var(--I4C_Default_Opaque_White_2);
                 box-shadow: var(--I4C_Default_Shadow_0);
                 color: var(--I4C_Default_Text_6);
+
+                &:visited {
+                    color: var(--I4C_Default_Text_6);
+                }
 
                 &:hover:not(.I4E-Bit--Disabled) {
                     background-color: var(--I4C_Default_Opaque_White_3);
@@ -185,6 +205,10 @@ div.I4-App {
             &.I4E-Bit-Button--Default {
                 background-color: var(--I4C_Default_Opaque_Black_1);
                 color: var(--I4C_Default_Text_6);
+
+                &:visited {
+                    color: var(--I4C_Default_Text_6);
+                }
 
                 &:hover:not(.I4E-Bit--Disabled) {
                     background-color: var(--I4C_Default_Opaque_Black_2);
@@ -239,6 +263,10 @@ div.I4-App {
         box-shadow: var(--I4C_Default_Shadow_0);
         border: 1px solid $normalBorder;
         color: $normalColor;
+
+        &:visited {
+            color: $normalColor;
+        }
 
         &:hover, &:focus {
             background-color: $focusBackground;

@@ -2,6 +2,7 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
   border: none;
   border-radius: calc(1em * (4 / 15));
   display: inline-block;
+  font-size: 1rem;
   font-weight: 600;
   padding: 0;
   text-decoration: none;
@@ -25,8 +26,9 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
       button.I4E-Bit-Button > span.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child), a.I4E-Bit-Button > span.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child) {
         margin-right: calc(1em * (5 / 15)); }
   button.I4E-Bit-Button:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small) {
-    height: 2em;
-    line-height: 2em; }
+    height: 2em; }
+    a {
+      line-height: 2em; }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft) {
       padding-left: calc(1em * (10 / 15)); }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft {
@@ -36,8 +38,9 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight {
       padding-right: calc(1em * (5 / 15)); }
   button.I4E-Bit-Button.I4E-Bit-Button--Small, a.I4E-Bit-Button.I4E-Bit-Button--Small {
-    height: 1.5em;
-    line-height: 1.5em; }
+    height: 1.5em; }
+    a {
+      line-height: 1.5em; }
     button.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconLeft) {
       padding-left: calc(1em * (6 / 15)); }
     button.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconLeft, a.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconLeft {
@@ -55,6 +58,8 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
   button.I4E-Bit-Button.I4E-Bit-Button--Accent, a.I4E-Bit-Button.I4E-Bit-Button--Accent {
     background-color: var(--I4C_Default_Accent_5);
     color: var(--I4C_Default_Accent_6_Text); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Accent:visited, a.I4E-Bit-Button.I4E-Bit-Button--Accent:visited {
+      color: var(--I4C_Default_Accent_6_Text); }
     button.I4E-Bit-Button.I4E-Bit-Button--Accent:hover:not(.I4E-Bit--Disabled), a.I4E-Bit-Button.I4E-Bit-Button--Accent:hover:not(.I4E-Bit--Disabled) {
       background-color: var(--I4C_Default_Accent_4); }
     button.I4E-Bit-Button.I4E-Bit-Button--Accent:active:not(.I4E-Bit--Disabled), a.I4E-Bit-Button.I4E-Bit-Button--Accent:active:not(.I4E-Bit--Disabled) {
@@ -62,7 +67,10 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
     button.I4E-Bit-Button.I4E-Bit-Button--Accent.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit-Button--Accent.I4E-Bit--Disabled {
       opacity: 0.5; }
   button.I4E-Bit-Button.I4E-Bit-Button--Transparent, a.I4E-Bit-Button.I4E-Bit-Button--Transparent {
-    background-color: transparent; }
+    background-color: transparent;
+    color: var(--I4C_Default_PageText); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Transparent:visited, a.I4E-Bit-Button.I4E-Bit-Button--Transparent:visited {
+      color: var(--I4C_Default_PageText); }
     button.I4E-Bit-Button.I4E-Bit-Button--Transparent.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit-Button--Transparent.I4E-Bit--Disabled {
       opacity: 0.5; }
 
@@ -70,6 +78,8 @@ div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--D
   background-color: var(--I4C_Default_Opaque_White_2);
   box-shadow: var(--I4C_Default_Shadow_0);
   color: var(--I4C_Default_Text_6); }
+  div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited {
+    color: var(--I4C_Default_Text_6); }
   div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled) {
     background-color: var(--I4C_Default_Opaque_White_3);
     color: var(--I4C_Default_Text_6); }
@@ -97,6 +107,8 @@ div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--A
 div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--Default {
   background-color: var(--I4C_Default_Opaque_Black_1);
   color: var(--I4C_Default_Text_6); }
+  div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited {
+    color: var(--I4C_Default_Text_6); }
   div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled) {
     background-color: var(--I4C_Default_Opaque_Black_2);
     color: var(--I4C_Default_Text_6); }
@@ -126,6 +138,8 @@ button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-Bu
   box-shadow: var(--I4C_Default_Shadow_0);
   border: 1px solid var(--I4C_Solids_Blue_6);
   color: white; }
+  button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):visited {
+    color: white; }
   button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):focus {
     background-color: var(--I4C_Solids_Blue_8);
     border: 1px solid var(--I4C_Solids_Blue_8);
@@ -145,6 +159,8 @@ button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-B
   box-shadow: var(--I4C_Default_Shadow_0);
   border: 1px solid var(--I4C_Solids_Green_9);
   color: white; }
+  button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):visited {
+    color: white; }
   button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):focus {
     background-color: var(--I4C_Solids_Green_7);
     border: 1px solid var(--I4C_Solids_Green_7);
@@ -164,6 +180,8 @@ button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-
   box-shadow: var(--I4C_Default_Shadow_0);
   border: 1px solid var(--I4C_Solids_Orange_8);
   color: white; }
+  button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):visited {
+    color: white; }
   button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):focus {
     background-color: var(--I4C_Solids_Orange_6);
     border: 1px solid var(--I4C_Solids_Orange_6);
@@ -183,6 +201,8 @@ button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-
   box-shadow: var(--I4C_Default_Shadow_0);
   border: 1px solid var(--I4C_Solids_Purple_9);
   color: white; }
+  button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):visited {
+    color: white; }
   button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):focus {
     background-color: var(--I4C_Solids_Purple_7);
     border: 1px solid var(--I4C_Solids_Purple_7);
@@ -202,6 +222,8 @@ button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-But
   box-shadow: var(--I4C_Default_Shadow_0);
   border: 1px solid var(--I4C_Solids_Red_9);
   color: white; }
+  button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):visited {
+    color: white; }
   button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):focus {
     background-color: var(--I4C_Solids_Red_7);
     border: 1px solid var(--I4C_Solids_Red_7);
@@ -221,6 +243,8 @@ button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-
   box-shadow: var(--I4C_Default_Shadow_0);
   border: 1px solid var(--I4C_Solids_Yellow_6);
   color: black; }
+  button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):visited {
+    color: black; }
   button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):focus {
     background-color: var(--I4C_Solids_Yellow_5);
     border: 1px solid var(--I4C_Solids_Yellow_5);
