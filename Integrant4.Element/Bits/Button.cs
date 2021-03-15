@@ -37,7 +37,7 @@ namespace Integrant4.Element.Bits
 
             internal BaseSpec ToBaseSpec() => new()
             {
-                Scaled     = Scale != null,
+                Scaled     = true,
                 IsVisible  = IsVisible,
                 IsDisabled = IsDisabled,
                 Classes    = Classes,
