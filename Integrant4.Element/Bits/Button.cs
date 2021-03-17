@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Threading.Tasks;
 using Integrant4.API;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
@@ -21,6 +20,7 @@ namespace Integrant4.Element.Bits
             public StyleGetter? Style { get; init; }
 
             public Callbacks.Callback<bool> IsSmall { get; init; }
+            public Action<ClickArgs>?       OnClick { get; init; }
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
             public Callbacks.IsDisabled? IsDisabled { get; init; }
@@ -69,6 +69,11 @@ namespace Integrant4.Element.Bits
             _contents    = contents;
             _styleGetter = spec?.Style ?? DefaultStyleGetter;
             _isSmall     = spec?.IsSmall;
+
+            if (spec?.OnClick != null)
+            {
+                OnClick += spec.OnClick;
+            }
         }
     }
 
@@ -129,18 +134,20 @@ namespace Integrant4.Element.Bits
 
         public event Action<ClickArgs>? OnClick;
 
-        private async Task Click(MouseEventArgs args)
+        private void Click(MouseEventArgs args)
         {
             if (BaseSpec.IsDisabled?.Invoke() == true) return;
 
-            OnClick?.Invoke(new ClickArgs
+            var c = new ClickArgs
             (
                 (ushort) args.Button,
                 (ushort) args.ClientX,
                 (ushort) args.ClientY,
                 args.ShiftKey,
                 args.CtrlKey
-            ));
+            );
+
+            OnClick?.Invoke(c);
         }
     }
 

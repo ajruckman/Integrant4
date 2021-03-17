@@ -1,15 +1,20 @@
+using System;
 using System.Collections.Concurrent;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
 
 namespace Integrant4.Element
 {
-    public class ElementService
+    public class ElementService : IDisposable
     {
-        public delegate  Task       Job(IJSRuntime jsRuntime);
-        private readonly IJSRuntime _jsRuntime;
+        public delegate Task Job(IJSRuntime jsRuntime);
 
-        private readonly ConcurrentQueue<Job> _jobs = new();
+        private readonly IJSRuntime              _jsRuntime;
+        private readonly ConcurrentQueue<Job>    _jobs = new();
+        private readonly CancellationTokenSource _cts  = new();
+
+        public CancellationToken CancellationToken => _cts.Token;
 
         public ElementService(IJSRuntime jsRuntime)
         {
@@ -27,6 +32,12 @@ namespace Integrant4.Element
             {
                 await job.Invoke(_jsRuntime);
             }
+        }
+
+        public void Dispose()
+        {
+            _cts.Cancel();
+            _cts.Dispose();
         }
     }
 }

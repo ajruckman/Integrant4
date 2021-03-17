@@ -4,6 +4,10 @@ div.I4E-Layout-ListTable {
     box-shadow: var(--I4C_Default_Shadow_1);
     overflow: hidden;
 
+    &--Padded {
+        margin: 7px;
+    }
+
     table.I4E-Layout-ListTable-Inner {
         border-spacing: 0;
         width: 100%;
