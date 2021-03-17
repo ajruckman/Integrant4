@@ -48,7 +48,7 @@ namespace Web.Shared
             {
                 new PageLink(() => new IRenderable[]
                 {
-                    "Integrant 4".AsContent(),
+                    "I4".AsContent(),
                 }, new PageLink.Spec(() => "/") {IsTitle = Always.True}),
                 new Filler(),
                 new PageLink(() => new IRenderable[]

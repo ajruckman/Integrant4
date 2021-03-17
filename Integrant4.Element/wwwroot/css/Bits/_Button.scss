@@ -138,6 +138,19 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
             opacity: 0.5;
         }
     }
+
+    &.I4E-Bit-Button--AccentTransparent {
+        background-color: transparent;
+        color: var(--I4C_Default_PageText);
+
+        &:visited {
+            color: var(--I4C_Default_PageText);
+        }
+
+        &.I4E-Bit--Disabled {
+            opacity: 0.5;
+        }
+    }
 }
 
 // Variable colors
@@ -168,12 +181,12 @@ div.I4-App {
             &.I4E-Bit-Button--Transparent {
                 &:hover:not(.I4E-Bit--Disabled) {
                     background-color: var(--I4C_Default_Opaque_White_3);
-                    color: var(--I4C_Default_Accent_6);
+                    color: var(--I4C_Default_Accent_7);
                 }
 
                 &:active:not(.I4E-Bit--Disabled) {
                     background-color: var(--I4C_Default_Opaque_White_2);
-                    color: var(--I4C_Default_Accent_6);
+                    color: var(--I4C_Default_Accent_7);
                 }
             }
 
@@ -182,12 +195,12 @@ div.I4-App {
 
                 &:hover:not(.I4E-Bit--Disabled) {
                     background-color: var(--I4C_Default_Opaque_White_3);
-                    color: var(--I4C_Default_Accent_6);
+                    color: var(--I4C_Default_Accent_7);
                 }
 
                 &:active:not(.I4E-Bit--Disabled) {
                     background-color: var(--I4C_Default_Opaque_White_2);
-                    color: var(--I4C_Default_Accent_6);
+                    color: var(--I4C_Default_Accent_7);
                 }
             }
         }
