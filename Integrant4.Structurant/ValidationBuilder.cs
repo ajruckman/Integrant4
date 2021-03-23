@@ -6,24 +6,55 @@ using Integrant4.Fundament;
 
 namespace Integrant4.Structurant
 {
-    public class ValidationState
+    public class ValidationState : IValidationState
     {
         private readonly object                   _cacheLock = new();
         private          CancellationTokenSource? _tokenSource;
 
-        public ValidationState()
+        public bool            IsValidating { get; private set; }
+        public IValidationSet? Result       { get; private set; }
+
+        public bool IsValid()
         {
+            if (IsValidating) return false;
+
+            lock (_cacheLock)
+            {
+                if (Result == null) return false;
+
+                foreach (IValidation v in Result.OverallValidations)
+                {
+                    if (v.ResultType == ValidationResultType.Undefined ||
+                        v.ResultType == ValidationResultType.Invalid)
+                        return false;
+                }
+
+                foreach ((_, IEnumerable<IValidation> l) in Result.MemberValidations)
+                {
+                    foreach (IValidation v in l)
+                    {
+                        if (v.ResultType == ValidationResultType.Undefined ||
+                            v.ResultType == ValidationResultType.Invalid)
+                            return false;
+                    }
+                }
+
+                return true;
+            }
         }
 
-        public ValidationSet? Result       { get; private set; }
-        public bool           IsValidating { get; private set; }
+        public event Action? OnChange;
+        public event Action? OnInvalidation;
+        public event Action? OnBeginValidating;
+        public event Action? OnFinishValidating;
 
-        internal void ValidationStructure<TStructure, TState>(StructureInstance<TStructure, TState> inst)
+        internal void ValidateStructure<TStructure, TState>(StructureInstance<TStructure, TState> inst)
             where TStructure : class
             where TState : class
         {
             IsValidating = true;
 
+            OnChange?.Invoke();
             OnBeginValidating?.Invoke();
 
             _tokenSource?.Cancel();
@@ -42,6 +73,7 @@ namespace Integrant4.Structurant
                 }
 
                 IsValidating = false;
+                OnChange?.Invoke();
                 OnFinishValidating?.Invoke();
             }, token);
         }
@@ -58,9 +90,9 @@ namespace Integrant4.Structurant
 
             IReadOnlyList<IValidation> structureValidations = new List<Validation>();
 
-            if (structure.Definition.ValidationGetter != null)
+            if (structure.Definition.OverallValidationGetter != null)
             {
-                structureValidations = await structure.Definition.ValidationGetter.Invoke(structure);
+                structureValidations = await structure.Definition.OverallValidationGetter.Invoke(structure);
             }
 
             //
@@ -83,46 +115,14 @@ namespace Integrant4.Structurant
             return new ValidationSet(structureValidations, memberValidations);
         }
 
-        public void Invalidate()
+        internal void Invalidate()
         {
             lock (_cacheLock)
             {
                 Result = null;
+                OnChange?.Invoke();
                 OnInvalidation?.Invoke();
             }
         }
-
-        public bool Valid()
-        {
-            if (IsValidating) return false;
-
-            lock (_cacheLock)
-            {
-                if (Result == null) return false;
-
-                foreach (IValidation v in Result.OverallValidations)
-                {
-                    if (v.ResultType == ValidationResultType.Undefined ||
-                        v.ResultType == ValidationResultType.Invalid)
-                        return false;
-                }
-
-                foreach ((_, IReadOnlyList<IValidation> l) in Result.MemberValidations)
-                {
-                    foreach (IValidation v in l)
-                    {
-                        if (v.ResultType == ValidationResultType.Undefined ||
-                            v.ResultType == ValidationResultType.Invalid)
-                            return false;
-                    }
-                }
-
-                return true;
-            }
-        }
-
-        public event Action? OnInvalidation;
-        public event Action? OnBeginValidating;
-        public event Action? OnFinishValidating;
     }
 }

@@ -19,8 +19,9 @@
             <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameFirst)).Input!.Renderer())</li>
             <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameFirst)).Input!.Renderer())</li>
             <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameLast)).Input!.Renderer())</li>
-            <li>@(_structureInstance.GetTyped<int?>(nameof(Dog.Age)).Input!.Renderer())</li>
+            <li>@(_structureInstance.GetTyped<int?>(nameof(Dog.Age)).Input!.Renderer()) @_ageValidationView.Renderer()</li>
             <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.Breed)).Input!.Renderer())</li>
+            <li>@_overallValidationView.Renderer()</li>
         </ul>
 
         <ul>
@@ -81,7 +82,7 @@
             <table class="I4E-Layout-InfoTable-Inner">
                 <thead>
                 <tr>
-                    <td colspan="2">Table header</td>
+                    <th colspan="2">Table header</th>
                 </tr>
                 </thead>
                 <tr>

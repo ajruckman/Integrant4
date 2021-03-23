@@ -1,4 +1,5 @@
-﻿using Integrant4.Element.Bits;
+﻿using System.Threading.Tasks;
+using Integrant4.Element.Bits;
 using Integrant4.Resources.Icons;
 using Integrant4.Structurant;
 
@@ -24,7 +25,7 @@ namespace Program
                 string nameLast  = inst.GetTyped<string>(nameof(Dog.NameLast)).Value();
                 int    age       = inst.GetTyped<int>(nameof(Dog.Age)).Value();
 
-                return new Dog(nameFirst, nameLast, age);
+                return Task.FromResult(new Dog(nameFirst, nameLast, age));
             });
 
             // structure.Register<string>(new Member<Dog, DogState, string>

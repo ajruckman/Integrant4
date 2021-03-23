@@ -1,15 +1,17 @@
 button.I4E-Bit-Button, a.I4E-Bit-Button {
+  align-items: center;
   border: none;
   border-radius: calc(1em * (4 / 15));
   display: inline-flex;
-  align-items: center;
   font-size: 1rem;
   font-weight: 600;
   padding: 0;
   text-decoration: none;
   user-select: none; }
-  a:hover {
-    text-decoration: underline; }
+  a {
+    outline: none; }
+    a:hover {
+      text-decoration: underline; }
   button.I4E-Bit-Button:not(.I4E-Bit--Disabled), a.I4E-Bit-Button:not(.I4E-Bit--Disabled) {
     cursor: pointer; }
     button.I4E-Bit-Button:not(.I4E-Bit--Disabled):hover, a.I4E-Bit-Button:not(.I4E-Bit--Disabled):hover {
@@ -354,6 +356,7 @@ div.I4E-Bit-HorizontalLine {
 a.I4E-Bit-Link {
   border-bottom: 1px solid transparent;
   color: var(--I4C_Default_PageText);
+  outline: none;
   text-decoration: none; }
   a.I4E-Bit-Link > span.I4E-Bit-Link-Contents {
     align-items: center;
@@ -467,6 +470,34 @@ a.I4E-Bit-Title {
     display: inline-flex; }
     a.I4E-Bit-Title > span.I4E-Bit-Title-Content:not(:last-child) {
       margin-right: 5px; }
+
+span.I4E-Bit-ValidationView, div.I4E-Bit-ValidationView {
+  flex-wrap: wrap; }
+  span.I4E-Bit-ValidationView--Inline, div.I4E-Bit-ValidationView--Inline {
+    display: inline-flex; }
+  span.I4E-Bit-ValidationView--Block, div.I4E-Bit-ValidationView--Block {
+    display: flex; }
+  span.I4E-Bit-ValidationView span.I4E-Bit-ValidationView-Validation, div.I4E-Bit-ValidationView span.I4E-Bit-ValidationView-Validation {
+    align-items: center;
+    border-radius: 5000px;
+    display: inline-flex;
+    justify-content: flex-start;
+    margin: 1px;
+    padding: 3px 6px 3px 3px; }
+    span.I4E-Bit-ValidationView span.I4E-Bit-ValidationView-Validation:not(:last-child), div.I4E-Bit-ValidationView span.I4E-Bit-ValidationView-Validation:not(:last-child) {
+      margin-right: 3px; }
+    span.I4E-Bit-ValidationView span.I4E-Bit-ValidationView-Validation--Invalid, div.I4E-Bit-ValidationView span.I4E-Bit-ValidationView-Validation--Invalid {
+      background-color: #c80000;
+      color: white; }
+    span.I4E-Bit-ValidationView span.I4E-Bit-ValidationView-Validation--Warning, div.I4E-Bit-ValidationView span.I4E-Bit-ValidationView-Validation--Warning {
+      background-color: #ffff00;
+      color: black;
+      padding-left: 5px; }
+    span.I4E-Bit-ValidationView span.I4E-Bit-ValidationView-Validation--Valid, div.I4E-Bit-ValidationView span.I4E-Bit-ValidationView-Validation--Valid {
+      background-color: #008000;
+      color: white; }
+    span.I4E-Bit-ValidationView span.I4E-Bit-ValidationView-Validation .I4R-BootstrapIcon svg, div.I4E-Bit-ValidationView span.I4E-Bit-ValidationView-Validation .I4R-BootstrapIcon svg {
+      margin: 0 3px 0 1px; }
 
 div.I4E-Bit-VerticalLine {
   background-color: var(--I4C_Default_Background_14);

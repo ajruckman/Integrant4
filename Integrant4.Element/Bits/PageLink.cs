@@ -24,7 +24,7 @@ namespace Integrant4.Element.Bits
             public Callbacks.HREF HREF { get; }
 
             public Callbacks.Callback<bool>? IsTitle       { get; init; }
-            public Callbacks.Callback<bool>?         IsHighlighted { get; init; }
+            public Callbacks.Callback<bool>? IsHighlighted { get; init; }
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
             public Callbacks.IsDisabled? IsDisabled { get; init; }
@@ -52,15 +52,13 @@ namespace Integrant4.Element.Bits
     {
         private readonly Callbacks.BitContents     _contents;
         private readonly Callbacks.Callback<bool>? _isTitle;
-        private readonly Callbacks.Callback<bool>?         _isHighlighted;
+        private readonly Callbacks.Callback<bool>? _isHighlighted;
         private readonly bool                      _doAutoHighlight;
 
         private bool? _isCurrentPage;
 
         public PageLink(Callbacks.BitContent content, Spec spec)
-            : this(content.AsContents(), spec)
-        {
-        }
+            : this(content.AsContents(), spec) { }
 
         public PageLink(Callbacks.BitContents contents, Spec spec)
             : base(spec.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(PageLink)))
@@ -90,7 +88,7 @@ namespace Integrant4.Element.Bits
             builder.CloseComponent();
         };
 
-        private async Task CheckPage(IJSRuntime jsRuntime, NavigationManager navMgr)
+        private async Task CheckPage(IJSRuntime jsRuntime, NavigationManager navMgr, ElementService elementService)
         {
             string currentURL = "/" + navMgr.ToBaseRelativePath(navMgr.Uri);
             string href       = BaseSpec.HREF!.Invoke();
@@ -100,7 +98,7 @@ namespace Integrant4.Element.Bits
             if (isCurrentPage != _isCurrentPage)
             {
                 _isCurrentPage = isCurrentPage;
-                await Interop.HighlightPageLink(jsRuntime, ID, isCurrentPage);
+                await Interop.HighlightPageLink(jsRuntime, elementService.CancellationToken, ID, isCurrentPage);
             }
         }
     }
@@ -113,6 +111,7 @@ namespace Integrant4.Element.Bits
 
             [Inject] public IJSRuntime        JSRuntime         { get; set; } = null!;
             [Inject] public NavigationManager NavigationManager { get; set; } = null!;
+            [Inject] public ElementService    ElementService    { get; set; } = null!;
 
             protected override void BuildRenderTree(RenderTreeBuilder builder)
             {
@@ -122,7 +121,7 @@ namespace Integrant4.Element.Bits
 
                 if (PageLink._isTitle?.Invoke() == true)
                     ac.Add("I4E-Bit-PageLink--Title");
-                
+
                 if (PageLink._isHighlighted?.Invoke() == true)
                     ac.Add("I4E-Bit-PageLink--Highlighted");
 
@@ -160,9 +159,9 @@ namespace Integrant4.Element.Bits
                 if (!firstRender || !PageLink._doAutoHighlight) return;
 
                 NavigationManager.LocationChanged +=
-                    async (_, _) => await PageLink.CheckPage(JSRuntime, NavigationManager);
+                    async (_, _) => await PageLink.CheckPage(JSRuntime, NavigationManager, ElementService);
 
-                await PageLink.CheckPage(JSRuntime, NavigationManager);
+                await PageLink.CheckPage(JSRuntime, NavigationManager, ElementService);
             }
         }
     }

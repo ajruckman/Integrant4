@@ -1,10 +1,11 @@
 div.I4E-Layout-ListTable {
-  border: 1px solid var(--I4C_Default_Border_11);
   border-radius: 4px;
   box-shadow: var(--I4C_Default_Shadow_1);
   overflow: hidden; }
-  div.I4E-Layout-ListTable--Padded {
+  div.I4E-Layout-ListTable--WithPadding {
     margin: 7px; }
+  div.I4E-Layout-ListTable:not(div.I4E-Layout-ListTable--NoBorder) {
+    border: 1px solid var(--I4C_Default_Border_11); }
   div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner {
     border-spacing: 0;
     width: 100%; }
@@ -62,7 +63,7 @@ div.I4E-Layout-Panel {
     margin: 7px; }
   div.I4E-Layout-Panel:not(--NoBorder) {
     border: 1px solid var(--I4C_Default_Border_6); }
-  div.I4E-Layout-Panel--Rounded {
+  div.I4E-Layout-Panel--WithRounding {
     border-radius: 4px; }
   div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner {
     overflow: visible;
@@ -128,5 +129,3 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Layout-Panel, div.I4-App[data-i
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Layout-InfoTable, div.I4-App[data-i4-theme-variant="White"] div.I4E-Layout-InfoTable {
   background-color: var(--I4C_Default_Background_1); }
-
-/*# sourceMappingURL=Layouts.css.map */

@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Integrant4.Fundament;
 using Microsoft.JSInterop;
 
 namespace Integrant4.Structurant
@@ -35,11 +37,19 @@ namespace Integrant4.Structurant
             {
                 IMemberInstance<TObject, TState> inst = member.Instantiate(this);
 
-                inst.OnValueChangeUntyped += v => OnMemberValueChange?.Invoke(inst, v);
+                inst.OnInput += () => ValidationState.Invalidate();
+                inst.OnValueChangeUntyped += v =>
+                {
+                    OnMemberValueChange?.Invoke(inst, v);
+                    ValidationState.ValidateStructure(this);
+                };
 
                 _memberInstances.Add(inst);
                 _memberInstanceDictionary[inst.Definition.ID] = inst;
             }
+
+            // Initial validation
+            ValidationState.ValidateStructure(this);
         }
 
         public Structure<TObject, TState> Definition { get; }
@@ -70,17 +80,25 @@ namespace Integrant4.Structurant
             return instT;
         }
 
-        public TObject Construct()
+        public async Task<TObject> Construct()
         {
-            return Definition.ResultConstructor.Invoke(this);
+            return await Definition.ResultConstructor.Invoke(this);
         }
 
-        public void ResetAllMemberInputValues()
+        public async Task ResetAllMemberInputValues()
         {
             foreach (IMemberInstance<TObject, TState> inst in _memberInstances)
             {
-                inst.ResetInputValue();
+                await inst.ResetInputValue();
             }
         }
+
+        // // Validation proxies
+        //
+        // public IReadOnlyList<IValidation>? OverallValidations() =>
+        //     ValidationState.Result?.OverallValidations;
+        //
+        // public IReadOnlyList<IValidation>? MemberValidations(string id) =>
+        //     ValidationState.Result?.MemberValidations[id];
     }
 }

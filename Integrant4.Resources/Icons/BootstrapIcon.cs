@@ -25,7 +25,7 @@ namespace Integrant4.Resources.Icons
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
             builder.OpenElement(0, "span");
-            builder.AddAttribute(1, "class", "I4R.BootstrapIcon");
+            builder.AddAttribute(1, "class", "I4R-BootstrapIcon");
             if (Color != null) builder.AddAttribute(2, "style", $"color: {Color}");
             builder.OpenElement(3, "svg");
             builder.AddAttribute(4, "class", "bi");

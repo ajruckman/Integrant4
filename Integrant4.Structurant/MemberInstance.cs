@@ -12,7 +12,7 @@ namespace Integrant4.Structurant
     {
         IMember<TObject, TState> Definition { get; }
 
-        void                              ResetInputValue();
+        Task                              ResetInputValue();
         Task<IReadOnlyList<IValidation>?> Validations();
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Integrant4.Structurant
         where TState : class
     {
         private readonly Member<TObject, TState, TValue> _definition;
-        private readonly Utility.Debouncer<TValue?>            _debouncer;
+        private readonly Utility.Debouncer<TValue?>      _debouncer;
 
         internal MemberInstance
         (
@@ -63,9 +63,10 @@ namespace Integrant4.Structurant
 
         public IMember<TObject, TState> Definition => _definition;
 
-        public void ResetInputValue()
+        public async Task ResetInputValue()
         {
-            Input?.SetValue(Value());
+            if (Input != null)
+                await Input.SetValue(Value());
         }
 
         public event Action<object?>? OnValueChangeUntyped;

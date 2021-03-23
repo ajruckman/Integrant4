@@ -16,18 +16,18 @@ namespace Integrant4.Structurant
         public Structure
         (
             Callbacks.ResultConstructor resultConstructor,
-            Callbacks.ValidationGetter? validationGetter = null
+            Callbacks.ValidationGetter? overallValidationGetter = null
         )
         {
             _members          = new List<IMember<TObject, TState>>();
             _memberDictionary = new Dictionary<string, IMember<TObject, TState>>();
 
-            ResultConstructor = resultConstructor;
-            ValidationGetter  = validationGetter;
+            ResultConstructor       = resultConstructor;
+            OverallValidationGetter = overallValidationGetter;
         }
 
-        public Callbacks.ResultConstructor ResultConstructor { get; }
-        public Callbacks.ValidationGetter? ValidationGetter  { get; }
+        public Callbacks.ResultConstructor ResultConstructor       { get; }
+        public Callbacks.ValidationGetter? OverallValidationGetter { get; }
 
         public IReadOnlyList<IMember<TObject, TState>> Members => _members;
 
@@ -77,7 +77,7 @@ namespace Integrant4.Structurant
                 inputGetter,
                 validationGetter
             );
-            
+
             _members.Add(member);
             _memberDictionary[member.ID] = member;
         }

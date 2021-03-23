@@ -1,8 +1,8 @@
 button.I4E-Bit-Button, a.I4E-Bit-Button {
+    align-items: center;
     border: none;
     border-radius: calc(1em * (4 / 15));
     display: inline-flex;
-    align-items: center;
     font-size: 1rem;
     font-weight: 600;
     padding: 0;
@@ -10,6 +10,8 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
     user-select: none;
 
     @at-root a {
+        outline: none;
+
         &:hover {
             text-decoration: underline;
         }

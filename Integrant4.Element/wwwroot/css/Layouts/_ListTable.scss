@@ -1,11 +1,14 @@
 div.I4E-Layout-ListTable {
-    border: 1px solid var(--I4C_Default_Border_11);
     border-radius: 4px;
     box-shadow: var(--I4C_Default_Shadow_1);
     overflow: hidden;
 
-    &--Padded {
+    &--WithPadding {
         margin: 7px;
+    }
+
+    &:not(&--NoBorder) {
+        border: 1px solid var(--I4C_Default_Border_11);
     }
 
     table.I4E-Layout-ListTable-Inner {

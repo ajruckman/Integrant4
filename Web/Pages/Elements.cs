@@ -139,11 +139,7 @@ namespace Web.Pages
                         Tooltip = () => new Tooltip($"{style} {_checked}", 500, Placement.Right),
                     });
 
-                b.OnClick(_ =>
-                {
-                    Console.WriteLine($"Click: {style}");
-                    return Task.CompletedTask;
-                });
+                b.OnClick += x => Console.WriteLine($"Click: {style}");
 
                 var b2 = new Button(() => new IRenderable[]
                     {

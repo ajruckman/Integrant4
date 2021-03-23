@@ -52,7 +52,7 @@ namespace Integrant4.Element.Inputs
             List<Action<ElementService>> jobs = new();
 
             if (inputBase.BaseSpec.Tooltip != null)
-                jobs.Add(v => v.AddJob(x => Interop.CreateTooltips(x, inputBase.ID)));
+                jobs.Add(v => v.AddJob(x => Interop.CreateTooltips(x, v.CancellationToken, inputBase.ID)));
 
             if (jobs.Count > 0)
                 ServiceInjector<ElementService>.Inject(builder, ref seq, jobs.ToArray());

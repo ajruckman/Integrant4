@@ -10,7 +10,6 @@ using Integrant4.Fundament;
 using Integrant4.Structurant;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using TextInput = Integrant4.Element.Inputs.TextInput;
 
 namespace Web.Pages
 {
@@ -18,7 +17,9 @@ namespace Web.Pages
     {
         private StructureInstance<Dog, DogState> _structureInstance = null!;
 
-        private Header _header = null!;
+        private Header         _header                = null!;
+        private ValidationView _overallValidationView = null!;
+        private ValidationView _ageValidationView     = null!;
 
         [Inject] public IJSRuntime     JSRuntime      { get; set; } = null!;
         [Inject] public ElementService ElementService { get; set; } = null!;
@@ -28,8 +29,8 @@ namespace Web.Pages
             _structureInstance = Structure.Instantiate(new DogState()
             {
                 NameFirst = "Annabell",
-                NameLast  = "Ruckman",
-                Age       = 10,
+                NameLast  = "Annabell",
+                Age       = -1,
                 Breed     = "Rat Terrier",
             }, JSRuntime);
 
@@ -46,11 +47,20 @@ namespace Web.Pages
                 new Filler(),
                 new PageLink(() => "Normal link".AsContent(), new PageLink.Spec(() => "/elements")),
             }, Header.Style.Secondary);
+
+            _overallValidationView = new ValidationView(() => _structureInstance.ValidationState);
+            _ageValidationView     = new ValidationView(() => _structureInstance.ValidationState, nameof(DogState.Age));
+
+            // _structureInstance.ValidationState.OnInvalidation += () => Console.WriteLine("Validation -> invalidation");
+            // _structureInstance.ValidationState.OnBeginValidating += () => Console.WriteLine("Validation -> begin");
+            // _structureInstance.ValidationState.OnFinishValidating += () => Console.WriteLine("Validation -> finished");
+
+            // _structureInstance.ValidationState.OnFinishValidating += () => InvokeAsync(StateHasChanged);
         }
 
         private async Task Reset()
         {
-            _structureInstance.ResetAllMemberInputValues();
+            await _structureInstance.ResetAllMemberInputValues();
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -63,10 +73,38 @@ namespace Web.Pages
     {
         private static readonly Structure<Dog, DogState> Structure;
 
+        private static Task<IReadOnlyList<IValidation>> DogValidations(StructureInstance<Dog, DogState> inst)
+        {
+            List<IValidation> result = new();
+
+            result.Add(new Validation(ValidationResultType.Valid,   "Valid"));
+            result.Add(new Validation(ValidationResultType.Warning, "Warning"));
+
+            if (string.IsNullOrWhiteSpace(inst.State.NameFirst))
+                result.Add(new Validation(ValidationResultType.Invalid, "First name is required"));
+
+            if (string.IsNullOrWhiteSpace(inst.State.NameLast))
+                result.Add(new Validation(ValidationResultType.Invalid, "Last name is required"));
+
+            if (string.IsNullOrWhiteSpace(inst.State.Breed))
+                result.Add(new Validation(ValidationResultType.Invalid, "Breed is required"));
+
+            if (!string.IsNullOrWhiteSpace(inst.State.NameFirst) && !string.IsNullOrWhiteSpace(inst.State.NameLast))
+                if (inst.State.NameFirst.Trim() == inst.State.NameLast.Trim())
+                    result.Add(new Validation(ValidationResultType.Invalid, "First name cannot equal last name"));
+
+            return Task.FromResult(result as IReadOnlyList<IValidation>);
+        }
+
         static Index()
         {
-            Structure = new Structure<Dog, DogState>(inst =>
-                new Dog(inst.State.NameFirst!, inst.State.NameLast!, inst.State.Age!.Value, null));
+            Structure = new Structure<Dog, DogState>
+            (
+                inst => Task.FromResult
+                (
+                    new Dog(inst.State.NameFirst!, inst.State.NameLast!, inst.State.Age!.Value, null)
+                ),
+                DogValidations);
 
             Structure.Register<string?>
             (
@@ -103,7 +141,19 @@ namespace Web.Pages
                     inst.StructureInstance.JSRuntime!,
                     inst.Value(),
                     new IntegerInput.Spec {Consider0Null = Always.True, Width = () => 50}
-                )
+                ),
+                validationGetter: inst =>
+                {
+                    List<IValidation> result = new();
+
+                    if (inst.StructureInstance.State.Age < 0)
+                        result.Add(new Validation(ValidationResultType.Invalid, "Age must be at least 0"));
+
+                    if (inst.StructureInstance.State.Age > 30)
+                        result.Add(new Validation(ValidationResultType.Invalid, "Age must be at most 30"));
+
+                    return Task.FromResult(result as IReadOnlyList<IValidation>);
+                }
             );
 
             Structure.Register<string?>
