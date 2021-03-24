@@ -53,7 +53,7 @@ namespace Integrant4.Element.Bits
             _stateHasChanged = stateHasChanged;
         }
 
-        public void SetState(IValidationState state)
+        public void AttachState(IValidationState state)
         {
             if (_lastState != null)
             {

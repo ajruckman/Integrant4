@@ -57,15 +57,23 @@ namespace Integrant4.Element.Bits
     public partial class TextBlock
     {
         private readonly Callbacks.BitContents _contents;
-        // private readonly Callbacks.Callback<bool>? _isHoverable;
-        // private readonly Callbacks.Callback<bool>? _isHeading;
 
         public TextBlock(Callbacks.BitContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)))
         {
             _contents = contents;
-            // _isHoverable = spec?.IsHoverable;
-            // _isHeading   = spec?.IsHeading;
+        }
+
+        public TextBlock(Callbacks.BitContent content, Spec? spec = null)
+            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)))
+        {
+            _contents = () => new[] {content.Invoke()};
+        }
+
+        public TextBlock(IRenderable content, Spec? spec = null)
+            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)))
+        {
+            _contents = () => new[] {content};
         }
     }
 
@@ -105,7 +113,7 @@ namespace Integrant4.Element.Bits
                 }
 
                 builder.CloseElement();
-                
+
                 BitBuilder.ScheduleElementJobs(this, builder, ref seq);
             }
 

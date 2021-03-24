@@ -26,7 +26,8 @@ namespace Integrant4.Element.Inputs
             Content  optionText,
             Content? selectionContent = null,
             bool     selected         = false,
-            bool     disabled         = false)
+            bool     disabled         = false
+        )
         {
             Value            = value;
             OptionContent    = optionText;
@@ -48,14 +49,6 @@ namespace Integrant4.Element.Inputs
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public Spec(OptionGetter optionGetter)
-            {
-                OptionGetter = optionGetter;
-            }
-
-            public OptionGetter            OptionGetter           { get; }
-            public OptionEqualityComparer? OptionEqualityComparer { get; init; }
-
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
             public Callbacks.IsRequired? IsRequired      { get; init; }
@@ -99,7 +92,7 @@ namespace Integrant4.Element.Inputs
 
     public partial class SelectInput<TValue>
     {
-        public delegate List<IOption<TValue>> OptionGetter();
+        public delegate IReadOnlyList<IOption<TValue>> OptionGetter();
 
         public delegate bool OptionEqualityComparer(TValue? left, TValue? right);
 
@@ -108,19 +101,21 @@ namespace Integrant4.Element.Inputs
         private readonly object                 _optionCacheLock = new();
         private readonly UpdateTrigger          _signaler        = new();
 
-        private List<IOption<TValue>>? _optionCache;
+        private IReadOnlyList<IOption<TValue>>? _optionCache;
 
         public SelectInput
         (
-            IJSRuntime jsRuntime,
-            TValue?    value,
-            Spec       spec
-        ) : base(jsRuntime, spec.ToBaseSpec(), new ClassSet("I4E-Input", "I4E-Input-SelectInput"))
+            IJSRuntime              jsRuntime,
+            TValue?                 value,
+            OptionGetter            optionGetter,
+            OptionEqualityComparer? optionEqualityComparer = null,
+            Spec?                   spec                   = null
+        ) : base(jsRuntime, spec?.ToBaseSpec(), new ClassSet("I4E-Input", "I4E-Input-SelectInput"))
         {
-            _optionGetter = spec.OptionGetter;
+            _optionGetter = optionGetter;
 
-            if (spec.OptionEqualityComparer != null)
-                _optionEqualityComparer = spec.OptionEqualityComparer;
+            if (optionEqualityComparer != null)
+                _optionEqualityComparer = optionEqualityComparer;
             else if (typeof(IEquatable<TValue>).IsAssignableFrom(typeof(TValue)))
                 _optionEqualityComparer = (left, right) =>
                     left == null && right == null || left?.Equals(right) == true;
@@ -140,7 +135,7 @@ namespace Integrant4.Element.Inputs
             }
         }
 
-        private List<IOption<TValue>> Options()
+        private IReadOnlyList<IOption<TValue>> Options()
         {
             lock (_optionCacheLock)
             {
@@ -166,9 +161,12 @@ namespace Integrant4.Element.Inputs
                     lock (_optionCacheLock)
                     {
                         int seqI = -1;
-                        for (var i = 0; i < Options().Count; i++)
+
+                        IReadOnlyList<IOption<TValue>> options = Options();
+
+                        for (var i = 0; i < options.Count; i++)
                         {
-                            IOption<TValue> option = Options()[i];
+                            IOption<TValue> option = options[i];
 
                             builder2.OpenElement(++seqI, "option");
                             builder2.AddAttribute(++seqI, "value", i);

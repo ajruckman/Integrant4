@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Integrant4.API;
-
 namespace Integrant4.Structurant
 {
     public interface IMember<TObject, TState>

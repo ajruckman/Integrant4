@@ -73,7 +73,7 @@ div.I4E-Layout-Panel {
   div.I4E-Layout-Panel > div.I4E-Construct-Header {
     border-bottom: 1px solid var(--I4C_Default_Border_4);
     box-shadow: none;
-    padding: 0; }
+    padding: 0 10px; }
 
 div.I4E-Layout-VAlign {
   align-items: center;
@@ -116,7 +116,7 @@ div.I4E-Layout-InfoTable {
   div.I4E-Layout-InfoTable > div.I4E-Construct-Header {
     border-bottom: 1px solid var(--I4C_Default_Border_4);
     box-shadow: none;
-    padding: 0; }
+    padding: 0 10px; }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Layout-Panel, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Layout-Panel {
   background-color: var(--I4C_Default_Background_6); }

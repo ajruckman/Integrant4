@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Integrant4.API;
 using Integrant4.Fundament;
 using Microsoft.JSInterop;
 
@@ -93,12 +94,14 @@ namespace Integrant4.Structurant
             }
         }
 
-        // Validation proxies
+        // Proxy methods
         
         public IReadOnlyList<IValidation>? OverallValidations() =>
             ValidationState.Result?.OverallValidations;
         
         public IReadOnlyList<IValidation>? MemberValidations(string id) =>
             ValidationState.Result?.MemberValidations[id];
+
+        public IInput<TValue>? Input<TValue>(string id) => GetTyped<TValue>(id).Input;
     }
 }

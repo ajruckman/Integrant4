@@ -66,8 +66,8 @@ namespace Web.Pages
 
             // _structureInstance.ValidationState.OnChange += () => InvokeAsync(StateHasChanged);
 
-            _overallValidationView.SetState(_structureInstance.ValidationState);
-            _ageValidationView.SetState(_structureInstance.ValidationState);
+            _overallValidationView.AttachState(_structureInstance.ValidationState);
+            _ageValidationView.AttachState(_structureInstance.ValidationState);
         }
 
         private async Task Reset()
@@ -178,16 +178,15 @@ namespace Web.Pages
                 (
                     inst.StructureInstance.JSRuntime!,
                     null,
-                    new SelectInput<string>.Spec(() => new List<IOption<string>>
-                        {
-                            new Option<string>("Unknown",     "Unknown"),
-                            new Option<string>("Rat Terrier", "Rat Terrier"),
-                            new Option<string>("Boxer",       "Boxer"),
-                            new Option<string>("Yorkie",      "Yorkie"),
-                            new Option<string>("Chihuahua",   "Chihuahua"),
-                            new Option<string>(null,          "Other"),
-                        }
-                    )
+                    () => new List<IOption<string>>
+                    {
+                        new Option<string>("Unknown",     "Unknown"),
+                        new Option<string>("Rat Terrier", "Rat Terrier"),
+                        new Option<string>("Boxer",       "Boxer"),
+                        new Option<string>("Yorkie",      "Yorkie"),
+                        new Option<string>("Chihuahua",   "Chihuahua"),
+                        new Option<string>(null,          "Other"),
+                    }
                 )
             );
         }

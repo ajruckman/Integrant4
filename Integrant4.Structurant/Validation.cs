@@ -13,6 +13,9 @@ namespace Integrant4.Structurant
 
         public ValidationResultType ResultType { get; }
         public Content              Message    { get; }
+
+        public static IReadOnlyList<Validation> One(ValidationResultType resultType, Content message) =>
+            new[] {new Validation(resultType, message)};
     }
 
     public class ValidationSet : IValidationSet
@@ -27,7 +30,7 @@ namespace Integrant4.Structurant
             MemberValidations  = memberValidations;
         }
 
-        public IReadOnlyList<IValidation> OverallValidations { get; }
+        public IReadOnlyList<IValidation>                              OverallValidations { get; }
         public IReadOnlyDictionary<string, IReadOnlyList<IValidation>> MemberValidations  { get; }
     }
 }

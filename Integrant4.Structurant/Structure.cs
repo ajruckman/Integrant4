@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Integrant4.Fundament;
 using Microsoft.JSInterop;
 
 namespace Integrant4.Structurant
