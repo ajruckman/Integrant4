@@ -14,19 +14,33 @@
     <div class="I4E-Layout-Panel-Inner">
         <h1>Web</h1>
 
-        <ul>
-            <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameFirst)).Input!.Renderer())</li>
-            <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameFirst)).Input!.Renderer())</li>
-            <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameFirst)).Input!.Renderer())</li>
-            <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameLast)).Input!.Renderer())</li>
-            <li>@(_structureInstance.GetTyped<int?>(nameof(Dog.Age)).Input!.Renderer()) @_ageValidationView.Renderer()</li>
-            <li>@(_structureInstance.GetTyped<string?>(nameof(Dog.Breed)).Input!.Renderer())</li>
-            <li>@_overallValidationView.Renderer()</li>
-        </ul>
-
-        <ul>
-            @* <li><I4ETextInput/></li> *@
-        </ul>
+        <div class="I4E-Layout-InfoTable">
+            <table class="I4E-Layout-InfoTable-Inner">
+                <tr>
+                    <td>First name</td>
+                    <td>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameFirst)).Input!.Renderer())</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Last name</td>
+                    <td>@(_structureInstance.GetTyped<string?>(nameof(Dog.NameLast)).Input!.Renderer())</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td>@(_structureInstance.GetTyped<int?>(nameof(Dog.Age)).Input!.Renderer()) </td>
+                    <td>@_ageValidationView.Renderer()</td>
+                </tr>
+                <tr>
+                    <td>Breed</td>
+                    <td>@(_structureInstance.GetTyped<string?>(nameof(Dog.Breed)).Input!.Renderer())</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="3">@_overallValidationView.Renderer()</td>
+                </tr>
+            </table>
+        </div>
 
         <span style="font-size: 25px">
             <button class="I4E-Bit-Button I4E-Bit-Button--Default" @onclick="@Reset">Reset</button>

@@ -98,7 +98,7 @@ namespace Integrant4.Element.Bits
                 int seq = -1;
 
                 builder.OpenComponent<Component>(++seq);
-                builder.AddAttribute(++seq, "Checkbox", this);
+                builder.AddAttribute(++seq, nameof(Component.Checkbox), this);
                 builder.CloseComponent();
             }
 
@@ -113,7 +113,7 @@ namespace Integrant4.Element.Bits
 
     public partial class Checkbox
     {
-        private class Component : ComponentBase
+        private sealed class Component : ComponentBase
         {
             [Parameter] public Checkbox Checkbox { get; set; } = null!;
 

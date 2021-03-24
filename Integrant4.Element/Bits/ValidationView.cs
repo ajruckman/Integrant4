@@ -27,52 +27,85 @@ namespace Integrant4.Element.Bits
 
     public partial class ValidationView
     {
-        private readonly Callbacks.Callback<IValidationState> _validationState;
-        private readonly string?                              _memberID;
+        private readonly string? _memberID;
+        private readonly object  _validationLock = new();
 
-        private event Action? OnChange;
+        private Action?                     _stateHasChanged;
+        private IValidationState?           _lastState;
+        private bool                        _isInProgress;
+        private IReadOnlyList<IValidation>? _validations;
 
-        public ValidationView
-        (
-            Callbacks.Callback<IValidationState> validationState,
-            Spec?                                spec = null
-        )
+        public ValidationView(Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(ValidationView)))
         {
-            _validationState = validationState;
-            // IValidationState state = validationState.Invoke();
-            // Subscribe(state);
-            //
-            // _validations = () => state.Result?.OverallValidations;
             _styleGetter = spec?.Style ?? DefaultStyleGetter;
         }
 
-        public ValidationView
-        (
-            Callbacks.Callback<IValidationState> validationState,
-            string                               memberID,
-            Spec?                                spec = null
-        )
+        public ValidationView(string memberID, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(ValidationView)))
         {
-            _validationState = validationState;
-            _memberID        = memberID;
-            // IValidationState state = validationState.Invoke();
-            // Subscribe(state);
-            //
-            // _validations = () => state.Result?.MemberValidations[memberID];
+            _memberID    = memberID;
             _styleGetter = spec?.Style ?? DefaultStyleGetter;
         }
 
-        private (bool IsValidating, IReadOnlyList<IValidation>? Validations) ReadState()
+        private void SetStateHasChanged(Action stateHasChanged)
         {
-            IValidationState state = _validationState.Invoke();
+            _stateHasChanged = stateHasChanged;
+        }
 
-            return state.IsValidating || state.Result == null
-                ? (true, null)
-                : _memberID == null
-                    ? (false, state.Result.OverallValidations)
-                    : (false, state.Result.MemberValidations[_memberID]);
+        public void SetState(IValidationState state)
+        {
+            if (_lastState != null)
+            {
+                _lastState.OnInvalidation     -= HandleInvalidation;
+                _lastState.OnBeginValidating  -= HandleBeginValidating;
+                _lastState.OnFinishValidating -= HandleFinishValidating;
+            }
+
+            state.OnInvalidation     += HandleInvalidation;
+            state.OnBeginValidating  += HandleBeginValidating;
+            state.OnFinishValidating += HandleFinishValidating;
+
+            _lastState = state;
+        }
+
+        private void HandleInvalidation()
+        {
+            lock (_validationLock)
+            {
+                _validations  = null;
+                _isInProgress = false;
+                _stateHasChanged?.Invoke();
+            }
+        }
+
+        private void HandleBeginValidating()
+        {
+            lock (_validationLock)
+            {
+                _isInProgress = true;
+                _stateHasChanged?.Invoke();
+            }
+        }
+
+        private void HandleFinishValidating(IValidationSet result)
+        {
+            lock (_validationLock)
+            {
+                _validations = _memberID == null
+                    ? result.OverallValidations
+                    : result.MemberValidations[_memberID];
+                _isInProgress = false;
+                _stateHasChanged?.Invoke();
+            }
+        }
+
+        private (bool IsInProgress, IReadOnlyList<IValidation>? Validations) Read()
+        {
+            lock (_validationLock)
+            {
+                return (_isInProgress, _validations);
+            }
         }
     }
 
@@ -82,23 +115,30 @@ namespace Integrant4.Element.Bits
         private static readonly BootstrapIcon IconWarning = new("exclamation-triangle-fill", 16);
         private static readonly BootstrapIcon IconValid   = new("check-circle-fill", 16);
 
-        public override RenderFragment Renderer() => builder =>
+        public override RenderFragment Renderer()
         {
-            builder.OpenComponent<Component>(0);
-            builder.AddAttribute(1, "ValidationView", this);
-            builder.CloseComponent();
-        };
+            void Fragment(RenderTreeBuilder builder)
+            {
+                int seq = -1;
+
+                builder.OpenComponent<Component>(++seq);
+                builder.AddAttribute(++seq, nameof(Component.ValidationView), this);
+                builder.CloseComponent();
+            }
+
+            return Fragment;
+        }
     }
 
     public partial class ValidationView
     {
-        private class Component : ComponentBase
+        private sealed class Component : ComponentBase
         {
             [Parameter] public ValidationView ValidationView { get; set; } = null!;
 
             protected override void OnParametersSet()
             {
-                ValidationView.OnChange += () => InvokeAsync(StateHasChanged);
+                ValidationView.SetStateHasChanged(() => InvokeAsync(StateHasChanged));
             }
 
             protected override void BuildRenderTree(RenderTreeBuilder builder)
@@ -106,43 +146,52 @@ namespace Integrant4.Element.Bits
                 int seq = -1;
                 builder.OpenElement(++seq, "div");
 
-                BitBuilder.ApplyAttributes(ValidationView, builder, ref seq, new string[]
+                BitBuilder.ApplyAttributes(ValidationView, builder, ref seq, new[]
                 {
                     "I4E-Bit-ValidationView--" + ValidationView._styleGetter.Invoke(),
                 }, null);
 
                 //
 
-                IReadOnlyList<IValidation> validations =
-                    ValidationView._validations.Invoke() ?? Array.Empty<IValidation>();
-                Console.WriteLine(validations.Count);
-                foreach (IValidation validation in validations)
+                (bool isInProgress, IReadOnlyList<IValidation>? validations) = ValidationView.Read();
+
+                if (isInProgress)
                 {
                     builder.OpenElement(++seq, "span");
-
-                    builder.AddAttribute(++seq, "class",
-                        "I4E-Bit-ValidationView-Validation I4E-Bit-ValidationView-Validation--" +
-                        validation.ResultType);
-
-                    // ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault
-                    switch (validation.ResultType)
-                    {
-                        case ValidationResultType.Invalid:
-                            builder.AddContent(++seq, IconInvalid.Renderer());
-                            break;
-                        case ValidationResultType.Warning:
-                            builder.AddContent(++seq, IconWarning.Renderer());
-                            break;
-                        case ValidationResultType.Valid:
-                            builder.AddContent(++seq, IconValid.Renderer());
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-
-                    builder.AddContent(++seq, validation.Message.Renderer());
-
+                    builder.AddAttribute(++seq, "class", "I4E-Bit-Validation I4E-Bit-Validation--Validating");
+                    builder.AddContent(++seq, "Validating...");
                     builder.CloseElement();
+                }
+                else if (validations == null) { }
+                else
+                {
+                    foreach (IValidation validation in validations)
+                    {
+                        builder.OpenElement(++seq, "span");
+
+                        builder.AddAttribute(++seq, "class",
+                            "I4E-Bit-Validation I4E-Bit-Validation--" + validation.ResultType);
+
+                        // ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault
+                        switch (validation.ResultType)
+                        {
+                            case ValidationResultType.Invalid:
+                                builder.AddContent(++seq, IconInvalid.Renderer());
+                                break;
+                            case ValidationResultType.Warning:
+                                builder.AddContent(++seq, IconWarning.Renderer());
+                                break;
+                            case ValidationResultType.Valid:
+                                builder.AddContent(++seq, IconValid.Renderer());
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        builder.AddContent(++seq, validation.Message.Renderer());
+
+                        builder.CloseElement();
+                    }
                 }
 
                 //

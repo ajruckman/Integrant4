@@ -44,9 +44,10 @@ namespace Integrant4.Structurant
         }
 
         public event Action? OnChange;
-        public event Action? OnInvalidation;
-        public event Action? OnBeginValidating;
-        public event Action? OnFinishValidating;
+
+        public event Action?                 OnInvalidation;
+        public event Action?                 OnBeginValidating;
+        public event Action<IValidationSet>? OnFinishValidating;
 
         internal void ValidateStructure<TStructure, TState>(StructureInstance<TStructure, TState> inst)
             where TStructure : class
@@ -74,7 +75,7 @@ namespace Integrant4.Structurant
 
                 IsValidating = false;
                 OnChange?.Invoke();
-                OnFinishValidating?.Invoke();
+                OnFinishValidating?.Invoke(v);
             }, token);
         }
 

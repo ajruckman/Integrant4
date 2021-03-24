@@ -93,12 +93,12 @@ namespace Integrant4.Structurant
             }
         }
 
-        // // Validation proxies
-        //
-        // public IReadOnlyList<IValidation>? OverallValidations() =>
-        //     ValidationState.Result?.OverallValidations;
-        //
-        // public IReadOnlyList<IValidation>? MemberValidations(string id) =>
-        //     ValidationState.Result?.MemberValidations[id];
+        // Validation proxies
+        
+        public IReadOnlyList<IValidation>? OverallValidations() =>
+            ValidationState.Result?.OverallValidations;
+        
+        public IReadOnlyList<IValidation>? MemberValidations(string id) =>
+            ValidationState.Result?.MemberValidations[id];
     }
 }

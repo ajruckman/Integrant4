@@ -30,12 +30,30 @@ namespace Integrant4.Fundament
         IReadOnlyDictionary<string, IReadOnlyList<IValidation>> MemberValidations  { get; }
     }
 
+    // public readonly struct ValidationUpdate
+    // {
+    //     public ValidationUpdate(bool isValidating, IValidationSet? result)
+    //     {
+    //         if (isValidating && result != null)
+    //             throw new ArgumentException();
+    //         if (!isValidating && result == null)
+    //             throw new ArgumentException();
+    //
+    //         IsValidating = isValidating;
+    //         Result       = result;
+    //     }
+    //
+    //     public readonly bool            IsValidating;
+    //     public readonly IValidationSet? Result;
+    // }
+
     public interface IValidationState
     {
         event Action? OnChange;
-        event Action? OnInvalidation;
-        event Action? OnBeginValidating;
-        event Action? OnFinishValidating;
+
+        event Action?                 OnInvalidation;
+        event Action?                 OnBeginValidating;
+        event Action<IValidationSet>? OnFinishValidating;
 
         bool            IsValidating { get; }
         IValidationSet? Result       { get; }

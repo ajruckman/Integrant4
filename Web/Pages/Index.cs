@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Integrant4.API;
 using Integrant4.Element;
@@ -38,6 +39,12 @@ namespace Web.Pages
 
             _structureInstance.OnMemberValueChange += (m, v) => Console.WriteLine($"{m.Definition.ID} -> {v}");
 
+            _structureInstance.ValidationState.OnChange += () =>
+            {
+                // _overallValidationView.Update();
+                // _ageValidationView.Update();
+            };
+
             //
 
             _header = new Header(() => new IRenderable[]
@@ -48,14 +55,19 @@ namespace Web.Pages
                 new PageLink(() => "Normal link".AsContent(), new PageLink.Spec(() => "/elements")),
             }, Header.Style.Secondary);
 
-            _overallValidationView = new ValidationView(() => _structureInstance.ValidationState);
-            _ageValidationView     = new ValidationView(() => _structureInstance.ValidationState, nameof(DogState.Age));
+            _overallValidationView = new ValidationView();
+            _ageValidationView     = new ValidationView(nameof(DogState.Age));
 
             // _structureInstance.ValidationState.OnInvalidation += () => Console.WriteLine("Validation -> invalidation");
             // _structureInstance.ValidationState.OnBeginValidating += () => Console.WriteLine("Validation -> begin");
             // _structureInstance.ValidationState.OnFinishValidating += () => Console.WriteLine("Validation -> finished");
 
             // _structureInstance.ValidationState.OnFinishValidating += () => InvokeAsync(StateHasChanged);
+
+            // _structureInstance.ValidationState.OnChange += () => InvokeAsync(StateHasChanged);
+
+            _overallValidationView.SetState(_structureInstance.ValidationState);
+            _ageValidationView.SetState(_structureInstance.ValidationState);
         }
 
         private async Task Reset()
@@ -75,10 +87,11 @@ namespace Web.Pages
 
         private static Task<IReadOnlyList<IValidation>> DogValidations(StructureInstance<Dog, DogState> inst)
         {
-            List<IValidation> result = new();
-
-            result.Add(new Validation(ValidationResultType.Valid,   "Valid"));
-            result.Add(new Validation(ValidationResultType.Warning, "Warning"));
+            List<IValidation> result = new()
+            {
+                new Validation(ValidationResultType.Valid,   "Valid"),
+                new Validation(ValidationResultType.Warning, "Warning"),
+            };
 
             if (string.IsNullOrWhiteSpace(inst.State.NameFirst))
                 result.Add(new Validation(ValidationResultType.Invalid, "First name is required"));
