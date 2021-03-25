@@ -146,7 +146,7 @@ namespace Web.Pages
                         Tooltip = () => new Tooltip($"{style} {_checked}", 500, Placement.Right),
                     });
 
-                b.OnClick += x => Console.WriteLine($"Click: {style}");
+                b.OnClick += (_, _) => Console.WriteLine($"Click: {style}");
 
                 var b2 = new Button(() => new IRenderable[]
                     {
@@ -183,7 +183,7 @@ namespace Web.Pages
                 IsChecked  = () => _checked,
                 IsDisabled = () => _checked,
             });
-            _checkbox.OnToggle += PrintB;
+            _checkbox.OnToggle += (_, v) => PrintB(v);
 
             _link1 = new Link(() => "Link 1".AsContent(), new Link.Spec(() => "/"));
             _link2 = new Link(() => "Link 2".AsContent(), new Link.Spec(() => "/")

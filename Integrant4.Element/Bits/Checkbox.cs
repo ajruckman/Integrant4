@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace Integrant4.Element.Bits
 {
-    public partial class Checkbox : BitBase
+    public partial class Checkbox : BitBase, IRefreshableBit
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
@@ -16,27 +16,29 @@ namespace Integrant4.Element.Bits
         {
             public Callbacks.Callback<ushort>? Size { get; init; }
 
-            public Callbacks.IsVisible?  IsVisible       { get; init; }
-            public Callbacks.IsDisabled? IsDisabled      { get; init; }
-            public Callbacks.IsChecked?  IsChecked       { get; init; }
-            public Callbacks.IsRequired? IsRequired      { get; init; }
+            public Callbacks.IsVisible?  IsVisible  { get; init; }
+            public Callbacks.IsDisabled? IsDisabled { get; init; }
+            public Callbacks.IsChecked?  IsChecked  { get; init; }
+
+            public Callbacks.IsRequired? IsRequired { get; init; }
+
             // public Callbacks.BitID?         ID              { get; init; }
-            public Callbacks.Classes?    Classes         { get; init; }
-            public Callbacks.Size?       Margin          { get; init; }
-            public Callbacks.Size?       Padding         { get; init; }
-            public Callbacks.Color?      ForegroundColor { get; init; }
-            public Callbacks.Pixels?     Height          { get; init; }
-            public Callbacks.Pixels?     Width           { get; init; }
-            public Callbacks.Display?    Display         { get; init; }
-            public Callbacks.Data?       Data            { get; init; }
-            public Callbacks.Tooltip?    Tooltip         { get; init; }
+            public Callbacks.Classes? Classes         { get; init; }
+            public Callbacks.Size?    Margin          { get; init; }
+            public Callbacks.Size?    Padding         { get; init; }
+            public Callbacks.Color?   ForegroundColor { get; init; }
+            public Callbacks.Pixels?  Height          { get; init; }
+            public Callbacks.Pixels?  Width           { get; init; }
+            public Callbacks.Display? Display         { get; init; }
+            public Callbacks.Data?    Data            { get; init; }
+            public Callbacks.Tooltip? Tooltip         { get; init; }
 
             internal BaseSpec ToBaseSpec() => new()
             {
-                IsVisible       = IsVisible,
-                IsDisabled      = IsDisabled,
-                IsChecked       = IsChecked,
-                IsRequired      = IsRequired,
+                IsVisible  = IsVisible,
+                IsDisabled = IsDisabled,
+                IsChecked  = IsChecked,
+                IsRequired = IsRequired,
                 // ID              = ID,
                 Classes         = Classes,
                 Margin          = Margin,
@@ -63,11 +65,22 @@ namespace Integrant4.Element.Bits
 
     public partial class Checkbox
     {
+        private Action? _refresher;
+
         public bool IsChecked { get; private set; }
 
-        private Action? _stateHasChanged;
+        public void Refresh() => _refresher?.Invoke();
 
-        public event Action<bool>? OnToggle;
+        public override RenderFragment Renderer() => RefreshWrapper.Create(builder =>
+        {
+            int seq = -1;
+
+            builder.OpenComponent<Component>(++seq);
+            builder.AddAttribute(++seq, nameof(Component.Checkbox), this);
+            builder.CloseComponent();
+        }, SetRefresher);
+
+        public event Action<Checkbox, bool>? OnToggle;
 
         private void OnClick(MouseEventArgs args)
         {
@@ -75,34 +88,20 @@ namespace Integrant4.Element.Bits
                 return;
 
             IsChecked = !IsChecked;
-            (_stateHasChanged ?? throw new ArgumentNullException()).Invoke();
+            (_refresher ?? throw new ArgumentNullException()).Invoke();
 
-            OnToggle?.Invoke(IsChecked);
+            OnToggle?.Invoke(this, IsChecked);
         }
 
         public void Reset()
         {
             IsChecked = BaseSpec.IsChecked?.Invoke() ?? false;
-            (_stateHasChanged ?? throw new ArgumentNullException()).Invoke();
+            (_refresher ?? throw new ArgumentNullException()).Invoke();
         }
 
-        private void SetStateHasChanged(Action stateHasChanged)
+        private void SetRefresher(Action stateHasChanged)
         {
-            _stateHasChanged = stateHasChanged;
-        }
-
-        public override RenderFragment Renderer()
-        {
-            void Fragment(RenderTreeBuilder builder)
-            {
-                int seq = -1;
-
-                builder.OpenComponent<Component>(++seq);
-                builder.AddAttribute(++seq, nameof(Component.Checkbox), this);
-                builder.CloseComponent();
-            }
-
-            return Fragment;
+            _refresher = stateHasChanged;
         }
     }
 
@@ -119,7 +118,7 @@ namespace Integrant4.Element.Bits
 
             protected override void OnInitialized()
             {
-                Checkbox.SetStateHasChanged(() => InvokeAsync(StateHasChanged));
+                Checkbox.SetRefresher(() => InvokeAsync(StateHasChanged));
             }
 
             protected override void BuildRenderTree(RenderTreeBuilder builder)

@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using Integrant4.API;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
@@ -7,15 +8,15 @@ using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Inputs
 {
-    public partial class IntegerInput : NumberInput<int?>
+    public partial class TextAreaInput : StandardInput<string?>, IRefreshableInput<string?>
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public Callbacks.Callback<bool>? Consider0Null { get; init; }
-            public Callbacks.Callback<int>?  Min           { get; init; }
-            public Callbacks.Callback<int>?  Max           { get; init; }
+            public Callbacks.Callback<string>? Placeholder { get; init; }
+            public Callbacks.Callback<int>?    Rows        { get; init; }
+            public Callbacks.Callback<int>?    Columns     { get; init; }
 
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -58,43 +59,46 @@ namespace Integrant4.Element.Inputs
         }
     }
 
-    public partial class IntegerInput
+    public partial class TextAreaInput
     {
-        private readonly Callbacks.Callback<bool> _consider0Null;
-        private readonly Callbacks.Callback<int>? _min;
-        private readonly Callbacks.Callback<int>? _max;
+        private readonly Callbacks.Callback<string>? _placeholder;
+        private readonly Callbacks.Callback<int>?    _rows;
+        private readonly Callbacks.Callback<int>?    _columns;
 
-        public IntegerInput
+        public TextAreaInput
         (
             IJSRuntime jsRuntime,
-            int?       value,
+            string?    value,
             Spec?      spec = null
         )
-            : base(jsRuntime, new ClassSet("I4E-Input", "I4E-Input-Integer"), spec?.ToBaseSpec())
+            : base(jsRuntime, spec?.ToBaseSpec(), new ClassSet("I4E-Input", "I4E-Input-TextArea"))
         {
-            _consider0Null = spec?.Consider0Null ?? (() => false);
-            _min           = spec?.Min;
-            _max           = spec?.Max;
+            _placeholder = spec?.Placeholder;
+            _rows        = spec?.Rows;
+            _columns     = spec?.Columns;
 
             Value = Nullify(value);
         }
 
         public override RenderFragment Renderer() => RefreshWrapper.Create(builder =>
         {
-            var seq = -1;
+            int seq = -1;
 
             builder.OpenElement(++seq, "div");
             InputBuilder.ApplyOuterAttributes(this, builder, ref seq, null);
 
-            builder.OpenElement(++seq, "input");
+            builder.OpenElement(++seq, "textarea");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
 
-            builder.AddAttribute(++seq, "type",    "number");
-            builder.AddAttribute(++seq, "value",   Serialize(Value));
-            builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "oninput",     EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "disabled",    BaseSpec.IsDisabled?.Invoke());
+            builder.AddAttribute(++seq, "required",    BaseSpec.IsRequired?.Invoke());
+            builder.AddAttribute(++seq, "placeholder", _placeholder?.Invoke());
 
-            if (_min != null) builder.AddAttribute(++seq, "min", _min.Invoke());
-            if (_max != null) builder.AddAttribute(++seq, "max", _max.Invoke());
+            if (_rows    != null) builder.AddAttribute(++seq, "rows", _rows.Invoke());
+            if (_columns != null) builder.AddAttribute(++seq, "cols", _columns.Invoke());
+
+            builder.AddContent(++seq, Serialize(Value));
 
             builder.AddElementReferenceCapture(++seq, r => Reference = r);
             builder.CloseElement();
@@ -104,16 +108,10 @@ namespace Integrant4.Element.Inputs
             InputBuilder.ScheduleElementJobs(this, builder, ref seq);
         }, v => Refresher = v);
 
-        protected override int? Deserialize(string? v) =>
-            string.IsNullOrEmpty(v)
-                ? null
-                : int.Parse(v);
+        protected override        string  Serialize(string?   v) => v ?? "";
+        protected override        string? Deserialize(string? v) => string.IsNullOrEmpty(v) ? null : v;
+        protected sealed override string? Nullify(string?     v) => string.IsNullOrEmpty(v) ? null : v;
 
-        protected sealed override int? Nullify(int? v) =>
-            v == null
-                ? null
-                : _consider0Null.Invoke() && v == 0
-                    ? null
-                    : v;
+        private void Change(ChangeEventArgs args) => InvokeOnChange(Deserialize(args.Value?.ToString()));
     }
 }

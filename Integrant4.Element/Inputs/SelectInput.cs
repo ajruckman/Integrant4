@@ -143,58 +143,53 @@ namespace Integrant4.Element.Inputs
             }
         }
 
-        public override RenderFragment Renderer()
+        public override RenderFragment Renderer() => RefreshWrapper.Create(builder =>
         {
-            void Fragment(RenderTreeBuilder builder)
+            int seq = -1;
+
+            builder.OpenComponent<TriggerWrapper>(++seq);
+            builder.AddAttribute(++seq, "Trigger", _signaler);
+            builder.AddAttribute(++seq, "ChildContent", (RenderFragment) (builder2 =>
             {
-                int seq = -1;
+                builder2.OpenElement(++seq, "div");
+                builder2.AddAttribute(++seq, "class", "I4E-Input I4E-Input-Select");
 
-                builder.OpenComponent<TriggerWrapper>(++seq);
-                builder.AddAttribute(++seq, "Trigger", _signaler);
-                builder.AddAttribute(++seq, "ChildContent", (RenderFragment) (builder2 =>
+                builder2.OpenElement(++seq, "select");
+                builder2.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
+                lock (_optionCacheLock)
                 {
-                    builder2.OpenElement(++seq, "div");
-                    builder2.AddAttribute(++seq, "class", "I4E-Input I4E-Input-Select");
+                    int seqI = -1;
 
-                    builder2.OpenElement(++seq, "select");
-                    builder2.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
-                    lock (_optionCacheLock)
+                    IReadOnlyList<IOption<TValue>> options = Options();
+
+                    for (var i = 0; i < options.Count; i++)
                     {
-                        int seqI = -1;
+                        IOption<TValue> option = options[i];
 
-                        IReadOnlyList<IOption<TValue>> options = Options();
+                        builder2.OpenElement(++seqI, "option");
+                        builder2.AddAttribute(++seqI, "value", i);
 
-                        for (var i = 0; i < options.Count; i++)
-                        {
-                            IOption<TValue> option = options[i];
+                        ++seqI;
+                        if (_optionEqualityComparer.Invoke(Value, option.Value))
+                            builder2.AddAttribute(seqI, "selected", true);
 
-                            builder2.OpenElement(++seqI, "option");
-                            builder2.AddAttribute(++seqI, "value", i);
+                        ++seqI;
+                        if (option.Disabled)
+                            builder2.AddAttribute(seqI, "disabled", true);
 
-                            ++seqI;
-                            if (_optionEqualityComparer.Invoke(Value, option.Value))
-                                builder2.AddAttribute(seqI, "selected", true);
-
-                            ++seqI;
-                            if (option.Disabled)
-                                builder2.AddAttribute(seqI, "disabled", true);
-
-                            builder2.AddContent(++seqI, option.OptionContent.Fragment);
-                            builder2.CloseElement();
-                        }
+                        builder2.AddContent(++seqI, option.OptionContent.Fragment);
+                        builder2.CloseElement();
                     }
+                }
 
-                    builder2.CloseElement();
+                builder2.CloseElement();
 
-                    builder2.CloseElement();
-                }));
-                builder.CloseComponent();
+                builder2.CloseElement();
+            }));
+            builder.CloseComponent();
 
-                InputBuilder.ScheduleElementJobs(this, builder, ref seq);
-            }
-
-            return Fragment;
-        }
+            InputBuilder.ScheduleElementJobs(this, builder, ref seq);
+        }, v => Refresher = v);
 
         protected override string Serialize(TValue? v) => v?.ToString() ?? "";
 

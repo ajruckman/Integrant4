@@ -71,34 +71,29 @@ namespace Integrant4.Element.Inputs
             Value = Nullify(value);
         }
 
-        public override RenderFragment Renderer()
+        public override RenderFragment Renderer() => RefreshWrapper.Create(builder =>
         {
-            void Fragment(RenderTreeBuilder builder)
-            {
-                var seq = -1;
+            var seq = -1;
 
-                builder.OpenElement(++seq, "div");
-                InputBuilder.ApplyOuterAttributes(this, builder, ref seq, null);
+            builder.OpenElement(++seq, "div");
+            InputBuilder.ApplyOuterAttributes(this, builder, ref seq, null);
 
-                builder.OpenElement(++seq, "input");
-                InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
+            builder.OpenElement(++seq, "input");
+            InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
 
-                builder.AddAttribute(++seq, "type", "time");
-                builder.AddAttribute(++seq, "value", Serialize(Value));
-                builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
-                builder.AddAttribute(++seq, "disabled", _isDisabled?.Invoke());
-                builder.AddAttribute(++seq, "required", _isRequired?.Invoke());
+            builder.AddAttribute(++seq, "type",     "time");
+            builder.AddAttribute(++seq, "value",    Serialize(Value));
+            builder.AddAttribute(++seq, "oninput",  EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "disabled", _isDisabled?.Invoke());
+            builder.AddAttribute(++seq, "required", _isRequired?.Invoke());
 
-                builder.AddElementReferenceCapture(++seq, r => Reference = r);
-                builder.CloseElement();
+            builder.AddElementReferenceCapture(++seq, r => Reference = r);
+            builder.CloseElement();
 
-                builder.CloseElement();
+            builder.CloseElement();
 
-                InputBuilder.ScheduleElementJobs(this, builder, ref seq);
-            }
-
-            return Fragment;
-        }
+            InputBuilder.ScheduleElementJobs(this, builder, ref seq);
+        }, v => Refresher = v);
 
         private void Change(ChangeEventArgs args) => InvokeOnChange(Deserialize(args.Value?.ToString()));
 

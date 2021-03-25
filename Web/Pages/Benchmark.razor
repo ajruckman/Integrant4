@@ -1,0 +1,28 @@
+@using System.Diagnostics
+@using Integrant4.API
+@using Integrant4.Element.Bits
+@using Integrant4.Fundament
+
+@page "/benchmark"
+
+@{
+    Stopwatch sw = new();
+    sw.Start();
+}
+
+@for (var i = 0; i < 100000; i++)
+{
+    Button b = new(() => new IRenderable[]
+    {
+        "one".AsContent(),
+        "two".AsContent(),
+        "three".AsContent(),
+    });
+
+    @:@b.Renderer()
+}
+
+@{
+    sw.Stop();
+    Console.WriteLine(sw.ElapsedMilliseconds);
+}

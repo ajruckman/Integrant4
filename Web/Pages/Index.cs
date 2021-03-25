@@ -136,11 +136,11 @@ namespace Web.Pages
                 nameof(Dog.NameLast),
                 inst => inst.StructureInstance.State.NameLast,
                 (inst, v) => inst.StructureInstance.State.NameLast = v,
-                inputGetter: inst => new TextInput
+                inputGetter: inst => new TextAreaInput
                 (
                     inst.StructureInstance.JSRuntime!,
                     inst.Value(),
-                    new TextInput.Spec {IsDisabled = Always.True}
+                    new TextAreaInput.Spec {IsDisabled = () => inst.StructureInstance.State.NameFirst?.Contains("Z") == true}
                 )
             );
 

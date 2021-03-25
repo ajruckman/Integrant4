@@ -6,12 +6,11 @@ using Integrant4.API;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web;
 
 namespace Integrant4.Element.Bits
 {
-    public partial class Button : BitBase
+    public partial class Button : BitBase, IRefreshableBit
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
@@ -19,8 +18,8 @@ namespace Integrant4.Element.Bits
         {
             public StyleGetter? Style { get; init; }
 
-            public Callbacks.Callback<bool> IsSmall { get; init; }
-            public Action<ClickArgs>?       OnClick { get; init; }
+            public Callbacks.Callback<bool>   IsSmall { get; init; }
+            public Action<Button, ClickArgs>? OnClick { get; init; }
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
             public Callbacks.IsDisabled? IsDisabled { get; init; }
@@ -79,60 +78,60 @@ namespace Integrant4.Element.Bits
 
     public partial class Button
     {
-        public override RenderFragment Renderer()
+        private Action? _refresher;
+
+        public override RenderFragment Renderer() => RefreshWrapper.Create(builder =>
         {
-            void Fragment(RenderTreeBuilder builder)
+            IRenderable[] contents = _contents.Invoke().ToArray();
+
+            List<string> ac = new() {"I4E-Bit-Button--" + _styleGetter.Invoke()};
+
+            if (contents.First() is IIcon) ac.Add("I4E-Bit-Button--IconLeft");
+            if (contents.Last() is IIcon) ac.Add("I4E-Bit-Button--IconRight");
+            if (_isSmall?.Invoke() == true) ac.Add("I4E-Bit-Button--Small");
+
+            //
+
+            int seq = -1;
+
+            if (BaseSpec.HREF == null)
             {
-                IRenderable[] contents = _contents.Invoke().ToArray();
-
-                List<string> ac = new() {"I4E-Bit-Button--" + _styleGetter.Invoke()};
-
-                if (contents.First() is IIcon) ac.Add("I4E-Bit-Button--IconLeft");
-                if (contents.Last() is IIcon) ac.Add("I4E-Bit-Button--IconRight");
-                if (_isSmall?.Invoke() == true) ac.Add("I4E-Bit-Button--Small");
-
-                //
-
-                int seq = -1;
-
-                if (BaseSpec.HREF == null)
-                {
-                    builder.OpenElement(++seq, "button");
-                }
-                else
-                {
-                    builder.OpenElement(++seq, "a");
-                    builder.AddAttribute(++seq, "href", BaseSpec.HREF.Invoke());
-                }
-
-                BitBuilder.ApplyAttributes(this, builder, ref seq, ac.ToArray(), null);
-
-                builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, Click));
-
-                builder.OpenElement(++seq, "span");
-                builder.AddAttribute(++seq, "class", "I4E-Bit-Button-Contents");
-
-                BitBuilder.ApplyContentAttributes(this, builder, ref seq);
-
-                foreach (IRenderable renderable in contents)
-                {
-                    builder.OpenElement(++seq, "span");
-                    builder.AddAttribute(++seq, "class", "I4E-Bit-Button-Content");
-                    builder.AddContent(++seq, renderable.Renderer());
-                    builder.CloseElement();
-                }
-
-                builder.CloseElement();
-
-                builder.CloseElement();
-
-                BitBuilder.ScheduleElementJobs(this, builder, ref seq);
+                builder.OpenElement(++seq, "button");
+            }
+            else
+            {
+                builder.OpenElement(++seq, "a");
+                builder.AddAttribute(++seq, "href", BaseSpec.HREF.Invoke());
             }
 
-            return Fragment;
-        }
+            BitBuilder.ApplyAttributes(this, builder, ref seq, ac.ToArray(), null);
 
-        public event Action<ClickArgs>? OnClick;
+            builder.AddAttribute(++seq, "onclick",
+                EventCallback.Factory.Create<MouseEventArgs>(this, Click));
+
+            builder.OpenElement(++seq, "span");
+            builder.AddAttribute(++seq, "class", "I4E-Bit-Button-Contents");
+
+            BitBuilder.ApplyContentAttributes(this, builder, ref seq);
+
+            foreach (IRenderable renderable in contents)
+            {
+                builder.OpenElement(++seq, "span");
+                builder.AddAttribute(++seq, "class", "I4E-Bit-Button-Content");
+                builder.AddContent(++seq, renderable.Renderer());
+                builder.CloseElement();
+            }
+
+            builder.CloseElement();
+
+            builder.CloseElement();
+
+            BitBuilder.ScheduleElementJobs(this, builder, ref seq);
+        }, SetRefresher);
+
+        public void Refresh() => _refresher?.Invoke();
+
+        public event Action<Button, ClickArgs>? OnClick;
 
         private void Click(MouseEventArgs args)
         {
@@ -147,8 +146,10 @@ namespace Integrant4.Element.Bits
                 args.CtrlKey
             );
 
-            OnClick?.Invoke(c);
+            OnClick?.Invoke(this, c);
         }
+
+        private void SetRefresher(Action refresher) => _refresher = refresher;
     }
 
     public partial class Button

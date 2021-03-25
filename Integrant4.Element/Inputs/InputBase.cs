@@ -7,7 +7,7 @@ using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Inputs
 {
-    public abstract partial class InputBase<T> : IInput<T>
+    public abstract partial class InputBase<T> : IInput<T>, IRefreshableInput<T>
     {
         protected readonly IJSRuntime JSRuntime;
 
@@ -28,6 +28,10 @@ namespace Integrant4.Element.Inputs
         public abstract Task<T?>          GetValue();
         public abstract Task              SetValue(T? value);
         public abstract event Action<T?>? OnChange;
+
+        protected Action? Refresher { get; set; }
+
+        public void Refresh() => Refresher?.Invoke();
     }
 
     public partial class InputBase<T>

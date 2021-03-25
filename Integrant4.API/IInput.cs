@@ -16,4 +16,9 @@ namespace Integrant4.API
     {
         // delegate 
     }
+
+    public interface IRefreshableInput<TValue> : IInput<TValue>
+    {
+        public void Refresh();
+    }
 }
