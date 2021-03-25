@@ -48,6 +48,13 @@ namespace Web.Pages
 
         private bool _checked = true;
 
+        private Spinner _spinnerNoTextNormal  = null!;
+        private Spinner _spinnerTextNormal    = null!;
+        private Spinner _spinnerNoTextInline  = null!;
+        private Spinner _spinnerTextInline    = null!;
+        private Spinner _spinnerTextLarge     = null!;
+        private Spinner _spinnerTextLargeFont = null!;
+
         private readonly List<Button> _buttonsScaled = new();
         private readonly List<Chip>   _chipsScaled   = new();
         private readonly List<Link>   _linksScaled   = new();
@@ -240,7 +247,21 @@ namespace Web.Pages
                                 "Chevron".AsContent(),
                             }, new Button.Spec {HREF = () => "/", Style = () => Button.Style.Transparent}),
                         }, new Dropdown.Spec {PlacementGetter = () => Placement.RightStart}),
-                });
+                }
+            );
+
+            _spinnerNoTextNormal = new Spinner();
+            _spinnerTextNormal = new Spinner(new Spinner.Spec
+                {Text = () => "Spinner with text normal...",});
+
+            _spinnerNoTextInline = new Spinner(new Spinner.Spec {Style = () => Spinner.Style.Inline});
+            _spinnerTextInline = new Spinner(new Spinner.Spec
+                {Style = () => Spinner.Style.Inline, Text = () => "Spinner with text inline..."});
+
+            _spinnerTextLarge = new Spinner(new Spinner.Spec
+                {Text = () => "Spinner with text large...", Scale = () => 3});
+            _spinnerTextLargeFont = new Spinner(new Spinner.Spec
+                {Text = () => "Spinner with text large font...", FontSize = () => 3});
 
             //
 

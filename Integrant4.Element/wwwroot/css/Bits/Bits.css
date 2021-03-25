@@ -416,25 +416,34 @@ div.I4E-Bit-Space {
   to {
     transform: rotate(360deg); } }
 
-.I4E-Bit-Spinner {
+div.I4E-Bit-Spinner--Block {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+div.I4E-Bit-Spinner--Inline {
+  align-items: center;
+  display: inline-flex;
+  flex-direction: row; }
+
+div.I4E-Bit-Spinner div.I4E-Bit-Spinner-Inner {
   border: 1px solid red;
-  display: inline-block;
   height: calc(1em * (20 / 15));
   position: relative;
   width: calc(1em * (20 / 15)); }
-
-.I4E-Bit-Spinner:before {
-  animation: spinner .6s linear infinite;
-  border: calc(1em * (2 / 15)) solid var(--I4C_Default_Accent_6);
-  border-radius: 50%;
-  border-top-color: transparent;
-  box-sizing: border-box;
-  content: '';
-  height: calc(1em * (20 / 15));
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: calc(1em * (20 / 15)); }
+  div.I4E-Bit-Spinner div.I4E-Bit-Spinner-Inner::before {
+    animation: spinner .6s linear infinite;
+    border: calc(1em * (2 / 15)) solid transparent;
+    border-radius: 50%;
+    border-top-color: var(--I4C_Default_Accent_6);
+    box-sizing: border-box;
+    content: '';
+    height: calc(1em * (20 / 15));
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: calc(1em * (20 / 15)); }
 
 div.I4E-Bit-TextBlock {
   align-items: center;
@@ -572,3 +581,5 @@ code {
     display: unset; }
     .MVisibleOnHover:hover .MVisibleOnParentHover {
       display: unset; }
+
+/*# sourceMappingURL=Bits.css.map */
