@@ -58,7 +58,8 @@ div.I4E-Layout-ListTable {
 
 div.I4E-Layout-Panel {
   box-shadow: var(--I4C_Default_Shadow_2);
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative; }
   div.I4E-Layout-Panel:not(--NoMargin) {
     margin: 7px; }
   div.I4E-Layout-Panel:not(--NoBorder) {
@@ -86,7 +87,8 @@ div.I4E-Layout-InfoTable {
   border-radius: 4px;
   box-shadow: var(--I4C_Default_Shadow_1);
   display: inline-block;
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative; }
   div.I4E-Layout-InfoTable--WithMargin {
     margin: 7px; }
   div.I4E-Layout-InfoTable:not(--WithBorder) {

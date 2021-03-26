@@ -130,7 +130,7 @@ namespace Integrant4.Element.Bits
             BitBuilder.ScheduleElementJobs(this, builder, ref seq);
         }, v => _refresher = v);
 
-        public void Refresh() => _refresher?.Invoke();
+        public async Task Refresh() => await (_refresher?.Invoke() ?? Task.CompletedTask);
 
         public event Action<Button, ClickArgs>? OnClick;
 

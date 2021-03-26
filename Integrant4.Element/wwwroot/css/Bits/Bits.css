@@ -444,6 +444,9 @@ div.I4E-Bit-Spinner div.I4E-Bit-Spinner-Inner {
     top: 0;
     width: calc(1em * (20 / 15)); }
 
+div.I4E-Bit-Spinner div.I4E-Bit-Spinner-Text {
+  margin-top: 5px; }
+
 div.I4E-Bit-TextBlock {
   align-items: center;
   border: none;

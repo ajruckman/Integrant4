@@ -44,7 +44,8 @@ namespace Web.Pages
         private Link _link3 = null!;
         private Link _link4 = null!;
 
-        private Dropdown _dropdown1 = null!;
+        private Dropdown   _dropdown1   = null!;
+        private LocalModal _localModal1 = null!;
 
         private bool _checked = true;
 
@@ -263,6 +264,11 @@ namespace Web.Pages
             _spinnerTextLargeFont = new Spinner(new Spinner.Spec
                 {Text = () => "Spinner with text large font...", FontSize = () => 3});
 
+            _localModal1 = new LocalModal(() => new IRenderable[]
+            {
+                _spinnerTextNormal,
+            });
+            
             //
 
             for (double i = 0; i < 3; i += 0.1)

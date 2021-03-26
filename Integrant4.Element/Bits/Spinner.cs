@@ -16,6 +16,7 @@ namespace Integrant4.Element.Bits
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
             public Callbacks.Scale?      Scale      { get; init; }
+            public Callbacks.Size?       Margin     { get; init; }
             public Callbacks.REM?        FontSize   { get; init; }
             public Callbacks.FontWeight? FontWeight { get; init; }
 
@@ -32,6 +33,7 @@ namespace Integrant4.Element.Bits
         private readonly StyleGetter                 _style;
 
         private readonly Callbacks.Scale?      _scale;
+        private readonly Callbacks.Size?       _margin;
         private readonly Callbacks.REM?        _fontSize;
         private readonly Callbacks.FontWeight? _fontWeight;
 
@@ -42,6 +44,7 @@ namespace Integrant4.Element.Bits
             _style = spec?.Style ?? DefaultStyleGetter;
 
             _scale      = spec?.Scale;
+            _margin     = spec?.Margin;
             _fontSize   = spec?.FontSize;
             _fontWeight = spec?.FontWeight;
         }
@@ -67,6 +70,7 @@ namespace Integrant4.Element.Bits
                 {
                     Scaled = _scale != null,
                     Scale  = _scale,
+                    Margin = _margin,
                 }, null));
                 builder.CloseElement();
 

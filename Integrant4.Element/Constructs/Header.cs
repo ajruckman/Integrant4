@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Integrant4.Element.Constructs
 {
-    public partial class Header : IRenderable
+    public partial class Header : IConstruct
     {
         private readonly Callbacks.BitContents _contents;
         private readonly Style                 _style;

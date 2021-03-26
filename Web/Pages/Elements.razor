@@ -18,6 +18,35 @@
 <span style="margin-left: 15px;">@_dropdown1.Renderer()</span>
 <br>
 
+<br>
+<br>
+<div class="I4E-Layout-InfoTable">
+    <table class="I4E-Layout-InfoTable-Inner">
+        <tr>
+            <td>First name</td>
+            <td>Annabell</td>
+        </tr>
+        <tr>
+            <td>Last name</td>
+            <td>Ruckman</td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>Breed</td>
+            <td>Rat Terrier Rat Terrier Rat Terrier</td>
+        </tr>
+    </table>
+    @_localModal1.Renderer()
+</div>
+<br>
+<button class="I4E-Bit-Button I4E-Bit-Button--Default" @onclick="@(() => _localModal1.Show())">Show</button>
+<button class="I4E-Bit-Button I4E-Bit-Button--Default" @onclick="@(() => _localModal1.Hide())">Hide</button>
+<br>
+<br>
+
 <ul>
     <li>@_intInput.Renderer()</li>
     <li>@_intInput0Null.Renderer()</li>

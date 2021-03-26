@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Integrant4.API;
 
 namespace Integrant4.Element.Bits
@@ -6,6 +7,6 @@ namespace Integrant4.Element.Bits
 
     public interface IRefreshableBit : IBit
     {
-        public void Refresh();
+        public Task Refresh();
     }
 }
