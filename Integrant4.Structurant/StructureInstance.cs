@@ -94,6 +94,14 @@ namespace Integrant4.Structurant
             }
         }
 
+        public async Task RefreshAllMemberInputs()
+        {
+            foreach (var inst in _memberInstances)
+            {
+                await inst.RefreshInput();
+            }
+        }
+
         // Proxy methods
         
         public IReadOnlyList<IValidation>? OverallValidations() =>

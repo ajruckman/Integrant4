@@ -1,14 +1,11 @@
-using System;
 using System.Diagnostics.CodeAnalysis;
-using Integrant4.API;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Inputs
 {
-    public partial class TextAreaInput : StandardInput<string?>, IRefreshableInput<string?>
+    public partial class TextAreaInput : StandardInput<string?>
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
@@ -16,7 +13,7 @@ namespace Integrant4.Element.Inputs
         {
             public Callbacks.Callback<string>? Placeholder { get; init; }
             public Callbacks.Callback<int>?    Rows        { get; init; }
-            public Callbacks.Callback<int>?    Columns     { get; init; }
+            public Callbacks.Callback<int>?            Columns     { get; init; }
 
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -63,7 +60,7 @@ namespace Integrant4.Element.Inputs
     {
         private readonly Callbacks.Callback<string>? _placeholder;
         private readonly Callbacks.Callback<int>?    _rows;
-        private readonly Callbacks.Callback<int>?    _columns;
+        private readonly Callbacks.Callback<int>?            _columns;
 
         public TextAreaInput
         (
@@ -91,8 +88,6 @@ namespace Integrant4.Element.Inputs
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
 
             builder.AddAttribute(++seq, "oninput",     EventCallback.Factory.Create(this, Change));
-            builder.AddAttribute(++seq, "disabled",    BaseSpec.IsDisabled?.Invoke());
-            builder.AddAttribute(++seq, "required",    BaseSpec.IsRequired?.Invoke());
             builder.AddAttribute(++seq, "placeholder", _placeholder?.Invoke());
 
             if (_rows    != null) builder.AddAttribute(++seq, "rows", _rows.Invoke());

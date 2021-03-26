@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Threading.Tasks;
 using Integrant4.API;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
@@ -18,7 +19,7 @@ namespace Integrant4.Element.Bits
         {
             public StyleGetter? Style { get; init; }
 
-            public Callbacks.Callback<bool>   IsSmall { get; init; }
+            public Callbacks.Callback<bool>?  IsSmall { get; init; }
             public Action<Button, ClickArgs>? OnClick { get; init; }
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
@@ -78,7 +79,7 @@ namespace Integrant4.Element.Bits
 
     public partial class Button
     {
-        private Action? _refresher;
+        private Func<Task>? _refresher;
 
         public override RenderFragment Renderer() => RefreshWrapper.Create(builder =>
         {
@@ -127,7 +128,7 @@ namespace Integrant4.Element.Bits
             builder.CloseElement();
 
             BitBuilder.ScheduleElementJobs(this, builder, ref seq);
-        }, SetRefresher);
+        }, v => _refresher = v);
 
         public void Refresh() => _refresher?.Invoke();
 
@@ -148,8 +149,6 @@ namespace Integrant4.Element.Bits
 
             OnClick?.Invoke(this, c);
         }
-
-        private void SetRefresher(Action refresher) => _refresher = refresher;
     }
 
     public partial class Button

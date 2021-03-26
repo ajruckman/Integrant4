@@ -3,7 +3,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Inputs
@@ -84,11 +83,9 @@ namespace Integrant4.Element.Inputs
             builder.OpenElement(++seq, "input");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
 
-            builder.AddAttribute(++seq, "type",     "checkbox");
-            builder.AddAttribute(++seq, "checked",  _value);
-            builder.AddAttribute(++seq, "oninput",  EventCallback.Factory.Create(this, Change));
-            builder.AddAttribute(++seq, "disabled", BaseSpec.IsDisabled?.Invoke());
-            builder.AddAttribute(++seq, "required", BaseSpec.IsRequired?.Invoke());
+            builder.AddAttribute(++seq, "type",    "checkbox");
+            builder.AddAttribute(++seq, "checked", _value);
+            builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
 
             builder.AddElementReferenceCapture(++seq, r => _reference = r);
             builder.CloseElement();

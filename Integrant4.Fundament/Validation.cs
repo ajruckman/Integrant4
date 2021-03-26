@@ -39,11 +39,11 @@ namespace Integrant4.Fundament
     //         if (!isValidating && result == null)
     //             throw new ArgumentException();
     //
-    //         IsValidating = isValidating;
+    //         IsBusy = isValidating;
     //         Result       = result;
     //     }
     //
-    //     public readonly bool            IsValidating;
+    //     public readonly bool            IsBusy;
     //     public readonly IValidationSet? Result;
     // }
 
@@ -55,8 +55,8 @@ namespace Integrant4.Fundament
         event Action?                 OnBeginValidating;
         event Action<IValidationSet>? OnFinishValidating;
 
-        bool            IsValidating { get; }
-        IValidationSet? Result       { get; }
+        bool            IsBusy { get; }
+        IValidationSet? Result { get; }
         bool            IsValid();
     }
 

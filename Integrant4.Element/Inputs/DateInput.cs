@@ -1,10 +1,8 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using Integrant4.Element.Bits;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Inputs
@@ -82,8 +80,6 @@ namespace Integrant4.Element.Inputs
             builder.AddAttribute(++seq, "type",     "date");
             builder.AddAttribute(++seq, "value",    Serialize(Value));
             builder.AddAttribute(++seq, "oninput",  EventCallback.Factory.Create(this, Change));
-            builder.AddAttribute(++seq, "disabled", BaseSpec.IsDisabled?.Invoke());
-            builder.AddAttribute(++seq, "required", BaseSpec.IsRequired?.Invoke());
 
             builder.AddElementReferenceCapture(++seq, r => Reference = r);
             builder.CloseElement();

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.JSInterop;
 using Superset.Web.State;
 
@@ -147,46 +146,41 @@ namespace Integrant4.Element.Inputs
         {
             int seq = -1;
 
-            builder.OpenComponent<TriggerWrapper>(++seq);
-            builder.AddAttribute(++seq, "Trigger", _signaler);
-            builder.AddAttribute(++seq, "ChildContent", (RenderFragment) (builder2 =>
+            builder.OpenElement(++seq, "div");
+            builder.AddAttribute(++seq, "class", "I4E-Input I4E-Input-Select");
+
+            builder.OpenElement(++seq, "select");
+            builder.AddAttribute(++seq, "oninput",  EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "disabled", BaseSpec.IsDisabled?.Invoke());
+            builder.AddAttribute(++seq, "required", BaseSpec.IsRequired?.Invoke());
+
+            lock (_optionCacheLock)
             {
-                builder2.OpenElement(++seq, "div");
-                builder2.AddAttribute(++seq, "class", "I4E-Input I4E-Input-Select");
+                IReadOnlyList<IOption<TValue>> options = Options();
 
-                builder2.OpenElement(++seq, "select");
-                builder2.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
-                lock (_optionCacheLock)
+                for (var i = 0; i < options.Count; i++)
                 {
-                    int seqI = -1;
+                    IOption<TValue> option = options[i];
 
-                    IReadOnlyList<IOption<TValue>> options = Options();
+                    builder.OpenElement(++seq, "option");
+                    builder.AddAttribute(++seq, "value", i);
 
-                    for (var i = 0; i < options.Count; i++)
-                    {
-                        IOption<TValue> option = options[i];
+                    ++seq;
+                    if (_optionEqualityComparer.Invoke(Value, option.Value))
+                        builder.AddAttribute(seq, "selected", true);
 
-                        builder2.OpenElement(++seqI, "option");
-                        builder2.AddAttribute(++seqI, "value", i);
+                    ++seq;
+                    if (option.Disabled)
+                        builder.AddAttribute(seq, "disabled", true);
 
-                        ++seqI;
-                        if (_optionEqualityComparer.Invoke(Value, option.Value))
-                            builder2.AddAttribute(seqI, "selected", true);
-
-                        ++seqI;
-                        if (option.Disabled)
-                            builder2.AddAttribute(seqI, "disabled", true);
-
-                        builder2.AddContent(++seqI, option.OptionContent.Fragment);
-                        builder2.CloseElement();
-                    }
+                    builder.AddContent(++seq, option.OptionContent.Fragment);
+                    builder.CloseElement();
                 }
+            }
 
-                builder2.CloseElement();
+            builder.CloseElement();
 
-                builder2.CloseElement();
-            }));
-            builder.CloseComponent();
+            builder.CloseElement();
 
             InputBuilder.ScheduleElementJobs(this, builder, ref seq);
         }, v => Refresher = v);

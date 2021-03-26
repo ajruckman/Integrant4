@@ -1,9 +1,9 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web;
 
 namespace Integrant4.Element.Bits
@@ -22,7 +22,6 @@ namespace Integrant4.Element.Bits
 
             public Callbacks.IsRequired? IsRequired { get; init; }
 
-            // public Callbacks.BitID?         ID              { get; init; }
             public Callbacks.Classes? Classes         { get; init; }
             public Callbacks.Size?    Margin          { get; init; }
             public Callbacks.Size?    Padding         { get; init; }
@@ -35,11 +34,10 @@ namespace Integrant4.Element.Bits
 
             internal BaseSpec ToBaseSpec() => new()
             {
-                IsVisible  = IsVisible,
-                IsDisabled = IsDisabled,
-                IsChecked  = IsChecked,
-                IsRequired = IsRequired,
-                // ID              = ID,
+                IsVisible       = IsVisible,
+                IsDisabled      = IsDisabled,
+                IsChecked       = IsChecked,
+                IsRequired      = IsRequired,
                 Classes         = Classes,
                 Margin          = Margin,
                 Padding         = Padding,
@@ -65,7 +63,7 @@ namespace Integrant4.Element.Bits
 
     public partial class Checkbox
     {
-        private Action? _refresher;
+        private Func<Task>? _refresher;
 
         public bool IsChecked { get; private set; }
 
@@ -75,10 +73,20 @@ namespace Integrant4.Element.Bits
         {
             int seq = -1;
 
-            builder.OpenComponent<Component>(++seq);
-            builder.AddAttribute(++seq, nameof(Component.Checkbox), this);
+            builder.OpenElement(++seq, "div");
+            builder.AddAttribute(++seq, "onclick",
+                EventCallback.Factory.Create<MouseEventArgs>(this, OnClick));
+
+            string[] ac = {!IsChecked ? "I4E-Bit-Checkbox--Unchecked" : "I4E-Bit-Checkbox--Checked"};
+            BitBuilder.ApplyAttributes(this, builder, ref seq, ac, null);
+
+            builder.OpenComponent<BootstrapIcon>(++seq);
+            builder.AddAttribute(++seq, "Name", !IsChecked ? "square" : "check-square-fill");
+            builder.AddAttribute(++seq, "Size", _size.Invoke());
             builder.CloseComponent();
-        }, SetRefresher);
+
+            builder.CloseElement();
+        }, v => _refresher = v);
 
         public event Action<Checkbox, bool>? OnToggle;
 
@@ -98,47 +106,10 @@ namespace Integrant4.Element.Bits
             IsChecked = BaseSpec.IsChecked?.Invoke() ?? false;
             (_refresher ?? throw new ArgumentNullException()).Invoke();
         }
-
-        private void SetRefresher(Action stateHasChanged)
-        {
-            _refresher = stateHasChanged;
-        }
     }
 
     public partial class Checkbox
     {
         private readonly Callbacks.Callback<ushort> _size;
-    }
-
-    public partial class Checkbox
-    {
-        private sealed class Component : ComponentBase
-        {
-            [Parameter] public Checkbox Checkbox { get; set; } = null!;
-
-            protected override void OnInitialized()
-            {
-                Checkbox.SetRefresher(() => InvokeAsync(StateHasChanged));
-            }
-
-            protected override void BuildRenderTree(RenderTreeBuilder builder)
-            {
-                int seq = -1;
-
-                builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "onclick",
-                    EventCallback.Factory.Create<MouseEventArgs>(this, Checkbox.OnClick));
-
-                string[] ac = {!Checkbox.IsChecked ? "I4E-Bit-Checkbox--Unchecked" : "I4E-Bit-Checkbox--Checked"};
-                BitBuilder.ApplyAttributes(Checkbox, builder, ref seq, ac, null);
-
-                builder.OpenComponent<BootstrapIcon>(++seq);
-                builder.AddAttribute(++seq, "Name", !Checkbox.IsChecked ? "square" : "check-square-fill");
-                builder.AddAttribute(++seq, "Size", Checkbox._size.Invoke());
-                builder.CloseComponent();
-
-                builder.CloseElement();
-            }
-        }
     }
 }

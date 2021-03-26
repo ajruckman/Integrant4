@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using Integrant4.API;
@@ -14,7 +15,7 @@ using Microsoft.JSInterop;
 
 namespace Web.Pages
 {
-    public partial class Index
+    public partial class Index : IDisposable
     {
         private StructureInstance<Dog, DogState> _structureInstance = null!;
 
@@ -25,15 +26,31 @@ namespace Web.Pages
         [Inject] public IJSRuntime     JSRuntime      { get; set; } = null!;
         [Inject] public ElementService ElementService { get; set; } = null!;
 
+        private DogState _dogState  = null!;
+        private Task     _ageThread = null!;
+
         protected override void OnInitialized()
         {
-            _structureInstance = Structure.Instantiate(new DogState()
+            _dogState = new DogState()
             {
                 NameFirst = "Annabell",
                 NameLast  = "Annabell",
                 Age       = -1,
                 Breed     = "Rat Terrier",
-            }, JSRuntime);
+            };
+
+            _structureInstance = Structure.Instantiate(_dogState, JSRuntime);
+
+            _ageThread = Task.Run(() =>
+            {
+                while (true)
+                {
+                    Thread.Sleep(2500);
+
+                    _dogState.AgeIsDisabled = RandomNumberGenerator.GetInt32(0, 4) == 0;
+                    Console.WriteLine($"Age -> {_dogState.AgeIsDisabled}");
+                }
+            });
 
             _structureInstance.Construct();
 
@@ -70,14 +87,17 @@ namespace Web.Pages
             _ageValidationView.AttachState(_structureInstance.ValidationState);
         }
 
-        private async Task Reset()
-        {
-            await _structureInstance.ResetAllMemberInputValues();
-        }
+        private async Task Reset()   => await _structureInstance.ResetAllMemberInputValues();
+        private async Task Refresh() => await _structureInstance.RefreshAllMemberInputs();
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await ElementService.ProcessJobs();
+        }
+
+        public void Dispose()
+        {
+            _ageThread.Dispose();
         }
     }
 
@@ -140,7 +160,8 @@ namespace Web.Pages
                 (
                     inst.StructureInstance.JSRuntime!,
                     inst.Value(),
-                    new TextAreaInput.Spec {IsDisabled = () => inst.StructureInstance.State.NameFirst?.Contains("Z") == true}
+                    new TextAreaInput.Spec
+                        {IsDisabled = () => inst.StructureInstance.State.NameFirst?.Contains("Z") == true}
                 )
             );
 
@@ -153,7 +174,11 @@ namespace Web.Pages
                 (
                     inst.StructureInstance.JSRuntime!,
                     inst.Value(),
-                    new IntegerInput.Spec {Consider0Null = Always.True, Width = () => 50}
+                    new IntegerInput.Spec
+                    {
+                        Consider0Null = Always.True, Width = () => 50,
+                        IsDisabled    = () => inst.StructureInstance.State.AgeIsDisabled,
+                    }
                 ),
                 validationGetter: inst =>
                 {
@@ -214,5 +239,7 @@ namespace Web.Pages
         public string? NameLast  { get; set; }
         public int?    Age       { get; set; }
         public string? Breed     { get; set; }
+
+        public bool AgeIsDisabled { get; set; }
     }
 }

@@ -11,33 +11,25 @@ namespace Integrant4.Structurant
         private readonly object                   _cacheLock = new();
         private          CancellationTokenSource? _tokenSource;
 
-        public bool            IsValidating { get; private set; }
-        public IValidationSet? Result       { get; private set; }
+        public bool            IsBusy { get; private set; }
+        public IValidationSet? Result { get; private set; }
 
         public bool IsValid()
         {
-            if (IsValidating) return false;
+            if (IsBusy) return false;
 
             lock (_cacheLock)
             {
                 if (Result == null) return false;
 
                 foreach (IValidation v in Result.OverallValidations)
-                {
-                    if (v.ResultType == ValidationResultType.Undefined ||
-                        v.ResultType == ValidationResultType.Invalid)
+                    if (v.ResultType is ValidationResultType.Undefined or ValidationResultType.Invalid)
                         return false;
-                }
 
                 foreach ((_, IEnumerable<IValidation> l) in Result.MemberValidations)
-                {
-                    foreach (IValidation v in l)
-                    {
-                        if (v.ResultType == ValidationResultType.Undefined ||
-                            v.ResultType == ValidationResultType.Invalid)
-                            return false;
-                    }
-                }
+                foreach (IValidation v in l)
+                    if (v.ResultType is ValidationResultType.Undefined or ValidationResultType.Invalid)
+                        return false;
 
                 return true;
             }
@@ -53,7 +45,7 @@ namespace Integrant4.Structurant
             where TStructure : class
             where TState : class
         {
-            IsValidating = true;
+            IsBusy = true;
 
             OnChange?.Invoke();
             OnBeginValidating?.Invoke();
@@ -73,7 +65,7 @@ namespace Integrant4.Structurant
                     Result = v;
                 }
 
-                IsValidating = false;
+                IsBusy = false;
                 OnChange?.Invoke();
                 OnFinishValidating?.Invoke(v);
             }, token);

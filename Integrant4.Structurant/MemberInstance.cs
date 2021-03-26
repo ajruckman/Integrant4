@@ -13,6 +13,7 @@ namespace Integrant4.Structurant
         IMember<TObject, TState> Definition { get; }
 
         Task                              ResetInputValue();
+        Task                              RefreshInput();
         Task<IReadOnlyList<IValidation>?> Validations();
 
         /// <summary>
@@ -67,6 +68,14 @@ namespace Integrant4.Structurant
         {
             if (Input != null)
                 await Input.SetValue(Value());
+        }
+
+        public async Task RefreshInput()
+        {
+            if (Input is IRefreshableInput<TValue> refreshable)
+            {
+                await refreshable.Refresh();
+            }
         }
 
         public event Action<object?>? OnValueChangeUntyped;

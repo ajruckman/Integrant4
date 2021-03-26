@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
 
 namespace Integrant4.API
 {
@@ -19,6 +18,6 @@ namespace Integrant4.API
 
     public interface IRefreshableInput<TValue> : IInput<TValue>
     {
-        public void Refresh();
+        public Task Refresh();
     }
 }

@@ -1,8 +1,6 @@
-using System;
 using System.Diagnostics.CodeAnalysis;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Inputs
@@ -16,7 +14,7 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Callback<bool>?    Consider0Null { get; init; }
             public Callbacks.Callback<decimal>? Min           { get; init; }
             public Callbacks.Callback<decimal>? Max           { get; init; }
-            public Callbacks.Callback<decimal>? Step          { get; init; }
+            public Callbacks.Callback<decimal>?         Step          { get; init; }
 
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -64,7 +62,7 @@ namespace Integrant4.Element.Inputs
         private readonly Callbacks.Callback<bool>     _consider0Null;
         private readonly Callbacks.Callback<decimal>? _min;
         private readonly Callbacks.Callback<decimal>? _max;
-        private readonly Callbacks.Callback<decimal>  _step;
+        private readonly Callbacks.Callback<decimal>          _step;
 
         public DecimalInput
         (
@@ -92,9 +90,9 @@ namespace Integrant4.Element.Inputs
             builder.OpenElement(++seq, "input");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
 
-            builder.AddAttribute(++seq, "type",    "number");
-            builder.AddAttribute(++seq, "value",   Serialize(Value));
-            builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "type",     "number");
+            builder.AddAttribute(++seq, "value",    Serialize(Value));
+            builder.AddAttribute(++seq, "oninput",  EventCallback.Factory.Create(this, Change));
 
             if (_min != null) builder.AddAttribute(++seq, "min", _min.Invoke());
             if (_max != null) builder.AddAttribute(++seq, "max", _max.Invoke());

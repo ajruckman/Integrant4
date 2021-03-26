@@ -40,7 +40,11 @@ namespace Integrant4.Element.Inputs
             string[]?         additionalStyles
         )
         {
-            builder.AddAttribute(++seq, "id", $"{inputBase.ID}.Inner");
+            builder.AddAttribute(++seq, "id",          $"{inputBase.ID}.Inner");
+
+            builder.AddAttribute(++seq, "disabled",    inputBase.BaseSpec.IsDisabled?.Invoke());
+            builder.AddAttribute(++seq, "required",    inputBase.BaseSpec.IsRequired?.Invoke());
+
             builder.AddAttribute(++seq, "style",
                 ElementBuilder.StyleAttribute(inputBase.BaseSpec, additionalStyles));
         }
