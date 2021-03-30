@@ -13,5 +13,9 @@
         <ProjectReference Include="..\Integrant4.Resources\Integrant4.Resources.csproj" />
         <ProjectReference Include="..\Integrant4.Structurant\Integrant4.Structurant.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Bogus" Version="33.0.2" />
+    </ItemGroup>
     
 </Project>

@@ -1,0 +1,40 @@
+div.I4E-Construct-Selector {
+    div.I4E-Construct-Selector-Head {
+        border: 1px solid red;
+        height: 25px;
+        width: 250px;
+
+        div.I4E-Construct-Selector-NoSelection {
+            font-style: italic;
+        }
+
+        div.I4E-Construct-Selector-Selection {
+
+        }
+    }
+
+    div.I4E-Construct-Selector-Dropdown {
+        background-color: var(--I4C_Default_Background_6);
+        border-radius: 5px;
+        box-shadow: var(--I4C_Default_Shadow_1);
+        display: none;
+        margin: 17px;
+        padding: 10px;
+        position: absolute;
+        z-index: 10;
+
+        &[data-show] {
+            display: block;
+        }
+        
+        div.I4E-Input-Text {
+        }
+        
+        div.I4E-Construct-Selector-Options {
+            max-height: 500px;
+            overflow-y: scroll;
+        }
+    }
+}
+
+

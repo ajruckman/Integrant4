@@ -309,6 +309,8 @@ namespace Web.Pages
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
+            Console.WriteLine($"Elements: OnAfterRenderAsync {firstRender}");
+
             var v = await _intInput.GetValue();
             Console.WriteLine(v);
 

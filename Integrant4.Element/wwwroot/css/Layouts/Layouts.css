@@ -56,6 +56,28 @@ div.I4E-Layout-ListTable {
     div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr.Red:nth-child(odd):hover td {
       background-color: var(--I4C_Default_TableRow_Red_3); }
 
+div.I4E-Construct-Selector div.I4E-Construct-Selector-Head {
+  border: 1px solid red;
+  height: 25px;
+  width: 250px; }
+  div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-NoSelection {
+    font-style: italic; }
+
+div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
+  background-color: var(--I4C_Default_Background_6);
+  border-radius: 5px;
+  box-shadow: var(--I4C_Default_Shadow_1);
+  display: none;
+  margin: 17px;
+  padding: 10px;
+  position: absolute;
+  z-index: 10; }
+  div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown[data-show] {
+    display: block; }
+  div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Options {
+    max-height: 500px;
+    overflow-y: scroll; }
+
 div.I4E-Layout-Panel {
   box-shadow: var(--I4C_Default_Shadow_2);
   overflow: hidden;
@@ -131,5 +153,3 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Layout-Panel, div.I4-App[data-i
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Layout-InfoTable, div.I4-App[data-i4-theme-variant="White"] div.I4E-Layout-InfoTable {
   background-color: var(--I4C_Default_Background_1); }
-
-/*# sourceMappingURL=Layouts.css.map */

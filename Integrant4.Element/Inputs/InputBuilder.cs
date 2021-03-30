@@ -40,10 +40,10 @@ namespace Integrant4.Element.Inputs
             string[]?         additionalStyles
         )
         {
-            builder.AddAttribute(++seq, "id",          $"{inputBase.ID}.Inner");
+            builder.AddAttribute(++seq, "id", $"{inputBase.ID}.Inner");
 
-            builder.AddAttribute(++seq, "disabled",    inputBase.BaseSpec.IsDisabled?.Invoke());
-            builder.AddAttribute(++seq, "required",    inputBase.BaseSpec.IsRequired?.Invoke());
+            builder.AddAttribute(++seq, "disabled", inputBase.BaseSpec.IsDisabled?.Invoke());
+            builder.AddAttribute(++seq, "required", inputBase.BaseSpec.IsRequired?.Invoke());
 
             builder.AddAttribute(++seq, "style",
                 ElementBuilder.StyleAttribute(inputBase.BaseSpec, additionalStyles));
@@ -56,7 +56,7 @@ namespace Integrant4.Element.Inputs
             List<Action<ElementService>> jobs = new();
 
             if (inputBase.BaseSpec.Tooltip != null)
-                jobs.Add(v => v.AddJob(x => Interop.CreateTooltips(x, v.CancellationToken, inputBase.ID)));
+                jobs.Add(v => v.AddJob((j, t) => Interop.CreateTooltips(j, t, inputBase.ID)));
 
             if (jobs.Count > 0)
                 ServiceInjector<ElementService>.Inject(builder, ref seq, jobs.ToArray());
