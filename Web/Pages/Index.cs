@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
+using Bogus;
 using Integrant4.API;
 using Integrant4.Element;
 using Integrant4.Element.Bits;
@@ -26,8 +28,11 @@ namespace Web.Pages
         [Inject] public IJSRuntime     JSRuntime      { get; set; } = null!;
         [Inject] public ElementService ElementService { get; set; } = null!;
 
-        private DogState _dogState  = null!;
-        private Task     _ageThread = null!;
+        private DogState                _dogState = null!;
+        private CancellationTokenSource _ageThreadToken;
+        private Task                    _ageThread = null!;
+
+        private Selector<User> _selector = null!;
 
         protected override void OnInitialized()
         {
@@ -41,16 +46,17 @@ namespace Web.Pages
 
             _structureInstance = Structure.Instantiate(_dogState, JSRuntime);
 
+            _ageThreadToken = new CancellationTokenSource();
             _ageThread = Task.Run(() =>
             {
-                while (true)
+                for (var i = 0; i < 10; i++)
                 {
                     Thread.Sleep(2500);
 
                     _dogState.AgeIsDisabled = RandomNumberGenerator.GetInt32(0, 4) == 0;
-                    Console.WriteLine($"Age -> {_dogState.AgeIsDisabled}");
+                    // Console.WriteLine($"Age -> {_dogState.AgeIsDisabled}");
                 }
-            });
+            }, _ageThreadToken.Token);
 
             _structureInstance.Construct();
 
@@ -85,6 +91,52 @@ namespace Web.Pages
 
             _overallValidationView.AttachState(_structureInstance.ValidationState);
             _ageValidationView.AttachState(_structureInstance.ValidationState);
+
+            //
+
+            var b = new Faker<User>()
+               .RuleFor(o => o.FirstName, f => f.Name.FirstName())
+               .RuleFor(o => o.LastName, f => f.Name.LastName());
+
+            _selector = new Selector<User>(JSRuntime, () =>
+            {
+                List<User> names = b.Generate(1000);
+
+                return names
+                   .Select(v => new Integrant4.Element.Constructs.Option<User>
+                    (
+                        v,
+                        $"{v.FirstName} {v.LastName}",
+                        $"{v.FirstName} {v.LastName}"
+                    ))
+                   .ToArray();
+            }, true);
+        }
+
+        private class User : IEquatable<User>
+        {
+            public string FirstName { get; set; }
+            public string LastName  { get; set; }
+
+            public bool Equals(User? other)
+            {
+                if (ReferenceEquals(null, other)) return false;
+                if (ReferenceEquals(this, other)) return true;
+                return FirstName == other.FirstName && LastName == other.LastName;
+            }
+
+            public override bool Equals(object? obj)
+            {
+                if (ReferenceEquals(null, obj)) return false;
+                if (ReferenceEquals(this, obj)) return true;
+                if (obj.GetType() != this.GetType()) return false;
+                return Equals((User) obj);
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(FirstName, LastName);
+            }
         }
 
         private async Task Reset()   => await _structureInstance.ResetAllMemberInputValues();
@@ -92,12 +144,16 @@ namespace Web.Pages
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
+            Console.WriteLine($"Index: OnAfterRenderAsync {firstRender}");
+
+            _selector.LoadInBackground();
+
             await ElementService.ProcessJobs();
         }
 
         public void Dispose()
         {
-            _ageThread.Dispose();
+            _ageThreadToken.Cancel();
         }
     }
 
@@ -109,7 +165,7 @@ namespace Web.Pages
         {
             List<IValidation> result = new()
             {
-                new Validation(ValidationResultType.Valid,   "Valid"),
+                new Validation(ValidationResultType.Valid, "Valid"),
                 new Validation(ValidationResultType.Warning, "Warning"),
             };
 
@@ -205,12 +261,12 @@ namespace Web.Pages
                     null,
                     () => new List<IOption<string>>
                     {
-                        new Option<string>("Unknown",     "Unknown"),
-                        new Option<string>("Rat Terrier", "Rat Terrier"),
-                        new Option<string>("Boxer",       "Boxer"),
-                        new Option<string>("Yorkie",      "Yorkie"),
-                        new Option<string>("Chihuahua",   "Chihuahua"),
-                        new Option<string>(null,          "Other"),
+                        new Integrant4.Element.Inputs.Option<string>("Unknown", "Unknown"),
+                        new Integrant4.Element.Inputs.Option<string>("Rat Terrier", "Rat Terrier"),
+                        new Integrant4.Element.Inputs.Option<string>("Boxer", "Boxer"),
+                        new Integrant4.Element.Inputs.Option<string>("Yorkie", "Yorkie"),
+                        new Integrant4.Element.Inputs.Option<string>("Chihuahua", "Chihuahua"),
+                        new Integrant4.Element.Inputs.Option<string>(null, "Other"),
                     }
                 )
             );

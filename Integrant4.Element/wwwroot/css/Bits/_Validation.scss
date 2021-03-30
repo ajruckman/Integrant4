@@ -13,12 +13,14 @@ span.I4E-Bit-ValidationView, div.I4E-Bit-ValidationView {
 span.I4E-Bit-Validation {
     align-items: center;
     border-radius: 5000px;
+    box-shadow: var(--I4C_Default_Shadow_0);
     display: inline-flex;
     font-weight: normal;
     justify-content: flex-start;
     margin: 1px;
     padding: 3px 6px 3px 3px;
-    box-shadow: var(--I4C_Default_Shadow_0);
+    white-space: nowrap;
+    min-width: 0;
 
     &:not(:last-child) {
         margin-right: 3px;

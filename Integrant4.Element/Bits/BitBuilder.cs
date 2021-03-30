@@ -32,8 +32,8 @@ namespace Integrant4.Element.Bits
                 Tooltip? t = bitBase.BaseSpec.Tooltip.Invoke();
                 if (t != null)
                 {
-                    builder.AddAttribute(++seq, "data-i4e.tooltip-text",      t.Value.Text);
-                    builder.AddAttribute(++seq, "data-i4e.tooltip-delay",     t.Value.Delay            ?? 0);
+                    builder.AddAttribute(++seq, "data-i4e.tooltip-text", t.Value.Text);
+                    builder.AddAttribute(++seq, "data-i4e.tooltip-delay", t.Value.Delay                ?? 0);
                     builder.AddAttribute(++seq, "data-i4e.tooltip-placement", t.Value.Placement?.Map() ?? "top");
                 }
                 else seq += 3;
@@ -56,7 +56,7 @@ namespace Integrant4.Element.Bits
             List<Action<ElementService>> jobs = new();
 
             if (bitBase.BaseSpec.Tooltip != null)
-                jobs.Add(v => v.AddJob(x => Interop.CreateTooltips(x, v.CancellationToken, bitBase.ID)));
+                jobs.Add(v => v.AddJob((j, t) => Interop.CreateTooltips(j, t, bitBase.ID)));
 
             if (jobs.Count > 0)
                 ServiceInjector<ElementService>.Inject(builder, ref seq, jobs.ToArray());

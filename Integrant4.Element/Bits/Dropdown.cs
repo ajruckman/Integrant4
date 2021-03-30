@@ -68,8 +68,8 @@ namespace Integrant4.Element.Bits
         {
             [Parameter] public Dropdown Dropdown { get; set; } = null!;
 
-            private ElementReference? _toggleRef;
-            private ElementReference? _contentsRef;
+            private ElementReference? _headRef;
+            private ElementReference? _childrenRef;
             private ElementService?   _elementService;
 
             protected override void BuildRenderTree(RenderTreeBuilder builder)
@@ -83,7 +83,7 @@ namespace Integrant4.Element.Bits
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "id", Dropdown.ID + ".Head");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Head");
-                builder.AddElementReferenceCapture(++seq, r => _toggleRef = r);
+                builder.AddElementReferenceCapture(++seq, r => _headRef = r);
 
                 foreach (IRenderable renderable in Dropdown._headContents.Invoke())
                 {
@@ -102,7 +102,7 @@ namespace Integrant4.Element.Bits
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Children");
                 builder.AddAttribute(++seq, "data-popper-placement",
                     (Dropdown._placementGetter?.Invoke() ?? Placement.Bottom).Map());
-                builder.AddElementReferenceCapture(++seq, r => _contentsRef = r);
+                builder.AddElementReferenceCapture(++seq, r => _childrenRef = r);
 
                 foreach (IRenderable renderable in Dropdown._childContents.Invoke())
                 {
@@ -126,8 +126,8 @@ namespace Integrant4.Element.Bits
             protected override void OnAfterRender(bool firstRender)
             {
                 if (firstRender)
-                    _elementService!.AddJob(async v =>
-                        await v.InvokeVoidAsync("I4.Element.InitDropdown", _toggleRef!, _contentsRef!));
+                    _elementService!.AddJob((j, t) =>
+                        Interop.InitDropdown(j, t, _headRef!.Value, _childrenRef!.Value));
             }
         }
     }

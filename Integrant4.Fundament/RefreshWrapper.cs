@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Integrant4.Fundament
 {
-    public sealed class RefreshWrapper : IComponent
+    public class RefreshWrapper : IComponent
     {
         private RenderHandle _renderHandle;
 
@@ -42,6 +42,41 @@ namespace Integrant4.Fundament
                 builder.OpenComponent<RefreshWrapper>(0);
                 builder.AddAttribute(1, "SetRefresher", refresherSetter);
                 builder.AddAttribute(2, "ChildContent", content);
+                builder.CloseComponent();
+            }
+
+            return Fragment;
+        }
+    }
+
+    public class RefreshLifecycleWrapper : RefreshWrapper, IHandleAfterRender
+    {
+        [Parameter] public Func<bool, Task>? OnAfterRender { get; set; }
+
+        private bool _hasCalledOnAfterRender;
+
+        public async Task OnAfterRenderAsync()
+        {
+            bool firstRender = !_hasCalledOnAfterRender;
+            _hasCalledOnAfterRender = true;
+
+            if (OnAfterRender != null)
+                await OnAfterRender.Invoke(firstRender);
+        }
+
+        public static RenderFragment Create
+        (
+            RenderFragment     content,
+            Action<Func<Task>> refresherSetter,
+            Func<bool, Task>?  onAfterRender = null
+        )
+        {
+            void Fragment(RenderTreeBuilder builder)
+            {
+                builder.OpenComponent<RefreshLifecycleWrapper>(0);
+                builder.AddAttribute(1, "SetRefresher", refresherSetter);
+                builder.AddAttribute(2, "ChildContent", content);
+                builder.AddAttribute(2, "OnAfterRender", onAfterRender);
                 builder.CloseComponent();
             }
 

@@ -1,0 +1,176 @@
+@import '../Inputs/Inputs.scss';
+
+
+div.I4E-Construct-Selector {
+    &[data-dropdown-shown] {
+        div.I4E-Construct-Selector-Head {
+            background-color: var(--I4E_InputBase_Background_Focus);
+            border-color: var(--I4E_InputBase_Border_Focus);
+            box-shadow: var(--I4C_Default_Shadow_0);
+            transition: background-color 75ms ease-in, border 75ms ease-in;
+        }
+    }
+
+    div.I4E-Construct-Selector-Head {
+        @extend %_InputBase;
+
+        align-items: center;
+        display: inline-flex;
+        height: 28px;
+        justify-content: space-between;
+        min-width: 250px;
+        padding: 4px 6px;
+
+        div.I4E-Construct-Selector-NoSelection {
+            font-style: italic;
+            opacity: 0.5;
+        }
+
+        div.I4E-Construct-Selector-Selection ~ button {
+            display: unset;
+        }
+
+        button {
+            background-color: transparent;
+            border: 1px solid transparent;
+            color: var(--I4C_Default_Text_6);
+            cursor: pointer;
+            display: none;
+            height: 14px;
+            margin: 0;
+            outline: none;
+            padding: 0;
+            position: relative;
+            width: 14px;
+
+            svg {
+                bottom: 0;
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            &:focus {
+                color: var(--I4C_Default_Accent_6);
+            }
+        }
+    }
+
+    div.I4E-Construct-Selector-Dropdown {
+        background-color: var(--I4C_Default_Background_6);
+        border: 1px solid var(--I4E_InputBase_Border_Normal);
+        border-radius: 3px;
+        box-shadow: var(--I4C_Default_Shadow_0), var(--I4C_Default_Shadow_1), var(--I4C_Default_Shadow_2);
+        box-sizing: border-box;
+        display: none;
+        margin: 17px;
+        padding: 10px 9px;
+        position: absolute;
+        z-index: 10;
+
+        &[data-shown] {
+            display: block;
+        }
+
+        div.I4E-Input-Text {
+            margin-bottom: 3px;
+
+            input {
+                width: 100%;
+            }
+        }
+
+        div.I4E-Construct-Selector-Options {
+            max-height: 250px;
+            overflow-y: auto;
+
+            // Notice
+            > p {
+                color: var(--I4C_Default_Text_3);
+                font-style: italic;
+                font-weight: 500;
+                margin: 3px 1px 0 0;
+                padding: 7px 3px 0 3px;
+
+                &.I4E-Construct-Selector-Options-Null {
+                    border-bottom: 1px solid var(--I4C_Default_Border_12);
+                }
+
+                &.I4E-Construct-Selector-Options-None {
+                    border-bottom: 1px solid var(--I4C_Default_Border_12);
+                }
+
+                &.I4E-Construct-Options-LimitMessage {
+                    border-top: 1px solid var(--I4C_Default_Border_12);
+
+                    &:not([data-shown]) {
+                        display: none;
+                    }
+                }
+            }
+
+            // Option
+            > div {
+                border: 1px solid transparent;;
+                border-radius: 0.4em;
+                margin: 0 1px;
+                padding: 4px 6px;
+
+                &:focus {
+                    border: 1px solid var(--I4E_InputBase_Border_Focus);
+                    outline: none;
+                }
+
+                &[data-selected] {
+                    background-color: var(--I4C_Default_Accent_6);
+
+                    &:hover {
+                        background-color: var(--I4C_Default_Accent_5);
+                    }
+                }
+            }
+        }
+    }
+
+    &--Filterable {
+        div.I4E-Construct-Selector-Dropdown {
+            div.I4E-Construct-Selector-Options {
+                > div {
+                    &:not([data-shown]) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Variable colors
+
+div.I4-App {
+    &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
+        div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
+            background-color: var(--I4C_Default_Background_8);
+
+            // Option
+            div.I4E-Construct-Selector-Options > div {
+                &:not([data-selected]):hover {
+                    background-color: var(--I4C_Default_Background_16);
+                }
+            }
+        }
+    }
+
+    &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
+        div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
+            background-color: var(--I4C_Default_Background_0);
+
+            div.I4E-Construct-Selector-Options > div {
+                &:not([data-selected]):hover {
+                    background-color: var(--I4C_Default_Background_8);
+                }
+            }
+        }
+    }
+}

@@ -15,7 +15,7 @@ namespace Integrant4.Resources
                     $"{nameof(Fonts)}.{nameof(SansSerif)}.{nameof(Inter)}",
                     stylesheetsInternal: new HashSet<string>
                     {
-                        "Fonts/Inter/Inter.css"
+                        "Fonts/Inter/Inter.css",
                     }
                 );
             }
@@ -28,7 +28,7 @@ namespace Integrant4.Resources
                     $"{nameof(Fonts)}.{nameof(Monospace)}.{nameof(JetBrainsMono)}",
                     stylesheetsInternal: new HashSet<string>
                     {
-                        "Fonts/JetBrainsMono/JetBrainsMono.css"
+                        "Fonts/JetBrainsMono/JetBrainsMono.css",
                     }
                 );
             }
@@ -42,7 +42,7 @@ namespace Integrant4.Resources
                 stylesheetsInternal: new HashSet<string>
                 {
                     "Icons/Icons.css",
-                    "Icons/Bootstrap/bootstrap-icons.css"
+                    "Icons/Bootstrap/bootstrap-icons.css",
                 }
             );
         }

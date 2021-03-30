@@ -8,17 +8,25 @@ namespace Integrant4.Element
 {
     public class ElementService : IDisposable
     {
-        public delegate Task Job(IJSRuntime jsRuntime);
+        public delegate Task Job(IJSRuntime jsRuntime, CancellationToken token);
 
         private readonly IJSRuntime              _jsRuntime;
         private readonly ConcurrentQueue<Job>    _jobs = new();
         private readonly CancellationTokenSource _cts  = new();
-
-        public CancellationToken CancellationToken => _cts.Token;
+        private readonly Guid                    _guid = Guid.NewGuid();
 
         public ElementService(IJSRuntime jsRuntime)
         {
             _jsRuntime = jsRuntime;
+        }
+
+        public IJSRuntime        JSRuntime         => _jsRuntime;
+        public CancellationToken CancellationToken => _cts.Token;
+
+        public void Dispose()
+        {
+            _cts.Cancel();
+            _cts.Dispose();
         }
 
         public void AddJob(Job job)
@@ -30,14 +38,8 @@ namespace Integrant4.Element
         {
             while (_jobs.TryDequeue(out Job? job))
             {
-                await job.Invoke(_jsRuntime);
+                await job.Invoke(_jsRuntime, CancellationToken);
             }
-        }
-
-        public void Dispose()
-        {
-            _cts.Cancel();
-            _cts.Dispose();
         }
     }
 }

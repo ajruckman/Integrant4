@@ -32,11 +32,11 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
     height: 2em; }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft) {
       padding-left: calc(1em * (10 / 15)); }
-    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft {
+    button.I4E-Bit-Button.I4E-Bit-Button--IconLeft:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button.I4E-Bit-Button--IconLeft:not(.I4E-Bit-Button--Small) {
       padding-left: calc(1em * (5 / 15)); }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight) {
       padding-right: calc(1em * (10 / 15)); }
-    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight {
+    button.I4E-Bit-Button.I4E-Bit-Button--IconRight:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button.I4E-Bit-Button--IconRight:not(.I4E-Bit-Button--Small) {
       padding-right: calc(1em * (5 / 15)); }
   button.I4E-Bit-Button.I4E-Bit-Button--Small, a.I4E-Bit-Button.I4E-Bit-Button--Small {
     height: 1.5em; }
@@ -329,13 +329,14 @@ div.I4E-Bit-Dropdown {
     display: none;
     margin: 17px;
     padding: 10px;
-    position: absolute; }
+    position: absolute;
+    z-index: 10; }
     div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children[data-show] {
       display: block; }
     div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children div.I4E-Bit-Dropdown-Content > * {
       box-sizing: border-box;
       width: 100%; }
-  div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Head[data-contents-shown] a.I4E-Bit-PageLink {
+  div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Head[data-children-shown] a.I4E-Bit-PageLink {
     color: var(--I4C_Default_Accent_8); }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children {
@@ -516,12 +517,14 @@ span.I4E-Bit-ValidationView, div.I4E-Bit-ValidationView {
 span.I4E-Bit-Validation {
   align-items: center;
   border-radius: 5000px;
+  box-shadow: var(--I4C_Default_Shadow_0);
   display: inline-flex;
   font-weight: normal;
   justify-content: flex-start;
   margin: 1px;
   padding: 3px 6px 3px 3px;
-  box-shadow: var(--I4C_Default_Shadow_0); }
+  white-space: nowrap;
+  min-width: 0; }
   span.I4E-Bit-Validation:not(:last-child) {
     margin-right: 3px; }
   span.I4E-Bit-Validation--Invalid {
@@ -583,5 +586,3 @@ code {
     display: unset; }
     .MVisibleOnHover:hover .MVisibleOnParentHover {
       display: unset; }
-
-/*# sourceMappingURL=Bits.css.map */
