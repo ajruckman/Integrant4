@@ -98,12 +98,19 @@ namespace Web.Pages
                .RuleFor(o => o.FirstName, f => f.Name.FirstName())
                .RuleFor(o => o.LastName, f => f.Name.LastName());
 
-            _selector = new Selector<User>(JSRuntime, filter =>
+            _selector = new Selector<User>(JSRuntime, () =>
             {
-                List<User> names = b.Generate(20000);
+                List<User> names = b.Generate(1000);
 
-                return names.Select(v => new Integrant4.Element.Constructs.Option<User>(v, v.FirstName, v.FirstName)).ToArray();
-            });
+                return names
+                   .Select(v => new Integrant4.Element.Constructs.Option<User>
+                    (
+                        v,
+                        $"{v.FirstName} {v.LastName}",
+                        $"{v.FirstName} {v.LastName}"
+                    ))
+                   .ToArray();
+            }, true);
         }
 
         private class User : IEquatable<User>
@@ -138,7 +145,7 @@ namespace Web.Pages
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             Console.WriteLine($"Index: OnAfterRenderAsync {firstRender}");
-            
+
             _selector.LoadInBackground();
 
             await ElementService.ProcessJobs();

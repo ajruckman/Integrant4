@@ -49,16 +49,16 @@ namespace Integrant4.Element
         }
 
         internal static async Task InitSelector<TValue>
-        (
-            IJSRuntime                              jsRuntime,
+        (IJSRuntime                                 jsRuntime,
             CancellationToken                       token,
             ElementReference                        elemRef,
-            DotNetObjectReference<Selector<TValue>> selector
+            DotNetObjectReference<Selector<TValue>> selector,
+            bool                                    filterable
         ) where TValue : IEquatable<TValue>
         {
             try
             {
-                await jsRuntime.InvokeVoidAsync("I4.Element.InitSelector", token, elemRef, selector);
+                await jsRuntime.InvokeVoidAsync("I4.Element.InitSelector", token, elemRef, selector, filterable);
             }
             catch (TaskCanceledException)
             {

@@ -20,7 +20,7 @@ span.I4E-Bit-Validation {
     margin: 1px;
     padding: 3px 6px 3px 3px;
     white-space: nowrap;
-    
+    min-width: 0;
 
     &:not(:last-child) {
         margin-right: 3px;
