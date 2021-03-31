@@ -51,6 +51,7 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
         element.ShowCombobox = function () {
             element.ComboboxOpen = true;
             element.setAttribute('data-open', '');
+            head.setAttribute('data-focused', '');
             dropdown.setAttribute('data-open', '');
 
             element.I4EOptionsDropdown.setOptions({
@@ -71,6 +72,7 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
         element.HideCombobox = function () {
             element.ComboboxOpen = false;
             element.removeAttribute('data-open');
+            head.removeAttribute('data-focused');
             dropdown.removeAttribute('data-open');
 
             element.I4EOptionsDropdown.setOptions({

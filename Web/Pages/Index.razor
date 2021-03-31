@@ -18,6 +18,8 @@
 
         @_combobox.Renderer()
 
+        <br>
+
         <button @onclick="@(() => { _comboboxDisabled = true; _combobox.Refresh(); })">Disable</button>
         <button @onclick="@(() => { _comboboxDisabled = false; _combobox.Refresh(); })">Enable</button>
         

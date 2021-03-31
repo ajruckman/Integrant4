@@ -24,7 +24,7 @@
         transition: background-color 75ms ease-in, border 75ms ease-in;
     }
 
-    &:focus:not(:disabled):not([data-disabled]) {
+    &:focus:not(:disabled):not([data-disabled]), &[data-focused]:not(:disabled):not([data-disabled]) {
         background-color: var(--I4E_InputBase_Background_Focus);
         border-color: var(--I4E_InputBase_Border_Focus);
         box-shadow: var(--I4C_Default_Shadow_0);

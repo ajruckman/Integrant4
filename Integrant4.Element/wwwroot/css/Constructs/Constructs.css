@@ -17,7 +17,7 @@ div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head, div.I4E-Input-Select
     background-color: var(--I4E_InputBase_Background_Hover);
     border-color: var(--I4E_InputBase_Border_Hover);
     transition: background-color 75ms ease-in, border 75ms ease-in; }
-  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Select select:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea:focus:not(:disabled):not([data-disabled]) {
+  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Select select:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Select select[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea[data-focused]:not(:disabled):not([data-disabled]) {
     background-color: var(--I4E_InputBase_Background_Focus);
     border-color: var(--I4E_InputBase_Border_Focus);
     box-shadow: var(--I4C_Default_Shadow_0);
@@ -71,6 +71,9 @@ div.I4E-Construct-Combobox {
       font-style: italic;
       opacity: 0.5;
       user-select: none; }
+    div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head div.I4E-Construct-Combobox-Selection {
+      align-items: center;
+      display: flex; }
     div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head div.I4E-Construct-Combobox-Selection ~ div.I4E-Construct-Combobox-ClearButtonWrapper {
       display: inline-block; }
     div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head div.I4E-Construct-Combobox-ClearButtonWrapper {
@@ -124,14 +127,16 @@ div.I4E-Construct-Combobox {
           border-bottom: 1px solid var(--I4C_Default_Border_12); }
         div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p.I4E-Construct-Combobox-Options-None {
           border-bottom: 1px solid var(--I4C_Default_Border_12); }
-        div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p.I4E-Construct-Options-LimitMessage {
+        div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p.I4E-Construct-Options-LimitMessage, div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p.I4E-Construct-Options-NoResults {
           border-top: 1px solid var(--I4C_Default_Border_12); }
-          div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p.I4E-Construct-Options-LimitMessage:not([data-open]) {
+          div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p.I4E-Construct-Options-LimitMessage:not([data-shown]), div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p.I4E-Construct-Options-NoResults:not([data-shown]) {
             display: none; }
       div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > div {
+        align-items: center;
         border: 1px solid transparent;
         border-radius: 0.4em;
         cursor: pointer;
+        display: flex;
         margin: 0 1px 1px 1px;
         padding: 4px 6px;
         transition: background-color 75ms ease-in, border 75ms ease-in; }

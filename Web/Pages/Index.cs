@@ -11,6 +11,7 @@ using Integrant4.Element.Bits;
 using Integrant4.Element.Constructs;
 using Integrant4.Element.Inputs;
 using Integrant4.Fundament;
+using Integrant4.Resources.Icons;
 using Integrant4.Structurant;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -104,11 +105,11 @@ namespace Web.Pages
                 List<User> names = b.Generate(900);
 
                 return names
-                   .Select(v => new Integrant4.Element.Constructs.Option<User>
+                   .Select(v => new ContentOption<User>
                     (
                         v,
                         $"{v.FirstName} {v.LastName}",
-                        $"{v.FirstName} {v.LastName}"
+                        new BootstrapIcon("arrow-right-short").Renderer() + $"{v.FirstName} {v.LastName}".AsContent()
                     ))
                    .ToArray();
             }, new Combobox<User>.Spec
@@ -274,12 +275,12 @@ namespace Web.Pages
                     null,
                     () => new List<IOption<string>>
                     {
-                        new Integrant4.Element.Inputs.Option<string>("Unknown", "Unknown"),
-                        new Integrant4.Element.Inputs.Option<string>("Rat Terrier", "Rat Terrier"),
-                        new Integrant4.Element.Inputs.Option<string>("Boxer", "Boxer"),
-                        new Integrant4.Element.Inputs.Option<string>("Yorkie", "Yorkie"),
-                        new Integrant4.Element.Inputs.Option<string>("Chihuahua", "Chihuahua"),
-                        new Integrant4.Element.Inputs.Option<string>(null, "Other"),
+                        new Option<string>("Unknown", "Unknown"),
+                        new Option<string>("Rat Terrier", "Rat Terrier"),
+                        new Option<string>("Boxer", "Boxer"),
+                        new Option<string>("Yorkie", "Yorkie"),
+                        new Option<string>("Chihuahua", "Chihuahua"),
+                        new Option<string>(null, "Other"),
                     }
                 )
             );

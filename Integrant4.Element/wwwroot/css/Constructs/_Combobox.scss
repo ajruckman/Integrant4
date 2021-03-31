@@ -40,6 +40,11 @@ div.I4E-Construct-Combobox {
             user-select: none;
         }
 
+        div.I4E-Construct-Combobox-Selection {
+            align-items: center;
+            display: flex;
+        }
+
         div.I4E-Construct-Combobox-Selection ~ div.I4E-Construct-Combobox-ClearButtonWrapper {
             display: inline-block;
         }
@@ -122,10 +127,10 @@ div.I4E-Construct-Combobox {
                         border-bottom: 1px solid var(--I4C_Default_Border_12);
                     }
 
-                    &.I4E-Construct-Options-LimitMessage {
+                    &.I4E-Construct-Options-LimitMessage, &.I4E-Construct-Options-NoResults {
                         border-top: 1px solid var(--I4C_Default_Border_12);
 
-                        &:not([data-open]) {
+                        &:not([data-shown]) {
                             display: none;
                         }
                     }
@@ -133,13 +138,14 @@ div.I4E-Construct-Combobox {
 
                 // Option
                 > div {
+                    align-items: center;
                     border: 1px solid transparent;
                     border-radius: 0.4em;
                     cursor: pointer;
+                    display: flex;
                     margin: 0 1px 1px 1px;
                     padding: 4px 6px;
                     transition: background-color 75ms ease-in, border 75ms ease-in;
-                    //white-space: nowrap;
 
                     &:hover {
                         transition: none;

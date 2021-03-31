@@ -15,9 +15,27 @@ namespace Integrant4.Element.Inputs
         [SuppressMessage("ReSharper", "SuggestBaseTypeForParameter")]
         public ComboboxInput
         (
-            IJSRuntime                    jsRuntime,
-            Combobox<TValue>.OptionGetter optionGetter,
-            Spec?                         spec = null
+            IJSRuntime                        jsRuntime,
+            Combobox<TValue>.TextOptionGetter optionGetter,
+            Spec?                             spec = null
+        )
+        {
+            _combobox = new Combobox<TValue>
+            (
+                jsRuntime,
+                optionGetter,
+                spec
+            );
+
+            _combobox.OnChange += OnChange;
+        }
+
+        [SuppressMessage("ReSharper", "SuggestBaseTypeForParameter")]
+        public ComboboxInput
+        (
+            IJSRuntime                           jsRuntime,
+            Combobox<TValue>.ContentOptionGetter optionGetter,
+            Spec?                                spec = null
         )
         {
             _combobox = new Combobox<TValue>
