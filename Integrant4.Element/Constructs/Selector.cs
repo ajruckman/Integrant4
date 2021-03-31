@@ -304,6 +304,8 @@ namespace Integrant4.Element.Constructs
                 }
 
                 builder.OpenElement(++seq, "div");
+                builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Scroller");
+                builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Options");
 
                 lock (_optionsLock)
@@ -365,14 +367,18 @@ namespace Integrant4.Element.Constructs
                             builder.CloseElement();
                         }
 
-                        builder.OpenElement(++seq, "p");
-                        builder.AddAttribute(++seq, "class", "I4E-Construct-Options-LimitMessage");
-                        builder.AddAttribute(++seq, "data-shown", shownCount == UnfilteredDisplayLimit);
-                        builder.AddContent(++seq, $"Filter to see more than {UnfilteredDisplayLimit} options.");
-                        builder.CloseElement();
+                        if (_filterable)
+                        {
+                            builder.OpenElement(++seq, "p");
+                            builder.AddAttribute(++seq, "class", "I4E-Construct-Options-LimitMessage");
+                            builder.AddAttribute(++seq, "data-shown", shownCount == UnfilteredDisplayLimit);
+                            builder.AddContent(++seq, $"Filter to see more than {UnfilteredDisplayLimit} options.");
+                            builder.CloseElement();
+                        }
                     }
                 }
 
+                builder.CloseElement();
                 builder.CloseElement();
                 builder.CloseElement();
 

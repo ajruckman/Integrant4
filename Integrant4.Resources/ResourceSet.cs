@@ -63,6 +63,20 @@ namespace Integrant4.Resources
                 }
             );
 
+            public static readonly ResourceSet SimpleBar = new
+            (
+                $"{nameof(Integrant4)}.{nameof(Resources)}",
+                $"{nameof(Libraries)}.{nameof(SimpleBar)}",
+                stylesheetsInternal: new HashSet<string>
+                {
+                    "Libraries/SimpleBar/simplebar.min.css",
+                },
+                scriptsInternal: new HashSet<string>
+                {
+                    "Libraries/SimpleBar/simplebar.min.js",
+                }
+            );
+
             public static readonly ResourceSet Popper = new
             (
                 $"{nameof(Integrant4)}.{nameof(Resources)}",

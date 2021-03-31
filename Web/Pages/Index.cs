@@ -100,7 +100,7 @@ namespace Web.Pages
 
             _selector = new Selector<User>(JSRuntime, () =>
             {
-                List<User> names = b.Generate(1000);
+                List<User> names = b.Generate(900);
 
                 return names
                    .Select(v => new Integrant4.Element.Constructs.Option<User>

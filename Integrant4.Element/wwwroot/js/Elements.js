@@ -37,12 +37,14 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
     const clearValueButton = element.querySelector('.I4E-Construct-Selector-Head button');
     const dropdown = element.querySelector('.I4E-Construct-Selector-Dropdown');
     const filterInput = element.querySelector('input[type=text]');
+    const scroller = element.querySelector('.I4E-Construct-Selector-Scroller');
     const options = element.querySelector('.I4E-Construct-Selector-Options');
 
     console.log(head)
     console.log(dropdown)
     console.log(filterInput)
     console.log(options)
+    console.log(options.firstChild)
 
     if (!element.hasOwnProperty('I4EOptionsDropdown')) {
         element.I4EOptionsDropdown = Popper.createPopper(head, dropdown, {
@@ -52,6 +54,8 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
         });
 
         element.SelectorShown = false;
+
+        const bar = new MiniBar(scroller);
 
         element.ShowSelector = function () {
             element.SelectorShown = true;
@@ -84,7 +88,7 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
             element.HideSelector();
             head.focus();
         };
-
+        
         // Event listeners
 
         // Open dropdown on head click

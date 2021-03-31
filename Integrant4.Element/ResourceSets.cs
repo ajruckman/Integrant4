@@ -19,6 +19,11 @@ namespace Integrant4.Element
         (
             $"{nameof(Integrant4)}.{nameof(Element)}",
             nameof(Constructs),
+            dependencies: new[]
+            {
+                Resources.Resources.Libraries.MiniBar,
+                Resources.Resources.Libraries.SimpleBar,
+            },
             stylesheetsInternal: new HashSet<string>
             {
                 "css/Constructs/Constructs.css",
