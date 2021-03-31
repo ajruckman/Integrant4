@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Integrant4.API;
 using Integrant4.Element.Inputs;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
@@ -13,62 +12,16 @@ using Superset.Utilities;
 
 namespace Integrant4.Element.Constructs
 {
-    public partial class Selector<TValue> : IInput<TValue>
-        where TValue : IEquatable<TValue>
+    public partial class Combobox<TValue> where TValue : IEquatable<TValue>
     {
         public delegate Option<TValue>[] OptionGetter();
-    }
 
-    public partial class Selector<TValue>
-    {
-        public Task<TValue?> GetValue() => Task.FromResult(_selection != null ? _selection.Value.Value : default);
-
-        public Task SetValue(TValue? value)
-        {
-            if (_selection?.Value?.Equals(value) == true) return Task.CompletedTask;
-
-            lock (_optionsLock)
-            {
-                if (_options == null)
-                    throw new InvalidOperationException(
-                        "Attempted to set the value of a Selector with no loaded options.");
-
-                _selection = _options.FirstOrDefault(v => v.Value?.Equals(value) == true);
-
-                if (_selection == null)
-                    throw new InvalidOperationException(
-                        "Could not find an option with a value equal to the one passed to SetValue.");
-
-                OnChange?.Invoke(value);
-            }
-
-            _refresher?.Invoke();
-
-            return Task.CompletedTask;
-        }
-
-        public event Action<TValue?>? OnChange;
-
-        public Task ClearValue()
-        {
-            if (_selection == null) return Task.CompletedTask;
-
-            _selection = null;
-            OnChange?.Invoke(default);
-            _refresher?.Invoke();
-
-            return Task.CompletedTask;
-        }
-    }
-
-    public partial class Selector<TValue>
-    {
         private readonly OptionGetter _optionGetter;
         private readonly bool         _filterable;
         private readonly string       _uncachedText = "Loading options...";
         private readonly string       _noOptionText = "No results";
 
-        public Selector
+        public Combobox
         (
             IJSRuntime   jsRuntime,
             OptionGetter optionGetter,
@@ -101,7 +54,56 @@ namespace Integrant4.Element.Constructs
         }
     }
 
-    public partial class Selector<TValue>
+    public partial class Combobox<TValue>
+    {
+        public Task<TValue?> GetValue() => Task.FromResult(_selection != null ? _selection.Value.Value : default);
+
+        public Task SetValue(TValue? value)
+        {
+            if (_selection?.Value?.Equals(value) == true) return Task.CompletedTask;
+
+            lock (_optionsLock)
+            {
+                if (_options == null)
+                    throw new InvalidOperationException(
+                        "Attempted to set the value of a Combobox with no loaded options.");
+
+                _selection = _options.FirstOrDefault(v => v.Value?.Equals(value) == true);
+
+                if (_selection == null)
+                    throw new InvalidOperationException(
+                        "Could not find an option with a value equal to the one passed to SetValue.");
+
+                OnChange?.Invoke(value);
+            }
+
+            _refresher?.Invoke();
+
+            return Task.CompletedTask;
+        }
+
+        public event Action<TValue?>? OnChange;
+
+        public Task Refresh()
+        {
+            _refresher?.Invoke();
+
+            return Task.CompletedTask;
+        }
+
+        public Task ClearValue()
+        {
+            if (_selection == null) return Task.CompletedTask;
+
+            _selection = null;
+            OnChange?.Invoke(default);
+            _refresher?.Invoke();
+
+            return Task.CompletedTask;
+        }
+    }
+
+    public partial class Combobox<TValue>
     {
         private readonly object _optionsLock = new();
         private readonly object _ctsLock     = new();
@@ -179,7 +181,7 @@ namespace Integrant4.Element.Constructs
         // }
     }
 
-    public partial class Selector<TValue>
+    public partial class Combobox<TValue>
     {
         private void UpdateFilterValue(string? value)
         {
@@ -188,38 +190,10 @@ namespace Integrant4.Element.Constructs
         }
     }
 
-    public readonly struct Option<TValue>
+    public partial class Combobox<TValue>
     {
-        public readonly TValue? Value;
-        public readonly string  FilterableText;
-        public readonly Content OptionContent;
-        public readonly Content SelectionContent;
-        public readonly bool    Disabled;
-        public readonly bool    Placeholder;
-
-        public Option
-        (
-            TValue?  value,
-            string   filterableText,
-            Content  optionContent,
-            Content? selectionContent = null,
-            bool     disabled         = false,
-            bool     placeholder      = false
-        )
-        {
-            Value            = value;
-            FilterableText   = filterableText;
-            OptionContent    = optionContent;
-            SelectionContent = selectionContent ?? optionContent;
-            Disabled         = disabled;
-            Placeholder      = placeholder;
-        }
-    }
-
-    public partial class Selector<TValue>
-    {
-        [JSInvokable("I4E.Construct.Selector.Select")]
-        public void Construct_Selector_Select(int i)
+        [JSInvokable("I4E.Construct.Combobox.Select")]
+        public void Construct_Combobox_Select(int i)
         {
             lock (_optionsLock)
             {
@@ -234,7 +208,7 @@ namespace Integrant4.Element.Constructs
         }
     }
 
-    public partial class Selector<TValue>
+    public partial class Combobox<TValue>
     {
         private const int UnfilteredDisplayLimit = 15;
 
@@ -248,7 +222,7 @@ namespace Integrant4.Element.Constructs
         (
             builder =>
             {
-                Console.WriteLine("Selector > Renderer");
+                Console.WriteLine("Combobox > Renderer");
                 Stopwatch sw = new();
                 sw.Start();
 
@@ -259,26 +233,26 @@ namespace Integrant4.Element.Constructs
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "class",
                     !_filterable
-                        ? "I4E-Construct-Selector"
-                        : "I4E-Construct-Selector I4E-Construct-Selector--Filterable");
+                        ? "I4E-Construct-Combobox"
+                        : "I4E-Construct-Combobox I4E-Construct-Combobox--Filterable");
                 builder.AddElementReferenceCapture(++seq, r => _elemRef = r);
 
                 //
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Head");
+                builder.AddAttribute(++seq, "class", "I4E-Construct-Combobox-Head");
                 builder.AddAttribute(++seq, "tabindex", 0);
 
                 builder.OpenElement(++seq, "div");
 
                 if (_selection == null)
                 {
-                    builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-NoSelection");
+                    builder.AddAttribute(++seq, "class", "I4E-Construct-Combobox-NoSelection");
                     builder.AddContent(++seq, "No selection");
                 }
                 else
                 {
-                    builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Selection");
+                    builder.AddAttribute(++seq, "class", "I4E-Construct-Combobox-Selection");
                     builder.AddContent(++seq, _selection.Value.SelectionContent.Renderer());
                 }
 
@@ -295,7 +269,7 @@ namespace Integrant4.Element.Constructs
                 //
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Dropdown");
+                builder.AddAttribute(++seq, "class", "I4E-Construct-Combobox-Dropdown");
 
                 ++seq;
                 if (_filterable)
@@ -304,23 +278,23 @@ namespace Integrant4.Element.Constructs
                 }
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Scroller");
+                builder.AddAttribute(++seq, "class", "I4E-Construct-Combobox-Scroller");
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Options");
+                builder.AddAttribute(++seq, "class", "I4E-Construct-Combobox-Options");
 
                 lock (_optionsLock)
                 {
                     if (_options == null)
                     {
                         builder.OpenElement(++seq, "p");
-                        builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Options-Null");
+                        builder.AddAttribute(++seq, "class", "I4E-Construct-Combobox-Options-Null");
                         builder.AddContent(++seq, _uncachedText);
                         builder.CloseElement();
                     }
                     else if (_options.Length == 0)
                     {
                         builder.OpenElement(++seq, "p");
-                        builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Options-None");
+                        builder.AddAttribute(++seq, "class", "I4E-Construct-Combobox-Options-None");
                         builder.AddContent(++seq, _noOptionText);
                         builder.CloseElement();
                     }
@@ -356,13 +330,13 @@ namespace Integrant4.Element.Constructs
 
                             builder.OpenElement(++seq, "div");
                             builder.SetKey(i);
-                            
+
                             builder.AddAttribute(++seq, "tabindex", 0);
                             builder.AddAttribute(++seq, "data-selected", selected);
                             builder.AddAttribute(++seq, "data-i", i);
                             if (_filterable)
                                 builder.AddAttribute(++seq, "data-shown", shown);
-                            
+
                             builder.AddContent(++seq, option.OptionContent.Renderer());
                             builder.CloseElement();
                         }
@@ -394,7 +368,7 @@ namespace Integrant4.Element.Constructs
                 _elementService == null || _elemRef == null
                     ? Task.CompletedTask
                     : firstRender
-                        ? Interop.InitSelector
+                        ? Interop.InitCombobox
                         (
                             _elementService.JSRuntime,
                             _elementService.CancellationToken,
@@ -420,14 +394,42 @@ namespace Integrant4.Element.Constructs
         {
             if (_elementService == null || _elemRef == null) return;
 
-            await Interop.ShowSelector(_elementService.JSRuntime, _elementService.CancellationToken, _elemRef.Value);
+            await Interop.ShowCombobox(_elementService.JSRuntime, _elementService.CancellationToken, _elemRef.Value);
         }
 
         public async Task Hide()
         {
             if (_elementService == null || _elemRef == null) return;
 
-            await Interop.HideSelector(_elementService.JSRuntime, _elementService.CancellationToken, _elemRef.Value);
+            await Interop.HideCombobox(_elementService.JSRuntime, _elementService.CancellationToken, _elemRef.Value);
+        }
+    }
+
+    public readonly struct Option<TValue>
+    {
+        public readonly TValue? Value;
+        public readonly string  FilterableText;
+        public readonly Content OptionContent;
+        public readonly Content SelectionContent;
+        public readonly bool    Disabled;
+        public readonly bool    Placeholder;
+
+        public Option
+        (
+            TValue?  value,
+            string   filterableText,
+            Content  optionContent,
+            Content? selectionContent = null,
+            bool     disabled         = false,
+            bool     placeholder      = false
+        )
+        {
+            Value            = value;
+            FilterableText   = filterableText;
+            OptionContent    = optionContent;
+            SelectionContent = selectionContent ?? optionContent;
+            Disabled         = disabled;
+            Placeholder      = placeholder;
         }
     }
 }

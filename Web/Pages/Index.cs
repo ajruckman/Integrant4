@@ -32,7 +32,7 @@ namespace Web.Pages
         private CancellationTokenSource _ageThreadToken;
         private Task                    _ageThread = null!;
 
-        private Selector<User> _selector = null!;
+        private Combobox<User> _combobox = null!;
 
         protected override void OnInitialized()
         {
@@ -98,7 +98,7 @@ namespace Web.Pages
                .RuleFor(o => o.FirstName, f => f.Name.FirstName())
                .RuleFor(o => o.LastName, f => f.Name.LastName());
 
-            _selector = new Selector<User>(JSRuntime, () =>
+            _combobox = new Combobox<User>(JSRuntime, () =>
             {
                 List<User> names = b.Generate(900);
 
@@ -146,7 +146,7 @@ namespace Web.Pages
         {
             Console.WriteLine($"Index: OnAfterRenderAsync {firstRender}");
 
-            _selector.LoadInBackground();
+            _combobox.LoadInBackground();
 
             await ElementService.ProcessJobs();
         }

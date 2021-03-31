@@ -48,17 +48,17 @@ namespace Integrant4.Element
             }
         }
 
-        internal static async Task InitSelector<TValue>
+        internal static async Task InitCombobox<TValue>
         (IJSRuntime                                 jsRuntime,
             CancellationToken                       token,
             ElementReference                        elemRef,
-            DotNetObjectReference<Selector<TValue>> selector,
+            DotNetObjectReference<Combobox<TValue>> combobox,
             bool                                    filterable
         ) where TValue : IEquatable<TValue>
         {
             try
             {
-                await jsRuntime.InvokeVoidAsync("I4.Element.InitSelector", token, elemRef, selector, filterable);
+                await jsRuntime.InvokeVoidAsync("I4.Element.InitCombobox", token, elemRef, combobox, filterable);
             }
             catch (TaskCanceledException)
             {
@@ -66,14 +66,14 @@ namespace Integrant4.Element
             }
         }
 
-        internal static async Task ShowSelector
+        internal static async Task ShowCombobox
         (
             IJSRuntime jsRuntime, CancellationToken token, ElementReference headRef
         )
         {
             try
             {
-                await jsRuntime.InvokeVoidAsync("I4.Element.ShowSelector", token, headRef);
+                await jsRuntime.InvokeVoidAsync("I4.Element.ShowCombobox", token, headRef);
             }
             catch (TaskCanceledException)
             {
@@ -81,14 +81,14 @@ namespace Integrant4.Element
             }
         }
 
-        internal static async Task HideSelector
+        internal static async Task HideCombobox
         (
             IJSRuntime jsRuntime, CancellationToken token, ElementReference headRef
         )
         {
             try
             {
-                await jsRuntime.InvokeVoidAsync("I4.Element.HideSelector", token, headRef);
+                await jsRuntime.InvokeVoidAsync("I4.Element.HideCombobox", token, headRef);
             }
             catch (TaskCanceledException)
             {

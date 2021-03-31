@@ -10,36 +10,32 @@ namespace Integrant4.Element.Inputs
 {
     public interface IOption<out TValue>
     {
-        TValue? Value            { get; }
-        Content OptionContent    { get; }
-        Content SelectionContent { get; }
-        bool    Selected         { get; }
-        bool    Disabled         { get; }
+        TValue? Value    { get; }
+        Content Content  { get; }
+        bool    Selected { get; }
+        bool    Disabled { get; }
     }
 
     public class Option<TValue> : IOption<TValue>
     {
         public Option
         (
-            TValue?  value,
-            Content  optionText,
-            Content? selectionContent = null,
-            bool     selected         = false,
-            bool     disabled         = false
+            TValue? value,
+            Content content,
+            bool    selected = false,
+            bool    disabled = false
         )
         {
-            Value            = value;
-            OptionContent    = optionText;
-            SelectionContent = selectionContent ?? optionText;
-            Selected         = selected;
-            Disabled         = disabled;
+            Value    = value;
+            Content  = content;
+            Selected = selected;
+            Disabled = disabled;
         }
 
-        public TValue? Value            { get; }
-        public Content OptionContent    { get; }
-        public Content SelectionContent { get; }
-        public bool    Selected         { get; }
-        public bool    Disabled         { get; }
+        public TValue? Value    { get; }
+        public Content Content  { get; }
+        public bool    Selected { get; }
+        public bool    Disabled { get; }
     }
 
     public partial class SelectInput<TValue> : StandardInput<TValue?>, ICachingInput
@@ -150,7 +146,7 @@ namespace Integrant4.Element.Inputs
             builder.AddAttribute(++seq, "class", "I4E-Input I4E-Input-Select");
 
             builder.OpenElement(++seq, "select");
-            builder.AddAttribute(++seq, "oninput",  EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
             builder.AddAttribute(++seq, "disabled", BaseSpec.IsDisabled?.Invoke());
             builder.AddAttribute(++seq, "required", BaseSpec.IsRequired?.Invoke());
 
@@ -170,10 +166,14 @@ namespace Integrant4.Element.Inputs
                         builder.AddAttribute(seq, "selected", true);
 
                     ++seq;
+                    if (option.Selected)
+                        builder.AddAttribute(seq, "selected", true);
+
+                    ++seq;
                     if (option.Disabled)
                         builder.AddAttribute(seq, "disabled", true);
 
-                    builder.AddContent(++seq, option.OptionContent.Fragment);
+                    builder.AddContent(++seq, option.Content.Fragment);
                     builder.CloseElement();
                 }
             }
