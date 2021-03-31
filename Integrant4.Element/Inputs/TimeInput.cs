@@ -26,6 +26,7 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Pixels?     Width           { get; init; }
             public Callbacks.Pixels?     WidthMax        { get; init; }
             public Callbacks.REM?        FontSize        { get; init; }
+            public Callbacks.Scale?      Scale           { get; init; }
             public Callbacks.FontWeight? FontWeight      { get; init; }
             public Callbacks.Display?    Display         { get; init; }
             public Callbacks.Data?       Data            { get; init; }
@@ -33,6 +34,8 @@ namespace Integrant4.Element.Inputs
 
             internal BaseSpec ToBaseSpec() => new()
             {
+                Scaled = Scale != null,
+
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
                 IsRequired      = IsRequired,
@@ -46,6 +49,7 @@ namespace Integrant4.Element.Inputs
                 Width           = Width,
                 WidthMax        = WidthMax,
                 FontSize        = FontSize,
+                Scale           = Scale,
                 FontWeight      = FontWeight,
                 Display         = Display,
                 Data            = Data,
@@ -77,9 +81,9 @@ namespace Integrant4.Element.Inputs
             builder.OpenElement(++seq, "input");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
 
-            builder.AddAttribute(++seq, "type",     "time");
-            builder.AddAttribute(++seq, "value",    Serialize(Value));
-            builder.AddAttribute(++seq, "oninput",  EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "type", "time");
+            builder.AddAttribute(++seq, "value", Serialize(Value));
+            builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
 
             builder.AddElementReferenceCapture(++seq, r => Reference = r);
             builder.CloseElement();

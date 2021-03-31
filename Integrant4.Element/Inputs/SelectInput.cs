@@ -56,7 +56,7 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Pixels?     HeightMax       { get; init; }
             public Callbacks.Pixels?     Width           { get; init; }
             public Callbacks.Pixels?     WidthMax        { get; init; }
-            public Callbacks.REM?        FontSize        { get; init; }
+            public Callbacks.Scale?      Scale           { get; init; }
             public Callbacks.FontWeight? FontWeight      { get; init; }
             public Callbacks.Display?    Display         { get; init; }
             public Callbacks.Data?       Data            { get; init; }
@@ -64,6 +64,8 @@ namespace Integrant4.Element.Inputs
 
             internal BaseSpec ToBaseSpec() => new()
             {
+                Scaled = true,
+
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
                 IsRequired      = IsRequired,
@@ -76,7 +78,7 @@ namespace Integrant4.Element.Inputs
                 HeightMax       = HeightMax,
                 Width           = Width,
                 WidthMax        = WidthMax,
-                FontSize        = FontSize,
+                Scale           = Scale,
                 FontWeight      = FontWeight,
                 Display         = Display,
                 Data            = Data,

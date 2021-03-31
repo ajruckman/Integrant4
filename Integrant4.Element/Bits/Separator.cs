@@ -12,7 +12,6 @@ namespace Integrant4.Element.Bits
         public class Spec
         {
             public Callbacks.IsVisible? IsVisible { get; init; }
-            // public Callbacks.BitID?        ID        { get; init; }
             public Callbacks.Classes?   Classes   { get; init; }
             public Callbacks.Size?      Margin    { get; init; }
             public Callbacks.Pixels?    Height    { get; init; }
@@ -20,7 +19,6 @@ namespace Integrant4.Element.Bits
             internal BaseSpec ToBaseSpec() => new()
             {
                 IsVisible = IsVisible,
-                // ID        = ID,
                 Classes   = Classes,
                 Margin    = Margin,
                 Height    = Height,

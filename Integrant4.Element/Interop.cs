@@ -95,5 +95,20 @@ namespace Integrant4.Element
                 // ignored
             }
         }
+
+        internal static async Task UpdateCombobox
+        (
+            IJSRuntime jsRuntime, CancellationToken token, ElementReference headRef
+        )
+        {
+            try
+            {
+                await jsRuntime.InvokeVoidAsync("I4.Element.UpdateCombobox", token, headRef);
+            }
+            catch (TaskCanceledException)
+            {
+                // ignored
+            }
+        }
     }
 }

@@ -12,23 +12,21 @@ namespace Integrant4.Element.Bits
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public Callbacks.IsVisible? IsVisible       { get; init; }
-            // public Callbacks.BitID?        ID              { get; init; }
-            public Callbacks.Classes?   Classes         { get; init; }
-            public Callbacks.Size?      Margin          { get; init; }
-            public Callbacks.Size?      Padding         { get; init; }
-            public Callbacks.Color?     BackgroundColor { get; init; }
-            public Callbacks.Color?     ForegroundColor { get; init; }
-            public Callbacks.REM?       FontSize        { get; init; }
-            public Callbacks.FontWeight?    FontWeight      { get; init; }
-            public Callbacks.Display?   Display         { get; init; }
-            public Callbacks.Data?      Data            { get; init; }
-            public Callbacks.Tooltip?   Tooltip         { get; init; }
+            public Callbacks.IsVisible?  IsVisible       { get; init; }
+            public Callbacks.Classes?    Classes         { get; init; }
+            public Callbacks.Size?       Margin          { get; init; }
+            public Callbacks.Size?       Padding         { get; init; }
+            public Callbacks.Color?      BackgroundColor { get; init; }
+            public Callbacks.Color?      ForegroundColor { get; init; }
+            public Callbacks.REM?        FontSize        { get; init; }
+            public Callbacks.FontWeight? FontWeight      { get; init; }
+            public Callbacks.Display?    Display         { get; init; }
+            public Callbacks.Data?       Data            { get; init; }
+            public Callbacks.Tooltip?    Tooltip         { get; init; }
 
             internal BaseSpec ToBaseSpec() => new()
             {
                 IsVisible       = IsVisible,
-                // ID              = ID,
                 Classes         = Classes,
                 Margin          = Margin,
                 Padding         = Padding,

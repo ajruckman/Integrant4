@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Integrant4.API;
 using Integrant4.Element.Constructs;
@@ -11,24 +12,19 @@ namespace Integrant4.Element.Inputs
     {
         private readonly Combobox<TValue> _combobox;
 
+        [SuppressMessage("ReSharper", "SuggestBaseTypeForParameter")]
         public ComboboxInput
         (
             IJSRuntime                    jsRuntime,
             Combobox<TValue>.OptionGetter optionGetter,
-            bool                          filterable            = false,
-            string?                       uncachedText          = null,
-            string?                       noOptionText          = null,
-            string?                       filterPlaceholderText = null
+            Spec?                         spec = null
         )
         {
             _combobox = new Combobox<TValue>
             (
                 jsRuntime,
                 optionGetter,
-                filterable,
-                uncachedText,
-                noOptionText,
-                filterPlaceholderText
+                spec
             );
 
             _combobox.OnChange += OnChange;
@@ -40,5 +36,9 @@ namespace Integrant4.Element.Inputs
         public Task           SetValue(TValue? value) => _combobox.SetValue(value);
 
         public event Action<TValue?>? OnChange;
+
+        public class Spec : Combobox<TValue>.Spec
+        {
+        }
     }
 }

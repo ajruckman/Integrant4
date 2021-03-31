@@ -13,7 +13,7 @@ namespace Integrant4.Element.Inputs
         {
             public Callbacks.Callback<bool>? Consider0Null { get; init; }
             public Callbacks.Callback<int>?  Min           { get; init; }
-            public Callbacks.Callback<int>?          Max           { get; init; }
+            public Callbacks.Callback<int>?  Max           { get; init; }
 
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -27,7 +27,7 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Pixels?     HeightMax       { get; init; }
             public Callbacks.Pixels?     Width           { get; init; }
             public Callbacks.Pixels?     WidthMax        { get; init; }
-            public Callbacks.REM?        FontSize        { get; init; }
+            public Callbacks.Scale?      Scale           { get; init; }
             public Callbacks.FontWeight? FontWeight      { get; init; }
             public Callbacks.Display?    Display         { get; init; }
             public Callbacks.Data?       Data            { get; init; }
@@ -35,6 +35,8 @@ namespace Integrant4.Element.Inputs
 
             internal BaseSpec ToBaseSpec() => new()
             {
+                Scaled = true,
+
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
                 IsRequired      = IsRequired,
@@ -47,7 +49,7 @@ namespace Integrant4.Element.Inputs
                 HeightMax       = HeightMax,
                 Width           = Width,
                 WidthMax        = WidthMax,
-                FontSize        = FontSize,
+                Scale           = Scale,
                 FontWeight      = FontWeight,
                 Display         = Display,
                 Data            = Data,
@@ -60,7 +62,7 @@ namespace Integrant4.Element.Inputs
     {
         private readonly Callbacks.Callback<bool> _consider0Null;
         private readonly Callbacks.Callback<int>? _min;
-        private readonly Callbacks.Callback<int>?         _max;
+        private readonly Callbacks.Callback<int>? _max;
 
         public IntegerInput
         (
@@ -87,9 +89,9 @@ namespace Integrant4.Element.Inputs
             builder.OpenElement(++seq, "input");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
 
-            builder.AddAttribute(++seq, "type",        "number");
-            builder.AddAttribute(++seq, "value",       Serialize(Value));
-            builder.AddAttribute(++seq, "oninput",     EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "type", "number");
+            builder.AddAttribute(++seq, "value", Serialize(Value));
+            builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
 
             if (_min != null) builder.AddAttribute(++seq, "min", _min.Invoke());
             if (_max != null) builder.AddAttribute(++seq, "max", _max.Invoke());

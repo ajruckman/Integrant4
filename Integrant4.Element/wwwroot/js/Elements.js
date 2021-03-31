@@ -25,26 +25,17 @@ window.I4.Element.NextSiblingCombobox = window.I4.Element.NextSiblingCombobox ||
 //
 
 window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (element, dotnetHelper, filterable) {
-    console.log("Init combobox:");
-    console.log(element);
-
     if (element == null) {
         console.log("Element reference passed to InitCombobox is null; exiting")
         return;
     }
 
-    const head = element.queryCombobox('.I4E-Construct-Combobox-Head');
-    const clearValueButton = element.queryCombobox('.I4E-Construct-Combobox-Head button');
-    const dropdown = element.queryCombobox('.I4E-Construct-Combobox-Dropdown');
-    const filterInput = element.queryCombobox('input[type=text]');
-    const scroller = element.queryCombobox('.I4E-Construct-Combobox-Scroller');
-    const options = element.queryCombobox('.I4E-Construct-Combobox-Options');
-
-    console.log(head)
-    console.log(dropdown)
-    console.log(filterInput)
-    console.log(options)
-    console.log(options.firstChild)
+    const head = element.querySelector('.I4E-Construct-Combobox-Head');
+    const clearValueButton = element.querySelector('.I4E-Construct-Combobox-Head span.I4R-BootstrapIcon');
+    const dropdown = element.querySelector('.I4E-Construct-Combobox-Dropdown');
+    const filterInput = element.querySelector('.I4E-Input-Text input[type=text]');
+    const scroller = element.querySelector('.I4E-Construct-Combobox-Scroller');
+    const options = element.querySelector('.I4E-Construct-Combobox-Options');
 
     if (!element.hasOwnProperty('I4EOptionsDropdown')) {
         element.I4EOptionsDropdown = Popper.createPopper(head, dropdown, {
@@ -53,30 +44,34 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
             modifiers: [{name: 'offset', options: {offset: [0, 5]}}],
         });
 
-        element.ComboboxShown = false;
+        element.ComboboxOpen = false;
 
-        const bar = new MiniBar(scroller);
+        element.ComboboxBar = new MiniBar(scroller);
 
         element.ShowCombobox = function () {
-            element.ComboboxShown = true;
-            element.setAttribute('data-dropdown-shown', '');
-            dropdown.setAttribute('data-shown', '');
+            element.ComboboxOpen = true;
+            element.setAttribute('data-open', '');
+            dropdown.setAttribute('data-open', '');
 
             element.I4EOptionsDropdown.setOptions({
                 modifiers: [{name: 'eventListeners', enabled: true}, {name: 'offset', options: {offset: [0, 1]}}],
             });
 
-            dropdown.style.width = (head.clientWidth) + 'px';
-            
-            options.queryCombobox('div[data-selected]')?.focus();
+            dropdown.style.minWidth = head.clientWidth + 'px';
+            if (filterable) {
+                filterInput.style.width = (dropdown.clientWidth - 18) + 'px';
+            }
+
+            options.querySelector('div[data-selected]')?.focus();
 
             element.I4EOptionsDropdown.update();
+            element.ComboboxBar.update();
         };
 
         element.HideCombobox = function () {
-            element.ComboboxShown = false;
-            element.removeAttribute('data-dropdown-shown');
-            dropdown.removeAttribute('data-shown');
+            element.ComboboxOpen = false;
+            element.removeAttribute('data-open');
+            dropdown.removeAttribute('data-open');
 
             element.I4EOptionsDropdown.setOptions({
                 modifiers: [{name: 'eventListeners', enabled: false}, {name: 'offset', options: {offset: [0, 1]}}],
@@ -88,12 +83,16 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
             element.HideCombobox();
             head.focus();
         };
-        
+
         // Event listeners
 
         // Open dropdown on head click
         head.addEventListener('click', event => {
-            if (!clearValueButton.contains(event.target) && !element.ComboboxShown) {
+            if (head.hasAttribute('data-disabled')) {
+                return;
+            }
+            
+            if (!clearValueButton.contains(event.target) && !element.ComboboxOpen) {
                 head.focus();
                 element.ShowCombobox();
             }
@@ -101,26 +100,25 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
 
         // Head keydown handlers
         head.addEventListener('keydown', event => {
-            console.log(event)
-            console.log(event.code)
             // Toggle dropdown when head is focused and Space or Enter keys are pressed
             if (event.code === 'Space' || event.code === 'Enter') {
                 event.preventDefault();
 
-                if (!element.ComboboxShown) {
+                if (!element.ComboboxOpen) {
                     element.ShowCombobox();
                 } else {
                     element.HideCombobox();
                 }
             }
+            
             // Focus the first option or filter input when head is focused and the Down key is pressed, if possible
             else if (event.code === 'ArrowDown') {
                 event.preventDefault();
 
-                if (!element.ComboboxShown) {
+                if (!element.ComboboxOpen) {
                     element.ShowCombobox();
                 } else if (!filterable) {
-                    options.queryCombobox(':scope > div')?.focus();
+                    options.querySelector(':scope > div')?.focus();
                 } else {
                     filterInput.focus();
                 }
@@ -136,7 +134,7 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
 
         // Close dropdown when Escape key is pressed
         document.addEventListener('keydown', event => {
-            if (event.code === 'Escape' && element.ComboboxShown) {
+            if (event.code === 'Escape' && element.ComboboxOpen) {
                 element.HideCombobox();
             }
         });
@@ -150,9 +148,6 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
 
         // Options keydown handlers
         options.addEventListener('keydown', event => {
-            console.log(event)
-            console.log(event.code)
-
             // Close if the target is not a <div>; the dropdown uses <span>s for other text
             if (!(event.target.tagName === 'DIV')) return;
 
@@ -166,14 +161,10 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
                 let prev;
 
                 if (!filterable) {
-                    console.log('!')
                     prev = window.I4.Element.PreviousSiblingCombobox(event.target, 'div');
                 } else {
-                    prev = window.I4.Element.PreviousSiblingCombobox(event.target, 'div[data-shown]');
+                    prev = window.I4.Element.PreviousSiblingCombobox(event.target, 'div[data-open]');
                 }
-
-                console.log(event.target)
-                console.log(prev);
 
                 // Focus the previous option if there is one
                 if (prev != null) {
@@ -191,7 +182,7 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
                 if (!filterable) {
                     window.I4.Element.NextSiblingCombobox(event.target, 'div')?.focus();
                 } else {
-                    window.I4.Element.NextSiblingCombobox(event.target, 'div[data-shown]')?.focus();
+                    window.I4.Element.NextSiblingCombobox(event.target, 'div[data-open]')?.focus();
                 }
             }
         });
@@ -201,47 +192,26 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
             filterInput.addEventListener('keydown', event => {
                 if (event.code === 'ArrowDown') {
                     event.preventDefault();
-                    options.queryCombobox(':scope > div[data-shown]')?.focus();
+                    options.querySelector(':scope > div[data-open]')?.focus();
                 }
             });
         }
-
-
-        //
-
-        // filterInput.addEventListener('input', event => {
-        //     const filter = filterInput.value.trim().toUpperCase();
-        //     const children = options.getElementsByTagName('div');
-        //
-        //     let child, textValue;
-        //
-        //     if (filter === '') {
-        //         for (let i = 0; i < children.length; i++) {
-        //             children[i].style.display = '';
-        //         }
-        //     } else {
-        //         for (let i = 0; i < children.length; i++) {
-        //             child = children[i];
-        //             textValue = child.textContent || child.innerText;
-        //             if (textValue.toUpperCase().indexOf(filter) > -1) {
-        //                 child.style.display = '';
-        //             } else {
-        //                 child.style.display = 'none';
-        //             }
-        //         }
-        //     }
-        // });
     }
 
     element.ShowCombobox();
 }
 
-window.I4.Element.ShowCombobox = window.I4.Element.ShowCombobox || function (head) {
-    head.parentElement.ShowCombobox();
+window.I4.Element.ShowCombobox = window.I4.Element.ShowCombobox || function (element) {
+    element.ShowCombobox();
 }
 
-window.I4.Element.HideCombobox = window.I4.Element.HideCombobox || function (head) {
-    head.parentElement.HideCombobox();
+window.I4.Element.HideCombobox = window.I4.Element.HideCombobox || function (element) {
+    element.HideCombobox();
+}
+
+window.I4.Element.UpdateCombobox = window.I4.Element.UpdateCombobox || function (element) {
+    element.I4EOptionsDropdown.update();
+    element.ComboboxBar.update();
 }
 
 //
@@ -283,7 +253,7 @@ window.I4.Element.InitDropdown = window.I4.Element.InitDropdown || function (hea
         });
 
         function show() {
-            head.setAttribute('data-children-shown', '');
+            head.setAttribute('data-children-open', '');
             children.setAttribute('data-show', '');
 
             head.I4EBitDropdown.setOptions({
@@ -296,7 +266,7 @@ window.I4.Element.InitDropdown = window.I4.Element.InitDropdown || function (hea
         }
 
         function hide() {
-            head.removeAttribute('data-children-shown');
+            head.removeAttribute('data-children-open');
             children.removeAttribute('data-show');
 
             head.I4EBitDropdown.setOptions({

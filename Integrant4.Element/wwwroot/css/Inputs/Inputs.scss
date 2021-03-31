@@ -1,10 +1,10 @@
 %_InputBase {
     background-color: var(--I4E_InputBase_Background_Normal);
     border: 1px solid var(--I4E_InputBase_Border_Normal);
-    border-radius: 3px;
+    border-radius: calc(1em * (3 / 15));
     box-sizing: border-box;
     color: var(--I4C_Default_Text_6);
-    font-size: 15px;
+    font-size: 1rem;
     outline: none;
     transition: background-color 75ms ease-in, border 75ms ease-in;
 
@@ -13,18 +13,18 @@
         opacity: 0.5;
     }
 
-    &:disabled {
+    &:disabled, &[data-disabled] {
         cursor: not-allowed;
         opacity: 0.5;
     }
 
-    &:hover:not(:disabled) {
+    &:hover:not(:disabled):not([data-disabled]) {
         background-color: var(--I4E_InputBase_Background_Hover);
         border-color: var(--I4E_InputBase_Border_Hover);
         transition: background-color 75ms ease-in, border 75ms ease-in;
     }
 
-    &:focus:not(:disabled) {
+    &:focus:not(:disabled):not([data-disabled]) {
         background-color: var(--I4E_InputBase_Background_Focus);
         border-color: var(--I4E_InputBase_Border_Focus);
         box-shadow: var(--I4C_Default_Shadow_0);
@@ -34,7 +34,7 @@
 
 div.I4E-Input-Checkbox, div.I4E-Input-Date, div.I4E-Input-Decimal, div.I4E-Input-Integer, div.I4E-Input-Text, div.I4E-Input-TextArea, div.I4E-Input-Time {
     input, textarea {
-        padding: 4px 6px;
+        padding: calc(1em * (4 / 15)) calc(1em * (6 / 15));
 
         &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
             color: green !important;
@@ -46,7 +46,7 @@ div.I4E-Input-Checkbox, div.I4E-Input-Date, div.I4E-Input-Decimal, div.I4E-Input
 
 div.I4E-Input-Select {
     select {
-        padding: 3px 2px;
+        padding: calc(1em * (3 / 15)) calc(1em * (2 / 15));
 
         @extend %_InputBase;
     }

@@ -1,35 +1,35 @@
 div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head, div.I4E-Input-Select select, div.I4E-Input-Checkbox input, div.I4E-Input-Checkbox textarea, div.I4E-Input-Date input, div.I4E-Input-Date textarea, div.I4E-Input-Decimal input, div.I4E-Input-Decimal textarea, div.I4E-Input-Integer input, div.I4E-Input-Integer textarea, div.I4E-Input-Text input, div.I4E-Input-Text textarea, div.I4E-Input-TextArea input, div.I4E-Input-TextArea textarea, div.I4E-Input-Time input, div.I4E-Input-Time textarea {
   background-color: var(--I4E_InputBase_Background_Normal);
   border: 1px solid var(--I4E_InputBase_Border_Normal);
-  border-radius: 3px;
+  border-radius: calc(1em * (3 / 15));
   box-sizing: border-box;
   color: var(--I4C_Default_Text_6);
-  font-size: 15px;
+  font-size: 1rem;
   outline: none;
   transition: background-color 75ms ease-in, border 75ms ease-in; }
   div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head::placeholder, div.I4E-Input-Select select::placeholder, div.I4E-Input-Checkbox input::placeholder, div.I4E-Input-Checkbox textarea::placeholder, div.I4E-Input-Date input::placeholder, div.I4E-Input-Date textarea::placeholder, div.I4E-Input-Decimal input::placeholder, div.I4E-Input-Decimal textarea::placeholder, div.I4E-Input-Integer input::placeholder, div.I4E-Input-Integer textarea::placeholder, div.I4E-Input-Text input::placeholder, div.I4E-Input-Text textarea::placeholder, div.I4E-Input-TextArea input::placeholder, div.I4E-Input-TextArea textarea::placeholder, div.I4E-Input-Time input::placeholder, div.I4E-Input-Time textarea::placeholder {
     font-style: italic;
     opacity: 0.5; }
-  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head:disabled, div.I4E-Input-Select select:disabled, div.I4E-Input-Checkbox input:disabled, div.I4E-Input-Checkbox textarea:disabled, div.I4E-Input-Date input:disabled, div.I4E-Input-Date textarea:disabled, div.I4E-Input-Decimal input:disabled, div.I4E-Input-Decimal textarea:disabled, div.I4E-Input-Integer input:disabled, div.I4E-Input-Integer textarea:disabled, div.I4E-Input-Text input:disabled, div.I4E-Input-Text textarea:disabled, div.I4E-Input-TextArea input:disabled, div.I4E-Input-TextArea textarea:disabled, div.I4E-Input-Time input:disabled, div.I4E-Input-Time textarea:disabled {
+  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head:disabled, div.I4E-Input-Select select:disabled, div.I4E-Input-Checkbox input:disabled, div.I4E-Input-Checkbox textarea:disabled, div.I4E-Input-Date input:disabled, div.I4E-Input-Date textarea:disabled, div.I4E-Input-Decimal input:disabled, div.I4E-Input-Decimal textarea:disabled, div.I4E-Input-Integer input:disabled, div.I4E-Input-Integer textarea:disabled, div.I4E-Input-Text input:disabled, div.I4E-Input-Text textarea:disabled, div.I4E-Input-TextArea input:disabled, div.I4E-Input-TextArea textarea:disabled, div.I4E-Input-Time input:disabled, div.I4E-Input-Time textarea:disabled, div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head[data-disabled], div.I4E-Input-Select select[data-disabled], div.I4E-Input-Checkbox input[data-disabled], div.I4E-Input-Checkbox textarea[data-disabled], div.I4E-Input-Date input[data-disabled], div.I4E-Input-Date textarea[data-disabled], div.I4E-Input-Decimal input[data-disabled], div.I4E-Input-Decimal textarea[data-disabled], div.I4E-Input-Integer input[data-disabled], div.I4E-Input-Integer textarea[data-disabled], div.I4E-Input-Text input[data-disabled], div.I4E-Input-Text textarea[data-disabled], div.I4E-Input-TextArea input[data-disabled], div.I4E-Input-TextArea textarea[data-disabled], div.I4E-Input-Time input[data-disabled], div.I4E-Input-Time textarea[data-disabled] {
     cursor: not-allowed;
     opacity: 0.5; }
-  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head:hover:not(:disabled), div.I4E-Input-Select select:hover:not(:disabled), div.I4E-Input-Checkbox input:hover:not(:disabled), div.I4E-Input-Checkbox textarea:hover:not(:disabled), div.I4E-Input-Date input:hover:not(:disabled), div.I4E-Input-Date textarea:hover:not(:disabled), div.I4E-Input-Decimal input:hover:not(:disabled), div.I4E-Input-Decimal textarea:hover:not(:disabled), div.I4E-Input-Integer input:hover:not(:disabled), div.I4E-Input-Integer textarea:hover:not(:disabled), div.I4E-Input-Text input:hover:not(:disabled), div.I4E-Input-Text textarea:hover:not(:disabled), div.I4E-Input-TextArea input:hover:not(:disabled), div.I4E-Input-TextArea textarea:hover:not(:disabled), div.I4E-Input-Time input:hover:not(:disabled), div.I4E-Input-Time textarea:hover:not(:disabled) {
+  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Select select:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Date input:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Text input:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea:hover:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input:hover:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Time input:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea:hover:not(:disabled):not([data-disabled]) {
     background-color: var(--I4E_InputBase_Background_Hover);
     border-color: var(--I4E_InputBase_Border_Hover);
     transition: background-color 75ms ease-in, border 75ms ease-in; }
-  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head:focus:not(:disabled), div.I4E-Input-Select select:focus:not(:disabled), div.I4E-Input-Checkbox input:focus:not(:disabled), div.I4E-Input-Checkbox textarea:focus:not(:disabled), div.I4E-Input-Date input:focus:not(:disabled), div.I4E-Input-Date textarea:focus:not(:disabled), div.I4E-Input-Decimal input:focus:not(:disabled), div.I4E-Input-Decimal textarea:focus:not(:disabled), div.I4E-Input-Integer input:focus:not(:disabled), div.I4E-Input-Integer textarea:focus:not(:disabled), div.I4E-Input-Text input:focus:not(:disabled), div.I4E-Input-Text textarea:focus:not(:disabled), div.I4E-Input-TextArea input:focus:not(:disabled), div.I4E-Input-TextArea textarea:focus:not(:disabled), div.I4E-Input-Time input:focus:not(:disabled), div.I4E-Input-Time textarea:focus:not(:disabled) {
+  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Select select:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea:focus:not(:disabled):not([data-disabled]) {
     background-color: var(--I4E_InputBase_Background_Focus);
     border-color: var(--I4E_InputBase_Border_Focus);
     box-shadow: var(--I4C_Default_Shadow_0);
     transition: background-color 75ms ease-in, border 75ms ease-in; }
 
 div.I4E-Input-Checkbox input, div.I4E-Input-Checkbox textarea, div.I4E-Input-Date input, div.I4E-Input-Date textarea, div.I4E-Input-Decimal input, div.I4E-Input-Decimal textarea, div.I4E-Input-Integer input, div.I4E-Input-Integer textarea, div.I4E-Input-Text input, div.I4E-Input-Text textarea, div.I4E-Input-TextArea input, div.I4E-Input-TextArea textarea, div.I4E-Input-Time input, div.I4E-Input-Time textarea {
-  padding: 4px 6px; }
+  padding: calc(1em * (4 / 15)) calc(1em * (6 / 15)); }
   div.I4E-Input-Checkbox input::-webkit-inner-spin-button, div.I4E-Input-Checkbox input::-webkit-outer-spin-button, div.I4E-Input-Checkbox textarea::-webkit-inner-spin-button, div.I4E-Input-Checkbox textarea::-webkit-outer-spin-button, div.I4E-Input-Date input::-webkit-inner-spin-button, div.I4E-Input-Date input::-webkit-outer-spin-button, div.I4E-Input-Date textarea::-webkit-inner-spin-button, div.I4E-Input-Date textarea::-webkit-outer-spin-button, div.I4E-Input-Decimal input::-webkit-inner-spin-button, div.I4E-Input-Decimal input::-webkit-outer-spin-button, div.I4E-Input-Decimal textarea::-webkit-inner-spin-button, div.I4E-Input-Decimal textarea::-webkit-outer-spin-button, div.I4E-Input-Integer input::-webkit-inner-spin-button, div.I4E-Input-Integer input::-webkit-outer-spin-button, div.I4E-Input-Integer textarea::-webkit-inner-spin-button, div.I4E-Input-Integer textarea::-webkit-outer-spin-button, div.I4E-Input-Text input::-webkit-inner-spin-button, div.I4E-Input-Text input::-webkit-outer-spin-button, div.I4E-Input-Text textarea::-webkit-inner-spin-button, div.I4E-Input-Text textarea::-webkit-outer-spin-button, div.I4E-Input-TextArea input::-webkit-inner-spin-button, div.I4E-Input-TextArea input::-webkit-outer-spin-button, div.I4E-Input-TextArea textarea::-webkit-inner-spin-button, div.I4E-Input-TextArea textarea::-webkit-outer-spin-button, div.I4E-Input-Time input::-webkit-inner-spin-button, div.I4E-Input-Time input::-webkit-outer-spin-button, div.I4E-Input-Time textarea::-webkit-inner-spin-button, div.I4E-Input-Time textarea::-webkit-outer-spin-button {
     color: green !important; }
 
 div.I4E-Input-Select select {
-  padding: 3px 2px; }
+  padding: calc(1em * (3 / 15)) calc(1em * (2 / 15)); }
 
 div.I4-App[data-i4-theme-variant="Dark"], div.I4-App[data-i4-theme-variant="Matrix"] {
   --I4E_InputBase_Background_Focus: var(--I4C_Default_Background_0);
@@ -47,101 +47,107 @@ div.I4-App[data-i4-theme-variant="Pink"], div.I4-App[data-i4-theme-variant="Whit
   --I4E_InputBase_Border_Hover: var(--I4C_Default_Border_10);
   --I4E_InputBase_Border_Normal: var(--I4C_Default_Border_5); }
 
-div.I4E-Construct-Combobox[data-dropdown-shown] div.I4E-Construct-Combobox-Head {
-  background-color: var(--I4E_InputBase_Background_Focus);
-  border-color: var(--I4E_InputBase_Border_Focus);
-  box-shadow: var(--I4C_Default_Shadow_0);
-  transition: background-color 75ms ease-in, border 75ms ease-in; }
-
-div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head {
-  align-items: center;
-  cursor: pointer;
-  display: inline-flex;
-  height: 28px;
-  justify-content: space-between;
-  min-width: 250px;
-  padding: 4px 6px; }
-  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head div.I4E-Construct-Combobox-NoSelection {
-    font-style: italic;
-    opacity: 0.5; }
-  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head div.I4E-Construct-Combobox-Selection ~ button {
-    display: unset; }
-  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head button {
-    background-color: transparent;
-    border: 1px solid transparent;
-    color: var(--I4C_Default_Text_6);
-    cursor: pointer;
-    display: none;
-    height: 14px;
-    margin: 0;
-    outline: none;
-    padding: 0;
-    position: relative;
-    width: 14px; }
-    div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head button svg {
-      bottom: 0;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0; }
-    div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head button:focus {
-      color: var(--I4C_Default_Accent_6); }
-
-div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown {
-  background-color: var(--I4C_Default_Background_6);
-  border-radius: 3px;
-  box-shadow: var(--I4C_Default_Shadow_0), var(--I4C_Default_Shadow_1), var(--I4C_Default_Shadow_2);
-  box-sizing: border-box;
+div.I4E-Construct-Combobox {
   display: none;
-  margin: 17px;
-  padding: 10px 9px;
-  position: absolute;
-  z-index: 10; }
-  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown[data-shown] {
-    display: block; }
-  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Input-Text {
-    margin-bottom: 3px; }
-    div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Input-Text input {
-      width: 100%; }
-  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller .mb-track-y {
-    right: 0 !important; }
-  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options {
-    height: 250px; }
-    div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p {
-      color: var(--I4C_Default_Text_3);
+  font-size: 1rem; }
+  div.I4E-Construct-Combobox[data-visible] {
+    display: inline-block; }
+  div.I4E-Construct-Combobox[data-disabled] * {
+    cursor: not-allowed !important; }
+  div.I4E-Construct-Combobox[data-open] div.I4E-Construct-Combobox-Head {
+    background-color: var(--I4E_InputBase_Background_Focus);
+    border-color: var(--I4E_InputBase_Border_Focus);
+    box-shadow: var(--I4C_Default_Shadow_0);
+    transition: background-color 75ms ease-in, border 75ms ease-in; }
+  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head {
+    align-items: center;
+    cursor: pointer;
+    display: inline-flex;
+    height: 28px;
+    justify-content: space-between;
+    min-width: 250px;
+    padding: 4px 6px; }
+    div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head div.I4E-Construct-Combobox-NoSelection {
       font-style: italic;
-      font-weight: 500;
-      margin: 3px 1px 0 0;
-      padding: 7px 3px 0 3px; }
-      div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p.I4E-Construct-Combobox-Options-Null {
-        border-bottom: 1px solid var(--I4C_Default_Border_12); }
-      div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p.I4E-Construct-Combobox-Options-None {
-        border-bottom: 1px solid var(--I4C_Default_Border_12); }
-      div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p.I4E-Construct-Options-LimitMessage {
-        border-top: 1px solid var(--I4C_Default_Border_12); }
-        div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p.I4E-Construct-Options-LimitMessage:not([data-shown]) {
-          display: none; }
-    div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > div {
-      border: 1px solid transparent;
-      border-radius: 0.4em;
+      opacity: 0.5;
+      user-select: none; }
+    div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head div.I4E-Construct-Combobox-Selection ~ div.I4E-Construct-Combobox-ClearButtonWrapper {
+      display: inline-block; }
+    div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head div.I4E-Construct-Combobox-ClearButtonWrapper {
+      background-color: transparent;
+      color: var(--I4C_Default_Text_6);
       cursor: pointer;
-      margin: 0 1px 1px 1px;
-      padding: 4px 6px;
-      transition: background-color 75ms ease-in, border 75ms ease-in; }
-      div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > div:hover {
-        transition: none; }
-      div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > div:focus {
-        border: 1px solid var(--I4E_InputBase_Border_Focus);
-        outline: none; }
-      div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > div[data-selected] {
-        background-color: var(--I4C_Default_Accent_6);
-        color: var(--I4C_Default_Accent_6_Text); }
-        div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > div[data-selected]:hover {
-          background-color: var(--I4C_Default_Accent_5);
+      display: none;
+      height: calc(1em * (12 / 15));
+      margin: 0 0 0 calc(1em * (6 / 15));
+      outline: none;
+      padding: 0;
+      position: relative;
+      width: calc(1em * (12 / 15)); }
+      div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head div.I4E-Construct-Combobox-ClearButtonWrapper svg {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0; }
+      div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head div.I4E-Construct-Combobox-ClearButtonWrapper:hover {
+        color: var(--I4C_Default_Accent_7); }
+      div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Head div.I4E-Construct-Combobox-ClearButtonWrapper:focus {
+        color: var(--I4C_Default_Accent_6); }
+  div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown {
+    background-color: var(--I4C_Default_Background_6);
+    border-radius: calc(1em * (3 / 15));
+    box-shadow: var(--I4C_Default_Shadow_0), var(--I4C_Default_Shadow_1), var(--I4C_Default_Shadow_2);
+    box-sizing: border-box;
+    display: none;
+    margin: 17px;
+    padding: 10px 9px;
+    position: absolute;
+    z-index: 10; }
+    div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown[data-open] {
+      display: block; }
+    div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Input-Text {
+      margin-bottom: 3px;
+      width: 0; }
+    div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller .mb-track-y {
+      right: 0 !important; }
+    div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options {
+      margin-right: 4px;
+      max-height: 250px; }
+      div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p {
+        color: var(--I4C_Default_Text_3);
+        font-style: italic;
+        font-weight: 500;
+        margin: 3px 1px 0 0;
+        padding: 7px 3px 0 3px; }
+        div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p.I4E-Construct-Combobox-Options-Null {
+          border-bottom: 1px solid var(--I4C_Default_Border_12); }
+        div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p.I4E-Construct-Combobox-Options-None {
+          border-bottom: 1px solid var(--I4C_Default_Border_12); }
+        div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p.I4E-Construct-Options-LimitMessage {
+          border-top: 1px solid var(--I4C_Default_Border_12); }
+          div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > p.I4E-Construct-Options-LimitMessage:not([data-open]) {
+            display: none; }
+      div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > div {
+        border: 1px solid transparent;
+        border-radius: 0.4em;
+        cursor: pointer;
+        margin: 0 1px 1px 1px;
+        padding: 4px 6px;
+        transition: background-color 75ms ease-in, border 75ms ease-in; }
+        div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > div:hover {
+          transition: none; }
+        div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > div:focus {
+          border: 1px solid var(--I4E_InputBase_Border_Focus);
+          outline: none; }
+        div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > div[data-selected] {
+          background-color: var(--I4C_Default_Accent_6);
           color: var(--I4C_Default_Accent_6_Text); }
-
-div.I4E-Construct-Combobox--Filterable div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > div:not([data-shown]) {
-  display: none; }
+          div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > div[data-selected]:hover {
+            background-color: var(--I4C_Default_Accent_5);
+            color: var(--I4C_Default_Accent_6_Text); }
+  div.I4E-Construct-Combobox--Filterable div.I4E-Construct-Combobox-Dropdown div.I4E-Construct-Combobox-Scroller div.I4E-Construct-Combobox-Options > div:not([data-shown]) {
+    display: none; }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Combobox div.I4E-Construct-Combobox-Dropdown {
   background-color: var(--I4C_Default_Background_8);
@@ -224,3 +230,5 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Header--Primary, div.
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Header--Secondary, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Header--Secondary {
   background-color: var(--I4C_Default_Background_4); }
+
+/*# sourceMappingURL=Constructs.css.map */

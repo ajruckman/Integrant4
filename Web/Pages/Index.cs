@@ -32,7 +32,8 @@ namespace Web.Pages
         private CancellationTokenSource _ageThreadToken;
         private Task                    _ageThread = null!;
 
-        private Combobox<User> _combobox = null!;
+        private Combobox<User> _combobox         = null!;
+        private bool           _comboboxDisabled = false;
 
         protected override void OnInitialized()
         {
@@ -94,7 +95,7 @@ namespace Web.Pages
 
             //
 
-            var b = new Faker<User>()
+            Faker<User> b = new Faker<User>()
                .RuleFor(o => o.FirstName, f => f.Name.FirstName())
                .RuleFor(o => o.LastName, f => f.Name.LastName());
 
@@ -110,7 +111,19 @@ namespace Web.Pages
                         $"{v.FirstName} {v.LastName}"
                     ))
                    .ToArray();
-            }, true);
+            }, new Combobox<User>.Spec
+            {
+                Filterable = true,
+                // Scale      = () => 2.5,
+                IsDisabled = () => _comboboxDisabled,
+            });
+
+            Task.Run(() =>
+            {
+                Thread.Sleep(1000);
+                _comboboxDisabled = true;
+                // _combobox.Refresh();
+            });
         }
 
         private class User : IEquatable<User>

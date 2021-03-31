@@ -37,7 +37,6 @@ namespace Integrant4.Element.Bits
             public Callbacks.Pixels?     Width           { get; init; }
             public Callbacks.Pixels?     WidthMax        { get; init; }
             public Callbacks.Scale?      Scale           { get; init; }
-            public Callbacks.REM?        FontSize        { get; init; }
             public Callbacks.FontWeight? FontWeight      { get; init; }
             public Callbacks.Display?    Display         { get; init; }
             public Callbacks.Data?       Data            { get; init; }
@@ -59,7 +58,6 @@ namespace Integrant4.Element.Bits
                 Width           = Width,
                 WidthMax        = WidthMax,
                 Scale           = Scale,
-                FontSize        = FontSize,
                 FontWeight      = FontWeight,
                 Display         = Display,
                 Data            = Data,
@@ -75,7 +73,9 @@ namespace Integrant4.Element.Bits
         private readonly Callbacks.Callback<bool>? _isHighlighted;
 
         public Link(Callbacks.BitContent content, Spec spec)
-            : this(content.AsContents(), spec) { }
+            : this(content.AsContents(), spec)
+        {
+        }
 
         public Link(Callbacks.BitContents contents, Spec spec)
             : base(spec.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Link)))

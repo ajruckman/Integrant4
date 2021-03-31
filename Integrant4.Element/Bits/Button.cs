@@ -30,7 +30,6 @@ namespace Integrant4.Element.Bits
             public Callbacks.Size?       Margin     { get; init; }
             public Callbacks.Size?       Padding    { get; init; }
             public Callbacks.Scale?      Scale      { get; init; }
-            public Callbacks.REM?        FontSize   { get; init; }
             public Callbacks.FontWeight? FontWeight { get; init; }
             public Callbacks.Display?    Display    { get; init; }
             public Callbacks.Data?       Data       { get; init; }
@@ -46,7 +45,6 @@ namespace Integrant4.Element.Bits
                 Margin     = Margin,
                 Padding    = Padding,
                 Scale      = Scale,
-                FontSize   = FontSize,
                 FontWeight = FontWeight,
                 Display    = Display,
                 Data       = Data,
@@ -61,7 +59,9 @@ namespace Integrant4.Element.Bits
         private readonly Callbacks.Callback<bool>? _isSmall;
 
         public Button(Callbacks.BitContent content, Spec? spec = null)
-            : this(content.AsContents(), spec) { }
+            : this(content.AsContents(), spec)
+        {
+        }
 
         public Button(Callbacks.BitContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Button)))
