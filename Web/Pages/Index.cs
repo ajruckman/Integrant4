@@ -160,7 +160,7 @@ namespace Web.Pages
         {
             Console.WriteLine($"Index: OnAfterRenderAsync {firstRender}");
 
-            _combobox.LoadInBackground();
+            _combobox.LoadOptions();
 
             await ElementService.ProcessJobs();
         }

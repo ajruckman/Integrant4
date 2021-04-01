@@ -117,14 +117,12 @@ div.I4E-Construct-Combobox {
                     font-style: italic;
                     font-weight: 500;
                     margin: 3px 1px 0 0;
-                    padding: 7px 3px 0 3px;
+                    padding: 0 3px;
 
                     &.I4E-Construct-Combobox-Options-Null {
-                        border-bottom: 1px solid var(--I4C_Default_Border_12);
                     }
 
                     &.I4E-Construct-Combobox-Options-None {
-                        border-bottom: 1px solid var(--I4C_Default_Border_12);
                     }
 
                     &.I4E-Construct-Options-LimitMessage, &.I4E-Construct-Options-NoResults {

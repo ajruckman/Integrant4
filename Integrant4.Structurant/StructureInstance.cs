@@ -103,13 +103,17 @@ namespace Integrant4.Structurant
         }
 
         // Proxy methods
-        
+
         public IReadOnlyList<IValidation>? OverallValidations() =>
             ValidationState.Result?.OverallValidations;
-        
+
         public IReadOnlyList<IValidation>? MemberValidations(string id) =>
             ValidationState.Result?.MemberValidations[id];
 
-        public IInput<TValue>? Input<TValue>(string id) => GetTyped<TValue>(id).Input;
+        public IInput<TValue>? Input<TValue>(string id) =>
+            GetTyped<TValue>(id).Input;
+
+        public TInput? Input<TValue, TInput>(string id) where TInput : class, IInput<TValue> =>
+            GetTyped<TValue>(id).Input as TInput;
     }
 }

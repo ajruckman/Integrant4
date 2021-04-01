@@ -49,12 +49,13 @@ namespace Integrant4.Element
         }
 
         internal static async Task InitCombobox<TValue>
-        (IJSRuntime                                 jsRuntime,
+        (
+            IJSRuntime                              jsRuntime,
             CancellationToken                       token,
             ElementReference                        elemRef,
             DotNetObjectReference<Combobox<TValue>> combobox,
             bool                                    filterable
-        ) where TValue : IEquatable<TValue>
+        )
         {
             try
             {

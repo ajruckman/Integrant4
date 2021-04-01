@@ -343,10 +343,12 @@ div.I4E-Bit-Dropdown {
     color: var(--I4C_Default_Accent_8); }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children {
-  background-color: var(--I4C_Default_Background_6); }
+  background-color: var(--I4C_Default_Background_8);
+  border: 1px solid var(--I4E_InputBase_Border_Normal); }
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children, div.I4-App[data-i4-theme-variant="White"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children {
-  background-color: var(--I4C_Default_Background_0); }
+  background-color: var(--I4C_Default_Background_0);
+  border: 1px solid transparent; }
 
 div.I4E-Bit-Filler {
   flex-grow: 100; }
@@ -394,10 +396,10 @@ a.I4E-Bit-PageLink {
   display: inline-flex;
   text-decoration: none; }
   a.I4E-Bit-PageLink:not(.I4E-Bit-PageLink--Title) {
-    font-size: 16px;
+    font-size: 1.1rem;
     font-weight: 500; }
   a.I4E-Bit-PageLink.I4E-Bit-PageLink--Title {
-    font-size: 18px;
+    font-size: 1.2rem;
     font-weight: 600; }
   a.I4E-Bit-PageLink:hover:not(#_) {
     border-bottom-color: var(--I4C_Default_Accent_8);
@@ -482,7 +484,7 @@ a.I4E-Bit-Title {
   border-bottom: 1px solid transparent;
   color: var(--I4C_Default_PageText);
   display: inline-flex;
-  font-size: 21px;
+  font-size: 1.35rem;
   font-weight: 600;
   position: relative;
   text-decoration: none; }
@@ -589,3 +591,5 @@ code {
     display: unset; }
     .MVisibleOnHover:hover .MVisibleOnParentHover {
       display: unset; }
+
+/*# sourceMappingURL=Bits.css.map */

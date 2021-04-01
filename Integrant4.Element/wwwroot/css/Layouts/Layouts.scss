@@ -2,7 +2,6 @@
 
 div.I4E-Layout-Panel {
     box-shadow: var(--I4C_Default_Shadow_2);
-    overflow: hidden;
     position: relative;
 
     &:not(--NoMargin) {
@@ -48,7 +47,6 @@ div.I4E-Layout-InfoTable {
     border-radius: 4px;
     box-shadow: var(--I4C_Default_Shadow_1);
     display: inline-block;
-    overflow: hidden;
     position: relative;
 
     &--WithMargin {

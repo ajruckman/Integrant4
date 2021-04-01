@@ -8,7 +8,7 @@ using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Inputs
 {
-    public class ComboboxInput<TValue> : IRefreshableInput<TValue> where TValue : IEquatable<TValue>
+    public class ComboboxInput<TValue> : IRefreshableInput<TValue>
     {
         private readonly Combobox<TValue> _combobox;
 
@@ -37,8 +37,8 @@ namespace Integrant4.Element.Inputs
 
         public event Action<TValue?>? OnChange;
 
-        public class Spec : Combobox<TValue>.Spec
-        {
-        }
+        public void LoadOptions() => _combobox.LoadOptions();
+
+        public class Spec : Combobox<TValue>.Spec {}
     }
 }

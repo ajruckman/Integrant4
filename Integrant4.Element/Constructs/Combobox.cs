@@ -13,20 +13,22 @@ using Superset.Utilities;
 
 namespace Integrant4.Element.Constructs
 {
-    public partial class Combobox<TValue> where TValue : IEquatable<TValue>
+    public partial class Combobox<TValue>
     {
         private readonly OptionGetter _optionGetter;
         private readonly Spec         _spec;
 
         public Combobox
         (
-            IJSRuntime   jsRuntime,
-            OptionGetter optionGetter,
-            Spec?        spec = null
+            IJSRuntime              jsRuntime,
+            OptionGetter            optionGetter,
+            Spec?                   spec             = null,
+            OptionEqualityComparer? equalityComparer = null
         )
         {
-            _optionGetter = optionGetter;
-            _spec         = spec ?? new Spec();
+            _optionGetter     = optionGetter;
+            _equalityComparer = equalityComparer;
+            _spec             = spec ?? new Spec();
 
             if (_spec.Filterable)
             {
@@ -81,6 +83,7 @@ namespace Integrant4.Element.Constructs
 
         public Task SetValue(TValue? value)
         {
+            if (_selection == null && value == null) return Task.CompletedTask;
             if (_selection?.Value?.Equals(value) == true) return Task.CompletedTask;
 
             lock (_optionsLock)
@@ -89,11 +92,18 @@ namespace Integrant4.Element.Constructs
                     throw new InvalidOperationException(
                         "Attempted to set the value of a Combobox with no loaded options.");
 
-                _selection = _options.FirstOrDefault(v => v.Value?.Equals(value) == true);
+                if (value == null)
+                {
+                    _selection = null;
+                }
+                else
+                {
+                    _selection = _options.FirstOrDefault(v => ValueEquals(v.Value, value));
 
-                if (_selection == null)
-                    throw new InvalidOperationException(
-                        "Could not find an option with a value equal to the one passed to SetValue.");
+                    if (_selection == null)
+                        throw new InvalidOperationException(
+                            "Could not find an option with a value equal to the one passed to SetValue.");
+                }
 
                 OnChange?.Invoke(value);
             }
@@ -126,8 +136,11 @@ namespace Integrant4.Element.Constructs
 
     public partial class Combobox<TValue>
     {
-        private readonly object _optionsLock = new();
-        private readonly object _ctsLock     = new();
+        public delegate bool OptionEqualityComparer(TValue? left, TValue? right);
+
+        private readonly object                  _optionsLock = new();
+        private readonly object                  _ctsLock     = new();
+        private readonly OptionEqualityComparer? _equalityComparer;
 
         private Option<TValue>[]?        _options;
         private CancellationTokenSource? _cts = new();
@@ -187,6 +200,12 @@ namespace Integrant4.Element.Constructs
 
             _refresher?.Invoke();
         }
+
+        private bool OptionEquals(Option<TValue> left, Option<TValue> right) =>
+            _equalityComparer?.Invoke(left.Value, right.Value) ?? left.Value?.Equals(right.Value) == true;
+
+        private bool ValueEquals(TValue? left, TValue? right) =>
+            _equalityComparer?.Invoke(left, right) ?? left?.Equals(right) == true;
 
         // private Option<TValue>[]? EffectiveOptions()
         // {
@@ -274,7 +293,7 @@ namespace Integrant4.Element.Constructs
                         ? "I4E-Construct-Combobox"
                         : "I4E-Construct-Combobox I4E-Construct-Combobox--Filterable");
 
-                builder.AddAttribute(++seq, "data-visible", _spec.IsVisible?.Invoke() ?? true);
+                builder.AddAttribute(++seq, "data-visible",  _spec.IsVisible?.Invoke() ?? true);
                 builder.AddAttribute(++seq, "data-disabled", disabled);
 
                 ++seq;
@@ -285,9 +304,9 @@ namespace Integrant4.Element.Constructs
                 //
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-Combobox-Head");
+                builder.AddAttribute(++seq, "class",         "I4E-Construct-Combobox-Head");
                 builder.AddAttribute(++seq, "data-disabled", disabled);
-                builder.AddAttribute(++seq, "tabindex", 0);
+                builder.AddAttribute(++seq, "tabindex",      0);
 
                 builder.OpenElement(++seq, "div");
 
@@ -305,9 +324,9 @@ namespace Integrant4.Element.Constructs
                 builder.CloseElement();
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-Combobox-ClearButtonWrapper");
+                builder.AddAttribute(++seq, "class",    "I4E-Construct-Combobox-ClearButtonWrapper");
                 builder.AddAttribute(++seq, "tabindex", 0);
-                builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, ClearValue));
+                builder.AddAttribute(++seq, "onclick",  EventCallback.Factory.Create(this, ClearValue));
                 builder.AddContent(++seq, clearValueButton.Renderer());
                 builder.CloseElement();
 
@@ -350,9 +369,7 @@ namespace Integrant4.Element.Constructs
                         {
                             Option<TValue> option = _options[i];
 
-                            bool selected =
-                                _selection                                   != null &&
-                                option.Value?.Equals(_selection.Value.Value) == true;
+                            bool selected = _selection != null && OptionEquals(_selection.Value, option);
 
                             bool shown =
                                 _spec.Filterable                    &&
@@ -365,9 +382,9 @@ namespace Integrant4.Element.Constructs
                             builder.OpenElement(++seq, "div");
                             builder.SetKey(i);
 
-                            builder.AddAttribute(++seq, "tabindex", 0);
+                            builder.AddAttribute(++seq, "tabindex",      0);
                             builder.AddAttribute(++seq, "data-selected", selected);
-                            builder.AddAttribute(++seq, "data-i", i);
+                            builder.AddAttribute(++seq, "data-i",        i);
                             if (_spec.Filterable)
                                 builder.AddAttribute(++seq, "data-shown", shown);
 
@@ -378,13 +395,13 @@ namespace Integrant4.Element.Constructs
                         if (_spec.Filterable)
                         {
                             builder.OpenElement(++seq, "p");
-                            builder.AddAttribute(++seq, "class", "I4E-Construct-Options-LimitMessage");
+                            builder.AddAttribute(++seq, "class",      "I4E-Construct-Options-LimitMessage");
                             builder.AddAttribute(++seq, "data-shown", shownCount == UnfilteredDisplayLimit);
                             builder.AddContent(++seq, $"Filter to see more than {UnfilteredDisplayLimit} options.");
                             builder.CloseElement();
 
                             builder.OpenElement(++seq, "p");
-                            builder.AddAttribute(++seq, "class", "I4E-Construct-Options-NoResults");
+                            builder.AddAttribute(++seq, "class",      "I4E-Construct-Options-NoResults");
                             builder.AddAttribute(++seq, "data-shown", shownCount == 0);
                             builder.AddContent(++seq, _spec.NoResultsText?.Invoke() ?? DefaultNoResultsText);
                             builder.CloseElement();
@@ -426,7 +443,7 @@ namespace Integrant4.Element.Constructs
                     );
             });
 
-        public void LoadInBackground()
+        public void LoadOptions()
         {
             lock (_optionsLock)
             {
