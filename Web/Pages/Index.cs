@@ -105,7 +105,7 @@ namespace Web.Pages
                 List<User> names = b.Generate(900);
 
                 return names
-                   .Select(v => new ContentOption<User>
+                   .Select(v => new Integrant4.Element.Constructs.Option<User>
                     (
                         v,
                         $"{v.FirstName} {v.LastName}",
@@ -275,12 +275,12 @@ namespace Web.Pages
                     null,
                     () => new List<IOption<string>>
                     {
-                        new Option<string>("Unknown", "Unknown"),
-                        new Option<string>("Rat Terrier", "Rat Terrier"),
-                        new Option<string>("Boxer", "Boxer"),
-                        new Option<string>("Yorkie", "Yorkie"),
-                        new Option<string>("Chihuahua", "Chihuahua"),
-                        new Option<string>(null, "Other"),
+                        new Integrant4.Element.Inputs.Option<string>("Unknown", "Unknown"),
+                        new Integrant4.Element.Inputs.Option<string>("Rat Terrier", "Rat Terrier"),
+                        new Integrant4.Element.Inputs.Option<string>("Boxer", "Boxer"),
+                        new Integrant4.Element.Inputs.Option<string>("Yorkie", "Yorkie"),
+                        new Integrant4.Element.Inputs.Option<string>("Chihuahua", "Chihuahua"),
+                        new Integrant4.Element.Inputs.Option<string>(null, "Other"),
                     }
                 )
             );

@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -10,7 +8,6 @@ using Integrant4.Element.Inputs;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.JSInterop;
 using Superset.Utilities;
 
@@ -18,49 +15,18 @@ namespace Integrant4.Element.Constructs
 {
     public partial class Combobox<TValue> where TValue : IEquatable<TValue>
     {
-        private readonly Spec _spec;
-
-        private readonly TextOptionGetter?    _textOptionGetter;
-        private readonly ContentOptionGetter? _contentOptionGetter;
+        private readonly OptionGetter _optionGetter;
+        private readonly Spec         _spec;
 
         public Combobox
         (
-            IJSRuntime       jsRuntime,
-            TextOptionGetter optionGetter,
-            Spec?            spec = null
+            IJSRuntime   jsRuntime,
+            OptionGetter optionGetter,
+            Spec?        spec = null
         )
         {
-            _mode             = Mode.Text;
-            _textOptionGetter = optionGetter;
-            _spec             = spec ?? new Spec();
-
-            if (_spec.Filterable)
-            {
-                Debouncer<string?> filterDebouncer = new(
-                    UpdateFilterValue,
-                    null,
-                    200
-                );
-
-                _filterInput = new TextInput(jsRuntime, null, new TextInput.Spec
-                {
-                    Placeholder = () => _spec.FilterPlaceholderText?.Invoke() ?? DefaultFilterPlaceholderText,
-                    Scale       = _spec.Scale,
-                });
-                _filterInput.OnChange += v => filterDebouncer.Reset(v);
-            }
-        }
-
-        public Combobox
-        (
-            IJSRuntime          jsRuntime,
-            ContentOptionGetter optionGetter,
-            Spec?               spec = null
-        )
-        {
-            _mode                = Mode.Content;
-            _contentOptionGetter = optionGetter;
-            _spec                = spec ?? new Spec();
+            _optionGetter = optionGetter;
+            _spec         = spec ?? new Spec();
 
             if (_spec.Filterable)
             {
@@ -82,8 +48,7 @@ namespace Integrant4.Element.Constructs
 
     public partial class Combobox<TValue>
     {
-        public delegate TextOption<TValue>[]    TextOptionGetter();
-        public delegate ContentOption<TValue>[] ContentOptionGetter();
+        public delegate Option<TValue>[] OptionGetter();
 
         private const string DefaultNoSelectionText       = "Click to select";
         private const string DefaultFilterPlaceholderText = "Filter options";
@@ -112,26 +77,21 @@ namespace Integrant4.Element.Constructs
 
     public partial class Combobox<TValue>
     {
-        public Task<TValue?> GetValue() => Task.FromResult(Selection != null ? Selection.Value : default);
+        public Task<TValue?> GetValue() => Task.FromResult(_selection != null ? _selection.Value.Value : default);
 
         public Task SetValue(TValue? value)
         {
-            if (GetValue().Result?.Equals(value) == true) return Task.CompletedTask;
+            if (_selection?.Value?.Equals(value) == true) return Task.CompletedTask;
 
             lock (_optionsLock)
             {
-                if (Options == null)
+                if (_options == null)
                     throw new InvalidOperationException(
                         "Attempted to set the value of a Combobox with no loaded options.");
 
-                IOptionBase<TValue>? selection = _mode switch
-                {
-                    Mode.Text    => _textOptions!.FirstOrDefault(v => v.Value?.Equals(value)    == true),
-                    Mode.Content => _contentOptions!.FirstOrDefault(v => v.Value?.Equals(value) == true),
-                    _            => throw new ArgumentOutOfRangeException(),
-                };
+                _selection = _options.FirstOrDefault(v => v.Value?.Equals(value) == true);
 
-                if (Selection == null)
+                if (_selection == null)
                     throw new InvalidOperationException(
                         "Could not find an option with a value equal to the one passed to SetValue.");
 
@@ -154,11 +114,9 @@ namespace Integrant4.Element.Constructs
 
         public Task ClearValue()
         {
-            if (Selection == null) return Task.CompletedTask;
+            if (_selection == null) return Task.CompletedTask;
 
-            _textSelection    = null;
-            _contentSelection = null;
-
+            _selection = null;
             OnChange?.Invoke(default);
             _refresher?.Invoke();
 
@@ -168,38 +126,15 @@ namespace Integrant4.Element.Constructs
 
     public partial class Combobox<TValue>
     {
-        [SuppressMessage("ReSharper", "CoVariantArrayConversion")]
-        private IOptionBase<TValue>[]? Options => _mode switch
-        {
-            Mode.Text    => _textOptions,
-            Mode.Content => _contentOptions,
-            _            => throw new ArgumentOutOfRangeException(),
-        };
-
-        private TextOption<TValue>[]?    _textOptions;
-        private ContentOption<TValue>[]? _contentOptions;
-
-        private IOptionBase<TValue>? Selection => _mode switch
-        {
-            Mode.Text    => _textSelection,
-            Mode.Content => _contentSelection,
-            _            => throw new ArgumentOutOfRangeException(),
-        };
-
-        private TextOption<TValue>?    _textSelection;
-        private ContentOption<TValue>? _contentSelection;
-    }
-
-    public partial class Combobox<TValue>
-    {
         private readonly object _optionsLock = new();
         private readonly object _ctsLock     = new();
 
+        private Option<TValue>[]?        _options;
         private CancellationTokenSource? _cts = new();
 
-        private string? _filterTerm;
+        private Option<TValue>? _selection;
+        private string?         _filterTerm;
 
-        [SuppressMessage("ReSharper", "RedundantCast")]
         private async Task BeginCache()
         {
             CancellationToken token;
@@ -211,38 +146,20 @@ namespace Integrant4.Element.Constructs
                 token = _cts.Token;
             }
 
-            Task<IReadOnlyList<IOptionBase<TValue>>> task = Task.Run(() =>
+            Task<Option<TValue>[]> task = Task.Run(() =>
             {
                 token.ThrowIfCancellationRequested();
-
-                return _mode switch
-                {
-                    Mode.Text    => (IReadOnlyList<IOptionBase<TValue>>) _textOptionGetter!.Invoke(),
-                    Mode.Content => (IReadOnlyList<IOptionBase<TValue>>) _contentOptionGetter!.Invoke(),
-                    _            => throw new ArgumentOutOfRangeException(),
-                };
+                return _optionGetter.Invoke();
             }, token);
 
             try
             {
-                IReadOnlyList<IOptionBase<TValue>> result = await task;
+                Option<TValue>[] result = await task;
 
                 lock (_optionsLock)
                 {
                     token.ThrowIfCancellationRequested();
-
-                    switch (_mode)
-                    {
-                        case Mode.Text:
-                            _textOptions = (TextOption<TValue>[]?) result;
-                            break;
-                        case Mode.Content:
-                            _contentOptions = (ContentOption<TValue>[]?) result;
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-
+                    _options = result;
                     _refresher?.Invoke();
                     Console.WriteLine("OPTIONS LOADED");
                 }
@@ -265,12 +182,24 @@ namespace Integrant4.Element.Constructs
         {
             lock (_optionsLock)
             {
-                _textOptions    = null;
-                _contentOptions = null;
+                _options = null;
             }
 
             _refresher?.Invoke();
         }
+
+        // private Option<TValue>[]? EffectiveOptions()
+        // {
+        //     lock (_optionsLock)
+        //     {
+        //         if (_options == null) return null;
+        //
+        //         if (string.IsNullOrWhiteSpace(_filterTerm)) return _options;
+        //
+        //         return _options.Where(v => v.FilterableText.Contains(_filterTerm, StringComparison.OrdinalIgnoreCase))
+        //            .ToArray();
+        //     }
+        // }
     }
 
     public partial class Combobox<TValue>
@@ -289,7 +218,7 @@ namespace Integrant4.Element.Constructs
         {
             lock (_optionsLock)
             {
-                if (Options == null) return;
+                if (_options == null) return;
 
                 if (_spec.IsDisabled?.Invoke() ?? false)
                 {
@@ -302,20 +231,9 @@ namespace Integrant4.Element.Constructs
                     return;
                 }
 
-                switch (_mode)
-                {
-                    case Mode.Text:
-                        _textSelection = (TextOption<TValue>?) Options[i];
-                        break;
-                    case Mode.Content:
-                        _contentSelection = (ContentOption<TValue>?) Options[i];
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
-                OnChange?.Invoke(Selection!.Value);
-                Console.WriteLine($"{i} <- {Selection}");
+                _selection = _options[i];
+                OnChange?.Invoke(_selection.Value.Value);
+                Console.WriteLine($"{i} <- {_selection}");
 
                 _refresher?.Invoke();
             }
@@ -373,7 +291,7 @@ namespace Integrant4.Element.Constructs
 
                 builder.OpenElement(++seq, "div");
 
-                if (Selection == null)
+                if (_selection == null)
                 {
                     builder.AddAttribute(++seq, "class", "I4E-Construct-Combobox-NoSelection");
                     builder.AddContent(++seq, _spec.NoSelectionText?.Invoke() ?? DefaultNoSelectionText);
@@ -381,17 +299,7 @@ namespace Integrant4.Element.Constructs
                 else
                 {
                     builder.AddAttribute(++seq, "class", "I4E-Construct-Combobox-Selection");
-                    switch (_mode)
-                    {
-                        case Mode.Text:
-                            builder.AddContent(++seq, _textSelection!.SelectionText);
-                            break;
-                        case Mode.Content:
-                            builder.AddContent(++seq, _contentSelection!.SelectionContent.Renderer());
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
+                    builder.AddContent(++seq, _selection.Value.SelectionContent.Renderer());
                 }
 
                 builder.CloseElement();
@@ -420,14 +328,14 @@ namespace Integrant4.Element.Constructs
 
                 lock (_optionsLock)
                 {
-                    if (Options == null)
+                    if (_options == null)
                     {
                         builder.OpenElement(++seq, "p");
                         builder.AddAttribute(++seq, "class", "I4E-Construct-Combobox-Options-Null");
                         builder.AddContent(++seq, _spec.UncachedText?.Invoke() ?? DefaultUncachedText);
                         builder.CloseElement();
                     }
-                    else if (Options.Length == 0)
+                    else if (_options.Length == 0)
                     {
                         builder.OpenElement(++seq, "p");
                         builder.AddAttribute(++seq, "class", "I4E-Construct-Combobox-Options-None");
@@ -438,18 +346,19 @@ namespace Integrant4.Element.Constructs
                     {
                         var shownCount = 0;
 
-                        for (var i = 0; i < Options.Length; i++)
+                        for (var i = 0; i < _options.Length; i++)
                         {
-                            IOptionBase<TValue> option = Options[i];
+                            Option<TValue> option = _options[i];
 
                             bool selected =
-                                Selection                             != null &&
-                                option.Value?.Equals(Selection.Value) == true;
+                                _selection                                   != null &&
+                                option.Value?.Equals(_selection.Value.Value) == true;
 
                             bool shown =
                                 _spec.Filterable                    &&
                                 shownCount < UnfilteredDisplayLimit &&
-                                (string.IsNullOrWhiteSpace(_filterTerm) || option.Matches(_filterTerm));
+                                (string.IsNullOrWhiteSpace(_filterTerm) ||
+                                 option.FilterableText.Contains(_filterTerm, StringComparison.OrdinalIgnoreCase));
 
                             if (_spec.Filterable && shown) shownCount++;
 
@@ -461,7 +370,8 @@ namespace Integrant4.Element.Constructs
                             builder.AddAttribute(++seq, "data-i", i);
                             if (_spec.Filterable)
                                 builder.AddAttribute(++seq, "data-shown", shown);
-                            option.Render(builder, ref seq);
+
+                            builder.AddContent(++seq, option.OptionContent.Renderer());
                             builder.CloseElement();
                         }
 
@@ -520,7 +430,7 @@ namespace Integrant4.Element.Constructs
         {
             lock (_optionsLock)
             {
-                if (Options == null)
+                if (_options == null)
                 {
                     Task.Run(BeginCache);
                 }
@@ -542,64 +452,16 @@ namespace Integrant4.Element.Constructs
         }
     }
 
-    public partial class Combobox<TValue>
+    public readonly struct Option<TValue>
     {
-        private readonly Mode _mode;
-
-        private enum Mode
-        {
-            Text, Content,
-        };
-    }
-
-    public interface IOptionBase<out TValue> where TValue : IEquatable<TValue>
-    {
-        public TValue? Value       { get; }
-        public bool    Disabled    { get; }
-        public bool    Placeholder { get; }
-
-        public bool Matches(string           term);
-        void        Render(RenderTreeBuilder builder, ref int seq);
-    }
-
-    public class TextOption<TValue> : IOptionBase<TValue> where TValue : IEquatable<TValue>
-    {
-        public readonly string OptionText;
-        public readonly string SelectionText;
-
-        public TextOption
-        (
-            TValue? value,
-            string  optionText,
-            string? selectionText = null,
-            bool    disabled      = false,
-            bool    placeholder   = false
-        )
-        {
-            Value         = value;
-            OptionText    = optionText;
-            SelectionText = selectionText ?? optionText;
-            Disabled      = disabled;
-            Placeholder   = placeholder;
-        }
-
-        public TValue? Value       { get; }
-        public bool    Disabled    { get; }
-        public bool    Placeholder { get; }
-
-        public bool Matches(string term) => OptionText.Contains(term, StringComparison.OrdinalIgnoreCase);
-
-        public void Render(RenderTreeBuilder builder, ref int seq) =>
-            builder.AddContent(++seq, OptionText);
-    }
-
-    public class ContentOption<TValue> : IOptionBase<TValue> where TValue : IEquatable<TValue>
-    {
+        public readonly TValue? Value;
         public readonly string  FilterableText;
         public readonly Content OptionContent;
         public readonly Content SelectionContent;
+        public readonly bool    Disabled;
+        public readonly bool    Placeholder;
 
-        public ContentOption
+        public Option
         (
             TValue?  value,
             string   filterableText,
@@ -616,14 +478,5 @@ namespace Integrant4.Element.Constructs
             Disabled         = disabled;
             Placeholder      = placeholder;
         }
-
-        public TValue? Value       { get; }
-        public bool    Disabled    { get; }
-        public bool    Placeholder { get; }
-
-        public bool Matches(string term) => FilterableText.Contains(term, StringComparison.OrdinalIgnoreCase);
-
-        public void Render(RenderTreeBuilder builder, ref int seq) =>
-            builder.AddContent(++seq, OptionContent.Renderer());
     }
 }
