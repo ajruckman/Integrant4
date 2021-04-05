@@ -38,35 +38,6 @@ namespace Integrant4.Fundament
         public RenderFragment Renderer() => Fragment;
     }
 
-    // public readonly struct Contents : IRenderable
-    // {
-    //     public RenderFragment Renderer()
-    //     {
-    //         Content[] v = Values;
-    //
-    //         void Fragment(RenderTreeBuilder builder)
-    //         {
-    //             int seq = -1;
-    //
-    //             foreach (Content content in v)
-    //             {
-    //                 builder.AddContent(++seq, content);
-    //             }
-    //         }
-    //
-    //         return Fragment;
-    //     }
-    //
-    //     public readonly Content[] Values;
-    //
-    //     private Contents(Content[] v) => Values = v;
-    //
-    //     public static implicit operator Contents(Content        v) => new(new[] {v});
-    //     public static implicit operator Contents(RenderFragment v) => v.AsContent();
-    //     public static implicit operator Contents(MarkupString   v) => v.AsContent();
-    //     public static implicit operator Contents(string         v) => v.AsContent();
-    // }
-
     public static class ContentExtensions
     {
         public static Content AsContent(this RenderFragment v) => v;

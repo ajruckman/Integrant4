@@ -32,8 +32,9 @@ namespace Web.Pages
         private Button _buttonIconLast  = null!;
         private Button _buttonIconAll   = null!;
 
-        private Chip _chip     = null!;
-        private Chip _chipLink = null!;
+        private Chip _chip         = null!;
+        private Chip _chipLink     = null!;
+        private Chip _chipWithIcon = null!;
 
         private Checkbox _checkbox = null!;
 
@@ -177,6 +178,13 @@ namespace Web.Pages
             {
                 HREF   = () => "/",
                 Height = () => 24,
+            });
+
+            _chipWithIcon = new Chip(() => new IRenderable[]
+            {
+                new BootstrapIcon("slash-circle-fill"),
+                "Text content".AsContent(),
+                new BootstrapIcon("slash-circle-fill"),
             });
 
             _checkbox = new Checkbox(new Checkbox.Spec

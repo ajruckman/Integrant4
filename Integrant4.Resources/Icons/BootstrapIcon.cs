@@ -9,14 +9,14 @@ namespace Integrant4.Resources.Icons
         {
         }
 
-        public BootstrapIcon(string name, ushort size = 16, string? color = null)
+        public BootstrapIcon(string id, ushort size = 16, string? color = null)
         {
-            Name  = name;
+            ID  = id;
             Size  = size;
             Color = color;
         }
 
-        [Parameter] public string  Name  { get; set; } = null!;
+        [Parameter] public string  ID  { get; set; } = null!;
         [Parameter] public ushort  Size  { get; set; } = 32;
         [Parameter] public string? Color { get; set; }
 
@@ -34,7 +34,7 @@ namespace Integrant4.Resources.Icons
             builder.AddAttribute(7, "fill", "currentColor");
             builder.OpenElement(8, "use");
             builder.AddAttribute(9, "href",
-                $"_content/Integrant4.Resources/Icons/Bootstrap/bootstrap-icons.svg#{Name}");
+                $"_content/Integrant4.Resources/Icons/Bootstrap/bootstrap-icons.svg#{ID}");
             builder.CloseElement();
             builder.CloseElement();
             builder.CloseElement();

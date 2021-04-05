@@ -270,7 +270,7 @@ namespace Integrant4.Element.Constructs
         private ElementService?   _elementService;
         private bool              _disabledAtLastRender;
 
-        public RenderFragment Renderer() => RefreshLifecycleWrapper.Create
+        public RenderFragment Renderer() => TickingRefreshWrapper.Create
         (
             builder =>
             {

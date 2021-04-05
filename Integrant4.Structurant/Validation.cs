@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Integrant4.API;
 using Integrant4.Fundament;
 
 namespace Integrant4.Structurant
@@ -12,7 +13,7 @@ namespace Integrant4.Structurant
         }
 
         public ValidationResultType ResultType { get; }
-        public Content              Message    { get; }
+        public IRenderable          Message    { get; }
 
         public static IReadOnlyList<Validation> One(ValidationResultType resultType, Content message) =>
             new[] {new Validation(resultType, message)};

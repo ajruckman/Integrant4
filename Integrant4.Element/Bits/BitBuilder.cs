@@ -9,11 +9,11 @@ namespace Integrant4.Element.Bits
     {
         internal static void ApplyAttributes
         (
-            BitBase           bitBase,
-            RenderTreeBuilder builder,
-            ref int           seq,
-            string[]?         additionalClasses,
-            string[]?         additionalStyles
+            BitBase              bitBase,
+            RenderTreeBuilder    builder,
+            ref int              seq,
+            IEnumerable<string>? additionalClasses,
+            IEnumerable<string>? additionalStyles
         )
         {
             builder.AddAttribute(++seq, "id", bitBase.ID);
@@ -32,8 +32,8 @@ namespace Integrant4.Element.Bits
                 Tooltip? t = bitBase.BaseSpec.Tooltip.Invoke();
                 if (t != null)
                 {
-                    builder.AddAttribute(++seq, "data-i4e.tooltip-text", t.Value.Text);
-                    builder.AddAttribute(++seq, "data-i4e.tooltip-delay", t.Value.Delay                ?? 0);
+                    builder.AddAttribute(++seq, "data-i4e.tooltip-text",      t.Value.Text);
+                    builder.AddAttribute(++seq, "data-i4e.tooltip-delay",     t.Value.Delay            ?? 0);
                     builder.AddAttribute(++seq, "data-i4e.tooltip-placement", t.Value.Placement?.Map() ?? "top");
                 }
                 else seq += 3;

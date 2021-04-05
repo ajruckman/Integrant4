@@ -1,6 +1,9 @@
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Integrant4.API;
 using Integrant4.Fundament;
+using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
@@ -54,9 +57,7 @@ namespace Integrant4.Element.Bits
         private readonly Callbacks.BitContents _contents;
 
         public Chip(Callbacks.BitContent content, Spec? spec = null)
-            : this(content.AsContents(), spec)
-        {
-        }
+            : this(content.AsContents(), spec) { }
 
         public Chip(Callbacks.BitContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(),
@@ -75,6 +76,15 @@ namespace Integrant4.Element.Bits
         {
             void Fragment(RenderTreeBuilder builder)
             {
+                IRenderable[] contents = _contents.Invoke().ToArray();
+
+                List<string> ac = new();
+
+                if (contents.First() is IIcon) ac.Add("I4E-Bit-Chip--IconLeft");
+                if (contents.Last() is IIcon) ac.Add("I4E-Bit-Chip--IconRight");
+
+                //
+
                 int seq = -1;
 
                 if (BaseSpec.HREF == null)
@@ -87,7 +97,7 @@ namespace Integrant4.Element.Bits
                     builder.AddAttribute(++seq, "href", BaseSpec.HREF.Invoke());
                 }
 
-                BitBuilder.ApplyAttributes(this, builder, ref seq, null, null);
+                BitBuilder.ApplyAttributes(this, builder, ref seq, ac, null);
 
                 builder.OpenElement(++seq, "span");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Chip-Contents");
@@ -96,7 +106,10 @@ namespace Integrant4.Element.Bits
 
                 foreach (IRenderable renderable in _contents.Invoke())
                 {
+                    builder.OpenElement(++seq, "span");
+                    builder.AddAttribute(++seq, "class", "I4E-Bit-Chip-Content");
                     builder.AddContent(++seq, renderable.Renderer());
+                    builder.CloseElement();
                 }
 
                 builder.CloseElement();

@@ -11,11 +11,6 @@ namespace Integrant4.API
         event Action<TValue?> OnChange;
     }
 
-    public interface IValidatableInput<TValue> : IInput<TValue>
-    {
-        // delegate 
-    }
-
     public interface IRefreshableInput<TValue> : IInput<TValue>
     {
         public Task Refresh();

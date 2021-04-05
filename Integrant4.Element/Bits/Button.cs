@@ -105,7 +105,7 @@ namespace Integrant4.Element.Bits
                 builder.AddAttribute(++seq, "href", BaseSpec.HREF.Invoke());
             }
 
-            BitBuilder.ApplyAttributes(this, builder, ref seq, ac.ToArray(), null);
+            BitBuilder.ApplyAttributes(this, builder, ref seq, ac, null);
 
             builder.AddAttribute(++seq, "onclick",
                 EventCallback.Factory.Create<MouseEventArgs>(this, Click));

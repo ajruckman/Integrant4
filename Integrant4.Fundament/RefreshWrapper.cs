@@ -49,7 +49,7 @@ namespace Integrant4.Fundament
         }
     }
 
-    public class RefreshLifecycleWrapper : RefreshWrapper, IHandleAfterRender
+    public class TickingRefreshWrapper : RefreshWrapper, IHandleAfterRender
     {
         [Parameter] public Func<bool, Task>? OnAfterRender { get; set; }
 
@@ -73,7 +73,7 @@ namespace Integrant4.Fundament
         {
             void Fragment(RenderTreeBuilder builder)
             {
-                builder.OpenComponent<RefreshLifecycleWrapper>(0);
+                builder.OpenComponent<TickingRefreshWrapper>(0);
                 builder.AddAttribute(1, "SetRefresher", refresherSetter);
                 builder.AddAttribute(2, "ChildContent", content);
                 builder.AddAttribute(2, "OnAfterRender", onAfterRender);

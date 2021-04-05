@@ -6,12 +6,12 @@ namespace Integrant4.Structurant
     {
         internal class Debouncer<T>
         {
-            public delegate void OnElapsed(T newValue);
+            public delegate void Elapsed(T newValue);
 
             private readonly Timer  _debouncer;
             private readonly object _valueLock = new object();
 
-            public Debouncer(OnElapsed onElapsed, T initialValue, int milliseconds = 200)
+            public Debouncer(Elapsed onElapsed, T initialValue, int milliseconds = 200)
             {
                 Value      = initialValue;
                 _debouncer = new Timer(milliseconds);

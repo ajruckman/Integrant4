@@ -9,10 +9,10 @@ namespace Integrant4.Element.Inputs
     {
         internal static void ApplyOuterAttributes<T>
         (
-            InputBase<T>      inputBase,
-            RenderTreeBuilder builder,
-            ref int           seq,
-            string[]?         additionalClasses
+            InputBase<T>         inputBase,
+            RenderTreeBuilder    builder,
+            ref int              seq,
+            IEnumerable<string>? additionalClasses
         )
         {
             builder.AddAttribute(++seq, "id", inputBase.ID);
@@ -34,10 +34,10 @@ namespace Integrant4.Element.Inputs
 
         internal static void ApplyInnerAttributes<T>
         (
-            InputBase<T>      inputBase,
-            RenderTreeBuilder builder,
-            ref int           seq,
-            string[]?         additionalStyles
+            InputBase<T>         inputBase,
+            RenderTreeBuilder    builder,
+            ref int              seq,
+            IEnumerable<string>? additionalStyles
         )
         {
             builder.AddAttribute(++seq, "id", $"{inputBase.ID}.Inner");

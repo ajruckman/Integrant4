@@ -7,7 +7,7 @@ namespace Integrant4.Element
 {
     internal static class ElementBuilder
     {
-        internal static string ClassAttribute(ClassSet baseSet, BaseSpec spec, string[]? additional)
+        internal static string ClassAttribute(ClassSet baseSet, BaseSpec spec, IEnumerable<string>? additional)
         {
             ClassSet c = baseSet.Clone();
 
@@ -22,7 +22,7 @@ namespace Integrant4.Element
             return c.ToString();
         }
 
-        internal static string? StyleAttribute(BaseSpec spec, string[]? additional)
+        internal static string? StyleAttribute(BaseSpec spec, IEnumerable<string>? additional)
         {
             List<string> result = new();
 
