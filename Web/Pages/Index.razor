@@ -16,12 +16,12 @@
 
         <br>
 
-        @_combobox.Renderer()
+        @_selector.Renderer()
 
         <br>
 
-        <button @onclick="@(() => { _comboboxDisabled = true; _combobox.Refresh(); })">Disable</button>
-        <button @onclick="@(() => { _comboboxDisabled = false; _combobox.Refresh(); })">Enable</button>
+        <button @onclick="@(() => { _selectorDisabled = true; _selector.Refresh(); })">Disable</button>
+        <button @onclick="@(() => { _selectorDisabled = false; _selector.Refresh(); })">Enable</button>
         
         <br>
 

@@ -4,19 +4,19 @@ window.I4.Element = window.I4.Element || {};
 window.I4.Element.DropdownShowEvents = ['mouseenter', 'focus'];
 window.I4.Element.DropdownHideEvents = ['mouseleave', 'blur'];
 
-window.I4.Element.PreviousSiblingCombobox = window.I4.Element.PreviousSiblingCombobox || function (element, combobox) {
+window.I4.Element.PreviousSiblingSelector = window.I4.Element.PreviousSiblingSelector || function (element, selector) {
     let sibling = element.previousElementSibling;
     while (sibling) {
-        if (sibling.matches(combobox)) return sibling;
+        if (sibling.matches(selector)) return sibling;
         sibling = sibling.previousElementSibling;
     }
     return null;
 };
 
-window.I4.Element.NextSiblingCombobox = window.I4.Element.NextSiblingCombobox || function (element, combobox) {
+window.I4.Element.NextSiblingSelector = window.I4.Element.NextSiblingSelector || function (element, selector) {
     let sibling = element.nextElementSibling;
     while (sibling) {
-        if (sibling.matches(combobox)) return sibling;
+        if (sibling.matches(selector)) return sibling;
         sibling = sibling.nextElementSibling
     }
     return null;
@@ -24,18 +24,18 @@ window.I4.Element.NextSiblingCombobox = window.I4.Element.NextSiblingCombobox ||
 
 //
 
-window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (element, dotnetHelper, filterable) {
+window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (element, dotnetHelper, filterable) {
     if (element == null) {
-        console.log("Element reference passed to InitCombobox is null; exiting")
+        console.log("Element reference passed to InitSelector is null; exiting")
         return;
     }
 
-    const head = element.querySelector('.I4E-Construct-Combobox-Head');
-    const clearValueButton = element.querySelector('.I4E-Construct-Combobox-Head span.I4R-BootstrapIcon');
-    const dropdown = element.querySelector('.I4E-Construct-Combobox-Dropdown');
+    const head = element.querySelector('.I4E-Construct-Selector-Head');
+    const clearValueButton = element.querySelector('.I4E-Construct-Selector-Head span.I4R-BootstrapIcon');
+    const dropdown = element.querySelector('.I4E-Construct-Selector-Dropdown');
     const filterInput = element.querySelector('.I4E-Input-Text input[type=text]');
-    const scroller = element.querySelector('.I4E-Construct-Combobox-Scroller');
-    const options = element.querySelector('.I4E-Construct-Combobox-Options');
+    const scroller = element.querySelector('.I4E-Construct-Selector-Scroller');
+    const options = element.querySelector('.I4E-Construct-Selector-Options');
 
     if (!element.hasOwnProperty('I4EOptionsDropdown')) {
         element.I4EOptionsDropdown = Popper.createPopper(head, dropdown, {
@@ -44,12 +44,12 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
             modifiers: [{name: 'offset', options: {offset: [0, 5]}}],
         });
 
-        element.ComboboxOpen = false;
+        element.SelectorOpen = false;
 
-        element.ComboboxBar = new MiniBar(scroller);
+        element.SelectorBar = new MiniBar(scroller);
 
-        element.ShowCombobox = function () {
-            element.ComboboxOpen = true;
+        element.ShowSelector = function () {
+            element.SelectorOpen = true;
             element.setAttribute('data-open', '');
             head.setAttribute('data-focused', '');
             dropdown.setAttribute('data-open', '');
@@ -66,11 +66,11 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
             options.querySelector('div[data-selected]')?.focus();
 
             element.I4EOptionsDropdown.update();
-            element.ComboboxBar.update();
+            element.SelectorBar.update();
         };
 
-        element.HideCombobox = function () {
-            element.ComboboxOpen = false;
+        element.HideSelector = function () {
+            element.SelectorOpen = false;
             element.removeAttribute('data-open');
             head.removeAttribute('data-focused');
             dropdown.removeAttribute('data-open');
@@ -81,8 +81,8 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
         };
 
         element.Select = function (i) {
-            dotnetHelper.invokeMethodAsync('I4E.Construct.Combobox.Select', i);
-            element.HideCombobox();
+            dotnetHelper.invokeMethodAsync('I4E.Construct.Selector.Select', i);
+            element.HideSelector();
             head.focus();
         };
 
@@ -94,9 +94,9 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
                 return;
             }
             
-            if (!clearValueButton.contains(event.target) && !element.ComboboxOpen) {
+            if (!clearValueButton.contains(event.target) && !element.SelectorOpen) {
                 head.focus();
-                element.ShowCombobox();
+                element.ShowSelector();
             }
         });
 
@@ -106,10 +106,10 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
             if (event.code === 'Space' || event.code === 'Enter') {
                 event.preventDefault();
 
-                if (!element.ComboboxOpen) {
-                    element.ShowCombobox();
+                if (!element.SelectorOpen) {
+                    element.ShowSelector();
                 } else {
-                    element.HideCombobox();
+                    element.HideSelector();
                 }
             }
             
@@ -117,8 +117,8 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
             else if (event.code === 'ArrowDown') {
                 event.preventDefault();
 
-                if (!element.ComboboxOpen) {
-                    element.ShowCombobox();
+                if (!element.SelectorOpen) {
+                    element.ShowSelector();
                 } else if (!filterable) {
                     options.querySelector(':scope > div')?.focus();
                 } else {
@@ -130,14 +130,14 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
         // Close dropdown when other area on page is clicked
         document.addEventListener('mousedown', event => {
             if (!element.contains(event.target)) {
-                element.HideCombobox();
+                element.HideSelector();
             }
         });
 
         // Close dropdown when Escape key is pressed
         document.addEventListener('keydown', event => {
-            if (event.code === 'Escape' && element.ComboboxOpen) {
-                element.HideCombobox();
+            if (event.code === 'Escape' && element.SelectorOpen) {
+                element.HideSelector();
             }
         });
 
@@ -163,9 +163,9 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
                 let prev;
 
                 if (!filterable) {
-                    prev = window.I4.Element.PreviousSiblingCombobox(event.target, 'div');
+                    prev = window.I4.Element.PreviousSiblingSelector(event.target, 'div');
                 } else {
-                    prev = window.I4.Element.PreviousSiblingCombobox(event.target, 'div[data-open]');
+                    prev = window.I4.Element.PreviousSiblingSelector(event.target, 'div[data-open]');
                 }
 
                 // Focus the previous option if there is one
@@ -182,9 +182,9 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
                 event.preventDefault();
 
                 if (!filterable) {
-                    window.I4.Element.NextSiblingCombobox(event.target, 'div')?.focus();
+                    window.I4.Element.NextSiblingSelector(event.target, 'div')?.focus();
                 } else {
-                    window.I4.Element.NextSiblingCombobox(event.target, 'div[data-open]')?.focus();
+                    window.I4.Element.NextSiblingSelector(event.target, 'div[data-open]')?.focus();
                 }
             }
         });
@@ -200,20 +200,20 @@ window.I4.Element.InitCombobox = window.I4.Element.InitCombobox || function (ele
         }
     }
 
-    element.ShowCombobox();
+    // element.ShowSelector();
 }
 
-window.I4.Element.ShowCombobox = window.I4.Element.ShowCombobox || function (element) {
-    element.ShowCombobox();
+window.I4.Element.ShowSelector = window.I4.Element.ShowSelector || function (element) {
+    element.ShowSelector();
 }
 
-window.I4.Element.HideCombobox = window.I4.Element.HideCombobox || function (element) {
-    element.HideCombobox();
+window.I4.Element.HideSelector = window.I4.Element.HideSelector || function (element) {
+    element.HideSelector();
 }
 
-window.I4.Element.UpdateCombobox = window.I4.Element.UpdateCombobox || function (element) {
+window.I4.Element.UpdateSelector = window.I4.Element.UpdateSelector || function (element) {
     element.I4EOptionsDropdown.update();
-    element.ComboboxBar.update();
+    element.SelectorBar.update();
 }
 
 //

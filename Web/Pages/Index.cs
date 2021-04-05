@@ -33,8 +33,8 @@ namespace Web.Pages
         private CancellationTokenSource _ageThreadToken;
         private Task                    _ageThread = null!;
 
-        private Combobox<User> _combobox         = null!;
-        private bool           _comboboxDisabled = false;
+        private Selector<User> _selector         = null!;
+        private bool           _selectorDisabled = false;
 
         protected override void OnInitialized()
         {
@@ -100,7 +100,7 @@ namespace Web.Pages
                .RuleFor(o => o.FirstName, f => f.Name.FirstName())
                .RuleFor(o => o.LastName, f => f.Name.LastName());
 
-            _combobox = new Combobox<User>(JSRuntime, () =>
+            _selector = new Selector<User>(JSRuntime, () =>
             {
                 List<User> names = b.Generate(900);
 
@@ -112,18 +112,18 @@ namespace Web.Pages
                         new BootstrapIcon("arrow-right-short").Renderer() + $"{v.FirstName} {v.LastName}".AsContent()
                     ))
                    .ToArray();
-            }, new Combobox<User>.Spec
+            }, new Selector<User>.Spec
             {
                 Filterable = true,
                 // Scale      = () => 2.5,
-                IsDisabled = () => _comboboxDisabled,
+                IsDisabled = () => _selectorDisabled,
             });
 
             Task.Run(() =>
             {
                 Thread.Sleep(1000);
-                _comboboxDisabled = true;
-                // _combobox.Refresh();
+                // _selectorDisabled = true;
+                // _selector.Refresh();
             });
         }
 
@@ -160,7 +160,7 @@ namespace Web.Pages
         {
             Console.WriteLine($"Index: OnAfterRenderAsync {firstRender}");
 
-            _combobox.LoadOptions();
+            _selector.LoadOptions();
 
             await ElementService.ProcessJobs();
         }

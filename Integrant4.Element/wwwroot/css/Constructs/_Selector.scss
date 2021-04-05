@@ -1,6 +1,6 @@
 @import '../Inputs/Inputs.scss';
 
-div.I4E-Construct-Combobox {
+div.I4E-Construct-Selector {
     display: none;
     font-size: 1rem;
 
@@ -15,7 +15,7 @@ div.I4E-Construct-Combobox {
     }
 
     &[data-open] {
-        div.I4E-Construct-Combobox-Head {
+        div.I4E-Construct-Selector-Head {
             background-color: var(--I4E_InputBase_Background_Focus);
             border-color: var(--I4E_InputBase_Border_Focus);
             box-shadow: var(--I4C_Default_Shadow_0);
@@ -23,7 +23,7 @@ div.I4E-Construct-Combobox {
         }
     }
 
-    div.I4E-Construct-Combobox-Head {
+    div.I4E-Construct-Selector-Head {
         @extend %_InputBase;
 
         align-items: center;
@@ -34,22 +34,22 @@ div.I4E-Construct-Combobox {
         min-width: 250px;
         padding: 4px 6px;
 
-        div.I4E-Construct-Combobox-NoSelection {
+        div.I4E-Construct-Selector-NoSelection {
             font-style: italic;
             opacity: 0.5;
             user-select: none;
         }
 
-        div.I4E-Construct-Combobox-Selection {
+        div.I4E-Construct-Selector-Selection {
             align-items: center;
             display: flex;
         }
 
-        div.I4E-Construct-Combobox-Selection ~ div.I4E-Construct-Combobox-ClearButtonWrapper {
+        div.I4E-Construct-Selector-Selection ~ div.I4E-Construct-Selector-ClearButtonWrapper {
             display: inline-block;
         }
 
-        div.I4E-Construct-Combobox-ClearButtonWrapper {
+        div.I4E-Construct-Selector-ClearButtonWrapper {
             background-color: transparent;
             color: var(--I4C_Default_Text_6);
             cursor: pointer;
@@ -82,7 +82,7 @@ div.I4E-Construct-Combobox {
         }
     }
 
-    div.I4E-Construct-Combobox-Dropdown {
+    div.I4E-Construct-Selector-Dropdown {
         background-color: var(--I4C_Default_Background_6);
         border-radius: calc(1em * (3 / 15));
         box-shadow: var(--I4C_Default_Shadow_0), var(--I4C_Default_Shadow_1), var(--I4C_Default_Shadow_2);
@@ -102,12 +102,12 @@ div.I4E-Construct-Combobox {
             width: 0;
         }
 
-        div.I4E-Construct-Combobox-Scroller {
+        div.I4E-Construct-Selector-Scroller {
             .mb-track-y {
                 right: 0 !important;
             }
 
-            div.I4E-Construct-Combobox-Options {
+            div.I4E-Construct-Selector-Options {
                 margin-right: 4px;
                 max-height: 250px;
 
@@ -119,10 +119,10 @@ div.I4E-Construct-Combobox {
                     margin: 3px 1px 0 0;
                     padding: 0 3px;
 
-                    &.I4E-Construct-Combobox-Options-Null {
+                    &.I4E-Construct-Selector-Options-Null {
                     }
 
-                    &.I4E-Construct-Combobox-Options-None {
+                    &.I4E-Construct-Selector-Options-None {
                     }
 
                     &.I4E-Construct-Options-LimitMessage, &.I4E-Construct-Options-NoResults {
@@ -131,6 +131,10 @@ div.I4E-Construct-Combobox {
                         &:not([data-shown]) {
                             display: none;
                         }
+                    }
+
+                    &.I4E-Construct-Options-LimitMessage {
+                        padding-top: 7px;
                     }
                 }
 
@@ -169,9 +173,9 @@ div.I4E-Construct-Combobox {
     }
 
     &--Filterable {
-        div.I4E-Construct-Combobox-Dropdown {
-            div.I4E-Construct-Combobox-Scroller {
-                div.I4E-Construct-Combobox-Options {
+        div.I4E-Construct-Selector-Dropdown {
+            div.I4E-Construct-Selector-Scroller {
+                div.I4E-Construct-Selector-Options {
                     > div {
                         &:not([data-shown]) {
                             display: none;
@@ -187,17 +191,17 @@ div.I4E-Construct-Combobox {
 
 div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
-        div.I4E-Construct-Combobox {
-            div.I4E-Construct-Combobox-Dropdown {
+        div.I4E-Construct-Selector {
+            div.I4E-Construct-Selector-Dropdown {
                 background-color: var(--I4C_Default_Background_8);
                 border: 1px solid var(--I4E_InputBase_Border_Normal);
 
-                div.I4E-Construct-Combobox-Scroller {
+                div.I4E-Construct-Selector-Scroller {
                     .mb-bar {
                         background-color: var(--I4C_Default_Background_16);
                     }
 
-                    div.I4E-Construct-Combobox-Options > div {
+                    div.I4E-Construct-Selector-Options > div {
                         &:not([data-selected]):hover {
                             background-color: var(--I4C_Default_Background_16);
                         }
@@ -208,17 +212,17 @@ div.I4-App {
     }
 
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
-        div.I4E-Construct-Combobox {
-            div.I4E-Construct-Combobox-Dropdown {
+        div.I4E-Construct-Selector {
+            div.I4E-Construct-Selector-Dropdown {
                 background-color: var(--I4C_Default_Background_0);
                 border: 1px solid transparent;
 
-                div.I4E-Construct-Combobox-Scroller {
+                div.I4E-Construct-Selector-Scroller {
                     .mb-bar {
                         background-color: var(--I4C_Default_Background_8);
                     }
 
-                    div.I4E-Construct-Combobox-Options > div {
+                    div.I4E-Construct-Selector-Options > div {
                         &:not([data-selected]):hover {
                             background-color: var(--I4C_Default_Background_8);
                         }

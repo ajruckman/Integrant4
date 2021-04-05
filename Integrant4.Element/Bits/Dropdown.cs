@@ -81,7 +81,7 @@ namespace Integrant4.Element.Bits
                 BitBuilder.ApplyAttributes(Dropdown, builder, ref seq, null, null);
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "id", Dropdown.ID + ".Head");
+                builder.AddAttribute(++seq, "id",    Dropdown.ID + ".Head");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Head");
                 builder.AddElementReferenceCapture(++seq, r => _headRef = r);
 
@@ -98,7 +98,7 @@ namespace Integrant4.Element.Bits
                 //
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "id", Dropdown.ID + ".Contents");
+                builder.AddAttribute(++seq, "id",    Dropdown.ID + ".Contents");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Children");
                 builder.AddAttribute(++seq, "data-popper-placement",
                     (Dropdown._placementGetter?.Invoke() ?? Placement.Bottom).Map());
@@ -127,7 +127,7 @@ namespace Integrant4.Element.Bits
             {
                 if (firstRender)
                     _elementService!.AddJob((j, t) =>
-                        Interop.InitDropdown(j, t, _headRef!.Value, _childrenRef!.Value));
+                        Interop.CallVoid(j, t, "I4.Element.InitDropdown", _headRef!.Value, _childrenRef!.Value));
             }
         }
     }
