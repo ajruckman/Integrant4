@@ -65,6 +65,7 @@ namespace Integrant4.Element.Constructs
         {
             public bool Filterable { get; init; }
 
+            public Callbacks.Callback<TValue>? Value                 { get; init; }
             public Callbacks.Callback<string>? NoSelectionText       { get; init; }
             public Callbacks.Callback<string>? FilterPlaceholderText { get; init; }
             public Callbacks.Callback<string>? UncachedText          { get; init; }
@@ -173,8 +174,13 @@ namespace Integrant4.Element.Constructs
                 {
                     token.ThrowIfCancellationRequested();
                     _options = result;
+
+                    if (_spec.Value != null)
+                    {
+                        _selection = _options.FirstOrDefault(v => ValueEquals(v.Value, _spec.Value.Invoke()));
+                    }
+
                     _refresher?.Invoke();
-                    Console.WriteLine("OPTIONS LOADED");
                 }
             }
             catch (OperationCanceledException)
@@ -257,6 +263,12 @@ namespace Integrant4.Element.Constructs
                 _refresher?.Invoke();
             }
         }
+
+        [JSInvokable("I4E.Construct.Selector.Open")]
+        public void Construct_Selector_Open()
+        {
+            BeginLoadingOptions();
+        }
     }
 
     public partial class Selector<TValue>
@@ -318,7 +330,8 @@ namespace Integrant4.Element.Constructs
                 else
                 {
                     builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Selection");
-                    builder.AddContent(++seq, _selection.Value.SelectionContent.Renderer());
+                    builder.AddContent(++seq, _selection.Value.SelectionContent?.Renderer() ??
+                                              _selection.Value.OptionContent.Renderer());
                 }
 
                 builder.CloseElement();
@@ -369,13 +382,17 @@ namespace Integrant4.Element.Constructs
                         {
                             Option<TValue> option = _options[i];
 
+                            if (_spec.Filterable && option.FilterableText == null)
+                                throw new InvalidOperationException(
+                                    "Option passed to Selector does not have filterable text, but the Selector is filterable.");
+
                             bool selected = _selection != null && OptionEquals(_selection.Value, option);
 
                             bool shown =
                                 _spec.Filterable                    &&
                                 shownCount < UnfilteredDisplayLimit &&
                                 (string.IsNullOrWhiteSpace(_filterTerm) ||
-                                 option.FilterableText.Contains(_filterTerm, StringComparison.OrdinalIgnoreCase));
+                                 option.FilterableText!.Contains(_filterTerm, StringComparison.OrdinalIgnoreCase));
 
                             if (_spec.Filterable && shown) shownCount++;
 
@@ -445,7 +462,7 @@ namespace Integrant4.Element.Constructs
                     );
             });
 
-        public void LoadOptions()
+        public void BeginLoadingOptions()
         {
             lock (_optionsLock)
             {
@@ -468,34 +485,31 @@ namespace Integrant4.Element.Constructs
         {
             if (_elementService == null || _elemRef == null) return;
 
-            await Interop.CallVoid(_elementService.JSRuntime, _elementService.CancellationToken, 
+            await Interop.CallVoid(_elementService.JSRuntime, _elementService.CancellationToken,
                 "I4.Element.HideSelector", _elemRef.Value);
         }
     }
 
     public readonly struct Option<TValue>
     {
-        public readonly TValue? Value;
-        public readonly string  FilterableText;
-        public readonly Content OptionContent;
-        public readonly Content SelectionContent;
-        public readonly bool    Disabled;
-        public readonly bool    Placeholder;
+        public readonly TValue?  Value;
+        public readonly Content  OptionContent;
+        public readonly Content? SelectionContent;
+        public readonly string?  FilterableText;
+        public readonly bool     Disabled;
+        public readonly bool     Placeholder;
 
         public Option
         (
-            TValue?  value,
-            string   filterableText,
-            Content  optionContent,
-            Content? selectionContent = null,
-            bool     disabled         = false,
-            bool     placeholder      = false
+            TValue? value,
+            Content optionContent, Content? selectionContent, string? filterableText,
+            bool    disabled,      bool     placeholder
         )
         {
             Value            = value;
-            FilterableText   = filterableText;
             OptionContent    = optionContent;
-            SelectionContent = selectionContent ?? optionContent;
+            SelectionContent = selectionContent;
+            FilterableText   = filterableText;
             Disabled         = disabled;
             Placeholder      = placeholder;
         }

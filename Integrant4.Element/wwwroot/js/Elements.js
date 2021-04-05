@@ -58,7 +58,7 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
                 modifiers: [{name: 'eventListeners', enabled: true}, {name: 'offset', options: {offset: [0, 1]}}],
             });
 
-            dropdown.style.minWidth = head.clientWidth + 'px';
+            dropdown.style.minWidth = (head.clientWidth + 1) + 'px';
             // if (filterable) {
             //     filterInput.style.width = (dropdown.clientWidth - 18) + 'px';
             // }
@@ -67,6 +67,10 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
 
             element.I4EOptionsDropdown.update();
             element.SelectorBar.update();
+            
+            //
+
+            dotnetHelper.invokeMethodAsync('I4E.Construct.Selector.Open');
         };
 
         element.HideSelector = function () {
@@ -124,6 +128,10 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
                 } else {
                     filterInput.focus();
                 }
+            }
+            
+            else if (event.code !== 'Escape' && element.SelectorOpen && filterable) {
+                filterInput.focus();
             }
         });
 
@@ -194,13 +202,13 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
             filterInput.addEventListener('keydown', event => {
                 if (event.code === 'ArrowDown') {
                     event.preventDefault();
-                    options.querySelector(':scope > div[data-open]')?.focus();
+                    options.querySelector(':scope > div[data-shown]')?.focus();
                 }
             });
         }
     }
 
-    element.ShowSelector();
+    // element.ShowSelector();
 }
 
 window.I4.Element.ShowSelector = window.I4.Element.ShowSelector || function (element) {

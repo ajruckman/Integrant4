@@ -109,7 +109,10 @@ div.I4E-Construct-Selector {
     div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown[data-open] {
       display: block; }
     div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text {
-      margin-bottom: 3px; }
+      margin-bottom: 3px;
+      width: 100%; }
+      div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input {
+        width: 100%; }
     div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-track-y {
       right: 0 !important; }
     div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options {
@@ -230,3 +233,5 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Header--Primary, div.
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Header--Secondary, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Header--Secondary {
   background-color: var(--I4C_Default_Background_4); }
+
+/*# sourceMappingURL=Constructs.css.map */

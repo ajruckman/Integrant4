@@ -98,7 +98,7 @@ namespace Web.Pages
 
             Faker<User> b = new Faker<User>()
                .RuleFor(o => o.FirstName, f => f.Name.FirstName())
-               .RuleFor(o => o.LastName, f => f.Name.LastName());
+               .RuleFor(o => o.LastName,  f => f.Name.LastName());
 
             _selector = new Selector<User>(JSRuntime, () =>
             {
@@ -108,8 +108,10 @@ namespace Web.Pages
                    .Select(v => new Integrant4.Element.Constructs.Option<User>
                     (
                         v,
-                        $"{v.FirstName} {v.LastName}",
-                        new BootstrapIcon("arrow-right-short").Renderer() + $"{v.FirstName} {v.LastName}".AsContent()
+                        new BootstrapIcon("arrow-right-short").Renderer() + $"{v.FirstName} {v.LastName}".AsContent(),
+                        null,
+                        $"{v.FirstName} {v.LastName} {v.FirstName} {v.LastName}",
+                        false, false
                     ))
                    .ToArray();
             }, new Selector<User>.Spec
@@ -160,7 +162,7 @@ namespace Web.Pages
         {
             Console.WriteLine($"Index: OnAfterRenderAsync {firstRender}");
 
-            _selector.LoadOptions();
+            _selector.BeginLoadingOptions();
 
             await ElementService.ProcessJobs();
         }
@@ -179,7 +181,7 @@ namespace Web.Pages
         {
             List<IValidation> result = new()
             {
-                new Validation(ValidationResultType.Valid, "Valid"),
+                new Validation(ValidationResultType.Valid,   "Valid"),
                 new Validation(ValidationResultType.Warning, "Warning"),
             };
 
@@ -275,12 +277,12 @@ namespace Web.Pages
                     null,
                     () => new List<IOption<string>>
                     {
-                        new Integrant4.Element.Inputs.Option<string>("Unknown", "Unknown"),
+                        new Integrant4.Element.Inputs.Option<string>("Unknown",     "Unknown"),
                         new Integrant4.Element.Inputs.Option<string>("Rat Terrier", "Rat Terrier"),
-                        new Integrant4.Element.Inputs.Option<string>("Boxer", "Boxer"),
-                        new Integrant4.Element.Inputs.Option<string>("Yorkie", "Yorkie"),
-                        new Integrant4.Element.Inputs.Option<string>("Chihuahua", "Chihuahua"),
-                        new Integrant4.Element.Inputs.Option<string>(null, "Other"),
+                        new Integrant4.Element.Inputs.Option<string>("Boxer",       "Boxer"),
+                        new Integrant4.Element.Inputs.Option<string>("Yorkie",      "Yorkie"),
+                        new Integrant4.Element.Inputs.Option<string>("Chihuahua",   "Chihuahua"),
+                        new Integrant4.Element.Inputs.Option<string>(null,          "Other"),
                     }
                 )
             );
