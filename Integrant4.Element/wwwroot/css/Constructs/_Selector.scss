@@ -32,7 +32,7 @@ div.I4E-Construct-Selector {
         height: 28px;
         justify-content: space-between;
         min-width: 250px;
-        padding: 4px 6px;
+        padding: 0 6px;
 
         div.I4E-Construct-Selector-NoSelection {
             font-style: italic;
@@ -88,8 +88,7 @@ div.I4E-Construct-Selector {
         box-shadow: var(--I4C_Default_Shadow_0), var(--I4C_Default_Shadow_1), var(--I4C_Default_Shadow_2);
         box-sizing: border-box;
         display: none;
-        margin: 17px;
-        padding: 10px 9px;
+        padding: 7px;
         position: absolute;
         z-index: 10;
 
@@ -99,7 +98,6 @@ div.I4E-Construct-Selector {
 
         div.I4E-Input-Text {
             margin-bottom: 3px;
-            width: 0;
         }
 
         div.I4E-Construct-Selector-Scroller {
@@ -108,7 +106,7 @@ div.I4E-Construct-Selector {
             }
 
             div.I4E-Construct-Selector-Options {
-                margin-right: 4px;
+                margin-right: 1px;
                 max-height: 250px;
 
                 // Notice
@@ -116,8 +114,7 @@ div.I4E-Construct-Selector {
                     color: var(--I4C_Default_Text_3);
                     font-style: italic;
                     font-weight: 500;
-                    margin: 3px 1px 0 0;
-                    padding: 0 3px;
+                    margin: 0;
 
                     &.I4E-Construct-Selector-Options-Null {
                     }
@@ -126,7 +123,7 @@ div.I4E-Construct-Selector {
                     }
 
                     &.I4E-Construct-Options-LimitMessage, &.I4E-Construct-Options-NoResults {
-                        border-top: 1px solid var(--I4C_Default_Border_12);
+                        padding-top: 7px;
 
                         &:not([data-shown]) {
                             display: none;
@@ -134,7 +131,8 @@ div.I4E-Construct-Selector {
                     }
 
                     &.I4E-Construct-Options-LimitMessage {
-                        padding-top: 7px;
+                        border-top: 1px solid var(--I4C_Default_Border_12);
+                        margin-top: 3px;
                     }
                 }
 
@@ -145,8 +143,7 @@ div.I4E-Construct-Selector {
                     border-radius: 0.4em;
                     cursor: pointer;
                     display: flex;
-                    margin: 0 1px 1px 1px;
-                    padding: 4px 6px;
+                    padding: 4px;
                     transition: background-color 75ms ease-in, border 75ms ease-in;
 
                     &:hover {

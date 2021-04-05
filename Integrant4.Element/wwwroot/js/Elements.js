@@ -59,9 +59,9 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
             });
 
             dropdown.style.minWidth = head.clientWidth + 'px';
-            if (filterable) {
-                filterInput.style.width = (dropdown.clientWidth - 18) + 'px';
-            }
+            // if (filterable) {
+            //     filterInput.style.width = (dropdown.clientWidth - 18) + 'px';
+            // }
 
             options.querySelector('div[data-selected]')?.focus();
 
@@ -165,7 +165,7 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
                 if (!filterable) {
                     prev = window.I4.Element.PreviousSiblingSelector(event.target, 'div');
                 } else {
-                    prev = window.I4.Element.PreviousSiblingSelector(event.target, 'div[data-open]');
+                    prev = window.I4.Element.PreviousSiblingSelector(event.target, 'div[data-shown]');
                 }
 
                 // Focus the previous option if there is one
@@ -184,7 +184,7 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
                 if (!filterable) {
                     window.I4.Element.NextSiblingSelector(event.target, 'div')?.focus();
                 } else {
-                    window.I4.Element.NextSiblingSelector(event.target, 'div[data-open]')?.focus();
+                    window.I4.Element.NextSiblingSelector(event.target, 'div[data-shown]')?.focus();
                 }
             }
         });
@@ -200,7 +200,7 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
         }
     }
 
-    // element.ShowSelector();
+    element.ShowSelector();
 }
 
 window.I4.Element.ShowSelector = window.I4.Element.ShowSelector || function (element) {
