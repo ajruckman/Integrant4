@@ -115,6 +115,7 @@ namespace Integrant4.Element.Constructs
         }
 
         public event Action<TValue?>? OnChange;
+        public event Action?          OnLoaded;
 
         public Task Refresh()
         {
@@ -181,6 +182,7 @@ namespace Integrant4.Element.Constructs
                     }
 
                     _refresher?.Invoke();
+                    OnLoaded?.Invoke();
                 }
             }
             catch (OperationCanceledException)
