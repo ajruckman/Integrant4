@@ -115,6 +115,7 @@ namespace Integrant4.Element.Constructs
         }
 
         public event Action<TValue?>? OnChange;
+        public event Action?          OnLoaded;
 
         public Task Refresh()
         {
@@ -149,6 +150,14 @@ namespace Integrant4.Element.Constructs
         private Option<TValue>? _selection;
         private string?         _filterTerm;
 
+        public bool Loaded()
+        {
+            lock (_optionsLock)
+            {
+                return _options != null;
+            }
+        }
+
         private async Task BeginCache()
         {
             CancellationToken token;
@@ -181,6 +190,7 @@ namespace Integrant4.Element.Constructs
                     }
 
                     _refresher?.Invoke();
+                    OnLoaded?.Invoke();
                 }
             }
             catch (OperationCanceledException)

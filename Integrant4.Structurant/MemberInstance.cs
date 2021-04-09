@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Integrant4.API;
-using Integrant4.Fundament;
 
 namespace Integrant4.Structurant
 {
@@ -45,7 +44,7 @@ namespace Integrant4.Structurant
 
             _debouncer = new Utility.Debouncer<TValue?>
             (
-                OnInputChangeDebounced,
+                OnInputChangeFinal,
                 definition.ValueGetter.Invoke(this),
                 definition.InputDebounceMilliseconds
             );
@@ -87,10 +86,21 @@ namespace Integrant4.Structurant
 
         public event Action? OnInput;
 
-        public TValue? Value() => _definition.ValueGetter.Invoke(this);
+        public TValue? Value()
+        {
+            StructureInstance.WriteLock.EnterReadLock();
+            try
+            {
+                return _definition.ValueGetter.Invoke(this);
+            }
+            finally
+            {
+                StructureInstance.WriteLock.ExitReadLock();
+            }
+        }
 
         public void SetValue(TValue?            v) => OnInputChange(v);
-        public void SetValueImmediately(TValue? v) => OnInputChangeDebounced(v);
+        public void SetValueImmediately(TValue? v) => OnInputChangeFinal(v);
 
         public void AttachInput(IInput<TValue> input) => input.OnChange += OnInputChange;
         public void DetachInput(IInput<TValue> input) => input.OnChange -= OnInputChange;
@@ -101,10 +111,18 @@ namespace Integrant4.Structurant
             _debouncer.Reset(v);
         }
 
-        private void OnInputChangeDebounced(TValue? v)
+        private void OnInputChangeFinal(TValue? v)
         {
-            _definition.ValueSetter.Invoke(this, v);
-            OnValueChange?.Invoke(Value());
+            StructureInstance.WriteLock.EnterWriteLock();
+            try
+            {
+                _definition.ValueSetter.Invoke(this, v);
+                OnValueChange?.Invoke(Value());
+            }
+            finally
+            {
+                StructureInstance.WriteLock.ExitWriteLock();
+            }
         }
 
         public event Action<TValue?>? OnValueChange;

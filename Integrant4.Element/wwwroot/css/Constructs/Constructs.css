@@ -78,7 +78,7 @@ div.I4E-Construct-Selector {
       display: inline-block; }
     div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-ClearButtonWrapper {
       background-color: transparent;
-      color: var(--I4C_Default_Text_6);
+      color: var(--I4C_Default_Text_4);
       cursor: pointer;
       display: none;
       height: calc(1em * (12 / 15));

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Integrant4.API;
 using Microsoft.JSInterop;
@@ -14,6 +15,8 @@ namespace Integrant4.Structurant
         private readonly Dictionary<string, IMemberInstance<TObject, TState>> _memberInstanceDictionary;
 
         public readonly ValidationState ValidationState;
+
+        internal readonly ReaderWriterLockSlim WriteLock = new();
 
         internal StructureInstance
         (
@@ -82,7 +85,15 @@ namespace Integrant4.Structurant
 
         public async Task<TObject> Construct()
         {
-            return await Definition.ResultConstructor.Invoke(this);
+            WriteLock.EnterWriteLock();
+            try
+            {
+                return await Definition.ResultConstructor.Invoke(this);
+            }
+            finally
+            {
+                WriteLock.ExitWriteLock();
+            }
         }
 
         public async Task ResetAllMemberInputValues()
@@ -100,6 +111,11 @@ namespace Integrant4.Structurant
                 await inst.RefreshInput();
             }
         }
+
+        // Safety methods
+
+        public void EnterWriteLock() => WriteLock.EnterWriteLock();
+        public void ExitWriteLock()  => WriteLock.ExitWriteLock();
 
         // Proxy methods
 
