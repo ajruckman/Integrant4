@@ -22,8 +22,15 @@ div.I4E-Layout-ListTable {
                     border-bottom: 1px solid var(--I4C_Default_Border_11);
                     color: var(--I4C_Default_Text_4);
                     font-weight: 600;
-                    padding: 7px;
                     position: relative;
+
+                    &.AlignLeft {
+                        text-align: left;
+                    }
+                }
+
+                &:not(.Unpadded) th {
+                    padding: 7px;
                 }
             }
         }
@@ -131,6 +138,25 @@ div.I4E-Layout-ListTable {
 
                         }
                     }
+                }
+            }
+        }
+
+        tfoot {
+            tr {
+                th {
+                    background-color: var(--I4C_Default_Background_7);
+                    border-top: 1px solid var(--I4C_Default_Border_11);
+                    color: var(--I4C_Default_Text_4);
+                    font-weight: 600;
+
+                    &.AlignLeft {
+                        text-align: left;
+                    }
+                }
+
+                &:not(.Unpadded) th {
+                    padding: 7px;
                 }
             }
         }

@@ -14,8 +14,11 @@ div.I4E-Layout-ListTable {
       border-bottom: 1px solid var(--I4C_Default_Border_11);
       color: var(--I4C_Default_Text_4);
       font-weight: 600;
-      padding: 7px;
       position: relative; }
+      div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner thead tr th.AlignLeft {
+        text-align: left; }
+    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner thead tr:not(.Unpadded) th {
+      padding: 7px; }
     div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr td {
       padding: 7px;
       position: relative;
@@ -55,6 +58,15 @@ div.I4E-Layout-ListTable {
       background-color: var(--I4C_Default_TableRow_Red_1); }
     div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr.Red:nth-child(odd):hover td {
       background-color: var(--I4C_Default_TableRow_Red_3); }
+    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tfoot tr th {
+      background-color: var(--I4C_Default_Background_7);
+      border-top: 1px solid var(--I4C_Default_Border_11);
+      color: var(--I4C_Default_Text_4);
+      font-weight: 600; }
+      div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tfoot tr th.AlignLeft {
+        text-align: left; }
+    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tfoot tr:not(.Unpadded) th {
+      padding: 7px; }
 
 div.I4E-Layout-Panel {
   box-shadow: var(--I4C_Default_Shadow_2);

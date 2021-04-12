@@ -1,27 +1,30 @@
-div.I4E-Construct-PagedTable-PagedTableButtons button {
-  border: none;
-  border-radius: calc(1em * (4 / 15));
-  font-size: 1rem;
-  font-weight: 600;
-  height: 2em;
-  margin: 0 2px;
-  padding: 0 calc(1em * (10 / 15));
-  text-decoration: none;
-  transition: background-color 75ms ease-in, border 75ms ease-in;
-  user-select: none; }
-  div.I4E-Construct-PagedTable-PagedTableButtons button.I4E-Construct-PagedTable-Ellipses {
-    padding: 0 calc(1em * (7 / 15)); }
-  div.I4E-Construct-PagedTable-PagedTableButtons button:hover {
-    transition: none; }
-  div.I4E-Construct-PagedTable-PagedTableButtons button:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
-    cursor: pointer; }
-    div.I4E-Construct-PagedTable-PagedTableButtons button:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button):hover {
-      background-color: var(--I4C_Default_Opaque_White_3); }
-    div.I4E-Construct-PagedTable-PagedTableButtons button:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button):active {
-      background-color: var(--I4C_Default_Opaque_White_2); }
-  div.I4E-Construct-PagedTable-PagedTableButtons button:disabled, div.I4E-Construct-PagedTable-PagedTableButtons button.I4E-Construct-PagedTable-Ellipses {
-    cursor: not-allowed;
-    opacity: 0.5; }
+div.I4E-Construct-PagedTable-PagedTableButtons {
+  display: flex;
+  justify-content: flex-end; }
+  div.I4E-Construct-PagedTable-PagedTableButtons button {
+    border: none;
+    border-radius: calc(1em * (4 / 15));
+    font-size: 1rem;
+    font-weight: 600;
+    height: 2em;
+    margin: 2px;
+    padding: 0 calc(1em * (10 / 15));
+    text-decoration: none;
+    transition: background-color 75ms ease-in, border 75ms ease-in;
+    user-select: none; }
+    div.I4E-Construct-PagedTable-PagedTableButtons button.I4E-Construct-PagedTable-Ellipses {
+      padding: 0 calc(1em * (7 / 15)); }
+    div.I4E-Construct-PagedTable-PagedTableButtons button:hover {
+      transition: none; }
+    div.I4E-Construct-PagedTable-PagedTableButtons button:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
+      cursor: pointer; }
+      div.I4E-Construct-PagedTable-PagedTableButtons button:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button):hover {
+        background-color: var(--I4C_Default_Opaque_White_3); }
+      div.I4E-Construct-PagedTable-PagedTableButtons button:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button):active {
+        background-color: var(--I4C_Default_Opaque_White_2); }
+    div.I4E-Construct-PagedTable-PagedTableButtons button:disabled, div.I4E-Construct-PagedTable-PagedTableButtons button.I4E-Construct-PagedTable-Ellipses {
+      cursor: not-allowed;
+      opacity: 0.5; }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-PagedTable-PagedTableButtons button, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-PagedTable-PagedTableButtons button {
   background-color: var(--I4C_Default_Opaque_White_2);
@@ -279,3 +282,5 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Header--Primary, div.
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Header--Secondary, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Header--Secondary {
   background-color: var(--I4C_Default_Background_4); }
+
+/*# sourceMappingURL=Constructs.css.map */

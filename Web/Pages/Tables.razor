@@ -16,7 +16,7 @@
             </tr>
             </thead>
             <PagedTableUpdatableContent TRow="User" Table="@_userTable">
-                @foreach (User user in _userTable.PagesInView())
+                @foreach (User user in _userTable.RowsInView())
                 {
                     <tr>
                         <td>@user.FirstName</td>

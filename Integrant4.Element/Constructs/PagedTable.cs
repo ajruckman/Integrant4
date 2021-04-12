@@ -64,7 +64,7 @@ namespace Integrant4.Element.Constructs
 
         public event Action? OnPaginate;
 
-        public List<TRow> PagesInView()
+        public List<TRow> RowsInView()
         {
             return Rows().Skip(CurrentPage * PageSize).Take(PageSize).ToList();
         }
