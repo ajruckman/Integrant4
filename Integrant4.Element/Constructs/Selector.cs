@@ -63,7 +63,8 @@ namespace Integrant4.Element.Constructs
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public bool Filterable { get; init; }
+            public bool   Filterable   { get; init; }
+            public ushort DisplayLimit { get; init; } = 100;
 
             public Callbacks.Callback<TValue>? Value                 { get; init; }
             public Callbacks.Callback<string>? NoSelectionText       { get; init; }
@@ -283,8 +284,6 @@ namespace Integrant4.Element.Constructs
 
     public partial class Selector<TValue>
     {
-        private const int UnfilteredDisplayLimit = 15;
-
         private readonly TextInput? _filterInput;
 
         private ElementReference? _elemRef;
@@ -399,8 +398,8 @@ namespace Integrant4.Element.Constructs
                             bool selected = _selection != null && OptionEquals(_selection.Value, option);
 
                             bool shown =
-                                _spec.Filterable                    &&
-                                shownCount < UnfilteredDisplayLimit &&
+                                _spec.Filterable                &&
+                                shownCount < _spec.DisplayLimit &&
                                 (string.IsNullOrWhiteSpace(_filterTerm) ||
                                  option.FilterableText!.Contains(_filterTerm, StringComparison.OrdinalIgnoreCase));
 
@@ -423,8 +422,8 @@ namespace Integrant4.Element.Constructs
                         {
                             builder.OpenElement(++seq, "p");
                             builder.AddAttribute(++seq, "class",      "I4E-Construct-Options-LimitMessage");
-                            builder.AddAttribute(++seq, "data-shown", shownCount == UnfilteredDisplayLimit);
-                            builder.AddContent(++seq, $"Filter to see more than {UnfilteredDisplayLimit} options.");
+                            builder.AddAttribute(++seq, "data-shown", shownCount == _spec.DisplayLimit);
+                            builder.AddContent(++seq, $"Filter to see more than {_spec.DisplayLimit} options.");
                             builder.CloseElement();
 
                             builder.OpenElement(++seq, "p");

@@ -1,0 +1,35 @@
+@page "/tables"
+
+@using Integrant4.Element.Constructs
+
+<div class="I4E-Layout-Panel">
+    <div class="I4E-Layout-Panel-Inner">
+        <h1>Tables</h1>
+
+        <table>
+            <thead>
+            <tr>
+                <td></td>
+                <td>
+                    <PagedTableButtons TRow="User" Table="@_userTable"/>
+                </td>
+            </tr>
+            </thead>
+            <PagedTableUpdatableContent TRow="User" Table="@_userTable">
+                @foreach (User user in _userTable.PagesInView())
+                {
+                    <tr>
+                        <td>@user.FirstName</td>
+                        <td>@user.LastName</td>
+                    </tr>
+                }
+            </PagedTableUpdatableContent>
+            <tfoot>
+            <tr>
+                <td></td>
+                <td><PagedTablePageInfo TRow="User" Table="@_userTable"></PagedTablePageInfo></td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

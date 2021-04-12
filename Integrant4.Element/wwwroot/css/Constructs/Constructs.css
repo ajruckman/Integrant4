@@ -1,3 +1,49 @@
+div.I4E-Construct-PagedTable-PagedTableButtons button {
+  border: none;
+  border-radius: calc(1em * (4 / 15));
+  font-size: 1rem;
+  font-weight: 600;
+  height: 2em;
+  margin: 0 2px;
+  padding: 0 calc(1em * (10 / 15));
+  text-decoration: none;
+  transition: background-color 75ms ease-in, border 75ms ease-in;
+  user-select: none; }
+  div.I4E-Construct-PagedTable-PagedTableButtons button.I4E-Construct-PagedTable-Ellipses {
+    padding: 0 calc(1em * (7 / 15)); }
+  div.I4E-Construct-PagedTable-PagedTableButtons button:hover {
+    transition: none; }
+  div.I4E-Construct-PagedTable-PagedTableButtons button:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
+    cursor: pointer; }
+    div.I4E-Construct-PagedTable-PagedTableButtons button:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button):hover {
+      background-color: var(--I4C_Default_Opaque_White_3); }
+    div.I4E-Construct-PagedTable-PagedTableButtons button:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button):active {
+      background-color: var(--I4C_Default_Opaque_White_2); }
+  div.I4E-Construct-PagedTable-PagedTableButtons button:disabled, div.I4E-Construct-PagedTable-PagedTableButtons button.I4E-Construct-PagedTable-Ellipses {
+    cursor: not-allowed;
+    opacity: 0.5; }
+
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-PagedTable-PagedTableButtons button, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-PagedTable-PagedTableButtons button {
+  background-color: var(--I4C_Default_Opaque_White_2);
+  box-shadow: var(--I4C_Default_Shadow_0);
+  color: var(--I4C_Default_Text_6); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-PagedTable-PagedTableButtons button:hover:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button), div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-PagedTable-PagedTableButtons button:hover:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
+    background-color: var(--I4C_Default_Opaque_White_3);
+    color: var(--I4C_Default_Text_6); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-PagedTable-PagedTableButtons button:active:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button), div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-PagedTable-PagedTableButtons button:active:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
+    background-color: var(--I4C_Default_Opaque_White_2);
+    color: var(--I4C_Default_Text_6); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-PagedTable-PagedTableButtons button, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-PagedTable-PagedTableButtons button {
+  background-color: var(--I4C_Default_Opaque_Black_2);
+  color: var(--I4C_Default_Text_6); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-PagedTable-PagedTableButtons button:hover:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button), div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-PagedTable-PagedTableButtons button:hover:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
+    background-color: var(--I4C_Default_Opaque_Black_3);
+    color: var(--I4C_Default_Text_6); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-PagedTable-PagedTableButtons button:active:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button), div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-PagedTable-PagedTableButtons button:active:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
+    background-color: var(--I4C_Default_Opaque_Black_2);
+    color: var(--I4C_Default_Text_6); }
+
 div.I4E-Construct-Selector div.I4E-Construct-Selector-Head, div.I4E-Input-Select select, div.I4E-Input-Checkbox input, div.I4E-Input-Checkbox textarea, div.I4E-Input-Date input, div.I4E-Input-Date textarea, div.I4E-Input-Decimal input, div.I4E-Input-Decimal textarea, div.I4E-Input-Integer input, div.I4E-Input-Integer textarea, div.I4E-Input-Text input, div.I4E-Input-Text textarea, div.I4E-Input-TextArea input, div.I4E-Input-TextArea textarea, div.I4E-Input-Time input, div.I4E-Input-Time textarea {
   background-color: var(--I4E_InputBase_Background_Normal);
   border: 1px solid var(--I4E_InputBase_Border_Normal);
@@ -233,5 +279,3 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Header--Primary, div.
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Header--Secondary, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Header--Secondary {
   background-color: var(--I4C_Default_Background_4); }
-
-/*# sourceMappingURL=Constructs.css.map */

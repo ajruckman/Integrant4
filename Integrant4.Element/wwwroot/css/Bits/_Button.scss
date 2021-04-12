@@ -216,7 +216,7 @@ div.I4-App {
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
         button.I4E-Bit-Button, a.I4E-Bit-Button {
             &.I4E-Bit-Button--Default {
-                background-color: var(--I4C_Default_Opaque_Black_1);
+                background-color: var(--I4C_Default_Opaque_Black_2);
                 color: var(--I4C_Default_Text_6);
 
                 &:visited {
@@ -224,12 +224,12 @@ div.I4-App {
                 }
 
                 &:hover:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Default_Opaque_Black_2);
+                    background-color: var(--I4C_Default_Opaque_Black_3);
                     color: var(--I4C_Default_Text_6);
                 }
 
                 &:active:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Default_Opaque_Black_1);
+                    background-color: var(--I4C_Default_Opaque_Black_2);
                     color: var(--I4C_Default_Text_6);
                 }
             }
