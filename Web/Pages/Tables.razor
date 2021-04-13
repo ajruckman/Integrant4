@@ -6,30 +6,46 @@
     <div class="I4E-Layout-Panel-Inner">
         <h1>Tables</h1>
 
-        <table>
-            <thead>
-            <tr>
-                <td></td>
-                <td>
-                    <PagedTableButtons TRow="User" Table="@_userTable"/>
-                </td>
-            </tr>
-            </thead>
-            <PagedTableUpdatableContent TRow="User" Table="@_userTable">
-                @foreach (User user in _userTable.RowsInView())
-                {
-                    <tr>
-                        <td>@user.FirstName</td>
-                        <td>@user.LastName</td>
-                    </tr>
-                }
-            </PagedTableUpdatableContent>
-            <tfoot>
-            <tr>
-                <td></td>
-                <td><PagedTablePageInfo TRow="User" Table="@_userTable"></PagedTablePageInfo></td>
-            </tr>
-            </tfoot>
-        </table>
+        <button @onclick="@(() => _userTable.Sort(nameof(User.FirstName), PagedTable<User>.SortDirection.Ascending))">First name ascending</button>
+        <button @onclick="@(() => _userTable.Sort(nameof(User.FirstName), PagedTable<User>.SortDirection.Descending))">First name descending</button>
+        <button @onclick="@(() => _userTable.Sort(nameof(User.LastName), PagedTable<User>.SortDirection.Ascending))">Last name ascending</button>
+        <button @onclick="@(() => _userTable.Sort(nameof(User.LastName), PagedTable<User>.SortDirection.Descending))">Last name descending</button>
+        <button @onclick="@(() => _userTable.UnSort())">Un-sort</button>
+
+        <PagedTableSortIndicator TRow="User" Table="@_userTable" ID="@(nameof(User.FirstName))"/>
+        <PagedTableSortIndicator TRow="User" Table="@_userTable" ID="@(nameof(User.LastName))"/>
+
+        <div class="I4E-Layout-ListTable">
+            <table class="I4E-Layout-ListTable-Inner">
+                <thead>
+                <tr>
+                    <td></td>
+                    <td>
+                        <PagedTableButtons TRow="User" Table="@_userTable"/>
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                <PagedTableRows TRow="User" Table="@_userTable">
+                    @foreach (User user in _userTable.RowsInView())
+                    {
+                        <tr>
+                            <td>@user.FirstName</td>
+                            <td>@user.LastName</td>
+                        </tr>
+                    }
+                </PagedTableRows>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td></td>
+                    <td>
+                        <PagedTablePageInfo TRow="User" Table="@_userTable"></PagedTablePageInfo>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+
     </div>
 </div>

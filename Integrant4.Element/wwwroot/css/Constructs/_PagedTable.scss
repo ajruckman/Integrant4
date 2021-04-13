@@ -41,6 +41,16 @@ div.I4E-Construct-PagedTable-PagedTableButtons {
     }
 }
 
+button.I4E-Construct-PagedTable-SortIndicator {
+    background: none;
+    border: none;
+    cursor: pointer;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    width: 24px;
+}
+
 // Variable colors
 
 div.I4-App {
@@ -62,6 +72,32 @@ div.I4-App {
                 }
             }
         }
+
+        button.I4E-Construct-PagedTable-SortIndicator {
+            &.I4E-Construct-PagedTable-SortIndicator--Inactive {
+                color: var(--I4C_Default_Opaque_White_5);
+
+                &:hover {
+                    color: var(--I4C_Default_Opaque_White_7);
+                }
+
+                &:active {
+                    color: var(--I4C_Default_Opaque_White_5);
+                }
+            }
+
+            &.I4E-Construct-PagedTable-SortIndicator--Active {
+                color: var(--I4C_Default_Accent_6);
+
+                &:hover {
+                    color: var(--I4C_Default_Accent_7);
+                }
+
+                &:active {
+                    color: var(--I4C_Default_Accent_6);
+                }
+            }
+        }
     }
 
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
@@ -78,6 +114,32 @@ div.I4-App {
                 &:active:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
                     background-color: var(--I4C_Default_Opaque_Black_2);
                     color: var(--I4C_Default_Text_6);
+                }
+            }
+        }
+
+        button.I4E-Construct-PagedTable-SortIndicator {
+            &.I4E-Construct-PagedTable-SortIndicator--Inactive {
+                color: var(--I4C_Default_Opaque_Black_7);
+
+                &:hover {
+                    color: var(--I4C_Default_Opaque_Black_10);
+                }
+
+                &:active {
+                    color: var(--I4C_Default_Opaque_Black_7);
+                }
+            }
+
+            &.I4E-Construct-PagedTable-SortIndicator--Active {
+                color: var(--I4C_Default_Accent_6);
+
+                &:hover {
+                    color: var(--I4C_Default_Accent_7);
+                }
+
+                &:active {
+                    color: var(--I4C_Default_Accent_6);
                 }
             }
         }

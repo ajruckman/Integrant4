@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Integrant4.Element.Bits;
 using Integrant4.Fundament;
+using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
@@ -23,22 +24,59 @@ namespace Integrant4.Element.Constructs
 
     public partial class PagedTable<TRow>
     {
-        private readonly object  _rowLock = new();
-        private          TRow[]? _rows;
+        private readonly object _rowsLock       = new();
+        private readonly object _rowsSortedLock = new();
+
+        private TRow[]? _rows;
+        private TRow[]? _rowsSorted;
 
         public void InvalidateRows()
         {
-            lock (_rowLock)
+            lock (_rowsLock)
             {
-                _rows = null;
+                lock (_rowsSortedLock)
+                {
+                    _rows       = null;
+                    _rowsSorted = null;
+                }
+            }
+        }
+
+        public void InvalidateRowsSorted()
+        {
+            lock (_rowsSortedLock)
+            {
+                _rowsSorted = null;
             }
         }
 
         internal TRow[] Rows()
         {
-            lock (_rowLock)
+            lock (_rowsLock)
             {
                 return _rows ??= _rowGetter.Invoke();
+            }
+        }
+
+        internal TRow[] SortedRows()
+        {
+            lock (_rowsSortedLock)
+            {
+                if (_rowsSorted != null)
+                    return _rowsSorted;
+
+                TRow[] rows = Rows();
+
+                lock (_sortLock)
+                {
+                    _rowsSorted = ActiveSorter == null
+                        ? _rows
+                        : ActiveSortDirection == SortDirection.Ascending
+                            ? rows.OrderBy(k => _sortComparers[ActiveSorter].Invoke(k)).ToArray()
+                            : rows.OrderByDescending(k => _sortComparers[ActiveSorter].Invoke(k)).ToArray();
+
+                    return _rowsSorted!;
+                }
             }
         }
     }
@@ -54,7 +92,7 @@ namespace Integrant4.Element.Constructs
         {
             get
             {
-                lock (_rowLock)
+                lock (_rowsLock)
                 {
                     _rows ??= _rowGetter.Invoke();
                     return (int) Math.Ceiling(_rows.Length / (decimal) PageSize);
@@ -63,10 +101,11 @@ namespace Integrant4.Element.Constructs
         }
 
         public event Action? OnPaginate;
+        public event Action? OnSort;
 
         public List<TRow> RowsInView()
         {
-            return Rows().Skip(CurrentPage * PageSize).Take(PageSize).ToList();
+            return SortedRows().Skip(CurrentPage * PageSize).Take(PageSize).ToList();
         }
 
         internal void Previous()
@@ -108,7 +147,85 @@ namespace Integrant4.Element.Constructs
         }
     }
 
-    public partial class PagedTable<TRow> { }
+    public partial class PagedTable<TRow>
+    {
+        public delegate IComparable RowComparer(TRow row);
+
+        public enum SortDirection
+        {
+            Ascending, Descending,
+        };
+
+        private readonly Dictionary<string, RowComparer> _sortComparers = new();
+        private readonly object                          _sortLock      = new();
+
+        internal string?        ActiveSorter        { get; private set; }
+        internal SortDirection? ActiveSortDirection { get; private set; }
+
+        public void AddSorter(string id, RowComparer rowComparer)
+        {
+            lock (_sortLock)
+            {
+                _sortComparers[id] = rowComparer;
+            }
+        }
+
+        public void Sort(string id, SortDirection direction)
+        {
+            lock (_sortLock)
+            {
+                ActiveSorter        = id;
+                ActiveSortDirection = direction;
+            }
+
+            InvalidateRowsSorted();
+            _stateHasChanged?.Invoke();
+            OnSort?.Invoke();
+        }
+
+        public void UnSort()
+        {
+            lock (_sortLock)
+            {
+                ActiveSorter        = null;
+                ActiveSortDirection = null;
+            }
+
+            InvalidateRowsSorted();
+            _stateHasChanged?.Invoke();
+            OnSort?.Invoke();
+        }
+
+        internal void NextSortDirection(string id)
+        {
+            Console.Write($"{id} > {ActiveSorter}, {ActiveSortDirection} -> ");
+            lock (_sortLock)
+            {
+                if (ActiveSorter != id)
+                {
+                    ActiveSorter        = id;
+                    ActiveSortDirection = SortDirection.Ascending;
+                }
+                else
+                {
+                    if (ActiveSortDirection == SortDirection.Ascending)
+                    {
+                        ActiveSortDirection = SortDirection.Descending;
+                    }
+                    else
+                    {
+                        ActiveSorter        = null;
+                        ActiveSortDirection = null;
+                    }
+                }
+            }
+
+            Console.WriteLine($"{ActiveSorter}, {ActiveSortDirection}");
+            InvalidateRowsSorted();
+            _stateHasChanged?.Invoke();
+            OnSort?.Invoke();
+        }
+    }
 
     public class PagedTableButtons<TRow> : ComponentBase where TRow : class
     {
@@ -153,7 +270,7 @@ namespace Integrant4.Element.Constructs
                 {
                     builder.OpenElement(++seq, "button");
                     builder.AddAttribute(++seq, "disabled", Table.CurrentPage == page);
-                    builder.AddAttribute(++seq, "onclick",  EventCallback.Factory.Create(this, () => Table.Jump(page)));
+                    builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, () => Table.Jump(page)));
                     builder.AddContent(++seq, page + 1);
                     builder.CloseElement();
                 }
@@ -161,7 +278,7 @@ namespace Integrant4.Element.Constructs
                 {
                     builder.OpenElement(++seq, "button");
                     builder.AddAttribute(++seq, "disabled", true);
-                    builder.AddAttribute(++seq, "class",    "I4E-Construct-PagedTable-Ellipses");
+                    builder.AddAttribute(++seq, "class", "I4E-Construct-PagedTable-Ellipses");
                     builder.AddContent(++seq, "...");
                     builder.CloseElement();
                 }
@@ -173,12 +290,16 @@ namespace Integrant4.Element.Constructs
         }
     }
 
-    public class PagedTableUpdatableContent<TRow> : ComponentBase where TRow : class
+    public class PagedTableRows<TRow> : ComponentBase where TRow : class
     {
         [Parameter] public PagedTable<TRow> Table        { get; set; } = null!;
         [Parameter] public RenderFragment   ChildContent { get; set; } = null!;
 
-        protected override void OnParametersSet() => Table.OnPaginate += () => InvokeAsync(StateHasChanged);
+        protected override void OnParametersSet()
+        {
+            Table.OnPaginate += () => InvokeAsync(StateHasChanged);
+            Table.OnSort     += () => InvokeAsync(StateHasChanged);
+        }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder) => builder.AddContent(0, ChildContent);
     }
@@ -197,10 +318,51 @@ namespace Integrant4.Element.Constructs
                           $"{Table.Rows().Length:#,##0} | "                                                           +
                           $"{Table.NumPages} page"                                                                    +
                           $"{(Table.NumPages != 1 ? "s" : "")}";
-            
+
             builder.OpenElement(0, "div");
             builder.AddAttribute(1, "class", "I4E-Construct-PagedTable-PageInfo");
             builder.AddContent(2, info);
+            builder.CloseElement();
+        }
+    }
+
+    public class PagedTableSortIndicator<TRow> : ComponentBase where TRow : class
+    {
+        [Parameter] public PagedTable<TRow> Table { get; set; } = null!;
+        [Parameter] public string           ID    { get; set; } = null!;
+
+        protected override void OnParametersSet() => Table.OnSort += () => InvokeAsync(StateHasChanged);
+
+        protected override void BuildRenderTree(RenderTreeBuilder builder)
+        {
+            builder.OpenElement(0, "button");
+            builder.AddAttribute(1, "class", "I4E-Construct-PagedTable-SortIndicator " + (
+                Table.ActiveSorter == ID
+                    ? "I4E-Construct-PagedTable-SortIndicator--Active"
+                    : "I4E-Construct-PagedTable-SortIndicator--Inactive"
+            ));
+
+            builder.AddAttribute(2, "onclick",
+                EventCallback.Factory.Create(this, () => Table.NextSortDirection(ID)));
+
+            builder.OpenComponent<BootstrapIcon>(3);
+            builder.AddAttribute(4, "Size", (ushort) 24);
+
+            if (Table.ActiveSorter != ID)
+            {
+                builder.AddAttribute(5, "ID", "arrow-down-up");
+            }
+            else if (Table.ActiveSortDirection == PagedTable<TRow>.SortDirection.Ascending)
+            {
+                builder.AddAttribute(5, "ID", "arrow-bar-up");
+            }
+            else if (Table.ActiveSortDirection == PagedTable<TRow>.SortDirection.Descending)
+            {
+                builder.AddAttribute(5, "ID", "arrow-bar-down");
+            }
+
+            builder.CloseComponent();
+
             builder.CloseElement();
         }
     }
