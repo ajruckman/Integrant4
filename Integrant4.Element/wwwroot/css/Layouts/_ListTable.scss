@@ -11,6 +11,18 @@ div.I4E-Layout-ListTable {
         border: 1px solid var(--I4C_Default_Border_11);
     }
 
+    &.BorderedHeaderCells {
+        table.I4E-Layout-ListTable-Inner thead tr th:not(:first-child) {
+            border-left: 1px solid var(--I4C_Default_Border_4);
+        }
+    }
+
+    &.BorderedBodyCells {
+        table.I4E-Layout-ListTable-Inner tbody tr td:not(:first-child) {
+            border-left: 1px solid var(--I4C_Default_Border_4);
+        }
+    }
+
     table.I4E-Layout-ListTable-Inner {
         border-spacing: 0;
         width: 100%;

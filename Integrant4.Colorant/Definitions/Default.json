@@ -187,7 +187,7 @@
                     "SatEnd":   20,
                     "SatCurve": "linear",
                     "LumStart": 5,
-                    "LumEnd":   10,
+                    "LumEnd":   13,
                     "LumCurve": "easeInQuad"
                 },
                 "TableRow_Green": {
@@ -339,8 +339,8 @@
                     "SatStart": 0,
                     "SatEnd":   0,
                     "SatCurve": "linear",
-                    "LumStart": 100,
-                    "LumEnd":   96,
+                    "LumStart": 96,
+                    "LumEnd":   89,
                     "LumCurve": "linear"
                 },
                 "TableRow_Green": {
@@ -494,7 +494,7 @@
                     "SatEnd":   20,
                     "SatCurve": "linear",
                     "LumStart": 5,
-                    "LumEnd":   10,
+                    "LumEnd":   13,
                     "LumCurve": "easeInQuad"
                 },
                 "TableRow_Green": {
@@ -647,8 +647,8 @@
                     "SatStart": 3,
                     "SatEnd":   3,
                     "SatCurve": "linear",
-                    "LumStart": 100,
-                    "LumEnd":   96,
+                    "LumStart": 96,
+                    "LumEnd":   89,
                     "LumCurve": "easeInQuad"
                 },
                 "TableRow_Green": {
