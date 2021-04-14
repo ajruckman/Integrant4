@@ -86,17 +86,24 @@ namespace Integrant4.Structurant
             return instT;
         }
 
-        public async Task<TObject> Construct()
+        public void Construct(Action<TObject?>? then = null)
         {
-            await WriteLock.WaitAsync();
-            try
+            var t = new Task(async () =>
             {
-                return await Definition.ResultConstructor.Invoke(this);
-            }
-            finally
-            {
-                WriteLock.Release();
-            }
+                await WriteLock.WaitAsync();
+                try
+                {
+                    TObject? result = await Definition.ResultConstructor.Invoke(this);
+
+                    then?.Invoke(result);
+                }
+                finally
+                {
+                    WriteLock.Release();
+                }
+            });
+
+            t.Start();
         }
 
         public async Task ResetAllMemberInputValues()

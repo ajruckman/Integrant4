@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Integrant4.Fundament;
 using Microsoft.JSInterop;
 
 namespace Integrant4.Structurant
@@ -50,12 +49,12 @@ namespace Integrant4.Structurant
         /// <typeparam name="TValue">The type of the value that this member controls.</typeparam>
         public void Register<TValue>
         (
-            string                                                      id,
-            Member<TObject, TState, TValue>.Callbacks.ValueGetter       valueGetter,
-            Member<TObject, TState, TValue>.Callbacks.ValueSetter       valueSetter,
-            ushort                                                      inputDebounceMilliseconds = 200,
-            Member<TObject, TState, TValue>.Callbacks.InputGetter?      inputGetter               = null,
-            Member<TObject, TState, TValue>.Callbacks.ValidationGetter? validationGetter          = null
+            string                                                 id,
+            Member<TObject, TState, TValue>.Callbacks.ValueGetter  valueGetter,
+            Member<TObject, TState, TValue>.Callbacks.ValueSetter  valueSetter,
+            ushort                                                 inputDebounceMilliseconds = 200,
+            Member<TObject, TState, TValue>.Callbacks.InputGetter? inputGetter               = null,
+            Member<TObject, TState, TValue>.Callbacks.ValidationGetter?            validationGetter          = null
         )
         {
             if (_instantiated)

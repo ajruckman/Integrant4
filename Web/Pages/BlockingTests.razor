@@ -1,0 +1,32 @@
+@page "/blockingtests"
+@using Integrant4.Element.Bits
+@using System.Threading
+
+@code {
+
+    private async Task LongRunningAction()
+    {
+        Task.Run(() =>
+        {
+            _open = true;
+            InvokeAsync(StateHasChanged);
+            
+            Thread.Sleep(TimeSpan.FromSeconds(10));
+
+            _open = false;
+            InvokeAsync(StateHasChanged);
+        });
+    }
+
+    private bool _open;
+    private Spinner _spinner = new();
+
+}
+
+<button @onclick="@(LongRunningAction)">Start long action</button>
+
+@if (_open)
+{
+    <h1>Loading...</h1>
+    @_spinner.Renderer()
+}

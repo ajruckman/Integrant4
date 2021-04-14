@@ -60,7 +60,11 @@ namespace Web.Pages
                 }
             }, _ageThreadToken.Token);
 
-            _structureInstance.Construct();
+            _structureInstance.Construct(dog =>
+            {
+                if (dog == null)
+                    throw new Exception("Failed to construct Dog.");
+            });
 
             _structureInstance.OnMemberValueChange += (m, v) => Console.WriteLine($"{m.Definition.ID} -> {v}");
 
@@ -98,7 +102,7 @@ namespace Web.Pages
 
             Faker<User> b = new Faker<User>()
                .RuleFor(o => o.FirstName, f => f.Name.FirstName())
-               .RuleFor(o => o.LastName,  f => f.Name.LastName());
+               .RuleFor(o => o.LastName, f => f.Name.LastName());
 
             _selector = new Selector<User>(JSRuntime, () =>
             {
@@ -181,7 +185,7 @@ namespace Web.Pages
         {
             List<IValidation> result = new()
             {
-                new Validation(ValidationResultType.Valid,   "Valid"),
+                new Validation(ValidationResultType.Valid, "Valid"),
                 new Validation(ValidationResultType.Warning, "Warning"),
             };
 
@@ -205,10 +209,17 @@ namespace Web.Pages
         {
             Structure = new Structure<Dog, DogState>
             (
-                inst => Task.FromResult
-                (
-                    new Dog(inst.State.NameFirst!, inst.State.NameLast!, inst.State.Age!.Value, null)
-                ),
+                async inst =>
+                {
+                    await Task.CompletedTask;
+                    return (Dog?) new Dog
+                    (
+                        inst.State.NameFirst!,
+                        inst.State.NameLast!,
+                        inst.State.Age!.Value,
+                        null
+                    );
+                },
                 DogValidations);
 
             Structure.Register<string?>
@@ -277,12 +288,12 @@ namespace Web.Pages
                     null,
                     () => new List<IOption<string>>
                     {
-                        new Integrant4.Element.Inputs.Option<string>("Unknown",     "Unknown"),
+                        new Integrant4.Element.Inputs.Option<string>("Unknown", "Unknown"),
                         new Integrant4.Element.Inputs.Option<string>("Rat Terrier", "Rat Terrier"),
-                        new Integrant4.Element.Inputs.Option<string>("Boxer",       "Boxer"),
-                        new Integrant4.Element.Inputs.Option<string>("Yorkie",      "Yorkie"),
-                        new Integrant4.Element.Inputs.Option<string>("Chihuahua",   "Chihuahua"),
-                        new Integrant4.Element.Inputs.Option<string>(null,          "Other"),
+                        new Integrant4.Element.Inputs.Option<string>("Boxer", "Boxer"),
+                        new Integrant4.Element.Inputs.Option<string>("Yorkie", "Yorkie"),
+                        new Integrant4.Element.Inputs.Option<string>("Chihuahua", "Chihuahua"),
+                        new Integrant4.Element.Inputs.Option<string>(null, "Other"),
                     }
                 )
             );
