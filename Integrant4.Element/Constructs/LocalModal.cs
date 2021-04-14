@@ -14,10 +14,18 @@ namespace Integrant4.Element.Constructs
         private bool        _show;
         private Func<Task>? _refresher;
 
-        public LocalModal(Callbacks.BitContents contents, InnerDirection innerDirection = InnerDirection.Row)
+        public LocalModal
+        (
+            Callbacks.BitContents contents,
+            InnerDirection        innerDirection = InnerDirection.Row,
+            Hook?                 hook           = null
+        )
         {
             _contents       = contents;
             _innerDirection = innerDirection;
+
+            if (hook != null)
+                hook.Event += async () => await Refresh();
         }
     }
 

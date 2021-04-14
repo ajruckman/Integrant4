@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Integrant4.API;
+using Integrant4.Fundament;
 using Microsoft.JSInterop;
 
 namespace Integrant4.Structurant
@@ -15,8 +16,9 @@ namespace Integrant4.Structurant
         private readonly Dictionary<string, IMemberInstance<TObject, TState>> _memberInstanceDictionary;
 
         public readonly ValidationState ValidationState;
+        public readonly Hook            MemberValueChangeHook = new();
 
-        internal readonly ReaderWriterLockSlim WriteLock = new();
+        internal readonly SemaphoreSlim WriteLock = new(1);
 
         internal StructureInstance
         (
@@ -44,6 +46,7 @@ namespace Integrant4.Structurant
                 inst.OnValueChangeUntyped += v =>
                 {
                     OnMemberValueChange?.Invoke(inst, v);
+                    MemberValueChangeHook.Invoke();
                     ValidationState.ValidateStructure(this);
                 };
 
@@ -85,14 +88,14 @@ namespace Integrant4.Structurant
 
         public async Task<TObject> Construct()
         {
-            WriteLock.EnterWriteLock();
+            await WriteLock.WaitAsync();
             try
             {
                 return await Definition.ResultConstructor.Invoke(this);
             }
             finally
             {
-                WriteLock.ExitWriteLock();
+                WriteLock.Release();
             }
         }
 
@@ -114,8 +117,8 @@ namespace Integrant4.Structurant
 
         // Safety methods
 
-        public void EnterWriteLock() => WriteLock.EnterWriteLock();
-        public void ExitWriteLock()  => WriteLock.ExitWriteLock();
+        public async Task EnterWriteLock() => await WriteLock.WaitAsync();
+        public async Task ExitWriteLock()  => await WriteLock.WaitAsync();
 
         // Proxy methods
 

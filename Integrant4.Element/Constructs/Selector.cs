@@ -127,6 +127,7 @@ namespace Integrant4.Element.Constructs
 
         public Task ClearValue()
         {
+            if (_spec.IsDisabled?.Invoke() ?? false) return Task.CompletedTask;
             if (_selection == null) return Task.CompletedTask;
 
             _selection = null;

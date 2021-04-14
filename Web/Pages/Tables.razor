@@ -12,8 +12,8 @@
         <button @onclick="@(() => _userTable.Sort(nameof(User.LastName), PagedTable<User>.SortDirection.Descending))">Last name descending</button>
         <button @onclick="@(() => _userTable.UnSort())">Un-sort</button>
 
-        <PagedTableSortIndicator TRow="User" Table="@_userTable" ID="@(nameof(User.FirstName))"/>
-        <PagedTableSortIndicator TRow="User" Table="@_userTable" ID="@(nameof(User.LastName))"/>
+        <PagedTableSortButton TRow="User" Table="@_userTable" ID="@(nameof(User.FirstName))"/>
+        <PagedTableSortButton TRow="User" Table="@_userTable" ID="@(nameof(User.LastName))"/>
 
         <div class="I4E-Layout-ListTable">
             <table class="I4E-Layout-ListTable-Inner">

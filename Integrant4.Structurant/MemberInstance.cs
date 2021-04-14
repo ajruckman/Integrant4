@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Integrant4.API;
+using Integrant4.Fundament;
 
 namespace Integrant4.Structurant
 {
@@ -10,6 +11,8 @@ namespace Integrant4.Structurant
         where TState : class
     {
         IMember<TObject, TState> Definition { get; }
+
+        TState State { get; }
 
         Task                              ResetInputValue();
         Task                              RefreshInput();
@@ -32,6 +35,9 @@ namespace Integrant4.Structurant
     {
         private readonly Member<TObject, TState, TValue> _definition;
         private readonly Utility.Debouncer<TValue?>      _debouncer;
+
+        public readonly Hook InputHook       = new();
+        public readonly Hook ValueChangeHook = new();
 
         internal MemberInstance
         (
@@ -77,25 +83,26 @@ namespace Integrant4.Structurant
             }
         }
 
-        public event Action<object?>? OnValueChangeUntyped;
-
         public async Task<IReadOnlyList<IValidation>?> Validations() =>
             _definition.ValidationGetter == null
                 ? null
                 : await _definition.ValidationGetter.Invoke(this);
 
-        public event Action? OnInput;
+        public event Action?          OnInput;
+        public event Action<object?>? OnValueChangeUntyped;
+
+        public TState State => StructureInstance.State;
 
         public TValue? Value()
         {
-            StructureInstance.WriteLock.EnterReadLock();
+            StructureInstance.WriteLock.Wait();
             try
             {
                 return _definition.ValueGetter.Invoke(this);
             }
             finally
             {
-                StructureInstance.WriteLock.ExitReadLock();
+                StructureInstance.WriteLock.Release();
             }
         }
 
@@ -108,20 +115,22 @@ namespace Integrant4.Structurant
         private void OnInputChange(TValue? v)
         {
             OnInput?.Invoke();
+            InputHook.Invoke();
             _debouncer.Reset(v);
         }
 
         private void OnInputChangeFinal(TValue? v)
         {
-            StructureInstance.WriteLock.EnterWriteLock();
+            StructureInstance.WriteLock.Wait();
             try
             {
                 _definition.ValueSetter.Invoke(this, v);
-                OnValueChange?.Invoke(Value());
+                OnValueChange?.Invoke(_definition.ValueGetter.Invoke(this));
+                ValueChangeHook.Invoke();
             }
             finally
             {
-                StructureInstance.WriteLock.ExitWriteLock();
+                StructureInstance.WriteLock.Release();
             }
         }
 

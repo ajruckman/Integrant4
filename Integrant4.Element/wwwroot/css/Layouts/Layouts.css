@@ -91,6 +91,10 @@ div.I4E-Layout-VAlign {
   align-items: center;
   display: flex; }
 
+div.I4E-Layout-SpaceBetween {
+  display: flex;
+  justify-content: space-between; }
+
 div.I4E-Layout-VAlign-Filler {
   flex-grow: 9999; }
 
@@ -141,3 +145,5 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Layout-Panel, div.I4-App[data-i
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Layout-InfoTable, div.I4-App[data-i4-theme-variant="White"] div.I4E-Layout-InfoTable {
   background-color: var(--I4C_Default_Background_1); }
+
+/*# sourceMappingURL=Layouts.css.map */

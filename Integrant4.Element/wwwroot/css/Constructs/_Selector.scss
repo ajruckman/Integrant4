@@ -99,7 +99,7 @@ div.I4E-Construct-Selector {
         div.I4E-Input-Text {
             margin-bottom: 3px;
             width: 100%;
-            
+
             input {
                 width: 100%;
             }
@@ -197,6 +197,16 @@ div.I4-App {
             div.I4E-Construct-Selector-Dropdown {
                 background-color: var(--I4C_Default_Background_8);
                 border: 1px solid var(--I4E_InputBase_Border_Normal);
+
+                div.I4E-Input-Text {
+                    input {
+                        background-color: var(--I4C_Default_Background_8);
+
+                        &:hover {
+                            background-color: var(--I4C_Default_Background_6);
+                        }
+                    }
+                }
 
                 div.I4E-Construct-Selector-Scroller {
                     .mb-bar {

@@ -50,6 +50,11 @@ namespace Integrant4.Element.Constructs
             }
         }
 
+        public void Refresh()
+        {
+            OnRefresh?.Invoke();
+        }
+
         internal TRow[] Rows()
         {
             lock (_rowsLock)
@@ -83,8 +88,6 @@ namespace Integrant4.Element.Constructs
 
     public partial class PagedTable<TRow>
     {
-        private Action? _stateHasChanged;
-
         public int PageSize    { get; }
         public int CurrentPage { get; private set; }
 
@@ -102,6 +105,7 @@ namespace Integrant4.Element.Constructs
 
         public event Action? OnPaginate;
         public event Action? OnSort;
+        public event Action? OnRefresh;
 
         public List<TRow> RowsInView()
         {
@@ -113,7 +117,6 @@ namespace Integrant4.Element.Constructs
             if (CanPrevious())
             {
                 CurrentPage--;
-                _stateHasChanged?.Invoke();
                 OnPaginate?.Invoke();
             }
         }
@@ -123,7 +126,6 @@ namespace Integrant4.Element.Constructs
             if (CanNext())
             {
                 CurrentPage++;
-                _stateHasChanged?.Invoke();
                 OnPaginate?.Invoke();
             }
         }
@@ -133,18 +135,12 @@ namespace Integrant4.Element.Constructs
             if (0 <= index && index < NumPages)
             {
                 CurrentPage = index;
-                _stateHasChanged?.Invoke();
                 OnPaginate?.Invoke();
             }
         }
 
         internal bool CanPrevious() => CurrentPage - 1 >= 0;
         internal bool CanNext()     => CurrentPage + 1 < NumPages;
-
-        internal void SetStateHasChanged(Action stateHasChanged)
-        {
-            _stateHasChanged = stateHasChanged;
-        }
     }
 
     public partial class PagedTable<TRow>
@@ -179,7 +175,6 @@ namespace Integrant4.Element.Constructs
             }
 
             InvalidateRowsSorted();
-            _stateHasChanged?.Invoke();
             OnSort?.Invoke();
         }
 
@@ -192,7 +187,6 @@ namespace Integrant4.Element.Constructs
             }
 
             InvalidateRowsSorted();
-            _stateHasChanged?.Invoke();
             OnSort?.Invoke();
         }
 
@@ -222,7 +216,6 @@ namespace Integrant4.Element.Constructs
 
             Console.WriteLine($"{ActiveSorter}, {ActiveSortDirection}");
             InvalidateRowsSorted();
-            _stateHasChanged?.Invoke();
             OnSort?.Invoke();
         }
     }
@@ -236,7 +229,8 @@ namespace Integrant4.Element.Constructs
 
         protected override void OnParametersSet()
         {
-            Table.SetStateHasChanged(() => InvokeAsync(StateHasChanged));
+            Table.OnPaginate += () => InvokeAsync(StateHasChanged);
+            Table.OnRefresh  += () => InvokeAsync(StateHasChanged);
 
             _previous = new Button(() => "PREVIOUS".AsContent(), new Button.Spec
             {
@@ -270,7 +264,7 @@ namespace Integrant4.Element.Constructs
                 {
                     builder.OpenElement(++seq, "button");
                     builder.AddAttribute(++seq, "disabled", Table.CurrentPage == page);
-                    builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, () => Table.Jump(page)));
+                    builder.AddAttribute(++seq, "onclick",  EventCallback.Factory.Create(this, () => Table.Jump(page)));
                     builder.AddContent(++seq, page + 1);
                     builder.CloseElement();
                 }
@@ -278,7 +272,7 @@ namespace Integrant4.Element.Constructs
                 {
                     builder.OpenElement(++seq, "button");
                     builder.AddAttribute(++seq, "disabled", true);
-                    builder.AddAttribute(++seq, "class", "I4E-Construct-PagedTable-Ellipses");
+                    builder.AddAttribute(++seq, "class",    "I4E-Construct-PagedTable-Ellipses");
                     builder.AddContent(++seq, "...");
                     builder.CloseElement();
                 }
@@ -299,6 +293,7 @@ namespace Integrant4.Element.Constructs
         {
             Table.OnPaginate += () => InvokeAsync(StateHasChanged);
             Table.OnSort     += () => InvokeAsync(StateHasChanged);
+            Table.OnRefresh  += () => InvokeAsync(StateHasChanged);
         }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder) => builder.AddContent(0, ChildContent);
@@ -308,7 +303,11 @@ namespace Integrant4.Element.Constructs
     {
         [Parameter] public PagedTable<TRow> Table { get; set; } = null!;
 
-        protected override void OnParametersSet() => Table.OnPaginate += () => InvokeAsync(StateHasChanged);
+        protected override void OnParametersSet()
+        {
+            Table.OnPaginate += () => InvokeAsync(StateHasChanged);
+            Table.OnRefresh  += () => InvokeAsync(StateHasChanged);
+        }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
@@ -326,12 +325,16 @@ namespace Integrant4.Element.Constructs
         }
     }
 
-    public class PagedTableSortIndicator<TRow> : ComponentBase where TRow : class
+    public class PagedTableSortButton<TRow> : ComponentBase where TRow : class
     {
         [Parameter] public PagedTable<TRow> Table { get; set; } = null!;
         [Parameter] public string           ID    { get; set; } = null!;
 
-        protected override void OnParametersSet() => Table.OnSort += () => InvokeAsync(StateHasChanged);
+        protected override void OnParametersSet()
+        {
+            Table.OnSort    += () => InvokeAsync(StateHasChanged);
+            Table.OnRefresh += () => InvokeAsync(StateHasChanged);
+        }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {

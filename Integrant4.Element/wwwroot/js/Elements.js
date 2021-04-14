@@ -106,6 +106,10 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
 
         // Head keydown handlers
         head.addEventListener('keydown', event => {
+            if (head.hasAttribute('data-disabled')) {
+                return;
+            }
+            
             // Toggle dropdown when head is focused and Space or Enter keys are pressed
             if (event.code === 'Space' || event.code === 'Enter') {
                 event.preventDefault();

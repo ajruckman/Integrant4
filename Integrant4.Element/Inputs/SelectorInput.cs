@@ -19,7 +19,7 @@ namespace Integrant4.Element.Inputs
         {
             _selector = selector;
 
-            _selector.OnChange += OnChange;
+            _selector.OnChange += v => OnChange?.Invoke(v);
         }
 
         public Task           Refresh()               => _selector.Refresh();
