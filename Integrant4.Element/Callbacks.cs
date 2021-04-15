@@ -40,6 +40,8 @@ namespace Integrant4.Element
 
         public delegate Element.FontWeight FontWeight();
 
+        public delegate Element.TextAlign TextAlign();
+
         public delegate Element.Display Display();
 
         //
@@ -83,6 +85,7 @@ namespace Integrant4.Element
         internal Callbacks.Scale?      Scale           { get; init; }
         internal Callbacks.REM?        FontSize        { get; init; }
         internal Callbacks.FontWeight? FontWeight      { get; init; }
+        internal Callbacks.TextAlign?  TextAlign       { get; init; }
         internal Callbacks.Display?    Display         { get; init; }
 
         internal Callbacks.Data?    Data    { get; init; }

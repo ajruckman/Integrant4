@@ -14,9 +14,9 @@ namespace Integrant4.Structurant
 
         TState State { get; }
 
-        Task                              ResetInputValue();
-        Task                              RefreshInput();
-        Task<IReadOnlyList<IValidation>?> Validations();
+        Task                        ResetInputValue();
+        Task                        RefreshInput();
+        IReadOnlyList<IValidation>? Validations();
 
         /// <summary>
         /// Non-debounced event called as soon as new input is received.
@@ -83,10 +83,10 @@ namespace Integrant4.Structurant
             }
         }
 
-        public async Task<IReadOnlyList<IValidation>?> Validations() =>
+        public IReadOnlyList<IValidation>? Validations() =>
             _definition.ValidationGetter == null
                 ? null
-                : await _definition.ValidationGetter.Invoke(this);
+                : _definition.ValidationGetter.Invoke(this);
 
         public event Action?          OnInput;
         public event Action<object?>? OnValueChangeUntyped;

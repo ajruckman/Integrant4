@@ -28,6 +28,7 @@ namespace Integrant4.Element.Bits
             public Callbacks.Pixels?     WidthMax        { get; init; }
             public Callbacks.REM?        FontSize        { get; init; }
             public Callbacks.FontWeight? FontWeight      { get; init; }
+            public Callbacks.TextAlign?  TextAlign       { get; init; }
             public Callbacks.Display?    Display         { get; init; }
             public Callbacks.Data?       Data            { get; init; }
             public Callbacks.Tooltip?    Tooltip         { get; init; }
@@ -47,6 +48,7 @@ namespace Integrant4.Element.Bits
                 WidthMax        = WidthMax,
                 FontSize        = FontSize,
                 FontWeight      = FontWeight,
+                TextAlign       = TextAlign,
                 Display         = Display,
                 Data            = Data,
                 Tooltip         = Tooltip,

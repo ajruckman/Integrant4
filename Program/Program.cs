@@ -25,7 +25,7 @@ namespace Program
                 string nameLast  = inst.GetTyped<string>(nameof(Dog.NameLast)).Value();
                 int    age       = inst.GetTyped<int>(nameof(Dog.Age)).Value();
 
-                return Task.FromResult(new Dog(nameFirst, nameLast, age));
+                return new Dog(nameFirst, nameLast, age);
             });
 
             // structure.Register<string>(new Member<Dog, DogState, string>

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Integrant4.API;
-using Integrant4.Fundament;
 
 namespace Integrant4.Structurant
 {
@@ -55,11 +54,11 @@ namespace Integrant4.Structurant
             _tokenSource = new CancellationTokenSource();
             CancellationToken token = _tokenSource.Token;
 
-            Task.Run(async () =>
+            Task.Run(() =>
             {
                 token.ThrowIfCancellationRequested();
 
-                ValidationSet v = await DoValidation(inst, token);
+                ValidationSet v = DoValidation(inst, token);
 
                 lock (_cacheLock)
                 {
@@ -72,7 +71,7 @@ namespace Integrant4.Structurant
             }, token);
         }
 
-        private static async Task<ValidationSet> DoValidation<TStructure, TState>
+        private static ValidationSet DoValidation<TStructure, TState>
         (
             StructureInstance<TStructure, TState> structure,
             CancellationToken                     token
@@ -86,7 +85,7 @@ namespace Integrant4.Structurant
 
             if (structure.Definition.OverallValidationGetter != null)
             {
-                structureValidations = await structure.Definition.OverallValidationGetter.Invoke(structure);
+                structureValidations = structure.Definition.OverallValidationGetter.Invoke(structure);
             }
 
             //
@@ -97,7 +96,7 @@ namespace Integrant4.Structurant
 
             foreach (IMemberInstance<TStructure, TState> member in structure.MemberInstances)
             {
-                IReadOnlyList<IValidation>? validations = await member.Validations();
+                IReadOnlyList<IValidation>? validations = member.Validations();
                 if (validations == null) continue;
                 memberValidations[member.Definition.ID] = validations;
 

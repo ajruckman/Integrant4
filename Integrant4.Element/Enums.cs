@@ -7,7 +7,7 @@ namespace Integrant4.Element
         InlineBlock,
         Block,
     }
-    
+
     public enum FontWeight
     {
         Thin       = 100,
@@ -19,5 +19,12 @@ namespace Integrant4.Element
         Bold       = 700,
         ExtraBold  = 800,
         Black      = 900,
+    }
+
+    public enum TextAlign
+    {
+        Left,
+        Center,
+        Right,
     }
 }

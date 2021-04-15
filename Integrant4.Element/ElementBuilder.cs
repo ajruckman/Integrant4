@@ -73,6 +73,19 @@ namespace Integrant4.Element
                 result.Add($"font-weight: {(int) spec.FontWeight.Invoke()};");
             }
 
+            if (spec.TextAlign != null)
+            {
+                string align = spec.TextAlign.Invoke() switch
+                {
+                    TextAlign.Left   => "left",
+                    TextAlign.Center => "center",
+                    TextAlign.Right  => "right",
+                    _                => throw new ArgumentOutOfRangeException(),
+                };
+
+                result.Add($"text-align: {align};");
+            }
+
             if (spec.Display != null)
             {
                 string display = spec.Display.Invoke() switch

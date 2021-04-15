@@ -39,6 +39,11 @@ div.I4E-Layout-VAlign {
     display: flex;
 }
 
+div.I4E-Layout-HAlign {
+    display: flex;
+    justify-content: center;
+}
+
 div.I4E-Layout-SpaceBetween {
     display: flex;
     justify-content: space-between;

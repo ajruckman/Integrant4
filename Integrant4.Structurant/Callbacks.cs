@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Integrant4.API;
-using Integrant4.Fundament;
 
 namespace Integrant4.Structurant
 {
@@ -9,9 +7,9 @@ namespace Integrant4.Structurant
     {
         public static class Callbacks
         {
-            public delegate Task<TObject?> ResultConstructor(StructureInstance<TObject, TState> inst);
+            public delegate TObject ResultConstructor(StructureInstance<TObject, TState> inst);
 
-            public delegate Task<IReadOnlyList<IValidation>> ValidationGetter(StructureInstance<TObject, TState> inst);
+            public delegate IReadOnlyList<IValidation> ValidationGetter(StructureInstance<TObject, TState> inst);
         }
     }
 
@@ -25,7 +23,7 @@ namespace Integrant4.Structurant
 
             public delegate IInput<TValue> InputGetter(MemberInstance<TObject, TState, TValue> inst);
 
-            public delegate Task<IReadOnlyList<IValidation>> ValidationGetter
+            public delegate IReadOnlyList<IValidation> ValidationGetter
                 (MemberInstance<TObject, TState, TValue> inst);
         }
     }

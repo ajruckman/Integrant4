@@ -181,7 +181,7 @@ namespace Web.Pages
     {
         private static readonly Structure<Dog, DogState> Structure;
 
-        private static Task<IReadOnlyList<IValidation>> DogValidations(StructureInstance<Dog, DogState> inst)
+        private static IReadOnlyList<IValidation> DogValidations(StructureInstance<Dog, DogState> inst)
         {
             List<IValidation> result = new()
             {
@@ -202,17 +202,16 @@ namespace Web.Pages
                 if (inst.State.NameFirst.Trim() == inst.State.NameLast.Trim())
                     result.Add(new Validation(ValidationResultType.Invalid, "First name cannot equal last name"));
 
-            return Task.FromResult(result as IReadOnlyList<IValidation>);
+            return result;
         }
 
         static Index()
         {
             Structure = new Structure<Dog, DogState>
             (
-                async inst =>
+                inst =>
                 {
-                    await Task.CompletedTask;
-                    return (Dog?) new Dog
+                    return new Dog
                     (
                         inst.State.NameFirst!,
                         inst.State.NameLast!,
@@ -273,7 +272,7 @@ namespace Web.Pages
                     if (inst.StructureInstance.State.Age > 30)
                         result.Add(new Validation(ValidationResultType.Invalid, "Age must be at most 30"));
 
-                    return Task.FromResult(result as IReadOnlyList<IValidation>);
+                    return result;
                 }
             );
 
