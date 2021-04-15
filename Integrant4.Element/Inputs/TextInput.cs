@@ -21,6 +21,7 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Size?       Padding         { get; init; }
             public Callbacks.Color?      BackgroundColor { get; init; }
             public Callbacks.Color?      ForegroundColor { get; init; }
+            public Callbacks.Color?      HighlightColor  { get; init; }
             public Callbacks.Pixels?     Height          { get; init; }
             public Callbacks.Pixels?     HeightMax       { get; init; }
             public Callbacks.Pixels?     Width           { get; init; }
@@ -43,6 +44,7 @@ namespace Integrant4.Element.Inputs
                 Padding         = Padding,
                 BackgroundColor = BackgroundColor,
                 ForegroundColor = ForegroundColor,
+                HighlightColor  = HighlightColor,
                 Height          = Height,
                 HeightMax       = HeightMax,
                 Width           = Width,
@@ -83,9 +85,9 @@ namespace Integrant4.Element.Inputs
             builder.OpenElement(++seq, "input");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
 
-            builder.AddAttribute(++seq, "type", "text");
-            builder.AddAttribute(++seq, "value", Serialize(Value));
-            builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "type",        "text");
+            builder.AddAttribute(++seq, "value",       Serialize(Value));
+            builder.AddAttribute(++seq, "oninput",     EventCallback.Factory.Create(this, Change));
             builder.AddAttribute(++seq, "placeholder", _placeholder?.Invoke());
 
             builder.AddElementReferenceCapture(++seq, r => Reference = r);

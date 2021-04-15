@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Bogus;
 using Integrant4.API;
+using Integrant4.Colorant.Themes.Solids;
 using Integrant4.Element;
 using Integrant4.Element.Bits;
 using Integrant4.Element.Constructs;
@@ -209,7 +210,7 @@ namespace Web.Pages
         {
             Structure = new Structure<Dog, DogState>
             (
-                inst =>
+                async inst =>
                 {
                     return new Dog
                     (
@@ -229,7 +230,11 @@ namespace Web.Pages
                 inputGetter: inst => new TextInput
                 (
                     inst.StructureInstance.JSRuntime!,
-                    inst.Value()
+                    inst.Value(),
+                    new TextInput.Spec
+                    {
+                        HighlightColor = () => Constants.Green_7,
+                    }
                 )
             );
 

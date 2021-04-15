@@ -18,7 +18,6 @@ namespace Integrant4.Element.Inputs
             builder.AddAttribute(++seq, "id", inputBase.ID);
             builder.AddAttribute(++seq, "class",
                 ElementBuilder.ClassAttribute(inputBase.BaseClasses, inputBase.BaseSpec, additionalClasses));
-
             ++seq;
             if (inputBase.BaseSpec.IsVisible?.Invoke() == false)
                 builder.AddAttribute(seq, "hidden", true);
@@ -26,6 +25,10 @@ namespace Integrant4.Element.Inputs
             ++seq;
             if (inputBase.BaseSpec.Tooltip != null)
                 builder.AddAttribute(seq, "data-i4e.tooltip", inputBase.BaseSpec.Tooltip.Invoke());
+
+            ++seq;
+            if (inputBase.BaseSpec.HighlightColor != null)
+                builder.AddAttribute(seq, "data-i4e.highlight", inputBase.BaseSpec.HighlightColor.Invoke());
 
             if (inputBase.BaseSpec.Data != null)
                 foreach ((string name, Callbacks.DataValue getter) in inputBase.BaseSpec.Data.Invoke())

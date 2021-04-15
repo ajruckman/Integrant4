@@ -93,7 +93,7 @@ namespace Integrant4.Structurant
                 await WriteLock.WaitAsync();
                 try
                 {
-                    TObject result =  Definition.ResultConstructor.Invoke(this);
+                    TObject result =  await Definition.ResultConstructor.Invoke(this);
 
                     then?.Invoke(result);
                 }
