@@ -40,6 +40,8 @@ namespace Integrant4.Element.Constructs
                     _rowsSorted = null;
                 }
             }
+            
+            OnPaginate?.Invoke();
         }
 
         public void InvalidateRowsSorted()
@@ -214,7 +216,6 @@ namespace Integrant4.Element.Constructs
                 }
             }
 
-            Console.WriteLine($"{ActiveSorter}, {ActiveSortDirection}");
             InvalidateRowsSorted();
             OnSort?.Invoke();
         }

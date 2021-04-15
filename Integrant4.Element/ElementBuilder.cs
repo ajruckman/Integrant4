@@ -18,6 +18,8 @@ namespace Integrant4.Element
                 c.Add("I4E-Bit--Disabled");
             if (spec.IsRequired?.Invoke() == true)
                 c.Add("I4E-Bit--Required");
+            if (spec.HighlightColor != null)
+                c.Add("I4E-Bit--Highlighted");
 
             return c.ToString();
         }
@@ -46,6 +48,11 @@ namespace Integrant4.Element
             if (spec.ForegroundColor != null)
             {
                 result.Add($"color: {spec.ForegroundColor.Invoke()};");
+            }
+
+            if (spec.HighlightColor != null)
+            {
+                result.Add($"--i4e-highlight: {spec.HighlightColor.Invoke()};");
             }
 
             if (spec.Height != null)

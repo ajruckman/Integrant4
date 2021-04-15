@@ -42,6 +42,12 @@ div.I4E-Input-Checkbox, div.I4E-Input-Date, div.I4E-Input-Decimal, div.I4E-Input
 
         @extend %_InputBase;
     }
+
+    &.I4E-Bit--Highlighted {
+        input, textarea {
+            border: 1px solid var(--i4e-highlight);
+        }
+    }
 }
 
 div.I4E-Input-Select {

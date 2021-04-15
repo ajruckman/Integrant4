@@ -78,6 +78,7 @@ namespace Integrant4.Element
         internal Callbacks.Size?       Padding         { get; init; }
         internal Callbacks.Color?      BackgroundColor { get; init; }
         internal Callbacks.Color?      ForegroundColor { get; init; }
+        internal Callbacks.Color?      HighlightColor  { get; init; }
         internal Callbacks.Pixels?     Height          { get; init; }
         internal Callbacks.Pixels?     HeightMax       { get; init; }
         internal Callbacks.Pixels?     Width           { get; init; }

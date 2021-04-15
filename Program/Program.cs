@@ -19,7 +19,7 @@ namespace Program
             // dogExpression = _ => d.Age;
             // Console.WriteLine(dogExpression.Body);
 
-            Structure<Dog, DogState> structure = new(inst =>
+            Structure<Dog, DogState> structure = new(async inst =>
             {
                 string nameFirst = inst.GetTyped<string>(nameof(Dog.NameFirst)).Value();
                 string nameLast  = inst.GetTyped<string>(nameof(Dog.NameLast)).Value();
