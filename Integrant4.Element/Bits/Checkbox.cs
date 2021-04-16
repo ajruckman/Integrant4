@@ -63,13 +63,13 @@ namespace Integrant4.Element.Bits
 
     public partial class Checkbox
     {
-        private Func<Task>? _refresher;
+        private Hook? _refresher;
 
         public bool IsChecked { get; private set; }
 
-        public async Task Refresh() => await (_refresher?.Invoke() ?? Task.CompletedTask);
+        public async Task Refresh() => _refresher?.Invoke();
 
-        public override RenderFragment Renderer() => RefreshWrapper.Create(builder =>
+        public override RenderFragment Renderer() => Latch.Create(builder =>
         {
             int seq = -1;
 

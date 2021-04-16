@@ -79,9 +79,9 @@ namespace Integrant4.Element.Bits
 
     public partial class Button
     {
-        private Func<Task>? _refresher;
+        private Hook? _refresher;
 
-        public override RenderFragment Renderer() => RefreshWrapper.Create(builder =>
+        public override RenderFragment Renderer() => Latch.Create(builder =>
         {
             IRenderable[] contents = _contents.Invoke().ToArray();
 
@@ -130,7 +130,7 @@ namespace Integrant4.Element.Bits
             BitBuilder.ScheduleElementJobs(this, builder, ref seq);
         }, v => _refresher = v);
 
-        public async Task Refresh() => await (_refresher?.Invoke() ?? Task.CompletedTask);
+        public async Task Refresh() => _refresher?.Invoke();
 
         public event Action<Button, ClickArgs>? OnClick;
 

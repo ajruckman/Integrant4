@@ -29,9 +29,9 @@ namespace Integrant4.Element.Inputs
         public abstract Task              SetValue(T? value);
         public abstract event Action<T?>? OnChange;
 
-        protected Func<Task>? Refresher { get; set; }
+        protected Hook? Refresher { get; set; }
 
-        public async Task Refresh() => await (Refresher?.Invoke() ?? Task.CompletedTask);
+        public async Task Refresh() => Refresher?.Invoke();
     }
 
     public partial class InputBase<T>

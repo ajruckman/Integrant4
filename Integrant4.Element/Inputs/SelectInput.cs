@@ -140,7 +140,7 @@ namespace Integrant4.Element.Inputs
             }
         }
 
-        public override RenderFragment Renderer() => RefreshWrapper.Create(builder =>
+        public override RenderFragment Renderer() => Latch.Create(builder =>
         {
             int seq = -1;
 

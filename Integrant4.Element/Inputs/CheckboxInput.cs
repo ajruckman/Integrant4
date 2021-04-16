@@ -73,7 +73,7 @@ namespace Integrant4.Element.Inputs
             _value     = value;
         }
 
-        public override RenderFragment Renderer() => RefreshWrapper.Create(builder =>
+        public override RenderFragment Renderer() => Latch.Create(builder =>
         {
             var seq = -1;
 

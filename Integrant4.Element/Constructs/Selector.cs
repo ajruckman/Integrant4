@@ -71,7 +71,7 @@ namespace Integrant4.Element.Constructs
             public Callbacks.Callback<string>? FilterPlaceholderText { get; init; }
             public Callbacks.Callback<string>? UncachedText          { get; init; }
             public Callbacks.Callback<string>? NoOptionsText         { get; init; }
-            public Callbacks.Callback<string>? NoResultsText         { get; init; }
+            public Callbacks.Callback<string>?         NoResultsText         { get; init; }
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
             public Callbacks.IsDisabled? IsDisabled { get; init; }
@@ -261,7 +261,6 @@ namespace Integrant4.Element.Constructs
                 {
                     if (!_disabledAtLastRender)
                     {
-                        Console.WriteLine("Disabled now");
                         _refresher?.Invoke();
                     }
 
@@ -270,7 +269,6 @@ namespace Integrant4.Element.Constructs
 
                 _selection = _options[i];
                 OnChange?.Invoke(_selection.Value.Value);
-                Console.WriteLine($"{i} <- {_selection}");
 
                 _refresher?.Invoke();
             }
@@ -288,15 +286,14 @@ namespace Integrant4.Element.Constructs
         private readonly TextInput? _filterInput;
 
         private ElementReference? _elemRef;
-        private Func<Task>?       _refresher;
+        private Hook?             _refresher;
         private ElementService?   _elementService;
         private bool              _disabledAtLastRender;
 
-        public RenderFragment Renderer() => TickingRefreshWrapper.Create
+        public RenderFragment Renderer() => Latch.Create
         (
             builder =>
             {
-                Console.WriteLine("Selector > Renderer");
                 Stopwatch sw = new();
                 sw.Start();
 
@@ -445,7 +442,6 @@ namespace Integrant4.Element.Constructs
                 builder.CloseElement();
 
                 sw.Stop();
-                Console.WriteLine(sw.ElapsedMilliseconds);
             },
             v => _refresher = v,
             firstRender =>

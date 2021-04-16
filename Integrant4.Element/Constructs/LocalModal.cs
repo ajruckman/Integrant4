@@ -11,8 +11,8 @@ namespace Integrant4.Element.Constructs
         private readonly Callbacks.BitContents _contents;
         private readonly InnerDirection?       _innerDirection;
 
-        private bool        _show;
-        private Func<Task>? _refresher;
+        private bool  _show;
+        private Hook? _refresher;
 
         public LocalModal
         (
@@ -31,7 +31,7 @@ namespace Integrant4.Element.Constructs
 
     public partial class LocalModal
     {
-        public RenderFragment Renderer() => RefreshWrapper.Create(builder =>
+        public RenderFragment Renderer() => Latch.Create(builder =>
         {
             int seq = -1;
 
@@ -53,7 +53,7 @@ namespace Integrant4.Element.Constructs
             builder.CloseElement();
         }, v => _refresher = v);
 
-        public async Task Refresh() => await (_refresher?.Invoke() ?? Task.CompletedTask);
+        public async Task Refresh() => _refresher?.Invoke();
 
         public async Task Show()
         {
