@@ -27,7 +27,7 @@ namespace Integrant4.Fundament
 
             if (Hook == null)
             {
-                throw new Exception("Hook was not passed to HookObserver component.");
+                throw new Exception("Hook was not passed to Latch component.");
             }
 
             _renderHandle.Render(ChildContent);

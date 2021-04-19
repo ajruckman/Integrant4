@@ -15,7 +15,7 @@ namespace Integrant4.Structurant
         TState State { get; }
 
         Task                        ResetInputValue();
-        Task                        RefreshInput();
+        void                        RefreshInput();
         IReadOnlyList<IValidation>? Validations();
 
         /// <summary>
@@ -75,11 +75,11 @@ namespace Integrant4.Structurant
                 await Input.SetValue(Value());
         }
 
-        public async Task RefreshInput()
+        public void RefreshInput()
         {
             if (Input is IRefreshableInput<TValue> refreshable)
             {
-                await refreshable.Refresh();
+                refreshable.Refresh();
             }
         }
 

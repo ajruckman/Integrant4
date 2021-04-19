@@ -22,7 +22,7 @@ namespace Integrant4.Element.Inputs
             _selector.OnChange += v => OnChange?.Invoke(v);
         }
 
-        public Task           Refresh()               => _selector.Refresh();
+        public void           Refresh()               => _selector.Refresh();
         public RenderFragment Renderer()              => _selector.Renderer();
         public Task<TValue?>  GetValue()              => _selector.GetValue();
         public Task           SetValue(TValue? value) => _selector.SetValue(value);

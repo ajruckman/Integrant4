@@ -7,6 +7,6 @@ namespace Integrant4.Element.Bits
 
     public interface IRefreshableBit : IBit
     {
-        public Task Refresh();
+        public void Refresh();
     }
 }

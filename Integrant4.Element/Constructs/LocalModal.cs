@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using Integrant4.API;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
@@ -25,7 +23,7 @@ namespace Integrant4.Element.Constructs
             _innerDirection = innerDirection;
 
             if (hook != null)
-                hook.Event += async () => await Refresh();
+                hook.Event += Refresh;
         }
     }
 
@@ -53,18 +51,18 @@ namespace Integrant4.Element.Constructs
             builder.CloseElement();
         }, v => _refresher = v);
 
-        public async Task Refresh() => _refresher?.Invoke();
+        public void Refresh() => _refresher?.Invoke();
 
-        public async Task Show()
+        public void Show()
         {
             _show = true;
-            await Refresh();
+            Refresh();
         }
 
-        public async Task Hide()
+        public void Hide()
         {
             _show = false;
-            await Refresh();
+            Refresh();
         }
     }
 

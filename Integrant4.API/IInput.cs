@@ -13,6 +13,6 @@ namespace Integrant4.API
 
     public interface IRefreshableInput<TValue> : IInput<TValue>
     {
-        public Task Refresh();
+        public void Refresh();
     }
 }

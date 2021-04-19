@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Integrant4.API;
 
 namespace Integrant4.Element.Constructs
@@ -7,6 +6,6 @@ namespace Integrant4.Element.Constructs
 
     public interface IRefreshableConstruct : IConstruct
     {
-        public Task Refresh();
+        public void Refresh();
     }
 }

@@ -118,11 +118,11 @@ namespace Integrant4.Structurant
             }
         }
 
-        public async Task RefreshAllMemberInputs()
+        public void RefreshAllMemberInputs()
         {
             foreach (var inst in _memberInstances)
             {
-                await inst.RefreshInput();
+                inst.RefreshInput();
             }
         }
 

@@ -31,7 +31,7 @@ namespace Integrant4.Element.Inputs
 
         protected Hook? Refresher { get; set; }
 
-        public async Task Refresh() => Refresher?.Invoke();
+        public void Refresh() => Refresher?.Invoke();
     }
 
     public partial class InputBase<T>

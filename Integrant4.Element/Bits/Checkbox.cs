@@ -67,7 +67,7 @@ namespace Integrant4.Element.Bits
 
         public bool IsChecked { get; private set; }
 
-        public async Task Refresh() => _refresher?.Invoke();
+        public void Refresh() => _refresher?.Invoke();
 
         public override RenderFragment Renderer() => Latch.Create(builder =>
         {
