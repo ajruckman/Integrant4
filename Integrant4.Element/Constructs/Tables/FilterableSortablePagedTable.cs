@@ -28,7 +28,7 @@ namespace Integrant4.Element.Constructs.Tables
         }
     }
 
-    public partial class FilterableSortablePagedTable<TRow> : IFilterableSortablePagedTable<TRow> where TRow : class
+    public partial class FilterableSortablePagedTable<TRow> where TRow : class
     {
         private readonly Hook _invalidateHook;
         private readonly Hook _paginateHook;
@@ -67,7 +67,7 @@ namespace Integrant4.Element.Constructs.Tables
         public void   UnSort() => _table.UnSort();
     }
 
-    public partial class FilterableSortablePagedTable<TRow> : IFilterableSortablePagedTable<TRow> where TRow : class
+    public partial class FilterableSortablePagedTable<TRow> where TRow : class
     {
         private readonly object _rowsLock         = new();
         private readonly object _rowsFilteredLock = new();
@@ -77,7 +77,6 @@ namespace Integrant4.Element.Constructs.Tables
 
         public TRow[] Rows()
         {
-            Console.WriteLine("Rows()");
             lock (_rowsLock)
             {
                 return _rows ??= _rowGetter.Invoke();
@@ -136,7 +135,7 @@ namespace Integrant4.Element.Constructs.Tables
         }
     }
 
-    public partial class FilterableSortablePagedTable<TRow> : IFilterableSortablePagedTable<TRow> where TRow : class
+    public partial class FilterableSortablePagedTable<TRow> where TRow : class
     {
         private readonly Dictionary<string, Func<TRow, string, bool>> _matchers    = new();
         private readonly object                                       _matcherLock = new();
@@ -158,7 +157,7 @@ namespace Integrant4.Element.Constructs.Tables
                     throw new ArgumentException("Filter cannot be empty.", nameof(filter));
 
                 if (!_matchers.ContainsKey(key))
-                    throw new ArgumentException("Key does not have a registered matcher.", nameof(key));
+                    throw new ArgumentException($"Key '{key}' does not have a registered matcher.", nameof(key));
 
                 _filters[key] = filter;
 
@@ -174,7 +173,7 @@ namespace Integrant4.Element.Constructs.Tables
             lock (_matcherLock)
             {
                 if (!_matchers.ContainsKey(key))
-                    throw new ArgumentException("Key does not have a registered matcher.", nameof(key));
+                    throw new ArgumentException($"Key '{key}' does not have a registered matcher.", nameof(key));
 
                 _filters.Remove(key);
 

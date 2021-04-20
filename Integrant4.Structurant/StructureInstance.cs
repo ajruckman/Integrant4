@@ -139,10 +139,10 @@ namespace Integrant4.Structurant
         public IReadOnlyList<IValidation>? MemberValidations(string id) =>
             ValidationState.Result?.MemberValidations[id];
 
-        public IInput<TValue>? Input<TValue>(string id) =>
+        public IInput<TValue>? GetInput<TValue>(string id) =>
             GetTyped<TValue>(id).Input;
 
-        public TInput? Input<TValue, TInput>(string id) where TInput : class, IInput<TValue> =>
+        public TInput? GetInputTyped<TValue, TInput>(string id) where TInput : class, IInput<TValue> =>
             GetTyped<TValue>(id).Input as TInput;
     }
 }

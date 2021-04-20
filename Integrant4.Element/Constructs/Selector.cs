@@ -9,7 +9,6 @@ using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using Superset.Utilities;
 
 namespace Integrant4.Element.Constructs
 {
@@ -35,7 +34,7 @@ namespace Integrant4.Element.Constructs
                 Debouncer<string?> filterDebouncer = new(
                     UpdateFilterValue,
                     null,
-                    200
+                    250
                 );
 
                 _filterInput = new TextInput(jsRuntime, null, new TextInput.Spec
@@ -71,7 +70,7 @@ namespace Integrant4.Element.Constructs
             public Callbacks.Callback<string>? FilterPlaceholderText { get; init; }
             public Callbacks.Callback<string>? UncachedText          { get; init; }
             public Callbacks.Callback<string>? NoOptionsText         { get; init; }
-            public Callbacks.Callback<string>?         NoResultsText         { get; init; }
+            public Callbacks.Callback<string>? NoResultsText         { get; init; }
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
             public Callbacks.IsDisabled? IsDisabled { get; init; }
@@ -468,13 +467,13 @@ namespace Integrant4.Element.Constructs
                     );
             });
 
-        public void BeginLoadingOptions()
+        public void BeginLoadingOptions(Action? then = null)
         {
             lock (_optionsLock)
             {
                 if (_options == null)
                 {
-                    Task.Run(BeginCache);
+                    Task.Run(BeginCache).ContinueWith(_ => then?.Invoke());
                 }
             }
         }

@@ -33,7 +33,6 @@ namespace Web.Shared
                 InvokeAsync(StateHasChanged);
                 
                 _stopwatch.Stop();
-                Console.WriteLine(_stopwatch.ElapsedMilliseconds);
             };
             _defaultVariantLoader.OnVariantChange += _ => InvokeAsync(StateHasChanged);
 

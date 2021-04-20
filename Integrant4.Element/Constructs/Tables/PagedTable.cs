@@ -46,10 +46,7 @@ namespace Integrant4.Element.Constructs.Tables
                 if (_rows == null)
                 {
                     _rows = _rowGetter.Invoke();
-                    Console.WriteLine("Null -> " + _rows.Length);
                 }
-
-                Console.WriteLine("<> " + _rows.Length);
 
                 return _rows;
             }
@@ -93,7 +90,6 @@ namespace Integrant4.Element.Constructs.Tables
                     if (_rows == null)
                     {
                         _rows = _rowGetter.Invoke();
-                        Console.WriteLine("Null -> " + _rows.Length);
                     }
 
                     return (int) Math.Ceiling(_rows.Length / (decimal) PageSize);

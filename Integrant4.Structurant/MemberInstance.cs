@@ -34,7 +34,7 @@ namespace Integrant4.Structurant
         where TState : class
     {
         private readonly Member<TObject, TState, TValue> _definition;
-        private readonly Utility.Debouncer<TValue?>      _debouncer;
+        private readonly Debouncer<TValue?>              _debouncer;
 
         public readonly Hook InputHook       = new();
         public readonly Hook ValueChangeHook = new();
@@ -48,7 +48,7 @@ namespace Integrant4.Structurant
             _definition       = definition;
             StructureInstance = structureInstance;
 
-            _debouncer = new Utility.Debouncer<TValue?>
+            _debouncer = new Debouncer<TValue?>
             (
                 OnInputChangeFinal,
                 definition.ValueGetter.Invoke(this),

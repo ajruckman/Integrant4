@@ -29,6 +29,6 @@ namespace Integrant4.Element.Inputs
 
         public event Action<TValue?>? OnChange;
 
-        public void BeginLoadingOptions() => _selector.BeginLoadingOptions();
+        public void BeginLoadingOptions(Action? then = null) => _selector.BeginLoadingOptions(then);
     }
 }
