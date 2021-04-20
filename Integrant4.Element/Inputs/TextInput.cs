@@ -1,5 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 using Integrant4.Fundament;
+using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
@@ -12,6 +14,7 @@ namespace Integrant4.Element.Inputs
         public class Spec
         {
             public Callbacks.Callback<string>? Placeholder { get; init; }
+            public Callbacks.Callback<bool>?   Clearable   { get; init; }
 
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -61,6 +64,7 @@ namespace Integrant4.Element.Inputs
     public partial class TextInput
     {
         private readonly Callbacks.Callback<string>? _placeholder;
+        private readonly Callbacks.Callback<bool>?   _clearable;
 
         public TextInput
         (
@@ -71,6 +75,7 @@ namespace Integrant4.Element.Inputs
             : base(jsRuntime, spec?.ToBaseSpec(), new ClassSet("I4E-Input", "I4E-Input-Text"))
         {
             _placeholder = spec?.Placeholder;
+            _clearable   = spec?.Clearable;
 
             Value = Nullify(value);
         }
@@ -80,23 +85,56 @@ namespace Integrant4.Element.Inputs
             int seq = -1;
 
             builder.OpenElement(++seq, "div");
-            InputBuilder.ApplyOuterAttributes(this, builder, ref seq, null);
+            InputBuilder.ApplyOuterAttributes(this, builder, ref seq,
+                _clearable?.Invoke() == true
+                    ? new[] {"I4E-Input-Text--Clearable"}
+                    : null
+            );
 
             builder.OpenElement(++seq, "input");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
 
-            builder.AddAttribute(++seq, "type",        "text");
-            builder.AddAttribute(++seq, "value",       Serialize(Value));
-            builder.AddAttribute(++seq, "oninput",     EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "type", "text");
+            builder.AddAttribute(++seq, "value", Serialize(Value));
+            builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
             builder.AddAttribute(++seq, "placeholder", _placeholder?.Invoke());
 
             builder.AddElementReferenceCapture(++seq, r => Reference = r);
             builder.CloseElement();
 
+            if (_clearable?.Invoke() == true)
+            {
+                ushort  size  = 16;
+                double? scale = BaseSpec.Scale?.Invoke();
+                if (scale != null)
+                    size = (ushort) (size * scale);
+
+                builder.OpenElement(++seq, "button");
+                builder.AddAttribute(++seq, "class", "I4E-Input-Text-ClearButton");
+                builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, OnClearClick));
+                ++seq;
+                if (scale != null)
+                    builder.AddAttribute(seq, "style", $"font-size: {scale}rem;");
+
+                builder.OpenComponent<BootstrapIcon>(++seq);
+                builder.AddAttribute(++seq, "ID", "x-circle-fill");
+
+                builder.AddAttribute(++seq, "Size", size);
+
+                builder.CloseComponent();
+                builder.CloseElement();
+            }
+
             builder.CloseElement();
 
             InputBuilder.ScheduleElementJobs(this, builder, ref seq);
         }, v => Refresher = v);
+
+        private async Task OnClearClick()
+        {
+            if (_clearable?.Invoke() == true)
+                await SetValue(null);
+        }
 
         protected override        string  Serialize(string?   v) => v ?? "";
         protected override        string? Deserialize(string? v) => string.IsNullOrEmpty(v) ? null : v;

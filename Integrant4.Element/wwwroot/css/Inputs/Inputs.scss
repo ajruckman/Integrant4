@@ -1,3 +1,20 @@
+%_InputDisabledStyle {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+%_InputHoverStyle {
+    background-color: var(--I4E_InputBase_Background_Hover);
+    border-color: var(--I4E_InputBase_Border_Hover);
+    transition: background-color 75ms ease-in, border 75ms ease-in;
+}
+
+%_InputFocusStyle {
+    background-color: var(--I4E_InputBase_Background_Focus);
+    border-color: var(--I4E_InputBase_Border_Focus);
+    transition: background-color 75ms ease-in, border 75ms ease-in;
+}
+
 %_InputBase {
     background-color: var(--I4E_InputBase_Background_Normal);
     border: 1px solid var(--I4E_InputBase_Border_Normal);
@@ -14,21 +31,17 @@
     }
 
     &:disabled, &[data-disabled] {
-        cursor: not-allowed;
-        opacity: 0.5;
+        @extend %_InputDisabledStyle;
     }
 
     &:hover:not(:disabled):not([data-disabled]) {
-        background-color: var(--I4E_InputBase_Background_Hover);
-        border-color: var(--I4E_InputBase_Border_Hover);
-        transition: background-color 75ms ease-in, border 75ms ease-in;
+        @extend %_InputHoverStyle;
     }
 
     &:focus:not(:disabled):not([data-disabled]), &[data-focused]:not(:disabled):not([data-disabled]) {
-        background-color: var(--I4E_InputBase_Background_Focus);
-        border-color: var(--I4E_InputBase_Border_Focus);
         box-shadow: var(--I4C_Default_Shadow_0);
-        transition: background-color 75ms ease-in, border 75ms ease-in;
+
+        @extend %_InputFocusStyle;
     }
 }
 
@@ -46,6 +59,76 @@ div.I4E-Input-Checkbox, div.I4E-Input-Date, div.I4E-Input-Decimal, div.I4E-Input
     &.I4E-Bit--Highlighted {
         input, textarea {
             border: 1px solid var(--i4e-highlight);
+        }
+    }
+}
+
+div.I4E-Input-Text {
+    &--Clearable {
+        align-items: center;
+        display: inline-flex;
+        position: relative;
+
+        input:not(#_) {
+            border-bottom-right-radius: 0;
+            border-right: 0;
+            border-top-right-radius: 0;
+        }
+
+        button {
+            align-items: center;
+            background-color: var(--I4E_InputBase_Background_Normal);
+            border: 1px solid var(--I4E_InputBase_Border_Normal);
+            border-bottom-right-radius: calc(1em * (3 / 15));
+            border-left: none !important;
+            border-top-right-radius: calc(1em * (3 / 15));
+            bottom: 0;
+            color: var(--I4E_InputBase_ClearButton_Normal);
+            display: flex;
+            outline: none !important;
+            padding: 0 calc(1em * (5 / 15)) 0 0;
+            position: absolute;
+            right: calc(-1 * calc(1em * (16 / 15)));
+            top: 0;
+            transition: background-color 75ms ease-in, border 75ms ease-in;
+
+            &:hover {
+                color: var(--I4E_InputBase_ClearButton_Hover) !important;
+            }
+
+            &:active {
+                color: var(--I4E_InputBase_ClearButton_Focus) !important;
+            }
+
+            &::after {
+                border-bottom-right-radius: calc(1em * (3 / 15));
+                border-top-right-radius: calc(1em * (3 / 15));
+                bottom: 0;
+                content: '';
+                left: 6px;
+                position: absolute;
+                right: 0;
+                top: 0;
+                z-index: -1;
+
+            }
+        }
+
+        input:not(#_):disabled ~ button, input:not(#_)[data-disabled] ~ button {
+            @extend %_InputDisabledStyle;
+        }
+
+        input:not(#_):hover:not(:disabled):not([data-disabled]) ~ button {
+            @extend %_InputHoverStyle;
+        }
+
+        input:not(#_):focus:not(:disabled):not([data-disabled]) ~ button,
+        input:not(#_)[data-focused]:not(:disabled):not([data-disabled]) ~ button {
+            @extend %_InputFocusStyle;
+
+            &::after {
+                box-shadow: var(--I4C_Default_Shadow_0);
+            }
         }
     }
 }
@@ -69,6 +152,10 @@ div.I4-App {
         --I4E_InputBase_Border_Focus: var(--I4C_Default_Accent_7);
         --I4E_InputBase_Border_Hover: var(--I4C_Default_Border_13);
         --I4E_InputBase_Border_Normal: var(--I4C_Default_Border_11);
+
+        --I4E_InputBase_ClearButton_Focus: var(--I4C_Default_Accent_7);
+        --I4E_InputBase_ClearButton_Hover: var(--I4C_Default_Opaque_White_3);
+        --I4E_InputBase_ClearButton_Normal: var(--I4C_Default_Opaque_White_2);
     }
 
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
@@ -79,5 +166,9 @@ div.I4-App {
         --I4E_InputBase_Border_Focus: var(--I4C_Default_Accent_7);
         --I4E_InputBase_Border_Hover: var(--I4C_Default_Border_10);
         --I4E_InputBase_Border_Normal: var(--I4C_Default_Border_5);
+
+        --I4E_InputBase_ClearButton_Focus: var(--I4C_Default_Accent_7);
+        --I4E_InputBase_ClearButton_Hover: var(--I4C_Default_Opaque_Black_3);
+        --I4E_InputBase_ClearButton_Normal: var(--I4C_Default_Opaque_Black_2);
     }
 }

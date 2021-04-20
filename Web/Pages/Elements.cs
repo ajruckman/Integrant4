@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Integrant4.API;
+using Integrant4.Colorant.Themes.Default;
 using Integrant4.Element;
 using Integrant4.Element.Bits;
 using Integrant4.Element.Constructs;
@@ -19,6 +20,11 @@ namespace Web.Pages
         private readonly List<Button> _buttonsColored = new();
 
         private Header _header = null!;
+
+        private TextInput _textInput                = null!;
+        private TextInput _textInputHighlighted     = null!;
+        private TextInput _textInputClearable       = null!;
+        private TextInput _textInputClearableScaled = null!;
 
         private IntegerInput _intInput            = null!;
         private IntegerInput _intInput0Null       = null!;
@@ -103,6 +109,25 @@ namespace Web.Pages
 
             //
 
+            _textInput = new TextInput(JSRuntime, null, new TextInput.Spec
+            {
+            });
+            _textInputHighlighted = new TextInput(JSRuntime, null, new TextInput.Spec
+            {
+                HighlightColor = () => Constants.Accent_7,
+            });
+            _textInputClearable = new TextInput(JSRuntime, null, new TextInput.Spec
+            {
+                Clearable = Always.True,
+            });
+            _textInputClearableScaled = new TextInput(JSRuntime, null, new TextInput.Spec
+            {
+                Clearable = Always.True,
+                Scale     = () => 2,
+            });
+
+            //
+
             _checkboxInput = new CheckboxInput(JSRuntime, false, new CheckboxInput.Spec {IsRequired = Always.True});
 
             void PrintB(bool v) => Console.WriteLine($"bool -> {v}");
@@ -131,7 +156,7 @@ namespace Web.Pages
             });
             _buttonIconAll = new Button(() => new IRenderable[]
             {
-                new BootstrapIcon("caret-left-fill",  16),
+                new BootstrapIcon("caret-left-fill", 16),
                 new BootstrapIcon("caret-right-fill", 16),
             });
 
@@ -276,7 +301,7 @@ namespace Web.Pages
             {
                 _spinnerTextNormal,
             });
-            
+
             //
 
             for (double i = 0; i < 3; i += 0.1)
