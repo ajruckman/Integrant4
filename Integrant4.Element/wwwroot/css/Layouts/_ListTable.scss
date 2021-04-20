@@ -30,7 +30,6 @@ div.I4E-Layout-ListTable {
         thead {
             tr {
                 th {
-                    background-color: var(--I4C_Default_Background_7);
                     border-bottom: 1px solid var(--I4C_Default_Border_11);
                     color: var(--I4C_Default_Text_4);
                     font-weight: 600;
@@ -43,6 +42,35 @@ div.I4E-Layout-ListTable {
 
                 &:not(.Unpadded) th {
                     padding: 7px;
+                }
+            }
+
+            tr.ForPaginationButtons {
+                th {
+                    padding: 1px;
+                }
+            }
+
+            tr.ForColumnControls {
+                th {
+                    padding: 3px;
+
+                    div.I4E-Layout-ListTable-TableControlsContainer {
+                        align-items: center;
+                        display: flex;
+                        justify-content: space-between;
+
+                        .I4E-Construct-PagedTable-FilterInput {
+                            padding-right: 3px;
+                            width: 100%;
+
+                            .I4E-Input {
+                                input {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -152,11 +180,21 @@ div.I4E-Layout-ListTable {
                     }
                 }
             }
+
+            tr.I4E-Construct-PagedTable-NoValuesMessage {
+                td {
+                    color: var(--I4C_Default_Text_4);
+                    font-style: italic;
+                    font-weight: bold;
+                    padding: 7px;
+                    text-align: center;
+                }
+            }
         }
 
         tfoot {
             tr {
-                th {
+                td {
                     background-color: var(--I4C_Default_Background_7);
                     border-top: 1px solid var(--I4C_Default_Border_11);
                     color: var(--I4C_Default_Text_4);
@@ -167,8 +205,84 @@ div.I4E-Layout-ListTable {
                     }
                 }
 
-                &:not(.Unpadded) th {
-                    padding: 7px;
+                &:not(.Unpadded) td {
+                    padding: 15px 7px;
+                }
+
+                &.ForPaginationInfoAndButtons {
+                    td {
+                        padding: 1px;
+
+                        div.I4E-Layout-ListTable-TableControlsContainer {
+                            align-items: center;
+                            display: flex;
+                            justify-content: space-between;
+
+                            div.I4E-Construct-PagedTable-PageInfo {
+                                padding: 0 7px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Variable colors
+
+div.I4-App {
+    &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
+        div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner {
+            thead tr {
+                th {
+                    background-color: var(--I4C_Default_Background_6);
+                }
+
+                &.ForPaginationButtons, &.ForColumnControls {
+                    th {
+                        background-color: var(--I4C_Default_Background_4);
+                    }
+                }
+            }
+
+            tfoot tr {
+                td {
+                    background-color: var(--I4C_Default_Background_6);
+                }
+
+                &.ForPaginationInfoAndButtons {
+                    td {
+                        background-color: var(--I4C_Default_Background_4);
+                    }
+                }
+            }
+        }
+    }
+
+    &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
+        div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner {
+            thead tr {
+                th {
+                    background-color: var(--I4C_Default_Background_0);
+                }
+
+                &.ForPaginationButtons, &.ForColumnControls {
+                    th {
+                        background-color: var(--I4C_Default_Background_1);
+                    }
+                }
+            }
+
+            tfoot tr {
+                td {
+                    background-color: var(--I4C_Default_Background_0);
+                }
+
+                &.ForPaginationInfoAndButtons {
+                    td {
+                        background-color: var(--I4C_Default_Background_1);
+                    }
                 }
             }
         }

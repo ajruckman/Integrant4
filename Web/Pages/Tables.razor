@@ -1,19 +1,128 @@
 @page "/tables"
 
 @using Integrant4.Element.Constructs
+@using Integrant4.Element.Constructs.Tables
 
 <div class="I4E-Layout-Panel">
     <div class="I4E-Layout-Panel-Inner">
         <h1>Tables</h1>
 
-        <button @onclick="@(() => _userTable.Sort(nameof(User.FirstName), PagedTable<User>.SortDirection.Ascending))">First name ascending</button>
-        <button @onclick="@(() => _userTable.Sort(nameof(User.FirstName), PagedTable<User>.SortDirection.Descending))">First name descending</button>
-        <button @onclick="@(() => _userTable.Sort(nameof(User.LastName), PagedTable<User>.SortDirection.Ascending))">Last name ascending</button>
-        <button @onclick="@(() => _userTable.Sort(nameof(User.LastName), PagedTable<User>.SortDirection.Descending))">Last name descending</button>
-        <button @onclick="@(() => _userTable.UnSort())">Un-sort</button>
+        <button @onclick="@(() => _filterableSortableUserTable.Sort(nameof(User.FirstName), TableSortDirection.Ascending))">First name ascending</button>
+        <button @onclick="@(() => _filterableSortableUserTable.Sort(nameof(User.FirstName), TableSortDirection.Descending))">First name descending</button>
+        <button @onclick="@(() => _filterableSortableUserTable.Sort(nameof(User.LastName), TableSortDirection.Ascending))">Last name ascending</button>
+        <button @onclick="@(() => _filterableSortableUserTable.Sort(nameof(User.LastName), TableSortDirection.Descending))">Last name descending</button>
+        <button @onclick="@(() => _filterableSortableUserTable.UnSort())">Un-sort</button>
 
-        <PagedTableSortButton TRow="User" Table="@_userTable" ID="@(nameof(User.FirstName))"/>
-        <PagedTableSortButton TRow="User" Table="@_userTable" ID="@(nameof(User.LastName))"/>
+
+        <div class="I4E-Layout-ListTable BorderedHeaderCells BorderedBodyCells">
+            <table class="I4E-Layout-ListTable-Inner">
+                <thead>
+                <tr class="ForPaginationButtons">
+                    <th colspan="2">
+                        <PagedTableButtons TRow="User" Table="@_filterableSortableUserTable"/>
+                    </th>
+                </tr>
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                </tr>
+                <tr class="ForColumnControls">
+                    <th>
+                        <div class="I4E-Layout-ListTable-TableControlsContainer">
+                            <FilterableSortablePagedTableFilterInput TRow="User" Table="@_filterableSortableUserTable" ID="@(nameof(User.FirstName))"/>
+                            <SortablePagedTableSortButton TRow="User" Table="@_filterableSortableUserTable" ID="@(nameof(User.FirstName))"/>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="I4E-Layout-ListTable-TableControlsContainer">
+                            <FilterableSortablePagedTableFilterInput TRow="User" Table="@_filterableSortableUserTable" ID="@(nameof(User.LastName))"/>
+                            <SortablePagedTableSortButton TRow="User" Table="@_filterableSortableUserTable" ID="@(nameof(User.LastName))"/>
+                        </div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <PagedTableRows TRow="User" Table="@_filterableSortableUserTable">
+                    @foreach (User user in _filterableSortableUserTable.RowsInView())
+                    {
+                        <tr>
+                            <td>@user.FirstName</td>
+                            <td>@user.LastName</td>
+                        </tr>
+                    }
+                    
+                    @if (_filterableSortableUserTable.RowsInView().Length == 0)
+                    {
+                        <PagedTableNoValuesMessage/>
+                    }
+                </PagedTableRows>
+                </tbody>
+                <tfoot>
+                <tr class="ForPaginationInfoAndButtons">
+                    <td colspan="2">
+                        <div class="I4E-Layout-ListTable-TableControlsContainer">
+                            <PagedTablePageInfo TRow="User" Table="@_filterableSortableUserTable"></PagedTablePageInfo>
+                            <PagedTableButtons TRow="User" Table="@_filterableSortableUserTable"/>
+                        </div>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<div class="I4E-Layout-Panel">
+    <div class="I4E-Layout-Panel-Inner">
+        <h1>Tables</h1>
+
+        <button @onclick="@(() => _sortableUserTable.Sort(nameof(User.FirstName), TableSortDirection.Ascending))">First name ascending</button>
+        <button @onclick="@(() => _sortableUserTable.Sort(nameof(User.FirstName), TableSortDirection.Descending))">First name descending</button>
+        <button @onclick="@(() => _sortableUserTable.Sort(nameof(User.LastName), TableSortDirection.Ascending))">Last name ascending</button>
+        <button @onclick="@(() => _sortableUserTable.Sort(nameof(User.LastName), TableSortDirection.Descending))">Last name descending</button>
+        <button @onclick="@(() => _sortableUserTable.UnSort())">Un-sort</button>
+
+        <SortablePagedTableSortButton TRow="User" Table="@_sortableUserTable" ID="@(nameof(User.FirstName))"/>
+        <SortablePagedTableSortButton TRow="User" Table="@_sortableUserTable" ID="@(nameof(User.LastName))"/>
+
+        <div class="I4E-Layout-ListTable BorderedHeaderCells BorderedBodyCells">
+            <table class="I4E-Layout-ListTable-Inner">
+                <thead>
+                <tr>
+                    <td></td>
+                    <td>
+                        <PagedTableButtons TRow="User" Table="@_sortableUserTable"/>
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                <PagedTableRows TRow="User" Table="@_sortableUserTable">
+                    @foreach (User user in _sortableUserTable.RowsInView())
+                    {
+                        <tr>
+                            <td>@user.FirstName</td>
+                            <td>@user.LastName</td>
+                        </tr>
+                    }
+                </PagedTableRows>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td></td>
+                    <td>
+                        <PagedTablePageInfo TRow="User" Table="@_sortableUserTable"></PagedTablePageInfo>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+
+    </div>
+</div>
+<div class="I4E-Layout-Panel">
+    <div class="I4E-Layout-Panel-Inner">
+        <h1>Tables</h1>
 
         <div class="I4E-Layout-ListTable BorderedHeaderCells BorderedBodyCells">
             <table class="I4E-Layout-ListTable-Inner">

@@ -11,6 +11,18 @@ namespace Integrant4.Fundament
         public void Invoke() => Event?.Invoke();
     }
 
+    public class ReadOnlyHook
+    {
+        private ReadOnlyHook(Hook hook)
+        {
+            hook.Event += () => Event?.Invoke();
+        }
+
+        public event Action? Event;
+
+        public static implicit operator ReadOnlyHook(Hook hook) => new(hook);
+    }
+
     // public class AsyncHook
     // {
     //     private readonly List<Func<Task>> Tasks = new();
