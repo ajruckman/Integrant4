@@ -45,7 +45,7 @@ namespace Web.Pages
 
             Task.Run(() =>
             {
-                Thread.Sleep(3000);
+                Thread.Sleep(300);
                 _filterableSortableUserTable.SetFilter(nameof(User.FirstName), "ad");
             });
         }

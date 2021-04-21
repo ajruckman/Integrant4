@@ -34,31 +34,32 @@ div.I4E-Input-Checkbox input, div.I4E-Input-Checkbox textarea, div.I4E-Input-Dat
     color: green !important; }
 
 div.I4E-Input-Checkbox.I4E-Bit--Highlighted input, div.I4E-Input-Checkbox.I4E-Bit--Highlighted textarea, div.I4E-Input-Date.I4E-Bit--Highlighted input, div.I4E-Input-Date.I4E-Bit--Highlighted textarea, div.I4E-Input-Decimal.I4E-Bit--Highlighted input, div.I4E-Input-Decimal.I4E-Bit--Highlighted textarea, div.I4E-Input-Integer.I4E-Bit--Highlighted input, div.I4E-Input-Integer.I4E-Bit--Highlighted textarea, div.I4E-Input-Text.I4E-Bit--Highlighted input, div.I4E-Input-Text.I4E-Bit--Highlighted textarea, div.I4E-Input-TextArea.I4E-Bit--Highlighted input, div.I4E-Input-TextArea.I4E-Bit--Highlighted textarea, div.I4E-Input-Time.I4E-Bit--Highlighted input, div.I4E-Input-Time.I4E-Bit--Highlighted textarea {
-  border: 1px solid var(--i4e-highlight); }
+  border: 1px solid var(--I4E-Highlight); }
 
 div.I4E-Input-Text--Clearable {
   align-items: center;
   display: inline-flex;
-  position: relative; }
+  justify-content: center; }
+  div.I4E-Input-Text--Clearable.I4E-Bit--Highlighted button {
+    border: 1px solid var(--I4E-Highlight);
+    border-left: none; }
   div.I4E-Input-Text--Clearable input:not(#_) {
     border-bottom-right-radius: 0;
     border-right: 0;
     border-top-right-radius: 0; }
   div.I4E-Input-Text--Clearable button {
     align-items: center;
+    align-self: stretch;
     background-color: var(--I4E_InputBase_Background_Normal);
     border: 1px solid var(--I4E_InputBase_Border_Normal);
     border-bottom-right-radius: calc(1em * (3 / 15));
-    border-left: none !important;
+    border-left: none;
     border-top-right-radius: calc(1em * (3 / 15));
-    bottom: 0;
     color: var(--I4E_InputBase_ClearButton_Normal);
+    cursor: pointer;
     display: flex;
     outline: none !important;
     padding: 0 calc(1em * (5 / 15)) 0 0;
-    position: absolute;
-    right: calc(-1 * calc(1em * (16 / 15)));
-    top: 0;
     transition: background-color 75ms ease-in, border 75ms ease-in; }
     div.I4E-Input-Text--Clearable button:hover {
       color: var(--I4E_InputBase_ClearButton_Hover) !important; }
@@ -74,6 +75,8 @@ div.I4E-Input-Text--Clearable {
       right: 0;
       top: 0;
       z-index: -1; }
+  div.I4E-Input-Text--Clearable input:not(#_):disabled ~ button, div.I4E-Input-Text--Clearable input[data-disabled]:not(#_) ~ button {
+    cursor: not-allowed; }
   div.I4E-Input-Text--Clearable input:not(#_):focus:not(:disabled):not([data-disabled]) ~ button::after,
   div.I4E-Input-Text--Clearable input[data-focused]:not(#_):not(:disabled):not([data-disabled]) ~ button::after {
     box-shadow: var(--I4C_Default_Shadow_0); }
@@ -102,3 +105,5 @@ div.I4-App[data-i4-theme-variant="Pink"], div.I4-App[data-i4-theme-variant="Whit
   --I4E_InputBase_ClearButton_Focus: var(--I4C_Default_Accent_7);
   --I4E_InputBase_ClearButton_Hover: var(--I4C_Default_Opaque_Black_3);
   --I4E_InputBase_ClearButton_Normal: var(--I4C_Default_Opaque_Black_2); }
+
+/*# sourceMappingURL=Inputs.css.map */

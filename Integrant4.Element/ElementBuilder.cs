@@ -50,11 +50,6 @@ namespace Integrant4.Element
                 result.Add($"color: {spec.ForegroundColor.Invoke()};");
             }
 
-            if (spec.HighlightColor != null)
-            {
-                result.Add($"--i4e-highlight: {spec.HighlightColor.Invoke()};");
-            }
-
             if (spec.Height != null)
             {
                 result.Add($"height: {spec.Height.Invoke()}px;");

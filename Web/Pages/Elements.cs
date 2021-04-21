@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 using Integrant4.API;
@@ -41,6 +42,8 @@ namespace Web.Pages
         private Chip _chip         = null!;
         private Chip _chipLink     = null!;
         private Chip _chipWithIcon = null!;
+        private Chip _chipUncached = null!;
+        private Chip _chipCached   = null!;
 
         private Checkbox _checkbox = null!;
 
@@ -118,12 +121,12 @@ namespace Web.Pages
             });
             _textInputClearable = new TextInput(JSRuntime, null, new TextInput.Spec
             {
-                Clearable = Always.True,
+                IsClearable = Always.True,
             });
             _textInputClearableScaled = new TextInput(JSRuntime, null, new TextInput.Spec
             {
-                Clearable = Always.True,
-                Scale     = () => 2,
+                IsClearable = Always.True,
+                Scale       = () => 2,
             });
 
             //
@@ -199,7 +202,7 @@ namespace Web.Pages
                 Tooltip = () => new Tooltip("Tooltip"),
             });
 
-            _chipLink = new Chip(() => "Chip 1".AsContent(), new Chip.Spec
+            _chipLink = new Chip(() => "Chip 2".AsContent(), new Chip.Spec
             {
                 HREF   = () => "/",
                 Height = () => 24,
@@ -211,6 +214,8 @@ namespace Web.Pages
                 "Text content".AsContent(),
                 new BootstrapIcon("slash-circle-fill"),
             });
+
+            _chipUncached = new Chip(() => DateTime.Now.ToString(CultureInfo.CurrentCulture).AsContent());
 
             _checkbox = new Checkbox(new Checkbox.Spec
             {

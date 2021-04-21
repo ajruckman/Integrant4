@@ -14,7 +14,7 @@ namespace Integrant4.Element.Inputs
         public class Spec
         {
             public Callbacks.Callback<string>? Placeholder { get; init; }
-            public Callbacks.Callback<bool>?   Clearable   { get; init; }
+            public Callbacks.Callback<bool>?   IsClearable { get; init; }
 
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -64,7 +64,7 @@ namespace Integrant4.Element.Inputs
     public partial class TextInput
     {
         private readonly Callbacks.Callback<string>? _placeholder;
-        private readonly Callbacks.Callback<bool>?   _clearable;
+        private readonly Callbacks.Callback<bool>?   _isClearable;
 
         public TextInput
         (
@@ -75,7 +75,7 @@ namespace Integrant4.Element.Inputs
             : base(jsRuntime, spec?.ToBaseSpec(), new ClassSet("I4E-Input", "I4E-Input-Text"))
         {
             _placeholder = spec?.Placeholder;
-            _clearable   = spec?.Clearable;
+            _isClearable = spec?.IsClearable;
 
             Value = Nullify(value);
         }
@@ -86,7 +86,7 @@ namespace Integrant4.Element.Inputs
 
             builder.OpenElement(++seq, "div");
             InputBuilder.ApplyOuterAttributes(this, builder, ref seq,
-                _clearable?.Invoke() == true
+                _isClearable?.Invoke() == true
                     ? new[] {"I4E-Input-Text--Clearable"}
                     : null
             );
@@ -102,7 +102,7 @@ namespace Integrant4.Element.Inputs
             builder.AddElementReferenceCapture(++seq, r => Reference = r);
             builder.CloseElement();
 
-            if (_clearable?.Invoke() == true)
+            if (_isClearable?.Invoke() == true)
             {
                 ushort  size  = 16;
                 double? scale = BaseSpec.Scale?.Invoke();
@@ -132,7 +132,7 @@ namespace Integrant4.Element.Inputs
 
         private async Task OnClearClick()
         {
-            if (_clearable?.Invoke() == true)
+            if (_isClearable?.Invoke() == true)
                 await SetValue(null);
         }
 

@@ -27,6 +27,7 @@ namespace Integrant4.Element.Constructs.Tables
 
             _input = new TextInput(JSRuntime, Table.GetFilter(ID), new TextInput.Spec
             {
+                IsClearable    = Always.True,
                 HighlightColor = () => Table.GetFilter(ID) == null ? "" : HighlightColor,
             });
 

@@ -41,6 +41,21 @@ div.I4E-Construct-PagedTable-PagedTableButtons {
     }
 }
 
+div.I4E-Construct-PagedTable-PageInfo {
+    user-select: none;
+}
+
+tr.I4E-Construct-PagedTable-NoValuesMessage {
+    td {
+        color: var(--I4C_Default_Text_4);
+        font-style: italic;
+        font-weight: bold;
+        padding: 7px;
+        text-align: center;
+        user-select: none;
+    }
+}
+
 button.I4E-Construct-PagedTable-SortIndicator {
     background: none;
     border: none;
@@ -49,6 +64,16 @@ button.I4E-Construct-PagedTable-SortIndicator {
     margin: 0;
     padding: 0;
     width: 24px;
+}
+
+div.I4E-Construct-PagedTable-FilterInput {
+    div.I4E-Input-Text {
+        width: 100%;
+
+        input {
+            width: 100%;
+        }
+    }
 }
 
 // Variable colors

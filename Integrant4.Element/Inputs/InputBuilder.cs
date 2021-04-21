@@ -23,12 +23,12 @@ namespace Integrant4.Element.Inputs
                 builder.AddAttribute(seq, "hidden", true);
 
             ++seq;
-            if (inputBase.BaseSpec.Tooltip != null)
-                builder.AddAttribute(seq, "data-i4e.tooltip", inputBase.BaseSpec.Tooltip.Invoke());
+            if (inputBase.BaseSpec.HighlightColor != null)
+                builder.AddAttribute(seq, "style", $"--I4E-Highlight: {inputBase.BaseSpec.HighlightColor.Invoke()};");
 
             ++seq;
-            if (inputBase.BaseSpec.HighlightColor != null)
-                builder.AddAttribute(seq, "data-i4e.highlight", inputBase.BaseSpec.HighlightColor.Invoke());
+            if (inputBase.BaseSpec.Tooltip != null)
+                builder.AddAttribute(seq, "data-i4e.tooltip", inputBase.BaseSpec.Tooltip.Invoke());
 
             if (inputBase.BaseSpec.Data != null)
                 foreach ((string name, Callbacks.DataValue getter) in inputBase.BaseSpec.Data.Invoke())

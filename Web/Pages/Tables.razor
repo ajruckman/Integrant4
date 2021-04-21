@@ -28,16 +28,11 @@
                 </tr>
                 <tr class="ForColumnControls">
                     <th>
-                        <div class="I4E-Layout-ListTable-TableControlsContainer">
-                            <FilterableSortablePagedTableFilterInput TRow="User" Table="@_filterableSortableUserTable" ID="@(nameof(User.FirstName))"/>
-                            <SortablePagedTableSortButton TRow="User" Table="@_filterableSortableUserTable" ID="@(nameof(User.FirstName))"/>
-                        </div>
+                        <FilterableSortablePagedTableFilterInput TRow="User" Table="@_filterableSortableUserTable" ID="@nameof(User.FirstName)"></FilterableSortablePagedTableFilterInput>
+                        @* <FilterableSortablePagedTableFilterSortGroup TRow="User" Table="@_filterableSortableUserTable" ID="@nameof(User.FirstName)"/> *@
                     </th>
                     <th>
-                        <div class="I4E-Layout-ListTable-TableControlsContainer">
-                            <FilterableSortablePagedTableFilterInput TRow="User" Table="@_filterableSortableUserTable" ID="@(nameof(User.LastName))"/>
-                            <SortablePagedTableSortButton TRow="User" Table="@_filterableSortableUserTable" ID="@(nameof(User.LastName))"/>
-                        </div>
+                        <FilterableSortablePagedTableFilterSortGroup TRow="User" Table="@_filterableSortableUserTable" ID="@nameof(User.LastName)"/>
                     </th>
                 </tr>
                 </thead>

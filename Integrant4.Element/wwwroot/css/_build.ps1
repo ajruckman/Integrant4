@@ -6,7 +6,7 @@ foreach ($stylesheet in $( Get-ChildItem -Recurse . -Filter *.scss ))
     if ($stylesheet.Name.StartsWith("_")) { continue }
     
     Write-Output "Building stylesheet: $( $stylesheet.FullName )"
-    & sassc -m "$( $stylesheet.FullName )" "$( $stylesheet.DirectoryName )\$( $stylesheet.BaseName ).css"
+    & sassc -m "$( $stylesheet.FullName )" "$( $stylesheet.DirectoryName )/$( $stylesheet.BaseName ).css"
     if (-not$?)
     {
         exit 2

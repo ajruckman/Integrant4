@@ -58,7 +58,7 @@ div.I4E-Input-Checkbox, div.I4E-Input-Date, div.I4E-Input-Decimal, div.I4E-Input
 
     &.I4E-Bit--Highlighted {
         input, textarea {
-            border: 1px solid var(--i4e-highlight);
+            border: 1px solid var(--I4E-Highlight);
         }
     }
 }
@@ -67,7 +67,14 @@ div.I4E-Input-Text {
     &--Clearable {
         align-items: center;
         display: inline-flex;
-        position: relative;
+        justify-content: center;
+
+        &.I4E-Bit--Highlighted {
+            button {
+                border: 1px solid var(--I4E-Highlight);
+                border-left: none;
+            }
+        }
 
         input:not(#_) {
             border-bottom-right-radius: 0;
@@ -77,19 +84,17 @@ div.I4E-Input-Text {
 
         button {
             align-items: center;
+            align-self: stretch;
             background-color: var(--I4E_InputBase_Background_Normal);
             border: 1px solid var(--I4E_InputBase_Border_Normal);
             border-bottom-right-radius: calc(1em * (3 / 15));
-            border-left: none !important;
+            border-left: none;
             border-top-right-radius: calc(1em * (3 / 15));
-            bottom: 0;
             color: var(--I4E_InputBase_ClearButton_Normal);
+            cursor: pointer;
             display: flex;
             outline: none !important;
             padding: 0 calc(1em * (5 / 15)) 0 0;
-            position: absolute;
-            right: calc(-1 * calc(1em * (16 / 15)));
-            top: 0;
             transition: background-color 75ms ease-in, border 75ms ease-in;
 
             &:hover {
@@ -110,12 +115,13 @@ div.I4E-Input-Text {
                 right: 0;
                 top: 0;
                 z-index: -1;
-
             }
         }
 
         input:not(#_):disabled ~ button, input:not(#_)[data-disabled] ~ button {
             @extend %_InputDisabledStyle;
+
+            cursor: not-allowed;
         }
 
         input:not(#_):hover:not(:disabled):not([data-disabled]) ~ button {
