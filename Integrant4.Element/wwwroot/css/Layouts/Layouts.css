@@ -125,6 +125,8 @@ div.I4E-Layout-Panel {
     border: 1px solid var(--I4C_Default_Border_6); }
   div.I4E-Layout-Panel--WithRounding {
     border-radius: 4px; }
+  div.I4E-Layout-Panel--Inline {
+    display: inline-block; }
   div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner {
     overflow: visible;
     padding: 7px; }

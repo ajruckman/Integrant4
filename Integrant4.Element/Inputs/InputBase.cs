@@ -29,7 +29,7 @@ namespace Integrant4.Element.Inputs
         public abstract Task              SetValue(T? value);
         public abstract event Action<T?>? OnChange;
 
-        protected Hook? Refresher { get; set; }
+        protected WriteOnlyHook? Refresher { get; set; }
 
         public void Refresh() => Refresher?.Invoke();
     }

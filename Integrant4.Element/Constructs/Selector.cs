@@ -285,7 +285,7 @@ namespace Integrant4.Element.Constructs
         private readonly TextInput? _filterInput;
 
         private ElementReference? _elemRef;
-        private Hook?             _refresher;
+        private WriteOnlyHook?    _refresher;
         private ElementService?   _elementService;
         private bool              _disabledAtLastRender;
 

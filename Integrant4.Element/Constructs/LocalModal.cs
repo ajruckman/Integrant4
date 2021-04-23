@@ -9,14 +9,14 @@ namespace Integrant4.Element.Constructs
         private readonly Callbacks.BitContents _contents;
         private readonly InnerDirection?       _innerDirection;
 
-        private bool  _show;
-        private Hook? _refresher;
+        private bool          _show;
+        private WriteOnlyHook? _refresher;
 
         public LocalModal
         (
             Callbacks.BitContents contents,
             InnerDirection        innerDirection = InnerDirection.Row,
-            Hook?                 hook           = null
+            ReadOnlyHook?         hook           = null
         )
         {
             _contents       = contents;

@@ -9,7 +9,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 99; }
+    z-index: 100; }
   #blazor-error-ui .Content {
     background-color: #0d0c0e;
     border: 1px solid #e91616;

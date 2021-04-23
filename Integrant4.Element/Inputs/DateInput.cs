@@ -13,6 +13,9 @@ namespace Integrant4.Element.Inputs
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
+            public Callbacks.Callback<DateTime>? Min { get; init; }
+            public Callbacks.Callback<DateTime>? Max { get; init; }
+
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
             public Callbacks.IsRequired? IsRequired      { get; init; }
@@ -58,6 +61,9 @@ namespace Integrant4.Element.Inputs
 
     public partial class DateInput
     {
+        private readonly Callbacks.Callback<DateTime>? _min;
+        private readonly Callbacks.Callback<DateTime>? _max;
+
         public DateInput
         (
             IJSRuntime jsRuntime,
@@ -66,6 +72,9 @@ namespace Integrant4.Element.Inputs
         )
             : base(jsRuntime, spec?.ToBaseSpec(), new ClassSet("I4E-Input", "I4E-Input-Date"))
         {
+            _min = spec?.Min;
+            _max = spec?.Max;
+
             Value = Nullify(value);
         }
 
@@ -82,6 +91,9 @@ namespace Integrant4.Element.Inputs
             builder.AddAttribute(++seq, "type", "date");
             builder.AddAttribute(++seq, "value", Serialize(Value));
             builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
+
+            if (_min != null) builder.AddAttribute(++seq, "min", Serialize(_min.Invoke()));
+            if (_max != null) builder.AddAttribute(++seq, "max", Serialize(_max.Invoke()));
 
             builder.AddElementReferenceCapture(++seq, r => Reference = r);
             builder.CloseElement();

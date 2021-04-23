@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Threading.Tasks;
 using Integrant4.API;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
@@ -59,9 +58,7 @@ namespace Integrant4.Element.Bits
         private readonly Callbacks.Callback<bool>? _isSmall;
 
         public Button(Callbacks.BitContent content, Spec? spec = null)
-            : this(content.AsContents(), spec)
-        {
-        }
+            : this(content.AsContents(), spec) { }
 
         public Button(Callbacks.BitContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Button)))
@@ -79,7 +76,7 @@ namespace Integrant4.Element.Bits
 
     public partial class Button
     {
-        private Hook? _refresher;
+        private WriteOnlyHook? _refresher;
 
         public override RenderFragment Renderer() => Latch.Create(builder =>
         {

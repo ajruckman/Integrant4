@@ -35,11 +35,11 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
     height: 2em; }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft) {
       padding-left: calc(1em * (10 / 15)); }
-    button.I4E-Bit-Button.I4E-Bit-Button--IconLeft:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button.I4E-Bit-Button--IconLeft:not(.I4E-Bit-Button--Small) {
+    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft {
       padding-left: calc(1em * (5 / 15)); }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight) {
       padding-right: calc(1em * (10 / 15)); }
-    button.I4E-Bit-Button.I4E-Bit-Button--IconRight:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button.I4E-Bit-Button--IconRight:not(.I4E-Bit-Button--Small) {
+    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight {
       padding-right: calc(1em * (5 / 15)); }
   button.I4E-Bit-Button.I4E-Bit-Button--Small, a.I4E-Bit-Button.I4E-Bit-Button--Small {
     height: 1.5em; }
@@ -98,11 +98,11 @@ div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--D
 
 div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled) {
   background-color: var(--I4C_Default_Opaque_White_3);
-  color: var(--I4C_Default_Accent_7); }
+  color: var(--I4C_Default_Accent_8); }
 
 div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled) {
   background-color: var(--I4C_Default_Opaque_White_2);
-  color: var(--I4C_Default_Accent_7); }
+  color: var(--I4C_Default_Accent_8); }
 
 div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent {
   color: var(--I4C_Default_Accent_5); }

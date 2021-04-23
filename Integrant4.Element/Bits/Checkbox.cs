@@ -63,7 +63,7 @@ namespace Integrant4.Element.Bits
 
     public partial class Checkbox
     {
-        private Hook? _refresher;
+        private WriteOnlyHook? _refresher;
 
         public bool IsChecked { get; private set; }
 

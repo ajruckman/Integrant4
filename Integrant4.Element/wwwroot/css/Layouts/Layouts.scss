@@ -16,6 +16,10 @@ div.I4E-Layout-Panel {
         border-radius: 4px;
     }
 
+    &--Inline {
+        display: inline-block;
+    }
+
     div.I4E-Layout-Panel-Inner {
         overflow: visible;
         padding: 7px;

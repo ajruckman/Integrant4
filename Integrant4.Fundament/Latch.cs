@@ -12,7 +12,7 @@ namespace Integrant4.Fundament
         private bool _hasCalledOnAfterRender;
 
         [Parameter] public RenderFragment ChildContent { get; set; } = null!;
-        [Parameter] public Hook           Hook         { get; set; } = null!;
+        [Parameter] public ReadOnlyHook   Hook         { get; set; } = null!;
 
         [Parameter] public Func<bool, Task>? AfterRender { get; set; }
 
@@ -53,9 +53,9 @@ namespace Integrant4.Fundament
     {
         public static RenderFragment Create
         (
-            RenderFragment    content,
-            Action<Hook>      hookSetter,
-            Func<bool, Task>? afterRender = null
+            RenderFragment        content,
+            Action<WriteOnlyHook> hookSetter,
+            Func<bool, Task>?     afterRender = null
         )
         {
             Hook hook = new();
@@ -63,7 +63,7 @@ namespace Integrant4.Fundament
             void Fragment(RenderTreeBuilder builder)
             {
                 builder.OpenComponent<Latch>(0);
-                builder.AddAttribute(1, "Hook",         hook);
+                builder.AddAttribute(1, "Hook",         hook.AsReadOnly());
                 builder.AddAttribute(2, "ChildContent", content);
                 builder.AddAttribute(2, "AfterRender",  afterRender);
                 builder.CloseComponent();
