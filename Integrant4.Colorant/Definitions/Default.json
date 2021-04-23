@@ -339,8 +339,8 @@
                     "SatStart": 0,
                     "SatEnd":   0,
                     "SatCurve": "linear",
-                    "LumStart": 96,
-                    "LumEnd":   89,
+                    "LumStart": 100,
+                    "LumEnd":   94,
                     "LumCurve": "linear"
                 },
                 "TableRow_Green": {
@@ -647,8 +647,8 @@
                     "SatStart": 3,
                     "SatEnd":   3,
                     "SatCurve": "linear",
-                    "LumStart": 96,
-                    "LumEnd":   89,
+                    "LumStart": 100,
+                    "LumEnd":   94,
                     "LumCurve": "easeInQuad"
                 },
                 "TableRow_Green": {
