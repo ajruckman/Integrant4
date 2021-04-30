@@ -10,6 +10,7 @@ using Integrant4.Colorant.Themes.Solids;
 using Integrant4.Element;
 using Integrant4.Element.Bits;
 using Integrant4.Element.Constructs;
+using Integrant4.Element.Constructs.Selectors;
 using Integrant4.Element.Inputs;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
@@ -34,8 +35,9 @@ namespace Web.Pages
         private CancellationTokenSource _ageThreadToken;
         private Task                    _ageThread = null!;
 
-        private Selector<User> _selector         = null!;
-        private bool           _selectorDisabled = false;
+        private Selector<User>      _selector         = null!;
+        private bool                _selectorDisabled = false;
+        private MultiSelector<User> _multiSelector    = null!;
 
         protected override void OnInitialized()
         {
@@ -103,14 +105,14 @@ namespace Web.Pages
 
             Faker<User> b = new Faker<User>()
                .RuleFor(o => o.FirstName, f => f.Name.FirstName())
-               .RuleFor(o => o.LastName,  f => f.Name.LastName());
+               .RuleFor(o => o.LastName, f => f.Name.LastName());
 
-            _selector = new Selector<User>(JSRuntime, () =>
+            List<User> names = b.Generate(900);
+
+            Integrant4.Element.Constructs.Selectors.Option<User>[] OptionGetter()
             {
-                List<User> names = b.Generate(900);
-
                 return names
-                   .Select(v => new Integrant4.Element.Constructs.Option<User>
+                   .Select(v => new Integrant4.Element.Constructs.Selectors.Option<User>
                     (
                         v,
                         new BootstrapIcon("arrow-right-short").Renderer() + $"{v.FirstName} {v.LastName}".AsContent(),
@@ -119,10 +121,18 @@ namespace Web.Pages
                         false, false
                     ))
                    .ToArray();
-            }, new Selector<User>.Spec
+            }
+
+            _selector = new Selector<User>(JSRuntime, OptionGetter, new Selector<User>.Spec
             {
                 Filterable = true,
                 // Scale      = () => 2.5,
+                IsDisabled = () => _selectorDisabled,
+            });
+
+            _multiSelector = new MultiSelector<User>(JSRuntime, OptionGetter, new Selector<User>.Spec
+            {
+                Filterable = true,
                 IsDisabled = () => _selectorDisabled,
             });
 
@@ -142,6 +152,7 @@ namespace Web.Pages
             Console.WriteLine($"Index: OnAfterRenderAsync {firstRender}");
 
             _selector.BeginLoadingOptions();
+            _multiSelector.BeginLoadingOptions();
 
             await ElementService.ProcessJobs();
         }
@@ -186,7 +197,7 @@ namespace Web.Pages
         {
             List<IValidation> result = new()
             {
-                new Validation(ValidationResultType.Valid,   "Valid"),
+                new Validation(ValidationResultType.Valid, "Valid"),
                 new Validation(ValidationResultType.Warning, "Warning"),
             };
 
@@ -292,12 +303,12 @@ namespace Web.Pages
                     null,
                     () => new List<IOption<string>>
                     {
-                        new Integrant4.Element.Inputs.Option<string>("Unknown",     "Unknown"),
+                        new Integrant4.Element.Inputs.Option<string>("Unknown", "Unknown"),
                         new Integrant4.Element.Inputs.Option<string>("Rat Terrier", "Rat Terrier"),
-                        new Integrant4.Element.Inputs.Option<string>("Boxer",       "Boxer"),
-                        new Integrant4.Element.Inputs.Option<string>("Yorkie",      "Yorkie"),
-                        new Integrant4.Element.Inputs.Option<string>("Chihuahua",   "Chihuahua"),
-                        new Integrant4.Element.Inputs.Option<string>(null,          "Other"),
+                        new Integrant4.Element.Inputs.Option<string>("Boxer", "Boxer"),
+                        new Integrant4.Element.Inputs.Option<string>("Yorkie", "Yorkie"),
+                        new Integrant4.Element.Inputs.Option<string>("Chihuahua", "Chihuahua"),
+                        new Integrant4.Element.Inputs.Option<string>(null, "Other"),
                     }
                 )
             );

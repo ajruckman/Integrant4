@@ -42,6 +42,65 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Header--Primary, div.
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Header--Secondary, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Header--Secondary {
   background-color: var(--I4C_Default_Background_4); }
 
+div.I4E-Construct-MultiSelector {
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 3px;
+  width: 100%; }
+  div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection {
+    align-items: center;
+    border-radius: 15px;
+    display: inline-flex;
+    margin: 1px;
+    padding: 1px 2px; }
+    div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+      background-color: transparent;
+      cursor: pointer;
+      height: calc(1em * (12 / 15));
+      margin: 0 0 0 calc(1em * (6 / 15));
+      outline: none;
+      padding: 0 3px 0 0;
+      position: relative;
+      width: calc(1em * (12 / 15)); }
+      div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper svg {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0; }
+
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-MultiSelector, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-MultiSelector {
+  background-color: var(--I4C_Default_Background_4);
+  border: 1px solid var(--I4C_Default_Border_11);
+  box-shadow: var(--I4C_Default_Shadow_1); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections:not(:empty), div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections:not(:empty) {
+    margin-top: 3px; }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection {
+    background-color: var(--I4C_Default_Background_7);
+    border: 1px solid var(--I4C_Default_Border_7);
+    box-shadow: var(--I4C_Default_Shadow_1); }
+    div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+      color: var(--I4C_Default_Opaque_White_4); }
+      div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover {
+        color: var(--I4C_Default_Opaque_White_7); }
+      div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
+        color: var(--I4C_Default_Accent_7); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-MultiSelector, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-MultiSelector {
+  background-color: var(--I4C_Default_Background_2);
+  border: 1px solid var(--I4C_Default_Border_5); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection {
+    background-color: white;
+    border: 1px solid var(--I4C_Default_Border_0); }
+    div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+      color: var(--I4C_Default_Opaque_Black_4); }
+      div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover {
+        color: var(--I4C_Default_Opaque_Black_7); }
+      div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
+        color: var(--I4C_Default_Accent_7); }
+
 div.I4E-Construct-PagedTable-PagedTableButtons {
   display: flex;
   justify-content: flex-end; }
@@ -254,7 +313,8 @@ div.I4-App[data-i4-theme-variant="Pink"], div.I4-App[data-i4-theme-variant="Whit
 
 div.I4E-Construct-Selector {
   display: none;
-  font-size: 1rem; }
+  font-size: 1rem;
+  width: 100%; }
   div.I4E-Construct-Selector[data-visible] {
     display: inline-block; }
   div.I4E-Construct-Selector[data-disabled] * {
@@ -271,7 +331,8 @@ div.I4E-Construct-Selector {
     height: 28px;
     justify-content: space-between;
     min-width: 250px;
-    padding: 0 6px; }
+    padding: 0 6px;
+    width: 100%; }
     div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-NoSelection {
       font-style: italic;
       opacity: 0.5;
@@ -341,7 +402,8 @@ div.I4E-Construct-Selector {
         border-radius: 0.4em;
         cursor: pointer;
         display: flex;
-        padding: 4px;
+        margin: 1px 0;
+        padding: 3px 4px;
         transition: background-color 75ms ease-in, border 75ms ease-in; }
         div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:hover {
           transition: none; }
@@ -354,28 +416,41 @@ div.I4E-Construct-Selector {
           div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-selected]:hover {
             background-color: var(--I4C_Default_Accent_5);
             color: var(--I4C_Default_Accent_6_Text); }
+        div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled] {
+          cursor: not-allowed;
+          opacity: 0.5; }
+        div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-placeholder] {
+          font-weight: 700; }
   div.I4E-Construct-Selector--Filterable div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-shown]) {
     display: none; }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
   background-color: var(--I4C_Default_Background_8);
   border: 1px solid var(--I4E_InputBase_Border_Normal); }
-  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input {
-    background-color: var(--I4C_Default_Background_8); }
-    div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:hover {
-      background-color: var(--I4C_Default_Background_6); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus), div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus) {
+    background-color: var(--I4C_Default_Background_6); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover {
+    background-color: var(--I4C_Default_Background_4); }
   div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-bar, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-bar {
     background-color: var(--I4C_Default_Background_16); }
-  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):hover {
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):not([data-disabled]):not([data-placeholder]):hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):not([data-disabled]):not([data-placeholder]):hover {
     background-color: var(--I4C_Default_Background_16); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled], div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled] {
+    background-color: rgba(0, 0, 0, 0.25); }
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
   background-color: var(--I4C_Default_Background_0);
   border: 1px solid transparent; }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus), div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus) {
+    background-color: var(--I4C_Default_Background_6); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover {
+    background-color: var(--I4C_Default_Background_4); }
   div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-bar, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-bar {
     background-color: var(--I4C_Default_Background_8); }
-  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):hover {
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):not([data-disabled]):not([data-placeholder]):hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):not([data-disabled]):not([data-placeholder]):hover {
     background-color: var(--I4C_Default_Background_8); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled], div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled] {
+    background-color: rgba(0, 0, 0, 0.05); }
 
 div.I4E-Construct-LocalModal {
   align-items: center;
