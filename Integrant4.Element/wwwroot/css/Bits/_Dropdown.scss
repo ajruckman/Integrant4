@@ -24,6 +24,10 @@ div.I4E-Bit-Dropdown {
                 box-sizing: border-box;
                 width: 100%;
             }
+
+            &:not(:last-child) {
+                margin-bottom: 3px;
+            }
         }
     }
 

@@ -19,20 +19,21 @@ namespace Integrant4.Structurant
         (
             Structure<TObject, TState>  structure,
             string                      id,
+            ushort                      inputDebounceMilliseconds,
             Callbacks.ValueGetter       valueGetter,
             Callbacks.ValueSetter       valueSetter,
-            ushort                      inputDebounceMilliseconds = 200,
-            Callbacks.InputGetter?      inputGetter               = null,
-            Callbacks.ValidationGetter? validationGetter          = null
+            Callbacks.InputGetter?      inputGetter      = null,
+            Callbacks.ValidationGetter? validationGetter = null
         )
         {
             Structure                 = structure;
             ID                        = id;
             InputDebounceMilliseconds = inputDebounceMilliseconds;
-            ValueGetter               = valueGetter;
-            ValueSetter               = valueSetter;
-            InputGetter               = inputGetter;
-            ValidationGetter          = validationGetter;
+
+            ValueGetter      = valueGetter;
+            ValueSetter      = valueSetter;
+            InputGetter      = inputGetter;
+            ValidationGetter = validationGetter;
         }
 
         public Callbacks.ValueGetter       ValueGetter      { get; }
