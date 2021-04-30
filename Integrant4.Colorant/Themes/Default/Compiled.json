@@ -1330,8 +1330,8 @@
           "SatEnd": 3,
           "SatCurve": "linear",
           "SatRate": 100,
-          "LumStart": 96,
-          "LumEnd": 89,
+          "LumStart": 100,
+          "LumEnd": 94,
           "LumCurve": "easeInQuad",
           "Modifier": 10,
           "HoverStepSize": 0,
@@ -1479,10 +1479,10 @@
           "4": "0 32px 64px rgba(0, 0, 0, 0.2), 0 0 16px rgba(0, 0, 0, 0.05)"
         },
         "TableRow": {
-          "0": "#f5edf1",
-          "1": "#ebe4e8",
-          "2": "#e5dee2",
-          "3": "#e3dce0"
+          "0": "#fff7fb",
+          "1": "#f7eff3",
+          "2": "#f2eaee",
+          "3": "#f0e9ec"
         },
         "TableRow_Green": {
           "0": "#bfe0bf",

@@ -156,6 +156,8 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
         // Select value when option is clicked
         options.addEventListener('click', event => {
             if (event.target.tagName === 'DIV') {
+                if (event.target.hasAttribute('data-disabled')) return;
+                if (event.target.hasAttribute('data-placeholder')) return;
                 element.Select(parseInt(event.target.getAttribute('data-i')));
             }
         });
@@ -168,6 +170,8 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
             // Select the focused option when the Space or Enter keys are pressed
             if (event.code === 'Space' || event.code === 'Enter') {
                 event.preventDefault();
+                if (event.target.hasAttribute('data-disabled')) return;
+                if (event.target.hasAttribute('data-placeholder')) return;
                 element.Select(parseInt(event.target.getAttribute('data-i')));
             } else if (event.code === 'ArrowUp') {
                 event.preventDefault();

@@ -1,0 +1,99 @@
+div.I4E-Construct-MultiSelector {
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-direction: column;
+    padding: 3px;
+    width: 100%;
+
+    div.I4E-Construct-MultiSelector-Selections {
+        div.I4E-Construct-MultiSelector-Selection {
+            align-items: center;
+            border-radius: 15px;
+            display: inline-flex;
+            margin: 1px;
+            padding: 1px 2px;
+
+            div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+                background-color: transparent;
+                cursor: pointer;
+                height: calc(1em * (12 / 15));
+                margin: 0 0 0 calc(1em * (6 / 15));
+                outline: none;
+                padding: 0 3px 0 0;
+                position: relative;
+                width: calc(1em * (12 / 15));
+
+                svg {
+                    bottom: 0;
+                    left: 0;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+            }
+        }
+    }
+}
+
+// Variable colors
+
+div.I4-App {
+    &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
+        div.I4E-Construct-MultiSelector {
+            background-color: var(--I4C_Default_Background_4);
+            border: 1px solid var(--I4C_Default_Border_11);
+            box-shadow: var(--I4C_Default_Shadow_1);
+
+            div.I4E-Construct-MultiSelector-Selections {
+                &:not(:empty) {
+                    margin-top: 3px;
+                }
+
+                div.I4E-Construct-MultiSelector-Selection {
+                    background-color: var(--I4C_Default_Background_7);
+                    border: 1px solid var(--I4C_Default_Border_7);
+                    box-shadow: var(--I4C_Default_Shadow_1);
+
+                    div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+                        color: var(--I4C_Default_Opaque_White_4);
+
+                        &:hover {
+                            color: var(--I4C_Default_Opaque_White_7);
+                        }
+
+                        &:active {
+                            color: var(--I4C_Default_Accent_7);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
+        div.I4E-Construct-MultiSelector {
+            background-color: var(--I4C_Default_Background_2);
+            border: 1px solid var(--I4C_Default_Border_5);
+
+            div.I4E-Construct-MultiSelector-Selections {
+                div.I4E-Construct-MultiSelector-Selection {
+                    background-color: white;
+                    border: 1px solid var(--I4C_Default_Border_0);
+
+                    div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+                        color: var(--I4C_Default_Opaque_Black_4);
+
+                        &:hover {
+                            color: var(--I4C_Default_Opaque_Black_7);
+                        }
+
+                        &:active {
+                            color: var(--I4C_Default_Accent_7);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

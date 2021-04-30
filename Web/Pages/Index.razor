@@ -15,9 +15,11 @@
         <h1>Web</h1>
 
         <br>
-
         @_selector.Renderer()
-
+        <br>
+        <br>
+        @_multiSelector.Renderer()
+        <br>
         <br>
 
         <button @onclick="@(() => { _selectorDisabled = true; _selector.Refresh(); })">Disable</button>
