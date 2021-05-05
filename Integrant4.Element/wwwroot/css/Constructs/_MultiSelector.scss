@@ -7,12 +7,16 @@ div.I4E-Construct-MultiSelector {
     width: 100%;
 
     div.I4E-Construct-MultiSelector-Selections {
+        &:not(:empty) {
+            margin-top: 4px;
+        }
+
         div.I4E-Construct-MultiSelector-Selection {
             align-items: center;
             border-radius: 15px;
             display: inline-flex;
             margin: 1px;
-            padding: 1px 2px;
+            padding: 1px 2px 1px 9px;
 
             div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
                 background-color: transparent;
@@ -46,10 +50,6 @@ div.I4-App {
             box-shadow: var(--I4C_Default_Shadow_1);
 
             div.I4E-Construct-MultiSelector-Selections {
-                &:not(:empty) {
-                    margin-top: 3px;
-                }
-
                 div.I4E-Construct-MultiSelector-Selection {
                     background-color: var(--I4C_Default_Background_7);
                     border: 1px solid var(--I4C_Default_Border_7);
@@ -79,7 +79,7 @@ div.I4-App {
             div.I4E-Construct-MultiSelector-Selections {
                 div.I4E-Construct-MultiSelector-Selection {
                     background-color: white;
-                    border: 1px solid var(--I4C_Default_Border_0);
+                    border: 1px solid var(--I4C_Default_Border_10);
 
                     div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
                         color: var(--I4C_Default_Opaque_Black_4);

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,31 +13,73 @@ namespace Integrant4.Element.Constructs.Selectors
 {
     public partial class MultiSelector<TValue> : IConstruct
     {
-        private readonly Selector<TValue>.Spec                    _spec;
+        private readonly Spec                                     _spec;
         private readonly Selector<TValue>.OptionEqualityComparer? _equalityComparer;
-        private readonly Selector<TValue>.OptionGetter                 _optionGetter;
+        private readonly Selector<TValue>.OptionGetter            _optionGetter;
 
         private readonly Selector<TValue>     _selector;
         private readonly List<Option<TValue>> _selected;
 
         public MultiSelector
         (
-            IJSRuntime                          jsRuntime,
-            Selector<TValue>.OptionGetter       optionGetter,
-            Selector<TValue>.Spec?              spec             = null,
+            IJSRuntime                               jsRuntime,
+            OptionGetter                             optionGetter,
+            Spec?                                    spec             = null,
             Selector<TValue>.OptionEqualityComparer? equalityComparer = null
         )
         {
-            _spec             = spec ?? new Selector<TValue>.Spec();
+            _spec             = spec ?? new Spec();
             _equalityComparer = equalityComparer;
-            _optionGetter     = optionGetter;
+            _optionGetter     = optionGetter.Invoke;
 
-            _selector = new Selector<TValue>(jsRuntime, Array.Empty<Option<TValue>>, _spec, _equalityComparer);
+            _selector = new Selector<TValue>(jsRuntime, Array.Empty<Option<TValue>>, spec?.SubSpec() ?? new Selector<TValue>.Spec(), _equalityComparer);
             _selected = new List<Option<TValue>>();
 
             _selector.OnChange += Select;
 
             _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
+        }
+    }
+
+    public partial class MultiSelector<TValue>
+    {
+        public delegate Option<TValue>[] OptionGetter();
+
+        // This Spec is different from others, but it is nicer to initialize the Selector with named parameters.
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+        [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
+        public class Spec
+        {
+            public bool   Filterable   { get; init; }
+            public ushort DisplayLimit { get; init; } = 100;
+
+            public Callbacks.Callback<TValue[]>? Value                 { get; init; }
+            public Callbacks.Callback<string>?   NoSelectionText       { get; init; }
+            public Callbacks.Callback<string>?   FilterPlaceholderText { get; init; }
+            public Callbacks.Callback<string>?   UncachedText          { get; init; }
+            public Callbacks.Callback<string>?   NoOptionsText         { get; init; }
+            public Callbacks.Callback<string>?   NoResultsText         { get; init; }
+
+            public Callbacks.IsVisible?  IsVisible  { get; init; }
+            public Callbacks.IsDisabled? IsDisabled { get; init; }
+            public Callbacks.Pixels?     Width      { get; init; }
+            public Callbacks.Scale?      Scale      { get; init; }
+
+            internal Selector<TValue>.Spec SubSpec() => new Selector<TValue>.Spec
+            {
+                Filterable            = Filterable,
+                DisplayLimit          = DisplayLimit,
+                Value                 = null,
+                NoSelectionText       = NoSelectionText,
+                FilterPlaceholderText = FilterPlaceholderText,
+                UncachedText          = UncachedText,
+                NoOptionsText         = NoOptionsText,
+                NoResultsText         = NoResultsText,
+                IsVisible             = IsVisible,
+                IsDisabled            = IsDisabled,
+                Width                 = Width,
+                Scale                 = Scale,
+            };
         }
     }
 
@@ -106,6 +149,25 @@ namespace Integrant4.Element.Constructs.Selectors
 
                 lock (_optionsLock)
                 {
+                    if (_spec.Value != null)
+                    {
+                        foreach (TValue v in _spec.Value.Invoke())
+                        {
+                            foreach (Option<TValue> option in result)
+                            {
+                                if (!ValueEquals(option.Value, v)) continue;
+
+                                _selected.Add(option);
+                                goto Next;
+                            }
+
+                            throw new InvalidOperationException(
+                                "Could not find an option with a value equal to a pre-selected value.");
+
+                            Next: ;
+                        }
+                    }
+
                     token.ThrowIfCancellationRequested();
                     _options = result;
                 }
@@ -179,9 +241,9 @@ namespace Integrant4.Element.Constructs.Selectors
                 return;
             }
 
-            foreach (Option<TValue> option in Options())
+            foreach (TValue? v in value)
             {
-                foreach (TValue? v in value)
+                foreach (Option<TValue> option in Options())
                 {
                     if (!ValueEquals(option.Value, v)) continue;
 
@@ -274,7 +336,7 @@ namespace Integrant4.Element.Constructs.Selectors
                                           selection.OptionContent.Renderer());
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-MultiSelector-DeselectButtonWrapper");
+                builder.AddAttribute(++seq, "class",    "I4E-Construct-MultiSelector-DeselectButtonWrapper");
                 builder.AddAttribute(++seq, "tabindex", 0);
                 builder.AddAttribute(++seq, "onclick",
                     EventCallback.Factory.Create(this, () => Deselect(selection)));

@@ -107,10 +107,24 @@ namespace Integrant4.Element.Inputs
 
         protected override string Serialize(DateTime? v) => v?.ToString("yyyy-MM-dd") ?? "";
 
-        protected override DateTime? Deserialize(string? v) =>
-            string.IsNullOrEmpty(v)
-                ? null
-                : DateTime.ParseExact(v, "yyyy-MM-dd", new DateTimeFormatInfo());
+        protected override DateTime? Deserialize(string? v)
+        {
+            if (string.IsNullOrEmpty(v))
+                return null;
+            
+            DateTime d = DateTime.ParseExact(v, "yyyy-MM-dd", new DateTimeFormatInfo());
+
+            DateTime? min = _min?.Invoke();
+            if (d < min)
+                d = min.Value;
+
+            DateTime? max = _max?.Invoke();
+            if (d > max)
+                d = max.Value;
+
+            return d;
+                
+        }
 
         protected sealed override DateTime? Nullify(DateTime? v) =>
             v == null || v.Value == DateTime.MinValue

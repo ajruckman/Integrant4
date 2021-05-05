@@ -36,6 +36,7 @@ namespace Integrant4.Element.Inputs
 
         public event Action<TValue?[]?>? OnChange;
 
-        public void BeginLoadingOptions(Action? then = null) => _multiSelector.BeginLoadingOptions(then);
+        public void BeginLoadingOptions(Action? then = null) =>
+            _multiSelector.BeginLoadingOptions(then);
     }
 }

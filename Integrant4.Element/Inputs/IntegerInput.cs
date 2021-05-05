@@ -89,8 +89,8 @@ namespace Integrant4.Element.Inputs
             builder.OpenElement(++seq, "input");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
 
-            builder.AddAttribute(++seq, "type", "number");
-            builder.AddAttribute(++seq, "value", Serialize(Value));
+            builder.AddAttribute(++seq, "type",    "number");
+            builder.AddAttribute(++seq, "value",   Serialize(Value));
             builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
 
             if (_min != null) builder.AddAttribute(++seq, "min", _min.Invoke());
@@ -104,10 +104,23 @@ namespace Integrant4.Element.Inputs
             InputBuilder.ScheduleElementJobs(this, builder, ref seq);
         }, v => Refresher = v);
 
-        protected override int? Deserialize(string? v) =>
-            string.IsNullOrEmpty(v)
-                ? null
-                : int.Parse(v);
+        protected override int? Deserialize(string? v)
+        {
+            if (string.IsNullOrEmpty(v))
+                return null;
+
+            int i = int.Parse(v);
+
+            int? min = _min?.Invoke();
+            if (i < min)
+                i = min.Value;
+
+            int? max = _max?.Invoke();
+            if (i > max)
+                i = max.Value;
+
+            return i;
+        }
 
         protected sealed override int? Nullify(int? v) =>
             v == null
