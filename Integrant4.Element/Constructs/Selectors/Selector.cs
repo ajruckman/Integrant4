@@ -309,8 +309,8 @@ namespace Integrant4.Element.Constructs.Selectors
                         ? "I4E-Construct-Selector"
                         : "I4E-Construct-Selector I4E-Construct-Selector--Filterable");
 
-                builder.AddAttribute(++seq, "style",         $"max-width: {width}px");
-                builder.AddAttribute(++seq, "data-visible",  _spec.IsVisible?.Invoke() ?? true);
+                builder.AddAttribute(++seq, "style", $"max-width: {width}px");
+                builder.AddAttribute(++seq, "data-visible", _spec.IsVisible?.Invoke() ?? true);
                 builder.AddAttribute(++seq, "data-disabled", disabled);
 
                 ++seq;
@@ -321,9 +321,9 @@ namespace Integrant4.Element.Constructs.Selectors
                 //
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class",         "I4E-Construct-Selector-Head");
+                builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Head");
                 builder.AddAttribute(++seq, "data-disabled", disabled);
-                builder.AddAttribute(++seq, "tabindex",      0);
+                builder.AddAttribute(++seq, "tabindex", 0);
 
                 builder.OpenElement(++seq, "div");
 
@@ -342,9 +342,9 @@ namespace Integrant4.Element.Constructs.Selectors
                 builder.CloseElement();
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class",    "I4E-Construct-Selector-ClearButtonWrapper");
+                builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-ClearButtonWrapper");
                 builder.AddAttribute(++seq, "tabindex", 0);
-                builder.AddAttribute(++seq, "onclick",  EventCallback.Factory.Create(this, ClearValue));
+                builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, ClearValue));
                 builder.AddContent(++seq, _clearValueButton.Renderer());
                 builder.CloseElement();
 
@@ -404,9 +404,9 @@ namespace Integrant4.Element.Constructs.Selectors
                             builder.OpenElement(++seq, "div");
                             builder.SetKey(i);
 
-                            builder.AddAttribute(++seq, "tabindex",      0);
+                            builder.AddAttribute(++seq, "tabindex", 0);
                             builder.AddAttribute(++seq, "data-selected", selected);
-                            builder.AddAttribute(++seq, "data-i",        i);
+                            builder.AddAttribute(++seq, "data-i", i);
 
                             if (_spec.Filterable)
                                 builder.AddAttribute(++seq, "data-shown", shown);
@@ -425,13 +425,13 @@ namespace Integrant4.Element.Constructs.Selectors
                         if (_spec.Filterable)
                         {
                             builder.OpenElement(++seq, "p");
-                            builder.AddAttribute(++seq, "class",      "I4E-Construct-Options-LimitMessage");
+                            builder.AddAttribute(++seq, "class", "I4E-Construct-Options-LimitMessage");
                             builder.AddAttribute(++seq, "data-shown", shownCount == _spec.DisplayLimit);
                             builder.AddContent(++seq, $"Filter to see more than {_spec.DisplayLimit} options.");
                             builder.CloseElement();
 
                             builder.OpenElement(++seq, "p");
-                            builder.AddAttribute(++seq, "class",      "I4E-Construct-Options-NoResults");
+                            builder.AddAttribute(++seq, "class", "I4E-Construct-Options-NoResults");
                             builder.AddAttribute(++seq, "data-shown", shownCount == 0);
                             builder.AddContent(++seq, _spec.NoResultsText?.Invoke() ?? DefaultNoResultsText);
                             builder.CloseElement();
@@ -455,20 +455,16 @@ namespace Integrant4.Element.Constructs.Selectors
                 if (_elementService == null || _elemRef == null)
                     return Task.CompletedTask;
                 else if (firstRender)
-                    return Interop.CallVoid
+                    return _elementService.JSInvokeVoidAsync
                     (
-                        _elementService.JSRuntime,
-                        _elementService.CancellationToken,
                         "I4.Element.InitSelector",
                         _elemRef.Value,
                         DotNetObjectReference.Create(this),
                         _spec.Filterable
                     );
                 else
-                    return Interop.CallVoid
+                    return _elementService.JSInvokeVoidAsync
                     (
-                        _elementService.JSRuntime,
-                        _elementService.CancellationToken,
                         "I4.Element.UpdateSelector",
                         _elemRef.Value
                     );
@@ -489,16 +485,14 @@ namespace Integrant4.Element.Constructs.Selectors
         {
             if (_elementService == null || _elemRef == null) return;
 
-            await Interop.CallVoid(_elementService.JSRuntime, _elementService.CancellationToken,
-                "I4.Element.ShowSelector", _elemRef.Value);
+            await _elementService.JSInvokeVoidAsync("I4.Element.ShowSelector", _elemRef.Value);
         }
 
         public async Task Hide()
         {
             if (_elementService == null || _elemRef == null) return;
 
-            await Interop.CallVoid(_elementService.JSRuntime, _elementService.CancellationToken,
-                "I4.Element.HideSelector", _elemRef.Value);
+            await _elementService.JSInvokeVoidAsync("I4.Element.HideSelector", _elemRef.Value);
         }
     }
 

@@ -1,11 +1,12 @@
 using Blazored.LocalStorage;
 using Integrant4.Element;
-using Integrant4.Fundament;
+using Integrant4.Element.Constructs.FileUploader;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Tewr.Blazor.FileReader;
 
 namespace Web
 {
@@ -25,7 +26,10 @@ namespace Web
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
+            services.AddFileUploaderService();
+
             services.AddBlazoredLocalStorage();
+            services.AddFileReaderService();
 
             services.AddScoped<ElementService>();
         }

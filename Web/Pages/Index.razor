@@ -8,11 +8,22 @@
     }
 </style>
 
+@code {
+
+    private async Task OnDrop(EventArgs e)
+    {
+        
+    }
+
+}
+
 <div class="I4E-Layout-Panel">
     @_header.Renderer()
 
     <div class="I4E-Layout-Panel-Inner">
         <h1>Web</h1>
+        
+        <div @ondrop:preventDefault="true" @ondrop=@OnDrop/>
 
         <br>
         @_selector.Renderer()

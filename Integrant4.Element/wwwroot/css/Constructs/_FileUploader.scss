@@ -1,0 +1,113 @@
+.I4E-Construct-FileUploader {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    > input {
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: 2;
+    }
+
+    div.I4E-Construct-FileUploader-DropIndicator {
+        border-radius: 10px;
+        border-style: dashed;
+        border-width: 5px;
+        bottom: 24px;
+        display: none;
+        left: 12px;
+        position: absolute;
+        right: 12px;
+        top: 12px;
+        z-index: 1;
+    }
+
+    .I4E-Construct-FileUploader-Region {
+        display: flex;
+        height: calc(96px + 32px);
+        overflow-x: scroll;
+        padding: 0 16px;
+        position: relative;
+
+        div.I4E-Construct-FileUploader-File {
+            align-items: center;
+            display: flex;
+            flex-shrink: 0;
+            height: 96px;
+            justify-content: center;
+            margin: 5px;
+            position: relative;
+            width: 96px;
+            z-index: 3;
+
+            &:hover {
+                > span {
+                    opacity: 1;
+                    transition: opacity 150ms;
+                }
+            }
+
+            > img {
+                border: 2px solid var(--I4C_Default_Border_3);
+                max-height: 100%;
+                max-width: 100%;
+            }
+
+            > span {
+                opacity: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+                transition: opacity 150ms;
+            }
+        }
+
+        div.I4E-Construct-FileUploader-NoSelectionsText {
+            align-self: center;
+            font-style: italic;
+            color: var(--I4C_Default_Text_3);
+            font-weight: 600;
+            text-align: center;
+            width: 100%;
+        }
+    }
+}
+
+// Variable colors
+
+div.I4-App {
+    &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
+        div.I4E-Construct-FileUploader {
+            div.I4E-Construct-FileUploader-Region {
+                background-color: var(--I4C_Default_Background_4);
+
+                div.I4E-Construct-FileUploader-File img {
+                    box-shadow: var(--I4C_Default_Shadow_1);
+                }
+            }
+
+            div.I4E-Construct-FileUploader-DropIndicator {
+                background-color: var(--I4C_Default_Background_7);
+                border-color: var(--I4C_Default_Border_7);
+            }
+        }
+    }
+
+    &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
+        div.I4E-Construct-FileUploader {
+            div.I4E-Construct-FileUploader-Region {
+                background-color: var(--I4C_Default_Background_2);
+            }
+
+            div.I4E-Construct-FileUploader-DropIndicator {
+                background-color: white;
+                border-color: var(--I4C_Default_Border_10);
+            }
+        }
+    }
+}

@@ -32,7 +32,8 @@ namespace Integrant4.Element.Constructs.Selectors
             _equalityComparer = equalityComparer;
             _optionGetter     = optionGetter.Invoke;
 
-            _selector = new Selector<TValue>(jsRuntime, Array.Empty<Option<TValue>>, spec?.SubSpec() ?? new Selector<TValue>.Spec(), _equalityComparer);
+            _selector = new Selector<TValue>(jsRuntime, Array.Empty<Option<TValue>>,
+                spec?.SubSpec() ?? new Selector<TValue>.Spec(), _equalityComparer);
             _selected = new List<Option<TValue>>();
 
             _selector.OnChange += Select;
@@ -65,7 +66,7 @@ namespace Integrant4.Element.Constructs.Selectors
             public Callbacks.Pixels?     Width      { get; init; }
             public Callbacks.Scale?      Scale      { get; init; }
 
-            internal Selector<TValue>.Spec SubSpec() => new Selector<TValue>.Spec
+            internal Selector<TValue>.Spec SubSpec() => new()
             {
                 Filterable            = Filterable,
                 DisplayLimit          = DisplayLimit,
@@ -336,7 +337,7 @@ namespace Integrant4.Element.Constructs.Selectors
                                           selection.OptionContent.Renderer());
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class",    "I4E-Construct-MultiSelector-DeselectButtonWrapper");
+                builder.AddAttribute(++seq, "class", "I4E-Construct-MultiSelector-DeselectButtonWrapper");
                 builder.AddAttribute(++seq, "tabindex", 0);
                 builder.AddAttribute(++seq, "onclick",
                     EventCallback.Factory.Create(this, () => Deselect(selection)));

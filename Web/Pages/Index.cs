@@ -130,7 +130,7 @@ namespace Web.Pages
                 IsDisabled = () => _selectorDisabled,
             });
 
-            _multiSelector = new MultiSelector<User>(JSRuntime, OptionGetter, new Selector<User>.Spec
+            _multiSelector = new MultiSelector<User>(JSRuntime, OptionGetter, new MultiSelector<User>.Spec
             {
                 Filterable = true,
                 IsDisabled = () => _selectorDisabled,

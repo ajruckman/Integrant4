@@ -49,6 +49,21 @@ namespace Integrant4.Resources
 
         public static class Libraries
         {
+            public static readonly ResourceSet Dropzone = new
+            (
+                $"{nameof(Integrant4)}.{nameof(Resources)}",
+                $"{nameof(Libraries)}.{nameof(Dropzone)}",
+                stylesheetsInternal: new HashSet<string>
+                {
+                    // "Libraries/Dropzone/basic.min.css",
+                    "Libraries/Dropzone/dropzone.min.css",
+                },
+                scriptsInternal: new HashSet<string>
+                {
+                    "Libraries/Dropzone/dropzone.min.js",
+                }
+            );
+
             public static readonly ResourceSet MiniBar = new
             (
                 $"{nameof(Integrant4)}.{nameof(Resources)}",

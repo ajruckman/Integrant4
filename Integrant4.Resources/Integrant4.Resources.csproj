@@ -21,4 +21,8 @@
         <ProjectReference Include="..\Integrant4.Fundament\Integrant4.Fundament.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\Libraries\Dropzone" />
+    </ItemGroup>
+
 </Project>

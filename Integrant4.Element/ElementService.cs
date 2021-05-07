@@ -25,6 +25,7 @@ namespace Integrant4.Element
 
         public void Dispose()
         {
+            Console.WriteLine("ElementService disposed");
             _cts.Cancel();
             _cts.Dispose();
         }
@@ -39,6 +40,18 @@ namespace Integrant4.Element
             while (_jobs.TryDequeue(out Job? job))
             {
                 await job.Invoke(_jsRuntime, CancellationToken);
+            }
+        }
+
+        public async Task JSInvokeVoidAsync(string identifier, params object[] args)
+        {
+            try
+            {
+                await JSRuntime.InvokeVoidAsync(identifier, CancellationToken, args);
+            }
+            catch (TaskCanceledException)
+            {
+                // ignored
             }
         }
     }

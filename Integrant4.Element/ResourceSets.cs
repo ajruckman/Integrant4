@@ -21,12 +21,17 @@ namespace Integrant4.Element
             nameof(Constructs),
             dependencies: new[]
             {
+                Resources.Resources.Libraries.Dropzone,
                 Resources.Resources.Libraries.MiniBar,
                 Resources.Resources.Libraries.SimpleBar,
             },
             stylesheetsInternal: new HashSet<string>
             {
                 "css/Constructs/Constructs.css",
+            },
+            scriptsInternal: new HashSet<string>
+            {
+                "js/Constructs.js",
             }
         );
 
