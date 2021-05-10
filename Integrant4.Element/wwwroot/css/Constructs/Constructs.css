@@ -1,9 +1,19 @@
 .I4E-Construct-FileUploader {
-  display: flex;
   flex-direction: column;
-  position: relative; }
+  position: relative;
+  margin: 5px; }
+  .I4E-Construct-FileUploader--Block {
+    border-radius: 5px;
+    display: block; }
+  .I4E-Construct-FileUploader--Inline {
+    vertical-align: top;
+    border-radius: 15px;
+    display: inline-block; }
+  .I4E-Construct-FileUploader--Multiple .I4E-Construct-FileUploader-Region {
+    overflow-x: auto; }
   .I4E-Construct-FileUploader > input {
     bottom: 0;
+    cursor: pointer;
     left: 0;
     opacity: 0;
     position: absolute;
@@ -15,7 +25,7 @@
     border-radius: 10px;
     border-style: dashed;
     border-width: 5px;
-    bottom: 24px;
+    bottom: 12px;
     display: none;
     left: 12px;
     position: absolute;
@@ -24,28 +34,43 @@
     z-index: 1; }
   .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region {
     display: flex;
-    height: calc(96px + 32px);
-    overflow-x: scroll;
+    height: calc(96px + 38px + 24px);
     padding: 0 16px;
     position: relative; }
     .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File {
-      align-items: center;
-      display: flex;
       flex-shrink: 0;
-      height: 96px;
-      justify-content: center;
       margin: 5px;
       position: relative;
-      width: 96px;
       z-index: 3; }
       .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File:hover > span {
         opacity: 1;
         transition: opacity 150ms; }
-      .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > img {
-        border: 2px solid var(--I4C_Default_Border_3);
-        max-height: 100%;
-        max-width: 100%; }
+      .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > div {
+        align-items: center;
+        display: flex;
+        height: 96px;
+        justify-content: center;
+        width: 96px; }
+        .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > div > img {
+          max-height: 100%;
+          max-width: 100%; }
+          .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > div > img:not([Fallback]) {
+            border: 2px solid var(--I4C_Default_Border_3); }
+          .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > div > img[Fallback] {
+            width: 64px;
+            color: var(--I4C_Default_Text_6);
+            height: 64px; }
+      .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > p {
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        height: 38px;
+        -webkit-line-clamp: 2;
+        margin: 0;
+        overflow: hidden;
+        text-align: center;
+        width: 96px; }
       .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > span {
+        cursor: pointer;
         opacity: 0;
         position: absolute;
         right: 0;
@@ -53,27 +78,29 @@
         transition: opacity 150ms; }
     .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-NoSelectionsText {
       align-self: center;
-      font-style: italic;
       color: var(--I4C_Default_Text_3);
+      font-style: italic;
       font-weight: 600;
       text-align: center;
       width: 100%; }
 
-div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-Region, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-Region {
-  background-color: var(--I4C_Default_Background_4); }
-  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File img, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File img {
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-FileUploader, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-FileUploader {
+  background-color: var(--I4C_Default_Background_4);
+  box-shadow: inset var(--I4C_Default_Shadow_0);
+  border: 1px solid var(--I4C_Default_Border_5); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File img:not([Fallback]), div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File img:not([Fallback]) {
     box-shadow: var(--I4C_Default_Shadow_1); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator {
+    background-color: var(--I4C_Default_Background_7);
+    border-color: var(--I4C_Default_Border_7); }
 
-div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator {
-  background-color: var(--I4C_Default_Background_7);
-  border-color: var(--I4C_Default_Border_7); }
-
-div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-Region, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-Region {
-  background-color: var(--I4C_Default_Background_2); }
-
-div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator {
-  background-color: white;
-  border-color: var(--I4C_Default_Border_10); }
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-FileUploader, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-FileUploader {
+  background-color: var(--I4C_Default_Background_2);
+  box-shadow: inset var(--I4C_Default_Shadow_0);
+  border: 1px solid var(--I4C_Default_Border_5); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator {
+    background-color: white;
+    border-color: var(--I4C_Default_Border_10); }
 
 div.I4E-Construct-Header {
   align-items: center;
@@ -550,3 +577,5 @@ div.I4E-Construct-LocalModal {
     opacity: 1; }
     div.I4E-Construct-LocalModal div.I4E-Construct-LocalModal-Inner--Column {
       flex-direction: column; }
+
+/*# sourceMappingURL=Constructs.css.map */

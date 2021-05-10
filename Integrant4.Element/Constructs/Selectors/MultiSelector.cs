@@ -330,18 +330,21 @@ namespace Integrant4.Element.Constructs.Selectors
 
             foreach (Option<TValue> selection in _selected)
             {
-                builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-MultiSelector-Selection");
+                builder.OpenRegion(++seq);
+                var seqI = 0;
 
-                builder.AddContent(++seq, selection.SelectionContent?.Renderer() ??
-                                          selection.OptionContent.Renderer());
+                builder.OpenElement(++seqI, "div");
+                builder.AddAttribute(++seqI, "class", "I4E-Construct-MultiSelector-Selection");
 
-                builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-MultiSelector-DeselectButtonWrapper");
-                builder.AddAttribute(++seq, "tabindex", 0);
-                builder.AddAttribute(++seq, "onclick",
+                builder.AddContent(++seqI, selection.SelectionContent?.Renderer() ??
+                                           selection.OptionContent.Renderer());
+
+                builder.OpenElement(++seqI, "div");
+                builder.AddAttribute(++seqI, "class", "I4E-Construct-MultiSelector-DeselectButtonWrapper");
+                builder.AddAttribute(++seqI, "tabindex", 0);
+                builder.AddAttribute(++seqI, "onclick",
                     EventCallback.Factory.Create(this, () => Deselect(selection)));
-                builder.AddContent(++seq, _deselectValueButton.Renderer());
+                builder.AddContent(++seqI, _deselectValueButton.Renderer());
                 builder.CloseElement();
 
                 builder.CloseElement();

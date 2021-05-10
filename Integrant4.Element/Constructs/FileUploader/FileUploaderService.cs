@@ -9,6 +9,7 @@ namespace Integrant4.Element.Constructs.FileUploader
 {
     public class FileUploaderService
     {
+        private readonly ConcurrentDictionary<Guid, bool>                      _multiple     = new();
         private readonly ConcurrentDictionary<Guid, Action<FileUploader.File>> _addListeners = new();
         private readonly ConcurrentDictionary<Guid, Action<FileUploader.File>> _remListeners = new();
 
@@ -17,15 +18,23 @@ namespace Integrant4.Element.Constructs.FileUploader
 
         private ushort _serialID;
 
-        internal void Subscribe(Guid uid, Action<FileUploader.File> addListener, Action<FileUploader.File> remListener)
+        internal void Subscribe
+        (
+            Guid                      guid,
+            bool                      multiple,
+            Action<FileUploader.File> addListener,
+            Action<FileUploader.File> remListener
+        )
         {
-            _addListeners[uid] = addListener;
-            _remListeners[uid] = remListener;
-            _fileMap[uid]      = new ConcurrentDictionary<int, FileUploader.File>();
+            _multiple[guid]     = multiple;
+            _addListeners[guid] = addListener;
+            _remListeners[guid] = remListener;
+            _fileMap[guid]      = new ConcurrentDictionary<int, FileUploader.File>();
         }
 
         internal void Unsubscribe(Guid guid)
         {
+            _multiple.Remove(guid, out _);
             _addListeners.Remove(guid, out _);
             _remListeners.Remove(guid, out _);
 
@@ -62,6 +71,11 @@ namespace Integrant4.Element.Constructs.FileUploader
 
             var file = new FileUploader.File(id, name, data);
 
+            bool multiple = _multiple[guid];
+
+            if (!multiple)
+                _fileMap[guid].Clear();
+
             _fileMap[guid][id] = file;
 
             if (_addListeners.TryGetValue(guid, out Action<FileUploader.File>? listener))
@@ -73,7 +87,7 @@ namespace Integrant4.Element.Constructs.FileUploader
         public void Remove(Guid guid, int serial)
         {
             _fileMap[guid].Remove(serial, out FileUploader.File? file);
-            
+
             if (file != null && _remListeners.TryGetValue(guid, out Action<FileUploader.File>? listener))
             {
                 listener.Invoke(file);

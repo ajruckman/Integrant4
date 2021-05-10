@@ -21,6 +21,7 @@ namespace Integrant4.Element
             nameof(Constructs),
             dependencies: new[]
             {
+                Resources.Resources.Icons.Bootstrap,
                 Resources.Resources.Libraries.Dropzone,
                 Resources.Resources.Libraries.MiniBar,
                 Resources.Resources.Libraries.SimpleBar,

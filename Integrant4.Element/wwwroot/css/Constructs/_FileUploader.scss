@@ -1,10 +1,32 @@
 .I4E-Construct-FileUploader {
-    display: flex;
     flex-direction: column;
     position: relative;
+    margin: 5px;
+
+    &--Block {
+        border-radius: 5px;
+        display: block;
+    }
+
+    &--Inline {
+        vertical-align: top;
+        border-radius: 15px;
+        display: inline-block;
+    }
+
+    &--Single {
+
+    }
+
+    &--Multiple {
+        .I4E-Construct-FileUploader-Region {
+            overflow-x: auto;
+        }
+    }
 
     > input {
         bottom: 0;
+        cursor: pointer;
         left: 0;
         opacity: 0;
         position: absolute;
@@ -18,7 +40,7 @@
         border-radius: 10px;
         border-style: dashed;
         border-width: 5px;
-        bottom: 24px;
+        bottom: 12px;
         display: none;
         left: 12px;
         position: absolute;
@@ -29,20 +51,14 @@
 
     .I4E-Construct-FileUploader-Region {
         display: flex;
-        height: calc(96px + 32px);
-        overflow-x: scroll;
+        height: calc(96px + 38px + 24px);
         padding: 0 16px;
         position: relative;
 
         div.I4E-Construct-FileUploader-File {
-            align-items: center;
-            display: flex;
             flex-shrink: 0;
-            height: 96px;
-            justify-content: center;
             margin: 5px;
             position: relative;
-            width: 96px;
             z-index: 3;
 
             &:hover {
@@ -52,13 +68,45 @@
                 }
             }
 
-            > img {
-                border: 2px solid var(--I4C_Default_Border_3);
-                max-height: 100%;
-                max-width: 100%;
+            > div {
+                align-items: center;
+                display: flex;
+                height: 96px;
+                justify-content: center;
+                width: 96px;
+
+                > img {
+                    max-height: 100%;
+                    max-width: 100%;
+
+                    &:not([Fallback]) {
+                        border: 2px solid var(--I4C_Default_Border_3);
+                    }
+
+                    &[Fallback] {
+                        width: 64px;
+                        color: var(--I4C_Default_Text_6);
+                        height: 64px;
+                    }
+                }
+            }
+
+            > p {
+                -webkit-box-orient: vertical;
+                display: -webkit-box;
+                height: 38px;
+                -webkit-line-clamp: 2;
+                margin: 0;
+                overflow: hidden;
+                text-align: center;
+                width: 96px;
+
+                //text-overflow: ellipsis;
+                //white-space: nowrap;
             }
 
             > span {
+                cursor: pointer;
                 opacity: 0;
                 position: absolute;
                 right: 0;
@@ -69,8 +117,8 @@
 
         div.I4E-Construct-FileUploader-NoSelectionsText {
             align-self: center;
-            font-style: italic;
             color: var(--I4C_Default_Text_3);
+            font-style: italic;
             font-weight: 600;
             text-align: center;
             width: 100%;
@@ -83,11 +131,15 @@
 div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
         div.I4E-Construct-FileUploader {
-            div.I4E-Construct-FileUploader-Region {
-                background-color: var(--I4C_Default_Background_4);
+            background-color: var(--I4C_Default_Background_4);
+            box-shadow: inset var(--I4C_Default_Shadow_0);
+            border: 1px solid var(--I4C_Default_Border_5);
 
+            div.I4E-Construct-FileUploader-Region {
                 div.I4E-Construct-FileUploader-File img {
-                    box-shadow: var(--I4C_Default_Shadow_1);
+                    &:not([Fallback]) {
+                        box-shadow: var(--I4C_Default_Shadow_1);
+                    }
                 }
             }
 
@@ -100,8 +152,13 @@ div.I4-App {
 
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
         div.I4E-Construct-FileUploader {
+            background-color: var(--I4C_Default_Background_2);
+            box-shadow: inset var(--I4C_Default_Shadow_0);
+            border: 1px solid var(--I4C_Default_Border_5);
+
             div.I4E-Construct-FileUploader-Region {
-                background-color: var(--I4C_Default_Background_2);
+                div.I4E-Construct-FileUploader-File img {
+                }
             }
 
             div.I4E-Construct-FileUploader-DropIndicator {

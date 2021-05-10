@@ -20,7 +20,7 @@ namespace Integrant4.Element.Constructs.FileUploader
         private WriteOnlyHook?    _refresher;
         private ElementReference? _elementRef;
 
-        public FileUploader(Type type = Type.Multiple, Spec? spec = null)
+        public FileUploader(Type type = Type.Multiple | Type.Block, Spec? spec = null)
         {
             _type = type;
             _spec = spec ?? new Spec();
@@ -61,9 +61,10 @@ namespace Integrant4.Element.Constructs.FileUploader
 
     public partial class FileUploader
     {
+        [Flags]
         public enum Type
         {
-            Single, Multiple,
+            Single = 1, Multiple = 2, Block = 4, Inline = 8,
         }
 
         public class Spec
@@ -71,7 +72,7 @@ namespace Integrant4.Element.Constructs.FileUploader
             [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
             [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
 
-            public Callbacks.Callback<string>? NoSelectionsText { get; init; }
+            public Callbacks.Callback<string>? PlaceholderText { get; init; }
 
             public Callbacks.Pixels? Width { get; init; }
             public Callbacks.Scale?  Scale { get; init; }
@@ -81,6 +82,8 @@ namespace Integrant4.Element.Constructs.FileUploader
     public partial class FileUploader
     {
         private readonly BootstrapIcon _deselectValueButton;
+
+        private const string FallbackImage = "/_content/Integrant4.Resources/Icons/Bootstrap/file-earmark.svg";
 
         public RenderFragment Renderer() => Latch.Create(builder =>
             {
@@ -94,7 +97,13 @@ namespace Integrant4.Element.Constructs.FileUploader
                 //
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-FileUploader");
+
+                string[] classes = new string[3];
+                classes[0] = "I4E-Construct-FileUploader";
+                classes[1] = "I4E-Construct-FileUploader--" + (_type.HasFlag(Type.Single) ? "Single" : "Multiple");
+                classes[2] = "I4E-Construct-FileUploader--" + (_type.HasFlag(Type.Block) ? "Block" : "Inline");
+                builder.AddAttribute(++seq, "class", string.Join(' ', classes));
+
                 builder.AddElementReferenceCapture(++seq, r => _elementRef = r);
 
                 ++seq;
@@ -104,7 +113,7 @@ namespace Integrant4.Element.Constructs.FileUploader
 
                 builder.OpenElement(++seq, "input");
                 builder.AddAttribute(++seq, "type", "file");
-                builder.AddAttribute(++seq, "multiple", _type == Type.Multiple);
+                builder.AddAttribute(++seq, "multiple", _type.HasFlag(Type.Multiple));
                 builder.CloseElement();
 
                 // Indicator
@@ -124,31 +133,49 @@ namespace Integrant4.Element.Constructs.FileUploader
                 {
                     foreach (File file in list)
                     {
-                        builder.SetKey(file.SerialID);
-                        builder.OpenElement(++seq, "div");
-                        builder.AddAttribute(++seq, "class", "I4E-Construct-FileUploader-File");
+                        builder.OpenRegion(++seq);
+                        var seqI = 0;
 
-                        builder.OpenElement(++seq, "img");
-                        builder.AddAttribute(++seq, "src", $"/api/i4/file/thumbnail/{_guid}/{file.SerialID}");
+                        builder.OpenElement(++seqI, "div");
+                        builder.AddAttribute(++seqI, "class", "I4E-Construct-FileUploader-File");
+
+                        builder.SetKey(file.SerialID);
+                        builder.OpenElement(++seqI, "div");
+                        builder.OpenElement(++seqI, "img");
+                        builder.AddAttribute(++seqI, "src", $"/api/i4/file/thumbnail/{_guid}/{file.SerialID}");
+                        builder.AddAttribute(++seq, "onerror", "window.I4.Element.FileUploaderThumbnailErrorHandler(this)");
+                        builder.CloseElement();
                         builder.CloseElement();
 
-                        builder.OpenElement(++seq, "span");
-                        builder.AddAttribute(++seq, "class", "I4E-Construct-FileUploader-RemoveButtonWrapper");
-                        builder.AddAttribute(++seq, "tabindex", 0);
-                        builder.AddAttribute(++seq, "onclick",
+                        builder.OpenElement(++seqI, "p");
+                        builder.AddContent(++seqI, file.Name);
+                        builder.CloseElement();
+
+                        builder.OpenElement(++seqI, "span");
+                        builder.AddAttribute(++seqI, "class", "I4E-Construct-FileUploader-RemoveButtonWrapper");
+                        builder.AddAttribute(++seqI, "tabindex", 0);
+                        builder.AddAttribute(++seqI, "onclick",
                             EventCallback.Factory.Create(this,
                                 () => _fileUploaderService?.Remove(_guid, file.SerialID)));
-                        builder.AddContent(++seq, _deselectValueButton.Renderer());
+                        builder.AddContent(++seqI, _deselectValueButton.Renderer());
                         builder.CloseElement();
 
                         builder.CloseElement();
+
+                        builder.CloseRegion();
                     }
                 }
                 else
                 {
+                    string? text = _spec.PlaceholderText?.Invoke();
+                    text ??= _type.HasFlag(Type.Single)
+                        ? "Drag and drop a file here,<br>or click to select one from your computer"
+                        : "Drag and drop files here,<br>or click to select from your computer";
+
                     builder.OpenElement(++seq, "div");
                     builder.AddAttribute(++seq, "class", "I4E-Construct-FileUploader-NoSelectionsText");
-                    builder.AddContent(++seq, _spec.NoSelectionsText?.Invoke() ?? "Drag and drop files here, or click to select from your computer");
+                    builder.AddMarkupContent(++seq, text);
+
                     builder.CloseElement();
                 }
 
@@ -169,7 +196,7 @@ namespace Integrant4.Element.Constructs.FileUploader
                     return;
                 }
 
-                _fileUploaderService.Subscribe(_guid, OnAdd, OnRemove);
+                _fileUploaderService.Subscribe(_guid, _type.HasFlag(Type.Multiple), OnAdd, OnRemove);
 
                 await _elementService.JSInvokeVoidAsync
                 (

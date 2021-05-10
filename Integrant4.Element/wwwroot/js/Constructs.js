@@ -235,12 +235,8 @@ window.I4.Element.UpdateSelector = window.I4.Element.UpdateSelector || function 
 //
 
 window.I4.Element.FileUploaderInit = window.I4.Element.FileUploaderInit || function (guid, element) {
-    console.log(guid);
-    console.log(element);
-
     let input = element.querySelector('input');
     let indicator = element.querySelector('.I4E-Construct-FileUploader-DropIndicator');
-    console.log(input)
 
     input.addEventListener('drop', event => {
         event.stopPropagation();
@@ -265,33 +261,9 @@ window.I4.Element.FileUploaderInit = window.I4.Element.FileUploaderInit || funct
     input.addEventListener('dragleave', () => {
         indicator.style.display = 'none';
     });
-
-    // const indicator = region.querySelector('.I4E-Construct-FileUploader-DropIndicator');
-    // console.log(indicator)
-    //
-    // indicator.addEventListener('dragenter', () => {
-    //     indicator.setAttribute('data-dragover', '');
-    // });
-    //
-    // indicator.addEventListener('dragleave', () => {
-    //     indicator.removeAttribute('data-dragover');
-    // });
-    //
-    // indicator.addEventListener('drop', event => {
-    //     event.stopPropagation();
-    //     event.preventDefault();
-    //
-    //     console.log('dropped on indicator')
-    //    
-    //     window.I4.Element.FileUploaderSendFiles(guid, event.dataTransfer.files);
-    // });
-
-
 }
 
 window.I4.Element.FileUploaderSendFiles = window.I4.Element.FileUploaderSendFiles || function (guid, files) {
-    console.log(files)
-
     let data = new FormData();
     data.append('guid', guid);
 
@@ -309,35 +281,18 @@ window.I4.Element.FileUploaderSendFiles = window.I4.Element.FileUploaderSendFile
     });
 }
 
-window.I4.Element.FileUploaderAddPreview = window.I4.Element.FileUploaderAddPreview || function (region, previews) {
-}
+const SVGNS = "http://www.w3.org/2000/svg";
+const XLNNS = "http://www.w3.org/1999/xlink";
 
-// window.I4.Element.InitFileUploader = window.I4.Element.InitFileUploader || function (element, guid, multiple) {
-//     element.i4e_serial = 0;
-//
-//     new FileUploader(element, {
-//         url: "/api/i4/file-upload",
-//         multiple: false,
-//         addRemoveLinks: true,
-//
-//         headers: {"guid": guid},
-//         accept: function(file, done) {
-//             console.log(file);
-//             done();
-//         },
-//        
-//         init: function() {
-//             if (!multiple) {
-//                 this.on("addedfile", function() {
-//                     if (this.files[1] != null) {
-//                         this.removeFile(this.files[0]);
-//                     }
-//                 });
-//             }
-//         },
-//        
-//         renameFile: function(file) {
-//             return (element.i4e_serial++) + '_' + file.name; 
-//         } 
-//     });
-// }
+window.I4.Element.FileUploaderThumbnailErrorHandler = window.I4.Element.FileUploaderThumbnailErrorHandler || function (self) {
+    let svg = document.createElementNS(SVGNS, 'svg');
+    let use = document.createElementNS(SVGNS, 'use');
+
+    svg.setAttribute('class', 'bi');
+    svg.setAttribute('width', '64');
+    svg.setAttribute('height', '64');
+    use.setAttributeNS(XLNNS, 'href', '_content/Integrant4.Resources/Icons/Bootstrap/bootstrap-icons.svg#file-earmark');
+
+    svg.appendChild(use);
+    self.replaceWith(svg);
+}
