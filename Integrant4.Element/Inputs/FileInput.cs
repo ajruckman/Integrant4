@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Integrant4.Element.Inputs
 {
-    public class FileInput : IRefreshableInput<IReadOnlyList<FileUploader.File>?>
+    public class FileInput : IRefreshableInput<IReadOnlyList<FileUploader.File>?>, IAsyncDisposable
     {
         private readonly FileUploader _fileInput;
 
@@ -16,6 +16,11 @@ namespace Integrant4.Element.Inputs
             _fileInput = fileInput;
 
             _fileInput.OnChange += v => OnChange?.Invoke(v);
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            await _fileInput.DisposeAsync();
         }
 
         public void                                    Refresh()  => _fileInput.Refresh();

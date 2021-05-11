@@ -6,7 +6,7 @@ using Integrant4.Fundament;
 
 namespace Integrant4.Structurant
 {
-    public interface IMemberInstance<TObject, TState>
+    public interface IMemberInstance<TObject, TState> : IAsyncDisposable
         where TObject : class
         where TState : class
     {
@@ -89,6 +89,17 @@ namespace Integrant4.Structurant
         public event Action<object?>? OnValueChangeUntyped;
 
         public TState State => StructureInstance.State;
+
+        public async ValueTask DisposeAsync()
+        {
+            if (Input == null) return;
+
+            if (Input is IDisposable disposable)
+                disposable.Dispose();
+
+            if (Input is IAsyncDisposable asyncDisposable)
+                await asyncDisposable.DisposeAsync();
+        }
 
         public TValue? Value()
         {

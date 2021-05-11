@@ -140,18 +140,20 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
         });
 
         // Close dropdown when other area on page is clicked
-        document.addEventListener('mousedown', event => {
+        element.I4EMousedownEventListener = function(event) {
             if (!element.contains(event.target)) {
                 element.HideSelector();
             }
-        });
+        };
+        document.addEventListener('mousedown', element.I4EMousedownEventListener);
 
         // Close dropdown when Escape key is pressed
-        document.addEventListener('keydown', event => {
+        element.I4EKeydownEventListener = function(event) {
             if (event.code === 'Escape' && element.SelectorOpen) {
                 element.HideSelector();
             }
-        });
+        };
+        document.addEventListener('keydown', element.I4EKeydownEventListener);
 
         // Select value when option is clicked
         options.addEventListener('click', event => {
@@ -230,6 +232,15 @@ window.I4.Element.HideSelector = window.I4.Element.HideSelector || function (ele
 window.I4.Element.UpdateSelector = window.I4.Element.UpdateSelector || function (element) {
     element.I4EOptionsDropdown.update();
     element.SelectorBar.update();
+}
+
+window.I4.Element.DeactivateSelector = window.I4.Element.DeactivateSelector || function (element) {
+    if (element.hasOwnProperty('I4EMousedownEventListener')) {
+        document.removeEventListener('mousedown', element.I4EMousedownEventListener);
+    }
+    if (element.hasOwnProperty('I4EKeydownEventListener')) {
+        document.removeEventListener('keydown', element.I4EKeydownEventListener);
+    }
 }
 
 //

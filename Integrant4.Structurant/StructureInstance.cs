@@ -8,7 +8,7 @@ using Microsoft.JSInterop;
 
 namespace Integrant4.Structurant
 {
-    public class StructureInstance<TObject, TState>
+    public class StructureInstance<TObject, TState> : IAsyncDisposable
         where TObject : class
         where TState : class
     {
@@ -64,6 +64,14 @@ namespace Integrant4.Structurant
 
         public IReadOnlyList<IMemberInstance<TObject, TState>> MemberInstances => _memberInstances;
 
+        public async ValueTask DisposeAsync()
+        {
+            foreach (IMemberInstance<TObject,TState> m in MemberInstances)
+            {
+                await m.DisposeAsync();
+            }
+        }
+
         public event Action<IMemberInstance<TObject, TState>, object?>? OnMemberValueChange;
 
         public IMemberInstance<TObject, TState>? Get(string id)
@@ -93,7 +101,7 @@ namespace Integrant4.Structurant
                 await WriteLock.WaitAsync();
                 try
                 {
-                    TObject result =  await Definition.ResultConstructor.Invoke(this);
+                    TObject result = await Definition.ResultConstructor.Invoke(this);
 
                     then?.Invoke(result);
                 }
