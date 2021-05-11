@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Integrant4.Element.Inputs
 {
-    public class MultiSelectorInput<TValue> : IRefreshableInput<TValue?[]?>
+    public class MultiSelectorInput<TValue> : IWritableRefreshableInput<TValue?[]?>
     {
         private readonly MultiSelector<TValue> _multiSelector;
 
@@ -29,10 +29,16 @@ namespace Integrant4.Element.Inputs
             };
         }
 
-        public void             Refresh()                  => _multiSelector.Refresh();
-        public Task<TValue?[]?> GetValue()                 => _multiSelector.GetValue();
-        public Task             SetValue(TValue?[]? value) => _multiSelector.SetValue(value);
-        public RenderFragment   Renderer()                 => _multiSelector.Renderer();
+        public void             Refresh()  => _multiSelector.Refresh();
+        public Task<TValue?[]?> GetValue() => Task.FromResult(_multiSelector.GetValue());
+
+        public Task SetValue(TValue?[]? value)
+        {
+            _multiSelector.SetValue(value);
+            return Task.CompletedTask;
+        }
+
+        public RenderFragment Renderer() => _multiSelector.Renderer();
 
         public event Action<TValue?[]?>? OnChange;
 

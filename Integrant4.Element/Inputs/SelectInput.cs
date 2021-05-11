@@ -38,7 +38,7 @@ namespace Integrant4.Element.Inputs
         public bool    Disabled { get; }
     }
 
-    public partial class SelectInput<TValue> : StandardInput<TValue?>, ICachingInput
+    public partial class SelectInput<TValue> : StandardInput<TValue?>
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]

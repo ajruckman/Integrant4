@@ -1,0 +1,16 @@
+.I4E-Bit-Expander {
+    align-items: center;
+    display: inline-flex;
+    max-width: 100%;
+    width: 100%;
+
+    .I4E-Bit-Expander-Line {
+        background-color: var(--I4C_Default_Border_3);
+        flex: 1;
+        height: 2px;
+    }
+
+    .I4E-Bit-Button {
+        margin: 0 3px;
+    }
+}

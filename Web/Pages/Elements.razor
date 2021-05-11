@@ -1,4 +1,5 @@
 @page "/elements"
+@using Integrant4.Fundament
 @using Integrant4.Element.Bits
 
 <style>
@@ -65,12 +66,24 @@
 </ul>
 
 <ul>
-    <li><div class="I4E-Bit-Spinner"></div></li>
-    <li><div class="I4E-Bit-Spinner" style="font-size: 0.5rem;"></div></li>
-    <li><div class="I4E-Bit-Spinner" style="font-size: 0.75rem;"></div></li>
-    <li><div class="I4E-Bit-Spinner" style="font-size: 1rem;"></div></li>
-    <li><div class="I4E-Bit-Spinner" style="font-size: 1.25rem;"></div></li>
-    <li><div class="I4E-Bit-Spinner" style="font-size: 1.5rem;"></div></li>
+    <li>
+        <div class="I4E-Bit-Spinner"></div>
+    </li>
+    <li>
+        <div class="I4E-Bit-Spinner" style="font-size: 0.5rem;"></div>
+    </li>
+    <li>
+        <div class="I4E-Bit-Spinner" style="font-size: 0.75rem;"></div>
+    </li>
+    <li>
+        <div class="I4E-Bit-Spinner" style="font-size: 1rem;"></div>
+    </li>
+    <li>
+        <div class="I4E-Bit-Spinner" style="font-size: 1.25rem;"></div>
+    </li>
+    <li>
+        <div class="I4E-Bit-Spinner" style="font-size: 1.5rem;"></div>
+    </li>
 </ul>
 
 <ul>
@@ -91,13 +104,18 @@
     <li>@_chip.Renderer()</li>
     <li>@_chipLink.Renderer()</li>
     <li>@_chipWithIcon.Renderer()</li>
-    <li></li>
-    <li>@_checkbox.Renderer()</li>
-    <li></li>
-    <li>@_link1.Renderer()</li>
-    <li>@_link2.Renderer()</li>
-    <li>@_link3.Renderer()</li>
-    <li>@_link4.Renderer()</li>
+    <li>@_expander.Renderer()</li>
+    <Latch Hook="@_expander.Hook">
+        @if (_expander.Expanded)
+        {
+            <li>@_checkbox.Renderer()</li>
+            <li></li>
+            <li>@_link1.Renderer()</li>
+            <li>@_link2.Renderer()</li>
+            <li>@_link3.Renderer()</li>
+            <li>@_link4.Renderer()</li>
+        }
+    </Latch>
 </ul>
 
 <br>

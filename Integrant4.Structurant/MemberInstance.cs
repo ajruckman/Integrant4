@@ -71,8 +71,7 @@ namespace Integrant4.Structurant
 
         public async Task ResetInputValue()
         {
-            if (Input != null)
-                await Input.SetValue(Value());
+            if (Input is IWritableInput<TValue> writableInput) await writableInput.SetValue(Value());
         }
 
         public void RefreshInput()
@@ -84,9 +83,7 @@ namespace Integrant4.Structurant
         }
 
         public IReadOnlyList<IValidation>? Validations() =>
-            _definition.ValidationGetter == null
-                ? null
-                : _definition.ValidationGetter.Invoke(this);
+            _definition.ValidationGetter?.Invoke(this);
 
         public event Action?          OnInput;
         public event Action<object?>? OnValueChangeUntyped;

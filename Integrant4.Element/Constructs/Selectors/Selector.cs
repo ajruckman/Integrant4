@@ -87,17 +87,14 @@ namespace Integrant4.Element.Constructs.Selectors
         public event Action<Option<TValue>?>? OnChange;
         public event Action?                  OnLoaded;
 
-        public void Refresh()
-        {
-            _refresher?.Invoke();
-        }
+        public void Refresh() => _refresher?.Invoke();
 
-        public Task<TValue?> GetValue() => Task.FromResult(_selection != null ? _selection.Value.Value : default);
+        public TValue? GetValue() => _selection != null ? _selection.Value.Value : default;
 
-        public Task SetValue(TValue? value)
+        public void SetValue(TValue? value)
         {
-            if (_selection == null && value == null) return Task.CompletedTask;
-            if (_selection?.Value?.Equals(value) == true) return Task.CompletedTask;
+            if (_selection == null && value == null) return;
+            if (_selection?.Value?.Equals(value) == true) return;
 
             lock (_optionsLock)
             {
@@ -122,8 +119,6 @@ namespace Integrant4.Element.Constructs.Selectors
             }
 
             _refresher?.Invoke();
-
-            return Task.CompletedTask;
         }
 
         public void ClearValue()
@@ -309,8 +304,8 @@ namespace Integrant4.Element.Constructs.Selectors
                         ? "I4E-Construct-Selector"
                         : "I4E-Construct-Selector I4E-Construct-Selector--Filterable");
 
-                builder.AddAttribute(++seq, "style", $"max-width: {width}px");
-                builder.AddAttribute(++seq, "data-visible", _spec.IsVisible?.Invoke() ?? true);
+                builder.AddAttribute(++seq, "style",         $"max-width: {width}px");
+                builder.AddAttribute(++seq, "data-visible",  _spec.IsVisible?.Invoke() ?? true);
                 builder.AddAttribute(++seq, "data-disabled", disabled);
 
                 ++seq;
@@ -321,9 +316,9 @@ namespace Integrant4.Element.Constructs.Selectors
                 //
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Head");
+                builder.AddAttribute(++seq, "class",         "I4E-Construct-Selector-Head");
                 builder.AddAttribute(++seq, "data-disabled", disabled);
-                builder.AddAttribute(++seq, "tabindex", 0);
+                builder.AddAttribute(++seq, "tabindex",      0);
 
                 builder.OpenElement(++seq, "div");
 
@@ -342,9 +337,9 @@ namespace Integrant4.Element.Constructs.Selectors
                 builder.CloseElement();
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-ClearButtonWrapper");
+                builder.AddAttribute(++seq, "class",    "I4E-Construct-Selector-ClearButtonWrapper");
                 builder.AddAttribute(++seq, "tabindex", 0);
-                builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, ClearValue));
+                builder.AddAttribute(++seq, "onclick",  EventCallback.Factory.Create(this, ClearValue));
                 builder.AddContent(++seq, _clearValueButton.Renderer());
                 builder.CloseElement();
 
@@ -404,9 +399,9 @@ namespace Integrant4.Element.Constructs.Selectors
                             builder.OpenElement(++seq, "div");
                             builder.SetKey(i);
 
-                            builder.AddAttribute(++seq, "tabindex", 0);
+                            builder.AddAttribute(++seq, "tabindex",      0);
                             builder.AddAttribute(++seq, "data-selected", selected);
-                            builder.AddAttribute(++seq, "data-i", i);
+                            builder.AddAttribute(++seq, "data-i",        i);
 
                             if (_spec.Filterable)
                                 builder.AddAttribute(++seq, "data-shown", shown);
@@ -425,13 +420,13 @@ namespace Integrant4.Element.Constructs.Selectors
                         if (_spec.Filterable)
                         {
                             builder.OpenElement(++seq, "p");
-                            builder.AddAttribute(++seq, "class", "I4E-Construct-Options-LimitMessage");
+                            builder.AddAttribute(++seq, "class",      "I4E-Construct-Options-LimitMessage");
                             builder.AddAttribute(++seq, "data-shown", shownCount == _spec.DisplayLimit);
                             builder.AddContent(++seq, $"Filter to see more than {_spec.DisplayLimit} options.");
                             builder.CloseElement();
 
                             builder.OpenElement(++seq, "p");
-                            builder.AddAttribute(++seq, "class", "I4E-Construct-Options-NoResults");
+                            builder.AddAttribute(++seq, "class",      "I4E-Construct-Options-NoResults");
                             builder.AddAttribute(++seq, "data-shown", shownCount == 0);
                             builder.AddContent(++seq, _spec.NoResultsText?.Invoke() ?? DefaultNoResultsText);
                             builder.CloseElement();

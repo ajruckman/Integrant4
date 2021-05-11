@@ -1,14 +1,26 @@
+.I4E-Bit-Expander {
+  align-items: center;
+  display: inline-flex;
+  max-width: 100%;
+  width: 100%; }
+  .I4E-Bit-Expander .I4E-Bit-Expander-Line {
+    background-color: var(--I4C_Default_Border_3);
+    flex: 1;
+    height: 2px; }
+  .I4E-Bit-Expander .I4E-Bit-Button {
+    margin: 0 3px; }
+
 .I4E-Construct-FileUploader {
   flex-direction: column;
-  position: relative;
-  margin: 5px; }
+  margin: 5px;
+  position: relative; }
   .I4E-Construct-FileUploader--Block {
     border-radius: 5px;
     display: block; }
   .I4E-Construct-FileUploader--Inline {
-    vertical-align: top;
     border-radius: 15px;
-    display: inline-block; }
+    display: inline-block;
+    vertical-align: top; }
   .I4E-Construct-FileUploader--Multiple .I4E-Construct-FileUploader-Region {
     overflow-x: auto; }
   .I4E-Construct-FileUploader > input {
@@ -57,12 +69,14 @@
           .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > div > img:not([Fallback]) {
             border: 2px solid var(--I4C_Default_Border_3); }
           .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > div > img[Fallback] {
-            width: 64px;
             color: var(--I4C_Default_Text_6);
-            height: 64px; }
+            height: 64px;
+            width: 64px; }
       .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > p {
         -webkit-box-orient: vertical;
+        color: unset;
         display: -webkit-box;
+        font-weight: normal;
         height: 38px;
         -webkit-line-clamp: 2;
         margin: 0;
@@ -86,8 +100,8 @@
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-FileUploader, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-FileUploader {
   background-color: var(--I4C_Default_Background_4);
-  box-shadow: inset var(--I4C_Default_Shadow_0);
-  border: 1px solid var(--I4C_Default_Border_5); }
+  border: 1px solid var(--I4C_Default_Border_5);
+  box-shadow: inset var(--I4C_Default_Shadow_0); }
   div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File img:not([Fallback]), div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File img:not([Fallback]) {
     box-shadow: var(--I4C_Default_Shadow_1); }
   div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator {
@@ -96,8 +110,8 @@ div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-FileUploader, div.I4-
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-FileUploader, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-FileUploader {
   background-color: var(--I4C_Default_Background_2);
-  box-shadow: inset var(--I4C_Default_Shadow_0);
-  border: 1px solid var(--I4C_Default_Border_5); }
+  border: 1px solid var(--I4C_Default_Border_5);
+  box-shadow: inset var(--I4C_Default_Shadow_0); }
   div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator {
     background-color: white;
     border-color: var(--I4C_Default_Border_10); }
@@ -307,7 +321,7 @@ div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Construct-PagedTable-SortInd
   div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:active, div.I4-App[data-i4-theme-variant="White"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:active {
     color: var(--I4C_Default_Accent_6); }
 
-div.I4E-Input-Text--Clearable input:not(#_):disabled ~ button, div.I4E-Input-Text--Clearable input[data-disabled]:not(#_) ~ button, div.I4E-Construct-Selector div.I4E-Construct-Selector-Head:disabled, div.I4E-Input-Select select:disabled, div.I4E-Input-Checkbox input:disabled, div.I4E-Input-Checkbox textarea:disabled, div.I4E-Input-Date input:disabled, div.I4E-Input-Date textarea:disabled, div.I4E-Input-Decimal input:disabled, div.I4E-Input-Decimal textarea:disabled, div.I4E-Input-Integer input:disabled, div.I4E-Input-Integer textarea:disabled, div.I4E-Input-Text input:disabled, div.I4E-Input-Text textarea:disabled, div.I4E-Input-TextArea input:disabled, div.I4E-Input-TextArea textarea:disabled, div.I4E-Input-Time input:disabled, div.I4E-Input-Time textarea:disabled, div.I4E-Construct-Selector div.I4E-Construct-Selector-Head[data-disabled], div.I4E-Input-Select select[data-disabled], div.I4E-Input-Checkbox input[data-disabled], div.I4E-Input-Checkbox textarea[data-disabled], div.I4E-Input-Date input[data-disabled], div.I4E-Input-Date textarea[data-disabled], div.I4E-Input-Decimal input[data-disabled], div.I4E-Input-Decimal textarea[data-disabled], div.I4E-Input-Integer input[data-disabled], div.I4E-Input-Integer textarea[data-disabled], div.I4E-Input-Text input[data-disabled], div.I4E-Input-Text textarea[data-disabled], div.I4E-Input-TextArea input[data-disabled], div.I4E-Input-TextArea textarea[data-disabled], div.I4E-Input-Time input[data-disabled], div.I4E-Input-Time textarea[data-disabled] {
+div.I4E-Input-Text--Clearable input:not(#_):disabled ~ button, div.I4E-Input-Text--Clearable input:not(#_)[data-disabled] ~ button, div.I4E-Construct-Selector div.I4E-Construct-Selector-Head:disabled, div.I4E-Input-Select select:disabled, div.I4E-Input-Checkbox input:disabled, div.I4E-Input-Checkbox textarea:disabled, div.I4E-Input-Date input:disabled, div.I4E-Input-Date textarea:disabled, div.I4E-Input-Decimal input:disabled, div.I4E-Input-Decimal textarea:disabled, div.I4E-Input-Integer input:disabled, div.I4E-Input-Integer textarea:disabled, div.I4E-Input-Text input:disabled, div.I4E-Input-Text textarea:disabled, div.I4E-Input-TextArea input:disabled, div.I4E-Input-TextArea textarea:disabled, div.I4E-Input-Time input:disabled, div.I4E-Input-Time textarea:disabled, div.I4E-Construct-Selector div[data-disabled].I4E-Construct-Selector-Head, div.I4E-Input-Select select[data-disabled], div.I4E-Input-Checkbox input[data-disabled], div.I4E-Input-Checkbox textarea[data-disabled], div.I4E-Input-Date input[data-disabled], div.I4E-Input-Date textarea[data-disabled], div.I4E-Input-Decimal input[data-disabled], div.I4E-Input-Decimal textarea[data-disabled], div.I4E-Input-Integer input[data-disabled], div.I4E-Input-Integer textarea[data-disabled], div.I4E-Input-Text input[data-disabled], div.I4E-Input-Text textarea[data-disabled], div.I4E-Input-TextArea input[data-disabled], div.I4E-Input-TextArea textarea[data-disabled], div.I4E-Input-Time input[data-disabled], div.I4E-Input-Time textarea[data-disabled] {
   cursor: not-allowed;
   opacity: 0.5; }
 
@@ -317,7 +331,7 @@ div.I4E-Input-Text--Clearable input:not(#_):hover:not(:disabled):not([data-disab
   transition: background-color 75ms ease-in, border 75ms ease-in; }
 
 div.I4E-Input-Text--Clearable input:not(#_):focus:not(:disabled):not([data-disabled]) ~ button,
-div.I4E-Input-Text--Clearable input[data-focused]:not(#_):not(:disabled):not([data-disabled]) ~ button, div.I4E-Construct-Selector div.I4E-Construct-Selector-Head:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Select select:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Construct-Selector div.I4E-Construct-Selector-Head[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Select select[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea[data-focused]:not(:disabled):not([data-disabled]) {
+div.I4E-Input-Text--Clearable input:not(#_)[data-focused]:not(:disabled):not([data-disabled]) ~ button, div.I4E-Construct-Selector div.I4E-Construct-Selector-Head:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Select select:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Construct-Selector div[data-focused].I4E-Construct-Selector-Head:not(:disabled):not([data-disabled]), div.I4E-Input-Select select[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea[data-focused]:not(:disabled):not([data-disabled]) {
   background-color: var(--I4E_InputBase_Background_Focus);
   border-color: var(--I4E_InputBase_Border_Focus);
   transition: background-color 75ms ease-in, border 75ms ease-in; }
@@ -334,7 +348,7 @@ div.I4E-Construct-Selector div.I4E-Construct-Selector-Head, div.I4E-Input-Select
   div.I4E-Construct-Selector div.I4E-Construct-Selector-Head::placeholder, div.I4E-Input-Select select::placeholder, div.I4E-Input-Checkbox input::placeholder, div.I4E-Input-Checkbox textarea::placeholder, div.I4E-Input-Date input::placeholder, div.I4E-Input-Date textarea::placeholder, div.I4E-Input-Decimal input::placeholder, div.I4E-Input-Decimal textarea::placeholder, div.I4E-Input-Integer input::placeholder, div.I4E-Input-Integer textarea::placeholder, div.I4E-Input-Text input::placeholder, div.I4E-Input-Text textarea::placeholder, div.I4E-Input-TextArea input::placeholder, div.I4E-Input-TextArea textarea::placeholder, div.I4E-Input-Time input::placeholder, div.I4E-Input-Time textarea::placeholder {
     font-style: italic;
     opacity: 0.5; }
-  div.I4E-Construct-Selector div.I4E-Construct-Selector-Head:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Select select:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Construct-Selector div.I4E-Construct-Selector-Head[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Select select[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea[data-focused]:not(:disabled):not([data-disabled]) {
+  div.I4E-Construct-Selector div.I4E-Construct-Selector-Head:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Select select:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Construct-Selector div[data-focused].I4E-Construct-Selector-Head:not(:disabled):not([data-disabled]), div.I4E-Input-Select select[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea[data-focused]:not(:disabled):not([data-disabled]) {
     box-shadow: var(--I4C_Default_Shadow_0); }
 
 div.I4E-Input-Checkbox input, div.I4E-Input-Checkbox textarea, div.I4E-Input-Date input, div.I4E-Input-Date textarea, div.I4E-Input-Decimal input, div.I4E-Input-Decimal textarea, div.I4E-Input-Integer input, div.I4E-Input-Integer textarea, div.I4E-Input-Text input, div.I4E-Input-Text textarea, div.I4E-Input-TextArea input, div.I4E-Input-TextArea textarea, div.I4E-Input-Time input, div.I4E-Input-Time textarea {
@@ -384,10 +398,10 @@ div.I4E-Input-Text--Clearable {
       right: 0;
       top: 0;
       z-index: -1; }
-  div.I4E-Input-Text--Clearable input:not(#_):disabled ~ button, div.I4E-Input-Text--Clearable input[data-disabled]:not(#_) ~ button {
+  div.I4E-Input-Text--Clearable input:not(#_):disabled ~ button, div.I4E-Input-Text--Clearable input:not(#_)[data-disabled] ~ button {
     cursor: not-allowed; }
   div.I4E-Input-Text--Clearable input:not(#_):focus:not(:disabled):not([data-disabled]) ~ button::after,
-  div.I4E-Input-Text--Clearable input[data-focused]:not(#_):not(:disabled):not([data-disabled]) ~ button::after {
+  div.I4E-Input-Text--Clearable input:not(#_)[data-focused]:not(:disabled):not([data-disabled]) ~ button::after {
     box-shadow: var(--I4C_Default_Shadow_0); }
 
 div.I4E-Input-Select select {
@@ -566,7 +580,8 @@ div.I4E-Construct-LocalModal {
   opacity: 0.85;
   position: absolute;
   right: 0;
-  top: 0; }
+  top: 0;
+  z-index: 5; }
   div.I4E-Construct-LocalModal--Hide {
     display: none; }
   div.I4E-Construct-LocalModal div.I4E-Construct-LocalModal-Inner {

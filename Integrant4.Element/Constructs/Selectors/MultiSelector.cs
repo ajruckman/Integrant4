@@ -223,16 +223,14 @@ namespace Integrant4.Element.Constructs.Selectors
             _refresher?.Invoke();
         }
 
-        public async Task<TValue?[]?> GetValue()
+        public TValue?[]? GetValue()
         {
-            await Task.CompletedTask;
-
             return _selected.Count == 0
                 ? null
                 : _selected.Select(v => v.Value).ToArray();
         }
 
-        public async Task SetValue(TValue?[]? value)
+        public void SetValue(TValue?[]? value)
         {
             _selected.Clear();
 
@@ -259,8 +257,6 @@ namespace Integrant4.Element.Constructs.Selectors
             }
 
             Update();
-
-            await Task.CompletedTask;
         }
 
         public void ClearValue()

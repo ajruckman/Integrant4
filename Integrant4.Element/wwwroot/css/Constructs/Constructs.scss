@@ -1,3 +1,4 @@
+@import '_Expander.scss';
 @import '_FileUploader.scss';
 @import '_Header.scss';
 @import '_MultiSelector.scss';
@@ -15,6 +16,7 @@ div.I4E-Construct-LocalModal {
     position: absolute;
     right: 0;
     top: 0;
+    z-index: 5;
 
     &--Show {
 

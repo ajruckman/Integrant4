@@ -36,11 +36,21 @@ namespace Integrant4.Element.Constructs.FileUploader
         private void OnAdd(File file)
         {
             _refresher?.Invoke();
+            OnChange?.Invoke(GetValue());
         }
 
         private void OnRemove(File file)
         {
             _refresher?.Invoke();
+            OnChange?.Invoke(GetValue());
+        }
+
+        public void Refresh() => _refresher?.Invoke();
+
+        public IReadOnlyList<File>? GetValue()
+        {
+            IReadOnlyList<File>? files = _fileUploaderService?.List(_guid);
+            return files?.Count == 0 ? null : files;
         }
 
         public class File
@@ -57,6 +67,8 @@ namespace Integrant4.Element.Constructs.FileUploader
                 Data     = data;
             }
         }
+
+        public event Action<IReadOnlyList<File>?>? OnChange;
     }
 
     public partial class FileUploader
@@ -112,7 +124,7 @@ namespace Integrant4.Element.Constructs.FileUploader
                 // Input
 
                 builder.OpenElement(++seq, "input");
-                builder.AddAttribute(++seq, "type", "file");
+                builder.AddAttribute(++seq, "type",     "file");
                 builder.AddAttribute(++seq, "multiple", _type.HasFlag(Type.Multiple));
                 builder.CloseElement();
 
@@ -143,7 +155,8 @@ namespace Integrant4.Element.Constructs.FileUploader
                         builder.OpenElement(++seqI, "div");
                         builder.OpenElement(++seqI, "img");
                         builder.AddAttribute(++seqI, "src", $"/api/i4/file/thumbnail/{_guid}/{file.SerialID}");
-                        builder.AddAttribute(++seq, "onerror", "window.I4.Element.FileUploaderThumbnailErrorHandler(this)");
+                        builder.AddAttribute(++seq, "onerror",
+                            "window.I4.Element.FileUploaderThumbnailErrorHandler(this)");
                         builder.CloseElement();
                         builder.CloseElement();
 
@@ -152,7 +165,7 @@ namespace Integrant4.Element.Constructs.FileUploader
                         builder.CloseElement();
 
                         builder.OpenElement(++seqI, "span");
-                        builder.AddAttribute(++seqI, "class", "I4E-Construct-FileUploader-RemoveButtonWrapper");
+                        builder.AddAttribute(++seqI, "class",    "I4E-Construct-FileUploader-RemoveButtonWrapper");
                         builder.AddAttribute(++seqI, "tabindex", 0);
                         builder.AddAttribute(++seqI, "onclick",
                             EventCallback.Factory.Create(this,

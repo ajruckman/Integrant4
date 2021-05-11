@@ -54,6 +54,8 @@ namespace Web.Pages
         private Link _link3 = null!;
         private Link _link4 = null!;
 
+        private Expander _expander = null!;
+
         private Dropdown   _dropdown1   = null!;
         private LocalModal _localModal1 = null!;
 
@@ -113,8 +115,7 @@ namespace Web.Pages
             //
 
             _textInput = new TextInput(JSRuntime, null, new TextInput.Spec
-            {
-            });
+                { });
             _textInputHighlighted = new TextInput(JSRuntime, null, new TextInput.Spec
             {
                 HighlightColor = () => Constants.Accent_7,
@@ -159,7 +160,7 @@ namespace Web.Pages
             });
             _buttonIconAll = new Button(() => new IRenderable[]
             {
-                new BootstrapIcon("caret-left-fill", 16),
+                new BootstrapIcon("caret-left-fill",  16),
                 new BootstrapIcon("caret-right-fill", 16),
             });
 
@@ -237,6 +238,9 @@ namespace Web.Pages
             {
                 IsHighlighted = Always.True,
             });
+
+            _expander = new Expander(() => $"{(_expander.Expanded ? "Hide" : "Show")} advanced options".AsContent());
+            _expander.Expand();
 
             _dropdown1 = new Dropdown
             (
