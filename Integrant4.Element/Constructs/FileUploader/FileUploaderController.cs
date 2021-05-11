@@ -28,8 +28,6 @@ namespace Integrant4.Element.Constructs.FileUploader
 
             foreach (IFormFile formFile in Request.Form.Files)
             {
-                Console.WriteLine($"GOT: {formFile.FileName}");
-
                 var data = new byte[formFile.Length];
 
                 await using Stream stream = formFile.OpenReadStream();

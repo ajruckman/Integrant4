@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Threading.Tasks;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
 
 namespace Integrant4.Element.Constructs.FileUploader
 {
-    public partial class FileUploader : IConstruct, IDisposable
+    public partial class FileUploader : IConstruct, IAsyncDisposable
     {
         private readonly Type _type;
         private readonly Spec _spec;
@@ -28,9 +29,10 @@ namespace Integrant4.Element.Constructs.FileUploader
             _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
         }
 
-        public void Dispose()
+        public async ValueTask DisposeAsync()
         {
             _fileUploaderService?.Unsubscribe(_guid);
+            await DeactivatePasteHandler();
         }
 
         private void OnAdd(File file)
@@ -43,14 +45,6 @@ namespace Integrant4.Element.Constructs.FileUploader
         {
             _refresher?.Invoke();
             OnChange?.Invoke(GetValue());
-        }
-
-        public void Refresh() => _refresher?.Invoke();
-
-        public IReadOnlyList<File>? GetValue()
-        {
-            IReadOnlyList<File>? files = _fileUploaderService?.List(_guid);
-            return files?.Count == 0 ? null : files;
         }
 
         public class File
@@ -67,8 +61,6 @@ namespace Integrant4.Element.Constructs.FileUploader
                 Data     = data;
             }
         }
-
-        public event Action<IReadOnlyList<File>?>? OnChange;
     }
 
     public partial class FileUploader
@@ -93,9 +85,56 @@ namespace Integrant4.Element.Constructs.FileUploader
 
     public partial class FileUploader
     {
-        private readonly BootstrapIcon _deselectValueButton;
+        public void Refresh() => _refresher?.Invoke();
 
-        private const string FallbackImage = "/_content/Integrant4.Resources/Icons/Bootstrap/file-earmark.svg";
+        public IReadOnlyList<File>? GetValue()
+        {
+            IReadOnlyList<File>? files = _fileUploaderService?.List(_guid);
+            return files?.Count == 0 ? null : files;
+        }
+
+        public event Action<IReadOnlyList<File>?>? OnChange;
+    }
+
+    public partial class FileUploader
+    {
+        private bool _isPasteHandler;
+        private bool _hasActivatedPastHandler;
+
+        public async Task ActivatePasteHandler()
+        {
+            _isPasteHandler = true;
+            await CallActivatePasteHandler();
+        }
+
+        private async Task CallActivatePasteHandler()
+        {
+            if (_hasActivatedPastHandler) return;
+            if (_elementService == null || _elementRef == null) return;
+            await _elementService.JSInvokeVoidAsync
+            (
+                "I4.Element.FileUploaderActivatePasteHandler", _guid, _elementRef
+            );
+            _hasActivatedPastHandler = true;
+        }
+
+        public async Task DeactivatePasteHandler()
+        {
+            if (!_isPasteHandler        || !_hasActivatedPastHandler) return;
+            if (_elementService == null || _elementRef == null) return;
+            await _elementService!.JSInvokeVoidAsync
+            (
+                "I4.Element.FileUploaderDeactivatePasteHandler", _elementRef
+            );
+            _hasActivatedPastHandler = false;
+            _isPasteHandler          = false;
+        }
+    }
+
+    public partial class FileUploader
+    {
+        private const    string FallbackImage = "/_content/Integrant4.Resources/Icons/Bootstrap/file-earmark.svg";
+        private readonly BootstrapIcon _deselectValueButton;
 
         public RenderFragment Renderer() => Latch.Create(builder =>
             {
@@ -124,7 +163,7 @@ namespace Integrant4.Element.Constructs.FileUploader
                 // Input
 
                 builder.OpenElement(++seq, "input");
-                builder.AddAttribute(++seq, "type",     "file");
+                builder.AddAttribute(++seq, "type", "file");
                 builder.AddAttribute(++seq, "multiple", _type.HasFlag(Type.Multiple));
                 builder.CloseElement();
 
@@ -165,7 +204,7 @@ namespace Integrant4.Element.Constructs.FileUploader
                         builder.CloseElement();
 
                         builder.OpenElement(++seqI, "span");
-                        builder.AddAttribute(++seqI, "class",    "I4E-Construct-FileUploader-RemoveButtonWrapper");
+                        builder.AddAttribute(++seqI, "class", "I4E-Construct-FileUploader-RemoveButtonWrapper");
                         builder.AddAttribute(++seqI, "tabindex", 0);
                         builder.AddAttribute(++seqI, "onclick",
                             EventCallback.Factory.Create(this,
@@ -215,6 +254,11 @@ namespace Integrant4.Element.Constructs.FileUploader
                 (
                     "I4.Element.FileUploaderInit", _guid, _elementRef
                 );
+
+                if (_isPasteHandler && !_hasActivatedPastHandler)
+                {
+                    await CallActivatePasteHandler();
+                }
             });
     }
 }

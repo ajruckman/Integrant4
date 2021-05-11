@@ -263,6 +263,25 @@ window.I4.Element.FileUploaderInit = window.I4.Element.FileUploaderInit || funct
     });
 }
 
+window.I4.Element.FileUploaderActivatePasteHandler = window.I4.Element.FileUploaderActivatePasteHandler || function (guid, element) {
+    element.I4EPasteHandler = function I4EPasteHandler(e) {
+        const items = (e.clipboardData || e.originalEvent.clipboardData.items);
+
+        let files = [];
+        for (let i = 0; i < items.files.length; i++) {
+            let file = items.files[i];
+            files.push(file)
+        }
+
+        window.I4.Element.FileUploaderSendFiles(guid, files);
+    };
+
+    window.addEventListener('paste', element.I4EPasteHandler);
+}
+window.I4.Element.FileUploaderDeactivatePasteHandler = window.I4.Element.FileUploaderDeactivatePasteHandler || function (element) {
+    window.removeEventListener('paste', element.I4EPasteHandler);
+}
+
 window.I4.Element.FileUploaderSendFiles = window.I4.Element.FileUploaderSendFiles || function (guid, files) {
     let data = new FormData();
     data.append('guid', guid);
