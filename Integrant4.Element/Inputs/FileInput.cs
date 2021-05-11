@@ -27,6 +27,8 @@ namespace Integrant4.Element.Inputs
         public RenderFragment                          Renderer() => _fileInput.Renderer();
         public Task<IReadOnlyList<FileUploader.File>?> GetValue() => Task.FromResult(_fileInput.GetValue());
 
+        public Task ActivatePasteHandler() => _fileInput.ActivatePasteHandler();
+
         public event Action<IReadOnlyList<FileUploader.File>?>? OnChange;
     }
 }

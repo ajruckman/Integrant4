@@ -344,6 +344,8 @@ namespace Integrant4.Element.Constructs.Selectors
                 builder.CloseElement();
 
                 builder.CloseElement();
+                
+                builder.CloseRegion();
             }
 
             builder.CloseElement();
