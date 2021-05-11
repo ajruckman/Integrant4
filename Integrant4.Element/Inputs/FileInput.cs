@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Integrant4.Element.Inputs
 {
-    public class FileInput : IRefreshableInput<IReadOnlyList<FileUploader.File>?>, IAsyncDisposable
+    public class FileInput : IRefreshableInput<IReadOnlyList<File>?>, IAsyncDisposable
     {
         private readonly FileUploader _fileInput;
 
@@ -23,12 +23,12 @@ namespace Integrant4.Element.Inputs
             await _fileInput.DisposeAsync();
         }
 
-        public void                                    Refresh()  => _fileInput.Refresh();
-        public RenderFragment                          Renderer() => _fileInput.Renderer();
-        public Task<IReadOnlyList<FileUploader.File>?> GetValue() => Task.FromResult(_fileInput.GetValue());
+        public void                       Refresh()  => _fileInput.Refresh();
+        public RenderFragment             Renderer() => _fileInput.Renderer();
+        public Task<IReadOnlyList<File>?> GetValue() => Task.FromResult(_fileInput.GetValue());
+
+        public event Action<IReadOnlyList<File>?>? OnChange;
 
         public Task ActivatePasteHandler() => _fileInput.ActivatePasteHandler();
-
-        public event Action<IReadOnlyList<FileUploader.File>?>? OnChange;
     }
 }

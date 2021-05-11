@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,7 +35,12 @@ namespace Integrant4.Element.Constructs.FileUploader
                 await stream.ReadAsync(data);
                 MemoryStream memoryStream = new(data);
 
-                _fileUploaderService.Add(guid, formFile.FileName, memoryStream);
+                using SHA1Managed sha  = new();
+                byte[]            hash = await sha.ComputeHashAsync(memoryStream);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                string hashString = BitConverter.ToString(hash).Replace("-", "");
+
+                _fileUploaderService.Add(guid, formFile.FileName, memoryStream, hashString);
             }
 
             return Ok(new {success = true});
@@ -44,7 +50,7 @@ namespace Integrant4.Element.Constructs.FileUploader
         [Route("thumbnail/{GUID:guid}/{ID:int}")]
         public IActionResult GetThumbnail(Guid guid, int id)
         {
-            FileUploader.File? file = _fileUploaderService.Get(guid, id);
+            File? file = _fileUploaderService.Get(guid, id);
             if (file == null)
                 return new EmptyResult();
 

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using System.Threading.Tasks;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
@@ -45,21 +44,6 @@ namespace Integrant4.Element.Constructs.FileUploader
         {
             _refresher?.Invoke();
             OnChange?.Invoke(GetValue());
-        }
-
-        public class File
-        {
-            internal readonly ushort SerialID;
-
-            public readonly string       Name;
-            public readonly MemoryStream Data;
-
-            internal File(ushort serialID, string name, MemoryStream data)
-            {
-                SerialID = serialID;
-                Name     = name;
-                Data     = data;
-            }
         }
     }
 
