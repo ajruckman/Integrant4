@@ -4,11 +4,11 @@ div.I4E-Layout-Panel {
     box-shadow: var(--I4C_Default_Shadow_2);
     position: relative;
 
-    &:not(&--NoMargin) {
+    &:not(.I4E-Layout-Panel--NoMargin) {
         margin: 7px;
     }
 
-    &:not(&--NoBorder) {
+    &:not(.I4E-Layout-Panel--NoBorder) {
         border: 1px solid var(--I4C_Default_Border_6);
     }
 
@@ -66,7 +66,7 @@ div.I4E-Layout-InfoTable {
         margin: 7px;
     }
 
-    &:not(&--NoBorder) {
+    &:not(I4E-Layout-Panel--NoBorder) {
         border: 1px solid var(--I4C_Default_Border_11);
         box-shadow: var(--I4C_Default_Shadow_1);
     }
@@ -133,7 +133,7 @@ div.I4-App {
         }
 
         div.I4E-Layout-InfoTable {
-            &:not(&--NoBorder) {
+            &:not(.I4E-Layout-Panel--NoBorder) {
                 background-color: var(--I4C_Default_Background_4);
             }
         }
@@ -145,7 +145,7 @@ div.I4-App {
         }
 
         div.I4E-Layout-InfoTable {
-            &:not(&--NoBorder) {
+            &:not(.I4E-Layout-Panel--NoBorder) {
                 background-color: var(--I4C_Default_Background_1);
             }
         }
