@@ -134,6 +134,11 @@ namespace Integrant4.Structurant
             }
         }
 
+        public void Revalidate()
+        {
+            ValidationState.ValidateStructure(this);
+        }
+
         // Safety methods
 
         public async Task EnterWriteLock() => await WriteLock.WaitAsync();

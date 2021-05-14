@@ -26,6 +26,8 @@ namespace Integrant4.Element.Bits
 
             public Callbacks.Classes?    Classes    { get; init; }
             public Callbacks.HREF?       HREF       { get; init; }
+            public Callbacks.Pixels?     Height     { get; init; }
+            public Callbacks.Pixels?     Width      { get; init; }
             public Callbacks.Size?       Margin     { get; init; }
             public Callbacks.Size?       Padding    { get; init; }
             public Callbacks.Scale?      Scale      { get; init; }
@@ -40,6 +42,8 @@ namespace Integrant4.Element.Bits
                 IsVisible  = IsVisible,
                 IsDisabled = IsDisabled,
                 HREF       = HREF,
+                Height     = Height,
+                Width      = Width,
                 Classes    = Classes,
                 Margin     = Margin,
                 Padding    = Padding,

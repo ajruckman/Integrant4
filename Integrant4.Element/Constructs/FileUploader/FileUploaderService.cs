@@ -101,6 +101,12 @@ namespace Integrant4.Element.Constructs.FileUploader
                 listener.Invoke(file);
             }
         }
+
+        public void Clear(Guid guid)
+        {
+            _fileMap[guid].Clear();
+            _hashes[guid].Clear();
+        }
     }
 
     public static class FileUploaderServiceExtensions

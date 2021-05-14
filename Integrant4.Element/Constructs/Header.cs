@@ -24,8 +24,7 @@ namespace Integrant4.Element.Constructs
     {
         private readonly Callbacks.BitContents _contents;
         private readonly Style                 _style;
-
-        private Callbacks.Size? _padding;
+        private readonly Callbacks.Size?       _padding;
 
         public Header(Callbacks.BitContents contents, Style style = Style.Primary, Spec? spec = null)
         {

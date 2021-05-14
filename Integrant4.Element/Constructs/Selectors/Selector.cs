@@ -67,6 +67,9 @@ namespace Integrant4.Element.Constructs.Selectors
         private const string DefaultNoOptionsText         = "No options available";
         private const string DefaultNoResultsText         = "No options matched filter";
 
+        private string FilterTooShortText(int length) =>
+            $"Filter with at least {length} characters to see options";
+
         // This Spec is different from others, but it is nicer to initialize the Selector with named parameters.
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
@@ -80,12 +83,15 @@ namespace Integrant4.Element.Constructs.Selectors
             public Callbacks.Callback<string>? FilterPlaceholderText { get; init; }
             public Callbacks.Callback<string>? UncachedText          { get; init; }
             public Callbacks.Callback<string>? NoOptionsText         { get; init; }
-            public Callbacks.Callback<string>?         NoResultsText         { get; init; }
+            public Callbacks.Callback<string>? FilterTooShortText    { get; init; }
+            public Callbacks.Callback<string>? NoResultsText         { get; init; }
+            public Callbacks.Callback<int>?    MinFilterLength       { get; init; }
 
-            public Callbacks.IsVisible?  IsVisible  { get; init; }
-            public Callbacks.IsDisabled? IsDisabled { get; init; }
-            public Callbacks.Pixels?     Width      { get; init; }
-            public Callbacks.Scale?      Scale      { get; init; }
+            public Callbacks.IsVisible?  IsVisible      { get; init; }
+            public Callbacks.IsDisabled? IsDisabled     { get; init; }
+            public Callbacks.Color?      HighlightColor { get; init; }
+            public Callbacks.Pixels?     Width          { get; init; }
+            public Callbacks.Scale?      Scale          { get; init; }
         }
     }
 
@@ -299,20 +305,29 @@ namespace Integrant4.Element.Constructs.Selectors
                 bool disabled = _spec.IsDisabled?.Invoke() ?? false;
                 _disabledAtLastRender = disabled;
 
-                double width = _spec.Width?.Invoke() ?? 300;
+                double  width     = _spec.Width?.Invoke() ?? 300;
+                string? highlight = _spec.HighlightColor?.Invoke();
+                if (highlight == "")
+                    highlight = null;
+
+                //
 
                 int seq = -1;
 
                 ServiceInjector<ElementService>.Inject(builder, ref seq, v => _elementService = v);
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class",
-                    !_spec.Filterable
-                        ? "I4E-Construct-Selector"
-                        : "I4E-Construct-Selector I4E-Construct-Selector--Filterable");
 
-                builder.AddAttribute(++seq, "style", $"max-width: {width}px");
-                builder.AddAttribute(++seq, "data-visible", _spec.IsVisible?.Invoke() ?? true);
+                List<string> classes = new()
+                {
+                    "I4E-Construct-Selector",
+                };
+                if (_spec.Filterable) classes.Add("I4E-Construct-Selector--Filterable");
+                if (highlight != null) classes.Add("I4E-Construct-Selector--Highlighted");
+                builder.AddAttribute(++seq, "class", string.Join(' ', classes));
+
+                builder.AddAttribute(++seq, "style",         $"max-width: {width}px");
+                builder.AddAttribute(++seq, "data-visible",  _spec.IsVisible?.Invoke() ?? true);
                 builder.AddAttribute(++seq, "data-disabled", disabled);
 
                 ++seq;
@@ -323,9 +338,13 @@ namespace Integrant4.Element.Constructs.Selectors
                 //
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Head");
+                builder.AddAttribute(++seq, "class",         "I4E-Construct-Selector-Head");
                 builder.AddAttribute(++seq, "data-disabled", disabled);
-                builder.AddAttribute(++seq, "tabindex", 0);
+                builder.AddAttribute(++seq, "tabindex",      0);
+
+                ++seq;
+                if (highlight != null)
+                    builder.AddAttribute(seq, "style", $"--I4E-Highlight: {highlight};");
 
                 builder.OpenElement(++seq, "div");
 
@@ -344,9 +363,9 @@ namespace Integrant4.Element.Constructs.Selectors
                 builder.CloseElement();
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-ClearButtonWrapper");
+                builder.AddAttribute(++seq, "class",    "I4E-Construct-Selector-ClearButtonWrapper");
                 builder.AddAttribute(++seq, "tabindex", 0);
-                builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, ClearValue));
+                builder.AddAttribute(++seq, "onclick",  EventCallback.Factory.Create(this, ClearValue));
                 builder.AddContent(++seq, _clearValueButton.Renderer());
                 builder.CloseElement();
 
@@ -367,6 +386,8 @@ namespace Integrant4.Element.Constructs.Selectors
 
                 lock (_optionsLock)
                 {
+                    int? minFilterLength = _spec.MinFilterLength?.Invoke();
+
                     if (_options == null)
                     {
                         builder.OpenElement(++seq, "p");
@@ -379,6 +400,14 @@ namespace Integrant4.Element.Constructs.Selectors
                         builder.OpenElement(++seq, "p");
                         builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Options-None");
                         builder.AddContent(++seq, _spec.NoOptionsText?.Invoke() ?? DefaultNoOptionsText);
+                        builder.CloseElement();
+                    }
+                    else if (minFilterLength != null && (_filterTerm == null || _filterTerm.Length < minFilterLength))
+                    {
+                        builder.OpenElement(++seq, "p");
+                        builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Options-None");
+                        builder.AddContent(++seq, _spec.FilterTooShortText?.Invoke() ??
+                                                  FilterTooShortText(minFilterLength.Value));
                         builder.CloseElement();
                     }
                     else
@@ -406,9 +435,9 @@ namespace Integrant4.Element.Constructs.Selectors
                             builder.OpenElement(++seq, "div");
                             builder.SetKey(i);
 
-                            builder.AddAttribute(++seq, "tabindex", 0);
+                            builder.AddAttribute(++seq, "tabindex",      0);
                             builder.AddAttribute(++seq, "data-selected", selected);
-                            builder.AddAttribute(++seq, "data-i", i);
+                            builder.AddAttribute(++seq, "data-i",        i);
 
                             if (_spec.Filterable)
                                 builder.AddAttribute(++seq, "data-shown", shown);
@@ -427,13 +456,13 @@ namespace Integrant4.Element.Constructs.Selectors
                         if (_spec.Filterable)
                         {
                             builder.OpenElement(++seq, "p");
-                            builder.AddAttribute(++seq, "class", "I4E-Construct-Options-LimitMessage");
+                            builder.AddAttribute(++seq, "class",      "I4E-Construct-Options-LimitMessage");
                             builder.AddAttribute(++seq, "data-shown", shownCount == _spec.DisplayLimit);
                             builder.AddContent(++seq, $"Filter to see more than {_spec.DisplayLimit} options.");
                             builder.CloseElement();
 
                             builder.OpenElement(++seq, "p");
-                            builder.AddAttribute(++seq, "class", "I4E-Construct-Options-NoResults");
+                            builder.AddAttribute(++seq, "class",      "I4E-Construct-Options-NoResults");
                             builder.AddAttribute(++seq, "data-shown", shownCount == 0);
                             builder.AddContent(++seq, _spec.NoResultsText?.Invoke() ?? DefaultNoResultsText);
                             builder.CloseElement();

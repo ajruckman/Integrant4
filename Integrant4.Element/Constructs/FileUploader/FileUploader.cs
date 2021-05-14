@@ -77,6 +77,13 @@ namespace Integrant4.Element.Constructs.FileUploader
             return files?.Count == 0 ? null : files;
         }
 
+        public void Clear()
+        {
+            _fileUploaderService?.Clear(_guid);
+            _refresher?.Invoke();
+            OnChange?.Invoke(null);
+        }
+
         public event Action<IReadOnlyList<File>?>? OnChange;
     }
 
