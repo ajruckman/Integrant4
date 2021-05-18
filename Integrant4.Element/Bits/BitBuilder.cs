@@ -44,7 +44,7 @@ namespace Integrant4.Element.Bits
                     builder.AddAttribute(++seq, "data-" + name, getter.Invoke());
         }
 
-        public static void ApplyContentAttributes(BitBase bitBase, RenderTreeBuilder builder, ref int seq)
+        internal static void ApplyContentAttributes(BitBase bitBase, RenderTreeBuilder builder, ref int seq)
         {
             builder.AddAttribute(++seq, "style", ElementBuilder.ContentStyleAttribute(bitBase.BaseSpec));
         }

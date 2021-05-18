@@ -1,0 +1,17 @@
+div.I4E-Construct-StackedContent {
+    align-items: center;
+    display: inline-flex;
+    flex-direction: column;
+
+    &--Align-Start {
+        align-items: flex-start;
+    }
+
+    &--Align-Center {
+        align-items: center;
+    }
+
+    &--Align-End {
+        align-items: flex-end;
+    }
+}

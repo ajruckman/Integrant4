@@ -38,6 +38,7 @@ namespace Web.Pages
         private Button _buttonIconFirst = null!;
         private Button _buttonIconLast  = null!;
         private Button _buttonIconAll   = null!;
+        private Button _buttonStacked   = null!;
 
         private Chip _chip         = null!;
         private Chip _chipLink     = null!;
@@ -162,6 +163,15 @@ namespace Web.Pages
             {
                 new BootstrapIcon("caret-left-fill",  16),
                 new BootstrapIcon("caret-right-fill", 16),
+            });
+            _buttonStacked = new Button(() => new IRenderable[]
+            {
+                new StackedContent(() => new IRenderable[]
+                {
+                    "Top content/full name".AsContent(),
+                    "Lower content".AsTextContent(size: 0.8, weight: FontWeight.Normal),
+                }, () => StackedContent.Align.Start),
+                new BootstrapIcon("chevron-right"),
             });
 
             foreach (Button.Style style in Enum.GetValues<Button.Style>())

@@ -35,7 +35,8 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
       button.I4E-Bit-Button > span.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child), a.I4E-Bit-Button > span.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child) {
         margin-right: calc(1em * (5 / 15)); }
   button.I4E-Bit-Button:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small) {
-    height: 2em; }
+    padding-bottom: calc(1em * (6 / 15));
+    padding-top: calc(1em * (6 / 15)); }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft) {
       padding-left: calc(1em * (10 / 15)); }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft {
@@ -45,7 +46,8 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight {
       padding-right: calc(1em * (5 / 15)); }
   button.I4E-Bit-Button.I4E-Bit-Button--Small, a.I4E-Bit-Button.I4E-Bit-Button--Small {
-    height: 1.5em; }
+    padding-bottom: calc(1em * (2.5 / 15));
+    padding-top: calc(1em * (2.5 / 15)); }
     button.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconLeft) {
       padding-left: calc(1em * (6 / 15)); }
     button.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconLeft, a.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconLeft {
@@ -607,5 +609,3 @@ code {
     display: unset; }
     .MVisibleOnHover:hover .MVisibleOnParentHover {
       display: unset; }
-
-/*# sourceMappingURL=Bits.css.map */
