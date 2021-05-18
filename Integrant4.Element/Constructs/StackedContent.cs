@@ -5,20 +5,13 @@ namespace Integrant4.Element.Constructs
 {
     public class StackedContent : IConstruct
     {
-        public enum Align
-        {
-            Start,
-            Center,
-            End,
-        }
+        private readonly Callbacks.BitContents _contents;
+        private readonly Callbacks.FlexAlign   _align;
 
-        private readonly Callbacks.BitContents     _contents;
-        private readonly Callbacks.Callback<Align> _align;
-
-        public StackedContent(Callbacks.BitContents contents, Callbacks.Callback<Align>? align = null)
+        public StackedContent(Callbacks.BitContents contents, Callbacks.FlexAlign? align = null)
         {
             _contents = contents;
-            _align    = align ?? (() => Align.Center);
+            _align    = align ?? (() => FlexAlign.Center);
         }
 
         public RenderFragment Renderer() => builder =>
@@ -26,9 +19,8 @@ namespace Integrant4.Element.Constructs
             int seq = -1;
 
             builder.OpenElement(++seq, "div");
-            builder.AddAttribute(++seq, "class",
-                "I4E-Construct-StackedContent "        +
-                "I4E-Construct-StackedContent--Align-" + _align.Invoke());
+            builder.AddAttribute(++seq, "class", "I4E-Construct-StackedContent");
+            builder.AddAttribute(++seq, "style", $"align-items: {_align.Invoke().Serialize()}");
 
             foreach (IRenderable content in _contents.Invoke())
             {

@@ -574,12 +574,6 @@ div.I4E-Construct-StackedContent {
   align-items: center;
   display: inline-flex;
   flex-direction: column; }
-  div.I4E-Construct-StackedContent--Align-Start {
-    align-items: flex-start; }
-  div.I4E-Construct-StackedContent--Align-Center {
-    align-items: center; }
-  div.I4E-Construct-StackedContent--Align-End {
-    align-items: flex-end; }
 
 div.I4E-Construct-LocalModal {
   align-items: center;
@@ -603,3 +597,5 @@ div.I4E-Construct-LocalModal {
     opacity: 1; }
     div.I4E-Construct-LocalModal div.I4E-Construct-LocalModal-Inner--Column {
       flex-direction: column; }
+
+/*# sourceMappingURL=Constructs.css.map */

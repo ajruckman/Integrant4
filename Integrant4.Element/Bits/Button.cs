@@ -24,34 +24,38 @@ namespace Integrant4.Element.Bits
             public Callbacks.IsVisible?  IsVisible  { get; init; }
             public Callbacks.IsDisabled? IsDisabled { get; init; }
 
-            public Callbacks.Classes?    Classes    { get; init; }
-            public Callbacks.HREF?       HREF       { get; init; }
-            public Callbacks.Pixels?     Height     { get; init; }
-            public Callbacks.Pixels?     Width      { get; init; }
-            public Callbacks.Size?       Margin     { get; init; }
-            public Callbacks.Size?       Padding    { get; init; }
-            public Callbacks.Scale?      Scale      { get; init; }
-            public Callbacks.FontWeight? FontWeight { get; init; }
-            public Callbacks.Display?    Display    { get; init; }
-            public Callbacks.Data?       Data       { get; init; }
-            public Callbacks.Tooltip?    Tooltip    { get; init; }
+            public Callbacks.Classes?     Classes     { get; init; }
+            public Callbacks.HREF?        HREF        { get; init; }
+            public Callbacks.Pixels?      Height      { get; init; }
+            public Callbacks.Pixels?      Width       { get; init; }
+            public Callbacks.Size?        Margin      { get; init; }
+            public Callbacks.Size?        Padding     { get; init; }
+            public Callbacks.Scale?       Scale       { get; init; }
+            public Callbacks.FontWeight?  FontWeight  { get; init; }
+            public Callbacks.Display?     Display     { get; init; }
+            public Callbacks.FlexAlign?   FlexAlign   { get; init; }
+            public Callbacks.FlexJustify? FlexJustify { get; init; }
+            public Callbacks.Data?        Data        { get; init; }
+            public Callbacks.Tooltip?     Tooltip     { get; init; }
 
             internal BaseSpec ToBaseSpec() => new()
             {
-                Scaled     = true,
-                IsVisible  = IsVisible,
-                IsDisabled = IsDisabled,
-                HREF       = HREF,
-                Height     = Height,
-                Width      = Width,
-                Classes    = Classes,
-                Margin     = Margin,
-                Padding    = Padding,
-                Scale      = Scale,
-                FontWeight = FontWeight,
-                Display    = Display,
-                Data       = Data,
-                Tooltip    = Tooltip,
+                Scaled      = true,
+                IsVisible   = IsVisible,
+                IsDisabled  = IsDisabled,
+                HREF        = HREF,
+                Height      = Height,
+                Width       = Width,
+                Classes     = Classes,
+                Margin      = Margin,
+                Padding     = Padding,
+                Scale       = Scale,
+                FontWeight  = FontWeight,
+                Display     = Display,
+                FlexAlign   = FlexAlign,
+                FlexJustify = FlexJustify,
+                Data        = Data,
+                Tooltip     = Tooltip,
             };
         }
     }
@@ -111,7 +115,7 @@ namespace Integrant4.Element.Bits
             builder.AddAttribute(++seq, "onclick",
                 EventCallback.Factory.Create<MouseEventArgs>(this, Click));
 
-            builder.OpenElement(++seq, "span");
+            builder.OpenElement(++seq, "div");
             builder.AddAttribute(++seq, "class", "I4E-Bit-Button-Contents");
 
             BitBuilder.ApplyContentAttributes(this, builder, ref seq);

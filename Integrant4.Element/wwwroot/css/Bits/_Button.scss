@@ -38,9 +38,10 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
         cursor: not-allowed;
     }
 
-    > span.I4E-Bit-Button-Contents {
+    > div.I4E-Bit-Button-Contents {
         align-items: center;
         display: flex;
+        width: 100%;
 
         > span.I4E-Bit-Button-Content {
             align-items: center;

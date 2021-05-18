@@ -45,6 +45,10 @@ namespace Integrant4.Element
 
         public delegate Element.Display Display();
 
+        public delegate Element.FlexAlign FlexAlign();
+
+        public delegate Element.FlexJustify FlexJustify();
+
         //
 
         public delegate string? DataValue();
@@ -88,20 +92,22 @@ namespace Integrant4.Element
         internal Callbacks.Classes?    Classes    { get; init; }
         internal Callbacks.HREF?       HREF       { get; init; }
 
-        internal Callbacks.Size?       Margin          { get; init; }
-        internal Callbacks.Size?       Padding         { get; init; }
-        internal Callbacks.Color?      BackgroundColor { get; init; }
-        internal Callbacks.Color?      ForegroundColor { get; init; }
-        internal Callbacks.Color?      HighlightColor  { get; init; }
-        internal Callbacks.Pixels?     Height          { get; init; }
-        internal Callbacks.Pixels?     HeightMax       { get; init; }
-        internal Callbacks.Pixels?     Width           { get; init; }
-        internal Callbacks.Pixels?     WidthMax        { get; init; }
-        internal Callbacks.Scale?      Scale           { get; init; }
-        internal Callbacks.REM?        FontSize        { get; init; }
-        internal Callbacks.FontWeight? FontWeight      { get; init; }
-        internal Callbacks.TextAlign?  TextAlign       { get; init; }
-        internal Callbacks.Display?    Display         { get; init; }
+        internal Callbacks.Size?        Margin          { get; init; }
+        internal Callbacks.Size?        Padding         { get; init; }
+        internal Callbacks.Color?       BackgroundColor { get; init; }
+        internal Callbacks.Color?       ForegroundColor { get; init; }
+        internal Callbacks.Color?       HighlightColor  { get; init; }
+        internal Callbacks.Pixels?      Height          { get; init; }
+        internal Callbacks.Pixels?      HeightMax       { get; init; }
+        internal Callbacks.Pixels?      Width           { get; init; }
+        internal Callbacks.Pixels?      WidthMax        { get; init; }
+        internal Callbacks.Scale?       Scale           { get; init; }
+        internal Callbacks.REM?         FontSize        { get; init; }
+        internal Callbacks.FontWeight?  FontWeight      { get; init; }
+        internal Callbacks.TextAlign?   TextAlign       { get; init; }
+        internal Callbacks.Display?     Display         { get; init; }
+        internal Callbacks.FlexAlign?   FlexAlign       { get; init; }
+        internal Callbacks.FlexJustify? FlexJustify     { get; init; }
 
         internal Callbacks.Data?    Data    { get; init; }
         internal Callbacks.Tooltip? Tooltip { get; init; }
