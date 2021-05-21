@@ -95,7 +95,9 @@ namespace Integrant4.Element.Bits
             {
                 _validations = _memberID == null
                     ? result.OverallValidations
-                    : result.MemberValidations[_memberID];
+                    : result.MemberValidations.ContainsKey(_memberID)
+                        ? result.MemberValidations[_memberID]
+                        : new List<IValidation>();
                 _isInProgress = false;
                 _stateHasChanged?.Invoke();
             }
