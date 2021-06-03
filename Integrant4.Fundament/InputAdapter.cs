@@ -105,7 +105,7 @@ namespace Integrant4.Fundament
         {
             _input = input;
             _to    = to;
-            _from  = @from;
+            _from  = from;
 
             _input.OnChange += v => OnChange?.Invoke(_to.Invoke(v));
         }

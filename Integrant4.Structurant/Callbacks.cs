@@ -8,7 +8,7 @@ namespace Integrant4.Structurant
     {
         public static class Callbacks
         {
-            public delegate Task<TObject> ResultConstructor(StructureInstance<TObject, TState> inst);
+            public delegate Task<TObject?> ResultConstructor(StructureInstance<TObject, TState> inst);
 
             public delegate IReadOnlyList<IValidation> ValidationGetter(StructureInstance<TObject, TState> inst);
         }
