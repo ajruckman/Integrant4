@@ -82,7 +82,7 @@ namespace Web.Pages
             _header = new Header(() => new IRenderable[]
             {
                 new PageLink(() => "Secondary header".AsContent(),
-                    new PageLink.Spec(() => "/elements") {IsTitle = Always.True}),
+                    new PageLink.Spec(() => "/elements") { IsTitle = Always.True }),
                 new Filler(),
                 new PageLink(() => "Normal link".AsContent(), new PageLink.Spec(() => "/elements")),
             }, Header.Style.Secondary);
@@ -180,7 +180,7 @@ namespace Web.Pages
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((User) obj);
+            return Equals((User)obj);
         }
 
         public override int GetHashCode()
@@ -259,11 +259,11 @@ namespace Web.Pages
                     inst.StructureInstance.JSRuntime!,
                     inst.Value(),
                     new TextAreaInput.Spec
-                        {IsDisabled = () => inst.StructureInstance.State.NameFirst?.Contains("Z") == true}
+                        { IsDisabled = () => inst.StructureInstance.State.NameFirst?.Contains("Z") == true }
                 )
             );
 
-            Structure.Register<int?>
+            Structure.Register<long?>
             (
                 nameof(Dog.Age),
                 inst => inst.StructureInstance.State.Age,
@@ -317,7 +317,7 @@ namespace Web.Pages
 
     public class Dog
     {
-        public Dog(string nameFirst, string nameLast, int age, string? breed)
+        public Dog(string nameFirst, string nameLast, long age, string? breed)
         {
             NameFirst = nameFirst;
             NameLast  = nameLast;
@@ -327,7 +327,7 @@ namespace Web.Pages
 
         public string  NameFirst { get; }
         public string  NameLast  { get; }
-        public int     Age       { get; }
+        public long    Age       { get; }
         public string? Breed     { get; }
     }
 
@@ -335,7 +335,7 @@ namespace Web.Pages
     {
         public string? NameFirst { get; set; }
         public string? NameLast  { get; set; }
-        public int?    Age       { get; set; }
+        public long?   Age       { get; set; }
         public string? Breed     { get; set; }
 
         public bool AgeIsDisabled { get; set; }

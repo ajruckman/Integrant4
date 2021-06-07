@@ -15,8 +15,9 @@ namespace Integrant4.Structurant
         private readonly List<IMemberInstance<TObject, TState>>               _memberInstances;
         private readonly Dictionary<string, IMemberInstance<TObject, TState>> _memberInstanceDictionary;
 
-        public readonly ValidationState ValidationState;
-        public readonly Hook            MemberValueChangeHook = new();
+        private readonly StructureValidationState _validationState;
+
+        public readonly Hook MemberValueChangeHook = new();
 
         internal readonly SemaphoreSlim WriteLock = new(1);
 
@@ -30,7 +31,7 @@ namespace Integrant4.Structurant
             _memberInstanceDictionary = new Dictionary<string, IMemberInstance<TObject, TState>>();
             _memberInstances          = new List<IMemberInstance<TObject, TState>>();
 
-            ValidationState = new ValidationState();
+            _validationState = new StructureValidationState();
 
             Definition = definition;
             State      = state;
@@ -42,12 +43,12 @@ namespace Integrant4.Structurant
             {
                 IMemberInstance<TObject, TState> inst = member.Instantiate(this);
 
-                inst.OnInput += () => ValidationState.Invalidate();
+                inst.OnInput += () => _validationState.Invalidate();
                 inst.OnValueChangeUntyped += v =>
                 {
                     OnMemberValueChange?.Invoke(inst, v);
                     MemberValueChangeHook.Invoke();
-                    ValidationState.ValidateStructure(this);
+                    _validationState.ValidateStructure(this);
                 };
 
                 _memberInstances.Add(inst);
@@ -55,8 +56,10 @@ namespace Integrant4.Structurant
             }
 
             // Initial validation
-            ValidationState.ValidateStructure(this);
+            _validationState.ValidateStructure(this);
         }
+
+        public IValidationState ValidationState => _validationState;
 
         public Structure<TObject, TState> Definition { get; }
         public TState                     State      { get; }
@@ -66,7 +69,7 @@ namespace Integrant4.Structurant
 
         public async ValueTask DisposeAsync()
         {
-            foreach (IMemberInstance<TObject,TState> m in MemberInstances)
+            foreach (IMemberInstance<TObject, TState> m in MemberInstances)
             {
                 await m.DisposeAsync();
             }
@@ -94,14 +97,14 @@ namespace Integrant4.Structurant
             return instT;
         }
 
-        public void Construct(Action<Exception>? exceptionHandler = null, Action<TObject>? then = null)
+        public void Construct(Action<Exception>? exceptionHandler = null, Action<TObject?>? then = null)
         {
             var t = new Task(async () =>
             {
                 await WriteLock.WaitAsync();
                 try
                 {
-                    TObject result = await Definition.ResultConstructor.Invoke(this);
+                    TObject? result = await Definition.ResultConstructor.Invoke(this);
 
                     then?.Invoke(result);
                 }
@@ -136,7 +139,7 @@ namespace Integrant4.Structurant
 
         public void Revalidate()
         {
-            ValidationState.ValidateStructure(this);
+            _validationState.ValidateStructure(this);
         }
 
         // Safety methods
@@ -147,10 +150,10 @@ namespace Integrant4.Structurant
         // Proxy methods
 
         public IReadOnlyList<IValidation>? OverallValidations() =>
-            ValidationState.Result?.OverallValidations;
+            _validationState.Result?.OverallValidations;
 
         public IReadOnlyList<IValidation>? MemberValidations(string id) =>
-            ValidationState.Result?.MemberValidations[id];
+            _validationState.Result?.MemberValidations[id];
 
         public IInput<TValue>? GetInput<TValue>(string id) =>
             GetTyped<TValue>(id).Input;

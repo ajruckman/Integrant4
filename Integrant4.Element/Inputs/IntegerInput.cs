@@ -5,15 +5,15 @@ using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Inputs
 {
-    public partial class IntegerInput : NumberInput<int?>
+    public partial class IntegerInput : NumberInput<long?>
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
             public Callbacks.Callback<bool>? Consider0Null { get; init; }
-            public Callbacks.Callback<int>?  Min           { get; init; }
-            public Callbacks.Callback<int>?  Max           { get; init; }
+            public Callbacks.Callback<long>?  Min           { get; init; }
+            public Callbacks.Callback<long>?  Max           { get; init; }
 
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -61,13 +61,13 @@ namespace Integrant4.Element.Inputs
     public partial class IntegerInput
     {
         private readonly Callbacks.Callback<bool> _consider0Null;
-        private readonly Callbacks.Callback<int>? _min;
-        private readonly Callbacks.Callback<int>? _max;
+        private readonly Callbacks.Callback<long>? _min;
+        private readonly Callbacks.Callback<long>? _max;
 
         public IntegerInput
         (
             IJSRuntime jsRuntime,
-            int?       value,
+            long?       value,
             Spec?      spec = null
         )
             : base(jsRuntime, new ClassSet("I4E-Input", "I4E-Input-Integer"), spec?.ToBaseSpec())
@@ -104,25 +104,25 @@ namespace Integrant4.Element.Inputs
             InputBuilder.ScheduleElementJobs(this, builder, ref seq);
         }, v => Refresher = v);
 
-        protected override int? Deserialize(string? v)
+        protected override long? Deserialize(string? v)
         {
             if (string.IsNullOrEmpty(v))
                 return null;
 
-            int i = int.Parse(v);
+            long i = long.Parse(v);
 
-            int? min = _min?.Invoke();
+            long? min = _min?.Invoke();
             if (i < min)
                 i = min.Value;
 
-            int? max = _max?.Invoke();
+            long? max = _max?.Invoke();
             if (i > max)
                 i = max.Value;
 
             return i;
         }
 
-        protected sealed override int? Nullify(int? v) =>
+        protected sealed override long? Nullify(long? v) =>
             v == null
                 ? null
                 : _consider0Null.Invoke() && v == 0

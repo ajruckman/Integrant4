@@ -38,7 +38,7 @@ namespace Integrant4.Element.Constructs.Selectors
 
             _selector.OnChange += Select;
 
-            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
+            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort)(12 * _spec.Scale?.Invoke() ?? 12));
         }
     }
 
@@ -230,7 +230,7 @@ namespace Integrant4.Element.Constructs.Selectors
                 : _selected.Select(v => v.Value).ToArray();
         }
 
-        public void SetValue(TValue?[]? value)
+        public void SetValue(TValue?[]? value, bool invokeOnChange = true)
         {
             _selected.Clear();
 
@@ -256,7 +256,7 @@ namespace Integrant4.Element.Constructs.Selectors
                 Next: ;
             }
 
-            Update();
+            Update(invokeOnChange);
         }
 
         public void ClearValue()
@@ -295,10 +295,10 @@ namespace Integrant4.Element.Constructs.Selectors
             Update();
         }
 
-        private void Update()
+        private void Update(bool invokeOnChange = true)
         {
             _selector.SetOptions(InnerOptions());
-            OnChange?.Invoke(_selected.Count == 0 ? null : _selected);
+            if (invokeOnChange) OnChange?.Invoke(_selected.Count == 0 ? null : _selected);
             _refresher?.Invoke();
         }
     }
@@ -344,7 +344,7 @@ namespace Integrant4.Element.Constructs.Selectors
                 builder.CloseElement();
 
                 builder.CloseElement();
-                
+
                 builder.CloseRegion();
             }
 

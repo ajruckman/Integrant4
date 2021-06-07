@@ -20,11 +20,12 @@ namespace Integrant4.Element.Inputs
             return Value;
         }
 
-        public override async Task SetValue(T? value)
+        public override async Task SetValue(T? value, bool invokeOnChange = true)
         {
             Value = Nullify(value);
             await JSRuntime.InvokeVoidAsync("window.I4.Element.Inputs.SetValue", Reference, Serialize(Value));
-            OnChange?.Invoke(Value);
+
+            if (invokeOnChange) OnChange?.Invoke(Value);
         }
 
         public abstract override RenderFragment Renderer();

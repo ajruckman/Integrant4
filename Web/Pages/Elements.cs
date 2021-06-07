@@ -104,11 +104,11 @@ namespace Web.Pages
                 InvokeAsync(StateHasChanged);
             };
 
-            void PrintI(int?     v) => Console.WriteLine($"int -> {v}");
+            void PrintL(long?     v) => Console.WriteLine($"int -> {v}");
             void PrintD(decimal? v) => Console.WriteLine($"decimal -> {v}");
 
-            _intInput.OnChange            += PrintI;
-            _intInput0Null.OnChange       += PrintI;
+            _intInput.OnChange            += PrintL;
+            _intInput0Null.OnChange       += PrintL;
             _decimalInput.OnChange        += PrintD;
             _decimalInput0Null.OnChange   += PrintD;
             _decimalInputStepped.OnChange += PrintD;
@@ -170,7 +170,7 @@ namespace Web.Pages
                 {
                     "Top content/full name".AsContent(),
                     "Lower content".AsTextContent(size: 0.8, weight: FontWeight.Normal),
-                }, () => StackedContent.Align.Start),
+                }, () => FlexAlign.Start),
                 new BootstrapIcon("chevron-right"),
             });
 

@@ -78,7 +78,8 @@ namespace Integrant4.Fundament
             _input.OnChange += v => OnChange?.Invoke(_to.Invoke(v));
         }
 
-        public Task SetValue(TOut? value) => _input.SetValue(_from.Invoke(value));
+        public Task SetValue(TOut? value, bool invokeOnChange = true) =>
+            _input.SetValue(_from.Invoke(value), invokeOnChange);
 
         public RenderFragment Renderer() => _input.Renderer();
 
@@ -112,7 +113,8 @@ namespace Integrant4.Fundament
 
         public void Refresh() => _input.Refresh();
 
-        public Task SetValue(TOut? value) => _input.SetValue(_from.Invoke(value));
+        public Task SetValue(TOut? value, bool invokeOnChange = true) =>
+            _input.SetValue(_from.Invoke(value), invokeOnChange);
 
         public RenderFragment Renderer() => _input.Renderer();
 

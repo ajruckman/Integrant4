@@ -31,7 +31,7 @@ namespace Integrant4.Element.Constructs.Tables
                 HighlightColor = () => Table.GetFilter(ID) == null ? "" : HighlightColor,
             });
 
-            _debouncer = new Debouncer<string?>(v =>
+            _debouncer = new Debouncer<string?>(null, v =>
             {
                 if (string.IsNullOrEmpty(v))
                     Table.ClearFilter(ID, false);
@@ -39,7 +39,7 @@ namespace Integrant4.Element.Constructs.Tables
                     Table.SetFilter(ID, v, false);
 
                 _input.Refresh();
-            }, Table.GetFilter(ID), 250, e =>
+            }, /*Table.GetFilter(ID),*/ 250, e =>
             {
                 _error = e;
                 InvokeAsync(StateHasChanged);

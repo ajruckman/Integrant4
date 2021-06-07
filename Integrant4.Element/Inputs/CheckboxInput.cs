@@ -83,7 +83,7 @@ namespace Integrant4.Element.Inputs
             builder.OpenElement(++seq, "input");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
 
-            builder.AddAttribute(++seq, "type",    "checkbox");
+            builder.AddAttribute(++seq, "type", "checkbox");
             builder.AddAttribute(++seq, "checked", _value);
             builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
 
@@ -100,11 +100,12 @@ namespace Integrant4.Element.Inputs
             return await _jsRuntime.InvokeAsync<bool>("window.I4.Element.Inputs.GetChecked", _reference);
         }
 
-        public override async Task SetValue(bool value)
+        public override async Task SetValue(bool value, bool invokeOnChange = true)
         {
             _value = value;
             await _jsRuntime.InvokeVoidAsync("window.I4.Element.Inputs.SetChecked", _reference, _value);
-            OnChange?.Invoke(_value);
+
+            if (invokeOnChange) OnChange?.Invoke(_value);
         }
 
         public override event Action<bool>? OnChange;

@@ -26,7 +26,7 @@ namespace Integrant4.Element.Inputs
         public abstract RenderFragment Renderer();
 
         public abstract Task<T?>          GetValue();
-        public abstract Task              SetValue(T? value);
+        public abstract Task              SetValue(T? value, bool invokeOnChange = true);
         public abstract event Action<T?>? OnChange;
 
         protected WriteOnlyHook? Refresher { get; set; }

@@ -22,9 +22,9 @@ namespace Integrant4.Element.Inputs
         public void          Refresh()  => _selector.Refresh();
         public Task<TValue?> GetValue() => Task.FromResult(_selector.GetValue());
 
-        public Task SetValue(TValue? value)
+        public Task SetValue(TValue? value, bool invokeOnChange = true)
         {
-            _selector.SetValue(value);
+            _selector.SetValue(value, invokeOnChange);
             return Task.CompletedTask;
         }
 

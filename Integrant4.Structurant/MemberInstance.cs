@@ -50,8 +50,9 @@ namespace Integrant4.Structurant
 
             _debouncer = new Debouncer<TValue?>
             (
+                null,
                 OnInputChangeFinal,
-                definition.ValueGetter.Invoke(this),
+                /*definition.ValueGetter.Invoke(this),*/
                 definition.InputDebounceMilliseconds
             );
 

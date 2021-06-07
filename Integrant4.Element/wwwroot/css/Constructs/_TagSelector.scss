@@ -1,0 +1,163 @@
+div.I4E-Construct-TagSelector {
+    background-color: #333;
+    border: 1px solid #555;
+    display: inline-flex;
+
+
+    div.I4E-Construct-TagSelector-Tags {
+        align-content: flex-start;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        max-width: 300px;
+        min-height: 300px;
+        width: 100%;
+
+        div.I4E-Construct-TagSelector-Tag {
+            align-items: center;
+            border-radius: 15px;
+            display: inline-flex;
+            margin: 1px;
+            padding: 1px 2px 1px 9px;
+            user-select: none;
+            white-space: nowrap;
+
+            div {
+
+            }
+
+            div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+                background-color: transparent;
+                cursor: pointer;
+                height: calc(1em * (12 / 15));
+                margin: 0 0 0 calc(1em * (6 / 15));
+                outline: none;
+                padding: 0 3px 0 0;
+                position: relative;
+                width: calc(1em * (12 / 15));
+
+                svg {
+                    bottom: 0;
+                    left: 0;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+            }
+        }
+    }
+
+    div.I4E-Construct-Inputs {
+        select {
+        }
+
+        input {
+        }
+
+        button {
+        }
+    }
+
+    div.I4E-Construct-TagSelector-KnownTags {
+        align-content: flex-start;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        max-width: 300px;
+        width: 100%;
+
+        h3 {
+            width: 100%;
+        }
+
+        button {
+            align-items: center;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            display: inline-flex;
+            margin: 1px;
+            outline: none;
+            padding: 1px 5px 1px 7px;
+            transition: background-color 75ms ease-in, border 75ms ease-in;
+            user-select: none;
+            white-space: nowrap;
+
+            &:hover {
+                transition: none;
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+            span {
+                color: #333;
+                font-size: 0.75em;
+                font-weight: 500;
+                margin-left: 5px;
+            }
+
+            &[data-current] {
+            }
+        }
+    }
+}
+
+// Variable colors
+
+div.I4-App {
+    &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
+        div.I4E-Construct-TagSelector {
+            background-color: var(--I4C_Default_Background_4);
+            border: 1px solid var(--I4C_Default_Border_11);
+            box-shadow: var(--I4C_Default_Shadow_1);
+
+            div.I4E-Construct-TagSelector-Tags {
+                div.I4E-Construct-TagSelector-Tag {
+                    background-color: var(--I4C_Default_Background_7);
+                    border: 1px solid var(--I4C_Default_Border_7);
+                    box-shadow: var(--I4C_Default_Shadow_1);
+
+                    div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+                        color: var(--I4C_Default_Opaque_White_4);
+
+                        &:hover {
+                            color: var(--I4C_Default_Opaque_White_7);
+                        }
+
+                        &:active {
+                            color: var(--I4C_Default_Accent_7);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
+        div.I4E-Construct-TagSelector {
+            background-color: var(--I4C_Default_Background_2);
+            border: 1px solid var(--I4C_Default_Border_5);
+
+            div.I4E-Construct-TagSelector-Tags {
+                div.I4E-Construct-TagSelector-Tag {
+                    background-color: white;
+                    border: 1px solid var(--I4C_Default_Border_10);
+
+                    div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+                        color: var(--I4C_Default_Opaque_Black_4);
+
+                        &:hover {
+                            color: var(--I4C_Default_Opaque_Black_7);
+                        }
+
+                        &:active {
+                            color: var(--I4C_Default_Accent_7);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

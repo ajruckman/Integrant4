@@ -5,27 +5,31 @@ namespace Integrant4.Fundament
 {
     public class Debouncer<T>
     {
-        public delegate void Elapsed(T newValue);
+        public delegate void OnReset();
+        public delegate void OnElapsed(T newValue);
 
-        private readonly Timer  _debouncer;
-        private readonly object _valueLock = new object();
+        private readonly OnReset? _onReset;
+        private readonly Timer    _debouncer;
+        private readonly object   _valueLock = new object();
 
         public Debouncer
         (
-            Elapsed            onElapsed,
-            T                  initialValue,
+            OnReset?  onReset,
+            OnElapsed onElapsed,
+            // T                  initialValue,
             int                milliseconds = 200,
             Action<Exception>? errorHandler = null
         )
         {
-            Value      = initialValue;
-            _debouncer = new Timer(milliseconds);
-            _debouncer.Stop();
-            _debouncer.AutoReset = false;
-            _debouncer.Elapsed += (_, __) =>
+            _onReset = onReset;
+            // Value      = initialValue;
+            _debouncer = new Timer(milliseconds) { Enabled = false, AutoReset = false };
+            _debouncer.Elapsed += (_, _) =>
             {
                 lock (_valueLock)
                 {
+                    if (Value == null) return;
+
                     try
                     {
                         onElapsed.Invoke(Value);
@@ -41,10 +45,12 @@ namespace Integrant4.Fundament
             };
         }
 
-        public T Value { get; private set; }
+        public T? Value { get; private set; }
 
         public void Reset(T newValue)
         {
+            _onReset?.Invoke();
+
             _debouncer.Stop();
             lock (_valueLock)
             {

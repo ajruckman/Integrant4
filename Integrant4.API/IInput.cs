@@ -12,7 +12,7 @@ namespace Integrant4.API
 
     public interface IWritableInput<TValue> : IInput<TValue>
     {
-        Task SetValue(TValue? value);
+        Task SetValue(TValue? value, bool invokeOnChange = true);
     }
 
     public interface IRefreshableInput<TValue> : IInput<TValue>

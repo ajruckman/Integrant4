@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using Integrant4.API;
-using Integrant4.Fundament;
 
-namespace Integrant4.Structurant
+namespace Integrant4.Fundament
 {
     public class Validation : IValidation
     {
