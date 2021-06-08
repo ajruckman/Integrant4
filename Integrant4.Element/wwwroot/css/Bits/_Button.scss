@@ -24,6 +24,7 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
 
     &:not(.I4E-Bit--Disabled) {
         cursor: pointer;
+        transition: none;
 
         &:hover {
             background-color: var(--I4C_Default_Opaque_White_3);

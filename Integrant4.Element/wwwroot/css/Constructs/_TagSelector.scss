@@ -1,17 +1,19 @@
 div.I4E-Construct-TagSelector {
-    background-color: #333;
-    border: 1px solid #555;
+    border-radius: 4px;
     display: inline-flex;
+    padding: 3px;
 
+    h3 {
+        margin: 5px;
+        width: 100%;
+    }
 
     div.I4E-Construct-TagSelector-Tags {
         align-content: flex-start;
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-        max-width: 300px;
         min-height: 300px;
-        width: 100%;
 
         div.I4E-Construct-TagSelector-Tag {
             align-items: center;
@@ -22,8 +24,12 @@ div.I4E-Construct-TagSelector {
             user-select: none;
             white-space: nowrap;
 
-            div {
+            div:nth-child(1) {
 
+            }
+
+            div:nth-child(2) {
+                margin-left: 3px;
             }
 
             div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
@@ -47,7 +53,7 @@ div.I4E-Construct-TagSelector {
         }
     }
 
-    div.I4E-Construct-Inputs {
+    div.I4E-Construct-TagSelector-Inputs {
         select {
         }
 
@@ -55,6 +61,7 @@ div.I4E-Construct-TagSelector {
         }
 
         button {
+            float: right;
         }
     }
 
@@ -63,25 +70,29 @@ div.I4E-Construct-TagSelector {
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-        max-width: 300px;
-        width: 100%;
-
-        h3 {
-            width: 100%;
-        }
 
         button {
             align-items: center;
+
             border: none;
             border-radius: 15px;
+            color: var(--I4C_Default_Alias_PageText);
             cursor: pointer;
+            //padding: 1px 2px;
             display: inline-flex;
             margin: 1px;
+
+            //align-items: center;
             outline: none;
+            //border-radius: 15px;
             padding: 1px 5px 1px 7px;
+            //display: inline-flex;
+            //margin: 1px;
             transition: background-color 75ms ease-in, border 75ms ease-in;
             user-select: none;
             white-space: nowrap;
+            //user-select: none;
+            //white-space: nowrap;
 
             &:hover {
                 transition: none;
@@ -92,7 +103,7 @@ div.I4E-Construct-TagSelector {
             }
 
             span {
-                color: #333;
+                color: var(--I4C_Default_Text_2);
                 font-size: 0.75em;
                 font-weight: 500;
                 margin-left: 5px;
@@ -119,6 +130,10 @@ div.I4-App {
                     border: 1px solid var(--I4C_Default_Border_7);
                     box-shadow: var(--I4C_Default_Shadow_1);
 
+                    &:hover {
+                        border: 1px solid var(--I4C_Default_Accent_7);
+                    }
+
                     div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
                         color: var(--I4C_Default_Opaque_White_4);
 
@@ -129,6 +144,18 @@ div.I4-App {
                         &:active {
                             color: var(--I4C_Default_Accent_7);
                         }
+                    }
+                }
+            }
+
+            div.I4E-Construct-TagSelector-KnownTags {
+                button {
+                    background-color: var(--I4C_Default_Background_7);
+                    border: 1px solid var(--I4C_Default_Border_7);
+                    box-shadow: var(--I4C_Default_Shadow_1);
+
+                    &:hover {
+                        border: 1px solid var(--I4C_Default_Accent_7);
                     }
                 }
             }
@@ -145,6 +172,10 @@ div.I4-App {
                     background-color: white;
                     border: 1px solid var(--I4C_Default_Border_10);
 
+                    &:hover {
+                        border: 1px solid var(--I4C_Default_Accent_7);
+                    }
+
                     div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
                         color: var(--I4C_Default_Opaque_Black_4);
 
@@ -155,6 +186,17 @@ div.I4-App {
                         &:active {
                             color: var(--I4C_Default_Accent_7);
                         }
+                    }
+                }
+            }
+
+            div.I4E-Construct-TagSelector-KnownTags {
+                button {
+                    background-color: white;
+                    border: 1px solid var(--I4C_Default_Border_10);
+
+                    &:hover {
+                        border: 1px solid var(--I4C_Default_Accent_7);
                     }
                 }
             }

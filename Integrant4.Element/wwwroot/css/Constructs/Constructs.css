@@ -576,17 +576,18 @@ div.I4E-Construct-StackedContent {
   flex-direction: column; }
 
 div.I4E-Construct-TagSelector {
-  background-color: #333;
-  border: 1px solid #555;
-  display: inline-flex; }
+  border-radius: 4px;
+  display: inline-flex;
+  padding: 3px; }
+  div.I4E-Construct-TagSelector h3 {
+    margin: 5px;
+    width: 100%; }
   div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags {
     align-content: flex-start;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    max-width: 300px;
-    min-height: 300px;
-    width: 100%; }
+    min-height: 300px; }
     div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag {
       align-items: center;
       border-radius: 15px;
@@ -595,6 +596,8 @@ div.I4E-Construct-TagSelector {
       padding: 1px 2px 1px 9px;
       user-select: none;
       white-space: nowrap; }
+      div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag div:nth-child(2) {
+        margin-left: 3px; }
       div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
         background-color: transparent;
         cursor: pointer;
@@ -610,19 +613,18 @@ div.I4E-Construct-TagSelector {
           position: absolute;
           right: 0;
           top: 0; }
+  div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Inputs button {
+    float: right; }
   div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags {
     align-content: flex-start;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    max-width: 300px;
-    width: 100%; }
-    div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags h3 {
-      width: 100%; }
+    justify-content: flex-start; }
     div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button {
       align-items: center;
       border: none;
       border-radius: 15px;
+      color: var(--I4C_Default_Alias_PageText);
       cursor: pointer;
       display: inline-flex;
       margin: 1px;
@@ -636,7 +638,7 @@ div.I4E-Construct-TagSelector {
       div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:focus {
         outline: none; }
       div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button span {
-        color: #333;
+        color: var(--I4C_Default_Text_2);
         font-size: 0.75em;
         font-weight: 500;
         margin-left: 5px; }
@@ -649,12 +651,20 @@ div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector, div.I4-A
     background-color: var(--I4C_Default_Background_7);
     border: 1px solid var(--I4C_Default_Border_7);
     box-shadow: var(--I4C_Default_Shadow_1); }
+    div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag:hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag:hover {
+      border: 1px solid var(--I4C_Default_Accent_7); }
     div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
       color: var(--I4C_Default_Opaque_White_4); }
       div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover {
         color: var(--I4C_Default_Opaque_White_7); }
       div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
         color: var(--I4C_Default_Accent_7); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button {
+    background-color: var(--I4C_Default_Background_7);
+    border: 1px solid var(--I4C_Default_Border_7);
+    box-shadow: var(--I4C_Default_Shadow_1); }
+    div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover {
+      border: 1px solid var(--I4C_Default_Accent_7); }
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector {
   background-color: var(--I4C_Default_Background_2);
@@ -662,12 +672,19 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector, div.I4-A
   div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag {
     background-color: white;
     border: 1px solid var(--I4C_Default_Border_10); }
+    div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag:hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag:hover {
+      border: 1px solid var(--I4C_Default_Accent_7); }
     div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
       color: var(--I4C_Default_Opaque_Black_4); }
       div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover {
         color: var(--I4C_Default_Opaque_Black_7); }
       div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
         color: var(--I4C_Default_Accent_7); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button {
+    background-color: white;
+    border: 1px solid var(--I4C_Default_Border_10); }
+    div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover {
+      border: 1px solid var(--I4C_Default_Accent_7); }
 
 div.I4E-Construct-LocalModal {
   align-items: center;

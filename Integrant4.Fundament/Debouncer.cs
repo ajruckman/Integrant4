@@ -10,25 +10,25 @@ namespace Integrant4.Fundament
 
         private readonly OnReset? _onReset;
         private readonly Timer    _debouncer;
-        private readonly object   _valueLock = new object();
+        private readonly object   _valueLock = new();
+
+        private bool _isSet;
 
         public Debouncer
         (
-            OnReset?  onReset,
-            OnElapsed onElapsed,
-            // T                  initialValue,
+            OnReset?           onReset,
+            OnElapsed          onElapsed,
             int                milliseconds = 200,
             Action<Exception>? errorHandler = null
         )
         {
-            _onReset = onReset;
-            // Value      = initialValue;
+            _onReset   = onReset;
             _debouncer = new Timer(milliseconds) { Enabled = false, AutoReset = false };
             _debouncer.Elapsed += (_, _) =>
             {
                 lock (_valueLock)
                 {
-                    if (Value == null) return;
+                    if (!_isSet) return;
 
                     try
                     {
@@ -45,7 +45,7 @@ namespace Integrant4.Fundament
             };
         }
 
-        public T? Value { get; private set; }
+        public T Value { get; private set; } = default!;
 
         public void Reset(T newValue)
         {
@@ -54,7 +54,8 @@ namespace Integrant4.Fundament
             _debouncer.Stop();
             lock (_valueLock)
             {
-                Value = newValue;
+                Value  = newValue;
+                _isSet = true;
             }
 
             _debouncer.Start();
