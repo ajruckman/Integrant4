@@ -32,7 +32,11 @@ namespace Integrant4.Element.Inputs
 
         public override event Action<T?>? OnChange;
 
-        protected void InvokeOnChange(T value) => OnChange?.Invoke(Nullify(value));
+        protected void InvokeOnChange(T value)
+        {
+            Value = value;
+            OnChange?.Invoke(Nullify(value));
+        }
 
         protected abstract string Serialize(T?        v);
         protected abstract T      Deserialize(string? v);

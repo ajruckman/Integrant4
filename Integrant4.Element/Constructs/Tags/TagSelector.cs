@@ -8,19 +8,21 @@ using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Integrant4.Element.Constructs.TagSelector
+namespace Integrant4.Element.Constructs.Tags
 {
     public partial class TagSelector : IConstruct
     {
         private readonly HashSet<(TagType, string)> _knownTags;
+        private readonly bool                       _isForFiltering;
         private readonly Spec                       _spec;
 
         private List<ITag> _tags = new();
 
-        public TagSelector(HashSet<(TagType, string)> knownTags, Spec? spec = null)
+        public TagSelector(HashSet<(TagType, string)> knownTags, bool isForFiltering, Spec? spec = null)
         {
-            _knownTags = knownTags;
-            _spec      = spec ?? new Spec();
+            _knownTags      = knownTags;
+            _isForFiltering = isForFiltering;
+            _spec           = spec ?? new Spec();
 
             if (_spec.Value != null)
             {
@@ -64,6 +66,20 @@ namespace Integrant4.Element.Constructs.TagSelector
             }, 250);
 
             //
+
+            _tagsListHeaderText = !isForFiltering
+                ? "Tags"
+                : "Tag filters";
+
+            _tagsAddHeaderText = !isForFiltering
+                ? "Add tag"
+                : "Add tag filter";
+
+            _tagsPreviousHeaderText = !isForFiltering
+                ? "Apply previous tag"
+                : "Tags in use";
+
+            _acceptAnyValue = isForFiltering ? true : null;
         }
 
         public IReadOnlyList<ITag> Tags => _tags;
@@ -89,6 +105,11 @@ namespace Integrant4.Element.Constructs.TagSelector
         private readonly Debouncer<object?> _tagValueDebouncer;
 
         private readonly BootstrapIcon _deselectValueButton;
+        private readonly Button        _addButton;
+
+        private readonly string _tagsListHeaderText;
+        private readonly string _tagsAddHeaderText;
+        private readonly string _tagsPreviousHeaderText;
 
         private IJSRuntime?     _jsRuntime;
         private ElementService? _elementService;
@@ -97,6 +118,7 @@ namespace Integrant4.Element.Constructs.TagSelector
         private TagType _newTagType;
         private string? _newTagName;
         private object? _newTagValue;
+        private bool?   _acceptAnyValue;
 
         private bool _busy;
 
@@ -106,7 +128,7 @@ namespace Integrant4.Element.Constructs.TagSelector
         private TextInput?            _newTagStringInput;
         private IntegerInput?         _newTagIntegerInput;
         private CheckboxInput?        _newTagBooleanInput;
-        private Button                _addButton;
+        private CheckboxInput?        _anyValueInput;
 
         public RenderFragment Renderer() => Latch.Create
         (
@@ -132,7 +154,7 @@ namespace Integrant4.Element.Constructs.TagSelector
                     builder.AddAttribute(++seq, "style", $"width: {_spec?.LeftWidth?.Invoke() ?? 300}px");
 
                     builder.OpenElement(++seq, "h3");
-                    builder.AddContent(++seq, "Tags");
+                    builder.AddContent(++seq, _tagsListHeaderText);
                     builder.CloseElement();
 
                     for (var i = 0; i < _tags.Count; i++)
@@ -176,7 +198,7 @@ namespace Integrant4.Element.Constructs.TagSelector
                     builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-Inputs");
 
                     builder.OpenElement(++seq, "h3");
-                    builder.AddContent(++seq, "Add tag");
+                    builder.AddContent(++seq, _tagsAddHeaderText);
                     builder.CloseElement();
 
                     {
@@ -204,26 +226,43 @@ namespace Integrant4.Element.Constructs.TagSelector
                             builder.CloseElement();
                         }
                         {
+                            // Any value checkbox
+                            if (_isForFiltering)
+                            {
+                                builder.OpenElement(++seq, "tr");
+                                builder.OpenElement(++seq, "td");
+                                builder.AddContent(++seq, "Match any value");
+                                builder.CloseElement();
+                                builder.OpenElement(++seq, "td");
+                                builder.AddContent(++seq, _anyValueInput?.Renderer());
+                                builder.CloseElement();
+                                builder.CloseElement();
+                            }
+                        }
+                        {
                             // Value
-                            builder.OpenElement(++seq, "tr");
-                            builder.OpenElement(++seq, "td");
-                            builder.AddContent(++seq, "Value");
-                            builder.CloseElement();
-                            builder.OpenElement(++seq, "td");
-                            builder.OpenElement(++seq, "span");
-                            builder.AddAttribute(++seq, "hidden", _newTagType != TagType.String);
-                            builder.AddContent(0, _newTagStringInput?.Renderer());
-                            builder.CloseElement();
-                            builder.OpenElement(++seq, "span");
-                            builder.AddAttribute(++seq, "hidden", _newTagType != TagType.Int);
-                            builder.AddContent(1, _newTagIntegerInput?.Renderer());
-                            builder.CloseElement();
-                            builder.OpenElement(++seq, "span");
-                            builder.AddAttribute(++seq, "hidden", _newTagType != TagType.Bool);
-                            builder.AddContent(2, _newTagBooleanInput?.Renderer());
-                            builder.CloseElement();
-                            builder.CloseElement();
-                            builder.CloseElement();
+                            if (!_isForFiltering || _isForFiltering && _acceptAnyValue == false)
+                            {
+                                builder.OpenElement(++seq, "tr");
+                                builder.OpenElement(++seq, "td");
+                                builder.AddContent(++seq, "Value");
+                                builder.CloseElement();
+                                builder.OpenElement(++seq, "td");
+                                builder.OpenElement(++seq, "span");
+                                builder.AddAttribute(++seq, "hidden", _newTagType != TagType.String);
+                                builder.AddContent(0, _newTagStringInput?.Renderer());
+                                builder.CloseElement();
+                                builder.OpenElement(++seq, "span");
+                                builder.AddAttribute(++seq, "hidden", _newTagType != TagType.Int);
+                                builder.AddContent(1, _newTagIntegerInput?.Renderer());
+                                builder.CloseElement();
+                                builder.OpenElement(++seq, "span");
+                                builder.AddAttribute(++seq, "hidden", _newTagType != TagType.Bool);
+                                builder.AddContent(2, _newTagBooleanInput?.Renderer());
+                                builder.CloseElement();
+                                builder.CloseElement();
+                                builder.CloseElement();
+                            }
                         }
                         {
                             // Add button
@@ -253,7 +292,7 @@ namespace Integrant4.Element.Constructs.TagSelector
                     // Known tags
 
                     builder.OpenElement(++seq, "h3");
-                    builder.AddContent(++seq, "Apply previous tag");
+                    builder.AddContent(++seq, _tagsPreviousHeaderText);
                     builder.CloseElement();
 
                     foreach ((TagType tagType, string tagName) in _knownTags)
@@ -306,12 +345,12 @@ namespace Integrant4.Element.Constructs.TagSelector
 
         private void InitInputs(IJSRuntime jsRuntime)
         {
-            _newTagTypeSelector = new SelectInput<TagType>(jsRuntime, TagType.String, () =>
+            _newTagTypeSelector = new SelectInput<TagType>(jsRuntime, _newTagType, () =>
                 new IOption<TagType>[]
                 {
                     new Option<TagType>(TagType.String, "String", true),
-                    new Option<TagType>(TagType.Int,    "Number"),
-                    new Option<TagType>(TagType.Bool,   "Truthy"),
+                    new Option<TagType>(TagType.Int, "Number"),
+                    new Option<TagType>(TagType.Bool, "Truthy"),
                 }, (l, r) => l == r, new SelectInput<TagType>.Spec
             {
                 IsDisabled = _spec.IsDisabled,
@@ -347,6 +386,24 @@ namespace Integrant4.Element.Constructs.TagSelector
             _newTagIntegerInput.OnChange += v => _tagValueDebouncer.Reset(v);
             _newTagBooleanInput.OnChange += v => _tagValueDebouncer.Reset(v);
 
+            //
+
+            if (_isForFiltering)
+            {
+                _anyValueInput = new CheckboxInput(jsRuntime, true, new CheckboxInput.Spec
+                {
+                    IsDisabled = _spec.IsDisabled,
+                });
+
+                _anyValueInput.OnChange += v =>
+                {
+                    _acceptAnyValue = v;
+                    _refresher?.Invoke();
+                };
+            }
+
+            //
+
             _hasInitInputs = true;
         }
 
@@ -372,20 +429,31 @@ namespace Integrant4.Element.Constructs.TagSelector
         }
 
         private bool CanAddTag() =>
-            !_busy && _newTagName != null && _newTagValue != null &&
+            !_busy                                                                   &&
+            _newTagName != null                                                      &&
+            (_newTagValue     != null || _isForFiltering && _acceptAnyValue == true) &&
             (_spec.IsDisabled == null || _spec.IsDisabled.Invoke() == false);
 
         private async Task AddTag()
         {
-            if (_newTagName == null || _newTagValue == null) return;
+            if (_newTagName == null) return;
 
-            _tags.Add(_newTagType switch
+            if (!_isForFiltering || _acceptAnyValue == false)
             {
-                TagType.String => new StringTag(_newTagName, (string)_newTagValue),
-                TagType.Int    => new IntTag(_newTagName, (long)_newTagValue),
-                TagType.Bool   => new BoolTag(_newTagName, (bool)_newTagValue),
-                _              => throw new ArgumentOutOfRangeException(),
-            });
+                if (_newTagValue == null) return;
+
+                _tags.Add(_newTagType switch
+                {
+                    TagType.String => new StringTag(_newTagName, (string)_newTagValue),
+                    TagType.Int    => new IntTag(_newTagName, (long)_newTagValue),
+                    TagType.Bool   => new BoolTag(_newTagName, (bool)_newTagValue),
+                    _              => throw new ArgumentOutOfRangeException(),
+                });
+            }
+            else if (_acceptAnyValue == true)
+            {
+                _tags.Add(new VoidTag(_newTagName));
+            }
 
             _knownTags.Add((_newTagType, _newTagName));
 
@@ -400,10 +468,14 @@ namespace Integrant4.Element.Constructs.TagSelector
 
         private async Task ClearAllValueInputs()
         {
-            await (_newTagNameInput?.SetValue(null, false)     ?? Task.CompletedTask);
-            await (_newTagStringInput?.SetValue(null, false)   ?? Task.CompletedTask);
-            await (_newTagIntegerInput?.SetValue(null, false)  ?? Task.CompletedTask);
-            await (_newTagBooleanInput?.SetValue(false, false) ?? Task.CompletedTask);
+            await (_newTagNameInput?.SetValue(null, false) ?? Task.CompletedTask);
+
+            if (_acceptAnyValue != true)
+            {
+                await (_newTagStringInput?.SetValue(null, false)   ?? Task.CompletedTask);
+                await (_newTagIntegerInput?.SetValue(null, false)  ?? Task.CompletedTask);
+                await (_newTagBooleanInput?.SetValue(false, false) ?? Task.CompletedTask);
+            }
         }
 
         public void AddTag(ITag tag, bool invokeOnChange = true)
@@ -442,80 +514,25 @@ namespace Integrant4.Element.Constructs.TagSelector
             _refresher?.Invoke();
         }
 
-        private async Task UseKnownTag(TagType tagType, string tag)
+        private async Task UseKnownTag(TagType type, string name)
         {
-            if (_newTagType != tagType) _newTagValue = null;
+            if (_newTagType != type) _newTagValue = null;
 
-            _newTagType  = tagType;
-            _newTagName  = tag;
+            _newTagType  = type;
+            _newTagName  = name;
             _newTagValue = _newTagType == TagType.Bool ? false : null;
 
-            await (_newTagTypeSelector?.SetValue(tagType)      ?? Task.CompletedTask);
-            await (_newTagNameInput?.SetValue(tag, false)      ?? Task.CompletedTask);
-            await (_newTagStringInput?.SetValue(null, false)   ?? Task.CompletedTask);
-            await (_newTagIntegerInput?.SetValue(null, false)  ?? Task.CompletedTask);
-            await (_newTagBooleanInput?.SetValue(false, false) ?? Task.CompletedTask);
+            await (_newTagTypeSelector?.SetValue(type)     ?? Task.CompletedTask);
+            await (_newTagNameInput?.SetValue(name, false) ?? Task.CompletedTask);
+
+            if (_acceptAnyValue != true)
+            {
+                await (_newTagStringInput?.SetValue(null, false)   ?? Task.CompletedTask);
+                await (_newTagIntegerInput?.SetValue(null, false)  ?? Task.CompletedTask);
+                await (_newTagBooleanInput?.SetValue(false, false) ?? Task.CompletedTask);
+            }
 
             _refresher?.Invoke();
         }
-    }
-
-    public enum TagType
-    {
-        String, Int, Bool,
-    }
-
-    public interface ITag
-    {
-        string Name { get; }
-
-        Content Content();
-    }
-
-    public interface ITag<out TValue> : ITag
-    {
-        TValue Value { get; }
-    }
-
-    public class StringTag : ITag<string>
-    {
-        public StringTag(string name, string value)
-        {
-            Name  = name;
-            Value = value;
-        }
-
-        public string Name  { get; }
-        public string Value { get; }
-
-        public Content Content() => Value.AsContent();
-    }
-
-    public class IntTag : ITag<long>
-    {
-        public IntTag(string name, long value)
-        {
-            Name  = name;
-            Value = value;
-        }
-
-        public string Name  { get; }
-        public long   Value { get; }
-
-        public Content Content() => Value.ToString().AsContent();
-    }
-
-    public class BoolTag : ITag<bool>
-    {
-        public BoolTag(string name, bool value)
-        {
-            Name  = name;
-            Value = value;
-        }
-
-        public string Name  { get; }
-        public bool   Value { get; }
-
-        public Content Content() => (Value ? "True" : "False").AsContent();
     }
 }

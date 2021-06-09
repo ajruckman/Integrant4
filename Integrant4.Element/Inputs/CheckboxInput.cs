@@ -58,7 +58,6 @@ namespace Integrant4.Element.Inputs
     {
         private readonly IJSRuntime _jsRuntime;
 
-        private bool             _value;
         private ElementReference _reference;
 
         public CheckboxInput
@@ -70,12 +69,12 @@ namespace Integrant4.Element.Inputs
             : base(jsRuntime, spec?.ToBaseSpec(), new ClassSet("I4E-Input", "I4E-Input-Checkbox"))
         {
             _jsRuntime = jsRuntime;
-            _value     = value;
+            Value      = value;
         }
 
         public override RenderFragment Renderer() => Latch.Create(builder =>
         {
-            var seq = -1;
+            int seq = -1;
 
             builder.OpenElement(++seq, "div");
             InputBuilder.ApplyOuterAttributes(this, builder, ref seq, null);
@@ -84,7 +83,7 @@ namespace Integrant4.Element.Inputs
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
 
             builder.AddAttribute(++seq, "type", "checkbox");
-            builder.AddAttribute(++seq, "checked", _value);
+            builder.AddAttribute(++seq, "checked", Value);
             builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
 
             builder.AddElementReferenceCapture(++seq, r => _reference = r);
@@ -102,15 +101,20 @@ namespace Integrant4.Element.Inputs
 
         public override async Task SetValue(bool value, bool invokeOnChange = true)
         {
-            _value = value;
-            await _jsRuntime.InvokeVoidAsync("window.I4.Element.Inputs.SetChecked", _reference, _value);
+            Value = value;
+            await _jsRuntime.InvokeVoidAsync("window.I4.Element.Inputs.SetChecked", _reference, Value);
 
-            if (invokeOnChange) OnChange?.Invoke(_value);
+            if (invokeOnChange) OnChange?.Invoke(Value);
         }
 
         public override event Action<bool>? OnChange;
 
-        private void Change(ChangeEventArgs args) => OnChange?.Invoke(Deserialize(args.Value?.ToString()));
+        private void Change(ChangeEventArgs args)
+        {
+            bool value = Deserialize(args.Value?.ToString());
+            Value = value;
+            OnChange?.Invoke(value);
+        }
 
         private bool Deserialize(string? v) =>
             v switch
