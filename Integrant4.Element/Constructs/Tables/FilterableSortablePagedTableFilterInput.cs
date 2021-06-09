@@ -34,9 +34,9 @@ namespace Integrant4.Element.Constructs.Tables
             _debouncer = new Debouncer<string?>(null, v =>
             {
                 if (string.IsNullOrEmpty(v))
-                    Table.ClearFilter(ID, false);
+                    Table.ClearFilter(ID);
                 else
-                    Table.SetFilter(ID, v, false);
+                    Table.SetFilter(ID, v);
 
                 _input.Refresh();
             }, /*Table.GetFilter(ID),*/ 250, e =>

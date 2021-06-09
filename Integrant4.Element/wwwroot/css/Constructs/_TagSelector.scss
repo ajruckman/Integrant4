@@ -15,42 +15,7 @@ div.I4E-Construct-TagSelector {
         justify-content: flex-start;
         min-height: 300px;
 
-        div.I4E-Construct-TagSelector-Tag {
-            align-items: center;
-            border-radius: 15px;
-            display: inline-flex;
-            margin: 1px;
-            padding: 1px 2px 1px 9px;
-            user-select: none;
-            white-space: nowrap;
 
-            div:nth-child(1) {
-
-            }
-
-            div:nth-child(2) {
-                margin-left: 3px;
-            }
-
-            div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-                background-color: transparent;
-                cursor: pointer;
-                height: calc(1em * (12 / 15));
-                margin: 0 0 0 calc(1em * (6 / 15));
-                outline: none;
-                padding: 0 3px 0 0;
-                position: relative;
-                width: calc(1em * (12 / 15));
-
-                svg {
-                    bottom: 0;
-                    left: 0;
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                }
-            }
-        }
     }
 
     div.I4E-Construct-TagSelector-Inputs {
@@ -115,6 +80,50 @@ div.I4E-Construct-TagSelector {
     }
 }
 
+div.I4E-Construct-TagSelector-Tag, div.I4E-Construct-TagSelector-RemovableTag {
+    align-items: center;
+    border-radius: 15px;
+    display: inline-flex;
+    margin: 1px;
+    user-select: none;
+    white-space: nowrap;
+
+    div:nth-child(1) {
+
+    }
+
+    div:nth-child(2) {
+        margin-left: 3px;
+    }
+
+    div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+        background-color: transparent;
+        cursor: pointer;
+        height: calc(1em * (12 / 15));
+        margin: 0 0 0 calc(1em * (6 / 15));
+        outline: none;
+        padding: 0 3px 0 0;
+        position: relative;
+        width: calc(1em * (12 / 15));
+
+        svg {
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+}
+
+div.I4E-Construct-TagSelector-Tag {
+    padding: 1px 9px;
+}
+
+div.I4E-Construct-TagSelector-RemovableTag {
+    padding: 1px 2px 1px 9px;
+}
+
 // Variable colors
 
 div.I4-App {
@@ -125,27 +134,6 @@ div.I4-App {
             box-shadow: var(--I4C_Default_Shadow_1);
 
             div.I4E-Construct-TagSelector-Tags {
-                div.I4E-Construct-TagSelector-Tag {
-                    background-color: var(--I4C_Default_Background_7);
-                    border: 1px solid var(--I4C_Default_Border_7);
-                    box-shadow: var(--I4C_Default_Shadow_1);
-
-                    &:hover {
-                        border: 1px solid var(--I4C_Default_Accent_7);
-                    }
-
-                    div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-                        color: var(--I4C_Default_Opaque_White_4);
-
-                        &:hover {
-                            color: var(--I4C_Default_Opaque_White_7);
-                        }
-
-                        &:active {
-                            color: var(--I4C_Default_Accent_7);
-                        }
-                    }
-                }
             }
 
             div.I4E-Construct-TagSelector-KnownTags {
@@ -160,6 +148,28 @@ div.I4-App {
                 }
             }
         }
+
+        div.I4E-Construct-TagSelector-Tag, div.I4E-Construct-TagSelector-RemovableTag {
+            background-color: var(--I4C_Default_Background_7);
+            border: 1px solid var(--I4C_Default_Border_7);
+            box-shadow: var(--I4C_Default_Shadow_1);
+
+            &:hover {
+                border: 1px solid var(--I4C_Default_Accent_7);
+            }
+
+            div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+                color: var(--I4C_Default_Opaque_White_4);
+
+                &:hover {
+                    color: var(--I4C_Default_Opaque_White_7);
+                }
+
+                &:active {
+                    color: var(--I4C_Default_Accent_7);
+                }
+            }
+        }
     }
 
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
@@ -168,26 +178,6 @@ div.I4-App {
             border: 1px solid var(--I4C_Default_Border_5);
 
             div.I4E-Construct-TagSelector-Tags {
-                div.I4E-Construct-TagSelector-Tag {
-                    background-color: white;
-                    border: 1px solid var(--I4C_Default_Border_10);
-
-                    &:hover {
-                        border: 1px solid var(--I4C_Default_Accent_7);
-                    }
-
-                    div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-                        color: var(--I4C_Default_Opaque_Black_4);
-
-                        &:hover {
-                            color: var(--I4C_Default_Opaque_Black_7);
-                        }
-
-                        &:active {
-                            color: var(--I4C_Default_Accent_7);
-                        }
-                    }
-                }
             }
 
             div.I4E-Construct-TagSelector-KnownTags {
@@ -198,6 +188,27 @@ div.I4-App {
                     &:hover {
                         border: 1px solid var(--I4C_Default_Accent_7);
                     }
+                }
+            }
+        }
+
+        div.I4E-Construct-TagSelector-Tag, div.I4E-Construct-TagSelector-RemovableTag {
+            background-color: white;
+            border: 1px solid var(--I4C_Default_Border_10);
+
+            &:hover {
+                border: 1px solid var(--I4C_Default_Accent_7);
+            }
+
+            div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+                color: var(--I4C_Default_Opaque_Black_4);
+
+                &:hover {
+                    color: var(--I4C_Default_Opaque_Black_7);
+                }
+
+                &:active {
+                    color: var(--I4C_Default_Accent_7);
                 }
             }
         }

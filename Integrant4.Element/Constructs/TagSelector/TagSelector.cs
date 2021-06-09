@@ -22,6 +22,11 @@ namespace Integrant4.Element.Constructs.TagSelector
             _knownTags = knownTags;
             _spec      = spec ?? new Spec();
 
+            if (_spec.Value != null)
+            {
+                SetTags(_spec.Value.Invoke(), false);
+            }
+
             _addButton = new Button(() => "Add".AsContent(), new Button.Spec
             {
                 Style      = () => Button.Style.Green,
@@ -62,16 +67,19 @@ namespace Integrant4.Element.Constructs.TagSelector
         }
 
         public IReadOnlyList<ITag> Tags => _tags;
+
+        public event Action<IReadOnlyList<ITag>?>? OnChange;
     }
 
     public partial class TagSelector
     {
         public class Spec
         {
-            public Callbacks.IsDisabled? IsDisabled { get; init; }
-            public Callbacks.Pixels?     LeftWidth  { get; init; }
-            public Callbacks.Pixels?     RightWidth { get; init; }
-            public Callbacks.Scale?      Scale      { get; init; }
+            public Callbacks.Callback<IReadOnlyList<ITag>>? Value      { get; init; }
+            public Callbacks.IsDisabled?                    IsDisabled { get; init; }
+            public Callbacks.Pixels?                        LeftWidth  { get; init; }
+            public Callbacks.Pixels?                        RightWidth { get; init; }
+            public Callbacks.Scale?                         Scale      { get; init; }
         }
     }
 
@@ -133,7 +141,7 @@ namespace Integrant4.Element.Constructs.TagSelector
                         ITag tag = _tags[i];
 
                         builder.OpenElement(++seq, "div");
-                        builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-Tag");
+                        builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-RemovableTag");
 
                         builder.OpenElement(++seq, "div");
                         builder.AddContent(++seq, $"{tag.Name}:");
@@ -302,8 +310,8 @@ namespace Integrant4.Element.Constructs.TagSelector
                 new IOption<TagType>[]
                 {
                     new Option<TagType>(TagType.String, "String", true),
-                    new Option<TagType>(TagType.Int, "Number"),
-                    new Option<TagType>(TagType.Bool, "Truthy"),
+                    new Option<TagType>(TagType.Int,    "Number"),
+                    new Option<TagType>(TagType.Bool,   "Truthy"),
                 }, (l, r) => l == r, new SelectInput<TagType>.Spec
             {
                 IsDisabled = _spec.IsDisabled,
@@ -346,6 +354,7 @@ namespace Integrant4.Element.Constructs.TagSelector
         {
             Console.WriteLine($"Remove: {i}");
             _tags.RemoveAt(i);
+            OnChange?.Invoke(_tags.Count == 0 ? null : _tags);
             _refresher?.Invoke();
         }
 
@@ -385,6 +394,7 @@ namespace Integrant4.Element.Constructs.TagSelector
 
             await ClearAllValueInputs();
 
+            OnChange?.Invoke(_tags.Count == 0 ? null : _tags);
             _refresher?.Invoke();
         }
 
@@ -396,7 +406,7 @@ namespace Integrant4.Element.Constructs.TagSelector
             await (_newTagBooleanInput?.SetValue(false, false) ?? Task.CompletedTask);
         }
 
-        public void AddTag(ITag tag)
+        public void AddTag(ITag tag, bool invokeOnChange = true)
         {
             _tags.Add(tag);
 
@@ -408,6 +418,27 @@ namespace Integrant4.Element.Constructs.TagSelector
                 _         => throw new ArgumentOutOfRangeException(nameof(tag), tag, null),
             });
 
+            if (invokeOnChange) OnChange?.Invoke(_tags.Count == 0 ? null : _tags);
+            _refresher?.Invoke();
+        }
+
+        public void SetTags(IReadOnlyList<ITag> tags, bool invokeOnChange = true)
+        {
+            _tags.Clear();
+            _tags.AddRange(tags);
+
+            foreach (ITag tag in tags)
+            {
+                _knownTags.Add(tag switch
+                {
+                    StringTag => (TagType.String, tag.Name),
+                    IntTag    => (TagType.Int, tag.Name),
+                    BoolTag   => (TagType.Bool, tag.Name),
+                    _         => throw new ArgumentOutOfRangeException(nameof(tags), tags, null),
+                });
+            }
+
+            if (invokeOnChange) OnChange?.Invoke(_tags.Count == 0 ? null : _tags);
             _refresher?.Invoke();
         }
 
