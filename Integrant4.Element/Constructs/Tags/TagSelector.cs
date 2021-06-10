@@ -170,7 +170,7 @@ namespace Integrant4.Element.Constructs.Tags
                         builder.CloseElement();
 
                         builder.OpenElement(++seq, "div");
-                        builder.AddContent(++seq, tag.Content().Renderer());
+                        builder.AddContent(++seq, tag.Content());
                         builder.CloseElement();
 
                         // builder.OpenElement(++seq, "button");
@@ -452,7 +452,13 @@ namespace Integrant4.Element.Constructs.Tags
             }
             else if (_acceptAnyValue == true)
             {
-                _tags.Add(new VoidTag(_newTagName));
+                _tags.Add(_newTagType switch
+                {
+                    TagType.String => new AnyStringTag(_newTagName),
+                    TagType.Int    => new AnyIntTag(_newTagName),
+                    TagType.Bool   => new AnyBoolTag(_newTagName),
+                    _              => throw new ArgumentOutOfRangeException(),
+                });
             }
 
             _knownTags.Add((_newTagType, _newTagName));

@@ -18,6 +18,9 @@ namespace Integrant4.Element.Constructs.Tags
                 { typeof(IntTag), new List<ITag>() },
                 { typeof(BoolTag), new List<ITag>() },
             };
+            tagsByType.Add(typeof(AnyStringTag), tagsByType[typeof(StringTag)]);
+            tagsByType.Add(typeof(AnyIntTag), tagsByType[typeof(IntTag)]);
+            tagsByType.Add(typeof(AnyBoolTag), tagsByType[typeof(BoolTag)]);
 
             foreach (ITag tag in tags)
             {
@@ -34,57 +37,62 @@ namespace Integrant4.Element.Constructs.Tags
                     case StringTag stringTag:
                         foreach (StringTag tag in toCheck.Cast<StringTag>())
                         {
-                            if (tag.Name == filter.Name && tag.Value != stringTag.Value)
+                            if (tag.Name == filter.Name && tag.Value == stringTag.Value)
                             {
-                                break;
+                                goto Next;
                             }
-
-                            matched = false;
                         }
 
+                        Console.WriteLine($"No tags matched: {filter.Name} == {stringTag.Value}");
+                        matched = false;
                         break;
+
                     case IntTag intTag:
                         foreach (IntTag tag in toCheck.Cast<IntTag>())
                         {
-                            if (tag.Name == filter.Name && tag.Value != intTag.Value)
+                            if (tag.Name == filter.Name && tag.Value == intTag.Value)
                             {
-                                break;
+                                goto Next;
                             }
-
-                            matched = false;
                         }
 
+                        Console.WriteLine($"No tags matched: {filter.Name} == {intTag.Value}");
+                        matched = false;
                         break;
 
                     case BoolTag boolTag:
                         foreach (BoolTag tag in toCheck.Cast<BoolTag>())
                         {
-                            if (tag.Name == filter.Name && tag.Value != boolTag.Value)
+                            if (tag.Name == filter.Name && tag.Value == boolTag.Value)
                             {
-                                break;
+                                goto Next;
                             }
-
-                            matched = false;
                         }
 
+                        Console.WriteLine($"No tags matched: {filter.Name} == {boolTag.Value}");
+                        matched = false;
                         break;
-                    case VoidTag voidTag:
+
+                    case AnyStringTag:
+                    case AnyIntTag:
+                    case AnyBoolTag:
                         foreach (ITag tag in toCheck)
                         {
                             if (tag.Name == filter.Name)
                             {
-                                break;
+                                goto Next;
                             }
-
-                            matched = false;
                         }
 
+                        Console.WriteLine($"No tags matched: {filter.Name} of {filter.GetType().Name}");
+                        matched = false;
                         break;
-                    
+
                     default:
                         throw new ArgumentOutOfRangeException(nameof(filter), "Unmatched tag type.");
                 }
 
+                Next:
                 if (!matched) return false;
             }
 

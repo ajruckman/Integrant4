@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Bogus;
 using Integrant4.Element.Constructs.Tags;
 using Microsoft.AspNetCore.Components;
@@ -10,6 +12,14 @@ namespace Web.Pages
     {
         private class User
         {
+            public User(int id, string firstName, string lastName, List<ITag> tags)
+            {
+                ID        = id;
+                FirstName = firstName;
+                LastName  = lastName;
+                Tags      = tags;
+            }
+
             public int    ID        { get; }
             public string FirstName { get; }
             public string LastName  { get; }
@@ -17,47 +27,89 @@ namespace Web.Pages
             public List<ITag> Tags { get; }
         }
 
-        private TagSelector _tagSelector;
+        private TagSelector          _tagSelector = null!;
+        private List<User>           _users       = null!;
+        private IReadOnlyList<ITag>? _filters;
 
         protected override void OnInitialized()
         {
-            Faker<User> b = new Faker<User>()
-               .RuleFor(o => o.ID, f => f.IndexFaker)
-               .RuleFor(o => o.FirstName, f => f.Name.FirstName())
-               .RuleFor(o => o.LastName, f => f.Name.LastName());
-
-            List<User> users = b.Generate(100);
-
             Faker<IntTag> shiftTagFaker = new Faker<IntTag>()
-               .RuleFor(o => o.Name, _ => "Shift")
-               .RuleFor(o => o.Value, f => f.PickRandom(1, 2, 3));
+               .CustomInstantiator(f => new IntTag("Shift", f.PickRandom(1, 2, 3)));
 
             Faker<BoolTag> fullTimeTagFaker = new Faker<BoolTag>()
-               .RuleFor(o => o.Name, _ => "Is full time")
-               .RuleFor(o => o.Value, v => v.PickRandom(true, false));
+               .CustomInstantiator(f => new BoolTag("Is full time", f.Random.Bool()));
 
             Faker<StringTag> birthdayMonthTagFaker = new Faker<StringTag>()
-               .RuleFor(o => o.Name, _ => "Birthday month")
-               .RuleFor(o => o.Value, f => f.Date.Month());
-            
-            
+               .CustomInstantiator(f => new StringTag("Birthday month", f.Date.Month()));
+
+            Faker<IntTag> startYearFaker = new Faker<IntTag>()
+               .CustomInstantiator(f => new IntTag("Start year", f.Random.Long(1920, 2021)));
+
+            Faker<User> b = new Faker<User>().CustomInstantiator(f =>
+            {
+                User result = new
+                (
+                    f.IndexFaker,
+                    f.Name.FirstName(),
+                    f.Name.LastName(),
+                    new List<ITag>()
+                );
+
+                result.Tags.Add(shiftTagFaker.Generate());
+                result.Tags.Add(fullTimeTagFaker.Generate());
+                result.Tags.Add(birthdayMonthTagFaker.Generate());
+
+                if (f.Random.Bool()) result.Tags.Add(startYearFaker.Generate());
+
+                return result;
+            });
+
+            _users = b.Generate(100);
+
+            //
+
+            ITag[] fullTimeTagFilter        = { new BoolTag("Is full time", true) };
+            ITag[] partTimeThirdShiftFilter = { new BoolTag("Is full time", true), new IntTag("Shift", 3) };
+
+            // List<User> fullTimes = 
+            // users.Where(v => TagMatcher.Matches(v.Tags, fullTimeTagFilter)).ToList();
+            // List<User> partTimeThirdShifts =
+            // users.Where(v => TagMatcher.Matches(v.Tags, partTimeThirdShiftFilter)).ToList();
+
+            // Console.WriteLine(fullTimes.Count);
+            // Console.WriteLine(partTimeThirdShifts.Count);
+
+            //
 
             _tagSelector = new TagSelector(new HashSet<(TagType, string)>
             {
                 (TagType.String, "Work area"),
                 (TagType.Bool, "Is contractor"),
                 (TagType.Bool, "Has gone through training"),
-                (TagType.Bool, "Is part time"),
                 (TagType.Int, "Shift"),
+                (TagType.Bool, "Is full time"),
+                (TagType.String, "Birthday month"),
+                (TagType.Int, "Start year"),
             }, true);
 
-            _tagSelector.AddTag(new StringTag("Name", "John"));
-            _tagSelector.AddTag(new IntTag("Shift", 1));
-            _tagSelector.AddTag(new BoolTag("Is intern", true));
-            _tagSelector.AddTag(new StringTag("Birthday month", "May"));
-            _tagSelector.AddTag(new IntTag("Age", 25));
-            _tagSelector.AddTag(new BoolTag("Has pets", false));
-            _tagSelector.AddTag(new BoolTag("Is married", false));
+            // _tagSelector.AddTag(new StringTag("Name", "John"));
+            // _tagSelector.AddTag(new IntTag("Shift", 1));
+            // _tagSelector.AddTag(new BoolTag("Is intern", true));
+            // _tagSelector.AddTag(new StringTag("Birthday month", "May"));
+            // _tagSelector.AddTag(new IntTag("Age", 25));
+            // _tagSelector.AddTag(new BoolTag("Has pets", false));
+            // _tagSelector.AddTag(new BoolTag("Is married", false));
+
+            _tagSelector.OnChange += filters =>
+            {
+                _filters = filters;
+                InvokeAsync(StateHasChanged);
+            };
         }
+
+        private List<User> MatchedUsers() =>
+            _filters == null || _filters.Count == 0
+                ? _users
+                : _users.Where(v => TagMatcher.Matches(v.Tags, _filters)).ToList();
     }
 }

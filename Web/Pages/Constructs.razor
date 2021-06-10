@@ -1,1 +1,38 @@
-@_tagSelector.Renderer()
+@using Integrant4.Element.Constructs.Tags
+
+<div class="I4E-Layout-Panel">
+    <div class="I4E-Layout-Panel-Inner">
+        @_tagSelector.Renderer()
+
+        <br>
+        <br>
+
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Tags</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            @foreach (User user in MatchedUsers())
+            {
+                <tr>
+                    <td>@user.ID</td>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>
+                        @foreach (ITag tag in user.Tags)
+                        {
+                            @tag.RenderSelectable(_tagSelector)
+                        }
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
