@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Components;
 
-namespace Integrant4.Element.Constructs.Tags
+namespace Integrant4.Element.Constructs.Tagging
 {
     public static class TagExtensions
     {

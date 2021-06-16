@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Integrant4.API;
-using Integrant4.Element.Constructs.Tags;
+using Integrant4.Element.Constructs.Tagging;
 using Microsoft.AspNetCore.Components;
 
 namespace Integrant4.Element.Inputs

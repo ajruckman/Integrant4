@@ -8,7 +8,7 @@ using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Integrant4.Element.Constructs.Tags
+namespace Integrant4.Element.Constructs.Tagging
 {
     public partial class TagSelector : IConstruct
     {

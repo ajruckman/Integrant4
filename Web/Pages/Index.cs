@@ -105,7 +105,7 @@ namespace Web.Pages
 
             Faker<User> b = new Faker<User>()
                .RuleFor(o => o.FirstName, f => f.Name.FirstName())
-               .RuleFor(o => o.LastName, f => f.Name.LastName());
+               .RuleFor(o => o.LastName,  f => f.Name.LastName());
 
             List<User> names = b.Generate(900);
 
@@ -197,7 +197,7 @@ namespace Web.Pages
         {
             List<IValidation> result = new()
             {
-                new Validation(ValidationResultType.Valid, "Valid"),
+                new Validation(ValidationResultType.Valid,   "Valid"),
                 new Validation(ValidationResultType.Warning, "Warning"),
             };
 
@@ -263,7 +263,7 @@ namespace Web.Pages
                 )
             );
 
-            Structure.Register<long?>
+            Structure.Register<int?>
             (
                 nameof(Dog.Age),
                 inst => inst.StructureInstance.State.Age,
@@ -303,12 +303,12 @@ namespace Web.Pages
                     null,
                     () => new List<IOption<string>>
                     {
-                        new Integrant4.Element.Inputs.Option<string>("Unknown", "Unknown"),
+                        new Integrant4.Element.Inputs.Option<string>("Unknown",     "Unknown"),
                         new Integrant4.Element.Inputs.Option<string>("Rat Terrier", "Rat Terrier"),
-                        new Integrant4.Element.Inputs.Option<string>("Boxer", "Boxer"),
-                        new Integrant4.Element.Inputs.Option<string>("Yorkie", "Yorkie"),
-                        new Integrant4.Element.Inputs.Option<string>("Chihuahua", "Chihuahua"),
-                        new Integrant4.Element.Inputs.Option<string>(null, "Other"),
+                        new Integrant4.Element.Inputs.Option<string>("Boxer",       "Boxer"),
+                        new Integrant4.Element.Inputs.Option<string>("Yorkie",      "Yorkie"),
+                        new Integrant4.Element.Inputs.Option<string>("Chihuahua",   "Chihuahua"),
+                        new Integrant4.Element.Inputs.Option<string>(null,          "Other"),
                     }
                 )
             );
@@ -317,7 +317,7 @@ namespace Web.Pages
 
     public class Dog
     {
-        public Dog(string nameFirst, string nameLast, long age, string? breed)
+        public Dog(string nameFirst, string nameLast, int age, string? breed)
         {
             NameFirst = nameFirst;
             NameLast  = nameLast;
@@ -327,7 +327,7 @@ namespace Web.Pages
 
         public string  NameFirst { get; }
         public string  NameLast  { get; }
-        public long    Age       { get; }
+        public int     Age       { get; }
         public string? Breed     { get; }
     }
 
@@ -335,7 +335,7 @@ namespace Web.Pages
     {
         public string? NameFirst { get; set; }
         public string? NameLast  { get; set; }
-        public long?   Age       { get; set; }
+        public int?    Age       { get; set; }
         public string? Breed     { get; set; }
 
         public bool AgeIsDisabled { get; set; }

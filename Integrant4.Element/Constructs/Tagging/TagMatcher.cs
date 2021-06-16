@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Integrant4.Element.Constructs.Tags
+namespace Integrant4.Element.Constructs.Tagging
 {
     public static class TagMatcher
     {
@@ -43,7 +43,6 @@ namespace Integrant4.Element.Constructs.Tags
                             }
                         }
 
-                        Console.WriteLine($"No tags matched: {filter.Name} == {stringTag.Value}");
                         matched = false;
                         break;
 
@@ -56,7 +55,6 @@ namespace Integrant4.Element.Constructs.Tags
                             }
                         }
 
-                        Console.WriteLine($"No tags matched: {filter.Name} == {intTag.Value}");
                         matched = false;
                         break;
 
@@ -69,7 +67,6 @@ namespace Integrant4.Element.Constructs.Tags
                             }
                         }
 
-                        Console.WriteLine($"No tags matched: {filter.Name} == {boolTag.Value}");
                         matched = false;
                         break;
 
@@ -84,7 +81,6 @@ namespace Integrant4.Element.Constructs.Tags
                             }
                         }
 
-                        Console.WriteLine($"No tags matched: {filter.Name} of {filter.GetType().Name}");
                         matched = false;
                         break;
 

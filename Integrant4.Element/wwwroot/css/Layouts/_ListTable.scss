@@ -107,78 +107,6 @@ div.I4E-Layout-ListTable {
                 &.Null {
 
                 }
-
-                &:not(.Green):not(.Red) {
-                    &:nth-child(even) {
-                        td {
-                            background-color: var(--I4C_Default_TableRow_0);
-                        }
-
-                        &:hover td {
-                            background-color: var(--I4C_Default_TableRow_2);
-                        }
-                    }
-
-                    &:nth-child(odd) {
-                        td {
-                            background-color: var(--I4C_Default_TableRow_1);
-
-                        }
-
-                        &:hover td {
-                            background-color: var(--I4C_Default_TableRow_3);
-
-                        }
-                    }
-                }
-
-                &.Green {
-                    &:nth-child(even) {
-                        td {
-                            background-color: var(--I4C_Default_TableRow_Green_0);
-                        }
-
-                        &:hover td {
-                            background-color: var(--I4C_Default_TableRow_Green_2);
-                        }
-                    }
-
-                    &:nth-child(odd) {
-                        td {
-                            background-color: var(--I4C_Default_TableRow_Green_1);
-
-                        }
-
-                        &:hover td {
-                            background-color: var(--I4C_Default_TableRow_Green_3);
-
-                        }
-                    }
-                }
-
-                &.Red {
-                    &:nth-child(even) {
-                        td {
-                            background-color: var(--I4C_Default_TableRow_Red_0);
-                        }
-
-                        &:hover td {
-                            background-color: var(--I4C_Default_TableRow_Red_2);
-                        }
-                    }
-
-                    &:nth-child(odd) {
-                        td {
-                            background-color: var(--I4C_Default_TableRow_Red_1);
-
-                        }
-
-                        &:hover td {
-                            background-color: var(--I4C_Default_TableRow_Red_3);
-
-                        }
-                    }
-                }
             }
         }
 
@@ -214,6 +142,154 @@ div.I4E-Layout-ListTable {
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr {
+    &:not(.Green):not(.Red) {
+        &:nth-child(even) {
+            td {
+                background-color: var(--I4C_Default_TableRow_0);
+            }
+
+            &:hover td {
+                background-color: var(--I4C_Default_TableRow_2);
+            }
+        }
+
+        &:nth-child(odd) {
+            td {
+                background-color: var(--I4C_Default_TableRow_1);
+
+            }
+
+            &:hover td {
+                background-color: var(--I4C_Default_TableRow_3);
+
+            }
+        }
+    }
+
+    &.Green {
+        &:nth-child(even) {
+            td {
+                background-color: var(--I4C_Default_TableRow_Green_0);
+            }
+
+            &:hover td {
+                background-color: var(--I4C_Default_TableRow_Green_2);
+            }
+        }
+
+        &:nth-child(odd) {
+            td {
+                background-color: var(--I4C_Default_TableRow_Green_1);
+
+            }
+
+            &:hover td {
+                background-color: var(--I4C_Default_TableRow_Green_3);
+
+            }
+        }
+    }
+
+    &.Red {
+        &:nth-child(even) {
+            td {
+                background-color: var(--I4C_Default_TableRow_Red_0);
+            }
+
+            &:hover td {
+                background-color: var(--I4C_Default_TableRow_Red_2);
+            }
+        }
+
+        &:nth-child(odd) {
+            td {
+                background-color: var(--I4C_Default_TableRow_Red_1);
+
+            }
+
+            &:hover td {
+                background-color: var(--I4C_Default_TableRow_Red_3);
+
+            }
+        }
+    }
+}
+
+div.I4E-Layout-ListTable.StripeInterval2 tbody tr {
+    &:not(.Green):not(.Red) {
+        &:nth-child(4n+1), &:nth-child(4n+2) {
+            td {
+                background-color: var(--I4C_Default_TableRow_0);
+            }
+
+            &:hover td {
+                background-color: var(--I4C_Default_TableRow_2);
+            }
+        }
+
+        &:nth-child(4n+3), &:nth-child(4n+4) {
+            td {
+                background-color: var(--I4C_Default_TableRow_1);
+
+            }
+
+            &:hover td {
+                background-color: var(--I4C_Default_TableRow_3);
+
+            }
+        }
+    }
+
+    &.Green {
+        &:nth-child(4n+1), &:nth-child(4n+2) {
+            td {
+                background-color: var(--I4C_Default_TableRow_Green_0);
+            }
+
+            &:hover td {
+                background-color: var(--I4C_Default_TableRow_Green_2);
+            }
+        }
+
+        &:nth-child(4n+3), &:nth-child(4n+4) {
+            td {
+                background-color: var(--I4C_Default_TableRow_Green_1);
+
+            }
+
+            &:hover td {
+                background-color: var(--I4C_Default_TableRow_Green_3);
+
+            }
+        }
+    }
+
+    &.Red {
+        &:nth-child(4n+1), &:nth-child(4n+2) {
+            td {
+                background-color: var(--I4C_Default_TableRow_Red_0);
+            }
+
+            &:hover td {
+                background-color: var(--I4C_Default_TableRow_Red_2);
+            }
+        }
+
+        &:nth-child(4n+3), &:nth-child(4n+4) {
+            td {
+                background-color: var(--I4C_Default_TableRow_Red_1);
+
+            }
+
+            &:hover td {
+                background-color: var(--I4C_Default_TableRow_Red_3);
+
             }
         }
     }

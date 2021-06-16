@@ -50,30 +50,6 @@ div.I4E-Layout-ListTable {
         font-family: var(--I4R_MonoFont); }
       div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr td.PreWrap {
         white-space: pre-wrap; }
-    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr:not(.Green):not(.Red):nth-child(even) td {
-      background-color: var(--I4C_Default_TableRow_0); }
-    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr:not(.Green):not(.Red):nth-child(even):hover td {
-      background-color: var(--I4C_Default_TableRow_2); }
-    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr:not(.Green):not(.Red):nth-child(odd) td {
-      background-color: var(--I4C_Default_TableRow_1); }
-    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr:not(.Green):not(.Red):nth-child(odd):hover td {
-      background-color: var(--I4C_Default_TableRow_3); }
-    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr.Green:nth-child(even) td {
-      background-color: var(--I4C_Default_TableRow_Green_0); }
-    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr.Green:nth-child(even):hover td {
-      background-color: var(--I4C_Default_TableRow_Green_2); }
-    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr.Green:nth-child(odd) td {
-      background-color: var(--I4C_Default_TableRow_Green_1); }
-    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr.Green:nth-child(odd):hover td {
-      background-color: var(--I4C_Default_TableRow_Green_3); }
-    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr.Red:nth-child(even) td {
-      background-color: var(--I4C_Default_TableRow_Red_0); }
-    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr.Red:nth-child(even):hover td {
-      background-color: var(--I4C_Default_TableRow_Red_2); }
-    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr.Red:nth-child(odd) td {
-      background-color: var(--I4C_Default_TableRow_Red_1); }
-    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tbody tr.Red:nth-child(odd):hover td {
-      background-color: var(--I4C_Default_TableRow_Red_3); }
     div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tfoot tr td {
       background-color: var(--I4C_Default_Background_7);
       border-top: 1px solid var(--I4C_Default_Border_11);
@@ -91,6 +67,78 @@ div.I4E-Layout-ListTable {
         justify-content: space-between; }
         div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tfoot tr.ForPaginationInfoAndButtons td div.I4E-Layout-ListTable-TableControlsContainer div.I4E-Construct-PagedTable-PageInfo {
           padding: 0 7px; }
+
+div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr:not(.Green):not(.Red):nth-child(even) td {
+  background-color: var(--I4C_Default_TableRow_0); }
+
+div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr:not(.Green):not(.Red):nth-child(even):hover td {
+  background-color: var(--I4C_Default_TableRow_2); }
+
+div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr:not(.Green):not(.Red):nth-child(odd) td {
+  background-color: var(--I4C_Default_TableRow_1); }
+
+div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr:not(.Green):not(.Red):nth-child(odd):hover td {
+  background-color: var(--I4C_Default_TableRow_3); }
+
+div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr.Green:nth-child(even) td {
+  background-color: var(--I4C_Default_TableRow_Green_0); }
+
+div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr.Green:nth-child(even):hover td {
+  background-color: var(--I4C_Default_TableRow_Green_2); }
+
+div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr.Green:nth-child(odd) td {
+  background-color: var(--I4C_Default_TableRow_Green_1); }
+
+div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr.Green:nth-child(odd):hover td {
+  background-color: var(--I4C_Default_TableRow_Green_3); }
+
+div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr.Red:nth-child(even) td {
+  background-color: var(--I4C_Default_TableRow_Red_0); }
+
+div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr.Red:nth-child(even):hover td {
+  background-color: var(--I4C_Default_TableRow_Red_2); }
+
+div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr.Red:nth-child(odd) td {
+  background-color: var(--I4C_Default_TableRow_Red_1); }
+
+div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr.Red:nth-child(odd):hover td {
+  background-color: var(--I4C_Default_TableRow_Red_3); }
+
+div.I4E-Layout-ListTable.StripeInterval2 tbody tr:not(.Green):not(.Red):nth-child(4n+1) td, div.I4E-Layout-ListTable.StripeInterval2 tbody tr:not(.Green):not(.Red):nth-child(4n+2) td {
+  background-color: var(--I4C_Default_TableRow_0); }
+
+div.I4E-Layout-ListTable.StripeInterval2 tbody tr:not(.Green):not(.Red):nth-child(4n+1):hover td, div.I4E-Layout-ListTable.StripeInterval2 tbody tr:not(.Green):not(.Red):nth-child(4n+2):hover td {
+  background-color: var(--I4C_Default_TableRow_2); }
+
+div.I4E-Layout-ListTable.StripeInterval2 tbody tr:not(.Green):not(.Red):nth-child(4n+3) td, div.I4E-Layout-ListTable.StripeInterval2 tbody tr:not(.Green):not(.Red):nth-child(4n+4) td {
+  background-color: var(--I4C_Default_TableRow_1); }
+
+div.I4E-Layout-ListTable.StripeInterval2 tbody tr:not(.Green):not(.Red):nth-child(4n+3):hover td, div.I4E-Layout-ListTable.StripeInterval2 tbody tr:not(.Green):not(.Red):nth-child(4n+4):hover td {
+  background-color: var(--I4C_Default_TableRow_3); }
+
+div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Green:nth-child(4n+1) td, div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Green:nth-child(4n+2) td {
+  background-color: var(--I4C_Default_TableRow_Green_0); }
+
+div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Green:nth-child(4n+1):hover td, div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Green:nth-child(4n+2):hover td {
+  background-color: var(--I4C_Default_TableRow_Green_2); }
+
+div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Green:nth-child(4n+3) td, div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Green:nth-child(4n+4) td {
+  background-color: var(--I4C_Default_TableRow_Green_1); }
+
+div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Green:nth-child(4n+3):hover td, div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Green:nth-child(4n+4):hover td {
+  background-color: var(--I4C_Default_TableRow_Green_3); }
+
+div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Red:nth-child(4n+1) td, div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Red:nth-child(4n+2) td {
+  background-color: var(--I4C_Default_TableRow_Red_0); }
+
+div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Red:nth-child(4n+1):hover td, div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Red:nth-child(4n+2):hover td {
+  background-color: var(--I4C_Default_TableRow_Red_2); }
+
+div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Red:nth-child(4n+3) td, div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Red:nth-child(4n+4) td {
+  background-color: var(--I4C_Default_TableRow_Red_1); }
+
+div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Red:nth-child(4n+3):hover td, div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Red:nth-child(4n+4):hover td {
+  background-color: var(--I4C_Default_TableRow_Red_3); }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner thead tr th, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner thead tr th {
   background-color: var(--I4C_Default_Background_6); }

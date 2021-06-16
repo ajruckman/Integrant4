@@ -18,11 +18,11 @@ namespace Integrant4.Element.Constructs.Tables
             _paginateHook   = new Hook();
             _refreshHook    = new Hook();
             _sortHook       = new Hook();
-            _filterHook     = new Hook();
+            _reduceHook     = new Hook();
 
             _table = new SortablePagedTable<TRow>
             (
-                RowsFiltered, pageSize,
+                RowsReduced, pageSize,
                 _invalidateHook, _paginateHook, _refreshHook, _sortHook
             );
         }
@@ -34,7 +34,7 @@ namespace Integrant4.Element.Constructs.Tables
         private readonly Hook _paginateHook;
         private readonly Hook _refreshHook;
         private readonly Hook _sortHook;
-        private readonly Hook _filterHook;
+        private readonly Hook _reduceHook;
 
         public IPagedTable<TRow> BaseTable => _table.BaseTable;
 
@@ -48,7 +48,7 @@ namespace Integrant4.Element.Constructs.Tables
         public ReadOnlyHook OnPaginate   => _paginateHook;
         public ReadOnlyHook OnRefresh    => _refreshHook;
         public ReadOnlyHook OnSort       => _sortHook;
-        public ReadOnlyHook OnFilter     => _filterHook;
+        public ReadOnlyHook OnReduce     => _reduceHook;
 
         public string?             ActiveSorter        => _table.ActiveSorter;
         public TableSortDirection? ActiveSortDirection => _table.ActiveSortDirection;
@@ -69,11 +69,11 @@ namespace Integrant4.Element.Constructs.Tables
 
     public partial class FilterableSortablePagedTable<TRow> where TRow : class
     {
-        private readonly object _rowsLock         = new();
-        private readonly object _rowsFilteredLock = new();
+        private readonly object _rowsLock        = new();
+        private readonly object _rowsReducedLock = new();
 
         private TRow[]? _rows;
-        private TRow[]? _rowsFiltered;
+        private TRow[]? _rowsReduced;
 
         public TRow[] Rows()
         {
@@ -85,46 +85,54 @@ namespace Integrant4.Element.Constructs.Tables
 
         public void InvalidateRows()
         {
-            lock (_rowsFilteredLock)
+            lock (_rowsReducedLock)
             {
-                _rows         = null;
-                _rowsFiltered = null;
+                _rows        = null;
+                _rowsReduced = null;
 
                 _table.InvalidateRows();
             }
         }
 
-        public void InvalidateRowsFiltered()
+        public void InvalidateRowsReduced()
         {
-            lock (_rowsFilteredLock)
+            lock (_rowsReducedLock)
             {
-                _rowsFiltered = null;
+                _rowsReduced = null;
 
                 _table.InvalidateRows();
             }
         }
 
-        public TRow[] RowsFiltered()
+        public TRow[] RowsReduced()
         {
-            lock (_rowsFilteredLock)
+            lock (_rowsReducedLock)
             {
-                if (_rowsFiltered != null)
-                    return _rowsFiltered;
+                if (_rowsReduced != null)
+                    return _rowsReduced;
 
-                TRow[] rows = Rows();
+                IEnumerable<TRow> rows = Rows();
 
-                lock (_matcherLock)
+                lock (_reducerLock)
                 {
-                    foreach ((string key, Func<TRow, string, bool> matcher) in _matchers)
+                    foreach ((string key, Func<TRow, string, bool> filterer) in _filterers)
                     {
-                        if (!_filters.TryGetValue(key, out string? filter))
-                            continue;
-
-                        rows = rows.Where(v => matcher.Invoke(v, filter)).ToArray();
+                        if (_appliedFilters.TryGetValue(key, out string? filter))
+                        {
+                            rows = rows.Where(v => filterer.Invoke(v, filter));
+                        }
                     }
 
-                    _rowsFiltered = rows;
-                    return _rowsFiltered;
+                    foreach ((string key, Func<TRow, bool> matcher) in _matchers)
+                    {
+                        if (_appliedMatchers.Contains(key))
+                        {
+                            rows = rows.Where(v => matcher.Invoke(v));
+                        }
+                    }
+
+                    _rowsReduced = rows.ToArray();
+                    return _rowsReduced;
                 }
             }
         }
@@ -137,59 +145,104 @@ namespace Integrant4.Element.Constructs.Tables
 
     public partial class FilterableSortablePagedTable<TRow> where TRow : class
     {
-        private readonly Dictionary<string, Func<TRow, string, bool>> _matchers    = new();
-        private readonly object                                       _matcherLock = new();
-        private readonly Dictionary<string, string>                   _filters     = new();
+        private readonly object _reducerLock = new();
 
-        public void AddMatcher(string id, Func<TRow, string, bool> matcher)
+        private readonly Dictionary<string, Func<TRow, string, bool>> _filterers      = new();
+        private readonly Dictionary<string, string>                   _appliedFilters = new();
+
+        private readonly Dictionary<string, Func<TRow, bool>> _matchers        = new();
+        private readonly HashSet<string>                      _appliedMatchers = new();
+
+        public void AddFilterer(string id, Func<TRow, string, bool> filterer)
         {
-            lock (_matcherLock)
+            lock (_reducerLock)
             {
-                _matchers.Add(id, matcher);
+                _filterers.Add(id, filterer);
             }
         }
 
         public void SetFilter(string key, string filter, bool doUpdate = true)
         {
-            lock (_matcherLock)
+            lock (_reducerLock)
             {
                 if (string.IsNullOrEmpty(filter))
                     throw new ArgumentException("Filter cannot be empty.", nameof(filter));
 
-                if (!_matchers.ContainsKey(key))
-                    throw new ArgumentException($"Key '{key}' does not have a registered matcher.", nameof(key));
+                if (!_filterers.ContainsKey(key))
+                    throw new ArgumentException($"Key '{key}' does not have a registered filterer.", nameof(key));
 
-                _filters[key] = filter;
+                _appliedFilters[key] = filter;
 
                 if (doUpdate) OnFilterChange?.Invoke(key, filter);
             }
 
-            InvalidateRowsFiltered();
-            _filterHook.Invoke();
+            InvalidateRowsReduced();
+            _reduceHook.Invoke();
         }
 
         public void ClearFilter(string key, bool doUpdate = true)
         {
-            lock (_matcherLock)
+            lock (_reducerLock)
             {
-                if (!_matchers.ContainsKey(key))
-                    throw new ArgumentException($"Key '{key}' does not have a registered matcher.", nameof(key));
+                if (!_filterers.ContainsKey(key))
+                    throw new ArgumentException($"Key '{key}' does not have a registered filterer.", nameof(key));
 
-                _filters.Remove(key);
+                _appliedFilters.Remove(key);
 
                 if (doUpdate) OnFilterChange?.Invoke(key, null);
             }
 
-            InvalidateRowsFiltered();
-            _filterHook.Invoke();
+            InvalidateRowsReduced();
+            _reduceHook.Invoke();
+        }
+
+        public void AddMatcher(string id, Func<TRow, bool> matcher)
+        {
+            lock (_reducerLock)
+            {
+                _matchers.Add(id, matcher);
+            }
+        }
+
+        public void ApplyMatcher(string key, bool doUpdate = true)
+        {
+            lock (_reducerLock)
+            {
+                if (!_matchers.ContainsKey(key))
+                    throw new ArgumentException($"Key '{key}' does not have a registered matcher.", nameof(key));
+
+                _appliedMatchers.Add(key);
+
+                if (doUpdate) OnReducerChange?.Invoke(key, true);
+            }
+
+            InvalidateRowsReduced();
+            _reduceHook.Invoke();
+        }
+
+        public void UnapplyMatcher(string key, bool doUpdate = true)
+        {
+            lock (_reducerLock)
+            {
+                if (!_matchers.ContainsKey(key))
+                    throw new ArgumentException($"Key '{key}' does not have a registered matcher.", nameof(key));
+
+                _appliedMatchers.Remove(key);
+
+                if (doUpdate) OnReducerChange?.Invoke(key, false);
+            }
+
+            InvalidateRowsReduced();
+            _reduceHook.Invoke();
         }
 
         public string? GetFilter(string key)
         {
-            _filters.TryGetValue(key, out string? filter);
+            _appliedFilters.TryGetValue(key, out string? filter);
             return filter;
         }
 
         public event Action<string, string?>? OnFilterChange;
+        public event Action<string, bool>?    OnReducerChange;
     }
 }

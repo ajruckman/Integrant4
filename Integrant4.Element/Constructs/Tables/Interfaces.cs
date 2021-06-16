@@ -48,16 +48,21 @@ namespace Integrant4.Element.Constructs.Tables
     public interface IFilterableSortablePagedTable<out TRow> : ISortablePagedTable<TRow> where TRow : class
     {
         public new IPagedTable<TRow> BaseTable { get; }
-        public     ReadOnlyHook      OnFilter  { get; }
+        public     ReadOnlyHook      OnReduce  { get; }
 
-        public TRow[] RowsFiltered();
-        public void   InvalidateRowsFiltered();
+        public TRow[] RowsReduced();
+        public void   InvalidateRowsReduced();
 
-        public void    AddMatcher(string  id,  Func<TRow, string, bool> matcher);
+        public void    AddFilterer(string id,  Func<TRow, string, bool> filterer);
         public void    SetFilter(string   key, string                   filter, bool doUpdate = true);
         public void    ClearFilter(string key, bool                     doUpdate = true);
         public string? GetFilter(string   key);
 
+        public void AddMatcher(string     id,  Func<TRow, bool> matcher);
+        public void ApplyMatcher(string   key, bool             doUpdate = true);
+        public void UnapplyMatcher(string key, bool             doUpdate = true);
+
         public event Action<string, string?>? OnFilterChange;
+        public event Action<string, bool>?    OnReducerChange;
     }
 }

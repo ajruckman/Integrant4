@@ -37,10 +37,10 @@ namespace Web.Pages
             _filterableSortableUserTable.AddSorter(nameof(User.FirstName), v => v.FirstName);
             _filterableSortableUserTable.AddSorter(nameof(User.LastName), v => v.LastName);
 
-            _filterableSortableUserTable.AddMatcher(nameof(User.FirstName),
+            _filterableSortableUserTable.AddFilterer(nameof(User.FirstName),
                 (v, f) => v.FirstName.Contains(f, StringComparison.OrdinalIgnoreCase));
 
-            _filterableSortableUserTable.AddMatcher(nameof(User.LastName),
+            _filterableSortableUserTable.AddFilterer(nameof(User.LastName),
                 (v, f) => v.LastName.Contains(f, StringComparison.OrdinalIgnoreCase));
 
             Task.Run(() =>

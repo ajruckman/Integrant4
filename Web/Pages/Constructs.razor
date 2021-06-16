@@ -1,7 +1,11 @@
-@using Integrant4.Element.Constructs.Tags
-
+@using Integrant4.Element.Constructs.Tagging
 <div class="I4E-Layout-Panel">
     <div class="I4E-Layout-Panel-Inner">
+        @_selector.Renderer()
+                
+        <br>
+        <br>
+        
         @_tagSelector.Renderer()
 
         <br>

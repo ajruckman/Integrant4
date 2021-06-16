@@ -2,14 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Bogus;
-using Integrant4.Element.Constructs.Tags;
+using Integrant4.API;
+using Integrant4.Element;
+using Integrant4.Element.Constructs;
+using Integrant4.Element.Constructs.Selectors;
+using Integrant4.Element.Constructs.Tagging;
+using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace Web.Pages
 {
     [Route("/constructs")]
     public partial class Constructs
     {
+        [Inject] public IJSRuntime JSRuntime { get; set; } = null!;
+
         private class User
         {
             public User(int id, string firstName, string lastName, List<ITag> tags)
@@ -30,6 +38,7 @@ namespace Web.Pages
         private TagSelector          _tagSelector = null!;
         private List<User>           _users       = null!;
         private IReadOnlyList<ITag>? _filters;
+        private Selector<User>       _selector = null!;
 
         protected override void OnInitialized()
         {
@@ -105,6 +114,21 @@ namespace Web.Pages
                 _filters = filters;
                 InvokeAsync(StateHasChanged);
             };
+
+            //
+
+            _selector = new Selector<User>(JSRuntime, () => _users.Select(v => new Option<User>
+            (
+                v,
+                new StackedContent(() => new IRenderable[]
+                {
+                    v.FirstName.AsTextContent(weight: FontWeight.Bold),
+                    v.ID.ToString().AsContent(),
+                }, () => FlexAlign.Start).Renderer(),
+                v.FirstName.AsContent(),
+                v.FirstName,
+                false, false
+            )).ToArray());
         }
 
         private List<User> MatchedUsers() =>

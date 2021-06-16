@@ -104,7 +104,7 @@ namespace Web.Pages
                 InvokeAsync(StateHasChanged);
             };
 
-            void PrintL(long?     v) => Console.WriteLine($"int -> {v}");
+            void PrintL(int?     v) => Console.WriteLine($"int -> {v}");
             void PrintD(decimal? v) => Console.WriteLine($"decimal -> {v}");
 
             _intInput.OnChange            += PrintL;

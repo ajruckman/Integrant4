@@ -276,7 +276,7 @@ button.I4E-Bit-Button--Yellow.I4E-Bit--Disabled, button.I4E-Bit-Button--Yellow:d
   color: var(--I4C_Default_Text_0); }
 
 div.I4E-Bit-Checkbox {
-  display: inline-block; }
+  display: inline-flex; }
   div.I4E-Bit-Checkbox:not(.I4E-Bit-IsDisabled) {
     color: var(--I4C_Default_Text_7);
     cursor: pointer; }
