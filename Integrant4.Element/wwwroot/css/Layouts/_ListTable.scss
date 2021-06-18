@@ -28,6 +28,10 @@ div.I4E-Layout-ListTable {
         width: 100%;
 
         thead {
+            &.AlignLeft th {
+                text-align: left;
+            }
+
             tr {
                 th {
                     border-bottom: 1px solid var(--I4C_Default_Border_11);

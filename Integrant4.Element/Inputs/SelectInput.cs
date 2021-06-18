@@ -8,38 +8,38 @@ using Superset.Web.State;
 
 namespace Integrant4.Element.Inputs
 {
-    public interface IOption<out TValue>
-    {
-        TValue? Value    { get; }
-        Content Content  { get; }
-        bool    Selected { get; }
-        bool    Disabled { get; }
-    }
-
-    public class Option<TValue> : IOption<TValue>
-    {
-        public Option
-        (
-            TValue? value,
-            Content content,
-            bool    selected = false,
-            bool    disabled = false
-        )
-        {
-            Value    = value;
-            Content  = content;
-            Selected = selected;
-            Disabled = disabled;
-        }
-
-        public TValue? Value    { get; }
-        public Content Content  { get; }
-        public bool    Selected { get; }
-        public bool    Disabled { get; }
-    }
-
     public partial class SelectInput<TValue> : StandardInput<TValue?>
     {
+        public interface IOption
+        {
+            TValue? Value    { get; }
+            Content Content  { get; }
+            bool    Selected { get; }
+            bool    Disabled { get; }
+        }
+
+        public class Option : IOption
+        {
+            public Option
+            (
+                TValue? value,
+                Content content,
+                bool    selected = false,
+                bool    disabled = false
+            )
+            {
+                Value    = value;
+                Content  = content;
+                Selected = selected;
+                Disabled = disabled;
+            }
+
+            public TValue? Value    { get; }
+            public Content Content  { get; }
+            public bool    Selected { get; }
+            public bool    Disabled { get; }
+        }
+
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
@@ -89,7 +89,7 @@ namespace Integrant4.Element.Inputs
 
     public partial class SelectInput<TValue>
     {
-        public delegate IReadOnlyList<IOption<TValue>> OptionGetter();
+        public delegate IReadOnlyList<IOption> OptionGetter();
 
         public delegate bool OptionEqualityComparer(TValue? left, TValue? right);
 
@@ -98,7 +98,7 @@ namespace Integrant4.Element.Inputs
         private readonly object                 _optionCacheLock = new();
         private readonly UpdateTrigger          _signaler        = new();
 
-        private IReadOnlyList<IOption<TValue>>? _optionCache;
+        private IReadOnlyList<IOption>? _optionCache;
 
         public SelectInput
         (
@@ -132,7 +132,7 @@ namespace Integrant4.Element.Inputs
             }
         }
 
-        private IReadOnlyList<IOption<TValue>> Options()
+        private IReadOnlyList<IOption> Options()
         {
             lock (_optionCacheLock)
             {
@@ -148,17 +148,17 @@ namespace Integrant4.Element.Inputs
             builder.AddAttribute(++seq, "class", "I4E-Input I4E-Input-Select");
 
             builder.OpenElement(++seq, "select");
-            builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "oninput",  EventCallback.Factory.Create(this, Change));
             builder.AddAttribute(++seq, "disabled", BaseSpec.IsDisabled?.Invoke());
             builder.AddAttribute(++seq, "required", BaseSpec.IsRequired?.Invoke());
 
             lock (_optionCacheLock)
             {
-                IReadOnlyList<IOption<TValue>> options = Options();
+                IReadOnlyList<IOption> options = Options();
 
                 for (var i = 0; i < options.Count; i++)
                 {
-                    IOption<TValue> option = options[i];
+                    IOption option = options[i];
 
                     builder.OpenElement(++seq, "option");
                     builder.AddAttribute(++seq, "value", i);

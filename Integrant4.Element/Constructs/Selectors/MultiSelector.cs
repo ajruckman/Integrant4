@@ -17,8 +17,8 @@ namespace Integrant4.Element.Constructs.Selectors
         private readonly Selector<TValue>.OptionEqualityComparer? _equalityComparer;
         private readonly Selector<TValue>.OptionGetter            _optionGetter;
 
-        private readonly Selector<TValue>     _selector;
-        private readonly List<Option<TValue>> _selected;
+        private readonly Selector<TValue>              _selector;
+        private readonly List<Selector<TValue>.Option> _selected;
 
         public MultiSelector
         (
@@ -32,9 +32,9 @@ namespace Integrant4.Element.Constructs.Selectors
             _equalityComparer = equalityComparer;
             _optionGetter     = optionGetter.Invoke;
 
-            _selector = new Selector<TValue>(jsRuntime, Array.Empty<Option<TValue>>,
+            _selector = new Selector<TValue>(jsRuntime, Array.Empty<Selector<TValue>.Option>,
                 spec?.SubSpec() ?? new Selector<TValue>.Spec(), _equalityComparer);
-            _selected = new List<Option<TValue>>();
+            _selected = new List<Selector<TValue>.Option>();
 
             _selector.OnChange += Select;
 
@@ -44,7 +44,7 @@ namespace Integrant4.Element.Constructs.Selectors
 
     public partial class MultiSelector<TValue>
     {
-        public delegate Option<TValue>[] OptionGetter();
+        public delegate Selector<TValue>.Option[] OptionGetter();
 
         // This Spec is different from others, but it is nicer to initialize the Selector with named parameters.
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
@@ -89,10 +89,10 @@ namespace Integrant4.Element.Constructs.Selectors
         private readonly object _optionsLock = new();
         private readonly object _ctsLock     = new();
 
-        private Option<TValue>[]?        _options;
-        private CancellationTokenSource? _cts = new();
+        private Selector<TValue>.Option[]? _options;
+        private CancellationTokenSource?   _cts = new();
 
-        private Option<TValue>[] Options()
+        private Selector<TValue>.Option[] Options()
         {
             lock (_optionsLock)
             {
@@ -100,17 +100,17 @@ namespace Integrant4.Element.Constructs.Selectors
             }
         }
 
-        private Option<TValue>[] InnerOptions()
+        private Selector<TValue>.Option[] InnerOptions()
         {
-            Option<TValue>[] all    = Options();
-            Option<TValue>[] result = new Option<TValue> [all.Length];
+            Selector<TValue>.Option[] all    = Options();
+            Selector<TValue>.Option[] result = new Selector<TValue>.Option [all.Length];
 
             for (var i = 0; i < all.Length; i++)
             {
-                Option<TValue> v = all[i];
+                Selector<TValue>.Option v = all[i];
 
                 if (_selected.Contains(all[i]))
-                    result[i] = new Option<TValue>
+                    result[i] = new Selector<TValue>.Option
                     (
                         v.Value,
                         v.OptionContent,
@@ -137,7 +137,7 @@ namespace Integrant4.Element.Constructs.Selectors
                 token = _cts.Token;
             }
 
-            Task<Option<TValue>[]> task = Task.Run(() =>
+            Task<Selector<TValue>.Option[]> task = Task.Run(() =>
             {
                 token.ThrowIfCancellationRequested();
                 return _optionGetter.Invoke();
@@ -145,7 +145,7 @@ namespace Integrant4.Element.Constructs.Selectors
 
             try
             {
-                Option<TValue>[] result = await task;
+                Selector<TValue>.Option[] result = await task;
                 token.ThrowIfCancellationRequested();
 
                 lock (_optionsLock)
@@ -154,7 +154,7 @@ namespace Integrant4.Element.Constructs.Selectors
                     {
                         foreach (TValue v in _spec.Value.Invoke())
                         {
-                            foreach (Option<TValue> option in result)
+                            foreach (Selector<TValue>.Option option in result)
                             {
                                 if (!ValueEquals(option.Value, v)) continue;
 
@@ -215,8 +215,8 @@ namespace Integrant4.Element.Constructs.Selectors
 
     public partial class MultiSelector<TValue>
     {
-        public event Action<IReadOnlyList<Option<TValue>>?>? OnChange;
-        public event Action?                                 OnLoaded;
+        public event Action<IReadOnlyList<Selector<TValue>.Option>?>? OnChange;
+        public event Action?                                          OnLoaded;
 
         public void Refresh()
         {
@@ -242,7 +242,7 @@ namespace Integrant4.Element.Constructs.Selectors
 
             foreach (TValue? v in value)
             {
-                foreach (Option<TValue> option in Options())
+                foreach (Selector<TValue>.Option option in Options())
                 {
                     if (!ValueEquals(option.Value, v)) continue;
 
@@ -273,7 +273,7 @@ namespace Integrant4.Element.Constructs.Selectors
 
     public partial class MultiSelector<TValue>
     {
-        private void Select(Option<TValue>? v)
+        private void Select(Selector<TValue>.Option? v)
         {
             if (v == null || v.Value.Value == null) return;
 
@@ -286,7 +286,7 @@ namespace Integrant4.Element.Constructs.Selectors
             Update();
         }
 
-        private void Deselect(Option<TValue> v)
+        private void Deselect(Selector<TValue>.Option v)
         {
             if (v.Value == null) return;
 
@@ -324,7 +324,7 @@ namespace Integrant4.Element.Constructs.Selectors
             builder.OpenElement(++seq, "div");
             builder.AddAttribute(++seq, "class", "I4E-Construct-MultiSelector-Selections");
 
-            foreach (Option<TValue> selection in _selected)
+            foreach (Selector<TValue>.Option selection in _selected)
             {
                 builder.OpenRegion(++seq);
                 var seqI = 0;
@@ -336,7 +336,7 @@ namespace Integrant4.Element.Constructs.Selectors
                                            selection.OptionContent.Renderer());
 
                 builder.OpenElement(++seqI, "div");
-                builder.AddAttribute(++seqI, "class", "I4E-Construct-MultiSelector-DeselectButtonWrapper");
+                builder.AddAttribute(++seqI, "class",    "I4E-Construct-MultiSelector-DeselectButtonWrapper");
                 builder.AddAttribute(++seqI, "tabindex", 0);
                 builder.AddAttribute(++seqI, "onclick",
                     EventCallback.Factory.Create(this, () => Deselect(selection)));

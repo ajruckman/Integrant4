@@ -13,6 +13,8 @@ div.I4E-Layout-ListTable {
   div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner {
     border-spacing: 0;
     width: 100%; }
+    div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner thead.AlignLeft th {
+      text-align: left; }
     div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner thead tr th {
       border-bottom: 1px solid var(--I4C_Default_Border_11);
       color: var(--I4C_Default_Text_4);

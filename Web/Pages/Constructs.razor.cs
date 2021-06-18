@@ -117,7 +117,7 @@ namespace Web.Pages
 
             //
 
-            _selector = new Selector<User>(JSRuntime, () => _users.Select(v => new Option<User>
+            _selector = new Selector<User>(JSRuntime, () => _users.Select(v => new Selector<User>.Option
             (
                 v,
                 new StackedContent(() => new IRenderable[]

@@ -346,11 +346,11 @@ namespace Integrant4.Element.Constructs.Tagging
         private void InitInputs(IJSRuntime jsRuntime)
         {
             _newTagTypeSelector = new SelectInput<TagType>(jsRuntime, _newTagType, () =>
-                new IOption<TagType>[]
+                new SelectInput<TagType>.IOption[]
                 {
-                    new Option<TagType>(TagType.String, "String", true),
-                    new Option<TagType>(TagType.Int, "Number"),
-                    new Option<TagType>(TagType.Bool, "Truthy"),
+                    new SelectInput<TagType>.Option(TagType.String, "String", true),
+                    new SelectInput<TagType>.Option(TagType.Int,    "Number"),
+                    new SelectInput<TagType>.Option(TagType.Bool,   "Truthy"),
                 }, (l, r) => l == r, new SelectInput<TagType>.Spec
             {
                 IsDisabled = _spec.IsDisabled,

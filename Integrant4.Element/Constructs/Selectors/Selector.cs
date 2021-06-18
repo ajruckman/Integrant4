@@ -60,7 +60,7 @@ namespace Integrant4.Element.Constructs.Selectors
 
     public partial class Selector<TValue>
     {
-        public delegate Option<TValue>[] OptionGetter();
+        public delegate Option[] OptionGetter();
 
         private const string DefaultNoSelectionText       = "Click to select";
         private const string DefaultFilterPlaceholderText = "Filter options";
@@ -98,7 +98,7 @@ namespace Integrant4.Element.Constructs.Selectors
 
     public partial class Selector<TValue>
     {
-        public event Action<Option<TValue>?>? OnChange;
+        public event Action<Option?>? OnChange;
         public event Action?                  OnLoaded;
 
         public void Refresh() => _refresher?.Invoke();
@@ -154,10 +154,10 @@ namespace Integrant4.Element.Constructs.Selectors
         private readonly object                  _ctsLock     = new();
         private readonly OptionEqualityComparer? _equalityComparer;
 
-        private Option<TValue>[]?        _options;
+        private Option[]?        _options;
         private CancellationTokenSource? _cts = new();
 
-        private Option<TValue>? _selection;
+        private Option? _selection;
         private string?         _filterTerm;
 
         public bool Loaded()
@@ -179,7 +179,7 @@ namespace Integrant4.Element.Constructs.Selectors
                 token = _cts.Token;
             }
 
-            Task<Option<TValue>[]> task = Task.Run(() =>
+            Task<Option[]> task = Task.Run(() =>
             {
                 token.ThrowIfCancellationRequested();
                 return _optionGetter.Invoke();
@@ -187,7 +187,7 @@ namespace Integrant4.Element.Constructs.Selectors
 
             try
             {
-                Option<TValue>[] result = await task;
+                Option[] result = await task;
 
                 lock (_optionsLock)
                 {
@@ -217,7 +217,7 @@ namespace Integrant4.Element.Constructs.Selectors
             }
         }
 
-        internal void SetOptions(Option<TValue>[]? options)
+        internal void SetOptions(Option[]? options)
         {
             lock (_optionsLock)
             {
@@ -237,7 +237,7 @@ namespace Integrant4.Element.Constructs.Selectors
             _refresher?.Invoke();
         }
 
-        private bool OptionEquals(Option<TValue> left, Option<TValue> right) =>
+        private bool OptionEquals(Option left, Option right) =>
             _equalityComparer?.Invoke(left.Value, right.Value) ?? left.Value?.Equals(right.Value) == true;
 
         private bool ValueEquals(TValue? left, TValue? right) =>
@@ -327,8 +327,8 @@ namespace Integrant4.Element.Constructs.Selectors
                 if (highlight != null) classes.Add("I4E-Construct-Selector--Highlighted");
                 builder.AddAttribute(++seq, "class", string.Join(' ', classes));
 
-                builder.AddAttribute(++seq, "style", $"max-width: {width}px");
-                builder.AddAttribute(++seq, "data-visible", _spec.IsVisible?.Invoke() ?? true);
+                builder.AddAttribute(++seq, "style",         $"max-width: {width}px");
+                builder.AddAttribute(++seq, "data-visible",  _spec.IsVisible?.Invoke() ?? true);
                 builder.AddAttribute(++seq, "data-disabled", disabled);
 
                 ++seq;
@@ -339,9 +339,9 @@ namespace Integrant4.Element.Constructs.Selectors
                 //
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-Head");
+                builder.AddAttribute(++seq, "class",         "I4E-Construct-Selector-Head");
                 builder.AddAttribute(++seq, "data-disabled", disabled);
-                builder.AddAttribute(++seq, "tabindex", 0);
+                builder.AddAttribute(++seq, "tabindex",      0);
 
                 ++seq;
                 if (highlight != null)
@@ -364,9 +364,9 @@ namespace Integrant4.Element.Constructs.Selectors
                 builder.CloseElement();
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-Selector-ClearButtonWrapper");
+                builder.AddAttribute(++seq, "class",    "I4E-Construct-Selector-ClearButtonWrapper");
                 builder.AddAttribute(++seq, "tabindex", 0);
-                builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, ClearValue));
+                builder.AddAttribute(++seq, "onclick",  EventCallback.Factory.Create(this, ClearValue));
                 builder.AddContent(++seq, _clearValueButton.Renderer());
                 builder.CloseElement();
 
@@ -417,7 +417,7 @@ namespace Integrant4.Element.Constructs.Selectors
 
                         for (var i = 0; i < _options.Length; i++)
                         {
-                            Option<TValue> option = _options[i];
+                            Option option = _options[i];
 
                             if (_spec.Filterable && option.FilterableText == null)
                                 throw new InvalidOperationException(
@@ -436,9 +436,9 @@ namespace Integrant4.Element.Constructs.Selectors
                             builder.OpenElement(++seq, "div");
                             builder.SetKey(i);
 
-                            builder.AddAttribute(++seq, "tabindex", 0);
+                            builder.AddAttribute(++seq, "tabindex",      0);
                             builder.AddAttribute(++seq, "data-selected", selected);
-                            builder.AddAttribute(++seq, "data-i", i);
+                            builder.AddAttribute(++seq, "data-i",        i);
 
                             if (_spec.Filterable)
                                 builder.AddAttribute(++seq, "data-shown", shown);
@@ -457,13 +457,13 @@ namespace Integrant4.Element.Constructs.Selectors
                         if (_spec.Filterable)
                         {
                             builder.OpenElement(++seq, "p");
-                            builder.AddAttribute(++seq, "class", "I4E-Construct-Options-LimitMessage");
+                            builder.AddAttribute(++seq, "class",      "I4E-Construct-Options-LimitMessage");
                             builder.AddAttribute(++seq, "data-shown", shownCount == _spec.DisplayLimit);
                             builder.AddContent(++seq, $"Filter to see more than {_spec.DisplayLimit} options.");
                             builder.CloseElement();
 
                             builder.OpenElement(++seq, "p");
-                            builder.AddAttribute(++seq, "class", "I4E-Construct-Options-NoResults");
+                            builder.AddAttribute(++seq, "class",      "I4E-Construct-Options-NoResults");
                             builder.AddAttribute(++seq, "data-shown", shownCount == 0);
                             builder.AddContent(++seq, _spec.NoResultsText?.Invoke() ?? DefaultNoResultsText);
                             builder.CloseElement();
@@ -526,43 +526,46 @@ namespace Integrant4.Element.Constructs.Selectors
         }
     }
 
-    public readonly struct Option<TValue> : IEquatable<Option<TValue>>
+    public partial class Selector<TValue>
     {
-        public readonly TValue?  Value;
-        public readonly Content  OptionContent;
-        public readonly Content? SelectionContent;
-        public readonly string?  FilterableText;
-        public readonly bool     Disabled;
-        public readonly bool     Placeholder;
-
-        public Option
-        (
-            TValue? value,
-            Content optionContent, Content? selectionContent, string? filterableText,
-            bool    disabled,      bool     placeholder
-        )
+        public readonly struct Option : IEquatable<Option>
         {
-            Value            = value;
-            OptionContent    = optionContent;
-            SelectionContent = selectionContent;
-            FilterableText   = filterableText;
-            Disabled         = disabled;
-            Placeholder      = placeholder;
-        }
+            public readonly TValue?  Value;
+            public readonly Content  OptionContent;
+            public readonly Content? SelectionContent;
+            public readonly string?  FilterableText;
+            public readonly bool     Disabled;
+            public readonly bool     Placeholder;
 
-        public bool Equals(Option<TValue> other)
-        {
-            return EqualityComparer<TValue?>.Default.Equals(Value, other.Value);
-        }
+            public Option
+            (
+                TValue? value,
+                Content optionContent, Content? selectionContent, string? filterableText,
+                bool    disabled,      bool     placeholder
+            )
+            {
+                Value            = value;
+                OptionContent    = optionContent;
+                SelectionContent = selectionContent;
+                FilterableText   = filterableText;
+                Disabled         = disabled;
+                Placeholder      = placeholder;
+            }
 
-        public override bool Equals(object? obj)
-        {
-            return obj is Option<TValue> other && Equals(other);
-        }
+            public bool Equals(Option other)
+            {
+                return EqualityComparer<TValue?>.Default.Equals(Value, other.Value);
+            }
 
-        public override int GetHashCode()
-        {
-            return Value != null ? EqualityComparer<TValue?>.Default.GetHashCode(Value) : 0;
+            public override bool Equals(object? obj)
+            {
+                return obj is Option other && Equals(other);
+            }
+
+            public override int GetHashCode()
+            {
+                return Value != null ? EqualityComparer<TValue?>.Default.GetHashCode(Value) : 0;
+            }
         }
     }
 }

@@ -109,10 +109,10 @@ namespace Web.Pages
 
             List<User> names = b.Generate(900);
 
-            Integrant4.Element.Constructs.Selectors.Option<User>[] OptionGetter()
+            Selector<User>.Option[] OptionGetter()
             {
                 return names
-                   .Select(v => new Integrant4.Element.Constructs.Selectors.Option<User>
+                   .Select(v => new Selector<User>.Option
                     (
                         v,
                         new BootstrapIcon("arrow-right-short").Renderer() + $"{v.FirstName} {v.LastName}".AsContent(),
@@ -301,14 +301,14 @@ namespace Web.Pages
                 (
                     inst.StructureInstance.JSRuntime!,
                     null,
-                    () => new List<IOption<string>>
+                    () => new List<SelectInput<string>.IOption>
                     {
-                        new Integrant4.Element.Inputs.Option<string>("Unknown",     "Unknown"),
-                        new Integrant4.Element.Inputs.Option<string>("Rat Terrier", "Rat Terrier"),
-                        new Integrant4.Element.Inputs.Option<string>("Boxer",       "Boxer"),
-                        new Integrant4.Element.Inputs.Option<string>("Yorkie",      "Yorkie"),
-                        new Integrant4.Element.Inputs.Option<string>("Chihuahua",   "Chihuahua"),
-                        new Integrant4.Element.Inputs.Option<string>(null,          "Other"),
+                        new SelectInput<string>.Option("Unknown",     "Unknown"),
+                        new SelectInput<string>.Option("Rat Terrier", "Rat Terrier"),
+                        new SelectInput<string>.Option("Boxer",       "Boxer"),
+                        new SelectInput<string>.Option("Yorkie",      "Yorkie"),
+                        new SelectInput<string>.Option("Chihuahua",   "Chihuahua"),
+                        new SelectInput<string>.Option(null,          "Other"),
                     }
                 )
             );
