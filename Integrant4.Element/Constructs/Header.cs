@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
 using Integrant4.API;
 using Microsoft.AspNetCore.Components;
@@ -26,10 +27,19 @@ namespace Integrant4.Element.Constructs
         private readonly Style                 _style;
         private readonly Callbacks.Size?       _padding;
 
-        public Header(Callbacks.BitContents contents, Style style = Style.Primary, Spec? spec = null)
+        internal readonly bool Clickable;
+
+        public Header
+        (
+            Callbacks.BitContents contents,
+            Style                 style     = Style.Primary,
+            bool                  clickable = false,
+            Spec?                 spec      = null
+        )
         {
             _contents = contents;
             _style    = style;
+            Clickable = clickable;
             _padding  = spec?.Padding;
         }
     }
@@ -44,7 +54,12 @@ namespace Integrant4.Element.Constructs
 
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "class",
-                    "I4E-Construct I4E-Construct-Header I4E-Construct-Header--" + _style);
+                    $"I4E-Construct I4E-Construct-Header " +
+                    $"I4E-Construct-Header--{_style}"      +
+                    (Clickable ? " I4E-Construct-Header--Clickable" : ""));
+
+                if (Clickable)
+                    builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, () => OnClick?.Invoke()));
 
                 ++seq;
                 if (_padding != null)
@@ -66,6 +81,8 @@ namespace Integrant4.Element.Constructs
 
             return Fragment;
         }
+
+        public event Action? OnClick;
     }
 
     public partial class Header

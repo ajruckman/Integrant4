@@ -18,6 +18,10 @@ div.I4E-Construct-Header {
     &--Secondary {
         min-height: 35px;
     }
+    
+    &--Clickable {
+        cursor: pointer;
+    }
 
     > span.I4E-Construct-Header-Content {
         display: contents;

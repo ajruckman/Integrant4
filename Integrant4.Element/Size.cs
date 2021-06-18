@@ -25,10 +25,10 @@ namespace Integrant4.Element
             Bottom = bottom;
         }
 
-        public Size(byte top, byte horizontal, byte bottom, byte left)
+        public Size(byte top, byte right, byte bottom, byte left)
         {
             Top    = top;
-            Right  = Left = horizontal;
+            Right  = right;
             Bottom = bottom;
             Left   = left;
         }

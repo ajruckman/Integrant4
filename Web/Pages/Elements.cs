@@ -20,7 +20,8 @@ namespace Web.Pages
     {
         private readonly List<Button> _buttonsColored = new();
 
-        private Header _header = null!;
+        private Header        _header             = null!;
+        private IRenderable[] _panelExpanderElems = null!;
 
         private TextInput _textInput                = null!;
         private TextInput _textInputHighlighted     = null!;
@@ -81,23 +82,28 @@ namespace Web.Pages
             _header = new Header(() => new IRenderable[]
             {
                 new PageLink(() => "Secondary header".AsContent(),
-                    new PageLink.Spec(() => "/elements") {IsTitle = Always.True}),
+                    new PageLink.Spec(() => "/elements") { IsTitle = Always.True }),
                 new Filler(),
                 new PageLink(() => "Normal link".AsContent(), new PageLink.Spec(() => "/elements")),
-            }, Header.Style.Secondary);
+            }, Header.Style.Secondary, true);
+
+            _panelExpanderElems = new[]
+            {
+                new TextBlock("Number ID list".AsTextContent(size: 1.2)),
+            };
 
             _intInput = new IntegerInput(JSRuntime, 0);
             _intInput0Null = new IntegerInput(JSRuntime, 0,
-                new IntegerInput.Spec {Consider0Null = Always.True});
+                new IntegerInput.Spec { Consider0Null = Always.True });
             _decimalInput = new DecimalInput(JSRuntime, 0.0m);
             _decimalInput0Null = new DecimalInput(JSRuntime, 0.0m,
-                new DecimalInput.Spec {Consider0Null = Always.True, Min = () => -2.5m, Max = () => 2.5m});
+                new DecimalInput.Spec { Consider0Null = Always.True, Min = () => -2.5m, Max = () => 2.5m });
 
             decimal? _decimalInputSteppedV = null;
             _decimalInputStepped =
                 new DecimalInput(JSRuntime, 0.0m,
                     new DecimalInput.Spec
-                        {Step = () => 0.01m, Tooltip = () => new Tooltip(_decimalInputSteppedV?.ToString() ?? "")});
+                        { Step = () => 0.01m, Tooltip = () => new Tooltip(_decimalInputSteppedV?.ToString() ?? "") });
             _decimalInputStepped.OnChange += v =>
             {
                 _decimalInputSteppedV = v;
@@ -133,7 +139,7 @@ namespace Web.Pages
 
             //
 
-            _checkboxInput = new CheckboxInput(JSRuntime, false, new CheckboxInput.Spec {IsRequired = Always.True});
+            _checkboxInput = new CheckboxInput(JSRuntime, false, new CheckboxInput.Spec { IsRequired = Always.True });
 
             void PrintB(bool v) => Console.WriteLine($"bool -> {v}");
 
@@ -141,7 +147,12 @@ namespace Web.Pages
 
             //
 
-            _buttonNoIcon   = new Button(() => "asdf".AsContent());
+            _buttonNoIcon = new Button(() =>
+            {
+                Console.WriteLine("_buttonNoIcon");
+                return "asdf".AsContent();
+            });
+
             _buttonOnlyIcon = new Button(() => new BootstrapIcon("caret-right-fill", 16));
             _buttonIconFirst = new Button(() => new IRenderable[]
             {
@@ -161,7 +172,7 @@ namespace Web.Pages
             });
             _buttonIconAll = new Button(() => new IRenderable[]
             {
-                new BootstrapIcon("caret-left-fill",  16),
+                new BootstrapIcon("caret-left-fill", 16),
                 new BootstrapIcon("caret-right-fill", 16),
             });
             _buttonStacked = new Button(() => new IRenderable[]
@@ -249,7 +260,11 @@ namespace Web.Pages
                 IsHighlighted = Always.True,
             });
 
-            _expander = new Expander(() => $"{(_expander.Expanded ? "Hide" : "Show")} advanced options".AsContent());
+            _expander = new Expander
+            (
+                () => "Show advanced options".AsContent(),
+                () => "Hide advanced options".AsContent()
+            );
             _expander.Expand();
 
             _dropdown1 = new Dropdown
@@ -271,12 +286,12 @@ namespace Web.Pages
                     {
                         new BootstrapIcon("gear"),
                         "Settings".AsContent(),
-                    }, new Button.Spec {HREF = () => "/", Style = () => Button.Style.Transparent}),
+                    }, new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
                     new Button(() => new IRenderable[]
                     {
                         new BootstrapIcon("gear-fill"),
                         "Settings 2".AsContent(),
-                    }, new Button.Spec {HREF = () => "/", Style = () => Button.Style.Transparent}),
+                    }, new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
                     new HorizontalLine(),
                     new Dropdown
                     (
@@ -298,23 +313,23 @@ namespace Web.Pages
                             {
                                 new BootstrapIcon("chevron-right"),
                                 "Chevron".AsContent(),
-                            }, new Button.Spec {HREF = () => "/", Style = () => Button.Style.Transparent}),
-                        }, new Dropdown.Spec {PlacementGetter = () => Placement.RightStart}),
+                            }, new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
+                        }, new Dropdown.Spec { PlacementGetter = () => Placement.RightStart }),
                 }
             );
 
             _spinnerNoTextNormal = new Spinner();
             _spinnerTextNormal = new Spinner(new Spinner.Spec
-                {Text = () => "Spinner with text normal...",});
+                { Text = () => "Spinner with text normal...", });
 
-            _spinnerNoTextInline = new Spinner(new Spinner.Spec {Style = () => Spinner.Style.Inline});
+            _spinnerNoTextInline = new Spinner(new Spinner.Spec { Style = () => Spinner.Style.Inline });
             _spinnerTextInline = new Spinner(new Spinner.Spec
-                {Style = () => Spinner.Style.Inline, Text = () => "Spinner with text inline..."});
+                { Style = () => Spinner.Style.Inline, Text = () => "Spinner with text inline..." });
 
             _spinnerTextLarge = new Spinner(new Spinner.Spec
-                {Text = () => "Spinner with text large...", Scale = () => 3});
+                { Text = () => "Spinner with text large...", Scale = () => 3 });
             _spinnerTextLargeFont = new Spinner(new Spinner.Spec
-                {Text = () => "Spinner with text large font...", FontSize = () => 3});
+                { Text = () => "Spinner with text large font...", FontSize = () => 3 });
 
             _localModal1 = new LocalModal(() => new IRenderable[]
             {

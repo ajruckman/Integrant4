@@ -59,10 +59,10 @@ namespace Integrant4.Element
 
         //
 
-        public static BitContents AsContents(this BitContent bitContent) => () => new[] {bitContent.Invoke()};
+        public static BitContents AsContents(this BitContent bitContent) => () => new[] { bitContent.Invoke() };
     }
 
-    public static class Always
+    public class Always
     {
         public static bool True()  => true;
         public static bool False() => false;

@@ -13,6 +13,8 @@ namespace Integrant4.Element
 
             if (additional != null)
                 c.AddRange(additional);
+            if (spec.Classes != null)
+                c.AddRange(spec.Classes.Invoke());
 
             if (spec.IsDisabled?.Invoke() == true)
                 c.Add("I4E-Bit--Disabled");
@@ -99,11 +101,6 @@ namespace Integrant4.Element
                     _                   => throw new ArgumentOutOfRangeException(),
                 };
                 result.Add($"display: {display};");
-            }
-
-            if (spec.Classes != null)
-            {
-                result.AddRange(spec.Classes.Invoke());
             }
 
             //
