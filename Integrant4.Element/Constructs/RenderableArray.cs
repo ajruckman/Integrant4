@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Integrant4.API;
 using Microsoft.AspNetCore.Components;
 
@@ -12,6 +14,16 @@ namespace Integrant4.Element.Constructs
         {
             _values    = values;
             _isVisible = isVisible;
+        }
+
+        public RenderableArray(params IRenderable[] values)
+        {
+            _values = values;
+        }
+
+        public RenderableArray(IEnumerable<IRenderable> values)
+        {
+            _values = values.ToArray();
         }
 
         public RenderFragment Renderer() => builder =>

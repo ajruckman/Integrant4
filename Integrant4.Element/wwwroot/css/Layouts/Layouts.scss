@@ -43,14 +43,10 @@ div.I4E-Layout-Panel {
 
     &--Contracted:not(.I4E-Layout-Panel--NoBorder) {
         border-bottom: none;
-        
+
         > div.I4E-Construct-Header {
             border-bottom: 1px solid var(--I4C_Default_Border_6);
         }
-    }
-
-    button.I4E-Bit-Expander-PanelButton {
-        flex-grow: 99999;
     }
 }
 

@@ -12,8 +12,7 @@ namespace Integrant4.Element.Constructs
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public bool            Clickable { get; init; }
-            public Callbacks.Size? Padding   { get; init; }
+            public Callbacks.Size? Padding { get; init; }
 
             internal BaseSpec ToBaseSpec() => new()
             {
@@ -27,7 +26,6 @@ namespace Integrant4.Element.Constructs
         private readonly Callbacks.BitContents _contents;
         private readonly Style                 _style;
         private readonly Callbacks.Size?       _padding;
-        private readonly bool                  _clickable;
 
         public Header
         (
@@ -36,10 +34,9 @@ namespace Integrant4.Element.Constructs
             Spec?                 spec  = null
         )
         {
-            _contents  = contents;
-            _style     = style;
-            _clickable = spec?.Clickable ?? false;
-            _padding   = spec?.Padding;
+            _contents = contents;
+            _style    = style;
+            _padding  = spec?.Padding;
         }
     }
 
@@ -54,11 +51,7 @@ namespace Integrant4.Element.Constructs
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "class",
                     $"I4E-Construct I4E-Construct-Header " +
-                    $"I4E-Construct-Header--{_style}"      +
-                    (_clickable ? " I4E-Construct-Header--Clickable" : ""));
-
-                if (_clickable)
-                    builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, () => OnClick?.Invoke()));
+                    $"I4E-Construct-Header--{_style}");
 
                 ++seq;
                 if (_padding != null)
@@ -80,8 +73,6 @@ namespace Integrant4.Element.Constructs
 
             return Fragment;
         }
-
-        public event Action? OnClick;
     }
 
     public partial class Header

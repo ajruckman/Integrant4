@@ -1,6 +1,7 @@
 @page "/elements"
 @using Integrant4.Fundament
 @using Integrant4.Element.Bits
+@using Integrant4.Element.Constructs
 
 <style>
     li {
@@ -15,9 +16,9 @@
 
 @_header.Renderer()
 
-<ExpanderPanel HeaderElements="@_panelExpanderElems">
+<PanelExpander HeaderElements="@_panelExpanderElems">
     Expanded content
-</ExpanderPanel>
+</PanelExpander>
 
 <br>
 <span style="margin-left: 15px;">@_dropdown1.Renderer()</span>

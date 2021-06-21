@@ -20,8 +20,8 @@ namespace Web.Pages
     {
         private readonly List<Button> _buttonsColored = new();
 
-        private Header        _header             = null!;
-        private IRenderable[] _panelExpanderElems = null!;
+        private Header                _header             = null!;
+        private Callbacks.BitContents _panelExpanderElems = null!;
 
         private TextInput _textInput                = null!;
         private TextInput _textInputHighlighted     = null!;
@@ -85,12 +85,9 @@ namespace Web.Pages
                     new PageLink.Spec(() => "/elements") { IsTitle = Always.True }),
                 new Filler(),
                 new PageLink(() => "Normal link".AsContent(), new PageLink.Spec(() => "/elements")),
-            }, Header.Style.Secondary, new Header.Spec
-            {
-                Clickable = true,
-            });
+            }, Header.Style.Secondary);
 
-            _panelExpanderElems = new[]
+            _panelExpanderElems = () => new[]
             {
                 new TextBlock("Number ID list".AsTextContent(size: 1.2)),
             };
