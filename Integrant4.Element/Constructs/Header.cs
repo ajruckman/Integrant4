@@ -12,7 +12,8 @@ namespace Integrant4.Element.Constructs
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public Callbacks.Size? Padding { get; init; }
+            public bool            Clickable { get; init; }
+            public Callbacks.Size? Padding   { get; init; }
 
             internal BaseSpec ToBaseSpec() => new()
             {
@@ -26,21 +27,19 @@ namespace Integrant4.Element.Constructs
         private readonly Callbacks.BitContents _contents;
         private readonly Style                 _style;
         private readonly Callbacks.Size?       _padding;
-
-        internal readonly bool Clickable;
+        private readonly bool                  _clickable;
 
         public Header
         (
             Callbacks.BitContents contents,
-            Style                 style     = Style.Primary,
-            bool                  clickable = false,
-            Spec?                 spec      = null
+            Style                 style = Style.Primary,
+            Spec?                 spec  = null
         )
         {
-            _contents = contents;
-            _style    = style;
-            Clickable = clickable;
-            _padding  = spec?.Padding;
+            _contents  = contents;
+            _style     = style;
+            _clickable = spec?.Clickable ?? false;
+            _padding   = spec?.Padding;
         }
     }
 
@@ -56,9 +55,9 @@ namespace Integrant4.Element.Constructs
                 builder.AddAttribute(++seq, "class",
                     $"I4E-Construct I4E-Construct-Header " +
                     $"I4E-Construct-Header--{_style}"      +
-                    (Clickable ? " I4E-Construct-Header--Clickable" : ""));
+                    (_clickable ? " I4E-Construct-Header--Clickable" : ""));
 
-                if (Clickable)
+                if (_clickable)
                     builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, () => OnClick?.Invoke()));
 
                 ++seq;

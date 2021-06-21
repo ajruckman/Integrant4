@@ -85,7 +85,10 @@ namespace Web.Pages
                     new PageLink.Spec(() => "/elements") { IsTitle = Always.True }),
                 new Filler(),
                 new PageLink(() => "Normal link".AsContent(), new PageLink.Spec(() => "/elements")),
-            }, Header.Style.Secondary, true);
+            }, Header.Style.Secondary, new Header.Spec
+            {
+                Clickable = true,
+            });
 
             _panelExpanderElems = new[]
             {

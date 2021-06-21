@@ -89,9 +89,10 @@ namespace Integrant4.Element.Bits
                     Width = () => 15,
                 }),
                 BuildButton(expandContent, contractContent, spec),
-            }, Header.Style.Secondary, true, new Header.Spec
+            }, Header.Style.Secondary, new Header.Spec
             {
-                Padding = () => new Size(0, 2, 0, 10),
+                Clickable = true,
+                Padding   = () => new Size(0, 2, 0, 10),
             });
 
             _childContent = childContent;
@@ -132,7 +133,7 @@ namespace Integrant4.Element.Bits
                     builder.AddContent(++seq, _header!.Renderer());
 
                     builder.OpenElement(++seq, "div");
-                    builder.AddAttribute(++seq, "class", "I4E-Layout-Panel-Inner");
+                    builder.AddAttribute(++seq, "class",  "I4E-Layout-Panel-Inner");
                     builder.AddAttribute(++seq, "hidden", !Expanded);
                     builder.AddContent(++seq, _childContent!);
                     builder.CloseElement();
