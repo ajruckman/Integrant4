@@ -28,10 +28,27 @@ namespace Integrant4.Element.Bits
 
     public partial class Space
     {
+        private static readonly ClassSet Classes = new("I4E-Bit", "I4E-Bit-" + nameof(Space));
+
         public Space(Spec? spec = null)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Space)))
+            : base(spec?.ToBaseSpec(), Classes) { }
+
+        public Space(double width)
+            : base(TransformWidthShorthand(width), Classes) { }
+
+        public Space(double width, double height)
+            : base(TransformWidthHeightShorthand(width, height), Classes) { }
+
+        private static BaseSpec TransformWidthShorthand(double width) => new Spec
         {
-        }
+            Width = () => width,
+        }.ToBaseSpec();
+
+        private static BaseSpec TransformWidthHeightShorthand(double width, double height) => new Spec
+        {
+            Width  = () => width,
+            Height = () => height,
+        }.ToBaseSpec();
     }
 
     public partial class Space

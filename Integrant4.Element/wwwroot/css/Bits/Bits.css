@@ -370,6 +370,18 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdo
   background-color: var(--I4C_Default_Background_0);
   border: 1px solid transparent; }
 
+.I4E-Bit-Expander {
+  align-items: center;
+  display: inline-flex;
+  max-width: 100%;
+  width: 100%; }
+  .I4E-Bit-Expander .I4E-Bit-Expander-Line {
+    background-color: var(--I4C_Default_Border_3);
+    flex: 1;
+    height: 2px; }
+  .I4E-Bit-Expander .I4E-Bit-Button {
+    margin: 0 3px; }
+
 div.I4E-Bit-Filler {
   flex-grow: 100; }
 
@@ -611,5 +623,3 @@ code {
     display: unset; }
     .MVisibleOnHover:hover .MVisibleOnParentHover {
       display: unset; }
-
-/*# sourceMappingURL=Bits.css.map */

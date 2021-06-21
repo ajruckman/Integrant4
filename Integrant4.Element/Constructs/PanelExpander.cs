@@ -24,8 +24,8 @@ namespace Integrant4.Element.Constructs
 
         protected override void OnInitialized()
         {
-            ExpandContent   ??= () => "Show".AsContent();
-            ContractContent ??= () => "Hide".AsContent();
+            ExpandContent   ??= () => "Click to show".AsContent();
+            ContractContent ??= () => "Click to hide".AsContent();
 
             Button button = new
             (
@@ -61,17 +61,13 @@ namespace Integrant4.Element.Constructs
                     },
                     Classes     = () => new ClassSet("I4E-Construct-PanelExpander-PanelButton"),
                     FlexJustify = () => FlexJustify.SpaceBetween,
-                    Padding     = () => new Size(0, 10, 0, 12),
                 }
             );
 
             _header = new Header(() => new IRenderable[]
             {
                 button,
-            }, Header.Style.Secondary, new Header.Spec
-            {
-                Padding = () => new Size(2),
-            });
+            }, Header.Style.Secondary);
         }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)

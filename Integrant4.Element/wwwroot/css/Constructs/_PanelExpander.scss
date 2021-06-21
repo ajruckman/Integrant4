@@ -1,9 +1,14 @@
 div.I4E-Construct-PanelExpander {
-    button.I4E-Construct-PanelExpander-PanelButton {
-        width: 100%;
-        
-        span.I4R-BootstrapIcon svg {
-            margin-left: 5px;
+    div.I4E-Layout-Panel div.I4E-Construct-Header {
+        padding: 0 2px;
+
+        button.I4E-Construct-PanelExpander-PanelButton {
+            padding: 0 8px;
+            width: 100%;
+
+            span.I4R-BootstrapIcon svg {
+                margin-left: 5px;
+            }
         }
     }
 }
