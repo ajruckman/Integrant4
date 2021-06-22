@@ -25,6 +25,9 @@ div.I4E-Construct-Header {
     font-weight: 600; }
   div.I4E-Construct-Header--Primary a.I4E-Bit-PageLink span.I4E-Bit-PageLink-Content {
     min-height: calc(50px - 8px); }
+  div.I4E-Construct-Header--Primary div.I4E-Bit-Dropdown-Head div.I4E-Bit-TextBlock {
+    font-size: 1.2rem;
+    font-weight: 500; }
   div.I4E-Construct-Header--Primary div.I4E-Bit-VerticalLine {
     height: 30px; }
   div.I4E-Construct-Header--Secondary a.I4E-Bit-PageLink span.I4E-Bit-PageLink-Content {
@@ -45,6 +48,7 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Header--Secondary, di
 .I4E-Construct-FileUploader {
   flex-direction: column;
   margin: 5px;
+  max-width: 100%;
   position: relative; }
   .I4E-Construct-FileUploader--Block {
     border-radius: 5px;
@@ -122,13 +126,18 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Header--Secondary, di
         right: 0;
         top: 0;
         transition: opacity 150ms; }
-    .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-NoSelectionsText {
+    .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-EmptyContent {
       align-self: center;
-      color: var(--I4C_Default_Text_3);
-      font-style: italic;
-      font-weight: 600;
+      display: flex;
+      flex-direction: column;
       text-align: center;
       width: 100%; }
+      .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-EmptyContent div.I4E-Construct-FileUploader-PlaceholderContent, .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-EmptyContent div.I4E-Construct-FileUploader-SizeLimitContent {
+        color: var(--I4C_Default_Text_3);
+        font-style: italic;
+        font-weight: 600; }
+      .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-EmptyContent div.I4E-Construct-FileUploader-SizeLimitContent {
+        margin-top: 15px; }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-FileUploader, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-FileUploader {
   background-color: var(--I4C_Default_Background_4);
@@ -480,7 +489,6 @@ div.I4E-Construct-Selector {
   div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
     background-color: var(--I4C_Default_Background_6);
     border-radius: calc(1em * (3 / 15));
-    box-shadow: var(--I4C_Default_Shadow_0), var(--I4C_Default_Shadow_1), var(--I4C_Default_Shadow_2);
     box-sizing: border-box;
     display: none;
     padding: 7px;
@@ -540,7 +548,8 @@ div.I4E-Construct-Selector {
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
   background-color: var(--I4C_Default_Background_8);
-  border: 1px solid var(--I4E_InputBase_Border_Normal); }
+  border: 1px solid var(--I4C_Default_Border_11);
+  box-shadow: var(--I4C_Default_Shadow_0), var(--I4C_Default_Shadow_1), var(--I4C_Default_Shadow_2); }
   div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus), div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus) {
     background-color: var(--I4C_Default_Background_6); }
   div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover {
@@ -554,7 +563,8 @@ div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Cons
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
   background-color: var(--I4C_Default_Background_0);
-  border: 1px solid transparent; }
+  border: 1px solid var(--I4C_Default_Border_11);
+  box-shadow: var(--I4C_Default_Shadow_1), var(--I4C_Default_Shadow_2); }
   div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus), div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus) {
     background-color: var(--I4C_Default_Background_6); }
   div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover {
@@ -723,3 +733,5 @@ div.I4E-Construct-LocalModal {
     opacity: 1; }
     div.I4E-Construct-LocalModal div.I4E-Construct-LocalModal-Inner--Column {
       flex-direction: column; }
+
+/*# sourceMappingURL=Constructs.css.map */

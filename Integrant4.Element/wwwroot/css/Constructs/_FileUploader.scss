@@ -1,6 +1,7 @@
 .I4E-Construct-FileUploader {
     flex-direction: column;
     margin: 5px;
+    max-width: 100%;
     position: relative;
 
     &--Block {
@@ -117,13 +118,22 @@
             }
         }
 
-        div.I4E-Construct-FileUploader-NoSelectionsText {
+        div.I4E-Construct-FileUploader-EmptyContent {
             align-self: center;
-            color: var(--I4C_Default_Text_3);
-            font-style: italic;
-            font-weight: 600;
+            display: flex;
+            flex-direction: column;
             text-align: center;
             width: 100%;
+
+            div.I4E-Construct-FileUploader-PlaceholderContent, div.I4E-Construct-FileUploader-SizeLimitContent {
+                color: var(--I4C_Default_Text_3);
+                font-style: italic;
+                font-weight: 600;
+            }
+
+            div.I4E-Construct-FileUploader-SizeLimitContent {
+                margin-top: 15px;
+            }
         }
     }
 }

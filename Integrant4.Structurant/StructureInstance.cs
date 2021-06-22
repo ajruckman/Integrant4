@@ -97,7 +97,7 @@ namespace Integrant4.Structurant
             return instT;
         }
 
-        public void Construct(Action<Exception>? exceptionHandler = null, Action<TObject?>? then = null)
+        public void Construct(Action<Exception>? exceptionHandler = null, Action<TObject>? then = null)
         {
             var t = new Task(async () =>
             {

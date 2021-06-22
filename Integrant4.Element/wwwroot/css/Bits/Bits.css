@@ -364,11 +364,11 @@ div.I4E-Bit-Dropdown {
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children {
   background-color: var(--I4C_Default_Background_8);
-  border: 1px solid var(--I4E_InputBase_Border_Normal); }
+  border: 1px solid var(--I4C_Default_Border_11); }
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children, div.I4-App[data-i4-theme-variant="White"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children {
   background-color: var(--I4C_Default_Background_0);
-  border: 1px solid transparent; }
+  border: 1px solid var(--I4C_Default_Border_11); }
 
 .I4E-Bit-Expander {
   align-items: center;
@@ -623,3 +623,5 @@ code {
     display: unset; }
     .MVisibleOnHover:hover .MVisibleOnParentHover {
       display: unset; }
+
+/*# sourceMappingURL=Bits.css.map */

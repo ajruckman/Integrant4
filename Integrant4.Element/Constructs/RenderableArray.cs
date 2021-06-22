@@ -16,14 +16,21 @@ namespace Integrant4.Element.Constructs
             _isVisible = isVisible;
         }
 
+        public RenderableArray(IEnumerable<IRenderable> values, Callbacks.IsVisible? isVisible = null)
+        {
+            _values    = values.ToArray();
+            _isVisible = isVisible;
+        }
+
         public RenderableArray(params IRenderable[] values)
         {
             _values = values;
         }
 
-        public RenderableArray(IEnumerable<IRenderable> values)
+        public RenderableArray(Callbacks.IsVisible? isVisible = null, params IRenderable[] values)
         {
-            _values = values.ToArray();
+            _values    = values;
+            _isVisible = isVisible;
         }
 
         public RenderFragment Renderer() => builder =>

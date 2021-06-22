@@ -1,11 +1,11 @@
 .tippy-box {
-  background-color: var(--I4C_Default_Alias_PageBackground);
+  background-color: var(--I4C_Default_Alias_PageText);
   box-shadow: var(--I4C_Default_Shadow_0), var(--I4C_Default_Shadow_1);
-  color: var(--I4C_Default_Alias_PageText);
+  color: var(--I4C_Default_Alias_PageBackground);
   font-family: var(--I4R_SansSerifFont);
   font-weight: 600;
   opacity: 0.95; }
   .tippy-box .tippy-arrow {
-    color: var(--I4C_Default_Alias_PageBackground); }
+    color: var(--I4C_Default_Alias_PageText); }
 
 /*# sourceMappingURL=Tippy.css.map */

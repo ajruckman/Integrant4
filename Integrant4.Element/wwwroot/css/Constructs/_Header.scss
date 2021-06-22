@@ -1,4 +1,3 @@
-
 div.I4E-Construct-Header {
     align-items: center;
     box-shadow: var(--I4C_Default_Shadow_0);
@@ -46,6 +45,11 @@ div.I4E-Construct-Header {
             span.I4E-Bit-PageLink-Content {
                 min-height: calc(50px - 8px);
             }
+        }
+
+        div.I4E-Bit-Dropdown-Head div.I4E-Bit-TextBlock {
+            font-size: 1.2rem;
+            font-weight: 500;
         }
 
         div.I4E-Bit-VerticalLine {

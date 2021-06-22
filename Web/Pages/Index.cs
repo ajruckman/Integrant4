@@ -31,9 +31,9 @@ namespace Web.Pages
         [Inject] public IJSRuntime     JSRuntime      { get; set; } = null!;
         [Inject] public ElementService ElementService { get; set; } = null!;
 
-        private DogState                _dogState = null!;
-        private CancellationTokenSource _ageThreadToken;
-        private Task                    _ageThread = null!;
+        private DogState                _dogState       = null!;
+        private CancellationTokenSource _ageThreadToken = null!;
+        private Task                    _ageThread      = null!;
 
         private Selector<User>      _selector         = null!;
         private bool                _selectorDisabled = false;
@@ -63,11 +63,7 @@ namespace Web.Pages
                 }
             }, _ageThreadToken.Token);
 
-            _structureInstance.Construct(dog =>
-            {
-                if (dog == null)
-                    throw new Exception("Failed to construct Dog.");
-            });
+            _structureInstance.Construct(e => throw e, dog => Console.WriteLine(dog.NameFirst));
 
             _structureInstance.OnMemberValueChange += (m, v) => Console.WriteLine($"{m.Definition.ID} -> {v}");
 
@@ -223,6 +219,7 @@ namespace Web.Pages
             (
                 async inst =>
                 {
+                    await Task.CompletedTask;
                     return new Dog
                     (
                         inst.State.NameFirst!,

@@ -33,8 +33,9 @@ namespace Integrant4.Element.Bits
                 if (t != null)
                 {
                     builder.AddAttribute(++seq, "data-i4e.tooltip-text",      t.Value.Text);
-                    builder.AddAttribute(++seq, "data-i4e.tooltip-delay",     t.Value.Delay            ?? 0);
-                    builder.AddAttribute(++seq, "data-i4e.tooltip-placement", t.Value.Placement?.Map() ?? "top");
+                    builder.AddAttribute(++seq, "data-i4e.tooltip-delay",     t.Value.Delay ?? 0);
+                    builder.AddAttribute(++seq, "data-i4e.tooltip-follow",    t.Value.Follow.Map());
+                    builder.AddAttribute(++seq, "data-i4e.tooltip-placement", t.Value.Placement.Map());
                 }
                 else seq += 3;
             }

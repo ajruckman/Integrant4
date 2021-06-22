@@ -81,6 +81,10 @@ namespace Integrant4.Structurant
             {
                 refreshable.Refresh();
             }
+            else if (Input is IWritableRefreshableInput<TValue> writableRefreshable)
+            {
+                writableRefreshable.Refresh();
+            }
         }
 
         public IReadOnlyList<IValidation>? Validations() =>
@@ -93,8 +97,6 @@ namespace Integrant4.Structurant
 
         public async ValueTask DisposeAsync()
         {
-            if (Input == null) return;
-
             if (Input is IDisposable disposable)
                 disposable.Dispose();
 

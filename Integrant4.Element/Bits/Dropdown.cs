@@ -101,7 +101,7 @@ namespace Integrant4.Element.Bits
                 builder.AddAttribute(++seq, "id",    Dropdown.ID + ".Contents");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Children");
                 builder.AddAttribute(++seq, "data-popper-placement",
-                    (Dropdown._placementGetter?.Invoke() ?? Placement.Bottom).Map());
+                    (Dropdown._placementGetter?.Invoke() ?? TooltipPlacement.Bottom).Map());
                 builder.AddElementReferenceCapture(++seq, r => _childrenRef = r);
 
                 foreach (IRenderable renderable in Dropdown._childContents.Invoke())

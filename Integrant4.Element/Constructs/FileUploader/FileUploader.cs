@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
+using Integrant4.API;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
@@ -25,7 +26,7 @@ namespace Integrant4.Element.Constructs.FileUploader
             _type = type;
             _spec = spec ?? new Spec();
 
-            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
+            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort)(12 * _spec.Scale?.Invoke() ?? 12));
         }
 
         public async ValueTask DisposeAsync()
@@ -57,13 +58,10 @@ namespace Integrant4.Element.Constructs.FileUploader
 
         public class Spec
         {
-            [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-            [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-
-            public Callbacks.Callback<string>? PlaceholderText { get; init; }
-
-            public Callbacks.Pixels? Width { get; init; }
-            public Callbacks.Scale?  Scale { get; init; }
+            public Callbacks.BitContent? PlaceholderContent { get; init; }
+            public Callbacks.BitContent? SizeLimitContent   { get; init; }
+            public Callbacks.Pixels?     Width              { get; init; }
+            public Callbacks.Scale?      Scale              { get; init; }
         }
     }
 
@@ -146,15 +144,15 @@ namespace Integrant4.Element.Constructs.FileUploader
                 classes[2] = "I4E-Construct-FileUploader--" + (_type.HasFlag(Type.Block) ? "Block" : "Inline");
                 builder.AddAttribute(++seq, "class", string.Join(' ', classes));
 
-                builder.AddElementReferenceCapture(++seq, r => _elementRef = r);
-
                 ++seq;
-                if (width != null) builder.AddAttribute(seq, "style", $"max-width: {width}px");
+                if (width != null) builder.AddAttribute(seq, "style", $"width: 100%; max-width: {width}px;");
+
+                builder.AddElementReferenceCapture(++seq, r => _elementRef = r);
 
                 // Input
 
                 builder.OpenElement(++seq, "input");
-                builder.AddAttribute(++seq, "type", "file");
+                builder.AddAttribute(++seq, "type",     "file");
                 builder.AddAttribute(++seq, "multiple", _type.HasFlag(Type.Multiple));
                 builder.CloseElement();
 
@@ -195,7 +193,7 @@ namespace Integrant4.Element.Constructs.FileUploader
                         builder.CloseElement();
 
                         builder.OpenElement(++seqI, "span");
-                        builder.AddAttribute(++seqI, "class", "I4E-Construct-FileUploader-RemoveButtonWrapper");
+                        builder.AddAttribute(++seqI, "class",    "I4E-Construct-FileUploader-RemoveButtonWrapper");
                         builder.AddAttribute(++seqI, "tabindex", 0);
                         builder.AddAttribute(++seqI, "onclick",
                             EventCallback.Factory.Create(this,
@@ -210,15 +208,38 @@ namespace Integrant4.Element.Constructs.FileUploader
                 }
                 else
                 {
-                    string? text = _spec.PlaceholderText?.Invoke();
-                    text ??= _type.HasFlag(Type.Single)
-                        ? "Drag and drop a file here,<br>or click to select one from your computer"
-                        : "Drag and drop files here,<br>or click to select from your computer";
+                    builder.OpenElement(++seq, "div");
+                    builder.AddAttribute(++seq, "class", "I4E-Construct-FileUploader-EmptyContent");
 
                     builder.OpenElement(++seq, "div");
-                    builder.AddAttribute(++seq, "class", "I4E-Construct-FileUploader-NoSelectionsText");
-                    builder.AddMarkupContent(++seq, text);
+                    builder.AddAttribute(++seq, "class", "I4E-Construct-FileUploader-PlaceholderContent");
 
+                    IRenderable? text = _spec.PlaceholderContent?.Invoke();
+                    if (text == null)
+                    {
+                        string def = _type.HasFlag(Type.Single)
+                            ? "Drag and drop a file here,<br>or click to select one from your computer"
+                            : "Drag and drop files here,<br>or click to select from your computer";
+                        builder.AddMarkupContent(++seq, def);
+                    }
+                    else
+                    {
+                        builder.AddContent(++seq, text.Renderer());
+                    }
+
+                    builder.CloseElement();
+
+                    //
+
+                    IRenderable? sizeLimitContent = _spec.SizeLimitContent?.Invoke();
+                    if (sizeLimitContent != null)
+                    {
+                        builder.OpenElement(++seq, "div");
+                        builder.AddAttribute(++seq, "class", "I4E-Construct-FileUploader-SizeLimitContent");
+                        builder.AddContent(++seq, sizeLimitContent.Renderer());
+                        builder.CloseElement();
+                    }
+                    
                     builder.CloseElement();
                 }
 

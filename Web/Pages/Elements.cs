@@ -45,7 +45,6 @@ namespace Web.Pages
         private Chip _chipLink     = null!;
         private Chip _chipWithIcon = null!;
         private Chip _chipUncached = null!;
-        private Chip _chipCached   = null!;
 
         private Checkbox _checkbox = null!;
 
@@ -151,6 +150,9 @@ namespace Web.Pages
             {
                 Console.WriteLine("_buttonNoIcon");
                 return "asdf".AsContent();
+            }, new Button.Spec
+            {
+                Tooltip = () => new Tooltip("<strong>asdf</strong>"),
             });
 
             _buttonOnlyIcon = new Button(() => new BootstrapIcon("caret-right-fill", 16));
@@ -160,7 +162,8 @@ namespace Web.Pages
                 "asdf left".AsContent(),
             }, new Button.Spec
             {
-                HREF = () => "/asdf/left",
+                HREF    = () => "/asdf/left",
+                Tooltip = () => new Tooltip("asdf left", placement: TooltipPlacement.Left),
             });
             _buttonIconLast = new Button(() => new IRenderable[]
             {
@@ -168,11 +171,12 @@ namespace Web.Pages
                 new BootstrapIcon("caret-right-fill", 16),
             }, new Button.Spec()
             {
-                HREF = () => "/asdf/left",
+                HREF    = () => "/asdf/left",
+                Tooltip = () => new Tooltip("asdf right", placement: TooltipPlacement.Right),
             });
             _buttonIconAll = new Button(() => new IRenderable[]
             {
-                new BootstrapIcon("caret-left-fill", 16),
+                new BootstrapIcon("caret-left-fill",  16),
                 new BootstrapIcon("caret-right-fill", 16),
             });
             _buttonStacked = new Button(() => new IRenderable[]
@@ -194,8 +198,9 @@ namespace Web.Pages
                     },
                     new Button.Spec
                     {
-                        Style   = () => style,
-                        Tooltip = () => new Tooltip($"{style} {_checked}", 500, Placement.Right),
+                        Style = () => style,
+                        Tooltip = () =>
+                            new Tooltip($"{style} {_checked}", 10, TooltipFollow.Initial, TooltipPlacement.Right),
                     });
 
                 b.OnClick += (_, _) => Console.WriteLine($"Click: {style}");
@@ -208,7 +213,7 @@ namespace Web.Pages
                     new Button.Spec
                     {
                         Style      = () => style,
-                        Tooltip    = () => new Tooltip($"{style} {_checked}", 500, Placement.Right),
+                        Tooltip    = () => new Tooltip($"{style} {_checked}", 10, placement: TooltipPlacement.Right),
                         IsDisabled = () => true,
                     });
 
@@ -314,7 +319,7 @@ namespace Web.Pages
                                 new BootstrapIcon("chevron-right"),
                                 "Chevron".AsContent(),
                             }, new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
-                        }, new Dropdown.Spec { PlacementGetter = () => Placement.RightStart }),
+                        }, new Dropdown.Spec { PlacementGetter = () => TooltipPlacement.RightStart }),
                 }
             );
 
@@ -378,7 +383,7 @@ namespace Web.Pages
         {
             Console.WriteLine($"Elements: OnAfterRenderAsync {firstRender}");
 
-            var v = await _intInput.GetValue();
+            int? v = await _intInput.GetValue();
             Console.WriteLine(v);
 
             if (firstRender)

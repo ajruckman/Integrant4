@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Integrant4.Element.Constructs.FileUploader;
+using Integrant4.Fundament;
 
 namespace Web.Pages
 {
@@ -21,8 +22,15 @@ namespace Web.Pages
 
         protected override void OnInitialized()
         {
-            _dropZone1 = new FileUploader(FileUploader.Type.Single   | FileUploader.Type.Block);
-            _dropZone2 = new FileUploader(FileUploader.Type.Multiple | FileUploader.Type.Block);
+            _dropZone1 = new FileUploader(FileUploader.Type.Single | FileUploader.Type.Block, new FileUploader.Spec
+            {
+                PlaceholderContent = () =>
+                    "Drag and drop files here, or click to select from your computer".AsContent(),
+                SizeLimitContent = () =>
+                    "Max file size: 50 MB".AsContent(),
+            });
+            _dropZone2 = new FileUploader(FileUploader.Type.Multiple | FileUploader.Type.Block, new FileUploader.Spec
+                { });
             _dropZone3 = new FileUploader(FileUploader.Type.Single   | FileUploader.Type.Inline);
             _dropZone4 = new FileUploader(FileUploader.Type.Multiple | FileUploader.Type.Inline);
 

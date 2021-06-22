@@ -42,12 +42,22 @@ namespace Integrant4.Element.Bits
             _styleGetter = spec?.Style ?? DefaultStyleGetter;
         }
 
-        public ValidationView(string memberID, Spec? spec = null)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(ValidationView)))
+        public ValidationView(IValidationState state, Spec? spec = null) : this(spec)
         {
-            _memberID    = memberID;
-            _styleGetter = spec?.Style ?? DefaultStyleGetter;
+            AttachState(state);
         }
+
+        public ValidationView(string memberID, Spec? spec = null) : this(spec)
+        {
+            _memberID = memberID;
+        }
+
+        public ValidationView(IValidationState state, string memberID, Spec? spec = null) : this(state, spec)
+        {
+            _memberID = memberID;
+        }
+
+        //
 
         private void SetStateHasChanged(Action stateHasChanged)
         {

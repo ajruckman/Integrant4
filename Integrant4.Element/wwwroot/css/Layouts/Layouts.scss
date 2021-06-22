@@ -20,6 +20,10 @@ div.I4E-Layout-Panel {
         display: inline-block;
     }
 
+    &--Contracted {
+        box-shadow: none;
+    }
+
     div.I4E-Layout-Panel-Inner {
         overflow: visible;
         padding: 7px;

@@ -23,11 +23,22 @@ namespace Integrant4.Element.Constructs.FileUploader
         }
 
         [HttpPost]
+        [DisableRequestSizeLimit]
         public async Task<IActionResult> UploadFile()
         {
-            Guid guid = Guid.Parse(Request.Form["guid"][0]);
+            IFormCollection form;
+            try
+            {
+                form = Request.Form;
+            }
+            catch (BadHttpRequestException e) when (e.StatusCode == StatusCodes.Status413PayloadTooLarge)
+            {
+                return new EmptyResult();
+            }
+            
+            Guid guid = Guid.Parse(form["guid"][0]);
 
-            foreach (IFormFile formFile in Request.Form.Files)
+            foreach (IFormFile formFile in form.Files)
             {
                 var data = new byte[formFile.Length];
 

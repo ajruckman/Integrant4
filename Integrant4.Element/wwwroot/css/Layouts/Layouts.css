@@ -177,6 +177,8 @@ div.I4E-Layout-Panel {
     border-radius: 4px; }
   div.I4E-Layout-Panel--Inline {
     display: inline-block; }
+  div.I4E-Layout-Panel--Contracted {
+    box-shadow: none; }
   div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner {
     overflow: visible;
     padding: 7px; }

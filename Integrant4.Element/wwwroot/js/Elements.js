@@ -10,8 +10,9 @@ window.I4.Element.InitTooltip = window.I4.Element.InitTooltip || function (id) {
     if (!el.hasOwnProperty('I4EBitTooltip')) {
         if (el.dataset.hasOwnProperty('i4e.tooltipText')) {
             el.I4EBitTooltip = tippy(el, {
+                allowHTML: true,
                 content: el.dataset['i4e.tooltipText'],
-                followCursor: "initial",
+                followCursor: el.dataset['i4e.tooltipFollow'],
                 delay: [el.dataset['i4e.tooltipDelay'], 0],
                 placement: el.dataset['i4e.tooltipPlacement']
             });
