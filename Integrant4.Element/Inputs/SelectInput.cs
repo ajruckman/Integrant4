@@ -4,7 +4,6 @@ using System.Diagnostics.CodeAnalysis;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using Superset.Web.State;
 
 namespace Integrant4.Element.Inputs
 {
@@ -96,7 +95,6 @@ namespace Integrant4.Element.Inputs
         private readonly OptionGetter           _optionGetter;
         private readonly OptionEqualityComparer _optionEqualityComparer;
         private readonly object                 _optionCacheLock = new();
-        private readonly UpdateTrigger          _signaler        = new();
 
         private IReadOnlyList<IOption>? _optionCache;
 
@@ -128,7 +126,6 @@ namespace Integrant4.Element.Inputs
             lock (_optionCacheLock)
             {
                 _optionCache = null;
-                _signaler.Trigger();
             }
         }
 

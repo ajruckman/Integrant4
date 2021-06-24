@@ -3,9 +3,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Blazored.LocalStorage;
 using Integrant4.Colorant.Schema;
+using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using Superset.Web.State;
 
 namespace Integrant4.Colorant
 {
@@ -14,7 +14,7 @@ namespace Integrant4.Colorant
         private readonly ILocalStorageService _localStorage;
         private readonly ITheme               _theme;
         private readonly string               _defaultVariant;
-        private readonly UpdateTrigger        _update = new();
+        private readonly Hook                 _update = new();
 
         private string? _variant;
 
@@ -47,8 +47,8 @@ namespace Integrant4.Colorant
             {
                 int seq = -1;
 
-                builder.OpenComponent<TriggerWrapper>(++seq);
-                builder.AddAttribute(++seq, "Trigger", _update);
+                builder.OpenComponent<Latch>(++seq);
+                builder.AddAttribute(++seq, "Hook", (ReadOnlyHook) _update);
 
                 builder.AddAttribute(++seq, "ChildContent", new RenderFragment(builder2 =>
                 {
@@ -81,9 +81,9 @@ namespace Integrant4.Colorant
                 builder.AddContent(++seq, "Theme");
                 builder.CloseElement();
 
-                builder.OpenComponent<TriggerWrapper>(++seq);
-                builder.AddAttribute(++seq, "Trigger", _update);
-                builder.AddAttribute(++seq, "ChildContent", (RenderFragment) (builder2 =>
+                builder.OpenComponent<Latch>(++seq);
+                builder.AddAttribute(++seq, "Hook", (ReadOnlyHook) _update);
+                builder.AddAttribute(++seq, "ChildContent", (RenderFragment)(builder2 =>
                 {
                     builder2.OpenElement(++seq, "select");
                     builder2.AddAttribute(++seq, "id",
@@ -127,7 +127,7 @@ namespace Integrant4.Colorant
                 _variant = variant;
             }
 
-            _update.Trigger();
+            _update.Invoke();
             Complete = true;
             OnComplete?.Invoke(variant);
         }
@@ -137,7 +137,7 @@ namespace Integrant4.Colorant
             var variant = args.Value!.ToString()!;
             _variant = variant;
             await _localStorage.SetItemAsync($"I4C.Variant.{_theme.Name}", _variant);
-            _update.Trigger();
+            _update.Invoke();
             OnVariantChange?.Invoke(variant);
         }
     }

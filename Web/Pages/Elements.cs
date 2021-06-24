@@ -44,7 +44,6 @@ namespace Web.Pages
         private Chip _chip         = null!;
         private Chip _chipLink     = null!;
         private Chip _chipWithIcon = null!;
-        private Chip _chipUncached = null!;
 
         private Checkbox _checkbox = null!;
 
@@ -98,14 +97,14 @@ namespace Web.Pages
             _decimalInput0Null = new DecimalInput(JSRuntime, 0.0m,
                 new DecimalInput.Spec { Consider0Null = Always.True, Min = () => -2.5m, Max = () => 2.5m });
 
-            decimal? _decimalInputSteppedV = null;
+            decimal? decimalInputSteppedV = null;
             _decimalInputStepped =
                 new DecimalInput(JSRuntime, 0.0m,
                     new DecimalInput.Spec
-                        { Step = () => 0.01m, Tooltip = () => new Tooltip(_decimalInputSteppedV?.ToString() ?? "") });
+                        { Step = () => 0.01m, Tooltip = () => new Tooltip(decimalInputSteppedV?.ToString() ?? "") });
             _decimalInputStepped.OnChange += v =>
             {
-                _decimalInputSteppedV = v;
+                decimalInputSteppedV = v;
                 InvokeAsync(StateHasChanged);
             };
 
@@ -120,8 +119,7 @@ namespace Web.Pages
 
             //
 
-            _textInput = new TextInput(JSRuntime, null, new TextInput.Spec
-                { });
+            _textInput = new TextInput(JSRuntime, null);
             _textInputHighlighted = new TextInput(JSRuntime, null, new TextInput.Spec
             {
                 HighlightColor = () => Constants.Accent_7,
@@ -241,8 +239,6 @@ namespace Web.Pages
                 "Text content".AsContent(),
                 new BootstrapIcon("slash-circle-fill"),
             });
-
-            _chipUncached = new Chip(() => DateTime.Now.ToString(CultureInfo.CurrentCulture).AsContent());
 
             _checkbox = new Checkbox(new Checkbox.Spec
             {
