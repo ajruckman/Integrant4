@@ -49,8 +49,12 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
         element.SelectorOpen = false;
 
         element.SelectorBar = new MiniBar(scroller, {
+            miniBarSize: 10,
+            alwaysShowBars: true,
             scrollX: false,
         });
+
+        const scrollerTrackY = element.querySelector('.mb-track-y');
 
         element.ShowSelector = function () {
             element.SelectorOpen = true;
@@ -70,7 +74,15 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
             options.querySelector("div[data-selected]")?.focus();
 
             element.I4EOptionsDropdown.update();
+
+            //
+
             element.SelectorBar.update();
+
+            let optionsBox = options.getBoundingClientRect();
+            let scrollerTrackYBox = scrollerTrackY.getBoundingClientRect();
+
+            options.style['width'] = `${scrollerTrackYBox.x - optionsBox.x - 2}px`;
 
             //
 

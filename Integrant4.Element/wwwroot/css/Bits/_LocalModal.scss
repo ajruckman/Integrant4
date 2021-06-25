@@ -1,0 +1,33 @@
+div.I4E-Bit-LocalModal {
+    align-items: center;
+    background-color: var(--I4C_Default_Alias_PageBackground);
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    opacity: 0.85;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 5;
+
+    &--Show {
+
+    }
+
+    &--Hide {
+        display: none;
+    }
+
+    div.I4E-Bit-LocalModal-Inner {
+        align-items: center;
+        display: flex;
+        height: 50%;
+        justify-content: center;
+        opacity: 1;
+
+        &--Column {
+            flex-direction: column;
+        }
+    }
+}

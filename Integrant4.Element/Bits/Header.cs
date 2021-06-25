@@ -1,13 +1,12 @@
-using System;
 using System.Diagnostics.CodeAnalysis;
 using Integrant4.API;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
-namespace Integrant4.Element.Constructs
+namespace Integrant4.Element.Bits
 {
-    public partial class Header : IConstruct
+    public partial class Header : IBit
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
@@ -51,8 +50,8 @@ namespace Integrant4.Element.Constructs
 
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "class",
-                    $"I4E-Construct I4E-Construct-Header " +
-                    $"I4E-Construct-Header--{_style}");
+                    $"I4E-Bit I4E-Bit-Header " +
+                    $"I4E-Bit-Header--{_style}");
 
                 ++seq;
                 if (_padding != null)
@@ -64,7 +63,7 @@ namespace Integrant4.Element.Constructs
                 foreach (IRenderable renderable in _contents.Invoke())
                 {
                     builder.OpenElement(++seq, "span");
-                    builder.AddAttribute(++seq, "class", "I4E-Construct-Header-Content");
+                    builder.AddAttribute(++seq, "class", "I4E-Bit-Header-Content");
                     builder.AddContent(++seq, renderable.Renderer());
                     builder.CloseElement();
                 }

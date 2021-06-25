@@ -26,7 +26,7 @@ namespace Integrant4.Element.Bits
             if (bitBase.BaseSpec.IsVisible?.Invoke() == false)
                 builder.AddAttribute(seq, "hidden", true);
 
-            if (bitBase.BaseSpec.Tooltip == null) seq += 3;
+            if (bitBase.BaseSpec.Tooltip == null) seq += 4;
             else
             {
                 Tooltip? t = bitBase.BaseSpec.Tooltip.Invoke();
@@ -37,7 +37,7 @@ namespace Integrant4.Element.Bits
                     builder.AddAttribute(++seq, "data-i4e.tooltip-follow",    t.Value.Follow.Map());
                     builder.AddAttribute(++seq, "data-i4e.tooltip-placement", t.Value.Placement.Map());
                 }
-                else seq += 3;
+                else seq += 4;
             }
 
             if (bitBase.BaseSpec.Data != null)

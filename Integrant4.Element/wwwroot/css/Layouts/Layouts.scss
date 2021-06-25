@@ -35,7 +35,7 @@ div.I4E-Layout-Panel {
 
     // Descendent overrides
 
-    > div.I4E-Construct-Header {
+    > div.I4E-Bit-Header {
         border-bottom: 1px solid var(--I4C_Default_Border_4);
         box-shadow: none;
         padding: 0 10px;
@@ -48,7 +48,7 @@ div.I4E-Layout-Panel {
     &--Contracted:not(.I4E-Layout-Panel--NoBorder) {
         border-bottom: none;
 
-        > div.I4E-Construct-Header {
+        > div.I4E-Bit-Header {
             border-bottom: 1px solid var(--I4C_Default_Border_6);
         }
     }
@@ -133,7 +133,7 @@ div.I4E-Layout-InfoTable {
 
     // Descendent overrides
 
-    > div.I4E-Construct-Header {
+    > div.I4E-Bit-Header {
         border-bottom: 1px solid var(--I4C_Default_Border_4);
         box-shadow: none;
         padding: 0 10px;

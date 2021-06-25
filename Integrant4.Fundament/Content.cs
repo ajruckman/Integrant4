@@ -65,7 +65,7 @@ namespace Integrant4.Fundament
             return result;
         }
 
-        public static DynamicContents AsDynamicContents(this DynamicContent dynamicContent) =>
+        public static DynamicContents AsContents(this DynamicContent dynamicContent) =>
             () => new[] { dynamicContent.Invoke() };
     }
 }

@@ -184,15 +184,15 @@ div.I4E-Layout-Panel {
     padding: 7px; }
     div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner > h1, div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner > h2, div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner > h3, div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner > h4, div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner > h5, div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner > h6 {
       margin: 0 calc(11px - 7px); }
-  div.I4E-Layout-Panel > div.I4E-Construct-Header {
+  div.I4E-Layout-Panel > div.I4E-Bit-Header {
     border-bottom: 1px solid var(--I4C_Default_Border_4);
     box-shadow: none;
     padding: 0 10px; }
-    div.I4E-Layout-Panel > div.I4E-Construct-Header:not(:first-child) {
+    div.I4E-Layout-Panel > div.I4E-Bit-Header:not(:first-child) {
       border-top: 1px solid var(--I4C_Default_Border_4); }
   div.I4E-Layout-Panel--Contracted:not(.I4E-Layout-Panel--NoBorder) {
     border-bottom: none; }
-    div.I4E-Layout-Panel--Contracted:not(.I4E-Layout-Panel--NoBorder) > div.I4E-Construct-Header {
+    div.I4E-Layout-Panel--Contracted:not(.I4E-Layout-Panel--NoBorder) > div.I4E-Bit-Header {
       border-bottom: 1px solid var(--I4C_Default_Border_6); }
 
 div.I4E-Layout-VAlign {
@@ -241,11 +241,11 @@ div.I4E-Layout-InfoTable {
         white-space: nowrap; }
   div.I4E-Layout-InfoTable--WithBorder table.I4E-Layout-InfoTable-Inner tr:not(:last-child) td {
     border-bottom: 1px solid var(--I4C_Default_Border_4); }
-  div.I4E-Layout-InfoTable > div.I4E-Construct-Header {
+  div.I4E-Layout-InfoTable > div.I4E-Bit-Header {
     border-bottom: 1px solid var(--I4C_Default_Border_4);
     box-shadow: none;
     padding: 0 10px; }
-    div.I4E-Layout-InfoTable > div.I4E-Construct-Header:not(:first-child) {
+    div.I4E-Layout-InfoTable > div.I4E-Bit-Header:not(:first-child) {
       border-top: 1px solid var(--I4C_Default_Border_4); }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Layout-Panel, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Layout-Panel {
@@ -259,5 +259,3 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Layout-Panel, div.I4-App[data-i
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Layout-InfoTable:not(.I4E-Layout-InfoTable--NoBorder), div.I4-App[data-i4-theme-variant="White"] div.I4E-Layout-InfoTable:not(.I4E-Layout-InfoTable--NoBorder) {
   background-color: var(--I4C_Default_Background_1); }
-
-/*# sourceMappingURL=Layouts.css.map */

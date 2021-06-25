@@ -288,6 +288,7 @@ namespace Integrant4.Element.Constructs.Selectors
 
         private void Deselect(Selector<TValue>.Option v)
         {
+            if (_spec.IsDisabled?.Invoke() ?? false) return;
             if (v.Value == null) return;
 
             if (!_selected.Remove(v)) return;
@@ -318,6 +319,7 @@ namespace Integrant4.Element.Constructs.Selectors
             builder.OpenElement(++seq, "div");
             builder.AddAttribute(++seq, "class", "I4E-Construct-MultiSelector");
             builder.AddAttribute(++seq, "style", $"max-width: {width}px");
+            builder.AddAttribute(++seq, "data-disabled", _spec.IsDisabled?.Invoke() ?? false);
 
             builder.AddContent(++seq, _selector.Renderer());
 
@@ -336,7 +338,7 @@ namespace Integrant4.Element.Constructs.Selectors
                                            selection.OptionContent.Renderer());
 
                 builder.OpenElement(++seqI, "div");
-                builder.AddAttribute(++seqI, "class",    "I4E-Construct-MultiSelector-DeselectButtonWrapper");
+                builder.AddAttribute(++seqI, "class", "I4E-Construct-MultiSelector-DeselectButtonWrapper");
                 builder.AddAttribute(++seqI, "tabindex", 0);
                 builder.AddAttribute(++seqI, "onclick",
                     EventCallback.Factory.Create(this, () => Deselect(selection)));

@@ -58,7 +58,7 @@ namespace Integrant4.Element.Bits
         private bool? _isCurrentPage;
 
         public PageLink(DynamicContent content, Spec spec)
-            : this(content.AsDynamicContents(), spec) { }
+            : this(content.AsContents(), spec) { }
 
         public PageLink(DynamicContents contents, Spec spec)
             : base(spec.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(PageLink)))

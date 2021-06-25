@@ -1,0 +1,64 @@
+@using Integrant4.Element.Constructs.Selectors
+@using Integrant4.Fundament
+@using Integrant4.Resources.Icons
+@using Bogus
+
+@inject IJSRuntime JSRuntime
+
+@page "/selectors"
+
+@code {
+
+    private Selector<User> _selector = null!;
+    private bool _selectorDisabled = false;
+    private MultiSelector<User> _multiSelector = null!;
+
+    protected override void OnInitialized()
+    {
+        Faker<User> b = new Faker<User>()
+            .RuleFor(o => o.FirstName, f => f.Name.FirstName())
+            .RuleFor(o => o.LastName, f => f.Name.LastName());
+
+        List<User> names = b.Generate(900);
+
+        Selector<User>.Option[] OptionGetter()
+        {
+            return names
+                .Select(v => new Selector<User>.Option
+                    (
+                    v,
+                    new BootstrapIcon("arrow-right-short").Renderer() + $"{v.FirstName} {v.LastName}".AsContent(),
+                    null,
+                    $"{v.FirstName} {v.LastName} {v.FirstName} {v.LastName}",
+                    false, false
+                    ))
+                .ToArray();
+        }
+
+        _selector = new Selector<User>(JSRuntime, OptionGetter, new Selector<User>.Spec
+        {
+            Filterable = true,
+    // Scale      = () => 2.5,
+            IsDisabled = () => _selectorDisabled,
+        });
+
+        _multiSelector = new MultiSelector<User>(JSRuntime, OptionGetter, new MultiSelector<User>.Spec
+        {
+            Filterable = true,
+            IsDisabled = () => _selectorDisabled,
+        });
+
+        _selector.BeginLoadingOptions();
+        _multiSelector.BeginLoadingOptions();
+    }
+
+}
+
+<div style="margin: 10px">
+    @_selector.Renderer()
+    
+    <br>
+    <br>
+    
+    @* @_multiSelector.Renderer() *@
+</div>

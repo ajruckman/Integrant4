@@ -12,9 +12,6 @@ namespace Integrant4.Element.Bits
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            // public Callbacks.Callback<bool>? IsHoverable { get; init; }
-            // public Callbacks.Callback<bool>? IsHeading   { get; init; }
-
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
             public Callbacks.Classes?    Classes         { get; init; }
@@ -69,7 +66,7 @@ namespace Integrant4.Element.Bits
         public TextBlock(DynamicContent content, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)))
         {
-            _contents = () => new[] { content.Invoke() };
+            _contents = content.AsContents();
         }
 
         public TextBlock(IRenderable content, Spec? spec = null)
@@ -85,21 +82,6 @@ namespace Integrant4.Element.Bits
         {
             void Fragment(RenderTreeBuilder builder)
             {
-                // if (_isHoverable?.Invoke() == true)
-                // {
-                //     ac.Add("I4E-Bit-TextBlock--Hoverable");
-                //
-                //     if (contents.First() is IIcon) ac.Add("I4E-Bit-TextBlock--Hoverable--IconLeft");
-                //     if (contents.Last() is IIcon) ac.Add("I4E-Bit-TextBlock--Hoverable--IconRight");
-                // }
-
-                // if (_isHeading?.Invoke() == true)
-                // {
-                //     ac.Add("I4E-Bit-TextBlock--Heading");
-                // }
-
-                //
-
                 int seq = -1;
 
                 builder.OpenElement(++seq, "div");

@@ -66,7 +66,7 @@ namespace Integrant4.Element.Bits
         private readonly Callbacks.Callback<bool>? _isSmall;
 
         public Button(DynamicContent content, Spec? spec = null)
-            : this(content.AsDynamicContents(), spec) { }
+            : this(content.AsContents(), spec) { }
 
         public Button(DynamicContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Button)))

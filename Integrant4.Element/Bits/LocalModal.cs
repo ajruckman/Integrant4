@@ -2,9 +2,9 @@ using Integrant4.API;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 
-namespace Integrant4.Element.Constructs
+namespace Integrant4.Element.Bits
 {
-    public partial class LocalModal : IRefreshableConstruct
+    public partial class LocalModal : IRefreshableBit
     {
         private readonly DynamicContents _contents;
         private readonly InnerDirection? _innerDirection;
@@ -35,11 +35,11 @@ namespace Integrant4.Element.Constructs
 
             builder.OpenElement(++seq, "div");
             builder.AddAttribute(++seq, "class",
-                "I4E-Construct-LocalModal I4E-Construct-LocalModal" + (_show ? "--Show" : "--Hide"));
+                "I4E-Bit-LocalModal I4E-Bit-LocalModal" + (_show ? "--Show" : "--Hide"));
 
             builder.OpenElement(++seq, "div");
             builder.AddAttribute(++seq, "class",
-                "I4E-Construct-LocalModal-Inner I4E-Construct-LocalModal-Inner--" + _innerDirection);
+                "I4E-Bit-LocalModal-Inner I4E-Bit-LocalModal-Inner--" + _innerDirection);
 
             foreach (IRenderable renderable in _contents.Invoke())
             {

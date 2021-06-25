@@ -1,5 +1,8 @@
 @import '../Inputs/Inputs.scss';
 
+$DropdownPadding: 7px;
+$ScrollbarSpace: 7px;
+
 div.I4E-Construct-Selector {
     display: none;
     font-size: 1rem;
@@ -89,7 +92,7 @@ div.I4E-Construct-Selector {
         border-radius: calc(1em * (3 / 15));
         box-sizing: border-box;
         display: none;
-        padding: 7px;
+        padding: $DropdownPadding 0 $DropdownPadding $DropdownPadding;
         position: absolute;
         z-index: 10;
 
@@ -99,7 +102,7 @@ div.I4E-Construct-Selector {
 
         div.I4E-Input-Text {
             margin-bottom: 3px;
-            width: 100%;
+            width: calc(100% - #{$ScrollbarSpace} - 1px);
 
             input {
                 width: 100%;
@@ -108,16 +111,19 @@ div.I4E-Construct-Selector {
 
         div.I4E-Construct-Selector-Scroller {
             .mb-track-y {
-                right: 0 !important;
+                //right: 2px !important;
             }
-            
+
             .mb-track-x {
                 pointer-events: none;
             }
 
             div.I4E-Construct-Selector-Options {
+                border-radius: 4px;
                 margin-right: 1px;
                 max-height: 250px;
+
+                //width: calc(100% - #{$ScrollbarSpace});
 
                 // Notice
                 > p {

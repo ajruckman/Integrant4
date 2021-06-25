@@ -6,6 +6,22 @@ div.I4E-Construct-MultiSelector {
     padding: 3px;
     width: 100%;
 
+    &:not([data-disabled]) {
+        div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+            cursor: pointer;
+        }
+    }
+
+    &[data-disabled] {
+        div.I4E-Construct-MultiSelector-Selection {
+            opacity: 0.6;
+        }
+        
+        div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+            cursor: not-allowed;
+        }
+    }
+
     div.I4E-Construct-MultiSelector-Selections {
         &:not(:empty) {
             margin-top: 4px;
@@ -20,7 +36,6 @@ div.I4E-Construct-MultiSelector {
 
             div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
                 background-color: transparent;
-                cursor: pointer;
                 height: calc(1em * (12 / 15));
                 margin: 0 0 0 calc(1em * (6 / 15));
                 outline: none;
@@ -54,18 +69,26 @@ div.I4-App {
                     background-color: var(--I4C_Default_Background_7);
                     border: 1px solid var(--I4C_Default_Border_7);
                     box-shadow: var(--I4C_Default_Shadow_1);
+                }
+            }
 
-                    div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-                        color: var(--I4C_Default_Opaque_White_4);
+            &:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+                color: var(--I4C_Default_Opaque_White_4);
 
-                        &:hover {
-                            color: var(--I4C_Default_Opaque_White_7);
-                        }
+                &:hover {
+                    color: var(--I4C_Default_Opaque_White_7);
+                }
 
-                        &:active {
-                            color: var(--I4C_Default_Accent_7);
-                        }
-                    }
+                &:active {
+                    color: var(--I4C_Default_Accent_7);
+                }
+            }
+
+            &[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+                color: var(--I4C_Default_Opaque_White_2);
+
+                &:hover, &:active {
+                    color: var(--I4C_Default_Opaque_White_2);
                 }
             }
         }
@@ -80,18 +103,26 @@ div.I4-App {
                 div.I4E-Construct-MultiSelector-Selection {
                     background-color: white;
                     border: 1px solid var(--I4C_Default_Border_10);
+                }
+            }
 
-                    div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-                        color: var(--I4C_Default_Opaque_Black_4);
+            &:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+                color: var(--I4C_Default_Opaque_Black_4);
 
-                        &:hover {
-                            color: var(--I4C_Default_Opaque_Black_7);
-                        }
+                &:hover {
+                    color: var(--I4C_Default_Opaque_Black_7);
+                }
 
-                        &:active {
-                            color: var(--I4C_Default_Accent_7);
-                        }
-                    }
+                &:active {
+                    color: var(--I4C_Default_Accent_7);
+                }
+            }
+
+            &[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+                color: var(--I4C_Default_Opaque_Black_2);
+
+                &:hover, &:active {
+                    color: var(--I4C_Default_Opaque_Black_2);
                 }
             }
         }
