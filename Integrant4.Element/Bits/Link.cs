@@ -68,16 +68,14 @@ namespace Integrant4.Element.Bits
 
     public partial class Link
     {
-        private readonly Callbacks.BitContents     _contents;
+        private readonly DynamicContents           _contents;
         private readonly Callbacks.Callback<bool>? _isAccented;
         private readonly Callbacks.Callback<bool>? _isHighlighted;
 
-        public Link(Callbacks.BitContent content, Spec spec)
-            : this(content.AsContents(), spec)
-        {
-        }
+        public Link(DynamicContent content, Spec spec)
+            : this(content.AsDynamicContents(), spec) { }
 
-        public Link(Callbacks.BitContents contents, Spec spec)
+        public Link(DynamicContents contents, Spec spec)
             : base(spec.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Link)))
         {
             _contents      = contents;

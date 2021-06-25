@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using Integrant4.API;
+using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
@@ -23,15 +24,15 @@ namespace Integrant4.Element.Constructs
 
     public partial class Header
     {
-        private readonly Callbacks.BitContents _contents;
-        private readonly Style                 _style;
-        private readonly Callbacks.Size?       _padding;
+        private readonly DynamicContents _contents;
+        private readonly Style           _style;
+        private readonly Callbacks.Size? _padding;
 
         public Header
         (
-            Callbacks.BitContents contents,
-            Style                 style = Style.Primary,
-            Spec?                 spec  = null
+            DynamicContents contents,
+            Style           style = Style.Primary,
+            Spec?           spec  = null
         )
         {
             _contents = contents;

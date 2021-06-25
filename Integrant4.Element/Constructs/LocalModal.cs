@@ -6,17 +6,17 @@ namespace Integrant4.Element.Constructs
 {
     public partial class LocalModal : IRefreshableConstruct
     {
-        private readonly Callbacks.BitContents _contents;
-        private readonly InnerDirection?       _innerDirection;
+        private readonly DynamicContents _contents;
+        private readonly InnerDirection? _innerDirection;
 
-        private bool          _show;
+        private bool           _show;
         private WriteOnlyHook? _refresher;
 
         public LocalModal
         (
-            Callbacks.BitContents contents,
-            InnerDirection        innerDirection = InnerDirection.Row,
-            ReadOnlyHook?         hook           = null
+            DynamicContents contents,
+            InnerDirection  innerDirection = InnerDirection.Row,
+            ReadOnlyHook?   hook           = null
         )
         {
             _contents       = contents;

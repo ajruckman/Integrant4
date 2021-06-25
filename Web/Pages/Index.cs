@@ -265,11 +265,11 @@ namespace Web.Pages
                 nameof(Dog.Age),
                 inst => inst.StructureInstance.State.Age,
                 (inst, v) => inst.StructureInstance.State.Age = v,
-                inputGetter: inst => new IntegerInput
+                inputGetter: inst => new IntInput
                 (
                     inst.StructureInstance.JSRuntime!,
                     inst.Value(),
-                    new IntegerInput.Spec
+                    new IntInput.Spec
                     {
                         Consider0Null = Always.True, Width = () => 50,
                         IsDisabled    = () => inst.StructureInstance.State.AgeIsDisabled,

@@ -503,6 +503,8 @@ div.I4E-Construct-Selector {
         width: 100%; }
     div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-track-y {
       right: 0 !important; }
+    div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-track-x {
+      pointer-events: none; }
     div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options {
       margin-right: 1px;
       max-height: 250px; }

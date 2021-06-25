@@ -15,7 +15,6 @@ namespace Integrant4.Element.Bits
             public SizeGetter? Size { get; init; }
 
             public Callbacks.IsVisible? IsVisible       { get; init; }
-            // public Callbacks.BitID?        ID              { get; init; }
             public Callbacks.Classes?   Classes         { get; init; }
             public Callbacks.Size?      Margin          { get; init; }
             public Callbacks.Color?     BackgroundColor { get; init; }
@@ -27,7 +26,6 @@ namespace Integrant4.Element.Bits
             internal BaseSpec ToBaseSpec() => new()
             {
                 IsVisible       = IsVisible,
-                // ID              = ID,
                 Classes         = Classes,
                 Margin          = Margin,
                 BackgroundColor = BackgroundColor,
@@ -41,14 +39,12 @@ namespace Integrant4.Element.Bits
 
     public partial class Heading
     {
-        private readonly Callbacks.BitContents _contents;
+        private readonly DynamicContents _contents;
 
-        public Heading(Callbacks.BitContent content, Spec? spec = null)
-            : this(content.AsContents(), spec)
-        {
-        }
+        public Heading(DynamicContent content, Spec? spec = null)
+            : this(content.AsDynamicContents(), spec) { }
 
-        public Heading(Callbacks.BitContents contents, Spec? spec = null)
+        public Heading(DynamicContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Heading)))
         {
             _contents   = contents;
@@ -63,7 +59,7 @@ namespace Integrant4.Element.Bits
             void Fragment(RenderTreeBuilder builder)
             {
                 int seq = -1;
-                builder.OpenElement(++seq, "h" + (int) _sizeGetter.Invoke());
+                builder.OpenElement(++seq, "h" + (int)_sizeGetter.Invoke());
 
                 BitBuilder.ApplyAttributes(this, builder, ref seq, null, null);
 

@@ -58,10 +58,10 @@ namespace Integrant4.Element.Constructs.FileUploader
 
         public class Spec
         {
-            public Callbacks.BitContent? PlaceholderContent { get; init; }
-            public Callbacks.BitContent? SizeLimitContent   { get; init; }
-            public Callbacks.Pixels?     Width              { get; init; }
-            public Callbacks.Scale?      Scale              { get; init; }
+            public DynamicContent?   PlaceholderContent { get; init; }
+            public DynamicContent?   SizeLimitContent   { get; init; }
+            public Callbacks.Pixels? Width              { get; init; }
+            public Callbacks.Scale?  Scale              { get; init; }
         }
     }
 
@@ -122,7 +122,8 @@ namespace Integrant4.Element.Constructs.FileUploader
 
     public partial class FileUploader
     {
-        private const    string FallbackImage = "/_content/Integrant4.Resources/Icons/Bootstrap/file-earmark.svg";
+        private const string FallbackImage = "/_content/Integrant4.Resources/Icons/Bootstrap/file-earmark.svg";
+
         private readonly BootstrapIcon _deselectValueButton;
 
         public RenderFragment Renderer() => Latch.Create(builder =>
@@ -239,7 +240,7 @@ namespace Integrant4.Element.Constructs.FileUploader
                         builder.AddContent(++seq, sizeLimitContent.Renderer());
                         builder.CloseElement();
                     }
-                    
+
                     builder.CloseElement();
                 }
 

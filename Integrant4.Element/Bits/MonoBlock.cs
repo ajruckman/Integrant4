@@ -43,14 +43,12 @@ namespace Integrant4.Element.Bits
 
     public partial class MonoBlock
     {
-        private readonly Callbacks.BitContents _contents;
+        private readonly DynamicContents _contents;
 
-        public MonoBlock(Callbacks.BitContent content, Spec? spec = null)
-            : this(content.AsContents(), spec)
-        {
-        }
+        public MonoBlock(DynamicContent content, Spec? spec = null)
+            : this(content.AsDynamicContents(), spec) { }
 
-        public MonoBlock(Callbacks.BitContents contents, Spec? spec = null)
+        public MonoBlock(DynamicContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(MonoBlock)))
         {
             _contents = contents;

@@ -5,7 +5,7 @@ using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Inputs
 {
-    public partial class IntegerInput : NumberInput<int?>
+    public partial class IntInput : NumberInput<int?>
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
@@ -58,13 +58,13 @@ namespace Integrant4.Element.Inputs
         }
     }
 
-    public partial class IntegerInput
+    public partial class IntInput
     {
         private readonly Callbacks.Callback<bool> _consider0Null;
         private readonly Callbacks.Callback<int>? _min;
         private readonly Callbacks.Callback<int>? _max;
 
-        public IntegerInput
+        public IntInput
         (
             IJSRuntime jsRuntime,
             int?       value,

@@ -5,6 +5,10 @@ using Microsoft.AspNetCore.Components;
 
 namespace Integrant4.Fundament
 {
+    public delegate IRenderable DynamicContent();
+
+    public delegate IEnumerable<IRenderable> DynamicContents();
+
     public readonly struct Content : IRenderable
     {
         public readonly RenderFragment Fragment;
@@ -60,5 +64,8 @@ namespace Integrant4.Fundament
 
             return result;
         }
+
+        public static DynamicContents AsDynamicContents(this DynamicContent dynamicContent) =>
+            () => new[] { dynamicContent.Invoke() };
     }
 }

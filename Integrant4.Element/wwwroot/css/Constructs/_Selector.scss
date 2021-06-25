@@ -110,6 +110,10 @@ div.I4E-Construct-Selector {
             .mb-track-y {
                 right: 0 !important;
             }
+            
+            .mb-track-x {
+                pointer-events: none;
+            }
 
             div.I4E-Construct-Selector-Options {
                 margin-right: 1px;

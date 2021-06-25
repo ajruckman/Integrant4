@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Integrant4.API;
 using Integrant4.Fundament;
 
 namespace Integrant4.Element
@@ -8,10 +7,6 @@ namespace Integrant4.Element
     public static class Callbacks
     {
         public delegate T Callback<out T>();
-
-        public delegate IRenderable BitContent();
-
-        public delegate IEnumerable<IRenderable> BitContents();
 
         //
 
@@ -56,10 +51,6 @@ namespace Integrant4.Element
         public delegate IDictionary<string, DataValue> Data();
 
         public delegate Element.Tooltip? Tooltip();
-
-        //
-
-        public static BitContents AsContents(this BitContent bitContent) => () => new[] { bitContent.Invoke() };
     }
 
     public class Always
@@ -77,6 +68,11 @@ namespace Integrant4.Element
         public static Func<T> Value<T>(Func<T> initialGetter)
         {
             T value = initialGetter.Invoke();
+            return () => value;
+        }
+
+        public static Func<T> Value<T>(T value)
+        {
             return () => value;
         }
     }

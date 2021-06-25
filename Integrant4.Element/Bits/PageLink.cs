@@ -50,17 +50,17 @@ namespace Integrant4.Element.Bits
 
     public partial class PageLink
     {
-        private readonly Callbacks.BitContents     _contents;
+        private readonly DynamicContents           _contents;
         private readonly Callbacks.Callback<bool>? _isTitle;
         private readonly Callbacks.Callback<bool>? _isHighlighted;
         private readonly bool                      _doAutoHighlight;
 
         private bool? _isCurrentPage;
 
-        public PageLink(Callbacks.BitContent content, Spec spec)
-            : this(content.AsContents(), spec) { }
+        public PageLink(DynamicContent content, Spec spec)
+            : this(content.AsDynamicContents(), spec) { }
 
-        public PageLink(Callbacks.BitContents contents, Spec spec)
+        public PageLink(DynamicContents contents, Spec spec)
             : base(spec.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(PageLink)))
         {
             _contents = contents;

@@ -21,15 +21,15 @@ namespace Web.Pages
         private readonly List<Button> _buttonsColored = new();
 
         private Header                _header             = null!;
-        private Callbacks.BitContents _panelExpanderElems = null!;
+        private DynamicContents _panelExpanderElems = null!;
 
         private TextInput _textInput                = null!;
         private TextInput _textInputHighlighted     = null!;
         private TextInput _textInputClearable       = null!;
         private TextInput _textInputClearableScaled = null!;
 
-        private IntegerInput _intInput            = null!;
-        private IntegerInput _intInput0Null       = null!;
+        private IntInput _intInput            = null!;
+        private IntInput _intInput0Null       = null!;
         private DecimalInput _decimalInput        = null!;
         private DecimalInput _decimalInput0Null   = null!;
         private DecimalInput _decimalInputStepped = null!;
@@ -90,9 +90,9 @@ namespace Web.Pages
                 new TextBlock("Number ID list".AsTextContent(size: 1.2)),
             };
 
-            _intInput = new IntegerInput(JSRuntime, 0);
-            _intInput0Null = new IntegerInput(JSRuntime, 0,
-                new IntegerInput.Spec { Consider0Null = Always.True });
+            _intInput = new IntInput(JSRuntime, 0);
+            _intInput0Null = new IntInput(JSRuntime, 0,
+                new IntInput.Spec { Consider0Null = Always.True });
             _decimalInput = new DecimalInput(JSRuntime, 0.0m);
             _decimalInput0Null = new DecimalInput(JSRuntime, 0.0m,
                 new DecimalInput.Spec { Consider0Null = Always.True, Min = () => -2.5m, Max = () => 2.5m });
@@ -183,7 +183,7 @@ namespace Web.Pages
                 {
                     "Top content/full name".AsContent(),
                     "Lower content".AsTextContent(size: 0.8, weight: FontWeight.Normal),
-                }, () => FlexAlign.Start),
+                }),
                 new BootstrapIcon("chevron-right"),
             });
 

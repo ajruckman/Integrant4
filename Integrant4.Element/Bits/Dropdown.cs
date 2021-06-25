@@ -30,14 +30,14 @@ namespace Integrant4.Element.Bits
 
     public partial class Dropdown
     {
-        private readonly Callbacks.BitContents _headContents;
-        private readonly Callbacks.BitContents _childContents;
+        private readonly DynamicContents _headContents;
+        private readonly DynamicContents _childContents;
 
         public Dropdown
         (
-            Callbacks.BitContents headContents,
-            Callbacks.BitContents childContents,
-            Spec?                 spec = null
+            DynamicContents headContents,
+            DynamicContents childContents,
+            Spec?           spec = null
         ) : base(spec?.ToBaseSpec(),
             new ClassSet("I4E-Bit", "I4E-Bit-Dropdown"))
         {

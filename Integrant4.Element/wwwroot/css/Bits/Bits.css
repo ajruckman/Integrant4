@@ -559,9 +559,9 @@ span.I4E-Bit-Validation {
   font-weight: normal;
   justify-content: flex-start;
   margin: 1px;
+  min-width: 0;
   padding: 3px 6px 3px 3px;
-  white-space: nowrap;
-  min-width: 0; }
+  white-space: nowrap; }
   span.I4E-Bit-Validation:not(:last-child) {
     margin-right: 3px; }
   span.I4E-Bit-Validation--Invalid {
@@ -575,6 +575,7 @@ span.I4E-Bit-Validation {
     background-color: #008000;
     color: white; }
   span.I4E-Bit-Validation--Validating {
+    color: white;
     overflow: hidden;
     padding-left: 5px;
     position: relative;

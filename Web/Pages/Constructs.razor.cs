@@ -124,7 +124,7 @@ namespace Web.Pages
                 {
                     v.FirstName.AsTextContent(weight: FontWeight.Bold),
                     v.ID.ToString().AsContent(),
-                }, () => FlexAlign.Start).Renderer(),
+                }).Renderer(),
                 v.FirstName.AsContent(),
                 v.FirstName,
                 false, false

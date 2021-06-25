@@ -62,13 +62,13 @@ namespace Integrant4.Element.Bits
 
     public partial class Button
     {
-        private readonly Callbacks.BitContents     _contents;
+        private readonly DynamicContents           _contents;
         private readonly Callbacks.Callback<bool>? _isSmall;
 
-        public Button(Callbacks.BitContent content, Spec? spec = null)
-            : this(content.AsContents(), spec) { }
+        public Button(DynamicContent content, Spec? spec = null)
+            : this(content.AsDynamicContents(), spec) { }
 
-        public Button(Callbacks.BitContents contents, Spec? spec = null)
+        public Button(DynamicContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Button)))
         {
             _contents    = contents;
@@ -90,7 +90,7 @@ namespace Integrant4.Element.Bits
         {
             IRenderable[] contents = _contents.Invoke().ToArray();
 
-            List<string> ac = new() {"I4E-Bit-Button--" + _styleGetter.Invoke()};
+            List<string> ac = new() { "I4E-Bit-Button--" + _styleGetter.Invoke() };
 
             if (contents.First() is IIcon) ac.Add("I4E-Bit-Button--IconLeft");
             if (contents.Last() is IIcon) ac.Add("I4E-Bit-Button--IconRight");
@@ -145,9 +145,9 @@ namespace Integrant4.Element.Bits
 
             var c = new ClickArgs
             (
-                (ushort) args.Button,
-                (ushort) args.ClientX,
-                (ushort) args.ClientY,
+                (ushort)args.Button,
+                (ushort)args.ClientX,
+                (ushort)args.ClientY,
                 args.ShiftKey,
                 args.CtrlKey
             );

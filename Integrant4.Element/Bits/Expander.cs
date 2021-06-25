@@ -24,9 +24,9 @@ namespace Integrant4.Element.Bits
 
         public Expander
         (
-            Callbacks.BitContent expandContent,
-            Callbacks.BitContent contractContent,
-            Spec?                spec = null
+            DynamicContent expandContent,
+            DynamicContent contractContent,
+            Spec?          spec = null
         )
         {
             _hook = new Hook();

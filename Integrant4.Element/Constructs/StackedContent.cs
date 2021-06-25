@@ -1,17 +1,18 @@
 using Integrant4.API;
+using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 
 namespace Integrant4.Element.Constructs
 {
     public class StackedContent : IConstruct
     {
-        private readonly Callbacks.BitContents _contents;
-        private readonly Callbacks.FlexAlign   _align;
+        private readonly DynamicContents     _contents;
+        private readonly Callbacks.FlexAlign _align;
 
-        public StackedContent(Callbacks.BitContents contents, Callbacks.FlexAlign? align = null)
+        public StackedContent(DynamicContents contents, Callbacks.FlexAlign? align = null)
         {
             _contents = contents;
-            _align    = align ?? (() => FlexAlign.Center);
+            _align    = align ?? (() => FlexAlign.Start);
         }
 
         public RenderFragment Renderer() => builder =>

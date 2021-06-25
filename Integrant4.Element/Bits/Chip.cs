@@ -54,12 +54,12 @@ namespace Integrant4.Element.Bits
 
     public partial class Chip
     {
-        private readonly Callbacks.BitContents _contents;
+        private readonly DynamicContents _contents;
 
-        public Chip(Callbacks.BitContent content, Spec? spec = null)
-            : this(content.AsContents(), spec) { }
+        public Chip(DynamicContent content, Spec? spec = null)
+            : this(content.AsDynamicContents(), spec) { }
 
-        public Chip(Callbacks.BitContents contents, Spec? spec = null)
+        public Chip(DynamicContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(),
                 new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Chip),
                     spec?.HREF == null

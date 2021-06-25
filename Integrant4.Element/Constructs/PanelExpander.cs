@@ -14,11 +14,11 @@ namespace Integrant4.Element.Constructs
         private static readonly BootstrapIcon DownIcon = new("caret-down-fill", 16);
         private static readonly BootstrapIcon UpIcon   = new("caret-up-fill", 16);
 
-        [Parameter] public Callbacks.BitContents HeaderElements  { get; set; } = null!;
-        [Parameter] public RenderFragment        ChildContent    { get; set; } = null!;
-        [Parameter] public Callbacks.BitContent? ExpandContent   { get; set; }
-        [Parameter] public Callbacks.BitContent? ContractContent { get; set; }
-        [Parameter] public bool                  Expanded        { get; set; }
+        [Parameter] public DynamicContents HeaderElements  { get; set; } = null!;
+        [Parameter] public RenderFragment  ChildContent    { get; set; } = null!;
+        [Parameter] public DynamicContent? ExpandContent   { get; set; }
+        [Parameter] public DynamicContent? ContractContent { get; set; }
+        [Parameter] public bool            Expanded        { get; set; }
 
         private Header _header = null!;
 
@@ -42,7 +42,6 @@ namespace Integrant4.Element.Constructs
                         right[0] = ContractContent.Invoke();
                         right[1] = UpIcon;
                     }
-
 
                     return new IRenderable[]
                     {
@@ -84,7 +83,7 @@ namespace Integrant4.Element.Constructs
             builder.AddContent(++seq, _header.Renderer());
 
             builder.OpenElement(++seq, "div");
-            builder.AddAttribute(++seq, "class", "I4E-Layout-Panel-Inner");
+            builder.AddAttribute(++seq, "class",  "I4E-Layout-Panel-Inner");
             builder.AddAttribute(++seq, "hidden", !Expanded);
             builder.AddContent(++seq, ChildContent);
             builder.CloseElement();

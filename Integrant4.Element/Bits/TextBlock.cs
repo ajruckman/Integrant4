@@ -58,24 +58,24 @@ namespace Integrant4.Element.Bits
 
     public partial class TextBlock
     {
-        private readonly Callbacks.BitContents _contents;
+        private readonly DynamicContents _contents;
 
-        public TextBlock(Callbacks.BitContents contents, Spec? spec = null)
+        public TextBlock(DynamicContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)))
         {
             _contents = contents;
         }
 
-        public TextBlock(Callbacks.BitContent content, Spec? spec = null)
+        public TextBlock(DynamicContent content, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)))
         {
-            _contents = () => new[] {content.Invoke()};
+            _contents = () => new[] { content.Invoke() };
         }
 
         public TextBlock(IRenderable content, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)))
         {
-            _contents = () => new[] {content};
+            _contents = () => new[] { content };
         }
     }
 
