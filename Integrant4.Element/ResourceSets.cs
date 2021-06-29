@@ -23,8 +23,9 @@ namespace Integrant4.Element
             {
                 Resources.Resources.Icons.Bootstrap,
                 Resources.Resources.Libraries.Dropzone,
-                Resources.Resources.Libraries.MiniBar,
-                Resources.Resources.Libraries.SimpleBar,
+                // Resources.Resources.Libraries.MiniBar,
+                // Resources.Resources.Libraries.SimpleBar,
+                Resources.Resources.Libraries.OverlayScrollbars,
             },
             stylesheetsInternal: new HashSet<string>
             {

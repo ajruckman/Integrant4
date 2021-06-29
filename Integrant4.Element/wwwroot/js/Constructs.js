@@ -26,6 +26,8 @@ window.I4.Element.NextSiblingSelector = window.I4.Element.NextSiblingSelector ||
 
 //
 
+const ScrollbarSpace = '7px';
+
 window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (element, dotnetHelper, filterable) {
     if (element == null) {
         console.log("Element reference passed to InitSelector is null; exiting");
@@ -47,14 +49,10 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
         });
 
         element.SelectorOpen = false;
-
-        element.SelectorBar = new MiniBar(scroller, {
-            miniBarSize: 10,
-            alwaysShowBars: true,
-            scrollX: false,
+        
+        element.Scrollbar = OverlayScrollbars(scroller, {
+            resize: "both",
         });
-
-        const scrollerTrackY = element.querySelector('.mb-track-y');
 
         element.ShowSelector = function () {
             element.SelectorOpen = true;
@@ -67,22 +65,20 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
             });
 
             dropdown.style.minWidth = (head.clientWidth + 1) + "px";
-            // if (filterable) {
-            //     filterInput.style.width = (dropdown.clientWidth - 18) + 'px';
-            // }
 
             options.querySelector("div[data-selected]")?.focus();
 
             element.I4EOptionsDropdown.update();
 
             //
-
-            element.SelectorBar.update();
-
-            let optionsBox = options.getBoundingClientRect();
-            let scrollerTrackYBox = scrollerTrackY.getBoundingClientRect();
-
-            options.style['width'] = `${scrollerTrackYBox.x - optionsBox.x - 2}px`;
+            
+            element.Scrollbar.update();
+            
+            if (element.Scrollbar.getState().hasOverflow.y === true) {
+                options.style.width = `calc(100% - ${ScrollbarSpace})`;
+            } else {
+                options.style.width = `100%`;
+            }
 
             //
 
@@ -247,7 +243,7 @@ window.I4.Element.HideSelector = window.I4.Element.HideSelector || function (ele
 
 window.I4.Element.UpdateSelector = window.I4.Element.UpdateSelector || function (element) {
     element.I4EOptionsDropdown.update();
-    element.SelectorBar.update();
+    element.Scrollbar.update();
 };
 
 window.I4.Element.DeactivateSelector = window.I4.Element.DeactivateSelector || function (element) {

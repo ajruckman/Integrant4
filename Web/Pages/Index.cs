@@ -163,6 +163,7 @@ namespace Web.Pages
     {
         public string FirstName { get; set; }
         public string LastName  { get; set; }
+        public int    BirthYear       { get; set; }
 
         public bool Equals(User? other)
         {

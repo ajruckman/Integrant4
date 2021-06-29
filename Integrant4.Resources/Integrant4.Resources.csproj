@@ -23,6 +23,7 @@
 
     <ItemGroup>
       <Folder Include="wwwroot\Libraries\Dropzone" />
+      <Folder Include="wwwroot\Libraries\OverlayScrollbars" />
     </ItemGroup>
 
 </Project>

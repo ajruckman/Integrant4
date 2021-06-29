@@ -2,6 +2,9 @@
 @using Integrant4.Fundament
 @using Integrant4.Resources.Icons
 @using Bogus
+@using Integrant4.API
+@using Integrant4.Element
+@using Integrant4.Element.Constructs
 
 @inject IJSRuntime JSRuntime
 
@@ -10,6 +13,7 @@
 @code {
 
     private Selector<User> _selector = null!;
+    private Selector<string> _selector2 = null!;
     private bool _selectorDisabled = false;
     private MultiSelector<User> _multiSelector = null!;
 
@@ -17,17 +21,23 @@
     {
         Faker<User> b = new Faker<User>()
             .RuleFor(o => o.FirstName, f => f.Name.FirstName())
-            .RuleFor(o => o.LastName, f => f.Name.LastName());
+            .RuleFor(o => o.LastName, f => f.Name.LastName())
+            .RuleFor(o => o.BirthYear, f => f.Person.DateOfBirth.Year);
 
         List<User> names = b.Generate(900);
 
-        Selector<User>.Option[] OptionGetter()
+        Selector<User>.Option[] OptionGetter(int n)
         {
             return names
+                .Take(n)
                 .Select(v => new Selector<User>.Option
                     (
                     v,
-                    new BootstrapIcon("arrow-right-short").Renderer() + $"{v.FirstName} {v.LastName}".AsContent(),
+                    new StackedContent(() => new IRenderable[]
+                    {
+                        $"{v.FirstName} {v.LastName} {v.FirstName} {v.LastName} {v.FirstName} {v.LastName} {v.FirstName} {v.LastName}".AsTextContent(weight: FontWeight.Bold),
+                        v.BirthYear.ToString().AsContent(),
+                    }).Renderer(),
                     null,
                     $"{v.FirstName} {v.LastName} {v.FirstName} {v.LastName}",
                     false, false
@@ -35,14 +45,36 @@
                 .ToArray();
         }
 
-        _selector = new Selector<User>(JSRuntime, OptionGetter, new Selector<User>.Spec
+        Selector<string>.Option[] GroupOptions() => Groups.Select(v => new Selector<string>.Option
+            (
+            v.Value.Item1,
+            new StackedContent(() => new IRenderable[]
+            {
+                v.Key.AsTextContent(weight: FontWeight.Bold),
+                v.Value.Item2.AsContent(),
+            }, () => FlexAlign.Start).Renderer(),
+            v.Key,
+            v.Key,
+            false,
+            false
+            )).ToArray();
+
+        _selector = new Selector<User>(JSRuntime, () => OptionGetter(900), new Selector<User>.Spec
         {
             Filterable = true,
     // Scale      = () => 2.5,
             IsDisabled = () => _selectorDisabled,
         });
 
-        _multiSelector = new MultiSelector<User>(JSRuntime, OptionGetter, new MultiSelector<User>.Spec
+        _selector2 = new Selector<string>(JSRuntime, GroupOptions, new Selector<string>.Spec
+        {
+            Filterable = false,
+    // Scale      = () => 2.5,
+            IsDisabled = () => _selectorDisabled,
+            Width = () => 300,
+        });
+
+        _multiSelector = new MultiSelector<User>(JSRuntime, () => OptionGetter(900), new MultiSelector<User>.Spec
         {
             Filterable = true,
             IsDisabled = () => _selectorDisabled,
@@ -52,13 +84,25 @@
         _multiSelector.BeginLoadingOptions();
     }
 
+    private static readonly Dictionary<string, (string, string)> Groups = new()
+    {
+        { "End User Services", ("SOFTWARE", "General helpdesk requests (default)") },
+        { "Infrastructure", ("SAGE", "Handles servers, data storage, networking, and firewalls") },
+        { "Database Administration", ("DBASQL", "Database and analytics support") },
+    };
+
 }
 
 <div style="margin: 10px">
     @_selector.Renderer()
-    
+
     <br>
     <br>
-    
+
+    @_selector2.Renderer()
+
+    <br>
+    <br>
+
     @* @_multiSelector.Renderer() *@
 </div>

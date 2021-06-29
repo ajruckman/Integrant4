@@ -1,6 +1,6 @@
 @import '../Inputs/Inputs.scss';
 
-$DropdownPadding: 7px;
+$DropdownPadding: 3.5px;
 $ScrollbarSpace: 7px;
 
 div.I4E-Construct-Selector {
@@ -33,10 +33,10 @@ div.I4E-Construct-Selector {
         align-items: center;
         cursor: pointer;
         display: inline-flex;
-        height: 28px;
         justify-content: space-between;
+        min-height: calc(1em * (28 / 15));
         min-width: 250px;
-        padding: 0 6px;
+        padding: 0 0 0 6px;
         width: 100%;
 
         div.I4E-Construct-Selector-NoSelection {
@@ -48,6 +48,7 @@ div.I4E-Construct-Selector {
         div.I4E-Construct-Selector-Selection {
             align-items: center;
             display: flex;
+            padding: calc(1em * (4 / 15)) 0;
         }
 
         div.I4E-Construct-Selector-Selection ~ div.I4E-Construct-Selector-ClearButtonWrapper {
@@ -59,8 +60,9 @@ div.I4E-Construct-Selector {
             color: var(--I4C_Default_Text_4);
             cursor: pointer;
             display: none;
+            flex-shrink: 0;
             height: calc(1em * (12 / 15));
-            margin: 0 0 0 calc(1em * (6 / 15));
+            margin: 0 calc(1em * (6 / 15));
             outline: none;
             padding: 0;
             position: relative;
@@ -92,7 +94,7 @@ div.I4E-Construct-Selector {
         border-radius: calc(1em * (3 / 15));
         box-sizing: border-box;
         display: none;
-        padding: $DropdownPadding 0 $DropdownPadding $DropdownPadding;
+        padding: $DropdownPadding;
         position: absolute;
         z-index: 10;
 
@@ -101,8 +103,7 @@ div.I4E-Construct-Selector {
         }
 
         div.I4E-Input-Text {
-            margin-bottom: 3px;
-            width: calc(100% - #{$ScrollbarSpace} - 1px);
+            margin: $DropdownPadding;
 
             input {
                 width: 100%;
@@ -110,20 +111,14 @@ div.I4E-Construct-Selector {
         }
 
         div.I4E-Construct-Selector-Scroller {
-            .mb-track-y {
-                //right: 2px !important;
-            }
-
-            .mb-track-x {
-                pointer-events: none;
-            }
+            padding: $DropdownPadding;
 
             div.I4E-Construct-Selector-Options {
                 border-radius: 4px;
                 margin-right: 1px;
                 max-height: 250px;
 
-                //width: calc(100% - #{$ScrollbarSpace});
+                width: calc(100% - #{$ScrollbarSpace});
 
                 // Notice
                 > p {

@@ -417,10 +417,10 @@ div.I4E-Construct-Selector {
     align-items: center;
     cursor: pointer;
     display: inline-flex;
-    height: 28px;
     justify-content: space-between;
+    min-height: calc(1em * (28 / 15));
     min-width: 250px;
-    padding: 0 6px;
+    padding: 0 0 0 6px;
     width: 100%; }
     div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-NoSelection {
       font-style: italic;
@@ -428,7 +428,8 @@ div.I4E-Construct-Selector {
       user-select: none; }
     div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-Selection {
       align-items: center;
-      display: flex; }
+      display: flex;
+      padding: calc(1em * (4 / 15)) 0; }
     div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-Selection ~ div.I4E-Construct-Selector-ClearButtonWrapper {
       display: inline-block; }
     div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-ClearButtonWrapper {
@@ -436,8 +437,9 @@ div.I4E-Construct-Selector {
       color: var(--I4C_Default_Text_4);
       cursor: pointer;
       display: none;
+      flex-shrink: 0;
       height: calc(1em * (12 / 15));
-      margin: 0 0 0 calc(1em * (6 / 15));
+      margin: 0 calc(1em * (6 / 15));
       outline: none;
       padding: 0;
       position: relative;
@@ -457,59 +459,59 @@ div.I4E-Construct-Selector {
     border-radius: calc(1em * (3 / 15));
     box-sizing: border-box;
     display: none;
-    padding: 7px 0 7px 7px;
+    padding: 3.5px;
     position: absolute;
     z-index: 10; }
     div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown[data-open] {
       display: block; }
     div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text {
-      margin-bottom: 3px;
-      width: calc(100% - 7px - 1px); }
+      margin: 3.5px; }
       div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input {
         width: 100%; }
-    div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-track-x {
-      pointer-events: none; }
-    div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options {
-      border-radius: 4px;
-      margin-right: 1px;
-      max-height: 250px; }
-      div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p {
-        color: var(--I4C_Default_Text_3);
-        font-style: italic;
-        font-weight: 500;
-        margin: 0; }
-        div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-LimitMessage, div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-NoResults {
-          padding-top: 7px; }
-          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-LimitMessage:not([data-shown]), div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-NoResults:not([data-shown]) {
-            display: none; }
-        div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-LimitMessage {
-          border-top: 1px solid var(--I4C_Default_Border_12);
-          margin-top: 3px; }
-      div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div {
-        align-items: center;
-        border: 1px solid transparent;
-        border-radius: 0.4em;
-        cursor: pointer;
-        display: flex;
-        margin: 1px 0;
-        padding: 3px 4px;
-        transition: background-color 75ms ease-in, border 75ms ease-in; }
-        div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:hover {
-          transition: none; }
-        div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:focus {
-          border: 1px solid var(--I4E_InputBase_Border_Focus);
-          outline: none; }
-        div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-selected] {
-          background-color: var(--I4C_Default_Accent_6);
-          color: var(--I4C_Default_Accent_6_Text); }
-          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-selected]:hover {
-            background-color: var(--I4C_Default_Accent_5);
+    div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller {
+      padding: 3.5px; }
+      div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options {
+        border-radius: 4px;
+        margin-right: 1px;
+        max-height: 250px;
+        width: calc(100% - 7px); }
+        div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p {
+          color: var(--I4C_Default_Text_3);
+          font-style: italic;
+          font-weight: 500;
+          margin: 0; }
+          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-LimitMessage, div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-NoResults {
+            padding-top: 7px; }
+            div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-LimitMessage:not([data-shown]), div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-NoResults:not([data-shown]) {
+              display: none; }
+          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-LimitMessage {
+            border-top: 1px solid var(--I4C_Default_Border_12);
+            margin-top: 3px; }
+        div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div {
+          align-items: center;
+          border: 1px solid transparent;
+          border-radius: 0.4em;
+          cursor: pointer;
+          display: flex;
+          margin: 1px 0;
+          padding: 3px 4px;
+          transition: background-color 75ms ease-in, border 75ms ease-in; }
+          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:hover {
+            transition: none; }
+          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:focus {
+            border: 1px solid var(--I4E_InputBase_Border_Focus);
+            outline: none; }
+          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-selected] {
+            background-color: var(--I4C_Default_Accent_6);
             color: var(--I4C_Default_Accent_6_Text); }
-        div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled] {
-          cursor: not-allowed;
-          opacity: 0.5; }
-        div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-placeholder] {
-          font-weight: 700; }
+            div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-selected]:hover {
+              background-color: var(--I4C_Default_Accent_5);
+              color: var(--I4C_Default_Accent_6_Text); }
+          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled] {
+            cursor: not-allowed;
+            opacity: 0.5; }
+          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-placeholder] {
+            font-weight: 700; }
   div.I4E-Construct-Selector--Filterable div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-shown]) {
     display: none; }
 

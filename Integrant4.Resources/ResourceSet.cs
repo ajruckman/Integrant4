@@ -92,6 +92,20 @@ namespace Integrant4.Resources
                 }
             );
 
+            public static readonly ResourceSet OverlayScrollbars = new
+            (
+                $"{nameof(Integrant4)}.{nameof(Resources)}",
+                $"{nameof(Libraries)}.{nameof(OverlayScrollbars)}",
+                stylesheetsInternal: new HashSet<string>
+                {
+                    "Libraries/OverlayScrollbars/OverlayScrollbars.min.css",
+                },
+                scriptsInternal: new HashSet<string>
+                {
+                    "Libraries/OverlayScrollbars/OverlayScrollbars.min.js",
+                }
+            );
+
             public static readonly ResourceSet Popper = new
             (
                 $"{nameof(Integrant4)}.{nameof(Resources)}",
