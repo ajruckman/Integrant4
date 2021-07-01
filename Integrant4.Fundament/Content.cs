@@ -65,7 +65,31 @@ namespace Integrant4.Fundament
             return result;
         }
 
-        public static DynamicContents AsContents(this DynamicContent dynamicContent) =>
+        public static DynamicContent AsDynamicContent(this IRenderable v) =>
+            () => v;
+
+        public static DynamicContent AsDynamicContent(this RenderFragment v) =>
+            () => v.AsContent();
+
+        public static DynamicContent AsDynamicContent(this MarkupString v) =>
+            () => v.AsContent();
+
+        public static DynamicContent AsDynamicContent(this string v) =>
+            () => v.AsContent();
+
+        public static DynamicContents AsDynamicContents(this IRenderable v) =>
+            () => new[] { v };
+
+        public static DynamicContents AsDynamicContents(this RenderFragment v) =>
+            () => new[] { v.AsContent() as IRenderable };
+
+        public static DynamicContents AsDynamicContents(this MarkupString v) =>
+            () => new[] { v.AsContent() as IRenderable };
+
+        public static DynamicContents AsDynamicContents(this string v) =>
+            () => new[] { v.AsContent() as IRenderable };
+
+        public static DynamicContents AsDynamicContents(this DynamicContent dynamicContent) =>
             () => new[] { dynamicContent.Invoke() };
     }
 }

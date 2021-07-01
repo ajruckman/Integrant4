@@ -3,7 +3,6 @@ using Integrant4.API;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Bits
 {

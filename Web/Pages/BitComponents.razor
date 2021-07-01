@@ -1,0 +1,47 @@
+@using Integrant4.Element.Bits.BitComponents
+@using Integrant4.Element.Bits
+@page "/bitcomponents"
+
+<LinkComponent HREF="http://localhost:5000/bitcomponents">
+    Link to the Bit Components test page
+</LinkComponent>
+
+<br>
+<br>
+
+<HeaderComponent>
+    A test Bit Component header
+</HeaderComponent>
+
+<br>
+<br>
+
+<div class="I4E-Layout-Panel">
+    <HeaderComponent Style="Header.Style.Secondary">
+        A test Bit Component header
+    </HeaderComponent>
+
+    <div class="I4E-Layout-Panel-Inner">
+        <LinkComponent HREF="http://localhost:5000/bitcomponents">
+            Link to the Bit Components test page
+        </LinkComponent>
+    </div>
+
+    <div class="I4E-Layout-Panel-Inner">
+        <LinkComponent HREF="http://localhost:5000/bitcomponents" IsAccented="true">
+            Link to the Bit Components test page
+        </LinkComponent>
+    </div>
+
+    <div class="I4E-Layout-Panel-Inner">
+        <LinkComponent HREF="http://localhost:5000/bitcomponents" IsHighlighted="true">
+            Link to the Bit Components test page
+        </LinkComponent>
+    </div>
+
+    <div class="I4E-Layout-Panel-Inner">
+        <LinkComponent HREF="http://localhost:5000/bitcomponents" IsAccented="true" IsHighlighted="true">
+            Link to the Bit Components test page
+        </LinkComponent>
+    </div>
+</div>

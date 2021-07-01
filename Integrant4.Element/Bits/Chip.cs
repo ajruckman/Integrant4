@@ -57,7 +57,7 @@ namespace Integrant4.Element.Bits
         private readonly DynamicContents _contents;
 
         public Chip(DynamicContent content, Spec? spec = null)
-            : this(content.AsContents(), spec) { }
+            : this(content.AsDynamicContents(), spec) { }
 
         public Chip(DynamicContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(),

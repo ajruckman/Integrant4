@@ -45,7 +45,6 @@ namespace Integrant4.Element.Constructs.Tagging
             }, value =>
             {
                 _newTagName = value;
-                Console.WriteLine($"Name -> {_newTagName}");
 
                 _busy = false;
                 _refresher?.Invoke();
@@ -59,7 +58,6 @@ namespace Integrant4.Element.Constructs.Tagging
             {
                 // _newTagValue = args.Value?.ToString().CoalesceAndTrim();
                 _newTagValue = value;
-                Console.WriteLine($"Value -> {_newTagValue}");
 
                 _busy = false;
                 _refresher?.Invoke();
@@ -409,7 +407,6 @@ namespace Integrant4.Element.Constructs.Tagging
 
         private void RemoveTag(int i)
         {
-            Console.WriteLine($"Remove: {i}");
             _tags.RemoveAt(i);
             OnChange?.Invoke(_tags.Count == 0 ? null : _tags);
             _refresher?.Invoke();
@@ -422,8 +419,6 @@ namespace Integrant4.Element.Constructs.Tagging
             _newTagValue = _newTagType == TagType.Bool ? false : null;
 
             await ClearAllValueInputs();
-
-            Console.WriteLine($"Type -> {_newTagType}");
 
             _refresher?.Invoke();
         }

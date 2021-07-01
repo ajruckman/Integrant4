@@ -63,10 +63,7 @@ namespace Integrant4.Element.Constructs
                 }
             );
 
-            _header = new Header(() => new IRenderable[]
-            {
-                button,
-            }, Header.Style.Secondary);
+            _header = new Header(button.AsDynamicContents(), Header.Style.Secondary);
         }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)

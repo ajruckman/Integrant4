@@ -42,7 +42,7 @@ namespace Integrant4.Element.Bits
         private readonly DynamicContents _contents;
 
         public Heading(DynamicContent content, Spec? spec = null)
-            : this(content.AsContents(), spec) { }
+            : this(content.AsDynamicContents(), spec) { }
 
         public Heading(DynamicContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Heading)))

@@ -41,11 +41,11 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
     padding-top: calc(1em * (6 / 15)); }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft) {
       padding-left: calc(1em * (10 / 15)); }
-    button.I4E-Bit-Button.I4E-Bit-Button--IconLeft:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button.I4E-Bit-Button--IconLeft:not(.I4E-Bit-Button--Small) {
+    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft {
       padding-left: calc(1em * (5 / 15)); }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight) {
       padding-right: calc(1em * (10 / 15)); }
-    button.I4E-Bit-Button.I4E-Bit-Button--IconRight:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button.I4E-Bit-Button--IconRight:not(.I4E-Bit-Button--Small) {
+    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight {
       padding-right: calc(1em * (5 / 15)); }
   button.I4E-Bit-Button.I4E-Bit-Button--Small, a.I4E-Bit-Button.I4E-Bit-Button--Small {
     padding-bottom: calc(1em * (2.5 / 15));
@@ -439,7 +439,6 @@ div.I4E-Bit-HorizontalLine {
   width: 100%; }
 
 a.I4E-Bit-Link {
-  border-bottom: 1px solid transparent;
   color: var(--I4C_Default_PageText);
   outline: none;
   text-decoration: none; }
@@ -456,16 +455,15 @@ a.I4E-Bit-Link {
     a.I4E-Bit-Link:not(.I4E-Bit-Link--Accented):not(.I4E-Bit-Link--Highlighted):visited {
       color: var(--I4C_Default_PageText); }
   a.I4E-Bit-Link:not(#_):hover {
-    border-bottom: 1px solid;
-    color: var(--I4C_Default_Accent_8); }
+    color: var(--I4C_Default_Accent_8);
+    text-decoration: underline; }
   a.I4E-Bit-Link:not(#_):active {
-    border-bottom: 1px solid;
-    color: var(--I4C_Default_Accent_9); }
+    color: var(--I4C_Default_Accent_9);
+    text-decoration: underline; }
   a.I4E-Bit-Link.I4E-Bit-Link--Accented {
     color: var(--I4C_Default_Accent_7); }
   a.I4E-Bit-Link.I4E-Bit-Link--Highlighted {
-    border-bottom: 1px solid;
-    color: var(--I4C_Default_Accent_7); }
+    text-decoration: underline; }
 
 div.I4E-Bit-LocalModal {
   align-items: center;
@@ -694,3 +692,5 @@ code {
     display: unset; }
     .MVisibleOnHover:hover .MVisibleOnParentHover {
       display: unset; }
+
+/*# sourceMappingURL=Bits.css.map */

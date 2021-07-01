@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Integrant4.API;
+using Integrant4.Element.Inputs;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
@@ -66,7 +67,7 @@ namespace Integrant4.Element.Bits
         public TextBlock(DynamicContent content, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)))
         {
-            _contents = content.AsContents();
+            _contents = content.AsDynamicContents();
         }
 
         public TextBlock(IRenderable content, Spec? spec = null)
@@ -102,6 +103,20 @@ namespace Integrant4.Element.Bits
             }
 
             return Fragment;
+        }
+    }
+
+    public partial class TextBlock
+    {
+        public static readonly Spec SecondaryHeaderStyle;
+
+        static TextBlock()
+        {
+            SecondaryHeaderStyle = new Spec
+            {
+                FontWeight = () => FontWeight.SemiBold,
+                FontSize   = () => 1.2,
+            };
         }
     }
 }

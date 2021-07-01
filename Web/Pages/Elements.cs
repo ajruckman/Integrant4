@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 using Integrant4.API;
@@ -20,7 +19,7 @@ namespace Web.Pages
     {
         private readonly List<Button> _buttonsColored = new();
 
-        private Header                _header             = null!;
+        private Header          _header             = null!;
         private DynamicContents _panelExpanderElems = null!;
 
         private TextInput _textInput                = null!;
@@ -28,8 +27,8 @@ namespace Web.Pages
         private TextInput _textInputClearable       = null!;
         private TextInput _textInputClearableScaled = null!;
 
-        private IntInput _intInput            = null!;
-        private IntInput _intInput0Null       = null!;
+        private IntInput     _intInput            = null!;
+        private IntInput     _intInput0Null       = null!;
         private DecimalInput _decimalInput        = null!;
         private DecimalInput _decimalInput0Null   = null!;
         private DecimalInput _decimalInputStepped = null!;
@@ -377,10 +376,7 @@ namespace Web.Pages
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            Console.WriteLine($"Elements: OnAfterRenderAsync {firstRender}");
-
             int? v = await _intInput.GetValue();
-            Console.WriteLine(v);
 
             if (firstRender)
                 Task.Run(() =>
@@ -390,8 +386,6 @@ namespace Web.Pages
                     _checkbox.Reset();
                     InvokeAsync(StateHasChanged);
                 });
-
-            Console.WriteLine(await _checkboxInput.GetValue());
 
             // await JSRuntime.InvokeVoidAsync("window.LoadAllScrollbars");
 

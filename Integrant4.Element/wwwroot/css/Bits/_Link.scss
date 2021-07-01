@@ -1,5 +1,4 @@
 a.I4E-Bit-Link {
-    border-bottom: 1px solid transparent;
     color: var(--I4C_Default_PageText);
     outline: none;
     text-decoration: none;
@@ -18,7 +17,6 @@ a.I4E-Bit-Link {
         }
     }
 
-
     // Default colors
 
     &:not(.I4E-Bit-Link--Accented):not(.I4E-Bit-Link--Highlighted) {
@@ -30,13 +28,13 @@ a.I4E-Bit-Link {
     }
 
     &:not(#_):hover {
-        border-bottom: 1px solid;
         color: var(--I4C_Default_Accent_8);
+        text-decoration: underline;
     }
 
     &:not(#_):active {
-        border-bottom: 1px solid;
         color: var(--I4C_Default_Accent_9);
+        text-decoration: underline;
     }
 
     &.I4E-Bit-Link--Accented {
@@ -44,7 +42,6 @@ a.I4E-Bit-Link {
     }
 
     &.I4E-Bit-Link--Highlighted {
-        border-bottom: 1px solid;
-        color: var(--I4C_Default_Accent_7);
+        text-decoration: underline;
     }
 }
