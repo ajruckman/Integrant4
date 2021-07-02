@@ -28,6 +28,15 @@ window.I4.Element.NextSiblingSelector = window.I4.Element.NextSiblingSelector ||
 
 const ScrollbarSpace = '7px';
 
+window.addEventListener("focusin", event => {
+    if (document.I4EActiveElement === undefined) {
+        document.I4EActiveElement = document.activeElement;
+    } else {
+        document.I4EActiveElementPrev = document.I4EActiveElement;
+        document.I4EActiveElement = document.activeElement;
+    }
+})
+
 window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (element, dotnetHelper, filterable) {
     if (element == null) {
         console.log("Element reference passed to InitSelector is null; exiting");
@@ -50,12 +59,15 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
 
         element.SelectorOpen = false;
         
+        let glue;
+
         element.Scrollbar = OverlayScrollbars(scroller, {
             resize: "both",
         });
 
         element.ShowSelector = function () {
             element.SelectorOpen = true;
+
             element.setAttribute("data-open", "");
             head.setAttribute("data-focused", "");
             dropdown.setAttribute("data-open", "");
@@ -71,13 +83,20 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
             element.I4EOptionsDropdown.update();
 
             //
-            
+
             element.Scrollbar.update();
-            
+
             if (element.Scrollbar.getState().hasOverflow.y === true) {
                 options.style.width = `calc(100% - ${ScrollbarSpace})`;
             } else {
                 options.style.width = `100%`;
+            }
+
+            //
+
+            if (filterable) {
+                element.PrevFocus = document.I4EActiveElementPrev;
+                filterInput.focus();
             }
 
             //
@@ -91,13 +110,20 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
             head.removeAttribute("data-focused");
             dropdown.removeAttribute("data-open");
 
+            window.setTimeout(function() {
+                if (filterable && element.PrevFocus !== undefined) {
+                    element.PrevFocus.focus();
+                }
+            }, 0);
+            
             element.I4EOptionsDropdown.setOptions({
                 modifiers: [{name: "eventListeners", enabled: false}, {name: "offset", options: {offset: [0, 1]}}],
             });
+            
+            element.Scrollbar.sleep();
         };
 
         element.Select = function (i) {
-            console.log(i);
             dotnetHelper.invokeMethodAsync("I4E.Construct.Selector.Select", i);
             element.HideSelector();
             head.focus();
@@ -172,7 +198,6 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
 
             if (option.hasAttribute("data-disabled")) return;
             if (option.hasAttribute("data-placeholder")) return;
-            console.log(option);
             element.Select(parseInt(option.getAttribute("data-i")));
         });
 

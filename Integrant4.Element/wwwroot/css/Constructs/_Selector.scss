@@ -135,6 +135,7 @@ div.I4E-Construct-Selector {
 
                     &.I4E-Construct-Options-LimitMessage, &.I4E-Construct-Options-NoResults {
                         padding-top: 7px;
+                        text-align: center;
 
                         &:not([data-shown]) {
                             display: none;
