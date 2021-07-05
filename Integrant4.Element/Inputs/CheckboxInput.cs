@@ -116,7 +116,7 @@ namespace Integrant4.Element.Inputs
             OnChange?.Invoke(value);
         }
 
-        private bool Deserialize(string? v) =>
+        private static bool Deserialize(string? v) =>
             v switch
             {
                 "False" => false,

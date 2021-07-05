@@ -9,9 +9,7 @@ namespace Integrant4.Element.Inputs
     public abstract class StandardInput<T> : InputBase<T>
     {
         internal StandardInput(IJSRuntime jsRuntime, BaseSpec? spec, ClassSet classes)
-            : base(jsRuntime, spec, classes)
-        {
-        }
+            : base(jsRuntime, spec, classes) { }
 
         public override async Task<T?> GetValue()
         {

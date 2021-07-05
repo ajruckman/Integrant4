@@ -1,12 +1,10 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Threading.Tasks;
 using Integrant4.API;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Bits
 {
@@ -17,7 +15,7 @@ namespace Integrant4.Element.Bits
         public class Spec
         {
             public Callbacks.Callback<bool>? IsTitle       { get; init; }
-            public Callbacks.Callback<bool>? IsHighlighted { get; init; }
+            public Callbacks.Callback<bool>?         IsHighlighted { get; init; }
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
             public Callbacks.IsDisabled? IsDisabled { get; init; }
@@ -45,15 +43,11 @@ namespace Integrant4.Element.Bits
         private readonly DynamicContents           _contents;
         private readonly Callbacks.HREF            _href;
         private readonly Callbacks.Callback<bool>? _isTitle;
-        private readonly Callbacks.Callback<bool>? _isHighlighted;
+        private readonly Callbacks.Callback<bool>?         _isHighlighted;
         private readonly bool                      _doAutoHighlight;
 
-        private bool? _isCurrentPage;
-
         public HeaderLink(DynamicContent content, Callbacks.HREF href, Spec? spec = null)
-            : this(content.AsDynamicContents(), href, spec)
-        {
-        }
+            : this(content.AsDynamicContents(), href, spec) { }
 
         public HeaderLink(DynamicContents contents, Callbacks.HREF href, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(HeaderLink)))
@@ -64,7 +58,6 @@ namespace Integrant4.Element.Bits
 
             if (spec?.IsHighlighted == null)
             {
-                _isHighlighted   = () => _isCurrentPage == true;
                 _doAutoHighlight = true;
             }
             else
@@ -83,20 +76,6 @@ namespace Integrant4.Element.Bits
             builder.AddAttribute(1, "HeaderLink", this);
             builder.CloseComponent();
         };
-
-        private async Task CheckPage(IJSRuntime jsRuntime, NavigationManager navMgr, ElementService elementService)
-        {
-            string currentURL = "/" + navMgr.ToBaseRelativePath(navMgr.Uri);
-            string href       = _href.Invoke();
-
-            bool isCurrentPage = currentURL == href;
-
-            if (isCurrentPage != _isCurrentPage)
-            {
-                _isCurrentPage = isCurrentPage;
-                await Interop.HighlightHeaderLink(jsRuntime, elementService.CancellationToken, ID, isCurrentPage);
-            }
-        }
     }
 
     public partial class HeaderLink
@@ -105,13 +84,12 @@ namespace Integrant4.Element.Bits
         {
             [Parameter] public HeaderLink HeaderLink { get; set; } = null!;
 
-            [Inject] public IJSRuntime        JSRuntime         { get; set; } = null!;
-            [Inject] public NavigationManager NavigationManager { get; set; } = null!;
-            [Inject] public ElementService    ElementService    { get; set; } = null!;
+            [Inject] public ElementService ElementService { get; set; } = null!;
 
             protected override void BuildRenderTree(RenderTreeBuilder builder)
             {
                 IRenderable[] contents = HeaderLink._contents.Invoke().ToArray();
+                string        href     = HeaderLink._href.Invoke();
 
                 List<string> ac = new();
 
@@ -125,7 +103,7 @@ namespace Integrant4.Element.Bits
 
                 int seq = -1;
                 builder.OpenElement(++seq, "a");
-                builder.AddAttribute(++seq, "href", HeaderLink._href.Invoke());
+                builder.AddAttribute(++seq, "href", href);
 
                 BitBuilder.ApplyAttributes(HeaderLink, builder, ref seq, ac.ToArray(), null);
 
@@ -138,16 +116,11 @@ namespace Integrant4.Element.Bits
                 }
 
                 builder.CloseElement();
-            }
 
-            protected override async Task OnAfterRenderAsync(bool firstRender)
-            {
-                if (!firstRender || !HeaderLink._doAutoHighlight) return;
+                //
 
-                NavigationManager.LocationChanged +=
-                    async (_, _) => await HeaderLink.CheckPage(JSRuntime, NavigationManager, ElementService);
-
-                await HeaderLink.CheckPage(JSRuntime, NavigationManager, ElementService);
+                if (HeaderLink._doAutoHighlight)
+                    ElementService.RegisterLink(HeaderLink.ID, href);
             }
         }
     }

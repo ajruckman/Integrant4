@@ -15,8 +15,7 @@ namespace Integrant4.Element.Constructs.Tagging
         private readonly HashSet<(TagType, string)> _knownTags;
         private readonly bool                       _isForFiltering;
         private readonly Spec                       _spec;
-
-        private List<ITag> _tags = new();
+        private readonly List<ITag>                 _tags = new();
 
         public TagSelector(HashSet<(TagType, string)> knownTags, bool isForFiltering, Spec? spec = null)
         {

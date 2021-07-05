@@ -41,11 +41,11 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
     padding-top: calc(1em * (6 / 15)); }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft) {
       padding-left: calc(1em * (10 / 15)); }
-    button.I4E-Bit-Button.I4E-Bit-Button--IconLeft:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button.I4E-Bit-Button--IconLeft:not(.I4E-Bit-Button--Small) {
+    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft {
       padding-left: calc(1em * (5 / 15)); }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight) {
       padding-right: calc(1em * (10 / 15)); }
-    button.I4E-Bit-Button.I4E-Bit-Button--IconRight:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button.I4E-Bit-Button--IconRight:not(.I4E-Bit-Button--Small) {
+    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight {
       padding-right: calc(1em * (5 / 15)); }
   button.I4E-Bit-Button.I4E-Bit-Button--Small, a.I4E-Bit-Button.I4E-Bit-Button--Small {
     padding-bottom: calc(1em * (2.5 / 15));
@@ -436,7 +436,7 @@ div.I4E-Bit-Header {
   div.I4E-Bit-Header--Primary div.I4E-Bit-TextBlock {
     font-size: 1.2rem;
     font-weight: 600; }
-  div.I4E-Bit-Header--Primary div.I4E-Bit-Dropdown div.I4E-Bit-TextBlock {
+  div.I4E-Bit-Header--Primary div.I4E-Bit-Dropdown-Children div.I4E-Bit-TextBlock {
     font-size: unset;
     font-weight: unset; }
   div.I4E-Bit-Header--Primary div.I4E-Bit-VerticalLine {
@@ -452,7 +452,7 @@ div.I4E-Bit-Header {
   div.I4E-Bit-Header--Secondary div.I4E-Bit-TextBlock {
     font-size: 1.1rem;
     font-weight: 500; }
-  div.I4E-Bit-Header--Secondary div.I4E-Bit-Dropdown div.I4E-Bit-TextBlock {
+  div.I4E-Bit-Header--Secondary div.I4E-Bit-Dropdown-Children div.I4E-Bit-TextBlock {
     font-size: unset;
     font-weight: unset; }
 

@@ -145,8 +145,6 @@ namespace Web.Pages
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            Console.WriteLine($"Index: OnAfterRenderAsync {firstRender}");
-
             _selector.BeginLoadingOptions();
             _multiSelector.BeginLoadingOptions();
 

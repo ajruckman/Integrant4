@@ -151,7 +151,6 @@ namespace Web.Pages
 
             _buttonNoIcon = new Button(() =>
             {
-                Console.WriteLine("_buttonNoIcon");
                 return "asdf".AsContent();
             }, new Button.Spec
             {

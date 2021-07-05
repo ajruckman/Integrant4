@@ -36,7 +36,7 @@ namespace Integrant4.Element.Constructs.Tables
                 if (string.IsNullOrEmpty(v))
                     Table.ClearFilter(ID);
                 else
-                    Table.SetFilter(ID, v);
+                    Table.SetFilter(ID, v, false);
 
                 _input.Refresh();
             }, /*Table.GetFilter(ID),*/ 250, e =>

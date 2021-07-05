@@ -6,7 +6,7 @@ namespace Integrant4.Colorant.ColorGeneratorSupport
 {
     public sealed class Generator
     {
-        public void Generate(ThemeDefinition themeDefinition)
+        public static void Generate(ThemeDefinition themeDefinition)
         {
             var caller = new Caller();
 

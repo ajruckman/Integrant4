@@ -68,7 +68,7 @@ namespace Integrant4.Element.Constructs.Selectors
         private const string DefaultNoOptionsText         = "No options available";
         private const string DefaultNoResultsText         = "No options matched filter";
 
-        private string FilterTooShortText(int length) =>
+        private static string FilterTooShortText(int length) =>
             $"Filter with at least {length} characters to see options";
 
         // This Spec is different from others, but it is nicer to initialize the Selector with named parameters.

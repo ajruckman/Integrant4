@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace Integrant4.Element
@@ -11,13 +14,18 @@ namespace Integrant4.Element
         public delegate Task Job(IJSRuntime jsRuntime, CancellationToken token);
 
         private readonly IJSRuntime              _jsRuntime;
+        private readonly NavigationManager       _navigationManager;
         private readonly ConcurrentQueue<Job>    _jobs = new();
         private readonly CancellationTokenSource _cts  = new();
         private readonly Guid                    _guid = Guid.NewGuid();
 
-        public ElementService(IJSRuntime jsRuntime)
+        private readonly Dictionary<string, string> _links     = new();
+        private readonly object                     _linksLock = new();
+
+        public ElementService(IJSRuntime jsRuntime, NavigationManager navigationManager)
         {
-            _jsRuntime = jsRuntime;
+            _jsRuntime         = jsRuntime;
+            _navigationManager = navigationManager;
         }
 
         public IJSRuntime        JSRuntime         => _jsRuntime;
@@ -28,6 +36,32 @@ namespace Integrant4.Element
             Console.WriteLine("ElementService disposed");
             _cts.Cancel();
             _cts.Dispose();
+        }
+
+        internal void RegisterLink(string id, string href)
+        {
+            lock (_linksLock)
+            {
+                _links[id] = href;
+            }
+        }
+
+        private async Task ProcessLinks()
+        {
+            string currentURL = "/" + _navigationManager.ToBaseRelativePath(_navigationManager.Uri);
+
+            KeyValuePair<string, string>[] links;
+
+            lock (_linksLock)
+            {
+                links = _links.ToArray();
+                _links.Clear();
+            }
+
+            foreach ((string id, string href) in links)
+            {
+                await Interop.HighlightHeaderLink(_jsRuntime, CancellationToken, id, href == currentURL);
+            }
         }
 
         public void AddJob(Job job)
@@ -41,6 +75,8 @@ namespace Integrant4.Element
             {
                 await job.Invoke(_jsRuntime, CancellationToken);
             }
+
+            await ProcessLinks();
         }
 
         public async Task JSInvokeVoidAsync(string identifier, params object[] args)

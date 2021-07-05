@@ -39,7 +39,11 @@ namespace Integrant4.Fundament
                         if (errorHandler != null)
                             errorHandler.Invoke(e);
                         else
+                        {
+                            Console.WriteLine("Debouncer with no error handler elapsed with exception.");
+                            Console.WriteLine(e);
                             throw;
+                        }
                     }
                 }
             };
