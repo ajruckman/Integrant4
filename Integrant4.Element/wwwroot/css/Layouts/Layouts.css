@@ -173,8 +173,9 @@ div.I4E-Layout-Panel {
     margin: 7px; }
   div.I4E-Layout-Panel:not(.I4E-Layout-Panel--NoBorder) {
     border: 1px solid var(--I4C_Default_Border_6); }
-  div.I4E-Layout-Panel--WithRounding {
-    border-radius: 4px; }
+  div.I4E-Layout-Panel--Rounded {
+    border-radius: 7px;
+    overflow: hidden; }
   div.I4E-Layout-Panel--Inline {
     display: inline-block; }
   div.I4E-Layout-Panel--Contracted {
