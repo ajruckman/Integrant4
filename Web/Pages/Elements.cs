@@ -78,10 +78,16 @@ namespace Web.Pages
         {
             _header = new Header(() => new IRenderable[]
             {
-                new PageLink(() => "Secondary header".AsContent(),
-                    new PageLink.Spec(() => "/elements") { IsTitle = Always.True }),
+                new HeaderLink(() => "Secondary header".AsContent(),
+                    () => "/elements", new HeaderLink.Spec { IsTitle = Always.True }),
                 new Filler(),
-                new PageLink(() => "Normal link".AsContent(), new PageLink.Spec(() => "/elements")),
+                new TextBlock("Test block 1".AsDynamicContent()),
+                new Space(),
+                new VerticalLine(),
+                new Space(),
+                new TextBlock("Test block 2".AsDynamicContent()),
+                new Space(),
+                new HeaderLink(() => "Normal link".AsContent(), () => "/elements")
             }, Header.Style.Secondary);
 
             _panelExpanderElems = () => new[]
@@ -173,7 +179,7 @@ namespace Web.Pages
             });
             _buttonIconAll = new Button(() => new IRenderable[]
             {
-                new BootstrapIcon("caret-left-fill",  16),
+                new BootstrapIcon("caret-left-fill", 16),
                 new BootstrapIcon("caret-right-fill", 16),
             });
             _buttonStacked = new Button(() => new IRenderable[]

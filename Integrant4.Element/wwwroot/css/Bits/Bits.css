@@ -41,11 +41,11 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
     padding-top: calc(1em * (6 / 15)); }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft) {
       padding-left: calc(1em * (10 / 15)); }
-    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft {
+    button.I4E-Bit-Button.I4E-Bit-Button--IconLeft:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button.I4E-Bit-Button--IconLeft:not(.I4E-Bit-Button--Small) {
       padding-left: calc(1em * (5 / 15)); }
     button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight) {
       padding-right: calc(1em * (10 / 15)); }
-    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight {
+    button.I4E-Bit-Button.I4E-Bit-Button--IconRight:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button.I4E-Bit-Button--IconRight:not(.I4E-Bit-Button--Small) {
       padding-right: calc(1em * (5 / 15)); }
   button.I4E-Bit-Button.I4E-Bit-Button--Small, a.I4E-Bit-Button.I4E-Bit-Button--Small {
     padding-bottom: calc(1em * (2.5 / 15));
@@ -359,7 +359,7 @@ div.I4E-Bit-Dropdown {
       width: 100%; }
     div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children div.I4E-Bit-Dropdown-Content:not(:last-child) {
       margin-bottom: 3px; }
-  div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Head[data-children-shown] a.I4E-Bit-PageLink {
+  div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Head[data-children-shown] a.I4E-Bit-HeaderLink {
     color: var(--I4C_Default_Accent_8); }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children {
@@ -399,26 +399,62 @@ div.I4E-Bit-Header {
     position: sticky;
     top: 0; }
   div.I4E-Bit-Header--Secondary {
-    min-height: 35px; }
+    min-height: 36px; }
   div.I4E-Bit-Header > span.I4E-Bit-Header-Content {
     display: contents; }
-    div.I4E-Bit-Header > span.I4E-Bit-Header-Content > .I4E-Bit-PageLink--Title {
+    div.I4E-Bit-Header > span.I4E-Bit-Header-Content > .I4E-Bit-HeaderLink--Title {
       margin-right: 15px; }
-  div.I4E-Bit-Header--Primary a.I4E-Bit-PageLink:not(.I4E-Bit-PageLink--Title) {
+  div.I4E-Bit-Header a.I4E-Bit-HeaderLink {
+    align-items: center;
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    box-sizing: border-box;
+    color: var(--I4C_Default_PageText);
+    display: inline-flex;
+    text-decoration: none; }
+    div.I4E-Bit-Header a.I4E-Bit-HeaderLink:hover:not(#_) {
+      border-bottom-color: var(--I4C_Default_Accent_8);
+      color: var(--I4C_Default_Accent_8); }
+    div.I4E-Bit-Header a.I4E-Bit-HeaderLink:active:not(#_) {
+      border-bottom-color: var(--I4C_Default_Accent_9);
+      color: var(--I4C_Default_Accent_9); }
+    div.I4E-Bit-Header a.I4E-Bit-HeaderLink.I4E-Bit-HeaderLink--Highlighted, div.I4E-Bit-Header a.I4E-Bit-HeaderLink[data-highlighted] {
+      border-bottom-color: var(--I4C_Default_Accent_7); }
+    div.I4E-Bit-Header a.I4E-Bit-HeaderLink > span.I4E-Bit-HeaderLink-Content {
+      align-items: center;
+      display: inline-flex; }
+      div.I4E-Bit-Header a.I4E-Bit-HeaderLink > span.I4E-Bit-HeaderLink-Content:not(:last-child) {
+        margin-right: 5px; }
+  div.I4E-Bit-Header--Primary a.I4E-Bit-HeaderLink {
+    min-height: 50px; }
+    div.I4E-Bit-Header--Primary a.I4E-Bit-HeaderLink.I4E-Bit-HeaderLink--Title {
+      font-weight: 600;
+      font-size: 1.35rem; }
+    div.I4E-Bit-Header--Primary a.I4E-Bit-HeaderLink:not(.I4E-Bit-HeaderLink--Title) {
+      font-weight: 600;
+      font-size: 1.2rem; }
+  div.I4E-Bit-Header--Primary div.I4E-Bit-TextBlock {
     font-size: 1.2rem;
-    font-weight: 500; }
-  div.I4E-Bit-Header--Primary a.I4E-Bit-PageLink.I4E-Bit-PageLink--Title {
-    font-size: 1.35rem;
     font-weight: 600; }
-  div.I4E-Bit-Header--Primary a.I4E-Bit-PageLink span.I4E-Bit-PageLink-Content {
-    min-height: calc(50px - 8px); }
-  div.I4E-Bit-Header--Primary div.I4E-Bit-Dropdown-Head div.I4E-Bit-TextBlock {
-    font-size: 1.2rem;
-    font-weight: 500; }
+  div.I4E-Bit-Header--Primary div.I4E-Bit-Dropdown div.I4E-Bit-TextBlock {
+    font-size: unset;
+    font-weight: unset; }
   div.I4E-Bit-Header--Primary div.I4E-Bit-VerticalLine {
     height: 30px; }
-  div.I4E-Bit-Header--Secondary a.I4E-Bit-PageLink span.I4E-Bit-PageLink-Content {
-    min-height: calc(35px - 8px); }
+  div.I4E-Bit-Header--Secondary a.I4E-Bit-HeaderLink {
+    min-height: 36px; }
+    div.I4E-Bit-Header--Secondary a.I4E-Bit-HeaderLink.I4E-Bit-HeaderLink--Title {
+      font-weight: 600;
+      font-size: 1.2rem; }
+    div.I4E-Bit-Header--Secondary a.I4E-Bit-HeaderLink:not(.I4E-Bit-HeaderLink--Title) {
+      font-size: 1.1rem;
+      font-weight: 500; }
+  div.I4E-Bit-Header--Secondary div.I4E-Bit-TextBlock {
+    font-size: 1.1rem;
+    font-weight: 500; }
+  div.I4E-Bit-Header--Secondary div.I4E-Bit-Dropdown div.I4E-Bit-TextBlock {
+    font-size: unset;
+    font-weight: unset; }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Bit-Header--Primary, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Bit-Header--Primary {
   background-color: var(--I4C_Default_Background_6); }
@@ -487,33 +523,6 @@ div.I4E-Bit-LocalModal {
     opacity: 1; }
     div.I4E-Bit-LocalModal div.I4E-Bit-LocalModal-Inner--Column {
       flex-direction: column; }
-
-a.I4E-Bit-PageLink {
-  align-items: center;
-  border-bottom: 4px solid transparent;
-  border-top: 4px solid transparent;
-  color: var(--I4C_Default_PageText);
-  display: inline-flex;
-  text-decoration: none; }
-  a.I4E-Bit-PageLink:not(.I4E-Bit-PageLink--Title) {
-    font-size: 1.1rem;
-    font-weight: 500; }
-  a.I4E-Bit-PageLink.I4E-Bit-PageLink--Title {
-    font-size: 1.2rem;
-    font-weight: 600; }
-  a.I4E-Bit-PageLink:hover:not(#_) {
-    border-bottom-color: var(--I4C_Default_Accent_8);
-    color: var(--I4C_Default_Accent_8); }
-  a.I4E-Bit-PageLink:active:not(#_) {
-    border-bottom-color: var(--I4C_Default_Accent_9);
-    color: var(--I4C_Default_Accent_9); }
-  a.I4E-Bit-PageLink.I4E-Bit-PageLink--Highlighted, a.I4E-Bit-PageLink[data-highlighted] {
-    border-bottom-color: var(--I4C_Default_Accent_7); }
-  a.I4E-Bit-PageLink > span.I4E-Bit-PageLink-Content {
-    align-items: center;
-    display: inline-flex; }
-    a.I4E-Bit-PageLink > span.I4E-Bit-PageLink-Content:not(:last-child) {
-      margin-right: 5px; }
 
 div.I4E-Bit-Space {
   width: 5px; }

@@ -15,32 +15,9 @@ div.I4E-Bit-TextBlock {
         }
     }
 
-    //
-
-    //&--Hoverable {
-    //    &:not(.I4E-Bit-Button--Hoverable--IconLeft) {
-    //        padding-left: 10px;
-    //    }
-    //
-    //    &.I4E-Bit-Button--Hoverable--IconLeft {
-    //        padding-left: 5px;
-    //    }
-    //
-    //    &:not(.I4E-Bit-Button--Hoverable--IconRight) {
-    //        padding-right: 10px;
-    //    }
-    //
-    //    &.I4E-Bit-Button--Hoverable--IconRight {
-    //        padding-right: 5px;
-    //    }
-    //}
-
     &--Heading {
         font-weight: 500;
     }
-
-
-    //
 
     &:focus {
         outline: none;
@@ -49,14 +26,6 @@ div.I4E-Bit-TextBlock {
     &:focus-visible {
         box-shadow: 0 0 1px 0 var(--I4C_Default_Accent_5);
     }
-
-    ////
-    //
-    //&.I4E-Bit-TextBlock--Hoverable {
-    //    &:hover {
-    //        background-color: var(--I4C_Default_Opaque_White_3);
-    //    }
-    //}
 }
 
 // Variable colors

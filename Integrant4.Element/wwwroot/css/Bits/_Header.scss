@@ -1,3 +1,6 @@
+$HeightHeaderPrimary: 50px;
+$HeightHeaderSecondary: 36px;
+
 div.I4E-Bit-Header {
     align-items: center;
     box-shadow: var(--I4C_Default_Shadow_0);
@@ -9,47 +12,83 @@ div.I4E-Bit-Header {
     z-index: 100;
 
     &--Primary {
-        min-height: 50px;
+        min-height: $HeightHeaderPrimary;
         position: sticky;
         top: 0;
     }
 
     &--Secondary {
-        min-height: 35px;
+        min-height: $HeightHeaderSecondary;
     }
 
     > span.I4E-Bit-Header-Content {
         display: contents;
 
-        > .I4E-Bit-PageLink--Title {
+        > .I4E-Bit-HeaderLink--Title {
             margin-right: 15px;
+        }
+    }
+
+    // Header link
+
+    a.I4E-Bit-HeaderLink {
+        align-items: center;
+        border-bottom: 4px solid transparent;
+        border-top: 4px solid transparent;
+        box-sizing: border-box;
+        color: var(--I4C_Default_PageText);
+        display: inline-flex;
+        text-decoration: none;
+
+        &:hover:not(#_) {
+            border-bottom-color: var(--I4C_Default_Accent_8);
+            color: var(--I4C_Default_Accent_8);
+        }
+
+        &:active:not(#_) {
+            border-bottom-color: var(--I4C_Default_Accent_9);
+            color: var(--I4C_Default_Accent_9);
+        }
+
+        &.I4E-Bit-HeaderLink--Highlighted, &[data-highlighted] {
+            border-bottom-color: var(--I4C_Default_Accent_7);
+        }
+
+        > span.I4E-Bit-HeaderLink-Content {
+            align-items: center;
+            display: inline-flex;
+
+            &:not(:last-child) {
+                margin-right: 5px;
+            }
         }
     }
 
     // Descendent overrides
 
     &--Primary {
-        a.I4E-Bit-PageLink {
-            &:not(.I4E-Bit-PageLink--Title) {
-                font-size: 1.2rem;
-                font-weight: 500;
-            }
+        a.I4E-Bit-HeaderLink {
+            min-height: $HeightHeaderPrimary;
 
-            &.I4E-Bit-PageLink--Title {
-                font-size: 1.35rem;
+            &.I4E-Bit-HeaderLink--Title {
                 font-weight: 600;
+                font-size: 1.35rem;
             }
 
-            //
-
-            span.I4E-Bit-PageLink-Content {
-                min-height: calc(50px - 8px);
+            &:not(.I4E-Bit-HeaderLink--Title) {
+                font-weight: 600;
+                font-size: 1.2rem;
             }
         }
 
-        div.I4E-Bit-Dropdown-Head div.I4E-Bit-TextBlock {
+        div.I4E-Bit-TextBlock {
             font-size: 1.2rem;
-            font-weight: 500;
+            font-weight: 600;
+        }
+
+        div.I4E-Bit-Dropdown div.I4E-Bit-TextBlock {
+            font-size: unset;
+            font-weight: unset;
         }
 
         div.I4E-Bit-VerticalLine {
@@ -58,10 +97,28 @@ div.I4E-Bit-Header {
     }
 
     &--Secondary {
-        a.I4E-Bit-PageLink {
-            span.I4E-Bit-PageLink-Content {
-                min-height: calc(35px - 8px);
+        a.I4E-Bit-HeaderLink {
+            min-height: $HeightHeaderSecondary;
+
+            &.I4E-Bit-HeaderLink--Title {
+                font-weight: 600;
+                font-size: 1.2rem;
             }
+
+            &:not(.I4E-Bit-HeaderLink--Title) {
+                font-size: 1.1rem;
+                font-weight: 500;
+            }
+        }
+
+        div.I4E-Bit-TextBlock {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        div.I4E-Bit-Dropdown div.I4E-Bit-TextBlock {
+            font-size: unset;
+            font-weight: unset;
         }
     }
 }

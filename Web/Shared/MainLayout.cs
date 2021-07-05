@@ -6,6 +6,7 @@ using Integrant4.Colorant;
 using Integrant4.Colorant.Themes.Default;
 using Integrant4.Element;
 using Integrant4.Element.Bits;
+using Integrant4.Element.Bits.BitPresets;
 using Integrant4.Element.Constructs;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
@@ -24,14 +25,14 @@ namespace Web.Shared
         protected override void OnInitialized()
         {
             _stopwatch.Start();
-            
+
             _defaultVariantLoader = new VariantLoader(StorageService, new Theme(),
                 Variants.Dark.ToString());
 
-            _defaultVariantLoader.OnComplete      += _ =>
+            _defaultVariantLoader.OnComplete += _ =>
             {
                 InvokeAsync(StateHasChanged);
-                
+
                 _stopwatch.Stop();
             };
             _defaultVariantLoader.OnVariantChange += _ => InvokeAsync(StateHasChanged);
@@ -45,56 +46,67 @@ namespace Web.Shared
 
             _header = new Header(() => new IRenderable[]
             {
-                new PageLink(() => new IRenderable[]
-                {
-                    "I4".AsContent(),
-                }, new PageLink.Spec(() => "/") {IsTitle = Always.True}),
+                new HeaderTitleLink("Integrant4".AsDynamicContents()),
                 new Filler(),
-                new PageLink(() => new IRenderable[]
+                new HeaderLink(() => new IRenderable[]
                 {
                     "Elements".AsContent(),
-                }, new PageLink.Spec(() => "/elements")),
+                }, () => "/elements"),
                 new VerticalLine(),
-                new PageLink(() => new IRenderable[]
+                new Dropdown(() => new IRenderable[]
+                {
+                    new HeaderLink("Dropdown".AsDynamicContent(), () => "/"),
+                }, () => new IRenderable[]
+                {
+                    new Button(() => new IRenderable[]
+                    {
+                        "Home".AsContent(),
+                    }, new Button.Spec { HREF = () => "/home", Style = () => Button.Style.Transparent }),
+                    new Button(() => new IRenderable[]
+                    {
+                        "Elements".AsContent(),
+                    }, new Button.Spec { HREF = () => "/elements", Style = () => Button.Style.Transparent }),
+                    new TextBlock(() => new IRenderable[]
+                    {
+                        "Text block".AsContent(),
+                    }),
+                }),
+                new VerticalLine(),
+                new HeaderLink(() => new IRenderable[]
                 {
                     "Google".AsContent(),
-                }, new PageLink.Spec(() => "https://google.com")),
+                }, () => "https://google.com"),
                 new VerticalLine(),
-                new PageLink(() => new IRenderable[]
+                new HeaderLink(() => new IRenderable[]
                 {
                     "Google".AsContent(),
-                }, new PageLink.Spec(() => "https://google.com")),
+                }, () => "https://google.com", new HeaderLink.Spec { IsHighlighted = Always.True }),
                 new VerticalLine(),
-                new PageLink(() => new IRenderable[]
+                new TextBlock(() => new IRenderable[]
+                {
+                    "Text block".AsContent(),
+                }),
+                new VerticalLine(),
+                new HeaderLink(() => new IRenderable[]
                 {
                     "Google".AsContent(),
-                }, new PageLink.Spec(() => "https://google.com") {IsHighlighted = Always.True}),
-                new VerticalLine(),
-                new PageLink(() => new IRenderable[]
-                {
-                    "Google".AsContent(),
-                }, new PageLink.Spec(() => "https://google.com")),
-                new VerticalLine(),
-                new PageLink(() => new IRenderable[]
-                {
-                    "Google".AsContent(),
-                }, new PageLink.Spec(() => "https://google.com")),
+                }, () => "https://google.com"),
                 new VerticalLine(),
                 new Dropdown
                 (
                     () => new IRenderable[]
                     {
-                        new PageLink(() => new IRenderable[]
+                        new HeaderLink(() => new IRenderable[]
                         {
                             "Dropdown 1".AsContent(),
                             new BootstrapIcon("chevron-down"),
-                        }, new PageLink.Spec(() => "/elements")),
+                        }, () => "/elements"),
                     },
                     () => new IRenderable[]
                     {
-                        new TextBlock(() => new IRenderable[] {"Content".AsContent()}),
+                        new TextBlock(() => new IRenderable[] { "Content".AsContent() }),
                         new HorizontalLine(),
-                        new TextBlock(() => new IRenderable[] {"Content 2".AsContent()}),
+                        new TextBlock(() => new IRenderable[] { "Content 2".AsContent() }),
                     }
                 ),
             });

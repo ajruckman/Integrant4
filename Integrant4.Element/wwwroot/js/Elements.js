@@ -74,7 +74,7 @@ window.I4.Element.InitDropdown = window.I4.Element.InitDropdown || function (hea
 
 //
 
-window.I4.Element.HighlightPageLink = window.I4.Element.HighlightPageLink || function (id, highlighted) {
+window.I4.Element.HighlightHeaderLink = window.I4.Element.HighlightHeaderLink || function (id, highlighted) {
     const el = document.getElementById(id);
     if (el == null) return;
 

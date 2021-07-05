@@ -12,17 +12,10 @@ namespace Integrant4.Element.Bits
 {
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-    public partial class PageLink : BitBase
+    public partial class HeaderLink : BitBase
     {
         public class Spec
         {
-            public Spec(Callbacks.HREF href)
-            {
-                HREF = href;
-            }
-
-            public Callbacks.HREF HREF { get; }
-
             public Callbacks.Callback<bool>? IsTitle       { get; init; }
             public Callbacks.Callback<bool>? IsHighlighted { get; init; }
 
@@ -38,7 +31,6 @@ namespace Integrant4.Element.Bits
             {
                 IsVisible  = IsVisible,
                 IsDisabled = IsDisabled,
-                HREF       = HREF,
                 Classes    = Classes,
                 Margin     = Margin,
                 Padding    = Padding,
@@ -48,25 +40,29 @@ namespace Integrant4.Element.Bits
         }
     }
 
-    public partial class PageLink
+    public partial class HeaderLink
     {
         private readonly DynamicContents           _contents;
+        private readonly Callbacks.HREF            _href;
         private readonly Callbacks.Callback<bool>? _isTitle;
         private readonly Callbacks.Callback<bool>? _isHighlighted;
         private readonly bool                      _doAutoHighlight;
 
         private bool? _isCurrentPage;
 
-        public PageLink(DynamicContent content, Spec spec)
-            : this(content.AsDynamicContents(), spec) { }
+        public HeaderLink(DynamicContent content, Callbacks.HREF href, Spec? spec = null)
+            : this(content.AsDynamicContents(), href, spec)
+        {
+        }
 
-        public PageLink(DynamicContents contents, Spec spec)
-            : base(spec.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(PageLink)))
+        public HeaderLink(DynamicContents contents, Callbacks.HREF href, Spec? spec = null)
+            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(HeaderLink)))
         {
             _contents = contents;
-            _isTitle  = spec.IsTitle;
+            _href     = href;
+            _isTitle  = spec?.IsTitle;
 
-            if (spec.IsHighlighted == null)
+            if (spec?.IsHighlighted == null)
             {
                 _isHighlighted   = () => _isCurrentPage == true;
                 _doAutoHighlight = true;
@@ -79,35 +75,35 @@ namespace Integrant4.Element.Bits
         }
     }
 
-    public partial class PageLink
+    public partial class HeaderLink
     {
         public override RenderFragment Renderer() => builder =>
         {
             builder.OpenComponent<Component>(0);
-            builder.AddAttribute(1, "PageLink", this);
+            builder.AddAttribute(1, "HeaderLink", this);
             builder.CloseComponent();
         };
 
         private async Task CheckPage(IJSRuntime jsRuntime, NavigationManager navMgr, ElementService elementService)
         {
             string currentURL = "/" + navMgr.ToBaseRelativePath(navMgr.Uri);
-            string href       = BaseSpec.HREF!.Invoke();
+            string href       = _href.Invoke();
 
             bool isCurrentPage = currentURL == href;
 
             if (isCurrentPage != _isCurrentPage)
             {
                 _isCurrentPage = isCurrentPage;
-                await Interop.HighlightPageLink(jsRuntime, elementService.CancellationToken, ID, isCurrentPage);
+                await Interop.HighlightHeaderLink(jsRuntime, elementService.CancellationToken, ID, isCurrentPage);
             }
         }
     }
 
-    public partial class PageLink
+    public partial class HeaderLink
     {
         private class Component : ComponentBase
         {
-            [Parameter] public PageLink PageLink { get; set; } = null!;
+            [Parameter] public HeaderLink HeaderLink { get; set; } = null!;
 
             [Inject] public IJSRuntime        JSRuntime         { get; set; } = null!;
             [Inject] public NavigationManager NavigationManager { get; set; } = null!;
@@ -115,53 +111,43 @@ namespace Integrant4.Element.Bits
 
             protected override void BuildRenderTree(RenderTreeBuilder builder)
             {
-                IRenderable[] contents = PageLink._contents.Invoke().ToArray();
+                IRenderable[] contents = HeaderLink._contents.Invoke().ToArray();
 
                 List<string> ac = new();
 
-                if (PageLink._isTitle?.Invoke() == true)
-                    ac.Add("I4E-Bit-PageLink--Title");
+                if (HeaderLink._isTitle?.Invoke() == true)
+                    ac.Add("I4E-Bit-HeaderLink--Title");
 
-                if (PageLink._isHighlighted?.Invoke() == true)
-                    ac.Add("I4E-Bit-PageLink--Highlighted");
+                if (HeaderLink._isHighlighted?.Invoke() == true)
+                    ac.Add("I4E-Bit-HeaderLink--Highlighted");
 
                 //
 
                 int seq = -1;
                 builder.OpenElement(++seq, "a");
-                builder.AddAttribute(++seq, "href", PageLink.BaseSpec.HREF!.Invoke());
+                builder.AddAttribute(++seq, "href", HeaderLink._href.Invoke());
 
-                BitBuilder.ApplyAttributes(PageLink, builder, ref seq, ac.ToArray(), null);
+                BitBuilder.ApplyAttributes(HeaderLink, builder, ref seq, ac.ToArray(), null);
 
                 foreach (IRenderable renderable in contents)
                 {
                     builder.OpenElement(++seq, "span");
-                    builder.AddAttribute(++seq, "class", "I4E-Bit-PageLink-Content");
+                    builder.AddAttribute(++seq, "class", "I4E-Bit-HeaderLink-Content");
                     builder.AddContent(++seq, renderable.Renderer());
                     builder.CloseElement();
                 }
 
                 builder.CloseElement();
-
-                // if (PageLink._doAutoHighlight)
-                // {
-                //     ServiceInjector<IJSRuntime>.Inject(builder, ref seq, v => _jsRuntime = v);
-                //     ServiceInjector<NavigationManager>.Inject(builder, ref seq, v =>
-                //     {
-                //         _navMgr                 =  v;
-                //         _navMgr.LocationChanged += async (_, _) => await CheckPage();
-                //     });
-                // }
             }
 
             protected override async Task OnAfterRenderAsync(bool firstRender)
             {
-                if (!firstRender || !PageLink._doAutoHighlight) return;
+                if (!firstRender || !HeaderLink._doAutoHighlight) return;
 
                 NavigationManager.LocationChanged +=
-                    async (_, _) => await PageLink.CheckPage(JSRuntime, NavigationManager, ElementService);
+                    async (_, _) => await HeaderLink.CheckPage(JSRuntime, NavigationManager, ElementService);
 
-                await PageLink.CheckPage(JSRuntime, NavigationManager, ElementService);
+                await HeaderLink.CheckPage(JSRuntime, NavigationManager, ElementService);
             }
         }
     }

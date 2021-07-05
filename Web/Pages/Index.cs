@@ -77,10 +77,10 @@ namespace Web.Pages
 
             _header = new Header(() => new IRenderable[]
             {
-                new PageLink(() => "Secondary header".AsContent(),
-                    new PageLink.Spec(() => "/elements") { IsTitle = Always.True }),
+                new HeaderLink(() => "Secondary header".AsContent(),
+                    () => "/elements", new HeaderLink.Spec { IsTitle = Always.True }),
                 new Filler(),
-                new PageLink(() => "Normal link".AsContent(), new PageLink.Spec(() => "/elements")),
+                new HeaderLink(() => "Normal link".AsContent(), () => "/elements"),
             }, Header.Style.Secondary);
 
             _overallValidationView = new ValidationView();

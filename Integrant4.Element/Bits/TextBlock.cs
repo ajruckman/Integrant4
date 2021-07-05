@@ -107,15 +107,15 @@ namespace Integrant4.Element.Bits
 
     public partial class TextBlock
     {
-        public static readonly Spec SecondaryHeaderStyle;
-
-        static TextBlock()
-        {
-            SecondaryHeaderStyle = new Spec
-            {
-                FontWeight = () => FontWeight.SemiBold,
-                FontSize   = () => 1.2,
-            };
-        }
+        // public static readonly Spec SecondaryHeaderStyle;
+        //
+        // static TextBlock()
+        // {
+        //     SecondaryHeaderStyle = new Spec
+        //     {
+        //         FontWeight = () => FontWeight.SemiBold,
+        //         FontSize   = () => 1.2,
+        //     };
+        // }
     }
 }

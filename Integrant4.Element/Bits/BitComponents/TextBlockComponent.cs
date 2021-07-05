@@ -14,25 +14,18 @@ namespace Integrant4.Element.Bits.BitComponents
         [Parameter] public Display?    Display    { get; set; }
         [Parameter] public Tooltip?    Tooltip    { get; set; }
 
-        [Parameter] public bool ForSecondaryHeader { get; set; }
-
         [Parameter] public RenderFragment ChildContent { get; set; } = null!;
 
         protected override void OnParametersSet()
         {
-            TextBlock.Spec spec;
-
-            if (ForSecondaryHeader)
-                spec = TextBlock.SecondaryHeaderStyle;
-            else
-                spec = new TextBlock.Spec
-                {
-                    FontSize   = FontSize   != null ? () => FontSize.Value : null,
-                    FontWeight = FontWeight != null ? () => FontWeight.Value : null,
-                    TextAlign  = TextAlign  != null ? () => TextAlign.Value : null,
-                    Display    = Display    != null ? () => Display.Value : null,
-                    Tooltip    = Tooltip    != null ? () => Tooltip.Value : null,
-                };
+            TextBlock.Spec spec = new()
+            {
+                FontSize   = FontSize   != null ? () => FontSize.Value : null,
+                FontWeight = FontWeight != null ? () => FontWeight.Value : null,
+                TextAlign  = TextAlign  != null ? () => TextAlign.Value : null,
+                Display    = Display    != null ? () => Display.Value : null,
+                Tooltip    = Tooltip    != null ? () => Tooltip.Value : null,
+            };
 
             _textBlock = new TextBlock(ChildContent.AsDynamicContent(), spec);
         }

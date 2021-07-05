@@ -32,12 +32,12 @@ namespace Integrant4.Element
             }
         }
 
-        public static async Task HighlightPageLink
+        public static async Task HighlightHeaderLink
             (IJSRuntime jsRuntime, CancellationToken token, string id, bool highlighted)
         {
             try
             {
-                await jsRuntime.InvokeVoidAsync("I4.Element.HighlightPageLink", token, id, highlighted);
+                await jsRuntime.InvokeVoidAsync("I4.Element.HighlightHeaderLink", token, id, highlighted);
             }
             catch (TaskCanceledException)
             {
