@@ -1,16 +1,9 @@
-﻿using System.Threading.Tasks;
-using Integrant4.Element.Bits;
-using Integrant4.Resources.Icons;
-using Integrant4.Structurant;
-
-namespace Program
+﻿namespace Program
 {
     internal static class Program
     {
         private static void Main()
         {
-            new Button(() => new BootstrapIcon("arrow-right"));
-
             RunColorant.Run();
             return;
 
@@ -19,31 +12,31 @@ namespace Program
             // dogExpression = _ => d.Age;
             // Console.WriteLine(dogExpression.Body);
 
-            Structure<Dog, DogState> structure = new(async inst =>
-            {
-                string nameFirst = inst.GetTyped<string>(nameof(Dog.NameFirst)).Value();
-                string nameLast  = inst.GetTyped<string>(nameof(Dog.NameLast)).Value();
-                int    age       = inst.GetTyped<int>(nameof(Dog.Age)).Value();
-
-                return new Dog(nameFirst, nameLast, age);
-            });
-
-            // structure.Register<string>(new Member<Dog, DogState, string>
-            //     (
-            //     nameof(Dog.NameFirst),
-            //     : inst => new TextInput
-            //     (
-            //         inst.StructureInstance.JSRuntime!,
-            //         inst.Value,
-            //         () => false,
-            //         () => false
-            //     ))
-            // );
-            // structure.Register<string>(nameof(Dog.NameLast));
-
-            StructureInstance<Dog, DogState> structureInstance = structure.Instantiate(new DogState(), null!);
-
-            structureInstance.Construct();
+            // Structure<Dog, DogState> structure = new(async inst =>
+            // {
+            //     string nameFirst = inst.GetTyped<string>(nameof(Dog.NameFirst)).Value();
+            //     string nameLast  = inst.GetTyped<string>(nameof(Dog.NameLast)).Value();
+            //     int    age       = inst.GetTyped<int>(nameof(Dog.Age)).Value();
+            //
+            //     return new Dog(nameFirst, nameLast, age);
+            // });
+            //
+            // // structure.Register<string>(new Member<Dog, DogState, string>
+            // //     (
+            // //     nameof(Dog.NameFirst),
+            // //     : inst => new TextInput
+            // //     (
+            // //         inst.StructureInstance.JSRuntime!,
+            // //         inst.Value,
+            // //         () => false,
+            // //         () => false
+            // //     ))
+            // // );
+            // // structure.Register<string>(nameof(Dog.NameLast));
+            //
+            // StructureInstance<Dog, DogState> structureInstance = structure.Instantiate(new DogState(), null!);
+            //
+            // structureInstance.Construct();
         }
     }
 

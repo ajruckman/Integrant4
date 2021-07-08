@@ -35,4 +35,15 @@
       <ProjectReference Include="..\Integrant4.Fundament\Integrant4.Fundament.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\css\Default\Dark.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\css\Default\Matrix.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\css\Default\Pink.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\css\Default\White.css" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Themes" />
+    </ItemGroup>
+
 </Project>

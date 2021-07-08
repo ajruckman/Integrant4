@@ -48,6 +48,7 @@
 div.I4E-Input-Checkbox, div.I4E-Input-Date, div.I4E-Input-Decimal, div.I4E-Input-Integer, div.I4E-Input-Text, div.I4E-Input-TextArea, div.I4E-Input-Time {
     input, textarea {
         padding: calc(1em * (4 / 15)) calc(1em * (6 / 15));
+        white-space: pre-wrap;
 
         &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
             color: green !important;

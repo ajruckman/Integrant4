@@ -55,6 +55,31 @@ div.I4E-Layout-Panel {
     }
 }
 
+div.I4E-Layout-Row {
+    display: flex;
+
+    &--Wrap {
+        flex-wrap: wrap;
+    }
+
+    &--JustifyCenter {
+        justify-content: center;
+    }
+}
+
+div.I4E-Layout-Column {
+    display: flex;
+    flex-direction: column;
+
+    &--Wrap {
+        flex-wrap: wrap;
+    }
+
+    &--JustifyCenter {
+        justify-content: center;
+    }
+}
+
 div.I4E-Layout-VAlign {
     align-items: center;
     display: flex;

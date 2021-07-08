@@ -196,6 +196,21 @@ div.I4E-Layout-Panel {
     div.I4E-Layout-Panel--Contracted:not(.I4E-Layout-Panel--NoBorder) > div.I4E-Bit-Header {
       border-bottom: 1px solid var(--I4C_Default_Border_6); }
 
+div.I4E-Layout-Row {
+  display: flex; }
+  div.I4E-Layout-Row--Wrap {
+    flex-wrap: wrap; }
+  div.I4E-Layout-Row--JustifyCenter {
+    justify-content: center; }
+
+div.I4E-Layout-Column {
+  display: flex;
+  flex-direction: column; }
+  div.I4E-Layout-Column--Wrap {
+    flex-wrap: wrap; }
+  div.I4E-Layout-Column--JustifyCenter {
+    justify-content: center; }
+
 div.I4E-Layout-VAlign {
   align-items: center;
   display: flex; }

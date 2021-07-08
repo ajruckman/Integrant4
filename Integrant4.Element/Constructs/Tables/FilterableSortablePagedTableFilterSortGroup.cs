@@ -1,4 +1,4 @@
-using Integrant4.Colorant.Themes.Default;
+using Integrant4.Colorant.Themes.Main;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 

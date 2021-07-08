@@ -1,4 +1,4 @@
-namespace Integrant4.Colorant.Themes.Default
+namespace Integrant4.Colorant.Themes.Main
 {
     public enum Variants
     {

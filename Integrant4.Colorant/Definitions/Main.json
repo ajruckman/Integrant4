@@ -1,5 +1,5 @@
 {
-    "Name":     "Default",
+    "Name":     "Main",
     "Blocks":   [
         {
             "Name":                       "Background",
@@ -119,8 +119,8 @@
                     "14": "hsla(259, 12.5%, 24%, 0.95)"
                 },
                 "Alias":        {
-                    "PageBackground": "var(--I4C_Default_Background_3)",
-                    "PageText":       "var(--I4C_Default_Text_6)"
+                    "PageBackground": "var(--I4C-Default-Background-3)",
+                    "PageText":       "var(--I4C-Default-Text-6)"
                 }
             },
             "BlockColorsRange":      {
@@ -274,8 +274,8 @@
                     "14": "hsla(210, 25%, 24%, 0.95)"
                 },
                 "Alias":        {
-                    "PageBackground": "var(--I4C_Default_Background_2)",
-                    "PageText":       "var(--I4C_Default_Text_6)"
+                    "PageBackground": "var(--I4C-Default-Background-2)",
+                    "PageText":       "var(--I4C-Default-Text-6)"
                 }
             },
             "BlockColorsRange":      {
@@ -428,8 +428,8 @@
                     "14": "hsla(259, 12.5%, 24%, 0.95)"
                 },
                 "Alias":        {
-                    "PageBackground": "var(--I4C_Default_Background_3)",
-                    "PageText":       "var(--I4C_Default_Text_6)"
+                    "PageBackground": "var(--I4C-Default-Background-3)",
+                    "PageText":       "var(--I4C-Default-Text-6)"
                 }
             },
             "BlockColorsRange":      {
@@ -582,8 +582,8 @@
                     "14": "hsla(328, 25%, 24%, 0.95)"
                 },
                 "Alias":        {
-                    "PageBackground": "var(--I4C_Default_Background_2)",
-                    "PageText":       "var(--I4C_Default_Text_6)"
+                    "PageBackground": "var(--I4C-Default-Background-2)",
+                    "PageText":       "var(--I4C-Default-Text-6)"
                 }
             },
             "BlockColorsRange":      {

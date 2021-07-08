@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Integrant4.API;
-using Integrant4.Colorant.Themes.Default;
+using Integrant4.Colorant.Themes.Main;
 using Integrant4.Element.Constructs;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;

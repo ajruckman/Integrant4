@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Integrant4.API;
 using Integrant4.Colorant;
-using Integrant4.Colorant.Themes.Default;
+using Integrant4.Colorant.Themes.Main;
 using Integrant4.Element;
 using Integrant4.Element.Bits;
 using Integrant4.Element.Bits.BitPresets;
