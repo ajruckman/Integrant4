@@ -1,0 +1,52 @@
+@page "/markdown-editors"
+@using Integrant4.Element.Constructs.MarkdownEditor
+@using Integrant4.Element
+
+@code {
+
+    private MarkdownEditor _editor1;
+    private MarkdownEditor _editor2;
+
+    private double _editor2Height = 300;
+    private bool _editor2Visible = true;
+
+    [Inject]
+    public IJSRuntime JSRuntime { get; set; } = null!;
+
+    protected override void OnInitialized()
+    {
+        _editor1 = new MarkdownEditor(JSRuntime);
+        _editor2 = new MarkdownEditor(JSRuntime, new MarkdownEditor.Spec
+        {
+            IsVisible = () => _editor2Visible,
+            Height = () => _editor2Height,
+        });
+
+        _editor1.OnChange += v => Console.WriteLine($"1: {v}");
+        _editor2.OnChange += v => Console.WriteLine($"2: {v}");
+    }
+
+    private void SetHeight(double h)
+    {
+        _editor2Height = h;
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void SetVisible(bool visible)
+    {
+        _editor2Visible = visible;
+        InvokeAsync(StateHasChanged);
+    }
+
+}
+
+<button @onclick="@(() => SetHeight(300))">300</button>
+<button @onclick="@(() => SetHeight(500))">500</button>
+<button @onclick="@(() => SetHeight(100))">100</button>
+<button @onclick="@(() => SetVisible(true))">Show</button>
+<button @onclick="@(() => SetVisible(false))">Hide</button>
+
+<br>
+
+@_editor1.Renderer()
+@_editor2.Renderer()

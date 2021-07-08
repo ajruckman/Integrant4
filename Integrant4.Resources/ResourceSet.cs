@@ -129,6 +129,20 @@ namespace Integrant4.Resources
                     Popper,
                 }
             );
+
+            public static readonly ResourceSet TUIEditor = new
+            (
+                $"{nameof(Integrant4)}.{nameof(Resources)}",
+                $"{nameof(Libraries)}.{nameof(TUIEditor)}",
+                stylesheetsInternal: new HashSet<string>
+                {
+                    "Libraries/TUIEditor/toastui-editor.min.css",
+                },
+                scriptsInternal: new HashSet<string>
+                {
+                    "Libraries/TUIEditor/toastui-editor-all.min.js",
+                }
+            );
         }
     }
 }

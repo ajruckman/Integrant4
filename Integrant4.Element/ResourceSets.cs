@@ -26,6 +26,7 @@ namespace Integrant4.Element
                 // Resources.Resources.Libraries.MiniBar,
                 // Resources.Resources.Libraries.SimpleBar,
                 Resources.Resources.Libraries.OverlayScrollbars,
+                Resources.Resources.Libraries.TUIEditor,
             },
             stylesheetsInternal: new HashSet<string>
             {
@@ -34,6 +35,7 @@ namespace Integrant4.Element
             scriptsInternal: new HashSet<string>
             {
                 "js/Constructs.js",
+                "js/MarkdownEditor.js",
             }
         );
 
