@@ -23,21 +23,6 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
             _jsRuntime = jsRuntime;
             _spec      = spec;
         }
-
-        public event Action<string?>? OnChange;
-
-        public async Task GetValue()
-        {
-        }
-
-        public async Task SetValue(string? value)
-        {
-        }
-
-        public async Task Reset()
-        {
-            _spec?.InitialValue?.Invoke();
-        }
     }
 
     public partial class MarkdownEditor
@@ -57,6 +42,9 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
                 builder.OpenElement(++seq, "section");
                 builder.AddAttribute(++seq, "hidden", _spec?.IsVisible?.Invoke() == false);
                 builder.AddAttribute(++seq, "class", classes.ToString());
+                builder.AddAttribute(++seq, "style", _spec?.Width != null
+                    ? $"max-width: {_spec.Width.Invoke()}px"
+                    : null);
                 builder.OpenElement(++seq, "div");
                 builder.AddElementReferenceCapture(++seq, r => _elemRef = r);
                 builder.CloseElement();
@@ -100,7 +88,7 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
                 }
                 else
                 {
-                    if (_state?.Equals(newState) != true)
+                    if (_state!.Equals(newState) != true)
                     {
                         await _editor!.InvokeVoidAsync
                         (
@@ -119,10 +107,32 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
 
     public partial class MarkdownEditor
     {
+        public event Action<string?>? OnChange;
+
+        private string? _value;
+
         [JSInvokable]
         public void Change(string markdown)
         {
+            _value = markdown;
             OnChange?.Invoke(markdown.CoalesceAndTrim());
+        }
+
+        public Task<string?> GetValue()
+        {
+            return Task.FromResult(_value);
+        }
+
+        public async Task SetValue(string? value)
+        {
+            if (_editor == null) throw new Exception("Attempted to use SetValue() on uninitialized MarkdownEditor.");
+            await _editor.InvokeVoidAsync("I4ESetValue", (_value = value) ?? "");
+        }
+
+        public async Task Reset()
+        {
+            if (_editor == null) throw new Exception("Attempted to use Reset() on uninitialized MarkdownEditor.");
+            await _editor.InvokeVoidAsync("I4ESetValue", _value = _spec?.InitialValue?.Invoke());
         }
     }
 
