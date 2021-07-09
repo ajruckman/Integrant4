@@ -81,11 +81,11 @@
                     max-width: 100%;
 
                     &:not([Fallback]) {
-                        border: 2px solid var(--I4C_Default_Border_3);
+                        border: 2px solid var(--I4C-Main-Border-3);
                     }
 
                     &[Fallback] {
-                        color: var(--I4C_Default_Text_6);
+                        color: var(--I4C-Main-Text-6);
                         height: 64px;
                         width: 64px;
                     }
@@ -126,7 +126,7 @@
             width: 100%;
 
             div.I4E-Construct-FileUploader-PlaceholderContent, div.I4E-Construct-FileUploader-SizeLimitContent {
-                color: var(--I4C_Default_Text_3);
+                color: var(--I4C-Main-Text-3);
                 font-style: italic;
                 font-weight: 600;
             }
@@ -143,30 +143,30 @@
 div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
         div.I4E-Construct-FileUploader {
-            background-color: var(--I4C_Default_Background_4);
-            border: 1px solid var(--I4C_Default_Border_5);
-            box-shadow: inset var(--I4C_Default_Shadow_0);
+            background-color: var(--I4C-Main-Background-4);
+            border: 1px solid var(--I4C-Main-Border-5);
+            box-shadow: inset var(--I4C-Main-Shadow-0);
 
             div.I4E-Construct-FileUploader-Region {
                 div.I4E-Construct-FileUploader-File img {
                     &:not([Fallback]) {
-                        box-shadow: var(--I4C_Default_Shadow_1);
+                        box-shadow: var(--I4C-Main-Shadow-1);
                     }
                 }
             }
 
             div.I4E-Construct-FileUploader-DropIndicator {
-                background-color: var(--I4C_Default_Background_7);
-                border-color: var(--I4C_Default_Border_7);
+                background-color: var(--I4C-Main-Background-7);
+                border-color: var(--I4C-Main-Border-7);
             }
         }
     }
 
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
         div.I4E-Construct-FileUploader {
-            background-color: var(--I4C_Default_Background_2);
-            border: 1px solid var(--I4C_Default_Border_5);
-            box-shadow: inset var(--I4C_Default_Shadow_0);
+            background-color: var(--I4C-Main-Background-2);
+            border: 1px solid var(--I4C-Main-Border-5);
+            box-shadow: inset var(--I4C-Main-Shadow-0);
 
             div.I4E-Construct-FileUploader-Region {
                 div.I4E-Construct-FileUploader-File img {
@@ -175,7 +175,7 @@ div.I4-App {
 
             div.I4E-Construct-FileUploader-DropIndicator {
                 background-color: white;
-                border-color: var(--I4C_Default_Border_10);
+                border-color: var(--I4C-Main-Border-10);
             }
         }
     }

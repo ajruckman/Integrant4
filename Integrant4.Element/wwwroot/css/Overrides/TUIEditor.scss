@@ -1,0 +1,264 @@
+div.toastui-editor-defaultUI {
+    border-color: var(--I4E-TUIEditor-OuterBorder);
+    border-radius: 7px;
+    overflow: hidden;
+
+    div.tab-item {
+        background-color: purple;
+        border-color: var(--I4E-TUIEditor-InnerBorder);
+        color: orange;
+        height: 20px;
+        line-height: 20px;
+
+        &.active {
+            background-color: mediumpurple;
+            border-color: var(--I4E-TUIEditor-InnerBorder);
+            color: maroon;
+        }
+    }
+
+    div.toastui-editor-popup {
+        background-color: var(--I4E-TUIEditor-PopupBackground);
+        border-color: var(--I4E-TUIEditor-PopupBorder);
+        border-radius: 5px;
+        box-shadow: var(--I4C-Main-Shadow-1);
+
+        ul li:hover {
+            background-color: var(--I4C-Main-Opaque-White-4);
+        }
+    }
+
+    //
+
+    div.toastui-editor-toolbar {
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+        overflow: hidden;
+
+        div.toastui-editor-md-tab-container {
+            background-color: var(--I4E-TUIEditor-HeaderBackground);
+            border-bottom-color: var(--I4E-TUIEditor-InnerBorder);
+        }
+
+        div.toastui-editor-defaultUI-toolbar {
+            background-color: var(--I4E-TUIEditor-HeaderBackground);
+            border-bottom-color: var(--I4E-TUIEditor-InnerBorder);
+
+            button.toastui-editor-toolbar-icons {
+                border-color: red;
+
+                &[disabled] {
+                    cursor: not-allowed;
+                }
+
+                &:not([disabled]):hover {
+                    background-color: grey;
+                }
+            }
+
+            div.toastui-editor-toolbar-divider {
+                background-color: red;
+            }
+        }
+    }
+
+    //
+
+    div.toastui-editor-main {
+        div.toastui-editor-md-container {
+            background-color: var(--I4E-InputBase-Background-Focus);
+
+            div.toastui-editor-md-splitter {
+                background-color: red;
+            }
+        }
+
+        div.toastui-editor-ww-container {
+            background-color: var(--I4E-InputBase-Background-Focus);
+        }
+
+        div.toastui-editor-md-container, div.toastui-editor-ww-container {
+            div.ProseMirror {
+                color: var(--I4C-Main-Text-6);
+                font-family: var(--I4R-SansSerifFont);
+
+                .toastui-editor-md-code, .toastui-editor-md-code-block {
+                    background-color: var(--I4C-Main-Opaque-White-4);
+                    color: var(--I4C-Main-Text-6);
+
+                    font-family: var(--I4R-MonoFont);
+                }
+
+                .toastui-editor-md-code-block-line-background {
+                    background-color: var(--I4C-Main-Opaque-White-4);
+                    padding: 0 3px;
+
+                    .toastui-editor-md-code, .toastui-editor-md-code-block {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+
+    //
+
+    div.toastui-editor-mode-switch {
+        background-color: var(--I4E-TUIEditor-HeaderBackground);
+        border-bottom-left-radius: 7px;
+        overflow: hidden;
+
+        border-bottom-right-radius: 7px;
+        border-top-color: var(--I4E-TUIEditor-InnerBorder);
+    }
+}
+
+//div.toastui-editor-defaultUI {
+//    border-color: blue;
+//
+//    div.tab-item {
+//        background-color: purple;
+//        border-color: blue;
+//        color: orange;
+//
+//        &.active {
+//            border-color: blue;
+//            background-color: mediumpurple;
+//            color: maroon;
+//        }
+//    }
+//
+//    //
+//
+//    div.toastui-editor-toolbar {
+//        div.toastui-editor-md-tab-container {
+//            background-color: green;
+//            border-color: blue;
+//        }
+//
+//        div.toastui-editor-defaultUI-toolbar {
+//            background-color: green;
+//            border-color: blue;
+//
+//            button.toastui-editor-toolbar-icons {
+//                border-color: red;
+//
+//                &:hover {
+//                    background-color: grey;
+//                }
+//            }
+//
+//            div.toastui-editor-toolbar-divider {
+//                background-color: red;
+//            }
+//        }
+//    }
+//
+//    //
+//
+//    div.toastui-editor-main {
+//        div.toastui-editor-md-container {
+//            background-color: grey;
+//
+//            div.toastui-editor-md-splitter {
+//                background-color: red;
+//            }
+//        }
+//
+//        div.toastui-editor-ww-container {
+//            background-color: grey;
+//        }
+//    }
+//
+//    //
+//
+//    div.toastui-editor-mode-switch {
+//        background-color: green;
+//        border-color: blue;
+//    }
+//}
+
+// Variable colors
+
+div.I4-App {
+    &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
+        --I4E-TUIEditor-HeaderBackground: var(--I4C-Main-Background-7);
+        --I4E-TUIEditor-InnerBorder: var(--I4C-Main-Border-6);
+        --I4E-TUIEditor-OuterBorder: var(--I4C-Main-Border-11);
+        --I4E-TUIEditor-PopupBackground: var(--I4C-Main-Background-8);
+        --I4E-TUIEditor-PopupBorder: var(--I4C-Main-Border-11);
+
+        //div.toastui-editor-defaultUI {
+        //    border-color: blue;
+        //
+        //    div.tab-item {
+        //        background-color: purple;
+        //        border-color: blue;
+        //        color: orange;
+        //
+        //        &.active {
+        //            border-color: blue;
+        //            background-color: mediumpurple;
+        //            color: maroon;
+        //        }
+        //    }
+        //
+        //    //
+        //
+        //    div.toastui-editor-toolbar {
+        //        div.toastui-editor-md-tab-container {
+        //            background-color: green;
+        //            border-color: blue;
+        //        }
+        //
+        //        div.toastui-editor-defaultUI-toolbar {
+        //            background-color: green;
+        //            border-color: blue;
+        //
+        //            button.toastui-editor-toolbar-icons {
+        //                border-color: red;
+        //
+        //                &:hover {
+        //                    background-color: grey;
+        //                }
+        //            }
+        //
+        //            div.toastui-editor-toolbar-divider {
+        //                background-color: red;
+        //            }
+        //        }
+        //    }
+        //
+        //    //
+        //
+        //    div.toastui-editor-main {
+        //        div.toastui-editor-md-container {
+        //            background-color: grey;
+        //
+        //            div.toastui-editor-md-splitter {
+        //                background-color: red;
+        //            }
+        //        }
+        //
+        //        div.toastui-editor-ww-container {
+        //            background-color: grey;
+        //        }
+        //    }
+        //
+        //    //
+        //
+        //    div.toastui-editor-mode-switch {
+        //        background-color: green;
+        //        border-color: blue;
+        //    }
+        //}
+    }
+
+    &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
+        --I4E-TUIEditor-HeaderBackground: var(--I4C-Main-Background-4);
+        --I4E-TUIEditor-InnerBorder: var(--I4C-Main-Border-6);
+        --I4E-TUIEditor-OuterBorder: var(--I4C-Main-Border-5);
+        --I4E-TUIEditor-PopupBackground: var(--I4C-Main-Background-0);
+        --I4E-TUIEditor-PopupBorder: var(--I4C-Main-Border-11);
+    }
+}

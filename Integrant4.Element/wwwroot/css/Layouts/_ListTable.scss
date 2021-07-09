@@ -1,6 +1,6 @@
 div.I4E-Layout-ListTable {
     border-radius: 4px;
-    box-shadow: var(--I4C_Default_Shadow_1);
+    box-shadow: var(--I4C-Main-Shadow-1);
     overflow: hidden;
 
     &--WithPadding {
@@ -8,18 +8,18 @@ div.I4E-Layout-ListTable {
     }
 
     &:not(&--NoBorder) {
-        border: 1px solid var(--I4C_Default_Border_11);
+        border: 1px solid var(--I4C-Main-Border-11);
     }
 
     &.BorderedHeaderCells {
         table.I4E-Layout-ListTable-Inner thead tr th:not(:first-child) {
-            border-left: 1px solid var(--I4C_Default_Border_4);
+            border-left: 1px solid var(--I4C-Main-Border-4);
         }
     }
 
     &.BorderedBodyCells {
         table.I4E-Layout-ListTable-Inner tbody tr td:not(:first-child) {
-            border-left: 1px solid var(--I4C_Default_Border_4);
+            border-left: 1px solid var(--I4C-Main-Border-4);
         }
     }
 
@@ -34,8 +34,8 @@ div.I4E-Layout-ListTable {
 
             tr {
                 th {
-                    border-bottom: 1px solid var(--I4C_Default_Border_11);
-                    color: var(--I4C_Default_Text_4);
+                    border-bottom: 1px solid var(--I4C-Main-Border-11);
+                    color: var(--I4C-Main-Text-4);
                     font-weight: 600;
                     position: relative;
 
@@ -91,14 +91,14 @@ div.I4E-Layout-ListTable {
                     }
 
                     &.Empty {
-                        color: var(--I4C_Default_Text_2);
+                        color: var(--I4C-Main-Text-2);
                         font-style: italic;
                         font-weight: 500;
                         text-align: center;
                     }
 
                     &.Mono {
-                        font-family: var(--I4R_MonoFont);
+                        font-family: var(--I4R-MonoFont);
                     }
 
                     &.PreWrap {
@@ -117,9 +117,9 @@ div.I4E-Layout-ListTable {
         tfoot {
             tr {
                 td {
-                    background-color: var(--I4C_Default_Background_7);
-                    border-top: 1px solid var(--I4C_Default_Border_11);
-                    color: var(--I4C_Default_Text_4);
+                    background-color: var(--I4C-Main-Background-7);
+                    border-top: 1px solid var(--I4C-Main-Border-11);
+                    color: var(--I4C-Main-Text-4);
                     font-weight: 600;
 
                     &.AlignLeft {
@@ -155,22 +155,22 @@ div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr {
     &:not(.Green):not(.Red) {
         &:nth-child(even) {
             td {
-                background-color: var(--I4C_Default_TableRow_0);
+                background-color: var(--I4C-Main-TableRow-0);
             }
 
             &:hover td {
-                background-color: var(--I4C_Default_TableRow_2);
+                background-color: var(--I4C-Main-TableRow-2);
             }
         }
 
         &:nth-child(odd) {
             td {
-                background-color: var(--I4C_Default_TableRow_1);
+                background-color: var(--I4C-Main-TableRow-1);
 
             }
 
             &:hover td {
-                background-color: var(--I4C_Default_TableRow_3);
+                background-color: var(--I4C-Main-TableRow-3);
 
             }
         }
@@ -179,22 +179,22 @@ div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr {
     &.Green {
         &:nth-child(even) {
             td {
-                background-color: var(--I4C_Default_TableRow_Green_0);
+                background-color: var(--I4C-Main-TableRow-Green-0);
             }
 
             &:hover td {
-                background-color: var(--I4C_Default_TableRow_Green_2);
+                background-color: var(--I4C-Main-TableRow-Green-2);
             }
         }
 
         &:nth-child(odd) {
             td {
-                background-color: var(--I4C_Default_TableRow_Green_1);
+                background-color: var(--I4C-Main-TableRow-Green-1);
 
             }
 
             &:hover td {
-                background-color: var(--I4C_Default_TableRow_Green_3);
+                background-color: var(--I4C-Main-TableRow-Green-3);
 
             }
         }
@@ -203,22 +203,22 @@ div.I4E-Layout-ListTable:not(.StripeInterval2) tbody tr {
     &.Red {
         &:nth-child(even) {
             td {
-                background-color: var(--I4C_Default_TableRow_Red_0);
+                background-color: var(--I4C-Main-TableRow-Red-0);
             }
 
             &:hover td {
-                background-color: var(--I4C_Default_TableRow_Red_2);
+                background-color: var(--I4C-Main-TableRow-Red-2);
             }
         }
 
         &:nth-child(odd) {
             td {
-                background-color: var(--I4C_Default_TableRow_Red_1);
+                background-color: var(--I4C-Main-TableRow-Red-1);
 
             }
 
             &:hover td {
-                background-color: var(--I4C_Default_TableRow_Red_3);
+                background-color: var(--I4C-Main-TableRow-Red-3);
 
             }
         }
@@ -229,22 +229,22 @@ div.I4E-Layout-ListTable.StripeInterval2 tbody tr {
     &:not(.Green):not(.Red) {
         &:nth-child(4n+1), &:nth-child(4n+2) {
             td {
-                background-color: var(--I4C_Default_TableRow_0);
+                background-color: var(--I4C-Main-TableRow-0);
             }
 
             &:hover td {
-                background-color: var(--I4C_Default_TableRow_2);
+                background-color: var(--I4C-Main-TableRow-2);
             }
         }
 
         &:nth-child(4n+3), &:nth-child(4n+4) {
             td {
-                background-color: var(--I4C_Default_TableRow_1);
+                background-color: var(--I4C-Main-TableRow-1);
 
             }
 
             &:hover td {
-                background-color: var(--I4C_Default_TableRow_3);
+                background-color: var(--I4C-Main-TableRow-3);
 
             }
         }
@@ -253,22 +253,22 @@ div.I4E-Layout-ListTable.StripeInterval2 tbody tr {
     &.Green {
         &:nth-child(4n+1), &:nth-child(4n+2) {
             td {
-                background-color: var(--I4C_Default_TableRow_Green_0);
+                background-color: var(--I4C-Main-TableRow-Green-0);
             }
 
             &:hover td {
-                background-color: var(--I4C_Default_TableRow_Green_2);
+                background-color: var(--I4C-Main-TableRow-Green-2);
             }
         }
 
         &:nth-child(4n+3), &:nth-child(4n+4) {
             td {
-                background-color: var(--I4C_Default_TableRow_Green_1);
+                background-color: var(--I4C-Main-TableRow-Green-1);
 
             }
 
             &:hover td {
-                background-color: var(--I4C_Default_TableRow_Green_3);
+                background-color: var(--I4C-Main-TableRow-Green-3);
 
             }
         }
@@ -277,22 +277,22 @@ div.I4E-Layout-ListTable.StripeInterval2 tbody tr {
     &.Red {
         &:nth-child(4n+1), &:nth-child(4n+2) {
             td {
-                background-color: var(--I4C_Default_TableRow_Red_0);
+                background-color: var(--I4C-Main-TableRow-Red-0);
             }
 
             &:hover td {
-                background-color: var(--I4C_Default_TableRow_Red_2);
+                background-color: var(--I4C-Main-TableRow-Red-2);
             }
         }
 
         &:nth-child(4n+3), &:nth-child(4n+4) {
             td {
-                background-color: var(--I4C_Default_TableRow_Red_1);
+                background-color: var(--I4C-Main-TableRow-Red-1);
 
             }
 
             &:hover td {
-                background-color: var(--I4C_Default_TableRow_Red_3);
+                background-color: var(--I4C-Main-TableRow-Red-3);
 
             }
         }
@@ -306,24 +306,24 @@ div.I4-App {
         div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner {
             thead tr {
                 th {
-                    background-color: var(--I4C_Default_Background_6);
+                    background-color: var(--I4C-Main-Background-6);
                 }
 
                 &.ForPaginationButtons, &.ForColumnControls {
                     th {
-                        background-color: var(--I4C_Default_Background_4);
+                        background-color: var(--I4C-Main-Background-4);
                     }
                 }
             }
 
             tfoot tr {
                 td {
-                    background-color: var(--I4C_Default_Background_6);
+                    background-color: var(--I4C-Main-Background-6);
                 }
 
                 &.ForPaginationInfoAndButtons {
                     td {
-                        background-color: var(--I4C_Default_Background_4);
+                        background-color: var(--I4C-Main-Background-4);
                     }
                 }
             }
@@ -334,24 +334,24 @@ div.I4-App {
         div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner {
             thead tr {
                 th {
-                    background-color: var(--I4C_Default_Background_4);
+                    background-color: var(--I4C-Main-Background-4);
                 }
 
                 &.ForPaginationButtons, &.ForColumnControls {
                     th {
-                        background-color: var(--I4C_Default_Background_1);
+                        background-color: var(--I4C-Main-Background-1);
                     }
                 }
             }
 
             tfoot tr {
                 td {
-                    background-color: var(--I4C_Default_Background_0);
+                    background-color: var(--I4C-Main-Background-0);
                 }
 
                 &.ForPaginationInfoAndButtons {
                     td {
-                        background-color: var(--I4C_Default_Background_1);
+                        background-color: var(--I4C-Main-Background-1);
                     }
                 }
             }

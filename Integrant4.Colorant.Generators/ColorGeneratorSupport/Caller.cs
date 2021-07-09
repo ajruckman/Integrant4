@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Integrant4.Colorant.Schema;
+using Integrant4.Colorant.Generators.Schema;
 using Newtonsoft.Json;
 
-namespace Integrant4.Colorant.ColorGeneratorSupport
+namespace Integrant4.Colorant.Generators.ColorGeneratorSupport
 {
     internal sealed class Caller
     {
@@ -24,6 +24,11 @@ namespace Integrant4.Colorant.ColorGeneratorSupport
                 },
             };
             _p.Start();
+        }
+
+        public void Kill()
+        {
+            _p.Kill();
         }
 
         public List<Color> Call(Block block, ColorRange s)

@@ -38,7 +38,7 @@ div.I4E-Construct-TagSelector {
             align-items: center;
             border: none;
             border-radius: 15px;
-            color: var(--I4C_Default_Alias_PageText);
+            color: var(--I4C-Main-Alias-PageText);
             cursor: pointer;
             display: inline-flex;
             font-size: 1em;
@@ -58,7 +58,7 @@ div.I4E-Construct-TagSelector {
             }
 
             span {
-                color: var(--I4C_Default_Text_2);
+                color: var(--I4C-Main-Text-2);
                 font-size: 0.75em;
                 font-weight: 500;
                 margin-left: 5px;
@@ -129,55 +129,55 @@ div.I4E-Construct-TagSelector-RemovableTag {
 div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
         div.I4E-Construct-TagSelector {
-            background-color: var(--I4C_Default_Background_4);
-            border: 1px solid var(--I4C_Default_Border_11);
-            box-shadow: var(--I4C_Default_Shadow_1);
+            background-color: var(--I4C-Main-Background-4);
+            border: 1px solid var(--I4C-Main-Border-11);
+            box-shadow: var(--I4C-Main-Shadow-1);
 
             div.I4E-Construct-TagSelector-Tags {
             }
 
             div.I4E-Construct-TagSelector-KnownTags {
                 button {
-                    background-color: var(--I4C_Default_Background_7);
-                    border: 1px solid var(--I4C_Default_Border_7);
-                    box-shadow: var(--I4C_Default_Shadow_1);
+                    background-color: var(--I4C-Main-Background-7);
+                    border: 1px solid var(--I4C-Main-Border-7);
+                    box-shadow: var(--I4C-Main-Shadow-1);
 
                     &:hover, &[data-current] {
-                        border: 1px solid var(--I4C_Default_Accent_7);
+                        border: 1px solid var(--I4C-Main-Accent-7);
                     }
                 }
             }
         }
 
         div.I4E-Construct-TagSelector-Tag, div.I4E-Construct-TagSelector-AddableTag, div.I4E-Construct-TagSelector-RemovableTag {
-            background-color: var(--I4C_Default_Background_7);
-            border: 1px solid var(--I4C_Default_Border_7);
-            box-shadow: var(--I4C_Default_Shadow_1);
+            background-color: var(--I4C-Main-Background-7);
+            border: 1px solid var(--I4C-Main-Border-7);
+            box-shadow: var(--I4C-Main-Shadow-1);
 
             div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-                color: var(--I4C_Default_Opaque_White_4);
+                color: var(--I4C-Main-Opaque-White-4);
 
                 &:hover {
-                    color: var(--I4C_Default_Opaque_White_7);
+                    color: var(--I4C-Main-Opaque-White-7);
                 }
 
                 &:active {
-                    color: var(--I4C_Default_Accent_7);
+                    color: var(--I4C-Main-Accent-7);
                 }
             }
         }
 
         div.I4E-Construct-TagSelector-AddableTag {
             &:hover {
-                border: 1px solid var(--I4C_Default_Accent_7);
+                border: 1px solid var(--I4C-Main-Accent-7);
             }
         }
     }
 
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
         div.I4E-Construct-TagSelector {
-            background-color: var(--I4C_Default_Background_2);
-            border: 1px solid var(--I4C_Default_Border_5);
+            background-color: var(--I4C-Main-Background-2);
+            border: 1px solid var(--I4C-Main-Border-5);
 
             div.I4E-Construct-TagSelector-Tags {
             }
@@ -185,10 +185,10 @@ div.I4-App {
             div.I4E-Construct-TagSelector-KnownTags {
                 button {
                     background-color: white;
-                    border: 1px solid var(--I4C_Default_Border_10);
+                    border: 1px solid var(--I4C-Main-Border-10);
 
                     &:hover, &[data-current] {
-                        border: 1px solid var(--I4C_Default_Accent_7);
+                        border: 1px solid var(--I4C-Main-Accent-7);
                     }
                 }
             }
@@ -196,24 +196,24 @@ div.I4-App {
 
         div.I4E-Construct-TagSelector-Tag, div.I4E-Construct-TagSelector-AddableTag, div.I4E-Construct-TagSelector-RemovableTag {
             background-color: white;
-            border: 1px solid var(--I4C_Default_Border_10);
+            border: 1px solid var(--I4C-Main-Border-10);
 
             div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-                color: var(--I4C_Default_Opaque_Black_4);
+                color: var(--I4C-Main-Opaque-Black-4);
 
                 &:hover {
-                    color: var(--I4C_Default_Opaque_Black_7);
+                    color: var(--I4C-Main-Opaque-Black-7);
                 }
 
                 &:active {
-                    color: var(--I4C_Default_Accent_7);
+                    color: var(--I4C-Main-Accent-7);
                 }
             }
         }
 
         div.I4E-Construct-TagSelector-AddableTag {
             &:hover {
-                border: 1px solid var(--I4C_Default_Accent_7);
+                border: 1px solid var(--I4C-Main-Accent-7);
             }
         }
     }

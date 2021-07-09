@@ -27,11 +27,11 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
         transition: none;
 
         &:hover {
-            background-color: var(--I4C_Default_Opaque_White_3);
+            background-color: var(--I4C-Main-Opaque-White-3);
         }
 
         &:active {
-            background-color: var(--I4C_Default_Opaque_White_2);
+            background-color: var(--I4C-Main-Opaque-White-2);
         }
     }
 
@@ -105,7 +105,7 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
     }
 
     &:focus-visible {
-        box-shadow: 0 0 1px 0 var(--I4C_Default_Accent_5);
+        box-shadow: 0 0 1px 0 var(--I4C-Main-Accent-5);
     }
 
     // Default colors
@@ -117,19 +117,19 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
     }
 
     &.I4E-Bit-Button--Accent {
-        background-color: var(--I4C_Default_Accent_5);
-        color: var(--I4C_Default_Accent_6_Text);
+        background-color: var(--I4C-Main-Accent-5);
+        color: var(--I4C-Main-Accent-6-Text);
 
         &:visited {
-            color: var(--I4C_Default_Accent_6_Text);
+            color: var(--I4C-Main-Accent-6-Text);
         }
 
         &:hover:not(.I4E-Bit--Disabled) {
-            background-color: var(--I4C_Default_Accent_4);
+            background-color: var(--I4C-Main-Accent-4);
         }
 
         &:active:not(.I4E-Bit--Disabled) {
-            background-color: var(--I4C_Default_Accent_3);
+            background-color: var(--I4C-Main-Accent-3);
         }
 
         &.I4E-Bit--Disabled {
@@ -139,10 +139,10 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
 
     &.I4E-Bit-Button--Transparent {
         background-color: transparent;
-        color: var(--I4C_Default_PageText);
+        color: var(--I4C-Main-PageText);
 
         &:visited {
-            color: var(--I4C_Default_PageText);
+            color: var(--I4C-Main-PageText);
         }
 
         &.I4E-Bit--Disabled {
@@ -152,10 +152,10 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
 
     &.I4E-Bit-Button--AccentTransparent {
         background-color: transparent;
-        color: var(--I4C_Default_PageText);
+        color: var(--I4C-Main-PageText);
 
         &:visited {
-            color: var(--I4C_Default_PageText);
+            color: var(--I4C-Main-PageText);
         }
 
         &.I4E-Bit--Disabled {
@@ -170,48 +170,48 @@ div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
         button.I4E-Bit-Button, a.I4E-Bit-Button {
             &.I4E-Bit-Button--Default {
-                background-color: var(--I4C_Default_Opaque_White_2);
-                box-shadow: var(--I4C_Default_Shadow_0);
-                color: var(--I4C_Default_Text_6);
+                background-color: var(--I4C-Main-Opaque-White-2);
+                box-shadow: var(--I4C-Main-Shadow-0);
+                color: var(--I4C-Main-Text-6);
 
                 &:visited {
-                    color: var(--I4C_Default_Text_6);
+                    color: var(--I4C-Main-Text-6);
                 }
 
                 &:hover:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Default_Opaque_White_3);
-                    color: var(--I4C_Default_Text_6);
+                    background-color: var(--I4C-Main-Opaque-White-3);
+                    color: var(--I4C-Main-Text-6);
                 }
 
                 &:active:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Default_Opaque_White_2);
-                    color: var(--I4C_Default_Text_6);
+                    background-color: var(--I4C-Main-Opaque-White-2);
+                    color: var(--I4C-Main-Text-6);
                 }
             }
 
             &.I4E-Bit-Button--Transparent {
                 &:hover:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Default_Opaque_White_3);
-                    color: var(--I4C_Default_Accent_8);
+                    background-color: var(--I4C-Main-Opaque-White-3);
+                    color: var(--I4C-Main-Accent-8);
                 }
 
                 &:active:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Default_Opaque_White_2);
-                    color: var(--I4C_Default_Accent_8);
+                    background-color: var(--I4C-Main-Opaque-White-2);
+                    color: var(--I4C-Main-Accent-8);
                 }
             }
 
             &.I4E-Bit-Button--AccentTransparent {
-                color: var(--I4C_Default_Accent_5);
+                color: var(--I4C-Main-Accent-5);
 
                 &:hover:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Default_Opaque_White_3);
-                    color: var(--I4C_Default_Accent_7);
+                    background-color: var(--I4C-Main-Opaque-White-3);
+                    color: var(--I4C-Main-Accent-7);
                 }
 
                 &:active:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Default_Opaque_White_2);
-                    color: var(--I4C_Default_Accent_7);
+                    background-color: var(--I4C-Main-Opaque-White-2);
+                    color: var(--I4C-Main-Accent-7);
                 }
             }
         }
@@ -220,47 +220,47 @@ div.I4-App {
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
         button.I4E-Bit-Button, a.I4E-Bit-Button {
             &.I4E-Bit-Button--Default {
-                background-color: var(--I4C_Default_Opaque_Black_2);
-                color: var(--I4C_Default_Text_6);
+                background-color: var(--I4C-Main-Opaque-Black-2);
+                color: var(--I4C-Main-Text-6);
 
                 &:visited {
-                    color: var(--I4C_Default_Text_6);
+                    color: var(--I4C-Main-Text-6);
                 }
 
                 &:hover:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Default_Opaque_Black_3);
-                    color: var(--I4C_Default_Text_6);
+                    background-color: var(--I4C-Main-Opaque-Black-3);
+                    color: var(--I4C-Main-Text-6);
                 }
 
                 &:active:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Default_Opaque_Black_2);
-                    color: var(--I4C_Default_Text_6);
+                    background-color: var(--I4C-Main-Opaque-Black-2);
+                    color: var(--I4C-Main-Text-6);
                 }
             }
 
             &.I4E-Bit-Button--Transparent {
                 &:hover:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Default_Opaque_Black_1);
-                    color: var(--I4C_Default_Accent_6);
+                    background-color: var(--I4C-Main-Opaque-Black-1);
+                    color: var(--I4C-Main-Accent-6);
                 }
 
                 &:active:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Default_Opaque_Black_0);
-                    color: var(--I4C_Default_Accent_6);
+                    background-color: var(--I4C-Main-Opaque-Black-0);
+                    color: var(--I4C-Main-Accent-6);
                 }
             }
 
             &.I4E-Bit-Button--AccentTransparent {
-                color: var(--I4C_Default_Accent_5);
+                color: var(--I4C-Main-Accent-5);
 
                 &:hover:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Default_Opaque_Black_1);
-                    color: var(--I4C_Default_Accent_6);
+                    background-color: var(--I4C-Main-Opaque-Black-1);
+                    color: var(--I4C-Main-Accent-6);
                 }
 
                 &:active:not(.I4E-Bit--Disabled) {
-                    background-color: var(--I4C_Default_Opaque_Black_0);
-                    color: var(--I4C_Default_Accent_6);
+                    background-color: var(--I4C-Main-Opaque-Black-0);
+                    color: var(--I4C-Main-Accent-6);
                 }
             }
         }
@@ -277,7 +277,7 @@ div.I4-App {
 ) {
     &:not(.I4E-Bit--Disabled):not(:disabled) {
         background-color: $normalBackground;
-        box-shadow: var(--I4C_Default_Shadow_0);
+        box-shadow: var(--I4C-Main-Shadow-0);
         border: 1px solid $normalBorder;
         color: $normalColor;
 
@@ -307,120 +307,120 @@ div.I4-App {
 
 button.I4E-Bit-Button--Blue, a.I4E-Bit-Button--Blue {
     @include _ColorButton(
-                    var(--I4C_Solids_Blue_6),
-                    var(--I4C_Solids_Blue_6),
+                    var(--I4C-Solids-Blue-6),
+                    var(--I4C-Solids-Blue-6),
                     white,
                 //
-                    var(--I4C_Solids_Blue_8),
-                    var(--I4C_Solids_Blue_8),
+                    var(--I4C-Solids-Blue-8),
+                    var(--I4C-Solids-Blue-8),
                     white,
                 //
-                    var(--I4C_Solids_Blue_10),
-                    var(--I4C_Solids_Blue_0),
+                    var(--I4C-Solids-Blue-10),
+                    var(--I4C-Solids-Blue-0),
                     white,
                 //
                     transparent,
-                    var(--I4C_Default_Border_4),
-                    var(--I4C_Default_Text_0)
+                    var(--I4C-Main-Border-4),
+                    var(--I4C-Main-Text-0)
     );
 }
 
 button.I4E-Bit-Button--Green, a.I4E-Bit-Button--Green {
     @include _ColorButton(
-                    var(--I4C_Solids_Green_9),
-                    var(--I4C_Solids_Green_9),
+                    var(--I4C-Solids-Green-9),
+                    var(--I4C-Solids-Green-9),
                     white,
                 //
-                    var(--I4C_Solids_Green_7),
-                    var(--I4C_Solids_Green_7),
+                    var(--I4C-Solids-Green-7),
+                    var(--I4C-Solids-Green-7),
                     white,
                 //
-                    var(--I4C_Solids_Green_5),
-                    var(--I4C_Solids_Green_4),
+                    var(--I4C-Solids-Green-5),
+                    var(--I4C-Solids-Green-4),
                     white,
                 //
                     transparent,
-                    var(--I4C_Default_Border_4),
-                    var(--I4C_Default_Text_0)
+                    var(--I4C-Main-Border-4),
+                    var(--I4C-Main-Text-0)
     );
 }
 
 button.I4E-Bit-Button--Orange, a.I4E-Bit-Button--Orange {
     @include _ColorButton(
-                    var(--I4C_Solids_Orange_8),
-                    var(--I4C_Solids_Orange_8),
+                    var(--I4C-Solids-Orange-8),
+                    var(--I4C-Solids-Orange-8),
                     white,
                 //
-                    var(--I4C_Solids_Orange_6),
-                    var(--I4C_Solids_Orange_6),
+                    var(--I4C-Solids-Orange-6),
+                    var(--I4C-Solids-Orange-6),
                     white,
                 //
-                    var(--I4C_Solids_Orange_4),
-                    var(--I4C_Solids_Orange_3),
+                    var(--I4C-Solids-Orange-4),
+                    var(--I4C-Solids-Orange-3),
                     white,
                 //
                     transparent,
-                    var(--I4C_Default_Border_4),
-                    var(--I4C_Default_Text_0)
+                    var(--I4C-Main-Border-4),
+                    var(--I4C-Main-Text-0)
     );
 }
 
 button.I4E-Bit-Button--Purple, a.I4E-Bit-Button--Purple {
     @include _ColorButton(
-                    var(--I4C_Solids_Purple_9),
-                    var(--I4C_Solids_Purple_9),
+                    var(--I4C-Solids-Purple-9),
+                    var(--I4C-Solids-Purple-9),
                     white,
                 //
-                    var(--I4C_Solids_Purple_7),
-                    var(--I4C_Solids_Purple_7),
+                    var(--I4C-Solids-Purple-7),
+                    var(--I4C-Solids-Purple-7),
                     white,
                 //
-                    var(--I4C_Solids_Purple_5),
-                    var(--I4C_Solids_Purple_4),
+                    var(--I4C-Solids-Purple-5),
+                    var(--I4C-Solids-Purple-4),
                     white,
                 //
                     transparent,
-                    var(--I4C_Default_Border_4),
-                    var(--I4C_Default_Text_0)
+                    var(--I4C-Main-Border-4),
+                    var(--I4C-Main-Text-0)
     );
 }
 
 button.I4E-Bit-Button--Red, a.I4E-Bit-Button--Red {
     @include _ColorButton(
-                    var(--I4C_Solids_Red_9),
-                    var(--I4C_Solids_Red_9),
+                    var(--I4C-Solids-Red-9),
+                    var(--I4C-Solids-Red-9),
                     white,
                 //
-                    var(--I4C_Solids_Red_7),
-                    var(--I4C_Solids_Red_7),
+                    var(--I4C-Solids-Red-7),
+                    var(--I4C-Solids-Red-7),
                     white,
                 //
-                    var(--I4C_Solids_Red_5),
-                    var(--I4C_Solids_Red_4),
+                    var(--I4C-Solids-Red-5),
+                    var(--I4C-Solids-Red-4),
                     white,
                 //
                     transparent,
-                    var(--I4C_Default_Border_4),
-                    var(--I4C_Default_Text_0)
+                    var(--I4C-Main-Border-4),
+                    var(--I4C-Main-Text-0)
     );
 }
 
 button.I4E-Bit-Button--Yellow, a.I4E-Bit-Button--Yellow {
     @include _ColorButton(
-                    var(--I4C_Solids_Yellow_6),
-                    var(--I4C_Solids_Yellow_6),
+                    var(--I4C-Solids-Yellow-6),
+                    var(--I4C-Solids-Yellow-6),
                     black,
                 //
-                    var(--I4C_Solids_Yellow_5),
-                    var(--I4C_Solids_Yellow_5),
+                    var(--I4C-Solids-Yellow-5),
+                    var(--I4C-Solids-Yellow-5),
                     black,
                 //
-                    var(--I4C_Solids_Yellow_3),
-                    var(--I4C_Solids_Yellow_2),
+                    var(--I4C-Solids-Yellow-3),
+                    var(--I4C-Solids-Yellow-2),
                     black,
                 //
                     transparent,
-                    var(--I4C_Default_Border_4),
-                    var(--I4C_Default_Text_0)
+                    var(--I4C-Main-Border-4),
+                    var(--I4C-Main-Text-0)
     );
 }

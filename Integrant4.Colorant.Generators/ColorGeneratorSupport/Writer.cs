@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Integrant4.Colorant.Schema;
+using Integrant4.Colorant.Generators.Schema;
 
-namespace Integrant4.Colorant.ColorGeneratorSupport
+namespace Integrant4.Colorant.Generators.ColorGeneratorSupport
 {
     public static class Writer
     {
@@ -18,17 +18,19 @@ namespace Integrant4.Colorant.ColorGeneratorSupport
             {
                 foreach (string id in block.IDs)
                 {
+                    string n = block.Name.Replace("-", "_");
+                    
                     constLines.Add(
-                        C + $"{block.Name}_{id} = \"var(--I4C-{theme.Name}-{block.Name}-{id})\";");
+                        C + $"{n}_{id} = \"var(--I4C-{theme.Name}-{block.Name}-{id})\";");
 
                     if (!block.CreateDisplayTextVariables) continue;
 
                     constLines.Add(
-                        C + $"{block.Name}_{id}_Text = \"var(--I4C-{theme.Name}-{block.Name}-{id}-Text)\";");
+                        C + $"{n}_{id}_Text = \"var(--I4C-{theme.Name}-{block.Name}-{id}-Text)\";");
                 }
             }
 
-            File.WriteAllLines($"Themes/{theme.Name}/Constants.cs", new List<string>
+            File.WriteAllLines($"../{assembly}/Themes/{theme.Name}/Constants.cs", new List<string>
             {
                 $"namespace {assembly}.Themes.{theme.Name}",
                 "{",
@@ -41,26 +43,6 @@ namespace Integrant4.Colorant.ColorGeneratorSupport
 
             //
 
-            // var aliasLines = new List<string>();
-            //
-            // foreach (Alias alias in theme.Aliases)
-            // {
-            //     aliasLines.Add(C + $"{alias.Key} = \"{alias.Value}\";");
-            // }
-            //
-            // File.WriteAllLines($"Themes/{theme.Name}/Aliases.cs", new List<string>
-            // {
-            //     $"namespace {assembly}.Themes.{theme.Name}",
-            //     "{",
-            //     I + "public static class Aliases",
-            //     I + "{",
-            //     string.Join('\n', aliasLines),
-            //     I + "}",
-            //     "}",
-            // });
-
-            //
-
             var variantLines = new List<string>();
 
             foreach (Variant variant in theme.Variants)
@@ -68,7 +50,7 @@ namespace Integrant4.Colorant.ColorGeneratorSupport
                 variantLines.Add(I + I + $"{variant.Name},");
             }
 
-            File.WriteAllLines($"Themes/{theme.Name}/Variants.cs", new List<string>
+            File.WriteAllLines($"../{assembly}/Themes/{theme.Name}/Variants.cs", new List<string>
             {
                 $"namespace {assembly}.Themes.{theme.Name}",
                 "{",
@@ -84,10 +66,9 @@ namespace Integrant4.Colorant.ColorGeneratorSupport
 
             string variants = "\"" + string.Join("\", \"", theme.Variants.Select(v => v.Name)) + "\"";
 
-            File.WriteAllLines($"Themes/{theme.Name}/Theme.cs", new List<string>
+            File.WriteAllLines($"../{assembly}/Themes/{theme.Name}/Theme.cs", new List<string>
             {
                 "using System.Collections.Generic;",
-                "using Integrant4.Colorant.Schema;",
                 $"namespace {assembly}.Themes.{theme.Name}",
                 "{",
                 I + "public class Theme : ITheme",
@@ -119,17 +100,11 @@ namespace Integrant4.Colorant.ColorGeneratorSupport
                     }
                 }
 
-                // foreach (Alias alias in theme.Aliases)
-                // {
-                //     cssLines.Add(
-                //         $"\t--I4C-{theme.Name}-{alias.Key}: {alias.Value};");
-                // }
-
                 cssLines.Add("}");
 
-                Directory.CreateDirectory($"wwwroot/css/{theme.Name}");
+                Directory.CreateDirectory($"../{assembly}/wwwroot/css/{theme.Name}");
 
-                File.WriteAllLines($"wwwroot/css/{theme.Name}/{variant.Name}.css", cssLines);
+                File.WriteAllLines($"../{assembly}/wwwroot/css/{theme.Name}/{variant.Name}.css", cssLines);
             }
         }
     }

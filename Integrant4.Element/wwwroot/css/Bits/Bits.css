@@ -22,9 +22,9 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
     cursor: pointer;
     transition: none; }
     button.I4E-Bit-Button:not(.I4E-Bit--Disabled):hover, a.I4E-Bit-Button:not(.I4E-Bit--Disabled):hover {
-      background-color: var(--I4C_Default_Opaque_White_3); }
+      background-color: var(--I4C-Main-Opaque-White-3); }
     button.I4E-Bit-Button:not(.I4E-Bit--Disabled):active, a.I4E-Bit-Button:not(.I4E-Bit--Disabled):active {
-      background-color: var(--I4C_Default_Opaque_White_2); }
+      background-color: var(--I4C-Main-Opaque-White-2); }
   button.I4E-Bit-Button.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit--Disabled {
     cursor: not-allowed; }
   button.I4E-Bit-Button > div.I4E-Bit-Button-Contents, a.I4E-Bit-Button > div.I4E-Bit-Button-Contents {
@@ -61,231 +61,231 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
   button.I4E-Bit-Button:focus, a.I4E-Bit-Button:focus {
     outline: none; }
   button.I4E-Bit-Button:focus-visible, a.I4E-Bit-Button:focus-visible {
-    box-shadow: 0 0 1px 0 var(--I4C_Default_Accent_5); }
+    box-shadow: 0 0 1px 0 var(--I4C-Main-Accent-5); }
   button.I4E-Bit-Button.I4E-Bit-Button--Default.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit-Button--Default.I4E-Bit--Disabled {
     opacity: 0.5; }
   button.I4E-Bit-Button.I4E-Bit-Button--Accent, a.I4E-Bit-Button.I4E-Bit-Button--Accent {
-    background-color: var(--I4C_Default_Accent_5);
-    color: var(--I4C_Default_Accent_6_Text); }
+    background-color: var(--I4C-Main-Accent-5);
+    color: var(--I4C-Main-Accent-6-Text); }
     button.I4E-Bit-Button.I4E-Bit-Button--Accent:visited, a.I4E-Bit-Button.I4E-Bit-Button--Accent:visited {
-      color: var(--I4C_Default_Accent_6_Text); }
+      color: var(--I4C-Main-Accent-6-Text); }
     button.I4E-Bit-Button.I4E-Bit-Button--Accent:hover:not(.I4E-Bit--Disabled), a.I4E-Bit-Button.I4E-Bit-Button--Accent:hover:not(.I4E-Bit--Disabled) {
-      background-color: var(--I4C_Default_Accent_4); }
+      background-color: var(--I4C-Main-Accent-4); }
     button.I4E-Bit-Button.I4E-Bit-Button--Accent:active:not(.I4E-Bit--Disabled), a.I4E-Bit-Button.I4E-Bit-Button--Accent:active:not(.I4E-Bit--Disabled) {
-      background-color: var(--I4C_Default_Accent_3); }
+      background-color: var(--I4C-Main-Accent-3); }
     button.I4E-Bit-Button.I4E-Bit-Button--Accent.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit-Button--Accent.I4E-Bit--Disabled {
       opacity: 0.5; }
   button.I4E-Bit-Button.I4E-Bit-Button--Transparent, a.I4E-Bit-Button.I4E-Bit-Button--Transparent {
     background-color: transparent;
-    color: var(--I4C_Default_PageText); }
+    color: var(--I4C-Main-PageText); }
     button.I4E-Bit-Button.I4E-Bit-Button--Transparent:visited, a.I4E-Bit-Button.I4E-Bit-Button--Transparent:visited {
-      color: var(--I4C_Default_PageText); }
+      color: var(--I4C-Main-PageText); }
     button.I4E-Bit-Button.I4E-Bit-Button--Transparent.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit-Button--Transparent.I4E-Bit--Disabled {
       opacity: 0.5; }
   button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent {
     background-color: transparent;
-    color: var(--I4C_Default_PageText); }
+    color: var(--I4C-Main-PageText); }
     button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:visited, a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:visited {
-      color: var(--I4C_Default_PageText); }
+      color: var(--I4C-Main-PageText); }
     button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent.I4E-Bit--Disabled {
       opacity: 0.5; }
 
 div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Default {
-  background-color: var(--I4C_Default_Opaque_White_2);
-  box-shadow: var(--I4C_Default_Shadow_0);
-  color: var(--I4C_Default_Text_6); }
+  background-color: var(--I4C-Main-Opaque-White-2);
+  box-shadow: var(--I4C-Main-Shadow-0);
+  color: var(--I4C-Main-Text-6); }
   div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited {
-    color: var(--I4C_Default_Text_6); }
+    color: var(--I4C-Main-Text-6); }
   div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Default_Opaque_White_3);
-    color: var(--I4C_Default_Text_6); }
+    background-color: var(--I4C-Main-Opaque-White-3);
+    color: var(--I4C-Main-Text-6); }
   div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Default_Opaque_White_2);
-    color: var(--I4C_Default_Text_6); }
+    background-color: var(--I4C-Main-Opaque-White-2);
+    color: var(--I4C-Main-Text-6); }
 
 div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled) {
-  background-color: var(--I4C_Default_Opaque_White_3);
-  color: var(--I4C_Default_Accent_8); }
+  background-color: var(--I4C-Main-Opaque-White-3);
+  color: var(--I4C-Main-Accent-8); }
 
 div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled) {
-  background-color: var(--I4C_Default_Opaque_White_2);
-  color: var(--I4C_Default_Accent_8); }
+  background-color: var(--I4C-Main-Opaque-White-2);
+  color: var(--I4C-Main-Accent-8); }
 
 div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent {
-  color: var(--I4C_Default_Accent_5); }
+  color: var(--I4C-Main-Accent-5); }
   div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Default_Opaque_White_3);
-    color: var(--I4C_Default_Accent_7); }
+    background-color: var(--I4C-Main-Opaque-White-3);
+    color: var(--I4C-Main-Accent-7); }
   div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Default_Opaque_White_2);
-    color: var(--I4C_Default_Accent_7); }
+    background-color: var(--I4C-Main-Opaque-White-2);
+    color: var(--I4C-Main-Accent-7); }
 
 div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--Default {
-  background-color: var(--I4C_Default_Opaque_Black_2);
-  color: var(--I4C_Default_Text_6); }
+  background-color: var(--I4C-Main-Opaque-Black-2);
+  color: var(--I4C-Main-Text-6); }
   div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited {
-    color: var(--I4C_Default_Text_6); }
+    color: var(--I4C-Main-Text-6); }
   div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Default_Opaque_Black_3);
-    color: var(--I4C_Default_Text_6); }
+    background-color: var(--I4C-Main-Opaque-Black-3);
+    color: var(--I4C-Main-Text-6); }
   div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Default_Opaque_Black_2);
-    color: var(--I4C_Default_Text_6); }
+    background-color: var(--I4C-Main-Opaque-Black-2);
+    color: var(--I4C-Main-Text-6); }
 
 div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled) {
-  background-color: var(--I4C_Default_Opaque_Black_1);
-  color: var(--I4C_Default_Accent_6); }
+  background-color: var(--I4C-Main-Opaque-Black-1);
+  color: var(--I4C-Main-Accent-6); }
 
 div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled) {
-  background-color: var(--I4C_Default_Opaque_Black_0);
-  color: var(--I4C_Default_Accent_6); }
+  background-color: var(--I4C-Main-Opaque-Black-0);
+  color: var(--I4C-Main-Accent-6); }
 
 div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent {
-  color: var(--I4C_Default_Accent_5); }
+  color: var(--I4C-Main-Accent-5); }
   div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Default_Opaque_Black_1);
-    color: var(--I4C_Default_Accent_6); }
+    background-color: var(--I4C-Main-Opaque-Black-1);
+    color: var(--I4C-Main-Accent-6); }
   div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled) {
-    background-color: var(--I4C_Default_Opaque_Black_0);
-    color: var(--I4C_Default_Accent_6); }
+    background-color: var(--I4C-Main-Opaque-Black-0);
+    color: var(--I4C-Main-Accent-6); }
 
 button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled) {
-  background-color: var(--I4C_Solids_Blue_6);
-  box-shadow: var(--I4C_Default_Shadow_0);
-  border: 1px solid var(--I4C_Solids_Blue_6);
+  background-color: var(--I4C-Solids-Blue-6);
+  box-shadow: var(--I4C-Main-Shadow-0);
+  border: 1px solid var(--I4C-Solids-Blue-6);
   color: white; }
   button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):visited {
     color: white; }
   button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):focus {
-    background-color: var(--I4C_Solids_Blue_8);
-    border: 1px solid var(--I4C_Solids_Blue_8);
+    background-color: var(--I4C-Solids-Blue-8);
+    border: 1px solid var(--I4C-Solids-Blue-8);
     color: white; }
   button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):active {
-    background-color: var(--I4C_Solids_Blue_10);
-    border: 1px solid var(--I4C_Solids_Blue_0);
+    background-color: var(--I4C-Solids-Blue-10);
+    border: 1px solid var(--I4C-Solids-Blue-0);
     color: white; }
 
 button.I4E-Bit-Button--Blue.I4E-Bit--Disabled, button.I4E-Bit-Button--Blue:disabled, a.I4E-Bit-Button--Blue.I4E-Bit--Disabled, a.I4E-Bit-Button--Blue:disabled {
   background-color: transparent;
-  border: 1px solid var(--I4C_Default_Border_4);
-  color: var(--I4C_Default_Text_0); }
+  border: 1px solid var(--I4C-Main-Border-4);
+  color: var(--I4C-Main-Text-0); }
 
 button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled) {
-  background-color: var(--I4C_Solids_Green_9);
-  box-shadow: var(--I4C_Default_Shadow_0);
-  border: 1px solid var(--I4C_Solids_Green_9);
+  background-color: var(--I4C-Solids-Green-9);
+  box-shadow: var(--I4C-Main-Shadow-0);
+  border: 1px solid var(--I4C-Solids-Green-9);
   color: white; }
   button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):visited {
     color: white; }
   button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):focus {
-    background-color: var(--I4C_Solids_Green_7);
-    border: 1px solid var(--I4C_Solids_Green_7);
+    background-color: var(--I4C-Solids-Green-7);
+    border: 1px solid var(--I4C-Solids-Green-7);
     color: white; }
   button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):active {
-    background-color: var(--I4C_Solids_Green_5);
-    border: 1px solid var(--I4C_Solids_Green_4);
+    background-color: var(--I4C-Solids-Green-5);
+    border: 1px solid var(--I4C-Solids-Green-4);
     color: white; }
 
 button.I4E-Bit-Button--Green.I4E-Bit--Disabled, button.I4E-Bit-Button--Green:disabled, a.I4E-Bit-Button--Green.I4E-Bit--Disabled, a.I4E-Bit-Button--Green:disabled {
   background-color: transparent;
-  border: 1px solid var(--I4C_Default_Border_4);
-  color: var(--I4C_Default_Text_0); }
+  border: 1px solid var(--I4C-Main-Border-4);
+  color: var(--I4C-Main-Text-0); }
 
 button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled) {
-  background-color: var(--I4C_Solids_Orange_8);
-  box-shadow: var(--I4C_Default_Shadow_0);
-  border: 1px solid var(--I4C_Solids_Orange_8);
+  background-color: var(--I4C-Solids-Orange-8);
+  box-shadow: var(--I4C-Main-Shadow-0);
+  border: 1px solid var(--I4C-Solids-Orange-8);
   color: white; }
   button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):visited {
     color: white; }
   button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):focus {
-    background-color: var(--I4C_Solids_Orange_6);
-    border: 1px solid var(--I4C_Solids_Orange_6);
+    background-color: var(--I4C-Solids-Orange-6);
+    border: 1px solid var(--I4C-Solids-Orange-6);
     color: white; }
   button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):active {
-    background-color: var(--I4C_Solids_Orange_4);
-    border: 1px solid var(--I4C_Solids_Orange_3);
+    background-color: var(--I4C-Solids-Orange-4);
+    border: 1px solid var(--I4C-Solids-Orange-3);
     color: white; }
 
 button.I4E-Bit-Button--Orange.I4E-Bit--Disabled, button.I4E-Bit-Button--Orange:disabled, a.I4E-Bit-Button--Orange.I4E-Bit--Disabled, a.I4E-Bit-Button--Orange:disabled {
   background-color: transparent;
-  border: 1px solid var(--I4C_Default_Border_4);
-  color: var(--I4C_Default_Text_0); }
+  border: 1px solid var(--I4C-Main-Border-4);
+  color: var(--I4C-Main-Text-0); }
 
 button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled) {
-  background-color: var(--I4C_Solids_Purple_9);
-  box-shadow: var(--I4C_Default_Shadow_0);
-  border: 1px solid var(--I4C_Solids_Purple_9);
+  background-color: var(--I4C-Solids-Purple-9);
+  box-shadow: var(--I4C-Main-Shadow-0);
+  border: 1px solid var(--I4C-Solids-Purple-9);
   color: white; }
   button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):visited {
     color: white; }
   button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):focus {
-    background-color: var(--I4C_Solids_Purple_7);
-    border: 1px solid var(--I4C_Solids_Purple_7);
+    background-color: var(--I4C-Solids-Purple-7);
+    border: 1px solid var(--I4C-Solids-Purple-7);
     color: white; }
   button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):active {
-    background-color: var(--I4C_Solids_Purple_5);
-    border: 1px solid var(--I4C_Solids_Purple_4);
+    background-color: var(--I4C-Solids-Purple-5);
+    border: 1px solid var(--I4C-Solids-Purple-4);
     color: white; }
 
 button.I4E-Bit-Button--Purple.I4E-Bit--Disabled, button.I4E-Bit-Button--Purple:disabled, a.I4E-Bit-Button--Purple.I4E-Bit--Disabled, a.I4E-Bit-Button--Purple:disabled {
   background-color: transparent;
-  border: 1px solid var(--I4C_Default_Border_4);
-  color: var(--I4C_Default_Text_0); }
+  border: 1px solid var(--I4C-Main-Border-4);
+  color: var(--I4C-Main-Text-0); }
 
 button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled) {
-  background-color: var(--I4C_Solids_Red_9);
-  box-shadow: var(--I4C_Default_Shadow_0);
-  border: 1px solid var(--I4C_Solids_Red_9);
+  background-color: var(--I4C-Solids-Red-9);
+  box-shadow: var(--I4C-Main-Shadow-0);
+  border: 1px solid var(--I4C-Solids-Red-9);
   color: white; }
   button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):visited {
     color: white; }
   button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):focus {
-    background-color: var(--I4C_Solids_Red_7);
-    border: 1px solid var(--I4C_Solids_Red_7);
+    background-color: var(--I4C-Solids-Red-7);
+    border: 1px solid var(--I4C-Solids-Red-7);
     color: white; }
   button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):active {
-    background-color: var(--I4C_Solids_Red_5);
-    border: 1px solid var(--I4C_Solids_Red_4);
+    background-color: var(--I4C-Solids-Red-5);
+    border: 1px solid var(--I4C-Solids-Red-4);
     color: white; }
 
 button.I4E-Bit-Button--Red.I4E-Bit--Disabled, button.I4E-Bit-Button--Red:disabled, a.I4E-Bit-Button--Red.I4E-Bit--Disabled, a.I4E-Bit-Button--Red:disabled {
   background-color: transparent;
-  border: 1px solid var(--I4C_Default_Border_4);
-  color: var(--I4C_Default_Text_0); }
+  border: 1px solid var(--I4C-Main-Border-4);
+  color: var(--I4C-Main-Text-0); }
 
 button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled) {
-  background-color: var(--I4C_Solids_Yellow_6);
-  box-shadow: var(--I4C_Default_Shadow_0);
-  border: 1px solid var(--I4C_Solids_Yellow_6);
+  background-color: var(--I4C-Solids-Yellow-6);
+  box-shadow: var(--I4C-Main-Shadow-0);
+  border: 1px solid var(--I4C-Solids-Yellow-6);
   color: black; }
   button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):visited {
     color: black; }
   button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):focus {
-    background-color: var(--I4C_Solids_Yellow_5);
-    border: 1px solid var(--I4C_Solids_Yellow_5);
+    background-color: var(--I4C-Solids-Yellow-5);
+    border: 1px solid var(--I4C-Solids-Yellow-5);
     color: black; }
   button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):active {
-    background-color: var(--I4C_Solids_Yellow_3);
-    border: 1px solid var(--I4C_Solids_Yellow_2);
+    background-color: var(--I4C-Solids-Yellow-3);
+    border: 1px solid var(--I4C-Solids-Yellow-2);
     color: black; }
 
 button.I4E-Bit-Button--Yellow.I4E-Bit--Disabled, button.I4E-Bit-Button--Yellow:disabled, a.I4E-Bit-Button--Yellow.I4E-Bit--Disabled, a.I4E-Bit-Button--Yellow:disabled {
   background-color: transparent;
-  border: 1px solid var(--I4C_Default_Border_4);
-  color: var(--I4C_Default_Text_0); }
+  border: 1px solid var(--I4C-Main-Border-4);
+  color: var(--I4C-Main-Text-0); }
 
 div.I4E-Bit-Checkbox {
   display: inline-flex; }
   div.I4E-Bit-Checkbox:not(.I4E-Bit-IsDisabled) {
-    color: var(--I4C_Default_Text_7);
+    color: var(--I4C-Main-Text-7);
     cursor: pointer; }
     div.I4E-Bit-Checkbox:not(.I4E-Bit-IsDisabled):hover {
-      color: var(--I4C_Default_Text_5); }
+      color: var(--I4C-Main-Text-5); }
     div.I4E-Bit-Checkbox:not(.I4E-Bit-IsDisabled):active {
-      color: var(--I4C_Default_Text_4); }
+      color: var(--I4C-Main-Text-4); }
   div.I4E-Bit-Checkbox.I4E-Bit-IsDisabled {
-    color: var(--I4C_Default_Text_1);
+    color: var(--I4C-Main-Text-1);
     cursor: not-allowed; }
 
 .I4E-Bit[hidden] {
@@ -294,7 +294,7 @@ div.I4E-Bit-Checkbox {
 div.I4E-Bit-Chip, a.I4E-Bit-Chip {
   align-items: center;
   border-radius: 5000px;
-  box-shadow: var(--I4C_Default_Shadow_0);
+  box-shadow: var(--I4C-Main-Shadow-0);
   box-sizing: border-box;
   display: inline-flex;
   font-weight: 600;
@@ -302,12 +302,12 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
   padding: calc(1em * (2 / 15)) calc(1em * (7 / 15));
   vertical-align: middle; }
   div.I4E-Bit-Chip.I4E-Bit-Chip--Link, a.I4E-Bit-Chip.I4E-Bit-Chip--Link {
-    color: var(--I4C_Default_PageText);
+    color: var(--I4C-Main-PageText);
     text-decoration: none; }
     div.I4E-Bit-Chip.I4E-Bit-Chip--Link:focus, a.I4E-Bit-Chip.I4E-Bit-Chip--Link:focus {
       outline: none; }
     div.I4E-Bit-Chip.I4E-Bit-Chip--Link:visited, a.I4E-Bit-Chip.I4E-Bit-Chip--Link:visited {
-      color: var(--I4C_Default_PageText); }
+      color: var(--I4C-Main-PageText); }
   div.I4E-Bit-Chip.I4E-Bit-Chip--IconLeft, a.I4E-Bit-Chip.I4E-Bit-Chip--IconLeft {
     padding-left: calc(1em * (4 / 15)); }
   div.I4E-Bit-Chip.I4E-Bit-Chip--IconRight, a.I4E-Bit-Chip.I4E-Bit-Chip--IconRight {
@@ -322,31 +322,31 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
         margin-right: calc(1em * (5 / 15)); }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Bit-Chip, div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Chip, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Bit-Chip, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Chip {
-  background-color: var(--I4C_Default_Background_12); }
+  background-color: var(--I4C-Main-Background-12); }
 
 div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Chip--Link:hover, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Chip--Link:hover {
-  background-color: var(--I4C_Default_Opaque_White_3); }
+  background-color: var(--I4C-Main-Opaque-White-3); }
 
 div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Chip--Link:focus, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Chip--Link:focus {
-  background-color: var(--I4C_Default_Opaque_White_2); }
+  background-color: var(--I4C-Main-Opaque-White-2); }
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Bit-Chip, div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Chip, div.I4-App[data-i4-theme-variant="White"] div.I4E-Bit-Chip, div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Chip {
-  background-color: var(--I4C_Default_Background_0); }
+  background-color: var(--I4C-Main-Background-0); }
 
 div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Chip--Link:hover, div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Chip--Link:hover {
-  background-color: var(--I4C_Default_Opaque_Black_0); }
+  background-color: var(--I4C-Main-Opaque-Black-0); }
 
 div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Chip--Link:focus, div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Chip--Link:focus {
-  background-color: var(--I4C_Default_Opaque_Black_1); }
+  background-color: var(--I4C-Main-Opaque-Black-1); }
 
 div.I4E-Bit-Dropdown {
   display: inline-block; }
   div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Head {
     cursor: pointer; }
   div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children {
-    background-color: var(--I4C_Default_Background_6);
+    background-color: var(--I4C-Main-Background-6);
     border-radius: 5px;
-    box-shadow: var(--I4C_Default_Shadow_1);
+    box-shadow: var(--I4C-Main-Shadow-1);
     display: none;
     margin: 17px;
     padding: 10px;
@@ -360,15 +360,15 @@ div.I4E-Bit-Dropdown {
     div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children div.I4E-Bit-Dropdown-Content:not(:last-child) {
       margin-bottom: 3px; }
   div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Head[data-children-shown] a.I4E-Bit-HeaderLink {
-    color: var(--I4C_Default_Accent_8); }
+    color: var(--I4C-Main-Accent-8); }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children {
-  background-color: var(--I4C_Default_Background_8);
-  border: 1px solid var(--I4C_Default_Border_11); }
+  background-color: var(--I4C-Main-Background-8);
+  border: 1px solid var(--I4C-Main-Border-11); }
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children, div.I4-App[data-i4-theme-variant="White"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children {
-  background-color: var(--I4C_Default_Background_0);
-  border: 1px solid var(--I4C_Default_Border_11); }
+  background-color: var(--I4C-Main-Background-0);
+  border: 1px solid var(--I4C-Main-Border-11); }
 
 .I4E-Bit-Expander {
   align-items: center;
@@ -376,7 +376,7 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdo
   max-width: 100%;
   width: 100%; }
   .I4E-Bit-Expander .I4E-Bit-Expander-Line {
-    background-color: var(--I4C_Default_Border_3);
+    background-color: var(--I4C-Main-Border-3);
     flex: 1;
     height: 2px; }
   .I4E-Bit-Expander .I4E-Bit-Button {
@@ -387,7 +387,7 @@ div.I4E-Bit-Filler {
 
 div.I4E-Bit-Header {
   align-items: center;
-  box-shadow: var(--I4C_Default_Shadow_0);
+  box-shadow: var(--I4C-Main-Shadow-0);
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
@@ -409,17 +409,17 @@ div.I4E-Bit-Header {
     border-bottom: 4px solid transparent;
     border-top: 4px solid transparent;
     box-sizing: border-box;
-    color: var(--I4C_Default_PageText);
+    color: var(--I4C-Main-PageText);
     display: inline-flex;
     text-decoration: none; }
     div.I4E-Bit-Header a.I4E-Bit-HeaderLink:hover:not(#_) {
-      border-bottom-color: var(--I4C_Default_Accent_8);
-      color: var(--I4C_Default_Accent_8); }
+      border-bottom-color: var(--I4C-Main-Accent-8);
+      color: var(--I4C-Main-Accent-8); }
     div.I4E-Bit-Header a.I4E-Bit-HeaderLink:active:not(#_) {
-      border-bottom-color: var(--I4C_Default_Accent_9);
-      color: var(--I4C_Default_Accent_9); }
+      border-bottom-color: var(--I4C-Main-Accent-9);
+      color: var(--I4C-Main-Accent-9); }
     div.I4E-Bit-Header a.I4E-Bit-HeaderLink.I4E-Bit-HeaderLink--Highlighted, div.I4E-Bit-Header a.I4E-Bit-HeaderLink[data-highlighted] {
-      border-bottom-color: var(--I4C_Default_Accent_7); }
+      border-bottom-color: var(--I4C-Main-Accent-7); }
     div.I4E-Bit-Header a.I4E-Bit-HeaderLink > span.I4E-Bit-HeaderLink-Content {
       align-items: center;
       display: inline-flex; }
@@ -457,25 +457,25 @@ div.I4E-Bit-Header {
     font-weight: unset; }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Bit-Header--Primary, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Bit-Header--Primary {
-  background-color: var(--I4C_Default_Background_6); }
+  background-color: var(--I4C-Main-Background-6); }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Bit-Header--Secondary, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Bit-Header--Secondary {
-  background-color: var(--I4C_Default_Background_7); }
+  background-color: var(--I4C-Main-Background-7); }
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Bit-Header--Primary, div.I4-App[data-i4-theme-variant="White"] div.I4E-Bit-Header--Primary {
-  background-color: var(--I4C_Default_Background_0); }
+  background-color: var(--I4C-Main-Background-0); }
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Bit-Header--Secondary, div.I4-App[data-i4-theme-variant="White"] div.I4E-Bit-Header--Secondary {
-  background-color: var(--I4C_Default_Background_4); }
+  background-color: var(--I4C-Main-Background-4); }
 
 div.I4E-Bit-HorizontalLine {
-  background-color: var(--I4C_Default_Background_14);
+  background-color: var(--I4C-Main-Background-14);
   height: 1px;
   margin: 7px 0;
   width: 100%; }
 
 a.I4E-Bit-Link {
-  color: var(--I4C_Default_PageText);
+  color: var(--I4C-Main-PageText);
   outline: none;
   text-decoration: none; }
   a.I4E-Bit-Link > span.I4E-Bit-Link-Contents {
@@ -487,23 +487,23 @@ a.I4E-Bit-Link {
       a.I4E-Bit-Link > span.I4E-Bit-Link-Contents > span.I4E-Bit-Link-Content:not(:last-child) {
         margin-right: calc(1em * (5 / 15)); }
   a.I4E-Bit-Link:not(.I4E-Bit-Link--Accented):not(.I4E-Bit-Link--Highlighted) {
-    color: var(--I4C_Default_PageText); }
+    color: var(--I4C-Main-PageText); }
     a.I4E-Bit-Link:not(.I4E-Bit-Link--Accented):not(.I4E-Bit-Link--Highlighted):visited {
-      color: var(--I4C_Default_PageText); }
+      color: var(--I4C-Main-PageText); }
   a.I4E-Bit-Link:not(#_):hover {
-    color: var(--I4C_Default_Accent_8);
+    color: var(--I4C-Main-Accent-8);
     text-decoration: underline; }
   a.I4E-Bit-Link:not(#_):active {
-    color: var(--I4C_Default_Accent_9);
+    color: var(--I4C-Main-Accent-9);
     text-decoration: underline; }
   a.I4E-Bit-Link.I4E-Bit-Link--Accented {
-    color: var(--I4C_Default_Accent_7); }
+    color: var(--I4C-Main-Accent-7); }
   a.I4E-Bit-Link.I4E-Bit-Link--Highlighted {
     text-decoration: underline; }
 
 div.I4E-Bit-LocalModal {
   align-items: center;
-  background-color: var(--I4C_Default_Alias_PageBackground);
+  background-color: var(--I4C-Main-Alias-PageBackground);
   bottom: 0;
   display: flex;
   justify-content: center;
@@ -550,7 +550,7 @@ div.I4E-Bit-Spinner div.I4E-Bit-Spinner-Inner {
     animation: spinner .6s linear infinite;
     border: calc(1em * (2 / 15)) solid transparent;
     border-radius: 50%;
-    border-top-color: var(--I4C_Default_Accent_6);
+    border-top-color: var(--I4C-Main-Accent-6);
     box-sizing: border-box;
     content: '';
     height: calc(1em * (20 / 15));
@@ -579,19 +579,19 @@ div.I4E-Bit-TextBlock {
   div.I4E-Bit-TextBlock:focus {
     outline: none; }
   div.I4E-Bit-TextBlock:focus-visible {
-    box-shadow: 0 0 1px 0 var(--I4C_Default_Accent_5); }
+    box-shadow: 0 0 1px 0 var(--I4C-Main-Accent-5); }
 
 div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Bit-TextBlock--Hoverable:not(#_):hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Bit-TextBlock--Hoverable:not(#_):hover {
-  background-color: var(--I4C_Default_Opaque_White_3);
-  box-shadow: var(--I4C_Default_Shadow_0); }
+  background-color: var(--I4C-Main-Opaque-White-3);
+  box-shadow: var(--I4C-Main-Shadow-0); }
 
 div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Bit-TextBlock--Hoverable:not(#_):hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Bit-TextBlock--Hoverable:not(#_):hover {
-  background-color: var(--I4C_Default_Opaque_Black_1); }
+  background-color: var(--I4C-Main-Opaque-Black-1); }
 
 a.I4E-Bit-Title {
   align-items: center;
   border-bottom: 1px solid transparent;
-  color: var(--I4C_Default_PageText);
+  color: var(--I4C-Main-PageText);
   display: inline-flex;
   font-size: 1.35rem;
   font-weight: 600;
@@ -606,15 +606,15 @@ a.I4E-Bit-Title {
     position: absolute;
     width: calc(100% + 6px); }
   a.I4E-Bit-Title:hover:not(#_) {
-    color: var(--I4C_Default_Accent_8); }
+    color: var(--I4C-Main-Accent-8); }
     a.I4E-Bit-Title:hover:not(#_)::after {
-      background-color: var(--I4C_Default_Accent_8); }
+      background-color: var(--I4C-Main-Accent-8); }
   a.I4E-Bit-Title:active:not(#_) {
-    color: var(--I4C_Default_Accent_9); }
+    color: var(--I4C-Main-Accent-9); }
     a.I4E-Bit-Title:active:not(#_)::after {
-      background-color: var(--I4C_Default_Accent_9); }
+      background-color: var(--I4C-Main-Accent-9); }
   a.I4E-Bit-Title.I4E-Bit-Title--Highlighted::after {
-    background-color: var(--I4C_Default_Accent_7); }
+    background-color: var(--I4C-Main-Accent-7); }
   a.I4E-Bit-Title > span.I4E-Bit-Title-Content {
     align-items: center;
     display: inline-flex; }
@@ -631,7 +631,7 @@ span.I4E-Bit-ValidationView, div.I4E-Bit-ValidationView {
 span.I4E-Bit-Validation {
   align-items: center;
   border-radius: 5000px;
-  box-shadow: var(--I4C_Default_Shadow_0);
+  box-shadow: var(--I4C-Main-Shadow-0);
   display: inline-flex;
   font-weight: normal;
   justify-content: flex-start;
@@ -682,7 +682,7 @@ span.I4E-Bit-Validation {
     transform: translateX(0); } }
 
 div.I4E-Bit-VerticalLine {
-  background-color: var(--I4C_Default_Background_14);
+  background-color: var(--I4C-Main-Background-14);
   height: 20px;
   margin: 0 1rem;
   width: 1px; }

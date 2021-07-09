@@ -4,23 +4,23 @@
 }
 
 %_InputHoverStyle {
-    background-color: var(--I4E_InputBase_Background_Hover);
-    border-color: var(--I4E_InputBase_Border_Hover);
+    background-color: var(--I4E-InputBase-Background-Hover);
+    border-color: var(--I4E-InputBase-Border-Hover);
     transition: background-color 75ms ease-in, border 75ms ease-in;
 }
 
 %_InputFocusStyle {
-    background-color: var(--I4E_InputBase_Background_Focus);
-    border-color: var(--I4E_InputBase_Border_Focus);
+    background-color: var(--I4E-InputBase-Background-Focus);
+    border-color: var(--I4E-InputBase-Border-Focus);
     transition: background-color 75ms ease-in, border 75ms ease-in;
 }
 
 %_InputBase {
-    background-color: var(--I4E_InputBase_Background_Normal);
-    border: 1px solid var(--I4E_InputBase_Border_Normal);
+    background-color: var(--I4E-InputBase-Background-Normal);
+    border: 1px solid var(--I4E-InputBase-Border-Normal);
     border-radius: calc(1em * (3 / 15));
     box-sizing: border-box;
-    color: var(--I4C_Default_Text_6);
+    color: var(--I4C-Main-Text-6);
     font-size: 1rem;
     outline: none;
     transition: background-color 75ms ease-in, border 75ms ease-in;
@@ -39,7 +39,7 @@
     }
 
     &:focus:not(:disabled):not([data-disabled]), &[data-focused]:not(:disabled):not([data-disabled]) {
-        box-shadow: var(--I4C_Default_Shadow_0);
+        box-shadow: var(--I4C-Main-Shadow-0);
 
         @extend %_InputFocusStyle;
     }
@@ -86,12 +86,12 @@ div.I4E-Input-Text {
         button {
             align-items: center;
             align-self: stretch;
-            background-color: var(--I4E_InputBase_Background_Normal);
-            border: 1px solid var(--I4E_InputBase_Border_Normal);
+            background-color: var(--I4E-InputBase-Background-Normal);
+            border: 1px solid var(--I4E-InputBase-Border-Normal);
             border-bottom-right-radius: calc(1em * (3 / 15));
             border-left: none;
             border-top-right-radius: calc(1em * (3 / 15));
-            color: var(--I4E_InputBase_ClearButton_Normal);
+            color: var(--I4E-InputBase-ClearButton-Normal);
             cursor: pointer;
             display: flex;
             outline: none !important;
@@ -99,11 +99,11 @@ div.I4E-Input-Text {
             transition: background-color 75ms ease-in, border 75ms ease-in;
 
             &:hover {
-                color: var(--I4E_InputBase_ClearButton_Hover) !important;
+                color: var(--I4E-InputBase-ClearButton-Hover) !important;
             }
 
             &:active {
-                color: var(--I4E_InputBase_ClearButton_Focus) !important;
+                color: var(--I4E-InputBase-ClearButton-Focus) !important;
             }
 
             &::after {
@@ -134,7 +134,7 @@ div.I4E-Input-Text {
             @extend %_InputFocusStyle;
 
             &::after {
-                box-shadow: var(--I4C_Default_Shadow_0);
+                box-shadow: var(--I4C-Main-Shadow-0);
             }
         }
     }
@@ -152,30 +152,30 @@ div.I4E-Input-Select {
 
 div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
-        --I4E_InputBase_Background_Focus: var(--I4C_Default_Background_0);
-        --I4E_InputBase_Background_Hover: var(--I4C_Default_Background_8);
-        --I4E_InputBase_Background_Normal: var(--I4C_Default_Background_10);
+        --I4E-InputBase-Background-Focus: var(--I4C-Main-Background-0);
+        --I4E-InputBase-Background-Hover: var(--I4C-Main-Background-8);
+        --I4E-InputBase-Background-Normal: var(--I4C-Main-Background-10);
 
-        --I4E_InputBase_Border_Focus: var(--I4C_Default_Accent_7);
-        --I4E_InputBase_Border_Hover: var(--I4C_Default_Border_13);
-        --I4E_InputBase_Border_Normal: var(--I4C_Default_Border_11);
+        --I4E-InputBase-Border-Focus: var(--I4C-Main-Accent-7);
+        --I4E-InputBase-Border-Hover: var(--I4C-Main-Border-13);
+        --I4E-InputBase-Border-Normal: var(--I4C-Main-Border-11);
 
-        --I4E_InputBase_ClearButton_Focus: var(--I4C_Default_Accent_7);
-        --I4E_InputBase_ClearButton_Hover: var(--I4C_Default_Opaque_White_3);
-        --I4E_InputBase_ClearButton_Normal: var(--I4C_Default_Opaque_White_2);
+        --I4E-InputBase-ClearButton-Focus: var(--I4C-Main-Accent-7);
+        --I4E-InputBase-ClearButton-Hover: var(--I4C-Main-Opaque-White-3);
+        --I4E-InputBase-ClearButton-Normal: var(--I4C-Main-Opaque-White-2);
     }
 
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
-        --I4E_InputBase_Background_Focus: var(--I4C_Default_Background_0);
-        --I4E_InputBase_Background_Hover: var(--I4C_Default_Background_2);
-        --I4E_InputBase_Background_Normal: var(--I4C_Default_Background_5);
+        --I4E-InputBase-Background-Focus: var(--I4C-Main-Background-0);
+        --I4E-InputBase-Background-Hover: var(--I4C-Main-Background-2);
+        --I4E-InputBase-Background-Normal: var(--I4C-Main-Background-5);
 
-        --I4E_InputBase_Border_Focus: var(--I4C_Default_Accent_7);
-        --I4E_InputBase_Border_Hover: var(--I4C_Default_Border_10);
-        --I4E_InputBase_Border_Normal: var(--I4C_Default_Border_5);
+        --I4E-InputBase-Border-Focus: var(--I4C-Main-Accent-7);
+        --I4E-InputBase-Border-Hover: var(--I4C-Main-Border-10);
+        --I4E-InputBase-Border-Normal: var(--I4C-Main-Border-5);
 
-        --I4E_InputBase_ClearButton_Focus: var(--I4C_Default_Accent_7);
-        --I4E_InputBase_ClearButton_Hover: var(--I4C_Default_Opaque_Black_3);
-        --I4E_InputBase_ClearButton_Normal: var(--I4C_Default_Opaque_Black_2);
+        --I4E-InputBase-ClearButton-Focus: var(--I4C-Main-Accent-7);
+        --I4E-InputBase-ClearButton-Hover: var(--I4C-Main-Opaque-Black-3);
+        --I4E-InputBase-ClearButton-Normal: var(--I4C-Main-Opaque-Black-2);
     }
 }

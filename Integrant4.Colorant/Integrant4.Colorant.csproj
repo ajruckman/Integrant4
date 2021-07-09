@@ -40,10 +40,11 @@
       <_ContentIncludedByDefault Remove="wwwroot\css\Default\Matrix.css" />
       <_ContentIncludedByDefault Remove="wwwroot\css\Default\Pink.css" />
       <_ContentIncludedByDefault Remove="wwwroot\css\Default\White.css" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Themes" />
+      <_ContentIncludedByDefault Remove="Definitions\Main.json" />
+      <_ContentIncludedByDefault Remove="Definitions\Solids.json" />
+      <_ContentIncludedByDefault Remove="ColorGenerator\package-lock.json" />
+      <_ContentIncludedByDefault Remove="ColorGenerator\package.json" />
+      <_ContentIncludedByDefault Remove="Themes\Main\Compiled.json" />
     </ItemGroup>
 
 </Project>

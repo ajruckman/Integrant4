@@ -11,14 +11,35 @@ window.I4.Element.InitMarkdownEditor = window.I4.Element.InitMarkdownEditor || f
     height,
     isDisabled
 ) {
-    console.log(buttons)
+    let buttonElems = [];
+    
+    for (let group of buttons) {
+        let v = [];
+
+        for (let button of group) {
+            let b = document.createElement('button');
+            
+            b.className = 'I4E-Construct-MarkdownEditor-Button';
+            b.innerHTML = '<span>' + button + '</span>';
+            b.addEventListener('click', e => {
+                editor.exec(button, e);
+            });
+            
+            v.push({
+                el: b,
+                command: button,
+            });
+        }
+        
+        buttonElems.push(v);
+    }
+
     const editor = new toastui.Editor({
         el: element,
         initialValue: value,
         placeholder: placeholder,
-        toolbarItems: buttons,
+        toolbarItems: buttonElems,
         height: height + 'px',
-        // width: width + 'px',
         usageStatistics: false,
 
         events: {

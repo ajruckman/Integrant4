@@ -19,7 +19,7 @@
         border-radius: 4px;
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5), 0 0 4px rgba(0, 0, 0, 0.4);
         color: white;
-        font-family: var(--I4R_SansSerifFont);
+        font-family: var(--I4R-SansSerifFont);
         font-size: 15px;
         left: 50%;
         padding: 7px;
@@ -49,9 +49,9 @@
     opacity: 1 !important;
 
     h5 {
-        background: var(--I4C_Default_Accent_5);
+        background: var(--I4C-Main-Accent-5);
         border-radius: 5000px;
-        box-shadow: var(--I4C_Default_Shadow_3);
+        box-shadow: var(--I4C-Main-Shadow-3);
         color: white;
         display: inline-block;
         margin: 20px 0 5px 0;
@@ -64,7 +64,7 @@
     }
 
     div {
-        border-color: var(--I4C_Default_Accent_5) var(--I4C_Default_Border_0) var(--I4C_Default_Border_0) !important;
+        border-color: var(--I4C-Main-Accent-5) var(--I4C-Main-Border-0) var(--I4C-Main-Border-0) !important;
         margin: 0 auto;
 
         &[style*="display: inline-block;"] {
@@ -73,11 +73,11 @@
     }
 
     button {
-        background-color: var(--I4C_Default_Background_9);
+        background-color: var(--I4C-Main-Background-9);
         border: none;
         border-radius: 4px;
-        box-shadow: var(--I4C_Default_Shadow_0);
-        color: var(--I4C_Default_Text_6);
+        box-shadow: var(--I4C-Main-Shadow-0);
+        color: var(--I4C-Main-Text-6);
         cursor: pointer;
         font-weight: 600;
         height: 30px;
@@ -86,11 +86,11 @@
         user-select: none;
 
         &:hover {
-            background-color: var(--I4C_Default_Background_12);
+            background-color: var(--I4C-Main-Background-12);
         }
 
         &:active {
-            background-color: var(--I4C_Default_Background_9);
+            background-color: var(--I4C-Main-Background-9);
         }
     }
 }

@@ -4,9 +4,6 @@
     {
         private static void Main()
         {
-            RunColorant.Run();
-            return;
-
             // Expression<Func<Dog, int>> dogExpression;
             // Dog d = new();
             // dogExpression = _ => d.Age;

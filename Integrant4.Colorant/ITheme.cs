@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Integrant4.Colorant.Schema
+namespace Integrant4.Colorant
 {
     public interface ITheme
     {

@@ -1,7 +1,7 @@
 @import "_ListTable.scss";
 
 div.I4E-Layout-Panel {
-    box-shadow: var(--I4C_Default_Shadow_2);
+    box-shadow: var(--I4C-Main-Shadow-2);
     position: relative;
 
     &:not(.I4E-Layout-Panel--NoMargin) {
@@ -9,7 +9,7 @@ div.I4E-Layout-Panel {
     }
 
     &:not(.I4E-Layout-Panel--NoBorder) {
-        border: 1px solid var(--I4C_Default_Border_6);
+        border: 1px solid var(--I4C-Main-Border-6);
     }
 
     &--Rounded {
@@ -37,12 +37,12 @@ div.I4E-Layout-Panel {
     // Descendent overrides
 
     > div.I4E-Bit-Header {
-        border-bottom: 1px solid var(--I4C_Default_Border_4);
+        border-bottom: 1px solid var(--I4C-Main-Border-4);
         box-shadow: none;
         padding: 0 10px;
 
         &:not(:first-child) {
-            border-top: 1px solid var(--I4C_Default_Border_4);
+            border-top: 1px solid var(--I4C-Main-Border-4);
         }
     }
 
@@ -50,7 +50,7 @@ div.I4E-Layout-Panel {
         border-bottom: none;
 
         > div.I4E-Bit-Header {
-            border-bottom: 1px solid var(--I4C_Default_Border_6);
+            border-bottom: 1px solid var(--I4C-Main-Border-6);
         }
     }
 }
@@ -109,8 +109,8 @@ div.I4E-Layout-InfoTable {
     }
 
     &:not(.I4E-Layout-InfoTable--NoBorder) {
-        border: 1px solid var(--I4C_Default_Border_11);
-        box-shadow: var(--I4C_Default_Shadow_1);
+        border: 1px solid var(--I4C-Main-Border-11);
+        box-shadow: var(--I4C-Main-Shadow-1);
     }
 
     table.I4E-Layout-InfoTable-Inner {
@@ -118,10 +118,10 @@ div.I4E-Layout-InfoTable {
 
         tr {
             th {
-                background-color: var(--I4C_Default_Background_7);
-                border-bottom: 1px solid var(--I4C_Default_Border_11);
+                background-color: var(--I4C-Main-Background-7);
+                border-bottom: 1px solid var(--I4C-Main-Border-11);
                 box-sizing: border-box;
-                color: var(--I4C_Default_Text_4);
+                color: var(--I4C-Main-Text-4);
                 font-weight: 600;
                 padding: 5px 7px;
             }
@@ -131,11 +131,11 @@ div.I4E-Layout-InfoTable {
                 padding: 5px;
 
                 &.Mono {
-                    font-family: var(--I4R_MonoFont);
+                    font-family: var(--I4R-MonoFont);
                 }
 
                 &:nth-child(1) {
-                    color: var(--I4C_Default_Text_2);
+                    color: var(--I4C-Main-Text-2);
                     font-weight: 700;
                     padding-left: 7px;
                     padding-right: 7px;
@@ -150,7 +150,7 @@ div.I4E-Layout-InfoTable {
             tr {
                 &:not(:last-child) {
                     td {
-                        border-bottom: 1px solid var(--I4C_Default_Border_4);
+                        border-bottom: 1px solid var(--I4C-Main-Border-4);
                     }
                 }
             }
@@ -160,12 +160,12 @@ div.I4E-Layout-InfoTable {
     // Descendent overrides
 
     > div.I4E-Bit-Header {
-        border-bottom: 1px solid var(--I4C_Default_Border_4);
+        border-bottom: 1px solid var(--I4C-Main-Border-4);
         box-shadow: none;
         padding: 0 10px;
 
         &:not(:first-child) {
-            border-top: 1px solid var(--I4C_Default_Border_4);
+            border-top: 1px solid var(--I4C-Main-Border-4);
         }
     }
 }
@@ -175,24 +175,24 @@ div.I4E-Layout-InfoTable {
 div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
         div.I4E-Layout-Panel {
-            background-color: var(--I4C_Default_Background_6);
+            background-color: var(--I4C-Main-Background-6);
         }
 
         div.I4E-Layout-InfoTable {
             &:not(.I4E-Layout-InfoTable--NoBorder) {
-                background-color: var(--I4C_Default_Background_4);
+                background-color: var(--I4C-Main-Background-4);
             }
         }
     }
 
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
         div.I4E-Layout-Panel {
-            background-color: var(--I4C_Default_Background_0);
+            background-color: var(--I4C-Main-Background-0);
         }
 
         div.I4E-Layout-InfoTable {
             &:not(.I4E-Layout-InfoTable--NoBorder) {
-                background-color: var(--I4C_Default_Background_1);
+                background-color: var(--I4C-Main-Background-1);
             }
         }
     }

@@ -1,7 +1,7 @@
 a.I4E-Bit-Title {
     align-items: center;
     border-bottom: 1px solid transparent;
-    color: var(--I4C_Default_PageText);
+    color: var(--I4C-Main-PageText);
     display: inline-flex;
     font-size: 1.35rem;
     font-weight: 600;
@@ -19,24 +19,24 @@ a.I4E-Bit-Title {
     }
 
     &:hover:not(#_) {
-        color: var(--I4C_Default_Accent_8);
+        color: var(--I4C-Main-Accent-8);
 
         &::after {
-            background-color: var(--I4C_Default_Accent_8);
+            background-color: var(--I4C-Main-Accent-8);
         }
     }
 
     &:active:not(#_) {
-        color: var(--I4C_Default_Accent_9);
+        color: var(--I4C-Main-Accent-9);
 
         &::after {
-            background-color: var(--I4C_Default_Accent_9);
+            background-color: var(--I4C-Main-Accent-9);
         }
     }
 
     &.I4E-Bit-Title--Highlighted {
         &::after {
-            background-color: var(--I4C_Default_Accent_7);
+            background-color: var(--I4C-Main-Accent-7);
         }
     }
 

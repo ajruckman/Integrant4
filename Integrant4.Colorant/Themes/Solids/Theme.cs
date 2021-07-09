@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Integrant4.Colorant.Schema;
 namespace Integrant4.Colorant.Themes.Solids
 {
     public class Theme : ITheme

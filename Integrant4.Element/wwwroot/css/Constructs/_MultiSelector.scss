@@ -1,3 +1,5 @@
+@import '../Overrides/TUIEditor.scss';
+
 div.I4E-Construct-MultiSelector {
     border-radius: 4px;
     box-sizing: border-box;
@@ -16,7 +18,7 @@ div.I4E-Construct-MultiSelector {
         div.I4E-Construct-MultiSelector-Selection {
             opacity: 0.6;
         }
-        
+
         div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
             cursor: not-allowed;
         }
@@ -60,35 +62,35 @@ div.I4E-Construct-MultiSelector {
 div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
         div.I4E-Construct-MultiSelector {
-            background-color: var(--I4C_Default_Background_4);
-            border: 1px solid var(--I4C_Default_Border_11);
-            box-shadow: var(--I4C_Default_Shadow_1);
+            background-color: var(--I4C-Main-Background-4);
+            border: 1px solid var(--I4C-Main-Border-11);
+            box-shadow: var(--I4C-Main-Shadow-1);
 
             div.I4E-Construct-MultiSelector-Selections {
                 div.I4E-Construct-MultiSelector-Selection {
-                    background-color: var(--I4C_Default_Background_7);
-                    border: 1px solid var(--I4C_Default_Border_7);
-                    box-shadow: var(--I4C_Default_Shadow_1);
+                    background-color: var(--I4C-Main-Background-7);
+                    border: 1px solid var(--I4C-Main-Border-7);
+                    box-shadow: var(--I4C-Main-Shadow-1);
                 }
             }
 
             &:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-                color: var(--I4C_Default_Opaque_White_4);
+                color: var(--I4C-Main-Opaque-White-4);
 
                 &:hover {
-                    color: var(--I4C_Default_Opaque_White_7);
+                    color: var(--I4C-Main-Opaque-White-7);
                 }
 
                 &:active {
-                    color: var(--I4C_Default_Accent_7);
+                    color: var(--I4C-Main-Accent-7);
                 }
             }
 
             &[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-                color: var(--I4C_Default_Opaque_White_2);
+                color: var(--I4C-Main-Opaque-White-2);
 
                 &:hover, &:active {
-                    color: var(--I4C_Default_Opaque_White_2);
+                    color: var(--I4C-Main-Opaque-White-2);
                 }
             }
         }
@@ -96,33 +98,33 @@ div.I4-App {
 
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
         div.I4E-Construct-MultiSelector {
-            background-color: var(--I4C_Default_Background_2);
-            border: 1px solid var(--I4C_Default_Border_5);
+            background-color: var(--I4C-Main-Background-2);
+            border: 1px solid var(--I4C-Main-Border-5);
 
             div.I4E-Construct-MultiSelector-Selections {
                 div.I4E-Construct-MultiSelector-Selection {
                     background-color: white;
-                    border: 1px solid var(--I4C_Default_Border_10);
+                    border: 1px solid var(--I4C-Main-Border-10);
                 }
             }
 
             &:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-                color: var(--I4C_Default_Opaque_Black_4);
+                color: var(--I4C-Main-Opaque-Black-4);
 
                 &:hover {
-                    color: var(--I4C_Default_Opaque_Black_7);
+                    color: var(--I4C-Main-Opaque-Black-7);
                 }
 
                 &:active {
-                    color: var(--I4C_Default_Accent_7);
+                    color: var(--I4C-Main-Accent-7);
                 }
             }
 
             &[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-                color: var(--I4C_Default_Opaque_Black_2);
+                color: var(--I4C-Main-Opaque-Black-2);
 
                 &:hover, &:active {
-                    color: var(--I4C_Default_Opaque_Black_2);
+                    color: var(--I4C-Main-Opaque-Black-2);
                 }
             }
         }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Integrant4.Colorant.Schema
+namespace Integrant4.Colorant.Generators.Schema
 {
     public class ThemeDefinition
     {

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 // ReSharper disable CollectionNeverUpdated.Global
 // ReSharper disable UnusedMember.Global
 
-namespace Integrant4.Colorant.Schema
+namespace Integrant4.Colorant.Generators.Schema
 {
     public sealed class Color
     {

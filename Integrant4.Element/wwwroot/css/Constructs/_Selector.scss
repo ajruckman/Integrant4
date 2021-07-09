@@ -20,9 +20,9 @@ div.I4E-Construct-Selector {
 
     &[data-open] {
         div.I4E-Construct-Selector-Head {
-            background-color: var(--I4E_InputBase_Background_Focus);
-            border-color: var(--I4E_InputBase_Border_Focus);
-            box-shadow: var(--I4C_Default_Shadow_0);
+            background-color: var(--I4E-InputBase-Background-Focus);
+            border-color: var(--I4E-InputBase-Border-Focus);
+            box-shadow: var(--I4C-Main-Shadow-0);
             transition: background-color 75ms ease-in, border 75ms ease-in;
         }
     }
@@ -57,7 +57,7 @@ div.I4E-Construct-Selector {
 
         div.I4E-Construct-Selector-ClearButtonWrapper {
             background-color: transparent;
-            color: var(--I4C_Default_Text_4);
+            color: var(--I4C-Main-Text-4);
             cursor: pointer;
             display: none;
             flex-shrink: 0;
@@ -80,17 +80,17 @@ div.I4E-Construct-Selector {
             }
 
             &:hover {
-                color: var(--I4C_Default_Accent_7);
+                color: var(--I4C-Main-Accent-7);
             }
 
             &:focus {
-                color: var(--I4C_Default_Accent_6);
+                color: var(--I4C-Main-Accent-6);
             }
         }
     }
 
     div.I4E-Construct-Selector-Dropdown {
-        background-color: var(--I4C_Default_Background_6);
+        background-color: var(--I4C-Main-Background-6);
         border-radius: calc(1em * (3 / 15));
         box-sizing: border-box;
         display: none;
@@ -122,7 +122,7 @@ div.I4E-Construct-Selector {
 
                 // Notice
                 > p {
-                    color: var(--I4C_Default_Text_3);
+                    color: var(--I4C-Main-Text-3);
                     font-style: italic;
                     font-weight: 500;
                     margin: 0;
@@ -143,7 +143,7 @@ div.I4E-Construct-Selector {
                     }
 
                     &.I4E-Construct-Options-LimitMessage {
-                        border-top: 1px solid var(--I4C_Default_Border_12);
+                        border-top: 1px solid var(--I4C-Main-Border-12);
                         margin-top: 3px;
                     }
                 }
@@ -164,17 +164,17 @@ div.I4E-Construct-Selector {
                     }
 
                     &:focus {
-                        border: 1px solid var(--I4E_InputBase_Border_Focus);
+                        border: 1px solid var(--I4E-InputBase-Border-Focus);
                         outline: none;
                     }
 
                     &[data-selected] {
-                        background-color: var(--I4C_Default_Accent_6);
-                        color: var(--I4C_Default_Accent_6_Text);
+                        background-color: var(--I4C-Main-Accent-6);
+                        color: var(--I4C-Main-Accent-6-Text);
 
                         &:hover {
-                            background-color: var(--I4C_Default_Accent_5);
-                            color: var(--I4C_Default_Accent_6_Text);
+                            background-color: var(--I4C-Main-Accent-5);
+                            color: var(--I4C-Main-Accent-6-Text);
                         }
                     }
 
@@ -212,28 +212,28 @@ div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
         div.I4E-Construct-Selector {
             div.I4E-Construct-Selector-Dropdown {
-                background-color: var(--I4C_Default_Background_8);
-                border: 1px solid var(--I4C_Default_Border_11);
-                box-shadow: var(--I4C_Default_Shadow_0), var(--I4C_Default_Shadow_1), var(--I4C_Default_Shadow_2);
+                background-color: var(--I4C-Main-Background-8);
+                border: 1px solid var(--I4C-Main-Border-11);
+                box-shadow: var(--I4C-Main-Shadow-0), var(--I4C-Main-Shadow-1), var(--I4C-Main-Shadow-2);
 
                 div.I4E-Input-Text input {
                     &:not(:focus) {
-                        background-color: var(--I4C_Default_Background_6);
+                        background-color: var(--I4C-Main-Background-6);
                     }
 
                     &:not(:focus):hover {
-                        background-color: var(--I4C_Default_Background_4);
+                        background-color: var(--I4C-Main-Background-4);
                     }
                 }
 
                 div.I4E-Construct-Selector-Scroller {
                     .mb-bar {
-                        background-color: var(--I4C_Default_Background_16);
+                        background-color: var(--I4C-Main-Background-16);
                     }
 
                     div.I4E-Construct-Selector-Options > div {
                         &:not([data-selected]):not([data-disabled]):not([data-placeholder]):hover {
-                            background-color: var(--I4C_Default_Background_16);
+                            background-color: var(--I4C-Main-Background-16);
                         }
 
                         &[data-disabled] {
@@ -248,28 +248,28 @@ div.I4-App {
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
         div.I4E-Construct-Selector {
             div.I4E-Construct-Selector-Dropdown {
-                background-color: var(--I4C_Default_Background_0);
-                border: 1px solid var(--I4C_Default_Border_11);
-                box-shadow: var(--I4C_Default_Shadow_1), var(--I4C_Default_Shadow_2);
+                background-color: var(--I4C-Main-Background-0);
+                border: 1px solid var(--I4C-Main-Border-11);
+                box-shadow: var(--I4C-Main-Shadow-1), var(--I4C-Main-Shadow-2);
 
                 div.I4E-Input-Text input {
                     &:not(:focus) {
-                        background-color: var(--I4C_Default_Background_6);
+                        background-color: var(--I4C-Main-Background-6);
                     }
 
                     &:not(:focus):hover {
-                        background-color: var(--I4C_Default_Background_4);
+                        background-color: var(--I4C-Main-Background-4);
                     }
                 }
 
                 div.I4E-Construct-Selector-Scroller {
                     .mb-bar {
-                        background-color: var(--I4C_Default_Background_8);
+                        background-color: var(--I4C-Main-Background-8);
                     }
 
                     div.I4E-Construct-Selector-Options > div {
                         &:not([data-selected]):not([data-disabled]):not([data-placeholder]):hover {
-                            background-color: var(--I4C_Default_Background_8);
+                            background-color: var(--I4C-Main-Background-8);
                         }
 
                         &[data-disabled] {

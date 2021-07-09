@@ -2,20 +2,20 @@ div.I4E-Bit-Checkbox {
     display: inline-flex;
 
     &:not(.I4E-Bit-IsDisabled) {
-        color: var(--I4C_Default_Text_7);
+        color: var(--I4C-Main-Text-7);
         cursor: pointer;
 
         &:hover {
-            color: var(--I4C_Default_Text_5);
+            color: var(--I4C-Main-Text-5);
         }
 
         &:active {
-            color: var(--I4C_Default_Text_4);
+            color: var(--I4C-Main-Text-4);
         }
     }
 
     &.I4E-Bit-IsDisabled {
-        color: var(--I4C_Default_Text_1);
+        color: var(--I4C-Main-Text-1);
         cursor: not-allowed;
     }
 }
