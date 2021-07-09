@@ -24,7 +24,7 @@ div.I4E-Bit-TextBlock {
     }
 
     &:focus-visible {
-        box-shadow: 0 0 1px 0 var(--I4C_Default_Accent_5);
+        box-shadow: 0 0 1px 0 var(--I4C-Main-Accent-5);
     }
 }
 
@@ -34,8 +34,8 @@ div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
         div.I4E-Bit-TextBlock--Hoverable:not(#_) {
             &:hover {
-                background-color: var(--I4C_Default_Opaque_White_3);
-                box-shadow: var(--I4C_Default_Shadow_0);
+                background-color: var(--I4C-Main-Opaque-White-3);
+                box-shadow: var(--I4C-Main-Shadow-0);
             }
         }
     }
@@ -43,7 +43,7 @@ div.I4-App {
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
         div.I4E-Bit-TextBlock--Hoverable:not(#_) {
             &:hover {
-                background-color: var(--I4C_Default_Opaque_Black_1);
+                background-color: var(--I4C-Main-Opaque-Black-1);
             }
         }
     }

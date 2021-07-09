@@ -16,7 +16,7 @@
     border-radius: 4px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5), 0 0 4px rgba(0, 0, 0, 0.4);
     color: white;
-    font-family: var(--I4R_SansSerifFont);
+    font-family: var(--I4R-SansSerifFont);
     font-size: 15px;
     left: 50%;
     padding: 7px;
@@ -36,9 +36,9 @@
   font-size: 19px;
   opacity: 1 !important; }
   #components-reconnect-modal h5 {
-    background: var(--I4C_Default_Accent_5);
+    background: var(--I4C-Main-Accent-5);
     border-radius: 5000px;
-    box-shadow: var(--I4C_Default_Shadow_3);
+    box-shadow: var(--I4C-Main-Shadow-3);
     color: white;
     display: inline-block;
     margin: 20px 0 5px 0;
@@ -47,16 +47,16 @@
       color: #dddddd;
       font-size: 12pt; }
   #components-reconnect-modal div {
-    border-color: var(--I4C_Default_Accent_5) var(--I4C_Default_Border_0) var(--I4C_Default_Border_0) !important;
+    border-color: var(--I4C-Main-Accent-5) var(--I4C-Main-Border-0) var(--I4C-Main-Border-0) !important;
     margin: 0 auto; }
     #components-reconnect-modal div[style*="display: inline-block;"] {
       display: block !important; }
   #components-reconnect-modal button {
-    background-color: var(--I4C_Default_Background_9);
+    background-color: var(--I4C-Main-Background-9);
     border: none;
     border-radius: 4px;
-    box-shadow: var(--I4C_Default_Shadow_0);
-    color: var(--I4C_Default_Text_6);
+    box-shadow: var(--I4C-Main-Shadow-0);
+    color: var(--I4C-Main-Text-6);
     cursor: pointer;
     font-weight: 600;
     height: 30px;
@@ -64,8 +64,8 @@
     padding: 0 10px;
     user-select: none; }
     #components-reconnect-modal button:hover {
-      background-color: var(--I4C_Default_Background_12); }
+      background-color: var(--I4C-Main-Background-12); }
     #components-reconnect-modal button:active {
-      background-color: var(--I4C_Default_Background_9); }
+      background-color: var(--I4C-Main-Background-9); }
 
 /*# sourceMappingURL=Blazor.css.map */

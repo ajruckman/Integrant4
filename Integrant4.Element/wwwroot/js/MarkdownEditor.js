@@ -11,6 +11,7 @@ window.I4.Element.InitMarkdownEditor = window.I4.Element.InitMarkdownEditor || f
     height,
     isDisabled
 ) {
+    console.log(buttons)
     const editor = new toastui.Editor({
         el: element,
         initialValue: value,
@@ -34,6 +35,14 @@ window.I4.Element.InitMarkdownEditor = window.I4.Element.InitMarkdownEditor || f
         editor.setHeight(height + 'px');
         editor.I4EDisabled = isDisabled;
     };
+    
+    editor.I4EGetMarkdown = function() {
+        return editor.getMarkdown();
+    }
+    
+    editor.I4ESetMarkdown = function(markdown) {
+        editor.setMarkdown(markdown);
+    }
 
     element.addEventListener('keypress', e => {
         if (editor.I4EDisabled) {

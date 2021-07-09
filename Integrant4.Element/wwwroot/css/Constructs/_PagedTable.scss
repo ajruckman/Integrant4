@@ -26,11 +26,11 @@ div.I4E-Construct-PagedTable-PagedTableButtons {
             cursor: pointer;
 
             &:hover {
-                background-color: var(--I4C_Default_Opaque_White_3);
+                background-color: var(--I4C-Main-Opaque-White-3);
             }
 
             &:active {
-                background-color: var(--I4C_Default_Opaque_White_2);
+                background-color: var(--I4C-Main-Opaque-White-2);
             }
         }
 
@@ -47,7 +47,7 @@ div.I4E-Construct-PagedTable-PageInfo {
 
 tr.I4E-Construct-PagedTable-NoValuesMessage {
     td {
-        color: var(--I4C_Default_Text_4);
+        color: var(--I4C-Main-Text-4);
         font-style: italic;
         font-weight: bold;
         padding: 7px;
@@ -82,44 +82,44 @@ div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
         div.I4E-Construct-PagedTable-PagedTableButtons {
             button {
-                background-color: var(--I4C_Default_Opaque_White_2);
-                box-shadow: var(--I4C_Default_Shadow_0);
-                color: var(--I4C_Default_Text_6);
+                background-color: var(--I4C-Main-Opaque-White-2);
+                box-shadow: var(--I4C-Main-Shadow-0);
+                color: var(--I4C-Main-Text-6);
 
                 &:hover:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
-                    background-color: var(--I4C_Default_Opaque_White_3);
-                    color: var(--I4C_Default_Text_6);
+                    background-color: var(--I4C-Main-Opaque-White-3);
+                    color: var(--I4C-Main-Text-6);
                 }
 
                 &:active:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
-                    background-color: var(--I4C_Default_Opaque_White_2);
-                    color: var(--I4C_Default_Text_6);
+                    background-color: var(--I4C-Main-Opaque-White-2);
+                    color: var(--I4C-Main-Text-6);
                 }
             }
         }
 
         button.I4E-Construct-PagedTable-SortIndicator {
             &.I4E-Construct-PagedTable-SortIndicator--Inactive {
-                color: var(--I4C_Default_Opaque_White_5);
+                color: var(--I4C-Main-Opaque-White-5);
 
                 &:hover {
-                    color: var(--I4C_Default_Opaque_White_7);
+                    color: var(--I4C-Main-Opaque-White-7);
                 }
 
                 &:active {
-                    color: var(--I4C_Default_Opaque_White_5);
+                    color: var(--I4C-Main-Opaque-White-5);
                 }
             }
 
             &.I4E-Construct-PagedTable-SortIndicator--Active {
-                color: var(--I4C_Default_Accent_6);
+                color: var(--I4C-Main-Accent-6);
 
                 &:hover {
-                    color: var(--I4C_Default_Accent_7);
+                    color: var(--I4C-Main-Accent-7);
                 }
 
                 &:active {
-                    color: var(--I4C_Default_Accent_6);
+                    color: var(--I4C-Main-Accent-6);
                 }
             }
         }
@@ -128,43 +128,43 @@ div.I4-App {
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
         div.I4E-Construct-PagedTable-PagedTableButtons {
             button {
-                background-color: var(--I4C_Default_Opaque_Black_2);
-                color: var(--I4C_Default_Text_6);
+                background-color: var(--I4C-Main-Opaque-Black-2);
+                color: var(--I4C-Main-Text-6);
 
                 &:hover:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
-                    background-color: var(--I4C_Default_Opaque_Black_3);
-                    color: var(--I4C_Default_Text_6);
+                    background-color: var(--I4C-Main-Opaque-Black-3);
+                    color: var(--I4C-Main-Text-6);
                 }
 
                 &:active:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
-                    background-color: var(--I4C_Default_Opaque_Black_2);
-                    color: var(--I4C_Default_Text_6);
+                    background-color: var(--I4C-Main-Opaque-Black-2);
+                    color: var(--I4C-Main-Text-6);
                 }
             }
         }
 
         button.I4E-Construct-PagedTable-SortIndicator {
             &.I4E-Construct-PagedTable-SortIndicator--Inactive {
-                color: var(--I4C_Default_Opaque_Black_7);
+                color: var(--I4C-Main-Opaque-Black-7);
 
                 &:hover {
-                    color: var(--I4C_Default_Opaque_Black_10);
+                    color: var(--I4C-Main-Opaque-Black-10);
                 }
 
                 &:active {
-                    color: var(--I4C_Default_Opaque_Black_7);
+                    color: var(--I4C-Main-Opaque-Black-7);
                 }
             }
 
             &.I4E-Construct-PagedTable-SortIndicator--Active {
-                color: var(--I4C_Default_Accent_6);
+                color: var(--I4C-Main-Accent-6);
 
                 &:hover {
-                    color: var(--I4C_Default_Accent_7);
+                    color: var(--I4C-Main-Accent-7);
                 }
 
                 &:active {
-                    color: var(--I4C_Default_Accent_6);
+                    color: var(--I4C-Main-Accent-6);
                 }
             }
         }

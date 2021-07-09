@@ -5,11 +5,11 @@ div#I4C-Component-VariantLoader {
     margin-top: 25px;
 
     span {
-        border-top: 1px solid var(--I4C_Default_Border_5);
+        border-top: 1px solid var(--I4C-Main-Border-5);
         padding-top: 3px;
 
         * {
-            color: var(--I4C_Default_Text_2);
+            color: var(--I4C-Main-Text-2);
         }
 
         label, select {
@@ -21,17 +21,17 @@ div#I4C-Component-VariantLoader {
             background-color: transparent;
             border: 1px solid transparent;
             border-radius: 2px;
-            font-family: var(--I4R_MonoFont);
+            font-family: var(--I4R-MonoFont);
             margin-left: 2px;
             outline: none;
 
             option {
-                background-color: var(--I4C_Default_Background_3);
-                color: var(--I4C_Default_Text_4);
+                background-color: var(--I4C-Main-Background-3);
+                color: var(--I4C-Main-Text-4);
             }
 
             &:focus {
-                border: 1px solid var(--I4C_Default_Accent_7);
+                border: 1px solid var(--I4C-Main-Accent-7);
             }
         }
     }

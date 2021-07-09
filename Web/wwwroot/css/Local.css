@@ -108,11 +108,11 @@
   padding: 0 10px;
   cursor: pointer;
   background-color: transparent;
-  color: var(--I4C_Default_Accent_5); }
+  color: var(--I4C-Main-Accent-5); }
   .TransparentButton:hover {
-    background-color: var(--I4C_Solids_Opaque_Black_1); }
+    background-color: var(--I4C-Main-Opaque-Black-1); }
   .TransparentButton:active {
-    background-color: var(--I4C_Solids_Opaque_Black_0); }
+    background-color: var(--I4C-Main-Opaque-Black-0); }
 
 .FilledButton {
   font-weight: 600;
@@ -122,7 +122,7 @@
   height: 30px;
   padding: 0 10px;
   cursor: pointer;
-  background-color: var(--I4C_Solids_Opaque_White_2); }
+  background-color: var(--I4C-Main-Opaque-White-2); }
 
 .ShadowPanel {
   margin: 5px; }
@@ -140,9 +140,9 @@
     border: none; }
 
 .Panel {
-  background-color: var(--I4C_Default_Background_6);
+  background-color: var(--I4C-Main-Background-6);
   border-radius: 4px;
-  box-shadow: var(--I4C_Default_Shadow_2);
+  box-shadow: var(--I4C-Main-Shadow-2);
   margin: 5px;
   padding: 5px 10px; }
   .Panel h1 {

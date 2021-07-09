@@ -129,7 +129,7 @@
       "CreateDisplayTextVariables": false
     },
     {
-      "Name": "Opaque_White",
+      "Name": "Opaque-White",
       "IDs": [
         "0",
         "1",
@@ -150,7 +150,7 @@
       "CreateDisplayTextVariables": false
     },
     {
-      "Name": "Opaque_Black",
+      "Name": "Opaque-Black",
       "IDs": [
         "0",
         "1",
@@ -193,8 +193,8 @@
         "TableRow": "Range",
         "TableRow_Green": "Range",
         "TableRow_Red": "Range",
-        "Opaque_White": "Given",
-        "Opaque_Black": "Given",
+        "Opaque-White": "Given",
+        "Opaque-Black": "Given",
         "Alias": "Given"
       },
       "BlockColorsGiven": {
@@ -205,7 +205,7 @@
           "3": "0 12px 32px rgba(0, 0, 0, 0.5), 0 0 8px rgba(0, 0, 0, 0.4)",
           "4": "0 32px 64px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 0, 0, 0.4)"
         },
-        "Opaque_White": {
+        "Opaque-White": {
           "0": "hsla(259, 35%, 90%, 0.05)",
           "1": "hsla(259, 35%, 89%, 0.1)",
           "2": "hsla(259, 35%, 88%, 0.15)",
@@ -222,7 +222,7 @@
           "13": "hsla(259, 35%, 77%, 0.9)",
           "14": "hsla(259, 35%, 76%, 0.95)"
         },
-        "Opaque_Black": {
+        "Opaque-Black": {
           "0": "hsla(259, 12.5%, 10%, 0.05)",
           "1": "hsla(259, 12.5%, 11%, 0.1)",
           "2": "hsla(259, 12.5%, 12%, 0.15)",
@@ -240,8 +240,8 @@
           "14": "hsla(259, 12.5%, 24%, 0.95)"
         },
         "Alias": {
-          "PageBackground": "var(--I4C-Default-Background-3)",
-          "PageText": "var(--I4C-Default-Text-6)"
+          "PageBackground": "var(--I4C-Main-Background-3)",
+          "PageText": "var(--I4C-Main-Text-6)"
         }
       },
       "BlockColorsRange": {
@@ -354,47 +354,47 @@
       "Colors": {
         "Background": {
           "0": "#000000",
-          "0_Text": "white",
+          "0-Text": "white",
           "1": "#040405",
-          "1_Text": "white",
+          "1-Text": "white",
           "2": "#090809",
-          "2_Text": "white",
+          "2-Text": "white",
           "3": "#0d0c0e",
-          "3_Text": "white",
+          "3-Text": "white",
           "4": "#111013",
-          "4_Text": "white",
+          "4-Text": "white",
           "5": "#151418",
-          "5_Text": "white",
+          "5-Text": "white",
           "6": "#19171c",
-          "6_Text": "white",
+          "6-Text": "white",
           "7": "#1d1b21",
-          "7_Text": "white",
+          "7-Text": "white",
           "8": "#211f26",
-          "8_Text": "white",
+          "8-Text": "white",
           "9": "#24222a",
-          "9_Text": "white",
+          "9-Text": "white",
           "10": "#28262f",
-          "10_Text": "white",
+          "10-Text": "white",
           "11": "#2c2a34",
-          "11_Text": "white",
+          "11-Text": "white",
           "12": "#302e39",
-          "12_Text": "white",
+          "12-Text": "white",
           "13": "#34313d",
-          "13_Text": "white",
+          "13-Text": "white",
           "14": "#383542",
-          "14_Text": "white",
+          "14-Text": "white",
           "15": "#3c3947",
-          "15_Text": "white",
+          "15-Text": "white",
           "16": "#3f3c4b",
-          "16_Text": "white",
+          "16-Text": "white",
           "17": "#434050",
-          "17_Text": "white",
+          "17-Text": "white",
           "18": "#474455",
-          "18_Text": "white",
+          "18-Text": "white",
           "19": "#4b485a",
-          "19_Text": "white",
+          "19-Text": "white",
           "20": "#4f4b5e",
-          "20_Text": "white"
+          "20-Text": "white"
         },
         "Border": {
           "0": "#18171a",
@@ -421,27 +421,27 @@
         },
         "Accent": {
           "0": "#310d80",
-          "0_Text": "white",
+          "0-Text": "white",
           "1": "#3e119e",
-          "1_Text": "white",
+          "1-Text": "white",
           "2": "#4a16ba",
-          "2_Text": "white",
+          "2-Text": "white",
           "3": "#551cd1",
-          "3_Text": "white",
+          "3-Text": "white",
           "4": "#6023e1",
-          "4_Text": "white",
+          "4-Text": "white",
           "5": "#6a2eec",
-          "5_Text": "white",
+          "5-Text": "white",
           "6": "#773df4",
-          "6_Text": "white",
+          "6-Text": "white",
           "7": "#8854f8",
-          "7_Text": "white",
+          "7-Text": "white",
           "8": "#9d72fb",
-          "8_Text": "black",
+          "8-Text": "black",
           "9": "#b796fe",
-          "9_Text": "black",
+          "9-Text": "black",
           "10": "#d3bfff",
-          "10_Text": "black"
+          "10-Text": "black"
         },
         "Text": {
           "0": "#504c59",
@@ -479,7 +479,7 @@
           "2": "#2c0000",
           "3": "#2e0000"
         },
-        "Opaque_White": {
+        "Opaque-White": {
           "0": "hsla(259, 35%, 90%, 0.05)",
           "1": "hsla(259, 35%, 89%, 0.1)",
           "2": "hsla(259, 35%, 88%, 0.15)",
@@ -496,7 +496,7 @@
           "13": "hsla(259, 35%, 77%, 0.9)",
           "14": "hsla(259, 35%, 76%, 0.95)"
         },
-        "Opaque_Black": {
+        "Opaque-Black": {
           "0": "hsla(259, 12.5%, 10%, 0.05)",
           "1": "hsla(259, 12.5%, 11%, 0.1)",
           "2": "hsla(259, 12.5%, 12%, 0.15)",
@@ -514,8 +514,8 @@
           "14": "hsla(259, 12.5%, 24%, 0.95)"
         },
         "Alias": {
-          "PageBackground": "var(--I4C-Default-Background-3)",
-          "PageText": "var(--I4C-Default-Text-6)"
+          "PageBackground": "var(--I4C-Main-Background-3)",
+          "PageText": "var(--I4C-Main-Text-6)"
         }
       }
     },
@@ -532,8 +532,8 @@
         "TableRow": "Range",
         "TableRow_Green": "Range",
         "TableRow_Red": "Range",
-        "Opaque_White": "Given",
-        "Opaque_Black": "Given",
+        "Opaque-White": "Given",
+        "Opaque-Black": "Given",
         "Alias": "Given"
       },
       "BlockColorsGiven": {
@@ -544,7 +544,7 @@
           "3": "0 12px 32px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 0, 0, 0.05)",
           "4": "0 32px 64px rgba(0, 0, 0, 0.2), 0 0 16px rgba(0, 0, 0, 0.05)"
         },
-        "Opaque_White": {
+        "Opaque-White": {
           "0": "hsla(210, 25%, 90%, 0.05)",
           "1": "hsla(210, 24%, 89%, 0.1)",
           "2": "hsla(210, 23%, 88%, 0.15)",
@@ -561,7 +561,7 @@
           "13": "hsla(210, 12%, 77%, 0.9)",
           "14": "hsla(210, 11%, 76%, 0.95)"
         },
-        "Opaque_Black": {
+        "Opaque-Black": {
           "0": "hsla(210, 25%, 10%, 0.05)",
           "1": "hsla(210, 25%, 11%, 0.1)",
           "2": "hsla(210, 25%, 12%, 0.15)",
@@ -579,8 +579,8 @@
           "14": "hsla(210, 25%, 24%, 0.95)"
         },
         "Alias": {
-          "PageBackground": "var(--I4C-Default-Background-2)",
-          "PageText": "var(--I4C-Default-Text-6)"
+          "PageBackground": "var(--I4C-Main-Background-2)",
+          "PageText": "var(--I4C-Main-Text-6)"
         }
       },
       "BlockColorsRange": {
@@ -693,47 +693,47 @@
       "Colors": {
         "Background": {
           "0": "#ffffff",
-          "0_Text": "black",
+          "0-Text": "black",
           "1": "#fbfbfb",
-          "1_Text": "black",
+          "1-Text": "black",
           "2": "#f6f6f6",
-          "2_Text": "black",
+          "2-Text": "black",
           "3": "#f2f2f2",
-          "3_Text": "black",
+          "3-Text": "black",
           "4": "#ededed",
-          "4_Text": "black",
+          "4-Text": "black",
           "5": "#e9e9e9",
-          "5_Text": "black",
+          "5-Text": "black",
           "6": "#e4e4e4",
-          "6_Text": "black",
+          "6-Text": "black",
           "7": "#e0e0e0",
-          "7_Text": "black",
+          "7-Text": "black",
           "8": "#dbdbdb",
-          "8_Text": "black",
+          "8-Text": "black",
           "9": "#d7d7d7",
-          "9_Text": "black",
+          "9-Text": "black",
           "10": "#d2d2d2",
-          "10_Text": "black",
+          "10-Text": "black",
           "11": "#cecece",
-          "11_Text": "black",
+          "11-Text": "black",
           "12": "#c9c9c9",
-          "12_Text": "black",
+          "12-Text": "black",
           "13": "#c5c5c5",
-          "13_Text": "black",
+          "13-Text": "black",
           "14": "#c1c1c1",
-          "14_Text": "black",
+          "14-Text": "black",
           "15": "#bcbcbc",
-          "15_Text": "black",
+          "15-Text": "black",
           "16": "#b8b8b8",
-          "16_Text": "black",
+          "16-Text": "black",
           "17": "#b3b3b3",
-          "17_Text": "black",
+          "17-Text": "black",
           "18": "#afafaf",
-          "18_Text": "black",
+          "18-Text": "black",
           "19": "#aaaaaa",
-          "19_Text": "black",
+          "19-Text": "black",
           "20": "#a6a6a6",
-          "20_Text": "black"
+          "20-Text": "black"
         },
         "Border": {
           "0": "#e6e6e6",
@@ -760,27 +760,27 @@
         },
         "Accent": {
           "0": "#310d80",
-          "0_Text": "white",
+          "0-Text": "white",
           "1": "#3e119e",
-          "1_Text": "white",
+          "1-Text": "white",
           "2": "#4a16ba",
-          "2_Text": "white",
+          "2-Text": "white",
           "3": "#551cd1",
-          "3_Text": "white",
+          "3-Text": "white",
           "4": "#6023e1",
-          "4_Text": "white",
+          "4-Text": "white",
           "5": "#6a2eec",
-          "5_Text": "white",
+          "5-Text": "white",
           "6": "#773df4",
-          "6_Text": "white",
+          "6-Text": "white",
           "7": "#8854f8",
-          "7_Text": "white",
+          "7-Text": "white",
           "8": "#9d72fb",
-          "8_Text": "black",
+          "8-Text": "black",
           "9": "#b796fe",
-          "9_Text": "black",
+          "9-Text": "black",
           "10": "#d3bfff",
-          "10_Text": "black"
+          "10-Text": "black"
         },
         "Text": {
           "0": "#98a5b3",
@@ -818,7 +818,7 @@
           "2": "#f2cece",
           "3": "#f5d0d0"
         },
-        "Opaque_White": {
+        "Opaque-White": {
           "0": "hsla(210, 25%, 90%, 0.05)",
           "1": "hsla(210, 24%, 89%, 0.1)",
           "2": "hsla(210, 23%, 88%, 0.15)",
@@ -835,7 +835,7 @@
           "13": "hsla(210, 12%, 77%, 0.9)",
           "14": "hsla(210, 11%, 76%, 0.95)"
         },
-        "Opaque_Black": {
+        "Opaque-Black": {
           "0": "hsla(210, 25%, 10%, 0.05)",
           "1": "hsla(210, 25%, 11%, 0.1)",
           "2": "hsla(210, 25%, 12%, 0.15)",
@@ -853,8 +853,8 @@
           "14": "hsla(210, 25%, 24%, 0.95)"
         },
         "Alias": {
-          "PageBackground": "var(--I4C-Default-Background-2)",
-          "PageText": "var(--I4C-Default-Text-6)"
+          "PageBackground": "var(--I4C-Main-Background-2)",
+          "PageText": "var(--I4C-Main-Text-6)"
         }
       }
     },
@@ -871,8 +871,8 @@
         "TableRow": "Range",
         "TableRow_Green": "Range",
         "TableRow_Red": "Range",
-        "Opaque_White": "Given",
-        "Opaque_Black": "Given",
+        "Opaque-White": "Given",
+        "Opaque-Black": "Given",
         "Alias": "Given"
       },
       "BlockColorsGiven": {
@@ -883,7 +883,7 @@
           "3": "0 12px 32px rgba(0, 0, 0, 0.5), 0 0 8px rgba(0, 0, 0, 0.4)",
           "4": "0 32px 64px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 0, 0, 0.4)"
         },
-        "Opaque_White": {
+        "Opaque-White": {
           "0": "hsla(259, 25%, 90%, 0.05)",
           "1": "hsla(259, 25%, 89%, 0.1)",
           "2": "hsla(259, 25%, 88%, 0.15)",
@@ -900,7 +900,7 @@
           "13": "hsla(259, 25%, 77%, 0.9)",
           "14": "hsla(259, 25%, 76%, 0.95)"
         },
-        "Opaque_Black": {
+        "Opaque-Black": {
           "0": "hsla(259, 12.5%, 10%, 0.05)",
           "1": "hsla(259, 12.5%, 11%, 0.1)",
           "2": "hsla(259, 12.5%, 12%, 0.15)",
@@ -918,8 +918,8 @@
           "14": "hsla(259, 12.5%, 24%, 0.95)"
         },
         "Alias": {
-          "PageBackground": "var(--I4C-Default-Background-3)",
-          "PageText": "var(--I4C-Default-Text-6)"
+          "PageBackground": "var(--I4C-Main-Background-3)",
+          "PageText": "var(--I4C-Main-Text-6)"
         }
       },
       "BlockColorsRange": {
@@ -1032,47 +1032,47 @@
       "Colors": {
         "Background": {
           "0": "#000000",
-          "0_Text": "#32e71e",
+          "0-Text": "#32e71e",
           "1": "#050505",
-          "1_Text": "#32e71e",
+          "1-Text": "#32e71e",
           "2": "#090909",
-          "2_Text": "#32e71e",
+          "2-Text": "#32e71e",
           "3": "#0d0d0e",
-          "3_Text": "#32e71e",
+          "3-Text": "#32e71e",
           "4": "#111113",
-          "4_Text": "#32e71e",
+          "4-Text": "#32e71e",
           "5": "#151418",
-          "5_Text": "#32e71e",
+          "5-Text": "#32e71e",
           "6": "#19181c",
-          "6_Text": "#32e71e",
+          "6-Text": "#32e71e",
           "7": "#1d1c21",
-          "7_Text": "#32e71e",
+          "7-Text": "#32e71e",
           "8": "#211f26",
-          "8_Text": "#32e71e",
+          "8-Text": "#32e71e",
           "9": "#25232a",
-          "9_Text": "#32e71e",
+          "9-Text": "#32e71e",
           "10": "#29272f",
-          "10_Text": "#32e71e",
+          "10-Text": "#32e71e",
           "11": "#2d2a34",
-          "11_Text": "#32e71e",
+          "11-Text": "#32e71e",
           "12": "#312e39",
-          "12_Text": "#32e71e",
+          "12-Text": "#32e71e",
           "13": "#35313d",
-          "13_Text": "#32e71e",
+          "13-Text": "#32e71e",
           "14": "#393542",
-          "14_Text": "#32e71e",
+          "14-Text": "#32e71e",
           "15": "#3d3947",
-          "15_Text": "#32e71e",
+          "15-Text": "#32e71e",
           "16": "#413d4b",
-          "16_Text": "#32e71e",
+          "16-Text": "#32e71e",
           "17": "#454050",
-          "17_Text": "#32e71e",
+          "17-Text": "#32e71e",
           "18": "#494455",
-          "18_Text": "#32e71e",
+          "18-Text": "#32e71e",
           "19": "#4d485a",
-          "19_Text": "#32e71e",
+          "19-Text": "#32e71e",
           "20": "#514b5e",
-          "20_Text": "#32e71e"
+          "20-Text": "#32e71e"
         },
         "Border": {
           "0": "#1a1a1a",
@@ -1099,27 +1099,27 @@
         },
         "Accent": {
           "0": "#18800d",
-          "0_Text": "#32e71e",
+          "0-Text": "#32e71e",
           "1": "#1f9e11",
-          "1_Text": "black",
+          "1-Text": "black",
           "2": "#26ba16",
-          "2_Text": "black",
+          "2-Text": "black",
           "3": "#2ed11c",
-          "3_Text": "black",
+          "3-Text": "black",
           "4": "#36e123",
-          "4_Text": "black",
+          "4-Text": "black",
           "5": "#41ec2e",
-          "5_Text": "black",
+          "5-Text": "black",
           "6": "#50f43d",
-          "6_Text": "black",
+          "6-Text": "black",
           "7": "#64f854",
-          "7_Text": "black",
+          "7-Text": "black",
           "8": "#7ffb72",
-          "8_Text": "black",
+          "8-Text": "black",
           "9": "#a1fe96",
-          "9_Text": "black",
+          "9-Text": "black",
           "10": "#c6ffbf",
-          "10_Text": "black"
+          "10-Text": "black"
         },
         "Text": {
           "0": "#095900",
@@ -1157,7 +1157,7 @@
           "2": "#2c0000",
           "3": "#2e0000"
         },
-        "Opaque_White": {
+        "Opaque-White": {
           "0": "hsla(259, 25%, 90%, 0.05)",
           "1": "hsla(259, 25%, 89%, 0.1)",
           "2": "hsla(259, 25%, 88%, 0.15)",
@@ -1174,7 +1174,7 @@
           "13": "hsla(259, 25%, 77%, 0.9)",
           "14": "hsla(259, 25%, 76%, 0.95)"
         },
-        "Opaque_Black": {
+        "Opaque-Black": {
           "0": "hsla(259, 12.5%, 10%, 0.05)",
           "1": "hsla(259, 12.5%, 11%, 0.1)",
           "2": "hsla(259, 12.5%, 12%, 0.15)",
@@ -1192,8 +1192,8 @@
           "14": "hsla(259, 12.5%, 24%, 0.95)"
         },
         "Alias": {
-          "PageBackground": "var(--I4C-Default-Background-3)",
-          "PageText": "var(--I4C-Default-Text-6)"
+          "PageBackground": "var(--I4C-Main-Background-3)",
+          "PageText": "var(--I4C-Main-Text-6)"
         }
       }
     },
@@ -1210,8 +1210,8 @@
         "TableRow": "Range",
         "TableRow_Green": "Range",
         "TableRow_Red": "Range",
-        "Opaque_White": "Given",
-        "Opaque_Black": "Given",
+        "Opaque-White": "Given",
+        "Opaque-Black": "Given",
         "Alias": "Given"
       },
       "BlockColorsGiven": {
@@ -1222,7 +1222,7 @@
           "3": "0 12px 32px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 0, 0, 0.05)",
           "4": "0 32px 64px rgba(0, 0, 0, 0.2), 0 0 16px rgba(0, 0, 0, 0.05)"
         },
-        "Opaque_White": {
+        "Opaque-White": {
           "0": "hsla(328, 25%, 90%, 0.05)",
           "1": "hsla(328, 24%, 89%, 0.1)",
           "2": "hsla(328, 23%, 88%, 0.15)",
@@ -1239,7 +1239,7 @@
           "13": "hsla(328, 12%, 77%, 0.9)",
           "14": "hsla(328, 11%, 76%, 0.95)"
         },
-        "Opaque_Black": {
+        "Opaque-Black": {
           "0": "hsla(328, 25%, 10%, 0.05)",
           "1": "hsla(328, 25%, 11%, 0.1)",
           "2": "hsla(328, 25%, 12%, 0.15)",
@@ -1257,8 +1257,8 @@
           "14": "hsla(328, 25%, 24%, 0.95)"
         },
         "Alias": {
-          "PageBackground": "var(--I4C-Default-Background-2)",
-          "PageText": "var(--I4C-Default-Text-6)"
+          "PageBackground": "var(--I4C-Main-Background-2)",
+          "PageText": "var(--I4C-Main-Text-6)"
         }
       },
       "BlockColorsRange": {
@@ -1371,47 +1371,47 @@
       "Colors": {
         "Background": {
           "0": "#ffffff",
-          "0_Text": "black",
+          "0-Text": "black",
           "1": "#fef6fb",
-          "1_Text": "black",
+          "1-Text": "black",
           "2": "#feeff7",
-          "2_Text": "black",
+          "2-Text": "black",
           "3": "#fde9f4",
-          "3_Text": "black",
+          "3-Text": "black",
           "4": "#fce4f1",
-          "4_Text": "black",
+          "4-Text": "black",
           "5": "#fae0ee",
-          "5_Text": "black",
+          "5-Text": "black",
           "6": "#f8dceb",
-          "6_Text": "black",
+          "6-Text": "black",
           "7": "#f6d8e8",
-          "7_Text": "black",
+          "7-Text": "black",
           "8": "#f4d4e5",
-          "8_Text": "black",
+          "8-Text": "black",
           "9": "#f1d1e2",
-          "9_Text": "black",
+          "9-Text": "black",
           "10": "#eecdde",
-          "10_Text": "black",
+          "10-Text": "black",
           "11": "#eac9da",
-          "11_Text": "black",
+          "11-Text": "black",
           "12": "#e5c5d6",
-          "12_Text": "black",
+          "12-Text": "black",
           "13": "#e1c0d1",
-          "13_Text": "black",
+          "13-Text": "black",
           "14": "#dbbbcc",
-          "14_Text": "black",
+          "14-Text": "black",
           "15": "#d5b6c6",
-          "15_Text": "black",
+          "15-Text": "black",
           "16": "#cfb0c0",
-          "16_Text": "black",
+          "16-Text": "black",
           "17": "#c8aaba",
-          "17_Text": "black",
+          "17-Text": "black",
           "18": "#c1a4b3",
-          "18_Text": "black",
+          "18-Text": "black",
           "19": "#ba9ead",
-          "19_Text": "black",
+          "19-Text": "black",
           "20": "#b398a6",
-          "20_Text": "black"
+          "20-Text": "black"
         },
         "Border": {
           "0": "#e6dfe2",
@@ -1438,27 +1438,27 @@
         },
         "Accent": {
           "0": "#800d4a",
-          "0_Text": "white",
+          "0-Text": "white",
           "1": "#9e115c",
-          "1_Text": "white",
+          "1-Text": "white",
           "2": "#ba166d",
-          "2_Text": "white",
+          "2-Text": "white",
           "3": "#d11c7c",
-          "3_Text": "white",
+          "3-Text": "white",
           "4": "#e12389",
-          "4_Text": "black",
+          "4-Text": "black",
           "5": "#ec2e94",
-          "5_Text": "black",
+          "5-Text": "black",
           "6": "#f43d9f",
-          "6_Text": "black",
+          "6-Text": "black",
           "7": "#f854ab",
-          "7_Text": "black",
+          "7-Text": "black",
           "8": "#fb72bb",
-          "8_Text": "black",
+          "8-Text": "black",
           "9": "#fe96cd",
-          "9_Text": "black",
+          "9-Text": "black",
           "10": "#ffbfe1",
-          "10_Text": "black"
+          "10-Text": "black"
         },
         "Text": {
           "0": "#b398a6",
@@ -1496,7 +1496,7 @@
           "2": "#f2cece",
           "3": "#f5d0d0"
         },
-        "Opaque_White": {
+        "Opaque-White": {
           "0": "hsla(328, 25%, 90%, 0.05)",
           "1": "hsla(328, 24%, 89%, 0.1)",
           "2": "hsla(328, 23%, 88%, 0.15)",
@@ -1513,7 +1513,7 @@
           "13": "hsla(328, 12%, 77%, 0.9)",
           "14": "hsla(328, 11%, 76%, 0.95)"
         },
-        "Opaque_Black": {
+        "Opaque-Black": {
           "0": "hsla(328, 25%, 10%, 0.05)",
           "1": "hsla(328, 25%, 11%, 0.1)",
           "2": "hsla(328, 25%, 12%, 0.15)",
@@ -1531,8 +1531,8 @@
           "14": "hsla(328, 25%, 24%, 0.95)"
         },
         "Alias": {
-          "PageBackground": "var(--I4C-Default-Background-2)",
-          "PageText": "var(--I4C-Default-Text-6)"
+          "PageBackground": "var(--I4C-Main-Background-2)",
+          "PageText": "var(--I4C-Main-Text-6)"
         }
       }
     }

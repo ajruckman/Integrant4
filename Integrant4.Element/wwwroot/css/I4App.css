@@ -2,13 +2,13 @@ html {
   font-size: 15px; }
 
 body {
-  background-color: var(--I4C_Default_Alias_PageBackground);
-  color: var(--I4C_Default_Text_6);
+  background-color: var(--I4C-Main-Alias-PageBackground);
+  color: var(--I4C-Main-Text-6);
   font-size: 15px;
   margin: 0;
   overflow-y: scroll;
   padding: 0; }
   body * {
-    font-family: var(--I4R_SansSerifFont); }
+    font-family: var(--I4R-SansSerifFont); }
 
 /*# sourceMappingURL=I4App.css.map */

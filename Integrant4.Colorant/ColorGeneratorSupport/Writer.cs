@@ -18,13 +18,15 @@ namespace Integrant4.Colorant.ColorGeneratorSupport
             {
                 foreach (string id in block.IDs)
                 {
+                    string n = block.Name.Replace("-", "_");
+                    
                     constLines.Add(
-                        C + $"{block.Name}_{id} = \"var(--I4C-{theme.Name}-{block.Name}-{id})\";");
+                        C + $"{n}_{id} = \"var(--I4C-{theme.Name}-{n}-{id})\";");
 
                     if (!block.CreateDisplayTextVariables) continue;
 
                     constLines.Add(
-                        C + $"{block.Name}_{id}_Text = \"var(--I4C-{theme.Name}-{block.Name}-{id}-Text)\";");
+                        C + $"{n}_{id}_Text = \"var(--I4C-{theme.Name}-{n}-{id}-Text)\";");
                 }
             }
 

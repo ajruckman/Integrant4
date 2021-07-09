@@ -42,12 +42,12 @@
             "CreateDisplayTextVariables": false
         },
         {
-            "Name":                       "Opaque_White",
+            "Name":                       "Opaque-White",
             "IDs":                        ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
             "CreateDisplayTextVariables": false
         },
         {
-            "Name":                       "Opaque_Black",
+            "Name":                       "Opaque-Black",
             "IDs":                        ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
             "CreateDisplayTextVariables": false
         },
@@ -72,8 +72,8 @@
                 "TableRow":       "Range",
                 "TableRow_Green": "Range",
                 "TableRow_Red":   "Range",
-                "Opaque_White":   "Given",
-                "Opaque_Black":   "Given",
+                "Opaque-White":   "Given",
+                "Opaque-Black":   "Given",
                 "Alias":          "Given"
             },
             "BlockColorsGiven":      {
@@ -84,7 +84,7 @@
                     "3": "0 12px 32px rgba(0, 0, 0, 0.5), 0 0 8px rgba(0, 0, 0, 0.4)",
                     "4": "0 32px 64px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 0, 0, 0.4)"
                 },
-                "Opaque_White": {
+                "Opaque-White": {
                     "0":  "hsla(259, 35%, 90%, 0.05)",
                     "1":  "hsla(259, 35%, 89%, 0.1)",
                     "2":  "hsla(259, 35%, 88%, 0.15)",
@@ -101,7 +101,7 @@
                     "13": "hsla(259, 35%, 77%, 0.9)",
                     "14": "hsla(259, 35%, 76%, 0.95)"
                 },
-                "Opaque_Black": {
+                "Opaque-Black": {
                     "0":  "hsla(259, 12.5%, 10%, 0.05)",
                     "1":  "hsla(259, 12.5%, 11%, 0.1)",
                     "2":  "hsla(259, 12.5%, 12%, 0.15)",
@@ -119,8 +119,8 @@
                     "14": "hsla(259, 12.5%, 24%, 0.95)"
                 },
                 "Alias":        {
-                    "PageBackground": "var(--I4C-Default-Background-3)",
-                    "PageText":       "var(--I4C-Default-Text-6)"
+                    "PageBackground": "var(--I4C-Main-Background-3)",
+                    "PageText":       "var(--I4C-Main-Text-6)"
                 }
             },
             "BlockColorsRange":      {
@@ -227,8 +227,8 @@
                 "TableRow":       "Range",
                 "TableRow_Green": "Range",
                 "TableRow_Red":   "Range",
-                "Opaque_White":   "Given",
-                "Opaque_Black":   "Given",
+                "Opaque-White":   "Given",
+                "Opaque-Black":   "Given",
                 "Alias":          "Given"
             },
             "BlockColorsGiven":      {
@@ -239,7 +239,7 @@
                     "3": "0 12px 32px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 0, 0, 0.05)",
                     "4": "0 32px 64px rgba(0, 0, 0, 0.2), 0 0 16px rgba(0, 0, 0, 0.05)"
                 },
-                "Opaque_White": {
+                "Opaque-White": {
                     "0":  "hsla(210, 25%, 90%, 0.05)",
                     "1":  "hsla(210, 24%, 89%, 0.1)",
                     "2":  "hsla(210, 23%, 88%, 0.15)",
@@ -256,7 +256,7 @@
                     "13": "hsla(210, 12%, 77%, 0.9)",
                     "14": "hsla(210, 11%, 76%, 0.95)"
                 },
-                "Opaque_Black": {
+                "Opaque-Black": {
                     "0":  "hsla(210, 25%, 10%, 0.05)",
                     "1":  "hsla(210, 25%, 11%, 0.1)",
                     "2":  "hsla(210, 25%, 12%, 0.15)",
@@ -274,8 +274,8 @@
                     "14": "hsla(210, 25%, 24%, 0.95)"
                 },
                 "Alias":        {
-                    "PageBackground": "var(--I4C-Default-Background-2)",
-                    "PageText":       "var(--I4C-Default-Text-6)"
+                    "PageBackground": "var(--I4C-Main-Background-2)",
+                    "PageText":       "var(--I4C-Main-Text-6)"
                 }
             },
             "BlockColorsRange":      {
@@ -381,8 +381,8 @@
                 "TableRow":       "Range",
                 "TableRow_Green": "Range",
                 "TableRow_Red":   "Range",
-                "Opaque_White":   "Given",
-                "Opaque_Black":   "Given",
+                "Opaque-White":   "Given",
+                "Opaque-Black":   "Given",
                 "Alias":          "Given"
             },
             "BlockColorsGiven":      {
@@ -393,7 +393,7 @@
                     "3": "0 12px 32px rgba(0, 0, 0, 0.5), 0 0 8px rgba(0, 0, 0, 0.4)",
                     "4": "0 32px 64px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 0, 0, 0.4)"
                 },
-                "Opaque_White": {
+                "Opaque-White": {
                     "0":  "hsla(259, 25%, 90%, 0.05)",
                     "1":  "hsla(259, 25%, 89%, 0.1)",
                     "2":  "hsla(259, 25%, 88%, 0.15)",
@@ -410,7 +410,7 @@
                     "13": "hsla(259, 25%, 77%, 0.9)",
                     "14": "hsla(259, 25%, 76%, 0.95)"
                 },
-                "Opaque_Black": {
+                "Opaque-Black": {
                     "0":  "hsla(259, 12.5%, 10%, 0.05)",
                     "1":  "hsla(259, 12.5%, 11%, 0.1)",
                     "2":  "hsla(259, 12.5%, 12%, 0.15)",
@@ -428,8 +428,8 @@
                     "14": "hsla(259, 12.5%, 24%, 0.95)"
                 },
                 "Alias":        {
-                    "PageBackground": "var(--I4C-Default-Background-3)",
-                    "PageText":       "var(--I4C-Default-Text-6)"
+                    "PageBackground": "var(--I4C-Main-Background-3)",
+                    "PageText":       "var(--I4C-Main-Text-6)"
                 }
             },
             "BlockColorsRange":      {
@@ -535,8 +535,8 @@
                 "TableRow":       "Range",
                 "TableRow_Green": "Range",
                 "TableRow_Red":   "Range",
-                "Opaque_White":   "Given",
-                "Opaque_Black":   "Given",
+                "Opaque-White":   "Given",
+                "Opaque-Black":   "Given",
                 "Alias":          "Given"
             },
             "BlockColorsGiven":      {
@@ -547,7 +547,7 @@
                     "3": "0 12px 32px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 0, 0, 0.05)",
                     "4": "0 32px 64px rgba(0, 0, 0, 0.2), 0 0 16px rgba(0, 0, 0, 0.05)"
                 },
-                "Opaque_White": {
+                "Opaque-White": {
                     "0":  "hsla(328, 25%, 90%, 0.05)",
                     "1":  "hsla(328, 24%, 89%, 0.1)",
                     "2":  "hsla(328, 23%, 88%, 0.15)",
@@ -564,7 +564,7 @@
                     "13": "hsla(328, 12%, 77%, 0.9)",
                     "14": "hsla(328, 11%, 76%, 0.95)"
                 },
-                "Opaque_Black": {
+                "Opaque-Black": {
                     "0":  "hsla(328, 25%, 10%, 0.05)",
                     "1":  "hsla(328, 25%, 11%, 0.1)",
                     "2":  "hsla(328, 25%, 12%, 0.15)",
@@ -582,8 +582,8 @@
                     "14": "hsla(328, 25%, 24%, 0.95)"
                 },
                 "Alias":        {
-                    "PageBackground": "var(--I4C-Default-Background-2)",
-                    "PageText":       "var(--I4C-Default-Text-6)"
+                    "PageBackground": "var(--I4C-Main-Background-2)",
+                    "PageText":       "var(--I4C-Main-Text-6)"
                 }
             },
             "BlockColorsRange":      {

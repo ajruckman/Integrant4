@@ -1,5 +1,5 @@
 a.I4E-Bit-Link {
-    color: var(--I4C_Default_PageText);
+    color: var(--I4C-Main-PageText);
     outline: none;
     text-decoration: none;
 
@@ -20,25 +20,25 @@ a.I4E-Bit-Link {
     // Default colors
 
     &:not(.I4E-Bit-Link--Accented):not(.I4E-Bit-Link--Highlighted) {
-        color: var(--I4C_Default_PageText);
+        color: var(--I4C-Main-PageText);
 
         &:visited {
-            color: var(--I4C_Default_PageText);
+            color: var(--I4C-Main-PageText);
         }
     }
 
     &:not(#_):hover {
-        color: var(--I4C_Default_Accent_8);
+        color: var(--I4C-Main-Accent-8);
         text-decoration: underline;
     }
 
     &:not(#_):active {
-        color: var(--I4C_Default_Accent_9);
+        color: var(--I4C-Main-Accent-9);
         text-decoration: underline;
     }
 
     &.I4E-Bit-Link--Accented {
-        color: var(--I4C_Default_Accent_7);
+        color: var(--I4C-Main-Accent-7);
     }
 
     &.I4E-Bit-Link--Highlighted {

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace Integrant4.Colorant.ColorGeneratorSupport
 {
-    internal sealed class Caller
+    internal sealed class Caller : IDisposable
     {
         private readonly Process _p;
 
@@ -26,21 +26,29 @@ namespace Integrant4.Colorant.ColorGeneratorSupport
             _p.Start();
         }
 
+        public void Dispose()
+        {
+            _p.Kill();
+            _p.Dispose();
+        }
+
         public List<Color> Call(Block block, ColorRange s)
         {
-            _p.StandardInput.WriteLine(
-                $"{block.IDs.Count} "                                +
-                $"{s.HueStart} {s.HueEnd} {s.HueCurve} "             +
-                $"{s.SatStart} {s.SatEnd} {s.SatCurve} {s.SatRate} " +
-                $"{s.LumStart} {s.LumEnd} {s.LumCurve} "             +
-                $"{s.Modifier}");
+            string p = $"{block.IDs.Count} "                                +
+                       $"{s.HueStart} {s.HueEnd} {s.HueCurve} "             +
+                       $"{s.SatStart} {s.SatEnd} {s.SatCurve} {s.SatRate} " +
+                       $"{s.LumStart} {s.LumEnd} {s.LumCurve} "             +
+                       $"{s.Modifier}";
+
+            Console.WriteLine(p);
+            _p.StandardInput.WriteLine(p);
 
             string json = _p.StandardOutput.ReadLine() ?? throw new Exception();
 
             var range = JsonConvert.DeserializeObject<List<Color>>
             (
                 json,
-                new JsonSerializerSettings {NullValueHandling = NullValueHandling.Ignore}
+                new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }
             );
 
             return range ?? throw new Exception();
