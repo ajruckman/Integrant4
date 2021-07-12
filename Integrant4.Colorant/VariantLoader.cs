@@ -5,12 +5,14 @@ using Blazored.LocalStorage;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
+using Microsoft.JSInterop;
 
 namespace Integrant4.Colorant
 {
     public sealed class VariantLoader
     {
         private readonly ILocalStorageService _localStorage;
+        private readonly IJSRuntime           _jsRuntime;
         private readonly ITheme               _theme;
         private readonly string               _defaultVariant;
         private readonly Hook                 _update = new();
@@ -19,10 +21,11 @@ namespace Integrant4.Colorant
 
         public VariantLoader
         (
-            ILocalStorageService localStorage, ITheme theme, string defaultVariant
+            ILocalStorageService localStorage, IJSRuntime jsRuntime, ITheme theme, string defaultVariant
         )
         {
             _localStorage   = localStorage;
+            _jsRuntime      = jsRuntime;
             _theme          = theme;
             _defaultVariant = defaultVariant;
 
@@ -47,7 +50,7 @@ namespace Integrant4.Colorant
                 int seq = -1;
 
                 builder.OpenComponent<Latch>(++seq);
-                builder.AddAttribute(++seq, "Hook", (ReadOnlyHook) _update);
+                builder.AddAttribute(++seq, "Hook", (ReadOnlyHook)_update);
 
                 builder.AddAttribute(++seq, "ChildContent", new RenderFragment(builder2 =>
                 {
@@ -81,7 +84,7 @@ namespace Integrant4.Colorant
                 builder.CloseElement();
 
                 builder.OpenComponent<Latch>(++seq);
-                builder.AddAttribute(++seq, "Hook", (ReadOnlyHook) _update);
+                builder.AddAttribute(++seq, "Hook", (ReadOnlyHook)_update);
                 builder.AddAttribute(++seq, "ChildContent", (RenderFragment)(builder2 =>
                 {
                     builder2.OpenElement(++seq, "select");
@@ -126,6 +129,8 @@ namespace Integrant4.Colorant
                 _variant = variant;
             }
 
+            await _jsRuntime.InvokeVoidAsync("I4.Colorant.SetThemeVariant", _theme.Name, _variant);
+
             _update.Invoke();
             Complete = true;
             OnComplete?.Invoke(variant);
@@ -136,6 +141,9 @@ namespace Integrant4.Colorant
             var variant = args.Value!.ToString()!;
             _variant = variant;
             await _localStorage.SetItemAsync($"I4C.Variant.{_theme.Name}", _variant);
+
+            await _jsRuntime.InvokeVoidAsync("I4.Colorant.SetThemeVariant", _theme.Name, _variant);
+
             _update.Invoke();
             OnVariantChange?.Invoke(variant);
         }

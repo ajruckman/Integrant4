@@ -53,7 +53,6 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
             v => _refresher = v,
             async firstRender =>
             {
-                Console.WriteLine(firstRender);
                 if (_elemRef == null || _refresher == null)
                 {
                     Console.WriteLine(
@@ -107,9 +106,11 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
 
     public partial class MarkdownEditor
     {
+        private string? _value;
+
         public event Action<string?>? OnChange;
 
-        private string? _value;
+        public void Refresh() => _refresher?.Invoke();
 
         [JSInvokable]
         public void Change(string markdown)
@@ -123,10 +124,12 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
             return Task.FromResult(_value);
         }
 
-        public async Task SetValue(string? value)
+        public async Task SetValue(string? value, bool invokeOnChange = true)
         {
             if (_editor == null) throw new Exception("Attempted to use SetValue() on uninitialized MarkdownEditor.");
             await _editor.InvokeVoidAsync("I4ESetValue", (_value = value) ?? "");
+
+            if (invokeOnChange) OnChange?.Invoke(_value);
         }
 
         public async Task Reset()
@@ -179,6 +182,7 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
 
     public partial class MarkdownEditor
     {
+        [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
             public Button[][]? Buttons              { get; init; }

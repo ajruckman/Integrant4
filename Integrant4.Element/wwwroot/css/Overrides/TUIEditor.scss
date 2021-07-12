@@ -1,30 +1,22 @@
+@import '../Bits/_Button.scss';
+
 div.toastui-editor-defaultUI {
     border-color: var(--I4E-TUIEditor-OuterBorder);
     border-radius: 7px;
     overflow: hidden;
 
-    div.tab-item {
-        background-color: purple;
-        border-color: var(--I4E-TUIEditor-InnerBorder);
-        color: orange;
-        height: 20px;
-        line-height: 20px;
-
-        &.active {
-            background-color: mediumpurple;
+    div.toastui-editor-toolbar, div.toastui-editor-mode-switch {
+        div.tab-item {
+            background-color: var(--I4E-TUIEditor-TabItem-Inactive);
             border-color: var(--I4E-TUIEditor-InnerBorder);
-            color: maroon;
-        }
-    }
+            color: var(--I4C-Main-Text-6);
 
-    div.toastui-editor-popup {
-        background-color: var(--I4E-TUIEditor-PopupBackground);
-        border-color: var(--I4E-TUIEditor-PopupBorder);
-        border-radius: 5px;
-        box-shadow: var(--I4C-Main-Shadow-1);
+            &.active {
+                background-color: var(--I4E-TUIEditor-TabItem-Active);
+                border-color: var(--I4C-Main-Accent-5);
 
-        ul li:hover {
-            background-color: var(--I4C-Main-Opaque-White-4);
+                color: var(--I4C-Main-Text-6);
+            }
         }
     }
 
@@ -38,26 +30,60 @@ div.toastui-editor-defaultUI {
         div.toastui-editor-md-tab-container {
             background-color: var(--I4E-TUIEditor-HeaderBackground);
             border-bottom-color: var(--I4E-TUIEditor-InnerBorder);
+            overflow: hidden;
+
+            div.tab-item {
+                margin-right: 2px;
+
+                &.active {
+                    border-bottom-color: var(--I4E-TUIEditor-InnerBorder);
+                    border-left-color: var(--I4C-Main-Accent-5);
+                    border-right-color: var(--I4C-Main-Accent-5);
+                    border-top-color: var(--I4C-Main-Accent-5);
+                }
+            }
         }
 
         div.toastui-editor-defaultUI-toolbar {
             background-color: var(--I4E-TUIEditor-HeaderBackground);
             border-bottom-color: var(--I4E-TUIEditor-InnerBorder);
+            box-shadow: var(--I4C-Main-Shadow-0);
 
             button.toastui-editor-toolbar-icons {
-                border-color: red;
+                border-radius: 4px;
 
                 &[disabled] {
                     cursor: not-allowed;
                 }
 
                 &:not([disabled]):hover {
-                    background-color: grey;
                 }
             }
 
             div.toastui-editor-toolbar-divider {
-                background-color: red;
+            }
+        }
+
+        div.toastui-editor-popup {
+            background-color: var(--I4E-TUIEditor-PopupBackground);
+            border-color: var(--I4E-TUIEditor-PopupBorder);
+            border-radius: 5px;
+            box-shadow: var(--I4C-Main-Shadow-1);
+
+            ul li:hover {
+                background-color: var(--I4C-Main-Opaque-White-4);
+            }
+
+            div.toastui-editor-popup-body {
+                padding: 5px;
+
+                label {
+                    margin: 5px;
+                }
+
+                button {
+                    @extend %_ButtonBase;
+                }
             }
         }
     }
@@ -106,77 +132,23 @@ div.toastui-editor-defaultUI {
     div.toastui-editor-mode-switch {
         background-color: var(--I4E-TUIEditor-HeaderBackground);
         border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+
+        border-top-color: var(--I4E-TUIEditor-InnerBorder);
         overflow: hidden;
 
-        border-bottom-right-radius: 7px;
-        border-top-color: var(--I4E-TUIEditor-InnerBorder);
+        div.tab-item {
+            margin-right: 1px;
+
+            &.active {
+                border-bottom-color: var(--I4C-Main-Accent-5);
+                border-left-color: var(--I4C-Main-Accent-5);
+                border-right-color: var(--I4C-Main-Accent-5);
+                border-top-color: var(--I4E-TUIEditor-InnerBorder);
+            }
+        }
     }
 }
-
-//div.toastui-editor-defaultUI {
-//    border-color: blue;
-//
-//    div.tab-item {
-//        background-color: purple;
-//        border-color: blue;
-//        color: orange;
-//
-//        &.active {
-//            border-color: blue;
-//            background-color: mediumpurple;
-//            color: maroon;
-//        }
-//    }
-//
-//    //
-//
-//    div.toastui-editor-toolbar {
-//        div.toastui-editor-md-tab-container {
-//            background-color: green;
-//            border-color: blue;
-//        }
-//
-//        div.toastui-editor-defaultUI-toolbar {
-//            background-color: green;
-//            border-color: blue;
-//
-//            button.toastui-editor-toolbar-icons {
-//                border-color: red;
-//
-//                &:hover {
-//                    background-color: grey;
-//                }
-//            }
-//
-//            div.toastui-editor-toolbar-divider {
-//                background-color: red;
-//            }
-//        }
-//    }
-//
-//    //
-//
-//    div.toastui-editor-main {
-//        div.toastui-editor-md-container {
-//            background-color: grey;
-//
-//            div.toastui-editor-md-splitter {
-//                background-color: red;
-//            }
-//        }
-//
-//        div.toastui-editor-ww-container {
-//            background-color: grey;
-//        }
-//    }
-//
-//    //
-//
-//    div.toastui-editor-mode-switch {
-//        background-color: green;
-//        border-color: blue;
-//    }
-//}
 
 // Variable colors
 
@@ -187,6 +159,8 @@ div.I4-App {
         --I4E-TUIEditor-OuterBorder: var(--I4C-Main-Border-11);
         --I4E-TUIEditor-PopupBackground: var(--I4C-Main-Background-8);
         --I4E-TUIEditor-PopupBorder: var(--I4C-Main-Border-11);
+        --I4E-TUIEditor-TabItem-Active: var(--I4C-Main-Background-6);
+        --I4E-TUIEditor-TabItem-Inactive: var(--I4C-Main-Background-0);
 
         //div.toastui-editor-defaultUI {
         //    border-color: blue;
@@ -260,5 +234,7 @@ div.I4-App {
         --I4E-TUIEditor-OuterBorder: var(--I4C-Main-Border-5);
         --I4E-TUIEditor-PopupBackground: var(--I4C-Main-Background-0);
         --I4E-TUIEditor-PopupBorder: var(--I4C-Main-Border-11);
+        --I4E-TUIEditor-TabItem-Active: var(--I4C-Main-Background-0);
+        --I4E-TUIEditor-TabItem-Inactive: var(--I4C-Main-Background-5);
     }
 }

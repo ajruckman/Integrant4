@@ -12,7 +12,8 @@ namespace Integrant4.Element
             stylesheetsInternal: new HashSet<string>
             {
                 "css/I4App.css",
-            }
+            },
+            dependencies: new[] { Colorant.ResourceSets.ThemeVariantSupport }
         );
 
         public static readonly ResourceSet Constructs = new
@@ -47,23 +48,23 @@ namespace Integrant4.Element
             {
                 Resources.Resources.Libraries.Tippy,
             },
-            stylesheetsInternal: new HashSet<string> {"css/Bits/Bits.css"},
-            scriptsInternal: new HashSet<string> {"js/Elements.js"}
+            stylesheetsInternal: new HashSet<string> { "css/Bits/Bits.css" },
+            scriptsInternal: new HashSet<string> { "js/Elements.js" }
         );
 
         public static readonly ResourceSet Inputs = new
         (
             $"{nameof(Integrant4)}.{nameof(Element)}",
             nameof(Inputs),
-            stylesheetsInternal: new HashSet<string> {"css/Inputs/Inputs.css"},
-            scriptsInternal: new HashSet<string> {"js/Elements.js", "js/Inputs.js"}
+            stylesheetsInternal: new HashSet<string> { "css/Inputs/Inputs.css" },
+            scriptsInternal: new HashSet<string> { "js/Elements.js", "js/Inputs.js" }
         );
 
         public static readonly ResourceSet Layouts = new ResourceSet
         (
             $"{nameof(Integrant4)}.{nameof(Element)}",
             nameof(Layouts),
-            stylesheetsInternal: new HashSet<string> {"css/Layouts/Layouts.css"}
+            stylesheetsInternal: new HashSet<string> { "css/Layouts/Layouts.css" }
         );
 
         public static class Overrides
@@ -75,7 +76,7 @@ namespace Integrant4.Element
                 {
                     Resources.Resources.Libraries.MiniBar,
                 },
-                stylesheetsInternal: new HashSet<string> {"css/Overrides/Blazor.css"}
+                stylesheetsInternal: new HashSet<string> { "css/Overrides/Blazor.css" }
             );
 
             public static readonly ResourceSet MiniBar = new
@@ -85,7 +86,7 @@ namespace Integrant4.Element
                 {
                     Resources.Resources.Libraries.MiniBar,
                 },
-                stylesheetsInternal: new HashSet<string> {"css/Overrides/MiniBar.css"}
+                stylesheetsInternal: new HashSet<string> { "css/Overrides/MiniBar.css" }
             );
 
             public static readonly ResourceSet Tippy = new
@@ -95,13 +96,13 @@ namespace Integrant4.Element
                 {
                     Resources.Resources.Libraries.Tippy,
                 },
-                stylesheetsInternal: new HashSet<string> {"css/Overrides/Tippy.css"}
+                stylesheetsInternal: new HashSet<string> { "css/Overrides/Tippy.css" }
             );
 
             public static readonly ResourceSet VariantLoader = new
             ($"{nameof(Integrant4)}.{nameof(Element)}",
                 $"{nameof(Overrides)}.{nameof(VariantLoader)}",
-                stylesheetsInternal: new HashSet<string> {"css/Overrides/VariantLoader.css"}
+                stylesheetsInternal: new HashSet<string> { "css/Overrides/VariantLoader.css" }
             );
         }
     }

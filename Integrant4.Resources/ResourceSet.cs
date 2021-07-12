@@ -137,6 +137,7 @@ namespace Integrant4.Resources
                 stylesheetsInternal: new HashSet<string>
                 {
                     "Libraries/TUIEditor/toastui-editor.min.css",
+                    "Libraries/TUIEditor/toastui-editor-dark.min.css",
                 },
                 scriptsInternal: new HashSet<string>
                 {

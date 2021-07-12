@@ -10,24 +10,31 @@ using Integrant4.Element.Bits.BitPresets;
 using Integrant4.Element.Constructs;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
+using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace Web.Shared
 {
     public partial class MainLayout
     {
-        private VariantLoader _defaultVariantLoader = null!;
-        private VariantLoader _solidsVariantLoader  = null!;
+        private readonly Stopwatch     _stopwatch            = new();
+        private          VariantLoader _defaultVariantLoader = null!;
+        private          VariantLoader _solidsVariantLoader  = null!;
 
         private Header _header = null!;
 
-        private readonly Stopwatch _stopwatch = new();
+        [Inject] public IJSRuntime JSRuntime { get; set; } = null!;
 
         protected override void OnInitialized()
         {
             _stopwatch.Start();
 
-            _defaultVariantLoader = new VariantLoader(StorageService, new Theme(),
-                Variants.Dark.ToString());
+            _defaultVariantLoader = new VariantLoader
+            (
+                StorageService, JSRuntime,
+                new Theme(),
+                Variants.Dark.ToString()
+            );
 
             _defaultVariantLoader.OnComplete += _ =>
             {
@@ -39,8 +46,12 @@ namespace Web.Shared
 
             //
 
-            _solidsVariantLoader = new VariantLoader(StorageService, new Integrant4.Colorant.Themes.Solids.Theme(),
-                Integrant4.Colorant.Themes.Solids.Variants.Normal.ToString());
+            _solidsVariantLoader = new VariantLoader
+            (
+                StorageService, JSRuntime,
+                new Integrant4.Colorant.Themes.Solids.Theme(),
+                Integrant4.Colorant.Themes.Solids.Variants.Normal.ToString()
+            );
 
             //
 
