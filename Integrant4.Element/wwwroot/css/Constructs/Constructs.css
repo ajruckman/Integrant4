@@ -110,9 +110,18 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-FileUploader, div.I4-
     background-color: white;
     border-color: var(--I4C-Main-Border-10); }
 
-div.I4E-Construct-LinearContent {
+div.I4E-Construct-FlexRow {
   align-items: center;
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%; }
+
+div.I4E-Construct-FlexColumn {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%; }
 
 button.I4E-Bit-Button, a.I4E-Bit-Button {
@@ -700,10 +709,12 @@ div.I4E-Construct-Selector div.I4E-Construct-Selector-Head, div.I4E-Input-Select
     box-shadow: var(--I4C-Main-Shadow-0); }
 
 div.I4E-Input-Checkbox input, div.I4E-Input-Checkbox textarea, div.I4E-Input-Date input, div.I4E-Input-Date textarea, div.I4E-Input-Decimal input, div.I4E-Input-Decimal textarea, div.I4E-Input-Integer input, div.I4E-Input-Integer textarea, div.I4E-Input-Text input, div.I4E-Input-Text textarea, div.I4E-Input-TextArea input, div.I4E-Input-TextArea textarea, div.I4E-Input-Time input, div.I4E-Input-Time textarea {
-  padding: calc(1em * (4 / 15)) calc(1em * (6 / 15));
-  white-space: pre-wrap; }
+  padding: calc(1em * (4 / 15)) calc(1em * (6 / 15)); }
   div.I4E-Input-Checkbox input::-webkit-inner-spin-button, div.I4E-Input-Checkbox input::-webkit-outer-spin-button, div.I4E-Input-Checkbox textarea::-webkit-inner-spin-button, div.I4E-Input-Checkbox textarea::-webkit-outer-spin-button, div.I4E-Input-Date input::-webkit-inner-spin-button, div.I4E-Input-Date input::-webkit-outer-spin-button, div.I4E-Input-Date textarea::-webkit-inner-spin-button, div.I4E-Input-Date textarea::-webkit-outer-spin-button, div.I4E-Input-Decimal input::-webkit-inner-spin-button, div.I4E-Input-Decimal input::-webkit-outer-spin-button, div.I4E-Input-Decimal textarea::-webkit-inner-spin-button, div.I4E-Input-Decimal textarea::-webkit-outer-spin-button, div.I4E-Input-Integer input::-webkit-inner-spin-button, div.I4E-Input-Integer input::-webkit-outer-spin-button, div.I4E-Input-Integer textarea::-webkit-inner-spin-button, div.I4E-Input-Integer textarea::-webkit-outer-spin-button, div.I4E-Input-Text input::-webkit-inner-spin-button, div.I4E-Input-Text input::-webkit-outer-spin-button, div.I4E-Input-Text textarea::-webkit-inner-spin-button, div.I4E-Input-Text textarea::-webkit-outer-spin-button, div.I4E-Input-TextArea input::-webkit-inner-spin-button, div.I4E-Input-TextArea input::-webkit-outer-spin-button, div.I4E-Input-TextArea textarea::-webkit-inner-spin-button, div.I4E-Input-TextArea textarea::-webkit-outer-spin-button, div.I4E-Input-Time input::-webkit-inner-spin-button, div.I4E-Input-Time input::-webkit-outer-spin-button, div.I4E-Input-Time textarea::-webkit-inner-spin-button, div.I4E-Input-Time textarea::-webkit-outer-spin-button {
     color: green !important; }
+
+div.I4E-Input-Checkbox input[type='text'], div.I4E-Input-Checkbox textarea, div.I4E-Input-Date input[type='text'], div.I4E-Input-Date textarea, div.I4E-Input-Decimal input[type='text'], div.I4E-Input-Decimal textarea, div.I4E-Input-Integer input[type='text'], div.I4E-Input-Integer textarea, div.I4E-Input-Text input[type='text'], div.I4E-Input-Text textarea, div.I4E-Input-TextArea input[type='text'], div.I4E-Input-TextArea textarea, div.I4E-Input-Time input[type='text'], div.I4E-Input-Time textarea {
+  white-space: pre-wrap; }
 
 div.I4E-Input-Checkbox.I4E-Bit--Highlighted input, div.I4E-Input-Checkbox.I4E-Bit--Highlighted textarea, div.I4E-Input-Date.I4E-Bit--Highlighted input, div.I4E-Input-Date.I4E-Bit--Highlighted textarea, div.I4E-Input-Decimal.I4E-Bit--Highlighted input, div.I4E-Input-Decimal.I4E-Bit--Highlighted textarea, div.I4E-Input-Integer.I4E-Bit--Highlighted input, div.I4E-Input-Integer.I4E-Bit--Highlighted textarea, div.I4E-Input-Text.I4E-Bit--Highlighted input, div.I4E-Input-Text.I4E-Bit--Highlighted textarea, div.I4E-Input-TextArea.I4E-Bit--Highlighted input, div.I4E-Input-TextArea.I4E-Bit--Highlighted textarea, div.I4E-Input-Time.I4E-Bit--Highlighted input, div.I4E-Input-Time.I4E-Bit--Highlighted textarea {
   border: 1px solid var(--I4E-Highlight); }
@@ -923,11 +934,6 @@ div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Cons
     background-color: var(--I4C-Main-Background-8); }
   div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled], div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled] {
     background-color: rgba(0, 0, 0, 0.05); }
-
-div.I4E-Construct-StackedContent {
-  align-items: center;
-  display: inline-flex;
-  flex-direction: column; }
 
 div.I4E-Construct-TagSelector {
   border-radius: 4px;

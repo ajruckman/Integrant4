@@ -33,7 +33,7 @@
                 .Select(v => new Selector<User>.Option
                     (
                     v,
-                    new StackedContent(() => new IRenderable[]
+                    new FlexColumn(() => new IRenderable[]
                     {
                         $"{v.FirstName} {v.LastName} {v.FirstName} {v.LastName} {v.FirstName} {v.LastName} {v.FirstName} {v.LastName}".AsTextContent(weight: FontWeight.Bold),
                         v.BirthYear.ToString().AsContent(),
@@ -48,7 +48,7 @@
         Selector<string>.Option[] GroupOptions() => Groups.Select(v => new Selector<string>.Option
             (
             v.Value.Item1,
-            new StackedContent(() => new IRenderable[]
+            new FlexColumn(() => new IRenderable[]
             {
                 v.Key.AsTextContent(weight: FontWeight.Bold),
                 v.Value.Item2.AsContent(),

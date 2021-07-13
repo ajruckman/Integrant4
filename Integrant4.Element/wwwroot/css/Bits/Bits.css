@@ -528,6 +528,33 @@ div.I4E-Bit-LocalModal {
     div.I4E-Bit-LocalModal div.I4E-Bit-LocalModal-Inner--Column {
       flex-direction: column; }
 
+div.I4E-Bit-Radio div.I4E-Bit-Radio-Option {
+  align-items: center;
+  border-radius: 4px;
+  display: flex;
+  margin: 2px;
+  padding: 5px; }
+  div.I4E-Bit-Radio div.I4E-Bit-Radio-Option:hover {
+    background-color: var(--I4C-Main-Opaque-Black-3); }
+  div.I4E-Bit-Radio div.I4E-Bit-Radio-Option div.I4E-Bit-Radio-Option-Button {
+    height: 16px;
+    padding-right: 5px;
+    width: 16px; }
+  div.I4E-Bit-Radio div.I4E-Bit-Radio-Option div.I4E-Bit-Radio-Option-Content {
+    width: 100%; }
+
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Bit-Radio div.I4E-Bit-Radio-Option:hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Bit-Radio div.I4E-Bit-Radio-Option:hover {
+  background-color: var(--I4C-Main-Background-16); }
+
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Bit-Radio div.I4E-Bit-Radio-Option[data-selected]:not(:hover), div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Bit-Radio div.I4E-Bit-Radio-Option[data-selected]:not(:hover) {
+  background-color: var(--I4C-Main-Background-12); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Bit-Radio div.I4E-Bit-Radio-Option:hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Bit-Radio div.I4E-Bit-Radio-Option:hover {
+  background-color: var(--I4C-Main-Background-8); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Bit-Radio div.I4E-Bit-Radio-Option[data-selected]:not(:hover), div.I4-App[data-i4-theme-variant="White"] div.I4E-Bit-Radio div.I4E-Bit-Radio-Option[data-selected]:not(:hover) {
+  background-color: var(--I4C-Main-Background-6); }
+
 div.I4E-Bit-Space {
   width: 5px; }
 

@@ -1,0 +1,15 @@
+div.I4E-Construct-FlexRow {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+div.I4E-Construct-FlexColumn {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}

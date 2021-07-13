@@ -1,0 +1,50 @@
+@page "/radios"
+@using Integrant4.Fundament
+@using Integrant4.Element.Bits
+@using Integrant4.Element.Constructs
+@using Integrant4.Element.Inputs
+@using Integrant4.API
+@using Integrant4.Element
+
+@code {
+
+    [Inject]
+    public IJSRuntime JSRuntime { get; set; } = null!;
+
+    public enum DogType
+    {
+        Small = 1,
+        Medium = 2,
+        Large = 3,
+        Other = 4,
+    }
+
+    private Radio<int> _radio1 = null!;
+    private Radio<int> _radio2 = null!;
+    private TextInput _typeOtherInput = null!;
+
+    private (int, Content)[] RadioOptions() => new[]
+    {
+        ((int) DogType.Small, "Small dog".AsContent()),
+        ((int) DogType.Medium, "Medium dog".AsContent()),
+        ((int) DogType.Large, "Large dog".AsContent()),
+        (
+            (int) DogType.Other, 
+                new FlexRow(() => new IRenderable[]
+                {
+                    "Other".AsContent(),
+                    _typeOtherInput,
+                }, () => FlexJustify.SpaceBetween).Renderer()
+            ),
+    };
+
+    protected override void OnInitialized()
+    {
+        _typeOtherInput = new TextInput(JSRuntime, "");
+
+        _radio1 = new Radio<int>(RadioOptions);
+    }
+
+}
+
+@_radio1.Renderer()

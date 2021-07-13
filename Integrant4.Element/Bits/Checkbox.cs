@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
@@ -77,7 +76,7 @@ namespace Integrant4.Element.Bits
             builder.AddAttribute(++seq, "onclick",
                 EventCallback.Factory.Create<MouseEventArgs>(this, OnClick));
 
-            string[] ac = {!IsChecked ? "I4E-Bit-Checkbox--Unchecked" : "I4E-Bit-Checkbox--Checked"};
+            string[] ac = { !IsChecked ? "I4E-Bit-Checkbox--Unchecked" : "I4E-Bit-Checkbox--Checked" };
             BitBuilder.ApplyAttributes(this, builder, ref seq, ac, null);
 
             builder.OpenComponent<BootstrapIcon>(++seq);

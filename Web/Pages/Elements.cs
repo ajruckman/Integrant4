@@ -180,7 +180,7 @@ namespace Web.Pages
             });
             _buttonStacked = new Button(() => new IRenderable[]
             {
-                new StackedContent(() => new IRenderable[]
+                new FlexColumn(() => new IRenderable[]
                 {
                     "Top content/full name".AsContent(),
                     "Lower content".AsTextContent(size: 0.8, weight: FontWeight.Normal),
@@ -294,14 +294,14 @@ namespace Web.Pages
                         "Settings 222".AsContent(),
                         new BootstrapIcon("gear-fill"),
                     }, new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
-                    new Button(() => new LinearContent(() => new IRenderable[]
+                    new Button(() => new FlexRow(() => new IRenderable[]
                         {
                             "Settings".AsContent(),
                             new Space(10),
                             new BootstrapIcon("gear"),
                         }, () => FlexJustify.SpaceBetween),
                         new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
-                    new Button(() => new LinearContent(() => new IRenderable[]
+                    new Button(() => new FlexRow(() => new IRenderable[]
                         {
                             "Settings 222".AsContent(),
                             new Space(10),
