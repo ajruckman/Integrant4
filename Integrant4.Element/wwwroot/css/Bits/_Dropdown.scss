@@ -5,7 +5,7 @@ div.I4E-Bit-Dropdown {
         cursor: pointer;
     }
 
-    div.I4E-Bit-Dropdown-Children {
+    div.I4E-Bit-Dropdown-Contents {
         background-color: var(--I4C-Main-Background-6);
         border-radius: 5px;
         box-shadow: var(--I4C-Main-Shadow-1);
@@ -28,12 +28,16 @@ div.I4E-Bit-Dropdown {
             &:not(:last-child) {
                 margin-bottom: 3px;
             }
+
+            &:only-child {
+                flex-grow: 1;
+            }
         }
     }
 
     // Descendent overrides
 
-    div.I4E-Bit-Dropdown-Head[data-children-shown] {
+    div.I4E-Bit-Dropdown-Head[data-contents-shown] {
         a.I4E-Bit-HeaderLink {
             color: var(--I4C-Main-Accent-8);
         }
@@ -44,14 +48,14 @@ div.I4E-Bit-Dropdown {
 
 div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
-        div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children {
+        div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents {
             background-color: var(--I4C-Main-Background-8);
             border: 1px solid var(--I4C-Main-Border-11);
         }
     }
 
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
-        div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Children {
+        div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents {
             background-color: var(--I4C-Main-Background-0);
             border: 1px solid var(--I4C-Main-Border-11);
         }

@@ -41,7 +41,7 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
 
                 builder.OpenElement(++seq, "section");
                 builder.AddAttribute(++seq, "hidden", _spec?.IsVisible?.Invoke() == false);
-                builder.AddAttribute(++seq, "class", classes.ToString());
+                builder.AddAttribute(++seq, "class",  classes.ToString());
                 builder.AddAttribute(++seq, "style", _spec?.Width != null
                     ? $"max-width: {_spec.Width.Invoke()}px"
                     : null);
@@ -76,6 +76,7 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
                         _objRef,
                         _elemRef,
                         SerializeButtons(_spec?.Buttons ?? DefaultButtons),
+                        (_spec?.InitialEditType ?? InitialEditType.Markdown).ToString().ToLower(),
                         _spec?.DebounceMilliseconds   ?? 300,
                         _spec?.InitialValue?.Invoke() ?? "",
                         newState.PlaceholderText,
@@ -119,9 +120,9 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
             OnChange?.Invoke(markdown.CoalesceAndTrim());
         }
 
-        public Task<string?> GetValue()
+        public string? GetValue()
         {
-            return Task.FromResult(_value);
+            return _value;
         }
 
         public async Task SetValue(string? value, bool invokeOnChange = true)
@@ -162,6 +163,12 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
             CodeBlock,
         }
 
+        public enum InitialEditType
+        {
+            Markdown,
+            WYSIWYG,
+        }
+
         private static readonly Button[][] DefaultButtons;
 
         static MarkdownEditor()
@@ -185,8 +192,9 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec
         {
-            public Button[][]? Buttons              { get; init; }
-            public ushort      DebounceMilliseconds { get; init; }
+            public Button[][]?     Buttons              { get; init; }
+            public InitialEditType InitialEditType      { get; init; }
+            public ushort          DebounceMilliseconds { get; init; }
 
             public Callbacks.Callback<string?>? InitialValue { get; init; }
 

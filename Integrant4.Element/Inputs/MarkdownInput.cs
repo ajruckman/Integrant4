@@ -23,7 +23,7 @@ namespace Integrant4.Element.Inputs
 
         public RenderFragment Renderer() => _editor.Renderer();
 
-        public async Task<string?> GetValue() => await _editor.GetValue();
+        public Task<string?> GetValue() => Task.FromResult(_editor.GetValue());
 
         public event Action<string?>? OnChange;
     }

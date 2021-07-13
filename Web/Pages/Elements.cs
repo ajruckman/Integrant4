@@ -149,10 +149,7 @@ namespace Web.Pages
 
             //
 
-            _buttonNoIcon = new Button(() =>
-            {
-                return "asdf".AsContent();
-            }, new Button.Spec
+            _buttonNoIcon = new Button(() => { return "asdf".AsContent(); }, new Button.Spec
             {
                 Tooltip = () => new Tooltip("<strong>asdf</strong>"),
             });
@@ -178,7 +175,7 @@ namespace Web.Pages
             });
             _buttonIconAll = new Button(() => new IRenderable[]
             {
-                new BootstrapIcon("caret-left-fill", 16),
+                new BootstrapIcon("caret-left-fill",  16),
                 new BootstrapIcon("caret-right-fill", 16),
             });
             _buttonStacked = new Button(() => new IRenderable[]
@@ -289,14 +286,28 @@ namespace Web.Pages
                     "asdf".AsContent(),
                     new Button(() => new IRenderable[]
                     {
-                        new BootstrapIcon("gear"),
                         "Settings".AsContent(),
+                        new BootstrapIcon("gear"),
                     }, new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
                     new Button(() => new IRenderable[]
                     {
+                        "Settings 222".AsContent(),
                         new BootstrapIcon("gear-fill"),
-                        "Settings 2".AsContent(),
                     }, new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
+                    new Button(() => new LinearContent(() => new IRenderable[]
+                        {
+                            "Settings".AsContent(),
+                            new Space(10),
+                            new BootstrapIcon("gear"),
+                        }, () => FlexJustify.SpaceBetween),
+                        new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
+                    new Button(() => new LinearContent(() => new IRenderable[]
+                        {
+                            "Settings 222".AsContent(),
+                            new Space(10),
+                            new BootstrapIcon("gear-fill"),
+                        }, () => FlexJustify.SpaceBetween),
+                        new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
                     new HorizontalLine(),
                     new Dropdown
                     (

@@ -68,7 +68,7 @@ namespace Integrant4.Element.Bits
             [Parameter] public Dropdown Dropdown { get; set; } = null!;
 
             private ElementReference? _headRef;
-            private ElementReference? _childrenRef;
+            private ElementReference? _contentsRef;
             private ElementService?   _elementService;
 
             protected override void BuildRenderTree(RenderTreeBuilder builder)
@@ -98,10 +98,10 @@ namespace Integrant4.Element.Bits
 
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "id",    Dropdown.ID + ".Contents");
-                builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Children");
+                builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Contents");
                 builder.AddAttribute(++seq, "data-popper-placement",
                     (Dropdown._placementGetter?.Invoke() ?? TooltipPlacement.Bottom).Map());
-                builder.AddElementReferenceCapture(++seq, r => _childrenRef = r);
+                builder.AddElementReferenceCapture(++seq, r => _contentsRef = r);
 
                 foreach (IRenderable renderable in Dropdown._childContents.Invoke())
                 {
@@ -126,7 +126,7 @@ namespace Integrant4.Element.Bits
             {
                 if (firstRender)
                     _elementService!.AddJob((j, t) =>
-                        Interop.CallVoid(j, t, "I4.Element.InitDropdown", _headRef!.Value, _childrenRef!.Value));
+                        Interop.CallVoid(j, t, "I4.Element.InitDropdown", _headRef!.Value, _contentsRef!.Value));
             }
         }
     }

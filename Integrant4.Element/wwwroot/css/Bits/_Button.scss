@@ -1,5 +1,5 @@
 %_ButtonBase {
-    
+
 }
 
 button.I4E-Bit-Button, a.I4E-Bit-Button {
@@ -54,6 +54,10 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
 
             &:not(:last-child) {
                 margin-right: calc(1em * (5 / 15));
+            }
+
+            &:only-child {
+                flex-grow: 1;
             }
         }
     }
@@ -206,16 +210,16 @@ div.I4-App {
             }
 
             &.I4E-Bit-Button--AccentTransparent {
-                color: var(--I4C-Main-Accent-5);
+                color: var(--I4C-Main-Accent-7);
 
                 &:hover:not(.I4E-Bit--Disabled) {
                     background-color: var(--I4C-Main-Opaque-White-3);
-                    color: var(--I4C-Main-Accent-7);
+                    color: var(--I4C-Main-Accent-8);
                 }
 
                 &:active:not(.I4E-Bit--Disabled) {
                     background-color: var(--I4C-Main-Opaque-White-2);
-                    color: var(--I4C-Main-Accent-7);
+                    color: var(--I4C-Main-Accent-8);
                 }
             }
         }

@@ -51,11 +51,11 @@ namespace Integrant4.Colorant.Generators.ColorGeneratorSupport
                                 {
                                     case "black":
                                         if (variant.DefaultDarkTextColor != null)
-                                            blockColors[$"{i}_Text"] = variant.DefaultDarkTextColor;
+                                            blockColors[$"{i}-Text"] = variant.DefaultDarkTextColor;
                                         break;
                                     case "white":
                                         if (variant.DefaultLightTextColor != null)
-                                            blockColors[$"{i}_Text"] = variant.DefaultLightTextColor;
+                                            blockColors[$"{i}-Text"] = variant.DefaultLightTextColor;
                                         break;
                                 }
 

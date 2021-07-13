@@ -2,9 +2,9 @@ window.I4 = window.I4 || {};
 window.I4.Element = window.I4.Element || {};
 
 window.I4.Element.GetMarkdownEditorTheme = window.I4.Element.GetMarkdownEditorTheme || function () {
-    if (window.I4.Colorant.ThemeVariant.hasOwnProperty('Main')) {
-        let mainVariant = window.I4.Colorant.ThemeVariant['Main'];
-        if (mainVariant === 'Dark' || mainVariant === 'Matrix') {
+    if (window.I4.Colorant.ThemeVariant.hasOwnProperty("Main")) {
+        let mainVariant = window.I4.Colorant.ThemeVariant["Main"];
+        if (mainVariant === "Dark" || mainVariant === "Matrix") {
             return "dark";
         } else if (mainVariant === "White" || mainVariant === "Pink") {
             return undefined;
@@ -12,17 +12,18 @@ window.I4.Element.GetMarkdownEditorTheme = window.I4.Element.GetMarkdownEditorTh
     }
 
     return undefined;
-}
+};
 
 window.I4.Element.InitMarkdownEditor = window.I4.Element.InitMarkdownEditor || function (
     objRef,
     element,
     buttons,
+    initialEditType,
     debounceMilliseconds,
     value,
     placeholder,
     height,
-    isDisabled
+    isDisabled,
 ) {
     let buttonElems = [];
 
@@ -30,11 +31,11 @@ window.I4.Element.InitMarkdownEditor = window.I4.Element.InitMarkdownEditor || f
         let v = [];
 
         for (let button of group) {
-            let b = document.createElement('button');
+            let b = document.createElement("button");
 
-            b.className = 'I4E-Construct-MarkdownEditor-Button';
-            b.innerHTML = '<span>' + button + '</span>';
-            b.addEventListener('click', e => {
+            b.className = "I4E-Construct-MarkdownEditor-Button";
+            b.innerHTML = "<span>" + button + "</span>";
+            b.addEventListener("click", e => {
                 editor.exec(button, e);
             });
 
@@ -52,7 +53,8 @@ window.I4.Element.InitMarkdownEditor = window.I4.Element.InitMarkdownEditor || f
         initialValue: value,
         placeholder: placeholder,
         toolbarItems: buttons,
-        height: height + 'px',
+        initialEditType: initialEditType,
+        height: height + "px",
         usageStatistics: false,
         theme: window.I4.Element.GetMarkdownEditorTheme(),
 
@@ -60,7 +62,7 @@ window.I4.Element.InitMarkdownEditor = window.I4.Element.InitMarkdownEditor || f
             change: debounce(() => {
                 objRef.invokeMethodAsync("Change", editor.getMarkdown());
             }, debounceMilliseconds),
-        }
+        },
     });
 
     // Button overrides
@@ -89,10 +91,10 @@ window.I4.Element.InitMarkdownEditor = window.I4.Element.InitMarkdownEditor || f
 
     // let popup = element.querySelector('div.toastui-editor-popup');
     // observer.observe(popup, {attributes: false, childList: true, characterData: false, subtree: true});
-    
+
     // Theme overrides
-    
-    window.I4.Colorant.ThemeEvent.addEventListener('i4c_theme_change', function (e) {
+
+    window.I4.Colorant.ThemeEvent.addEventListener("i4c_theme_change", function (e) {
         let ui = element.querySelector("div.toastui-editor-defaultUI");
 
         switch (editor.options.theme = window.I4.Element.GetMarkdownEditorTheme()) {
@@ -113,27 +115,27 @@ window.I4.Element.InitMarkdownEditor = window.I4.Element.InitMarkdownEditor || f
 
     editor.I4EUpdateState = function (placeholder, height, isDisabled) {
         editor.setPlaceholder(placeholder);
-        editor.setHeight(height + 'px');
+        editor.setHeight(height + "px");
         editor.I4EDisabled = isDisabled;
 
     };
 
     editor.I4EGetMarkdown = function () {
         return editor.getMarkdown();
-    }
+    };
 
     editor.I4ESetMarkdown = function (markdown) {
         editor.setMarkdown(markdown);
-    }
+    };
 
-    element.addEventListener('keypress', e => {
+    element.addEventListener("keypress", e => {
         if (editor.I4EDisabled) {
             e.preventDefault();
             return false;
         }
     });
 
-    element.addEventListener('click', e => {
+    element.addEventListener("click", e => {
         if (editor.I4EDisabled) {
             e.preventDefault();
             return false;
@@ -141,7 +143,7 @@ window.I4.Element.InitMarkdownEditor = window.I4.Element.InitMarkdownEditor || f
     });
 
     return editor;
-}
+};
 
 function debounce(func, timeout) {
     let t;
@@ -151,5 +153,5 @@ function debounce(func, timeout) {
         t = setTimeout(() => {
             func.apply(this, args);
         }, timeout);
-    }
+    };
 }
