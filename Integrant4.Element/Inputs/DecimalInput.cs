@@ -24,10 +24,10 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Size?       Padding         { get; init; }
             public Callbacks.Color?      BackgroundColor { get; init; }
             public Callbacks.Color?      ForegroundColor { get; init; }
-            public Callbacks.Pixels?     Height          { get; init; }
-            public Callbacks.Pixels?     HeightMax       { get; init; }
-            public Callbacks.Pixels?     Width           { get; init; }
-            public Callbacks.Pixels?     WidthMax        { get; init; }
+            public Callbacks.Unit?       Height          { get; init; }
+            public Callbacks.Unit?       HeightMax       { get; init; }
+            public Callbacks.Unit?       Width           { get; init; }
+            public Callbacks.Unit?       WidthMax        { get; init; }
             public Callbacks.Scale?      Scale           { get; init; }
             public Callbacks.FontWeight? FontWeight      { get; init; }
             public Callbacks.Display?    Display         { get; init; }

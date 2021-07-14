@@ -282,7 +282,7 @@ namespace Web.Pages
                 () => new IRenderable[]
                 {
                     "asdf".AsContent(),
-                    new HorizontalLine(),
+                    new HorizontalLine(() => new Size(9, 0), () => Unit.Percentage(50)),
                     "asdf".AsContent(),
                     new Button(() => new IRenderable[]
                     {
@@ -297,14 +297,14 @@ namespace Web.Pages
                     new Button(() => new FlexRow(() => new IRenderable[]
                         {
                             "Settings".AsContent(),
-                            new Space(10),
+                            new Space(() => 10),
                             new BootstrapIcon("gear"),
                         }, () => FlexJustify.SpaceBetween),
                         new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
                     new Button(() => new FlexRow(() => new IRenderable[]
                         {
                             "Settings 222".AsContent(),
-                            new Space(10),
+                            new Space(() => 10),
                             new BootstrapIcon("gear-fill"),
                         }, () => FlexJustify.SpaceBetween),
                         new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),

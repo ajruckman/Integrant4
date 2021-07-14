@@ -25,10 +25,10 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Color?      BackgroundColor { get; init; }
             public Callbacks.Color?      ForegroundColor { get; init; }
             public Callbacks.Color?      HighlightColor  { get; init; }
-            public Callbacks.Pixels?     Height          { get; init; }
-            public Callbacks.Pixels?     HeightMax       { get; init; }
-            public Callbacks.Pixels?     Width           { get; init; }
-            public Callbacks.Pixels?     WidthMax        { get; init; }
+            public Callbacks.Unit?       Height          { get; init; }
+            public Callbacks.Unit?       HeightMax       { get; init; }
+            public Callbacks.Unit?       Width           { get; init; }
+            public Callbacks.Unit?       WidthMax        { get; init; }
             public Callbacks.Scale?      Scale           { get; init; }
             public Callbacks.FontWeight? FontWeight      { get; init; }
             public Callbacks.Display?    Display         { get; init; }
@@ -87,16 +87,16 @@ namespace Integrant4.Element.Inputs
             builder.OpenElement(++seq, "div");
             InputBuilder.ApplyOuterAttributes(this, builder, ref seq,
                 _isClearable?.Invoke() == true
-                    ? new[] {"I4E-Input-Text--Clearable"}
+                    ? new[] { "I4E-Input-Text--Clearable" }
                     : null
             );
 
             builder.OpenElement(++seq, "input");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
 
-            builder.AddAttribute(++seq, "type", "text");
-            builder.AddAttribute(++seq, "value", Serialize(Value));
-            builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "type",        "text");
+            builder.AddAttribute(++seq, "value",       Serialize(Value));
+            builder.AddAttribute(++seq, "oninput",     EventCallback.Factory.Create(this, Change));
             builder.AddAttribute(++seq, "placeholder", _placeholder?.Invoke());
 
             builder.AddElementReferenceCapture(++seq, r => Reference = r);
@@ -110,7 +110,7 @@ namespace Integrant4.Element.Inputs
                     size = (ushort) (size * scale);
 
                 builder.OpenElement(++seq, "button");
-                builder.AddAttribute(++seq, "class", "I4E-Input-Text-ClearButton");
+                builder.AddAttribute(++seq, "class",   "I4E-Input-Text-ClearButton");
                 builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, OnClearClick));
                 ++seq;
                 if (scale != null)

@@ -30,6 +30,8 @@ namespace Integrant4.Element
 
         public delegate double Pixels();
 
+        public delegate Element.Unit Unit();
+
         public delegate double Scale();
 
         public delegate double REM();
@@ -93,10 +95,10 @@ namespace Integrant4.Element
         internal Callbacks.Color?       BackgroundColor { get; init; }
         internal Callbacks.Color?       ForegroundColor { get; init; }
         internal Callbacks.Color?       HighlightColor  { get; init; }
-        internal Callbacks.Pixels?      Height          { get; init; }
-        internal Callbacks.Pixels?      HeightMax       { get; init; }
-        internal Callbacks.Pixels?      Width           { get; init; }
-        internal Callbacks.Pixels?      WidthMax        { get; init; }
+        internal Callbacks.Unit?        Height          { get; init; }
+        internal Callbacks.Unit?        HeightMax       { get; init; }
+        internal Callbacks.Unit?        Width           { get; init; }
+        internal Callbacks.Unit?        WidthMax        { get; init; }
         internal Callbacks.Scale?       Scale           { get; init; }
         internal Callbacks.REM?         FontSize        { get; init; }
         internal Callbacks.FontWeight?  FontWeight      { get; init; }

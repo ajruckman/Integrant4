@@ -13,8 +13,8 @@ namespace Integrant4.Element.Bits
         {
             public Callbacks.IsVisible? IsVisible { get; init; }
             public Callbacks.Classes?   Classes   { get; init; }
-            public Callbacks.Pixels?    Height    { get; init; }
-            public Callbacks.Pixels?    Width     { get; init; }
+            public Callbacks.Unit?      Height    { get; init; }
+            public Callbacks.Unit?      Width     { get; init; }
 
             internal BaseSpec ToBaseSpec() => new()
             {
@@ -33,21 +33,21 @@ namespace Integrant4.Element.Bits
         public Space(Spec? spec = null)
             : base(spec?.ToBaseSpec(), Classes) { }
 
-        public Space(double width)
-            : base(TransformWidthShorthand(width), Classes) { }
+        public Space(Callbacks.Unit width, Spec? spec = null)
+            : base(TransformShorthand(spec, width), Classes) { }
 
-        public Space(double width, double height)
-            : base(TransformWidthHeightShorthand(width, height), Classes) { }
+        public Space(Callbacks.Unit width, Callbacks.Unit height, Spec? spec = null)
+            : base(TransformShorthand(spec, width, height), Classes) { }
 
-        private static BaseSpec TransformWidthShorthand(double width) => new Spec
+        private static BaseSpec TransformShorthand
+        (
+            Spec? spec, Callbacks.Unit? width = null, Callbacks.Unit? height = null
+        ) => new Spec
         {
-            Width = () => width,
-        }.ToBaseSpec();
-
-        private static BaseSpec TransformWidthHeightShorthand(double width, double height) => new Spec
-        {
-            Width  = () => width,
-            Height = () => height,
+            IsVisible = spec?.IsVisible,
+            Classes   = spec?.Classes,
+            Height    = height ?? spec?.Height,
+            Width     = width  ?? spec?.Width,
         }.ToBaseSpec();
     }
 

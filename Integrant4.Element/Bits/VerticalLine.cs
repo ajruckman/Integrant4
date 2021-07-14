@@ -14,8 +14,8 @@ namespace Integrant4.Element.Bits
             public Callbacks.IsVisible? IsVisible { get; init; }
             public Callbacks.Size?      Margin    { get; init; }
             public Callbacks.Color?     Color     { get; init; }
-            public Callbacks.Pixels?    Height    { get; init; }
-            public Callbacks.Pixels?    Width     { get; init; }
+            public Callbacks.Unit?      Height    { get; init; }
+            public Callbacks.Unit?      Width     { get; init; }
 
             internal BaseSpec ToBaseSpec() => new()
             {
@@ -27,13 +27,31 @@ namespace Integrant4.Element.Bits
             };
         }
     }
-    
+
     public partial class VerticalLine
     {
+        private static readonly ClassSet Classes = new("I4E-Bit", "I4E-Bit-VerticalLine");
+
         public VerticalLine(Spec? spec = null)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-VerticalLine"))
+            : base(spec?.ToBaseSpec(), Classes) { }
+
+        public VerticalLine(Callbacks.Size margin, Spec? spec)
+            : base(TransformShorthand(spec, margin), Classes) { }
+
+        public VerticalLine(Callbacks.Size margin, Callbacks.Unit height, Spec? spec)
+            : base(TransformShorthand(spec, margin, height), Classes) { }
+
+        private static BaseSpec TransformShorthand
+        (
+            Spec? spec, Callbacks.Size? margin = null, Callbacks.Unit? height = null
+        ) => new Spec
         {
-        }
+            IsVisible = spec?.IsVisible,
+            Margin    = margin ?? spec?.Margin,
+            Color     = spec?.Color,
+            Height    = height ?? spec?.Height,
+            Width     = spec?.Width,
+        }.ToBaseSpec();
     }
 
     public partial class VerticalLine

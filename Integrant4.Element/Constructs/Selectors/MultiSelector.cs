@@ -38,7 +38,7 @@ namespace Integrant4.Element.Constructs.Selectors
 
             _selector.OnChange += Select;
 
-            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort)(12 * _spec.Scale?.Invoke() ?? 12));
+            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
         }
     }
 
@@ -63,7 +63,7 @@ namespace Integrant4.Element.Constructs.Selectors
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
             public Callbacks.IsDisabled? IsDisabled { get; init; }
-            public Callbacks.Pixels?     Width      { get; init; }
+            public Callbacks.Unit?       Width      { get; init; }
             public Callbacks.Scale?      Scale      { get; init; }
 
             internal Selector<TValue>.Spec SubSpec() => new()
@@ -312,13 +312,13 @@ namespace Integrant4.Element.Constructs.Selectors
 
         public RenderFragment Renderer() => Latch.Create(builder =>
         {
-            double width = _spec.Width?.Invoke() ?? 300;
+            Unit width = _spec.Width?.Invoke() ?? 300;
 
             int seq = -1;
 
             builder.OpenElement(++seq, "div");
-            builder.AddAttribute(++seq, "class", "I4E-Construct-MultiSelector");
-            builder.AddAttribute(++seq, "style", $"max-width: {width}px");
+            builder.AddAttribute(++seq, "class",         "I4E-Construct-MultiSelector");
+            builder.AddAttribute(++seq, "style",         $"max-width: {width.Serialize()}");
             builder.AddAttribute(++seq, "data-disabled", _spec.IsDisabled?.Invoke() ?? false);
 
             builder.AddContent(++seq, _selector.Renderer());
@@ -338,7 +338,7 @@ namespace Integrant4.Element.Constructs.Selectors
                                            selection.OptionContent.Renderer());
 
                 builder.OpenElement(++seqI, "div");
-                builder.AddAttribute(++seqI, "class", "I4E-Construct-MultiSelector-DeselectButtonWrapper");
+                builder.AddAttribute(++seqI, "class",    "I4E-Construct-MultiSelector-DeselectButtonWrapper");
                 builder.AddAttribute(++seqI, "tabindex", 0);
                 builder.AddAttribute(++seqI, "onclick",
                     EventCallback.Factory.Create(this, () => Deselect(selection)));

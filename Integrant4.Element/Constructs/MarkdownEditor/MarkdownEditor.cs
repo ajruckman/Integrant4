@@ -43,7 +43,7 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
                 builder.AddAttribute(++seq, "hidden", _spec?.IsVisible?.Invoke() == false);
                 builder.AddAttribute(++seq, "class",  classes.ToString());
                 builder.AddAttribute(++seq, "style", _spec?.Width != null
-                    ? $"max-width: {_spec.Width.Invoke()}px"
+                    ? $"max-width: {_spec.Width.Invoke().Serialize()}"
                     : null);
                 builder.OpenElement(++seq, "div");
                 builder.AddElementReferenceCapture(++seq, r => _elemRef = r);
@@ -202,7 +202,7 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
             public Callbacks.Pixels?           Height          { get; init; }
             public Callbacks.IsDisabled?       IsDisabled      { get; init; }
             public Callbacks.IsVisible?        IsVisible       { get; init; }
-            public Callbacks.Pixels?           Width           { get; init; }
+            public Callbacks.Unit?             Width           { get; init; }
         }
 
         private class SpecState

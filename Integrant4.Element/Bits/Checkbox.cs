@@ -25,8 +25,8 @@ namespace Integrant4.Element.Bits
             public Callbacks.Size?    Margin          { get; init; }
             public Callbacks.Size?    Padding         { get; init; }
             public Callbacks.Color?   ForegroundColor { get; init; }
-            public Callbacks.Pixels?  Height          { get; init; }
-            public Callbacks.Pixels?  Width           { get; init; }
+            public Callbacks.Unit?    Height          { get; init; }
+            public Callbacks.Unit?    Width           { get; init; }
             public Callbacks.Display? Display         { get; init; }
             public Callbacks.Data?    Data            { get; init; }
             public Callbacks.Tooltip? Tooltip         { get; init; }

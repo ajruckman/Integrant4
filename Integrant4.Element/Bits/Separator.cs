@@ -14,7 +14,7 @@ namespace Integrant4.Element.Bits
             public Callbacks.IsVisible? IsVisible { get; init; }
             public Callbacks.Classes?   Classes   { get; init; }
             public Callbacks.Size?      Margin    { get; init; }
-            public Callbacks.Pixels?    Height    { get; init; }
+            public Callbacks.Unit?      Height    { get; init; }
 
             internal BaseSpec ToBaseSpec() => new()
             {
@@ -29,9 +29,7 @@ namespace Integrant4.Element.Bits
     public partial class Separator
     {
         public Separator(Spec? spec = null)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Separator)))
-        {
-        }
+            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Separator))) { }
     }
 
     public partial class Separator

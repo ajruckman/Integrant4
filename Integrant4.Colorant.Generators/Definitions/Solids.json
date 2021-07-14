@@ -81,7 +81,7 @@
                     "HueEnd":        30,
                     "HueCurve":      "linear",
                     "SatStart":      100,
-                    "SatEnd":        75,
+                    "SatEnd":        100,
                     "SatCurve":      "linear",
                     "LumStart":      100,
                     "LumEnd":        50,

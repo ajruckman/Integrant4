@@ -25,7 +25,7 @@ namespace Integrant4.Element.Constructs.FileUploader
             _type = type;
             _spec = spec ?? new Spec();
 
-            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort)(12 * _spec.Scale?.Invoke() ?? 12));
+            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
         }
 
         public async ValueTask DisposeAsync()
@@ -57,10 +57,10 @@ namespace Integrant4.Element.Constructs.FileUploader
 
         public class Spec
         {
-            public DynamicContent?   PlaceholderContent { get; init; }
-            public DynamicContent?   SizeLimitContent   { get; init; }
-            public Callbacks.Pixels? Width              { get; init; }
-            public Callbacks.Scale?  Scale              { get; init; }
+            public DynamicContent?  PlaceholderContent { get; init; }
+            public DynamicContent?  SizeLimitContent   { get; init; }
+            public Callbacks.Unit?  Width              { get; init; }
+            public Callbacks.Scale? Scale              { get; init; }
         }
     }
 
@@ -127,7 +127,7 @@ namespace Integrant4.Element.Constructs.FileUploader
 
         public RenderFragment Renderer() => Latch.Create(builder =>
             {
-                double? width = _spec.Width?.Invoke();
+                Unit? width = _spec.Width?.Invoke();
 
                 int seq = -1;
 
@@ -145,7 +145,8 @@ namespace Integrant4.Element.Constructs.FileUploader
                 builder.AddAttribute(++seq, "class", string.Join(' ', classes));
 
                 ++seq;
-                if (width != null) builder.AddAttribute(seq, "style", $"width: 100%; max-width: {width}px;");
+                if (width != null)
+                    builder.AddAttribute(seq, "style", $"width: 100%; max-width: {width.Value.Serialize()};");
 
                 builder.AddElementReferenceCapture(++seq, r => _elementRef = r);
 

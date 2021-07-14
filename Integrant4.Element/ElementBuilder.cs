@@ -33,13 +33,13 @@ namespace Integrant4.Element
             if (spec.Margin != null)
             {
                 Size v = spec.Margin.Invoke();
-                result.Add($"margin: {v.Top}px {v.Right}px {v.Bottom}px {v.Left}px;");
+                result.Add($"margin: {v.Serialize()};");
             }
 
             if (spec.Padding != null)
             {
                 Size v = spec.Padding.Invoke();
-                result.Add($"padding: {v.Top}px {v.Right}px {v.Bottom}px {v.Left}px;");
+                result.Add($"padding: {v.Serialize()};");
             }
 
             if (spec.BackgroundColor != null)
@@ -54,22 +54,22 @@ namespace Integrant4.Element
 
             if (spec.Height != null)
             {
-                result.Add($"height: {spec.Height.Invoke()}px;");
+                result.Add($"height: {spec.Height.Invoke().Serialize()};");
             }
 
             if (spec.HeightMax != null)
             {
-                result.Add($"max-height: {spec.HeightMax.Invoke()}px;");
+                result.Add($"max-height: {spec.HeightMax.Invoke().Serialize()};");
             }
 
             if (spec.Width != null)
             {
-                result.Add($"width: {spec.Width.Invoke()}px;");
+                result.Add($"width: {spec.Width.Invoke().Serialize()};");
             }
 
             if (spec.WidthMax != null)
             {
-                result.Add($"max-width: {spec.WidthMax.Invoke()}px;");
+                result.Add($"max-width: {spec.WidthMax.Invoke().Serialize()};");
             }
 
             if (spec.FontWeight != null)

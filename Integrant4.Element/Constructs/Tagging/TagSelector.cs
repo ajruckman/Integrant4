@@ -35,7 +35,7 @@ namespace Integrant4.Element.Constructs.Tagging
                 OnClick    = async (_, _) => await AddTag(),
                 Scale      = _spec.Scale,
             });
-            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort)(12 * _spec.Scale?.Invoke() ?? 12));
+            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
 
             _tagNameDebouncer = new Debouncer<string?>(() =>
             {
@@ -90,8 +90,8 @@ namespace Integrant4.Element.Constructs.Tagging
         {
             public Callbacks.Callback<IReadOnlyList<ITag>>? Value      { get; init; }
             public Callbacks.IsDisabled?                    IsDisabled { get; init; }
-            public Callbacks.Pixels?                        LeftWidth  { get; init; }
-            public Callbacks.Pixels?                        RightWidth { get; init; }
+            public Callbacks.Unit?                          LeftWidth  { get; init; }
+            public Callbacks.Unit?                          RightWidth { get; init; }
             public Callbacks.Scale?                         Scale      { get; init; }
         }
     }
@@ -148,7 +148,8 @@ namespace Integrant4.Element.Constructs.Tagging
 
                     builder.OpenElement(++seq, "div");
                     builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-Tags");
-                    builder.AddAttribute(++seq, "style", $"width: {_spec?.LeftWidth?.Invoke() ?? 300}px");
+                    builder.AddAttribute(++seq, "style",
+                        $"width: {_spec.LeftWidth?.Invoke().Serialize() ?? "300px"}");
 
                     builder.OpenElement(++seq, "h3");
                     builder.AddContent(++seq, _tagsListHeaderText);
@@ -283,7 +284,8 @@ namespace Integrant4.Element.Constructs.Tagging
 
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-KnownTags");
-                builder.AddAttribute(++seq, "style", $"width: {_spec?.RightWidth?.Invoke() ?? 300}px");
+                builder.AddAttribute(++seq, "style",
+                    $"width: {_spec.RightWidth?.Invoke().Serialize() ?? "300px"}");
 
                 {
                     // Known tags
@@ -438,9 +440,9 @@ namespace Integrant4.Element.Constructs.Tagging
 
                 _tags.Add(_newTagType switch
                 {
-                    TagType.String => new StringTag(_newTagName, (string)_newTagValue),
-                    TagType.Int    => new IntTag(_newTagName, (long)_newTagValue),
-                    TagType.Bool   => new BoolTag(_newTagName, (bool)_newTagValue),
+                    TagType.String => new StringTag(_newTagName, (string) _newTagValue),
+                    TagType.Int    => new IntTag(_newTagName, (long) _newTagValue),
+                    TagType.Bool   => new BoolTag(_newTagName, (bool) _newTagValue),
                     _              => throw new ArgumentOutOfRangeException(),
                 });
             }

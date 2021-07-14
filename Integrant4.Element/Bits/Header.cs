@@ -57,7 +57,8 @@ namespace Integrant4.Element.Bits
                 if (_padding != null)
                 {
                     Size v = _padding.Invoke();
-                    builder.AddAttribute(seq, "style", $"padding: {v.Top}px {v.Right}px {v.Bottom}px {v.Left}px;");
+                    builder.AddAttribute(seq, "style",
+                        $"padding: {v.Top.Serialize()} {v.Right.Serialize()} {v.Bottom.Serialize()} {v.Left.Serialize()};");
                 }
 
                 foreach (IRenderable renderable in _contents.Invoke())

@@ -46,7 +46,7 @@ namespace Integrant4.Element.Constructs.Selectors
                 _filterInput.OnChange += v => filterDebouncer.Reset(v);
             }
 
-            _clearValueButton = new BootstrapIcon("x-circle-fill", (ushort)(12 * _spec.Scale?.Invoke() ?? 12));
+            _clearValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
         }
 
         public async ValueTask DisposeAsync()
@@ -88,7 +88,7 @@ namespace Integrant4.Element.Constructs.Selectors
             public Callbacks.IsVisible?  IsVisible      { get; init; }
             public Callbacks.IsDisabled? IsDisabled     { get; init; }
             public Callbacks.Color?      HighlightColor { get; init; }
-            public Callbacks.Pixels?     Width          { get; init; }
+            public Callbacks.Unit?       Width          { get; init; }
             public Callbacks.Scale?      Scale          { get; init; }
         }
     }
@@ -306,7 +306,7 @@ namespace Integrant4.Element.Constructs.Selectors
                 bool disabled = _spec.IsDisabled?.Invoke() ?? false;
                 _disabledAtLastRender = disabled;
 
-                double  width     = _spec.Width?.Invoke() ?? 300;
+                Unit    width     = _spec.Width?.Invoke() ?? 300;
                 string? highlight = _spec.HighlightColor?.Invoke();
                 if (highlight == "")
                     highlight = null;
@@ -327,7 +327,7 @@ namespace Integrant4.Element.Constructs.Selectors
                 if (highlight != null) classes.Add("I4E-Construct-Selector--Highlighted");
                 builder.AddAttribute(++seq, "class", string.Join(' ', classes));
 
-                builder.AddAttribute(++seq, "style",         $"max-width: {width}px");
+                builder.AddAttribute(++seq, "style",         $"max-width: {width.Serialize()}");
                 builder.AddAttribute(++seq, "data-visible",  _spec.IsVisible?.Invoke() ?? true);
                 builder.AddAttribute(++seq, "data-disabled", disabled);
 

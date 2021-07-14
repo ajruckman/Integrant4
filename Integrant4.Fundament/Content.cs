@@ -68,6 +68,9 @@ namespace Integrant4.Fundament
         public static DynamicContent AsDynamicContent(this IRenderable v) =>
             () => v;
 
+        public static DynamicContent AsDynamicContent(this Content v) =>
+            () => v;
+
         public static DynamicContent AsDynamicContent(this RenderFragment v) =>
             () => v.AsContent();
 
@@ -79,6 +82,9 @@ namespace Integrant4.Fundament
 
         public static DynamicContents AsDynamicContents(this IRenderable v) =>
             () => new[] { v };
+
+        public static DynamicContents AsDynamicContents(this Content v) =>
+            () => new[] { v as IRenderable, };
 
         public static DynamicContents AsDynamicContents(this RenderFragment v) =>
             () => new[] { v.AsContent() as IRenderable };

@@ -191,15 +191,15 @@ button.I4E-Bit-Button--Green.I4E-Bit--Disabled, button.I4E-Bit-Button--Green:dis
   color: var(--I4C-Main-Text-0); }
 
 button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled) {
-  background-color: var(--I4C-Solids-Orange-8);
+  background-color: var(--I4C-Solids-Orange-7);
   box-shadow: var(--I4C-Main-Shadow-0);
-  border: 1px solid var(--I4C-Solids-Orange-8);
+  border: 1px solid var(--I4C-Solids-Orange-7);
   color: white; }
   button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):visited {
     color: white; }
   button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):focus {
-    background-color: var(--I4C-Solids-Orange-6);
-    border: 1px solid var(--I4C-Solids-Orange-6);
+    background-color: var(--I4C-Solids-Orange-5);
+    border: 1px solid var(--I4C-Solids-Orange-5);
     color: white; }
   button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):active {
     background-color: var(--I4C-Solids-Orange-4);
