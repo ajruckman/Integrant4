@@ -538,7 +538,7 @@ div.I4E-Bit-Radio div.I4E-Bit-Radio-Option {
     background-color: var(--I4C-Main-Opaque-Black-3); }
   div.I4E-Bit-Radio div.I4E-Bit-Radio-Option div.I4E-Bit-Radio-Option-Button {
     height: 16px;
-    padding-right: 5px;
+    padding-right: 9px;
     width: 16px; }
   div.I4E-Bit-Radio div.I4E-Bit-Radio-Option div.I4E-Bit-Radio-Option-Content {
     width: 100%; }

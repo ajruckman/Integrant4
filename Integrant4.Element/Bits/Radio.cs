@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
@@ -6,7 +7,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Integrant4.Element.Bits
 {
-    public partial class Radio<TKey> : IBit where TKey : IEquatable<TKey>
+    public partial class Radio<TKey> : IBit
     {
         private readonly Spec? _spec;
 
@@ -78,16 +79,18 @@ namespace Integrant4.Element.Bits
 
                 foreach ((TKey key, Content content) in Options())
                 {
+                    bool selected = EqualityComparer<TKey>.Default.Equals(_selection, key);
+
                     builder.OpenElement(++seq, "div");
-                    builder.AddAttribute(++seq, "class", "I4E-Bit-Radio-Option");
-                    builder.AddAttribute(++seq, "data-selected", key.Equals(_selection));
+                    builder.AddAttribute(++seq, "class",         "I4E-Bit-Radio-Option");
+                    builder.AddAttribute(++seq, "data-selected", selected);
                     builder.AddAttribute(++seq, "onclick",
                         EventCallback.Factory.Create(this, () => SetValue(key)));
 
                     builder.OpenElement(++seq, "div");
                     builder.AddAttribute(++seq, "class", "I4E-Bit-Radio-Option-Button");
                     builder.OpenComponent<BootstrapIcon>(++seq);
-                    builder.AddAttribute(++seq, "ID",   key.Equals(_selection) ? "record-circle-fill" : "circle");
+                    builder.AddAttribute(++seq, "ID",   selected ? "record-circle-fill" : "circle");
                     builder.AddAttribute(++seq, "Size", (ushort) 16);
                     builder.CloseComponent();
                     builder.CloseElement();
