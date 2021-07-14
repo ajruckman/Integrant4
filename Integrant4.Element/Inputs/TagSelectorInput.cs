@@ -26,8 +26,13 @@ namespace Integrant4.Element.Inputs
 
         public RenderFragment Renderer() => _tagSelector.Renderer();
 
-        public Task<IReadOnlyList<ITag>?> GetValue() =>
-            Task.FromResult(_tagSelector.Tags.Count == 0 ? null : _tagSelector.Tags);
+        public IReadOnlyList<ITag>? GetValue()
+        {
+            IReadOnlyList<ITag> tags = _tagSelector.GetValue();
+            return tags.Count == 0 ? null : tags;
+        }
+
+        public Task<IReadOnlyList<ITag>?> ReadValue() => Task.FromResult(GetValue());
 
         public event Action<IReadOnlyList<ITag>?>? OnChange;
     }

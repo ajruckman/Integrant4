@@ -29,8 +29,9 @@ namespace Integrant4.Element.Inputs
             };
         }
 
-        public void             Refresh()  => _multiSelector.Refresh();
-        public Task<TValue?[]?> GetValue() => Task.FromResult(_multiSelector.GetValue());
+        public void             Refresh()   => _multiSelector.Refresh();
+        public TValue?[]?       GetValue()  => _multiSelector.GetValue();
+        public Task<TValue?[]?> ReadValue() => Task.FromResult(GetValue());
 
         public Task SetValue(TValue?[]? value, bool invokeOnChange = true)
         {

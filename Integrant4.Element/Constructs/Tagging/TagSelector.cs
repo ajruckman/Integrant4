@@ -79,7 +79,7 @@ namespace Integrant4.Element.Constructs.Tagging
             _acceptAnyValue = isForFiltering ? true : null;
         }
 
-        public IReadOnlyList<ITag> Tags => _tags;
+        public IReadOnlyList<ITag> GetValue() => _tags;
 
         public event Action<IReadOnlyList<ITag>?>? OnChange;
     }

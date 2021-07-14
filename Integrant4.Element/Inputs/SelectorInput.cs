@@ -19,8 +19,9 @@ namespace Integrant4.Element.Inputs
             _selector.OnChange += v => OnChange?.Invoke(v == null ? default : v.Value.Value);
         }
 
-        public void          Refresh()  => _selector.Refresh();
-        public Task<TValue?> GetValue() => Task.FromResult(_selector.GetValue());
+        public void          Refresh()   => _selector.Refresh();
+        public TValue?       GetValue()  => _selector.GetValue();
+        public Task<TValue?> ReadValue() => Task.FromResult(GetValue());
 
         public Task SetValue(TValue? value, bool invokeOnChange = true)
         {

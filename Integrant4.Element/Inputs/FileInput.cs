@@ -23,9 +23,10 @@ namespace Integrant4.Element.Inputs
             await _fileInput.DisposeAsync();
         }
 
-        public void                       Refresh()  => _fileInput.Refresh();
-        public RenderFragment             Renderer() => _fileInput.Renderer();
-        public Task<IReadOnlyList<File>?> GetValue() => Task.FromResult(_fileInput.GetValue());
+        public void                       Refresh()   => _fileInput.Refresh();
+        public RenderFragment             Renderer()  => _fileInput.Renderer();
+        public IReadOnlyList<File>?       GetValue()  => _fileInput.GetValue();
+        public Task<IReadOnlyList<File>?> ReadValue() => Task.FromResult(GetValue());
 
         public event Action<IReadOnlyList<File>?>? OnChange;
 

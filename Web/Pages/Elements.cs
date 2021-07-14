@@ -392,7 +392,7 @@ namespace Web.Pages
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            int? v = await _intInput.GetValue();
+            int? v = _intInput.GetValue();
 
             if (firstRender)
                 Task.Run(() =>

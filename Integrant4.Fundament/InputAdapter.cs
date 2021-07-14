@@ -22,9 +22,11 @@ namespace Integrant4.Fundament
 
         public RenderFragment Renderer() => _input.Renderer();
 
-        public async Task<TOut?> GetValue()
+        public TOut GetValue() => _to.Invoke(_input.GetValue());
+
+        public async Task<TOut?> ReadValue()
         {
-            TIn? from = await _input.GetValue();
+            TIn? from = await _input.ReadValue();
             return _to.Invoke(from);
         }
 
@@ -50,9 +52,11 @@ namespace Integrant4.Fundament
 
         public RenderFragment Renderer() => _input.Renderer();
 
-        public async Task<TOut?> GetValue()
+        public TOut GetValue() => _to.Invoke(_input.GetValue());
+
+        public async Task<TOut?> ReadValue()
         {
-            TIn? from = await _input.GetValue();
+            TIn? from = await _input.ReadValue();
             return _to.Invoke(from);
         }
 
@@ -83,9 +87,11 @@ namespace Integrant4.Fundament
 
         public RenderFragment Renderer() => _input.Renderer();
 
-        public async Task<TOut?> GetValue()
+        public TOut GetValue() => _to.Invoke(_input.GetValue());
+
+        public async Task<TOut?> ReadValue()
         {
-            TIn? from = await _input.GetValue();
+            TIn? from = await _input.ReadValue();
             return _to.Invoke(from);
         }
 
@@ -118,9 +124,11 @@ namespace Integrant4.Fundament
 
         public RenderFragment Renderer() => _input.Renderer();
 
-        public async Task<TOut?> GetValue()
+        public TOut GetValue() => _to.Invoke(_input.GetValue());
+
+        public async Task<TOut?> ReadValue()
         {
-            TIn? from = await _input.GetValue();
+            TIn? from = await _input.ReadValue();
             return _to.Invoke(from);
         }
 

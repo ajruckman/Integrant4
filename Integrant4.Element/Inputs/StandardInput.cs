@@ -11,7 +11,9 @@ namespace Integrant4.Element.Inputs
         internal StandardInput(IJSRuntime jsRuntime, BaseSpec? spec, ClassSet classes)
             : base(jsRuntime, spec, classes) { }
 
-        public override async Task<T?> GetValue()
+        public override T? GetValue() => Value;
+
+        public override async Task<T?> ReadValue()
         {
             var v = await JSRuntime.InvokeAsync<string>("window.I4.Element.Inputs.GetValue", Reference);
             Value = Nullify(Deserialize(v));

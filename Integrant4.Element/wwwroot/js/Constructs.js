@@ -326,6 +326,7 @@ window.I4.Element.FileUploaderActivatePasteHandler = window.I4.Element.FileUploa
 
     window.addEventListener("paste", element.I4EPasteHandler);
 };
+
 window.I4.Element.FileUploaderDeactivatePasteHandler = window.I4.Element.FileUploaderDeactivatePasteHandler || function (element) {
     window.removeEventListener("paste", element.I4EPasteHandler);
 };

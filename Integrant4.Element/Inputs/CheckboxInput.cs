@@ -94,9 +94,16 @@ namespace Integrant4.Element.Inputs
             InputBuilder.ScheduleElementJobs(this, builder, ref seq);
         }, v => Refresher = v);
 
-        public override async Task<bool> GetValue()
+        public override bool GetValue()
         {
             return await _jsRuntime.InvokeAsync<bool>("window.I4.Element.Inputs.GetChecked", _reference);
+        }
+
+        public override async Task<bool> ReadValue()
+        {
+            var value =  await _jsRuntime.InvokeAsync<bool>("window.I4.Element.Inputs.GetChecked", _reference);
+            Value = value;
+            
         }
 
         public override async Task SetValue(bool value, bool invokeOnChange = true)

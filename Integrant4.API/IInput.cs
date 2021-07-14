@@ -5,7 +5,8 @@ namespace Integrant4.API
 {
     public interface IInput<TValue> : IRenderable
     {
-        Task<TValue?> GetValue();
+        TValue?       GetValue();
+        Task<TValue?> ReadValue();
 
         event Action<TValue?> OnChange;
     }

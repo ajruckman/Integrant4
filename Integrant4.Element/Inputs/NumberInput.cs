@@ -4,11 +4,7 @@ using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Inputs
 {
-    public abstract partial class NumberInput<T>
-    {
-    }
-
-    public partial class NumberInput<T> : StandardInput<T>
+    public abstract partial class NumberInput<T> : StandardInput<T>
     {
         internal NumberInput
         (
