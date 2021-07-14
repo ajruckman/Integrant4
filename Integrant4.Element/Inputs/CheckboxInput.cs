@@ -82,7 +82,7 @@ namespace Integrant4.Element.Inputs
             builder.OpenElement(++seq, "input");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
 
-            builder.AddAttribute(++seq, "type", "checkbox");
+            builder.AddAttribute(++seq, "type",    "checkbox");
             builder.AddAttribute(++seq, "checked", Value);
             builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
 
@@ -94,17 +94,10 @@ namespace Integrant4.Element.Inputs
             InputBuilder.ScheduleElementJobs(this, builder, ref seq);
         }, v => Refresher = v);
 
-        public override bool GetValue()
-        {
-            return await _jsRuntime.InvokeAsync<bool>("window.I4.Element.Inputs.GetChecked", _reference);
-        }
+        public override bool GetValue() => Value;
 
-        public override async Task<bool> ReadValue()
-        {
-            var value =  await _jsRuntime.InvokeAsync<bool>("window.I4.Element.Inputs.GetChecked", _reference);
-            Value = value;
-            
-        }
+        public override async Task<bool> ReadValue() =>
+            Value = await _jsRuntime.InvokeAsync<bool>("window.I4.Element.Inputs.GetChecked", _reference);
 
         public override async Task SetValue(bool value, bool invokeOnChange = true)
         {

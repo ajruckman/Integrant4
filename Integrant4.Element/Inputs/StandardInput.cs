@@ -13,12 +13,9 @@ namespace Integrant4.Element.Inputs
 
         public override T? GetValue() => Value;
 
-        public override async Task<T?> ReadValue()
-        {
-            var v = await JSRuntime.InvokeAsync<string>("window.I4.Element.Inputs.GetValue", Reference);
-            Value = Nullify(Deserialize(v));
-            return Value;
-        }
+        public override async Task<T?> ReadValue() =>
+            Value = Nullify(Deserialize(
+                await JSRuntime.InvokeAsync<string>("window.I4.Element.Inputs.GetValue", Reference)));
 
         public override async Task SetValue(T? value, bool invokeOnChange = true)
         {

@@ -24,11 +24,7 @@ namespace Integrant4.Fundament
 
         public TOut GetValue() => _to.Invoke(_input.GetValue());
 
-        public async Task<TOut?> ReadValue()
-        {
-            TIn? from = await _input.ReadValue();
-            return _to.Invoke(from);
-        }
+        public async Task<TOut?> ReadValue() => _to.Invoke(await _input.ReadValue());
 
         public event Action<TOut?>? OnChange;
     }
@@ -54,11 +50,7 @@ namespace Integrant4.Fundament
 
         public TOut GetValue() => _to.Invoke(_input.GetValue());
 
-        public async Task<TOut?> ReadValue()
-        {
-            TIn? from = await _input.ReadValue();
-            return _to.Invoke(from);
-        }
+        public async Task<TOut?> ReadValue() => _to.Invoke(await _input.ReadValue());
 
         public event Action<TOut?>? OnChange;
     }
@@ -89,11 +81,7 @@ namespace Integrant4.Fundament
 
         public TOut GetValue() => _to.Invoke(_input.GetValue());
 
-        public async Task<TOut?> ReadValue()
-        {
-            TIn? from = await _input.ReadValue();
-            return _to.Invoke(from);
-        }
+        public async Task<TOut?> ReadValue() => _to.Invoke(await _input.ReadValue());
 
         public event Action<TOut?>? OnChange;
     }
@@ -126,11 +114,7 @@ namespace Integrant4.Fundament
 
         public TOut GetValue() => _to.Invoke(_input.GetValue());
 
-        public async Task<TOut?> ReadValue()
-        {
-            TIn? from = await _input.ReadValue();
-            return _to.Invoke(from);
-        }
+        public async Task<TOut?> ReadValue() => _to.Invoke(await _input.ReadValue());
 
         public event Action<TOut?>? OnChange;
     }
