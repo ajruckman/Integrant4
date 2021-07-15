@@ -35,10 +35,10 @@ namespace Integrant4.Element.Bits
         public VerticalLine(Spec? spec = null)
             : base(spec?.ToBaseSpec(), Classes) { }
 
-        public VerticalLine(Callbacks.Size margin, Spec? spec)
+        public VerticalLine(Callbacks.Size margin, Spec? spec = null)
             : base(TransformShorthand(spec, margin), Classes) { }
 
-        public VerticalLine(Callbacks.Size margin, Callbacks.Unit height, Spec? spec)
+        public VerticalLine(Callbacks.Size margin, Callbacks.Unit height, Spec? spec = null)
             : base(TransformShorthand(spec, margin, height), Classes) { }
 
         private static BaseSpec TransformShorthand

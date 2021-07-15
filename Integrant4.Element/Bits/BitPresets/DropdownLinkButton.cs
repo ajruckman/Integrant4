@@ -7,6 +7,11 @@ namespace Integrant4.Element.Bits.BitPresets
     {
         private readonly Button _button;
 
+        public DropdownLinkButton(DynamicContent content, Callbacks.HREF href)
+        {
+            _button = new Button(content, new Button.Spec { HREF = href, Style = () => Button.Style.Transparent });
+        }
+
         public DropdownLinkButton(DynamicContents contents, Callbacks.HREF href)
         {
             _button = new Button(contents, new Button.Spec { HREF = href, Style = () => Button.Style.Transparent });
