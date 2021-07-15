@@ -24,13 +24,13 @@ namespace Integrant4.Element.Constructs.Tables
             //     filterable.OnFilter.Event += () => InvokeAsync(StateHasChanged);
             // }
 
-            _previous = new Button(() => "PREVIOUS".AsContent(), new Button.Spec
+            _previous = new Button("PREVIOUS".AsContent(), new Button.Spec
             {
                 IsDisabled = () => !Table.CanPrevious(),
                 OnClick    = (_, _) => Table.Previous(),
             });
 
-            _next = new Button(() => "NEXT".AsContent(), new Button.Spec
+            _next = new Button("NEXT".AsContent(), new Button.Spec
             {
                 IsDisabled = () => !Table.CanNext(),
                 OnClick    = (_, _) => Table.Next(),

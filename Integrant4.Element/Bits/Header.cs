@@ -23,20 +23,20 @@ namespace Integrant4.Element.Bits
 
     public partial class Header
     {
-        private readonly DynamicContents _contents;
+        private readonly DynamicContent  _content;
         private readonly Style           _style;
         private readonly Callbacks.Size? _padding;
 
         public Header
         (
-            DynamicContents contents,
-            Style           style = Style.Primary,
-            Spec?           spec  = null
+            DynamicContent content,
+            Style          style = Style.Primary,
+            Spec?          spec  = null
         )
         {
-            _contents = contents;
-            _style    = style;
-            _padding  = spec?.Padding;
+            _content = content;
+            _style   = style;
+            _padding = spec?.Padding;
         }
     }
 
@@ -61,7 +61,7 @@ namespace Integrant4.Element.Bits
                         $"padding: {v.Top.Serialize()} {v.Right.Serialize()} {v.Bottom.Serialize()} {v.Left.Serialize()};");
                 }
 
-                foreach (IRenderable renderable in _contents.Invoke())
+                foreach (IRenderable renderable in _content.GetAll())
                 {
                     builder.OpenElement(++seq, "span");
                     builder.AddAttribute(++seq, "class", "I4E-Bit-Header-Content");

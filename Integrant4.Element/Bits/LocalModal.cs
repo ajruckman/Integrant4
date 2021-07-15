@@ -6,7 +6,7 @@ namespace Integrant4.Element.Bits
 {
     public partial class LocalModal : IRefreshableBit
     {
-        private readonly DynamicContents _contents;
+        private readonly DynamicContent  _content;
         private readonly InnerDirection? _innerDirection;
 
         private bool           _show;
@@ -14,12 +14,12 @@ namespace Integrant4.Element.Bits
 
         public LocalModal
         (
-            DynamicContents contents,
-            InnerDirection  innerDirection = InnerDirection.Row,
-            ReadOnlyHook?   hook           = null
+            DynamicContent content,
+            InnerDirection innerDirection = InnerDirection.Row,
+            ReadOnlyHook?  hook           = null
         )
         {
-            _contents       = contents;
+            _content        = content;
             _innerDirection = innerDirection;
 
             if (hook != null)
@@ -41,7 +41,7 @@ namespace Integrant4.Element.Bits
             builder.AddAttribute(++seq, "class",
                 "I4E-Bit-LocalModal-Inner I4E-Bit-LocalModal-Inner--" + _innerDirection);
 
-            foreach (IRenderable renderable in _contents.Invoke())
+            foreach (IRenderable renderable in _content.GetAll())
             {
                 builder.AddContent(++seq, renderable.Renderer());
             }

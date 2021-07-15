@@ -119,7 +119,7 @@ namespace Web.Pages
             _selector = new Selector<User>(JSRuntime, () => _users.Select(v => new Selector<User>.Option
             (
                 v,
-                new FlexColumn(() => new IRenderable[]
+                new FlexColumn(new IRenderable[]
                 {
                     v.FirstName.AsTextContent(weight: FontWeight.Bold),
                     v.ID.ToString().AsContent(),

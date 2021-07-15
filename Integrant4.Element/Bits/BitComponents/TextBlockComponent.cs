@@ -1,4 +1,3 @@
-using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
@@ -27,7 +26,7 @@ namespace Integrant4.Element.Bits.BitComponents
                 Tooltip    = Tooltip    != null ? () => Tooltip.Value : null,
             };
 
-            _textBlock = new TextBlock(ChildContent.AsDynamicContent(), spec);
+            _textBlock = new TextBlock(ChildContent, spec);
         }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)

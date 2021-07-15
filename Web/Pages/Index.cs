@@ -75,12 +75,12 @@ namespace Web.Pages
 
             //
 
-            _header = new Header(() => new IRenderable[]
+            _header = new Header(new IRenderable[]
             {
-                new HeaderLink(() => "Secondary header".AsContent(),
+                new HeaderLink("Secondary header".AsContent(),
                     () => "/elements", new HeaderLink.Spec { IsTitle = Always.True }),
                 new Filler(),
-                new HeaderLink(() => "Normal link".AsContent(), () => "/elements"),
+                new HeaderLink("Normal link".AsContent(), () => "/elements"),
             }, Header.Style.Secondary);
 
             _overallValidationView = new ValidationView();
@@ -101,7 +101,7 @@ namespace Web.Pages
 
             Faker<User> b = new Faker<User>()
                .RuleFor(o => o.FirstName, f => f.Name.FirstName())
-               .RuleFor(o => o.LastName,  f => f.Name.LastName());
+               .RuleFor(o => o.LastName, f => f.Name.LastName());
 
             List<User> names = b.Generate(900);
 
@@ -161,7 +161,7 @@ namespace Web.Pages
     {
         public string FirstName { get; set; }
         public string LastName  { get; set; }
-        public int    BirthYear       { get; set; }
+        public int    BirthYear { get; set; }
 
         public bool Equals(User? other)
         {
@@ -192,7 +192,7 @@ namespace Web.Pages
         {
             List<IValidation> result = new()
             {
-                new Validation(ValidationResultType.Valid,   "Valid"),
+                new Validation(ValidationResultType.Valid, "Valid"),
                 new Validation(ValidationResultType.Warning, "Warning"),
             };
 
@@ -299,12 +299,12 @@ namespace Web.Pages
                     null,
                     () => new List<SelectInput<string>.IOption>
                     {
-                        new SelectInput<string>.Option("Unknown",     "Unknown"),
+                        new SelectInput<string>.Option("Unknown", "Unknown"),
                         new SelectInput<string>.Option("Rat Terrier", "Rat Terrier"),
-                        new SelectInput<string>.Option("Boxer",       "Boxer"),
-                        new SelectInput<string>.Option("Yorkie",      "Yorkie"),
-                        new SelectInput<string>.Option("Chihuahua",   "Chihuahua"),
-                        new SelectInput<string>.Option(null,          "Other"),
+                        new SelectInput<string>.Option("Boxer", "Boxer"),
+                        new SelectInput<string>.Option("Yorkie", "Yorkie"),
+                        new SelectInput<string>.Option("Chihuahua", "Chihuahua"),
+                        new SelectInput<string>.Option(null, "Other"),
                     }
                 )
             );

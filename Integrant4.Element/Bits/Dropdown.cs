@@ -29,13 +29,13 @@ namespace Integrant4.Element.Bits
 
     public partial class Dropdown
     {
-        private readonly DynamicContents _headContents;
-        private readonly DynamicContents _childContents;
+        private readonly DynamicContent _headContents;
+        private readonly DynamicContent _childContents;
 
         public Dropdown
         (
-            DynamicContents headContents,
-            DynamicContents childContents,
+            DynamicContent headContents,
+            DynamicContent childContents,
             Spec?           spec = null
         ) : base(spec?.ToBaseSpec(),
             new ClassSet("I4E-Bit", "I4E-Bit-Dropdown"))
@@ -68,7 +68,7 @@ namespace Integrant4.Element.Bits
             [Parameter] public Dropdown Dropdown { get; set; } = null!;
 
             private ElementReference? _headRef;
-            private ElementReference? _contentsRef;
+            private ElementReference? _contentRef;
             private ElementService?   _elementService;
 
             protected override void BuildRenderTree(RenderTreeBuilder builder)
@@ -80,11 +80,11 @@ namespace Integrant4.Element.Bits
                 BitBuilder.ApplyAttributes(Dropdown, builder, ref seq, null, null);
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "id",    Dropdown.ID + ".Head");
+                builder.AddAttribute(++seq, "id", Dropdown.ID + ".Head");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Head");
                 builder.AddElementReferenceCapture(++seq, r => _headRef = r);
 
-                foreach (IRenderable renderable in Dropdown._headContents.Invoke())
+                foreach (IRenderable renderable in Dropdown._headContents.GetAll())
                 {
                     builder.OpenElement(++seq, "div");
                     builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Content");
@@ -97,13 +97,13 @@ namespace Integrant4.Element.Bits
                 //
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "id",    Dropdown.ID + ".Contents");
+                builder.AddAttribute(++seq, "id", Dropdown.ID + ".Contents");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Contents");
                 builder.AddAttribute(++seq, "data-popper-placement",
                     (Dropdown._placementGetter?.Invoke() ?? TooltipPlacement.Bottom).Map());
-                builder.AddElementReferenceCapture(++seq, r => _contentsRef = r);
+                builder.AddElementReferenceCapture(++seq, r => _contentRef = r);
 
-                foreach (IRenderable renderable in Dropdown._childContents.Invoke())
+                foreach (IRenderable renderable in Dropdown._childContents.GetAll())
                 {
                     builder.OpenElement(++seq, "div");
                     builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Content");
@@ -117,16 +117,16 @@ namespace Integrant4.Element.Bits
 
                 ServiceInjector<ElementService>.Inject(builder, ref seq, v => _elementService = v);
 
-                // if (_toggleRef != null && _contentsRef != null)
+                // if (_toggleRef != null && _contentRef != null)
                 // BaseSpec.ElementService!.AddJob(async v =>
-                // await v.InvokeVoidAsync("I4.Element.InitDropdown", _toggleRef!, _contentsRef!));
+                // await v.InvokeVoidAsync("I4.Element.InitDropdown", _toggleRef!, _contentRef!));
             }
 
             protected override void OnAfterRender(bool firstRender)
             {
                 if (firstRender)
                     _elementService!.AddJob((j, t) =>
-                        Interop.CallVoid(j, t, "I4.Element.InitDropdown", _headRef!.Value, _contentsRef!.Value));
+                        Interop.CallVoid(j, t, "I4.Element.InitDropdown", _headRef!.Value, _contentRef!.Value));
             }
         }
     }

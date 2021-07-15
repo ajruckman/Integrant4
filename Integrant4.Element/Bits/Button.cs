@@ -62,16 +62,13 @@ namespace Integrant4.Element.Bits
 
     public partial class Button
     {
-        private readonly DynamicContents           _contents;
+        private readonly DynamicContent            _content;
         private readonly Callbacks.Callback<bool>? _isSmall;
 
         public Button(DynamicContent content, Spec? spec = null)
-            : this(content.AsDynamicContents(), spec) { }
-
-        public Button(DynamicContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Button)))
         {
-            _contents    = contents;
+            _content     = content;
             _styleGetter = spec?.Style ?? DefaultStyleGetter;
             _isSmall     = spec?.IsSmall;
 
@@ -88,7 +85,7 @@ namespace Integrant4.Element.Bits
 
         public override RenderFragment Renderer() => Latch.Create(builder =>
         {
-            IRenderable[] contents = _contents.Invoke().ToArray();
+            IRenderable[] contents = _content.GetAll().ToArray();
 
             List<string> ac = new() { "I4E-Bit-Button--" + _styleGetter.Invoke() };
 
@@ -145,9 +142,9 @@ namespace Integrant4.Element.Bits
 
             var c = new ClickArgs
             (
-                (ushort) args.Button,
-                (ushort) args.ClientX,
-                (ushort) args.ClientY,
+                (ushort)args.Button,
+                (ushort)args.ClientX,
+                (ushort)args.ClientY,
                 args.ShiftKey,
                 args.CtrlKey
             );

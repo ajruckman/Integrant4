@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Integrant4.API;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
@@ -15,7 +14,7 @@ namespace Integrant4.Element.Bits
         public class Spec
         {
             public Callbacks.Callback<bool>? IsTitle       { get; init; }
-            public Callbacks.Callback<bool>?         IsHighlighted { get; init; }
+            public Callbacks.Callback<bool>? IsHighlighted { get; init; }
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
             public Callbacks.IsDisabled? IsDisabled { get; init; }
@@ -40,21 +39,18 @@ namespace Integrant4.Element.Bits
 
     public partial class HeaderLink
     {
-        private readonly DynamicContents           _contents;
+        private readonly DynamicContent            _content;
         private readonly Callbacks.HREF            _href;
         private readonly Callbacks.Callback<bool>? _isTitle;
-        private readonly Callbacks.Callback<bool>?         _isHighlighted;
+        private readonly Callbacks.Callback<bool>? _isHighlighted;
         private readonly bool                      _doAutoHighlight;
 
         public HeaderLink(DynamicContent content, Callbacks.HREF href, Spec? spec = null)
-            : this(content.AsDynamicContents(), href, spec) { }
-
-        public HeaderLink(DynamicContents contents, Callbacks.HREF href, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(HeaderLink)))
         {
-            _contents = contents;
-            _href     = href;
-            _isTitle  = spec?.IsTitle;
+            _content = content;
+            _href    = href;
+            _isTitle = spec?.IsTitle;
 
             if (spec?.IsHighlighted == null)
             {
@@ -88,8 +84,7 @@ namespace Integrant4.Element.Bits
 
             protected override void BuildRenderTree(RenderTreeBuilder builder)
             {
-                IRenderable[] contents = HeaderLink._contents.Invoke().ToArray();
-                string        href     = HeaderLink._href.Invoke();
+                string href = HeaderLink._href.Invoke();
 
                 List<string> ac = new();
 
@@ -107,7 +102,7 @@ namespace Integrant4.Element.Bits
 
                 BitBuilder.ApplyAttributes(HeaderLink, builder, ref seq, ac.ToArray(), null);
 
-                foreach (IRenderable renderable in contents)
+                foreach (IRenderable renderable in HeaderLink._content.GetAll())
                 {
                     builder.OpenElement(++seq, "span");
                     builder.AddAttribute(++seq, "class", "I4E-Bit-HeaderLink-Content");

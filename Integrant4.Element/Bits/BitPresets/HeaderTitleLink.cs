@@ -15,14 +15,6 @@ namespace Integrant4.Element.Bits.BitPresets
             });
         }
 
-        public HeaderTitleLink(DynamicContents contents, Callbacks.HREF? href = null)
-        {
-            _headerLink = new HeaderLink(contents, href ?? (() => "/"), new HeaderLink.Spec
-            {
-                IsTitle = Always.True,
-            });
-        }
-
         public RenderFragment Renderer() => _headerLink.Renderer();
     }
 }

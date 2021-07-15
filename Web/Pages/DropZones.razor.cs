@@ -24,10 +24,8 @@ namespace Web.Pages
         {
             _dropZone1 = new FileUploader(FileUploader.Type.Single | FileUploader.Type.Block, new FileUploader.Spec
             {
-                PlaceholderContent = () =>
-                    "Drag and drop files here, or click to select from your computer".AsContent(),
-                SizeLimitContent = () =>
-                    "Max file size: 50 MB".AsContent(),
+                PlaceholderContent = "Drag and drop files here, or click to select from your computer".AsContent(),
+                SizeLimitContent   = "Max file size: 50 MB".AsContent(),
             });
             _dropZone2 = new FileUploader(FileUploader.Type.Multiple | FileUploader.Type.Block, new FileUploader.Spec
                 { });

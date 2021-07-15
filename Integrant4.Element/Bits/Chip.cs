@@ -54,19 +54,16 @@ namespace Integrant4.Element.Bits
 
     public partial class Chip
     {
-        private readonly DynamicContents _contents;
+        private readonly DynamicContent _content;
 
         public Chip(DynamicContent content, Spec? spec = null)
-            : this(content.AsDynamicContents(), spec) { }
-
-        public Chip(DynamicContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(),
                 new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Chip),
                     spec?.HREF == null
                         ? "I4E-Bit-" + nameof(Chip) + "--Static"
                         : "I4E-Bit-" + nameof(Chip) + "--Link"))
         {
-            _contents = contents;
+            _content = content;
         }
     }
 
@@ -76,7 +73,7 @@ namespace Integrant4.Element.Bits
         {
             void Fragment(RenderTreeBuilder builder)
             {
-                IRenderable[] contents = _contents.Invoke().ToArray();
+                IRenderable[] contents = _content.GetAll().ToArray();
 
                 List<string> ac = new();
 
@@ -104,7 +101,7 @@ namespace Integrant4.Element.Bits
 
                 BitBuilder.ApplyContentAttributes(this, builder, ref seq);
 
-                foreach (IRenderable renderable in _contents.Invoke())
+                foreach (IRenderable renderable in contents)
                 {
                     builder.OpenElement(++seq, "span");
                     builder.AddAttribute(++seq, "class", "I4E-Bit-Chip-Content");

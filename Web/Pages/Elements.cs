@@ -19,8 +19,12 @@ namespace Web.Pages
     {
         private readonly List<Button> _buttonsColored = new();
 
-        private Header          _header             = null!;
-        private DynamicContents _panelExpanderElems = null!;
+        private readonly List<Button> _buttonsScaled = new();
+        private readonly List<Chip>   _chipsScaled   = new();
+        private readonly List<Link>   _linksScaled   = new();
+
+        private Header         _header             = null!;
+        private DynamicContent _panelExpanderElems = null!;
 
         private TextInput _textInput                = null!;
         private TextInput _textInputHighlighted     = null!;
@@ -67,32 +71,28 @@ namespace Web.Pages
         private Spinner _spinnerTextLarge     = null!;
         private Spinner _spinnerTextLargeFont = null!;
 
-        private readonly List<Button> _buttonsScaled = new();
-        private readonly List<Chip>   _chipsScaled   = new();
-        private readonly List<Link>   _linksScaled   = new();
-
         [Inject] public IJSRuntime     JSRuntime      { get; set; } = null!;
         [Inject] public ElementService ElementService { get; set; } = null!;
 
         protected override void OnInitialized()
         {
-            _header = new Header(() => new IRenderable[]
+            _header = new Header(new IRenderable[]
             {
-                new HeaderLink(() => "Secondary header".AsContent(),
+                new HeaderLink("Secondary header",
                     () => "/elements", new HeaderLink.Spec { IsTitle = Always.True }),
                 new Filler(),
-                new TextBlock("Test block 1".AsDynamicContent()),
+                new TextBlock(DynamicContent.New("Test block 1")),
                 new Space(),
                 new VerticalLine(),
                 new Space(),
-                new TextBlock("Test block 2".AsDynamicContent()),
+                new TextBlock("Test block 2"),
                 new Space(),
-                new HeaderLink(() => "Normal link".AsContent(), () => "/elements")
+                new HeaderLink("Normal link".AsContent(), () => "/elements"),
             }, Header.Style.Secondary);
 
-            _panelExpanderElems = () => new[]
+            _panelExpanderElems = new[]
             {
-                new TextBlock("Number ID list".AsTextContent(size: 1.2)),
+                new TextBlock("Number ID list".AsTextContent(size: 1.2).Renderer()),
             };
 
             _intInput = new IntInput(JSRuntime, 0);
@@ -149,13 +149,13 @@ namespace Web.Pages
 
             //
 
-            _buttonNoIcon = new Button(() => { return "asdf".AsContent(); }, new Button.Spec
+            _buttonNoIcon = new Button("asdf", new Button.Spec
             {
                 Tooltip = () => new Tooltip("<strong>asdf</strong>"),
             });
 
-            _buttonOnlyIcon = new Button(() => new BootstrapIcon("caret-right-fill", 16));
-            _buttonIconFirst = new Button(() => new IRenderable[]
+            _buttonOnlyIcon = new Button(new BootstrapIcon("caret-right-fill", 16).Renderer());
+            _buttonIconFirst = new Button(new IRenderable[]
             {
                 new BootstrapIcon("caret-left-fill", 16),
                 "asdf left".AsContent(),
@@ -164,7 +164,7 @@ namespace Web.Pages
                 HREF    = () => "/asdf/left",
                 Tooltip = () => new Tooltip("asdf left", placement: TooltipPlacement.Left),
             });
-            _buttonIconLast = new Button(() => new IRenderable[]
+            _buttonIconLast = new Button(new IRenderable[]
             {
                 "asdf right".AsContent(),
                 new BootstrapIcon("caret-right-fill", 16),
@@ -173,14 +173,14 @@ namespace Web.Pages
                 HREF    = () => "/asdf/left",
                 Tooltip = () => new Tooltip("asdf right", placement: TooltipPlacement.Right),
             });
-            _buttonIconAll = new Button(() => new IRenderable[]
+            _buttonIconAll = new Button(new IRenderable[]
             {
-                new BootstrapIcon("caret-left-fill",  16),
+                new BootstrapIcon("caret-left-fill", 16),
                 new BootstrapIcon("caret-right-fill", 16),
             });
-            _buttonStacked = new Button(() => new IRenderable[]
+            _buttonStacked = new Button(new IRenderable[]
             {
-                new FlexColumn(() => new IRenderable[]
+                new FlexColumn(new IRenderable[]
                 {
                     "Top content/full name".AsContent(),
                     "Lower content".AsTextContent(size: 0.8, weight: FontWeight.Normal),
@@ -190,7 +190,7 @@ namespace Web.Pages
 
             foreach (Button.Style style in Enum.GetValues<Button.Style>())
             {
-                var b = new Button(() => new IRenderable[]
+                var b = new Button(new IRenderable[]
                     {
                         ("Color: " + style).AsContent(),
                         new BootstrapIcon("caret-down-fill", 16),
@@ -204,7 +204,8 @@ namespace Web.Pages
 
                 b.OnClick += (_, _) => Console.WriteLine($"Click: {style}");
 
-                var b2 = new Button(() => new IRenderable[]
+                // TODO: Still works?
+                var b2 = new Button(new IRenderable[]
                     {
                         ("Color: " + style).AsContent(),
                         new BootstrapIcon("slash-circle-fill", 16),
@@ -222,19 +223,19 @@ namespace Web.Pages
 
             //
 
-            _chip = new Chip(() => "Chip 1".AsContent(), new Chip.Spec
+            _chip = new Chip("Chip 1".AsContent(), new Chip.Spec
             {
                 Height  = () => 24,
                 Tooltip = () => new Tooltip("Tooltip"),
             });
 
-            _chipLink = new Chip(() => "Chip 2".AsContent(), new Chip.Spec
+            _chipLink = new Chip("Chip 2".AsContent(), new Chip.Spec
             {
                 HREF   = () => "/",
                 Height = () => 24,
             });
 
-            _chipWithIcon = new Chip(() => new IRenderable[]
+            _chipWithIcon = new Chip(new IRenderable[]
             {
                 new BootstrapIcon("slash-circle-fill"),
                 "Text content".AsContent(),
@@ -248,84 +249,84 @@ namespace Web.Pages
             });
             _checkbox.OnToggle += (_, v) => PrintB(v);
 
-            _link1 = new Link(() => "Link 1".AsContent(), new Link.Spec(() => "/"));
-            _link2 = new Link(() => "Link 2".AsContent(), new Link.Spec(() => "/")
+            _link1 = new Link("Link 1".AsContent(), new Link.Spec(() => "/"));
+            _link2 = new Link("Link 2".AsContent(), new Link.Spec(() => "/")
             {
                 FontWeight = () => FontWeight.SemiBold,
             });
-            _link3 = new Link(() => "Link 3".AsContent(), new Link.Spec(() => "/")
+            _link3 = new Link("Link 3".AsContent(), new Link.Spec(() => "/")
             {
                 IsAccented = Always.True,
             });
-            _link4 = new Link(() => "Link 4 (highlighted)".AsContent(), new Link.Spec(() => "/")
+            _link4 = new Link("Link 4 (highlighted)".AsContent(), new Link.Spec(() => "/")
             {
                 IsHighlighted = Always.True,
             });
 
             _expander = new Expander
             (
-                () => "Show advanced options".AsContent(),
-                () => "Hide advanced options".AsContent()
+                "Show advanced options".AsContent(),
+                "Hide advanced options".AsContent()
             );
             _expander.Expand();
 
             _dropdown1 = new Dropdown
             (
-                () => new IRenderable[]
+                new IRenderable[]
                 {
-                    new Link(() => new IRenderable[]
+                    new Link(new IRenderable[]
                     {
                         "Dropdown 1".AsContent(),
                         new BootstrapIcon("chevron-down"),
                     }, new Link.Spec(() => "/elements")),
                 },
-                () => new IRenderable[]
+                new IRenderable[]
                 {
                     "asdf".AsContent(),
                     new HorizontalLine(() => new Size(9, 0), () => Unit.Percentage(50)),
                     "asdf".AsContent(),
-                    new Button(() => new IRenderable[]
+                    new Button(new IRenderable[]
                     {
                         "Settings".AsContent(),
                         new BootstrapIcon("gear"),
                     }, new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
-                    new Button(() => new IRenderable[]
+                    new Button(new IRenderable[]
                     {
                         "Settings 222".AsContent(),
                         new BootstrapIcon("gear-fill"),
                     }, new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
-                    new Button(() => new FlexRow(() => new IRenderable[]
+                    new Button(new FlexRow(new IRenderable[]
                         {
                             "Settings".AsContent(),
                             new Space(() => 10),
                             new BootstrapIcon("gear"),
-                        }, () => FlexJustify.SpaceBetween),
+                        }, () => FlexJustify.SpaceBetween).Renderer(),
                         new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
-                    new Button(() => new FlexRow(() => new IRenderable[]
+                    new Button(new FlexRow(new IRenderable[]
                         {
                             "Settings 222".AsContent(),
                             new Space(() => 10),
                             new BootstrapIcon("gear-fill"),
-                        }, () => FlexJustify.SpaceBetween),
+                        }, () => FlexJustify.SpaceBetween).Renderer(),
                         new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
                     new HorizontalLine(),
                     new Dropdown
                     (
-                        () => new IRenderable[]
+                        new IRenderable[]
                         {
-                            new Link(() => new IRenderable[]
+                            new Link(new IRenderable[]
                             {
                                 "Dropdown 1".AsContent(),
                                 new BootstrapIcon("chevron-down"),
                             }, new Link.Spec(() => "/elements")),
                         },
-                        () => new IRenderable[]
+                        new IRenderable[]
                         {
                             "asdf".AsContent(),
                             new HorizontalLine(),
                             "asdf".AsContent(),
                             new HorizontalLine(),
-                            new Button(() => new IRenderable[]
+                            new Button(new IRenderable[]
                             {
                                 new BootstrapIcon("chevron-right"),
                                 "Chevron".AsContent(),
@@ -347,7 +348,7 @@ namespace Web.Pages
             _spinnerTextLargeFont = new Spinner(new Spinner.Spec
                 { Text = () => "Spinner with text large font...", FontSize = () => 3 });
 
-            _localModal1 = new LocalModal(() => new IRenderable[]
+            _localModal1 = new LocalModal(new IRenderable[]
             {
                 _spinnerTextNormal,
             });
@@ -357,7 +358,7 @@ namespace Web.Pages
             for (double i = 0; i < 3; i += 0.1)
             {
                 double i1 = i;
-                _buttonsScaled.Add(new Button(() => new IRenderable[]
+                _buttonsScaled.Add(new Button(new IRenderable[]
                 {
                     $"Button content {i1}".AsContent(),
                 }, new Button.Spec
@@ -365,7 +366,7 @@ namespace Web.Pages
                     Scale = () => i1,
                     HREF  = () => "/elements",
                 }));
-                _buttonsScaled.Add(new Button(() => new IRenderable[]
+                _buttonsScaled.Add(new Button(new IRenderable[]
                 {
                     $"Button content {i1}".AsContent(),
                 }, new Button.Spec
@@ -373,14 +374,14 @@ namespace Web.Pages
                     Scale   = () => i1,
                     IsSmall = () => true,
                 }));
-                _chipsScaled.Add(new Chip(() => new IRenderable[]
+                _chipsScaled.Add(new Chip(new IRenderable[]
                 {
                     $"Chip content {i1}".AsContent(),
                 }, new Chip.Spec
                 {
                     Scale = () => i1,
                 }));
-                _linksScaled.Add(new Link(() => new IRenderable[]
+                _linksScaled.Add(new Link(new IRenderable[]
                 {
                     $"Link content {i1}".AsContent(),
                 }, new Link.Spec(() => "/elements")

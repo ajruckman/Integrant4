@@ -28,14 +28,14 @@ namespace Integrant4.Element.Constructs.Tagging
                 SetTags(_spec.Value.Invoke(), false);
             }
 
-            _addButton = new Button(() => "Add".AsContent(), new Button.Spec
+            _addButton = new Button("Add".AsContent(), new Button.Spec
             {
                 Style      = () => Button.Style.Green,
                 IsDisabled = () => !CanAddTag(),
                 OnClick    = async (_, _) => await AddTag(),
                 Scale      = _spec.Scale,
             });
-            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
+            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort)(12 * _spec.Scale?.Invoke() ?? 12));
 
             _tagNameDebouncer = new Debouncer<string?>(() =>
             {
@@ -348,8 +348,8 @@ namespace Integrant4.Element.Constructs.Tagging
                 new SelectInput<TagType>.IOption[]
                 {
                     new SelectInput<TagType>.Option(TagType.String, "String", true),
-                    new SelectInput<TagType>.Option(TagType.Int,    "Number"),
-                    new SelectInput<TagType>.Option(TagType.Bool,   "Truthy"),
+                    new SelectInput<TagType>.Option(TagType.Int, "Number"),
+                    new SelectInput<TagType>.Option(TagType.Bool, "Truthy"),
                 }, (l, r) => l == r, new SelectInput<TagType>.Spec
             {
                 IsDisabled = _spec.IsDisabled,
@@ -440,9 +440,9 @@ namespace Integrant4.Element.Constructs.Tagging
 
                 _tags.Add(_newTagType switch
                 {
-                    TagType.String => new StringTag(_newTagName, (string) _newTagValue),
-                    TagType.Int    => new IntTag(_newTagName, (long) _newTagValue),
-                    TagType.Bool   => new BoolTag(_newTagName, (bool) _newTagValue),
+                    TagType.String => new StringTag(_newTagName, (string)_newTagValue),
+                    TagType.Int    => new IntTag(_newTagName, (long)_newTagValue),
+                    TagType.Bool   => new BoolTag(_newTagName, (bool)_newTagValue),
                     _              => throw new ArgumentOutOfRangeException(),
                 });
             }

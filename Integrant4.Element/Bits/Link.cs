@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Integrant4.API;
 using Integrant4.Fundament;
-using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
@@ -23,7 +21,7 @@ namespace Integrant4.Element.Bits
             public Callbacks.HREF HREF { get; }
 
             public Callbacks.Callback<bool>? IsAccented    { get; init; }
-            public Callbacks.Callback<bool>? IsHighlighted { get; init; }
+            public Callbacks.Callback<bool>?         IsHighlighted { get; init; }
 
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -68,17 +66,14 @@ namespace Integrant4.Element.Bits
 
     public partial class Link
     {
-        private readonly DynamicContents           _contents;
+        private readonly DynamicContent            _content;
         private readonly Callbacks.Callback<bool>? _isAccented;
-        private readonly Callbacks.Callback<bool>? _isHighlighted;
+        private readonly Callbacks.Callback<bool>?         _isHighlighted;
 
         public Link(DynamicContent content, Spec spec)
-            : this(content.AsDynamicContents(), spec) { }
-
-        public Link(DynamicContents contents, Spec spec)
             : base(spec.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Link)))
         {
-            _contents      = contents;
+            _content       = content;
             _isAccented    = spec.IsAccented;
             _isHighlighted = spec.IsHighlighted;
         }
@@ -90,8 +85,6 @@ namespace Integrant4.Element.Bits
         {
             void Fragment(RenderTreeBuilder builder)
             {
-                IRenderable[] contents = _contents.Invoke().ToArray();
-
                 List<string> ac = new();
 
                 if (_isAccented?.Invoke() == true)
@@ -113,7 +106,7 @@ namespace Integrant4.Element.Bits
 
                 BitBuilder.ApplyContentAttributes(this, builder, ref seq);
 
-                foreach (IRenderable renderable in contents)
+                foreach (IRenderable renderable in _content.GetAll())
                 {
                     builder.OpenElement(++seq, "span");
                     builder.AddAttribute(++seq, "class", "I4E-Bit-Link-Content");

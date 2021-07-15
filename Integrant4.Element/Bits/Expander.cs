@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Integrant4.API;
 using Integrant4.Colorant.Themes.Main;
 using Integrant4.Element.Constructs;
@@ -31,13 +30,13 @@ namespace Integrant4.Element.Bits
         {
             _hook = new Hook();
 
-            IEnumerable<IRenderable> Contents() => Expanded
-                ? new[] { contractContent.Invoke(), UpIcon }
-                : new[] { expandContent.Invoke(), DownIcon };
+            IRenderable[] Contents() => Expanded
+                ? new IRenderable[] { contractContent, UpIcon }
+                : new IRenderable[] { expandContent, DownIcon };
 
             _button = new Button
             (
-                Contents,
+                DynamicContent.New(Contents),
                 new Button.Spec
                 {
                     Style = () =>
@@ -107,7 +106,7 @@ namespace Integrant4.Element.Bits
             DefaultExpandableHeaderNotice = new RenderableArray(new IRenderable[]
             {
                 new Filler(),
-                new TextBlock("Click to expand".AsContent(), new TextBlock.Spec
+                new TextBlock(DynamicContent.New("Click to expand"), new TextBlock.Spec
                 {
                     Padding         = () => new Size(0, 3),
                     ForegroundColor = () => Constants.Text_2,

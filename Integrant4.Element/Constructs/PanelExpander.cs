@@ -14,41 +14,41 @@ namespace Integrant4.Element.Constructs
         private static readonly BootstrapIcon DownIcon = new("caret-down-fill", 16);
         private static readonly BootstrapIcon UpIcon   = new("caret-up-fill", 16);
 
-        [Parameter] public DynamicContents HeaderElements  { get; set; } = null!;
+        private Header _header = null!;
+
+        [Parameter] public DynamicContent  HeaderElements  { get; set; } = null!;
         [Parameter] public RenderFragment  ChildContent    { get; set; } = null!;
         [Parameter] public DynamicContent? ExpandContent   { get; set; }
         [Parameter] public DynamicContent? ContractContent { get; set; }
         [Parameter] public bool            Expanded        { get; set; }
 
-        private Header _header = null!;
-
         protected override void OnInitialized()
         {
-            ExpandContent   ??= () => "Click to show".AsContent();
-            ContractContent ??= () => "Click to hide".AsContent();
+            ExpandContent   ??= DynamicContent.New(() => "Click to show".AsContent());
+            ContractContent ??= DynamicContent.New(() => "Click to hide".AsContent());
 
             Button button = new
             (
-                () =>
+                DynamicContent.New(() =>
                 {
                     var right = new IRenderable[2];
                     if (!Expanded)
                     {
-                        right[0] = ExpandContent.Invoke();
+                        right[0] = ExpandContent.GetOne();
                         right[1] = DownIcon;
                     }
                     else
                     {
-                        right[0] = ContractContent.Invoke();
+                        right[0] = ContractContent.GetOne();
                         right[1] = UpIcon;
                     }
 
                     return new IRenderable[]
                     {
-                        new RenderableArray(HeaderElements.Invoke()),
+                        new RenderableArray(HeaderElements.GetAll()),
                         new RenderableArray(right),
                     };
-                },
+                }),
                 new Button.Spec
                 {
                     Style   = () => !Expanded ? Button.Style.Transparent : Button.Style.AccentTransparent,
@@ -63,7 +63,7 @@ namespace Integrant4.Element.Constructs
                 }
             );
 
-            _header = new Header(button.AsDynamicContents(), Header.Style.Secondary);
+            _header = new Header(DynamicContent.New(button), Header.Style.Secondary);
         }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
@@ -80,7 +80,7 @@ namespace Integrant4.Element.Constructs
             builder.AddContent(++seq, _header.Renderer());
 
             builder.OpenElement(++seq, "div");
-            builder.AddAttribute(++seq, "class",  "I4E-Layout-Panel-Inner");
+            builder.AddAttribute(++seq, "class", "I4E-Layout-Panel-Inner");
             builder.AddAttribute(++seq, "hidden", !Expanded);
             builder.AddContent(++seq, ChildContent);
             builder.CloseElement();

@@ -6,20 +6,20 @@ namespace Integrant4.Element.Constructs
 {
     public class FlexRow : IConstruct
     {
-        private readonly DynamicContents        _contents;
+        private readonly DynamicContent         _content;
         private readonly Callbacks.FlexJustify? _justify;
         private readonly Callbacks.FlexAlign?   _align;
 
         public FlexRow
         (
-            DynamicContents        contents,
+            DynamicContent         content,
             Callbacks.FlexJustify? justify = null,
             Callbacks.FlexAlign?   align   = null
         )
         {
-            _contents = contents;
-            _justify  = justify;
-            _align    = align;
+            _content = content;
+            _justify = justify;
+            _align   = align;
         }
 
         public RenderFragment Renderer() => builder =>
@@ -37,7 +37,7 @@ namespace Integrant4.Element.Constructs
 
             builder.AddAttribute(++seq, "style", style.Length != 0 ? style : null);
 
-            foreach (IRenderable content in _contents.Invoke())
+            foreach (IRenderable content in _content.GetAll())
             {
                 builder.OpenElement(++seq, "span");
                 builder.AddContent(++seq, content.Renderer());

@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Integrant4.API;
@@ -7,7 +6,6 @@ using Integrant4.Colorant.Themes.Main;
 using Integrant4.Element;
 using Integrant4.Element.Bits;
 using Integrant4.Element.Bits.BitPresets;
-using Integrant4.Element.Constructs;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
@@ -55,69 +53,69 @@ namespace Web.Shared
 
             //
 
-            _header = new Header(() => new IRenderable[]
+            _header = new Header(new IRenderable[]
             {
-                new HeaderTitleLink("Integrant4".AsDynamicContents()),
+                new HeaderTitleLink("Integrant4"),
                 new Filler(),
-                new HeaderLink(() => new IRenderable[]
+                new HeaderLink(new IRenderable[]
                 {
                     "Elements".AsContent(),
                 }, () => "/elements"),
                 new VerticalLine(),
-                new Dropdown(() => new IRenderable[]
+                new Dropdown(new IRenderable[]
                 {
-                    new HeaderLink("Dropdown".AsDynamicContent(), () => "/"),
-                }, () => new IRenderable[]
+                    new HeaderLink("Dropdown", () => "/"),
+                }, new IRenderable[]
                 {
-                    new Button(() => new IRenderable[]
+                    new Button(new IRenderable[]
                     {
                         "Home".AsContent(),
                     }, new Button.Spec { HREF = () => "/home", Style = () => Button.Style.Transparent }),
-                    new Button(() => new IRenderable[]
+                    new Button(new IRenderable[]
                     {
                         "Elements".AsContent(),
                     }, new Button.Spec { HREF = () => "/elements", Style = () => Button.Style.Transparent }),
-                    new TextBlock(() => new IRenderable[]
+                    new TextBlock(new IRenderable[]
                     {
                         "Text block".AsContent(),
                     }),
                 }),
                 new VerticalLine(),
-                new HeaderLink(() => new IRenderable[]
+                new HeaderLink(new IRenderable[]
                 {
                     "Google".AsContent(),
                 }, () => "https://google.com"),
                 new VerticalLine(),
-                new HeaderLink(() => new IRenderable[]
+                new HeaderLink(new IRenderable[]
                 {
                     "Google".AsContent(),
                 }, () => "https://google.com", new HeaderLink.Spec { IsHighlighted = Always.True }),
                 new VerticalLine(),
-                new TextBlock(() => new IRenderable[]
+                new TextBlock(new IRenderable[]
                 {
                     "Text block".AsContent(),
                 }),
                 new VerticalLine(),
-                new HeaderLink(() => new IRenderable[]
+                new HeaderLink(new IRenderable[]
                 {
                     "Google".AsContent(),
                 }, () => "https://google.com"),
                 new VerticalLine(),
                 new Dropdown
                 (
-                    () => new IRenderable[]
+                    new IRenderable[]
                     {
-                        new HeaderLink(() => new IRenderable[]
+                        new HeaderLink(new IRenderable[]
                         {
                             "Dropdown 1".AsContent(),
                             new BootstrapIcon("chevron-down"),
                         }, () => "/elements"),
                     },
-                    () => new IRenderable[]
+                    new IRenderable[]
                     {
-                        new TextBlock(() => new IRenderable[] { "Content".AsContent() }),
+                        new TextBlock(new IRenderable[] { "Content".AsContent() }),
                         new HorizontalLine(),
-                        new TextBlock(() => new IRenderable[] { "Content 2".AsContent() }),
+                        new TextBlock(new IRenderable[] { "Content 2".AsContent() }),
                     }
                 ),
             });

@@ -12,11 +12,6 @@ namespace Integrant4.Element.Bits.BitPresets
             _button = new Button(content, new Button.Spec { HREF = href, Style = () => Button.Style.Transparent });
         }
 
-        public DropdownLinkButton(DynamicContents contents, Callbacks.HREF href)
-        {
-            _button = new Button(contents, new Button.Spec { HREF = href, Style = () => Button.Style.Transparent });
-        }
-
         public RenderFragment Renderer() => _button.Renderer();
     }
 }

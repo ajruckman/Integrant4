@@ -39,15 +39,12 @@ namespace Integrant4.Element.Bits
 
     public partial class Heading
     {
-        private readonly DynamicContents _contents;
+        private readonly DynamicContent _content;
 
         public Heading(DynamicContent content, Spec? spec = null)
-            : this(content.AsDynamicContents(), spec) { }
-
-        public Heading(DynamicContents contents, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Heading)))
         {
-            _contents   = contents;
+            _content    = content;
             _sizeGetter = spec?.Size ?? DefaultSizeGetter;
         }
     }
@@ -63,7 +60,7 @@ namespace Integrant4.Element.Bits
 
                 BitBuilder.ApplyAttributes(this, builder, ref seq, null, null);
 
-                foreach (IRenderable renderable in _contents.Invoke())
+                foreach (IRenderable renderable in _content.GetAll())
                 {
                     builder.AddContent(++seq, renderable.Renderer());
                 }

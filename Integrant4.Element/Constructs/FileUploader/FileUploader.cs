@@ -215,7 +215,7 @@ namespace Integrant4.Element.Constructs.FileUploader
                     builder.OpenElement(++seq, "div");
                     builder.AddAttribute(++seq, "class", "I4E-Construct-FileUploader-PlaceholderContent");
 
-                    IRenderable? text = _spec.PlaceholderContent?.Invoke();
+                    IRenderable? text = _spec.PlaceholderContent?.GetOne();
                     if (text == null)
                     {
                         string def = _type.HasFlag(Type.Single)
@@ -232,7 +232,7 @@ namespace Integrant4.Element.Constructs.FileUploader
 
                     //
 
-                    IRenderable? sizeLimitContent = _spec.SizeLimitContent?.Invoke();
+                    IRenderable? sizeLimitContent = _spec.SizeLimitContent?.GetOne();
                     if (sizeLimitContent != null)
                     {
                         builder.OpenElement(++seq, "div");

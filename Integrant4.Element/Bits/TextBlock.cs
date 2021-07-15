@@ -55,24 +55,12 @@ namespace Integrant4.Element.Bits
 
     public partial class TextBlock
     {
-        private readonly DynamicContents _contents;
-
-        public TextBlock(DynamicContents contents, Spec? spec = null)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)))
-        {
-            _contents = contents;
-        }
+        private readonly DynamicContent _content;
 
         public TextBlock(DynamicContent content, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)))
         {
-            _contents = content.AsDynamicContents();
-        }
-
-        public TextBlock(IRenderable content, Spec? spec = null)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)))
-        {
-            _contents = () => new[] { content };
+            _content = content;
         }
     }
 
@@ -85,10 +73,11 @@ namespace Integrant4.Element.Bits
                 int seq = -1;
 
                 builder.OpenElement(++seq, "div");
+                builder.AddAttribute(++seq, "class", "I4E-Bit-TextBlock-Contents");
 
                 BitBuilder.ApplyAttributes(this, builder, ref seq, null, null);
 
-                foreach (IRenderable renderable in _contents.Invoke())
+                foreach (IRenderable renderable in _content.GetAll())
                 {
                     builder.OpenElement(++seq, "span");
                     builder.AddAttribute(++seq, "class", "I4E-Bit-TextBlock-Content");
@@ -103,19 +92,5 @@ namespace Integrant4.Element.Bits
 
             return Fragment;
         }
-    }
-
-    public partial class TextBlock
-    {
-        // public static readonly Spec SecondaryHeaderStyle;
-        //
-        // static TextBlock()
-        // {
-        //     SecondaryHeaderStyle = new Spec
-        //     {
-        //         FontWeight = () => FontWeight.SemiBold,
-        //         FontSize   = () => 1.2,
-        //     };
-        // }
     }
 }

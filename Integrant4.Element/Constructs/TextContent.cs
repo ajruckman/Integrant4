@@ -29,7 +29,7 @@ namespace Integrant4.Element.Constructs
             if (size != null)
                 style.Add($"font-size: {size}rem;");
             if (weight != null)
-                style.Add($"font-weight: {(int) weight};");
+                style.Add($"font-weight: {(int)weight};");
 
             if (align != null)
             {
