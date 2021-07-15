@@ -37,7 +37,7 @@
                     {
                         $"{v.FirstName} {v.LastName} {v.FirstName} {v.LastName} {v.FirstName} {v.LastName} {v.FirstName} {v.LastName}".AsTextContent(weight: FontWeight.Bold),
                         v.BirthYear.ToString().AsContent(),
-                    }).Renderer(),
+                    }.AsStatic()).Renderer(),
                     null,
                     $"{v.FirstName} {v.LastName} {v.FirstName} {v.LastName}",
                     false, false
@@ -52,7 +52,7 @@
             {
                 v.Key.AsTextContent(weight: FontWeight.Bold),
                 v.Value.Item2.AsContent(),
-            }, () => FlexAlign.Start).Renderer(),
+            }.AsStatic(), () => FlexAlign.Start).Renderer(),
             v.Key,
             v.Key,
             false,

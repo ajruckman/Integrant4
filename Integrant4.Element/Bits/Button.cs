@@ -62,10 +62,10 @@ namespace Integrant4.Element.Bits
 
     public partial class Button
     {
-        private readonly DynamicContent            _content;
+        private readonly ContentRef                _content;
         private readonly Callbacks.Callback<bool>? _isSmall;
 
-        public Button(DynamicContent content, Spec? spec = null)
+        public Button(ContentRef content, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Button)))
         {
             _content     = content;
@@ -142,9 +142,9 @@ namespace Integrant4.Element.Bits
 
             var c = new ClickArgs
             (
-                (ushort)args.Button,
-                (ushort)args.ClientX,
-                (ushort)args.ClientY,
+                (ushort) args.Button,
+                (ushort) args.ClientX,
+                (ushort) args.ClientY,
                 args.ShiftKey,
                 args.CtrlKey
             );

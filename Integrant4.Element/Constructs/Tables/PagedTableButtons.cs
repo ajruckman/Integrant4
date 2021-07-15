@@ -24,13 +24,13 @@ namespace Integrant4.Element.Constructs.Tables
             //     filterable.OnFilter.Event += () => InvokeAsync(StateHasChanged);
             // }
 
-            _previous = new Button("PREVIOUS".AsContent(), new Button.Spec
+            _previous = new Button("PREVIOUS".AsStatic(), new Button.Spec
             {
                 IsDisabled = () => !Table.CanPrevious(),
                 OnClick    = (_, _) => Table.Previous(),
             });
 
-            _next = new Button("NEXT".AsContent(), new Button.Spec
+            _next = new Button("NEXT".AsStatic(), new Button.Spec
             {
                 IsDisabled = () => !Table.CanNext(),
                 OnClick    = (_, _) => Table.Next(),
@@ -56,7 +56,7 @@ namespace Integrant4.Element.Constructs.Tables
                 {
                     builder.OpenElement(++seq, "button");
                     builder.AddAttribute(++seq, "disabled", Table.CurrentPage == page);
-                    builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, () => Table.Jump(page)));
+                    builder.AddAttribute(++seq, "onclick",  EventCallback.Factory.Create(this, () => Table.Jump(page)));
                     builder.AddContent(++seq, page + 1);
                     builder.CloseElement();
                 }
@@ -64,7 +64,7 @@ namespace Integrant4.Element.Constructs.Tables
                 {
                     builder.OpenElement(++seq, "button");
                     builder.AddAttribute(++seq, "disabled", true);
-                    builder.AddAttribute(++seq, "class", "I4E-Construct-PagedTable-Ellipses");
+                    builder.AddAttribute(++seq, "class",    "I4E-Construct-PagedTable-Ellipses");
                     builder.AddContent(++seq, "...");
                     builder.CloseElement();
                 }

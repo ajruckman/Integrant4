@@ -26,7 +26,7 @@ window.I4.Element.NextSiblingSelector = window.I4.Element.NextSiblingSelector ||
 
 //
 
-const ScrollbarSpace = '7px';
+const ScrollbarSpace = "7px";
 
 window.addEventListener("focusin", event => {
     if (document.I4EActiveElement === undefined) {
@@ -35,7 +35,7 @@ window.addEventListener("focusin", event => {
         document.I4EActiveElementPrev = document.I4EActiveElement;
         document.I4EActiveElement = document.activeElement;
     }
-})
+});
 
 window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (element, dotnetHelper, filterable) {
     if (element == null) {
@@ -58,7 +58,7 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
         });
 
         element.SelectorOpen = false;
-        
+
         let glue;
 
         element.Scrollbar = OverlayScrollbars(scroller, {
@@ -110,16 +110,16 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
             head.removeAttribute("data-focused");
             dropdown.removeAttribute("data-open");
 
-            window.setTimeout(function() {
+            window.setTimeout(function () {
                 if (filterable && element.PrevFocus !== undefined) {
                     element.PrevFocus.focus();
                 }
             }, 0);
-            
+
             element.I4EOptionsDropdown.setOptions({
                 modifiers: [{name: "eventListeners", enabled: false}, {name: "offset", options: {offset: [0, 1]}}],
             });
-            
+
             element.Scrollbar.sleep();
         };
 

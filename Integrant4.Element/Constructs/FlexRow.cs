@@ -6,13 +6,13 @@ namespace Integrant4.Element.Constructs
 {
     public class FlexRow : IConstruct
     {
-        private readonly DynamicContent         _content;
+        private readonly ContentRef             _content;
         private readonly Callbacks.FlexJustify? _justify;
         private readonly Callbacks.FlexAlign?   _align;
 
         public FlexRow
         (
-            DynamicContent         content,
+            ContentRef             content,
             Callbacks.FlexJustify? justify = null,
             Callbacks.FlexAlign?   align   = null
         )

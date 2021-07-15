@@ -23,15 +23,15 @@ namespace Integrant4.Element.Bits
 
     public partial class Header
     {
-        private readonly DynamicContent  _content;
+        private readonly ContentRef      _content;
         private readonly Style           _style;
         private readonly Callbacks.Size? _padding;
 
         public Header
         (
-            DynamicContent content,
-            Style          style = Style.Primary,
-            Spec?          spec  = null
+            ContentRef content,
+            Style      style = Style.Primary,
+            Spec?      spec  = null
         )
         {
             _content = content;

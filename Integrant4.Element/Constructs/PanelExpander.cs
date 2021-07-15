@@ -16,20 +16,20 @@ namespace Integrant4.Element.Constructs
 
         private Header _header = null!;
 
-        [Parameter] public DynamicContent  HeaderElements  { get; set; } = null!;
-        [Parameter] public RenderFragment  ChildContent    { get; set; } = null!;
-        [Parameter] public DynamicContent? ExpandContent   { get; set; }
-        [Parameter] public DynamicContent? ContractContent { get; set; }
-        [Parameter] public bool            Expanded        { get; set; }
+        [Parameter] public ContentRef     HeaderElements  { get; set; } = null!;
+        [Parameter] public RenderFragment ChildContent    { get; set; } = null!;
+        [Parameter] public ContentRef?    ExpandContent   { get; set; }
+        [Parameter] public ContentRef?    ContractContent { get; set; }
+        [Parameter] public bool           Expanded        { get; set; }
 
         protected override void OnInitialized()
         {
-            ExpandContent   ??= DynamicContent.New(() => "Click to show".AsContent());
-            ContractContent ??= DynamicContent.New(() => "Click to hide".AsContent());
+            ExpandContent   ??= ContentRef.Dynamic(() => "Click to show");
+            ContractContent ??= ContentRef.Dynamic(() => "Click to hide");
 
             Button button = new
             (
-                DynamicContent.New(() =>
+                ContentRef.Dynamic(() =>
                 {
                     var right = new IRenderable[2];
                     if (!Expanded)
@@ -63,7 +63,7 @@ namespace Integrant4.Element.Constructs
                 }
             );
 
-            _header = new Header(DynamicContent.New(button), Header.Style.Secondary);
+            _header = new Header(ContentRef.Static(button), Header.Style.Secondary);
         }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
@@ -80,7 +80,7 @@ namespace Integrant4.Element.Constructs
             builder.AddContent(++seq, _header.Renderer());
 
             builder.OpenElement(++seq, "div");
-            builder.AddAttribute(++seq, "class", "I4E-Layout-Panel-Inner");
+            builder.AddAttribute(++seq, "class",  "I4E-Layout-Panel-Inner");
             builder.AddAttribute(++seq, "hidden", !Expanded);
             builder.AddContent(++seq, ChildContent);
             builder.CloseElement();

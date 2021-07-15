@@ -20,9 +20,9 @@ namespace Integrant4.Element.Bits
             builder.OpenElement(++seq, "span");
             builder.AddAttribute(++seq, "class", "I4E-Bit-Asterisk");
             builder.OpenComponent<BootstrapIcon>(++seq);
-            builder.AddAttribute(++seq, "ID", "asterisk");
+            builder.AddAttribute(++seq, "ID",    "asterisk");
             builder.AddAttribute(++seq, "Color", Constants.Red_5);
-            builder.AddAttribute(++seq, "Size", _size);
+            builder.AddAttribute(++seq, "Size",  _size);
             builder.CloseComponent();
             builder.CloseElement();
         };

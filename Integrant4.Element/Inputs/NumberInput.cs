@@ -12,9 +12,7 @@ namespace Integrant4.Element.Inputs
             ClassSet   classSet,
             BaseSpec?  spec = null
         )
-            : base(jsRuntime, spec, classSet)
-        {
-        }
+            : base(jsRuntime, spec, classSet) { }
 
         protected override string Serialize(T? v) => v?.ToString() ?? "";
 

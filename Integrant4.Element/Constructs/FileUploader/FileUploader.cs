@@ -57,8 +57,8 @@ namespace Integrant4.Element.Constructs.FileUploader
 
         public class Spec
         {
-            public DynamicContent?  PlaceholderContent { get; init; }
-            public DynamicContent?  SizeLimitContent   { get; init; }
+            public ContentRef?      PlaceholderContent { get; init; }
+            public ContentRef?      SizeLimitContent   { get; init; }
             public Callbacks.Unit?  Width              { get; init; }
             public Callbacks.Scale? Scale              { get; init; }
         }

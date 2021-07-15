@@ -21,7 +21,7 @@ namespace Integrant4.Element.Bits
             public Callbacks.HREF HREF { get; }
 
             public Callbacks.Callback<bool>? IsAccented    { get; init; }
-            public Callbacks.Callback<bool>?         IsHighlighted { get; init; }
+            public Callbacks.Callback<bool>? IsHighlighted { get; init; }
 
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -66,11 +66,11 @@ namespace Integrant4.Element.Bits
 
     public partial class Link
     {
-        private readonly DynamicContent            _content;
+        private readonly ContentRef                _content;
         private readonly Callbacks.Callback<bool>? _isAccented;
-        private readonly Callbacks.Callback<bool>?         _isHighlighted;
+        private readonly Callbacks.Callback<bool>? _isHighlighted;
 
-        public Link(DynamicContent content, Spec spec)
+        public Link(ContentRef content, Spec spec)
             : base(spec.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Link)))
         {
             _content       = content;

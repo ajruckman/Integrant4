@@ -23,9 +23,9 @@ namespace Integrant4.Element.Bits
 
         public Expander
         (
-            DynamicContent expandContent,
-            DynamicContent contractContent,
-            Spec?          spec = null
+            ContentRef expandContent,
+            ContentRef contractContent,
+            Spec?      spec = null
         )
         {
             _hook = new Hook();
@@ -36,7 +36,7 @@ namespace Integrant4.Element.Bits
 
             _button = new Button
             (
-                DynamicContent.New(Contents),
+                ContentRef.Dynamic(Contents),
                 new Button.Spec
                 {
                     Style = () =>
@@ -106,7 +106,7 @@ namespace Integrant4.Element.Bits
             DefaultExpandableHeaderNotice = new RenderableArray(new IRenderable[]
             {
                 new Filler(),
-                new TextBlock(DynamicContent.New("Click to expand"), new TextBlock.Spec
+                new TextBlock(ContentRef.Static("Click to expand"), new TextBlock.Spec
                 {
                     Padding         = () => new Size(0, 3),
                     ForegroundColor = () => Constants.Text_2,

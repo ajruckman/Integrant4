@@ -26,7 +26,7 @@ namespace Integrant4.Element.Constructs.Tagging
         public static RenderFragment RenderSelectable(this ITag tag, TagSelector selector) => builder =>
         {
             builder.OpenElement(0, "div");
-            builder.AddAttribute(1, "class", "I4E-Construct-TagSelector-AddableTag");
+            builder.AddAttribute(1, "class",   "I4E-Construct-TagSelector-AddableTag");
             builder.AddAttribute(2, "onclick", EventCallback.Factory.Create(selector, () => selector.AddTag(tag)));
 
             builder.OpenElement(3, "div");

@@ -39,9 +39,9 @@ namespace Integrant4.Element.Bits
 
     public partial class Heading
     {
-        private readonly DynamicContent _content;
+        private readonly ContentRef _content;
 
-        public Heading(DynamicContent content, Spec? spec = null)
+        public Heading(ContentRef content, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Heading)))
         {
             _content    = content;
@@ -56,7 +56,7 @@ namespace Integrant4.Element.Bits
             void Fragment(RenderTreeBuilder builder)
             {
                 int seq = -1;
-                builder.OpenElement(++seq, "h" + (int)_sizeGetter.Invoke());
+                builder.OpenElement(++seq, "h" + (int) _sizeGetter.Invoke());
 
                 BitBuilder.ApplyAttributes(this, builder, ref seq, null, null);
 

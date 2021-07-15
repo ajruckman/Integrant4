@@ -54,9 +54,9 @@ namespace Integrant4.Element.Bits
 
     public partial class Chip
     {
-        private readonly DynamicContent _content;
+        private readonly ContentRef _content;
 
-        public Chip(DynamicContent content, Spec? spec = null)
+        public Chip(ContentRef content, Spec? spec = null)
             : base(spec?.ToBaseSpec(),
                 new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Chip),
                     spec?.HREF == null

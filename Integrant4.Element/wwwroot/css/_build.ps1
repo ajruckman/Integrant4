@@ -3,8 +3,11 @@ Get-ChildItem -Recurse -Filter *.css.map | Remove-Item
 
 foreach ($stylesheet in $( Get-ChildItem -Recurse . -Filter *.scss ))
 {
-    if ($stylesheet.Name.StartsWith("_")) { continue }
-    
+    if ( $stylesheet.Name.StartsWith("_"))
+    {
+        continue
+    }
+
     Write-Output "Building stylesheet: $( $stylesheet.FullName )"
     & sassc -m "$( $stylesheet.FullName )" "$( $stylesheet.DirectoryName )/$( $stylesheet.BaseName ).css"
     if (-not$?)

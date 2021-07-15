@@ -47,7 +47,7 @@ namespace Integrant4.Element.Constructs.Tables
                 {
                     _rows = _rowGetter.Invoke();
 
-                    var numPages = (int)Math.Ceiling(_rows.Length / (decimal)PageSize);
+                    var numPages = (int) Math.Ceiling(_rows.Length / (decimal) PageSize);
 
                     if (CurrentPage > numPages)
                         CurrentPage = numPages - 1;
@@ -97,7 +97,7 @@ namespace Integrant4.Element.Constructs.Tables
                         _rows = _rowGetter.Invoke();
                     }
 
-                    var numPages = (int)Math.Ceiling(_rows.Length / (decimal)PageSize);
+                    var numPages = (int) Math.Ceiling(_rows.Length / (decimal) PageSize);
 
                     if (CurrentPage > numPages)
                         CurrentPage = numPages - 1;

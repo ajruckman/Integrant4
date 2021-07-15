@@ -13,7 +13,7 @@ namespace Integrant4.Element.Bits.BitComponents
 
         protected override void OnParametersSet()
         {
-            _header = new Header(ChildContent, Style);
+            _header = new Header(ContentRef.Static(ChildContent), Style);
         }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)

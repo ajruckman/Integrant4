@@ -29,14 +29,14 @@ namespace Integrant4.Element.Bits
 
     public partial class Dropdown
     {
-        private readonly DynamicContent _headContents;
-        private readonly DynamicContent _childContents;
+        private readonly ContentRef _headContents;
+        private readonly ContentRef _childContents;
 
         public Dropdown
         (
-            DynamicContent headContents,
-            DynamicContent childContents,
-            Spec?           spec = null
+            ContentRef headContents,
+            ContentRef childContents,
+            Spec?      spec = null
         ) : base(spec?.ToBaseSpec(),
             new ClassSet("I4E-Bit", "I4E-Bit-Dropdown"))
         {
@@ -80,7 +80,7 @@ namespace Integrant4.Element.Bits
                 BitBuilder.ApplyAttributes(Dropdown, builder, ref seq, null, null);
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "id", Dropdown.ID + ".Head");
+                builder.AddAttribute(++seq, "id",    Dropdown.ID + ".Head");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Head");
                 builder.AddElementReferenceCapture(++seq, r => _headRef = r);
 
@@ -97,7 +97,7 @@ namespace Integrant4.Element.Bits
                 //
 
                 builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "id", Dropdown.ID + ".Contents");
+                builder.AddAttribute(++seq, "id",    Dropdown.ID + ".Contents");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Contents");
                 builder.AddAttribute(++seq, "data-popper-placement",
                     (Dropdown._placementGetter?.Invoke() ?? TooltipPlacement.Bottom).Map());

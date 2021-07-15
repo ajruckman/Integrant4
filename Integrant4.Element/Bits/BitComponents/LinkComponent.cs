@@ -15,7 +15,7 @@ namespace Integrant4.Element.Bits.BitComponents
 
         protected override void OnParametersSet()
         {
-            _link = new Link(ChildContent.AsContent(), new Link.Spec(() => HREF)
+            _link = new Link(ChildContent.AsStatic(), new Link.Spec(() => HREF)
             {
                 IsAccented    = () => IsAccented,
                 IsHighlighted = () => IsHighlighted,

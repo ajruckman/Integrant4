@@ -39,13 +39,13 @@ namespace Integrant4.Element.Bits
 
     public partial class HeaderLink
     {
-        private readonly DynamicContent            _content;
+        private readonly ContentRef                _content;
         private readonly Callbacks.HREF            _href;
         private readonly Callbacks.Callback<bool>? _isTitle;
         private readonly Callbacks.Callback<bool>? _isHighlighted;
         private readonly bool                      _doAutoHighlight;
 
-        public HeaderLink(DynamicContent content, Callbacks.HREF href, Spec? spec = null)
+        public HeaderLink(ContentRef content, Callbacks.HREF href, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(HeaderLink)))
         {
             _content = content;

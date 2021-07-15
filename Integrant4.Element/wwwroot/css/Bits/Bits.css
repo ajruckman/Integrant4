@@ -353,16 +353,18 @@ div.I4E-Bit-Dropdown {
     margin: 17px;
     padding: 10px;
     position: absolute;
-    z-index: 150; }
+    z-index: 250; }
     div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents[data-show] {
       display: block; }
-    div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents div.I4E-Bit-Dropdown-Content > * {
-      box-sizing: border-box;
-      width: 100%; }
-    div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents div.I4E-Bit-Dropdown-Content:not(:last-child) {
-      margin-bottom: 3px; }
-    div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents div.I4E-Bit-Dropdown-Content:only-child {
-      flex-grow: 1; }
+    div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents div.I4E-Bit-Dropdown-Content {
+      z-index: 250; }
+      div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents div.I4E-Bit-Dropdown-Content > * {
+        box-sizing: border-box;
+        width: 100%; }
+      div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents div.I4E-Bit-Dropdown-Content:not(:last-child) {
+        margin-bottom: 3px; }
+      div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents div.I4E-Bit-Dropdown-Content:only-child {
+        flex-grow: 1; }
   div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Head[data-contents-shown] a.I4E-Bit-HeaderLink {
     color: var(--I4C-Main-Accent-8); }
 
@@ -720,7 +722,7 @@ div.I4E-Bit-VerticalLine {
   width: 1px; }
 
 code {
-  border: 1px solid #DEE2E6;
+  border: 1px solid #dee2e6;
   background-color: rgba(27, 31, 35, 0.05);
   padding: 0.2rem 0.4rem;
   font-family: monospace; }
@@ -733,5 +735,3 @@ code {
     display: unset; }
     .MVisibleOnHover:hover .MVisibleOnParentHover {
       display: unset; }
-
-/*# sourceMappingURL=Bits.css.map */

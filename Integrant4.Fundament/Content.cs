@@ -6,67 +6,20 @@ using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Integrant4.Fundament
 {
-    public delegate IRenderable DynamicContentGetter();
-
-    public delegate IEnumerable<IRenderable> DynamicContentsGetter();
-
-    public class DynamicContent : IRenderable
+    public class ContentRef : IRenderable
     {
-        public delegate IRenderable              DynamicContentGetter();
-        public delegate IEnumerable<IRenderable> DynamicContentsGetter();
+        private readonly IRenderable?                    _rawSingle;
+        private readonly IEnumerable<IRenderable>?       _rawMultiple;
+        private readonly Func<IRenderable>?              _getSingle;
+        private readonly Func<IEnumerable<IRenderable>>? _getMultiple;
 
-        private readonly DynamicContentGetter?     _getSingle;
-        private readonly DynamicContentsGetter?    _getMultiple;
-        private readonly IRenderable?              _rawSingle;
-        private readonly IEnumerable<IRenderable>? _rawMultiple;
+        //
 
-        private DynamicContent(DynamicContentGetter s)
-        {
-            _getSingle   = s;
-            _getMultiple = null;
-            _rawSingle   = null;
-            _rawMultiple = null;
-        }
+        private ContentRef(IRenderable              s) => _rawSingle = s;
+        private ContentRef(IEnumerable<IRenderable> s) => _rawMultiple = s;
 
-        private DynamicContent(DynamicContentsGetter s)
-        {
-            _getSingle   = null;
-            _getMultiple = s;
-            _rawSingle   = null;
-            _rawMultiple = null;
-        }
-
-        private DynamicContent(IRenderable s)
-        {
-            _getSingle   = null;
-            _getMultiple = null;
-            _rawSingle   = s;
-            _rawMultiple = null;
-        }
-
-        private DynamicContent(IEnumerable<IRenderable> s)
-        {
-            _getSingle   = null;
-            _getMultiple = null;
-            _rawSingle   = null;
-            _rawMultiple = s;
-        }
-
-        private DynamicContent(Func<IRenderable> s)
-        {
-            _getSingle   = s.Invoke;
-            _getMultiple = null;
-            _rawSingle   = null;
-            _rawMultiple = null;
-        }
-
-        private DynamicContent(Func<IEnumerable<IRenderable>> s)
-        {
-            _getSingle   = null;
-            _getMultiple = s.Invoke;
-            _rawSingle   = null;
-            _rawMultiple = null;
-        }
+        private ContentRef(Func<IRenderable>              s) => _getSingle = s.Invoke;
+        private ContentRef(Func<IEnumerable<IRenderable>> s) => _getMultiple = s.Invoke;
 
         //
 
@@ -74,37 +27,33 @@ namespace Integrant4.Fundament
 
         public IRenderable GetOne()
         {
-            if (_getSingle != null)
-                return _getSingle.Invoke();
             if (_rawSingle != null)
                 return _rawSingle;
-
-            if (_getMultiple != null)
-            {
-                DynamicContentsGetter g = _getMultiple;
-
-                void Fragment(RenderTreeBuilder b)
-                {
-                    int seq = -1;
-                    foreach (IRenderable v in g.Invoke())
-                        b.AddContent(++seq, v.Renderer());
-                }
-
-                return (Content)Fragment;
-            }
+            if (_getSingle != null)
+                return _getSingle.Invoke();
 
             if (_rawMultiple != null)
             {
-                IEnumerable<IRenderable> r = _rawMultiple;
-
                 void Fragment(RenderTreeBuilder b)
                 {
                     int seq = -1;
-                    foreach (IRenderable v in r)
+                    foreach (IRenderable v in _rawMultiple)
                         b.AddContent(++seq, v);
                 }
 
-                return (Content)Fragment;
+                return (Content) Fragment;
+            }
+
+            if (_getMultiple != null)
+            {
+                void Fragment(RenderTreeBuilder b)
+                {
+                    int seq = -1;
+                    foreach (IRenderable v in _getMultiple.Invoke())
+                        b.AddContent(++seq, v.Renderer());
+                }
+
+                return (Content) Fragment;
             }
 
             throw new Exception();
@@ -112,101 +61,64 @@ namespace Integrant4.Fundament
 
         public IEnumerable<IRenderable> GetAll()
         {
-            if (_getSingle != null)
-                return new[] { _getSingle.Invoke() };
             if (_rawSingle != null)
                 return new[] { _rawSingle };
+            if (_getSingle != null)
+                return new[] { _getSingle.Invoke() };
 
-            if (_getMultiple != null)
-                return _getMultiple.Invoke();
             if (_rawMultiple != null)
                 return _rawMultiple;
+            if (_getMultiple != null)
+                return _getMultiple.Invoke();
 
             throw new Exception();
         }
 
         //
 
-        public static DynamicContent New(string                   s) => new(s.AsContent());
-        public static DynamicContent New(MarkupString             s) => new(s.AsContent());
-        public static DynamicContent New(RenderFragment           s) => new(s.AsContent());
-        public static DynamicContent New(Content                  s) => new(s);
-        public static DynamicContent New(IRenderable              s) => new(s);
-        public static DynamicContent New(IEnumerable<IRenderable> s) => new(s);
-        public static DynamicContent New(DynamicContentGetter     s) => new(s);
-        public static DynamicContent New(DynamicContentsGetter    s) => new(s);
+        public static ContentRef Static(string                   s) => new(s.AsContent());
+        public static ContentRef Static(MarkupString             s) => new(s.AsContent());
+        public static ContentRef Static(RenderFragment           s) => new(s.AsContent());
+        public static ContentRef Static(Content                  s) => new(s);
+        public static ContentRef Static(IRenderable              s) => new(s);
+        public static ContentRef Static(IEnumerable<IRenderable> s) => new(s);
 
-        public static implicit operator DynamicContent(string         s) => new(s.AsContent());
-        public static implicit operator DynamicContent(MarkupString   s) => new(s.AsContent());
-        public static implicit operator DynamicContent(RenderFragment s) => new(s.AsContent());
-        public static implicit operator DynamicContent(Content        s) => new(s);
+        public static ContentRef Dynamic(Func<string>                   s) => new(() => s.Invoke().AsContent());
+        public static ContentRef Dynamic(Func<MarkupString>             s) => new(() => s.Invoke().AsContent());
+        public static ContentRef Dynamic(Func<RenderFragment>           s) => new(() => s.Invoke().AsContent());
+        public static ContentRef Dynamic(Func<Content>                  s) => new(() => s.Invoke());
+        public static ContentRef Dynamic(Func<IRenderable>              s) => new(s);
+        public static ContentRef Dynamic(Func<IEnumerable<IRenderable>> s) => new(s);
 
-        // We can't define an implicit conversion from 'DynamicContentGetter' or 'DynamicContentsGetter' because they
-        // are delegates, but we can define them for functions of type 'IRenderable'.
-        public static implicit operator DynamicContent(Func<IRenderable>              s) => new(s);
-        public static implicit operator DynamicContent(Func<IEnumerable<IRenderable>> s) => new(s);
-
-        // We can't define an implicit conversion from 'IRenderable' or 'IEnumerable<IRenderable>' because they are
-        // interface types, but we can define them for arrays and lists of type 'IRenderable'.
-        public static implicit operator DynamicContent(IRenderable[]     s) => new(s);
-        public static implicit operator DynamicContent(List<IRenderable> s) => new(s);
+        // public static implicit operator ContentRef(string         s) => new(s.AsContent());
+        // public static implicit operator ContentRef(MarkupString   s) => new(s.AsContent());
+        // public static implicit operator ContentRef(RenderFragment s) => new(s.AsContent());
+        // public static implicit operator ContentRef(Content        s) => new(s);
+        //
+        // // public static implicit operator ContentRef(string                         s) => new(s);
+        // // public static implicit operator ContentRef(MarkupString                   s) => new(s);
+        // // public static implicit operator ContentRef(RenderFragment                 s) => new(s);
+        // // public static implicit operator ContentRef(Content                        s) => new(s);
+        // // public static implicit operator ContentRef(Func<IRenderable>              s) => new(s);
+        // // public static implicit operator ContentRef(Func<IEnumerable<IRenderable>> s) => new(s);
+        //
+        // // We can't define an implicit conversion from 'IRenderable' or 'IEnumerable<IRenderable>' because they are
+        // // interface types, but we can define them for arrays and lists of type 'IRenderable'.
+        // public static implicit operator ContentRef(IRenderable[]     s) => new(s);
+        // public static implicit operator ContentRef(List<IRenderable> s) => new(s);
     }
 
     public readonly struct Content : IRenderable
     {
         public readonly RenderFragment Fragment;
 
-        //
-
-        private Content(string? s)
-        {
-            Fragment = builder => builder.AddContent(0, s);
-        }
-
-        private Content(MarkupString s)
-        {
-            Fragment = builder => builder.AddContent(0, s);
-        }
-
-        private Content(RenderFragment s)
-        {
-            Fragment = s;
-        }
-
-        // private Content(RenderFragment[] s)
-        // {
-        //     Fragment = builder =>
-        //     {
-        //         int seq = -1;
-        //         foreach (RenderFragment v in s)
-        //             builder.AddContent(++seq, v);
-        //     };
-        // }
-        //
-        // private Content(IEnumerable<IRenderable> s)
-        // {
-        //     Fragment = builder =>
-        //     {
-        //         int seq = -1;
-        //         foreach (IRenderable v in s)
-        //             builder.AddContent(++seq, v.Renderer());
-        //     };
-        // }
-
-        //
+        private Content(string?        s) => Fragment = builder => builder.AddContent(0, s);
+        private Content(MarkupString   s) => Fragment = builder => builder.AddContent(0, s);
+        private Content(RenderFragment s) => Fragment = s;
 
         public static implicit operator Content(string?        v) => new(v);
         public static implicit operator Content(MarkupString   v) => new(v);
         public static implicit operator Content(RenderFragment v) => new(v);
-
-        // public static implicit operator Content(RenderFragment[]  v) => new(v);
-        // public static implicit operator Content(IRenderable[]     v) => new(v);
-        // public static implicit operator Content(List<IRenderable> v) => new(v);
-
-        // public static implicit operator Content(Content[]     v) => v.AsContent();
-        // public static implicit operator Content(List<Content> v) => v.AsContent();
-
-        //
 
         public static Content operator +(Content a, Content b)
         {
@@ -226,54 +138,18 @@ namespace Integrant4.Fundament
         public static Content AsContent(this MarkupString   v) => v;
         public static Content AsContent(this RenderFragment v) => v;
 
-        // public static Content AsContent(this IEnumerable<Content> v)
-        // {
-        //     Content[] contents = v.ToArray();
-        //
-        //     if (contents.Length == 0) return "";
-        //     if (contents.Length == 1) return contents[1];
-        //
-        //     Content result = contents[1];
-        //
-        //     foreach (Content child in contents[1..])
-        //     {
-        //         result += child;
-        //     }
-        //
-        //     return result;
-        // }
+        public static ContentRef AsStatic(this string                   v) => ContentRef.Static(v);
+        public static ContentRef AsStatic(this MarkupString             v) => ContentRef.Static(v);
+        public static ContentRef AsStatic(this RenderFragment           v) => ContentRef.Static(v);
+        public static ContentRef AsStatic(this Content                  v) => ContentRef.Static(v);
+        public static ContentRef AsStatic(this IRenderable              v) => ContentRef.Static(v);
+        public static ContentRef AsStatic(this IEnumerable<IRenderable> v) => ContentRef.Static(v);
 
-        // public static DynamicContent AsDynamicContent(this IRenderable v) =>
-        //     () => v;
-        //
-        // public static DynamicContent AsDynamicContent(this Content v) =>
-        //     () => v;
-        //
-        // public static DynamicContent AsDynamicContent(this RenderFragment v) =>
-        //     () => v.AsContent();
-        //
-        // public static DynamicContent AsDynamicContent(this MarkupString v) =>
-        //     () => v.AsContent();
-        //
-        // public static DynamicContent AsDynamicContent(this string v) =>
-        //     () => v.AsContent();
-        //
-        // public static DynamicContents AsDynamicContents(this IRenderable v) =>
-        //     () => new[] { v };
-        //
-        // public static DynamicContents AsDynamicContents(this Content v) =>
-        //     () => new[] { v as IRenderable, };
-        //
-        // public static DynamicContents AsDynamicContents(this RenderFragment v) =>
-        //     () => new[] { v.AsContent() as IRenderable };
-        //
-        // public static DynamicContents AsDynamicContents(this MarkupString v) =>
-        //     () => new[] { v.AsContent() as IRenderable };
-        //
-        // public static DynamicContents AsDynamicContents(this string v) =>
-        //     () => new[] { v.AsContent() as IRenderable };
-        //
-        // public static DynamicContents AsDynamicContents(this DynamicContent dynamicContent) =>
-        //     () => new[] { dynamicContent.Invoke() };
+        public static ContentRef AsStatic(this Func<string>                   v) => ContentRef.Dynamic(v);
+        public static ContentRef AsStatic(this Func<MarkupString>             v) => ContentRef.Dynamic(v);
+        public static ContentRef AsStatic(this Func<RenderFragment>           v) => ContentRef.Dynamic(v);
+        public static ContentRef AsStatic(this Func<Content>                  v) => ContentRef.Dynamic(v);
+        public static ContentRef AsStatic(this Func<IRenderable>              v) => ContentRef.Dynamic(v);
+        public static ContentRef AsStatic(this Func<IEnumerable<IRenderable>> v) => ContentRef.Dynamic(v);
     }
 }

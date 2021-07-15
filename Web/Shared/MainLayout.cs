@@ -21,7 +21,8 @@ namespace Web.Shared
 
         private Header _header = null!;
 
-        [Inject] public IJSRuntime JSRuntime { get; set; } = null!;
+        [Inject] public IJSRuntime     JSRuntime      { get; set; } = null!;
+        [Inject] public ElementService ElementService { get; set; } = null!;
 
         protected override void OnInitialized()
         {
@@ -55,51 +56,31 @@ namespace Web.Shared
 
             _header = new Header(new IRenderable[]
             {
-                new HeaderTitleLink("Integrant4"),
+                new HeaderTitleLink("Integrant4".AsStatic()),
                 new Filler(),
-                new HeaderLink(new IRenderable[]
-                {
-                    "Elements".AsContent(),
-                }, () => "/elements"),
-                new VerticalLine(),
                 new Dropdown(new IRenderable[]
                 {
-                    new HeaderLink("Dropdown", () => "/"),
-                }, new IRenderable[]
+                    new HeaderLink(new IRenderable[]
+                    {
+                        "Elements".AsStatic(),
+                        new BootstrapIcon("chevron-down"),
+                    }.AsStatic(), () => "/elements"),
+                }.AsStatic(), new IRenderable[]
                 {
-                    new Button(new IRenderable[]
-                    {
-                        "Home".AsContent(),
-                    }, new Button.Spec { HREF = () => "/home", Style = () => Button.Style.Transparent }),
-                    new Button(new IRenderable[]
-                    {
-                        "Elements".AsContent(),
-                    }, new Button.Spec { HREF = () => "/elements", Style = () => Button.Style.Transparent }),
-                    new TextBlock(new IRenderable[]
-                    {
-                        "Text block".AsContent(),
-                    }),
-                }),
+                    new DropdownLinkButton("Benchmark".AsStatic(),        () => "/benchmark"),
+                    new DropdownLinkButton("Bit Components".AsStatic(),   () => "/bitcomponents"),
+                    new DropdownLinkButton("Constructs".AsStatic(),       () => "/constructs"),
+                    new DropdownLinkButton("DropZones".AsStatic(),        () => "/dropzones"),
+                    new DropdownLinkButton("Markdown Editors".AsStatic(), () => "/markdowneditors"),
+                    new DropdownLinkButton("Radios".AsStatic(),           () => "/radios"),
+                    new DropdownLinkButton("Selectors".AsStatic(),        () => "/selectors"),
+                    new DropdownLinkButton("Tables".AsStatic(),           () => "/tables"),
+                }.AsStatic()),
                 new VerticalLine(),
                 new HeaderLink(new IRenderable[]
                 {
-                    "Google".AsContent(),
-                }, () => "https://google.com"),
-                new VerticalLine(),
-                new HeaderLink(new IRenderable[]
-                {
-                    "Google".AsContent(),
-                }, () => "https://google.com", new HeaderLink.Spec { IsHighlighted = Always.True }),
-                new VerticalLine(),
-                new TextBlock(new IRenderable[]
-                {
-                    "Text block".AsContent(),
-                }),
-                new VerticalLine(),
-                new HeaderLink(new IRenderable[]
-                {
-                    "Google".AsContent(),
-                }, () => "https://google.com"),
+                    "Benchmarks".AsContent(),
+                }.AsStatic(), () => "/benchmarks"),
                 new VerticalLine(),
                 new Dropdown
                 (
@@ -109,16 +90,16 @@ namespace Web.Shared
                         {
                             "Dropdown 1".AsContent(),
                             new BootstrapIcon("chevron-down"),
-                        }, () => "/elements"),
-                    },
+                        }.AsStatic(), () => "/elements"),
+                    }.AsStatic(),
                     new IRenderable[]
                     {
-                        new TextBlock(new IRenderable[] { "Content".AsContent() }),
+                        new TextBlock(new IRenderable[] { "Content".AsContent() }.AsStatic()),
                         new HorizontalLine(),
-                        new TextBlock(new IRenderable[] { "Content 2".AsContent() }),
-                    }
+                        new TextBlock(new IRenderable[] { "Content 2".AsContent() }.AsStatic()),
+                    }.AsStatic()
                 ),
-            });
+            }.AsStatic());
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -130,6 +111,8 @@ namespace Web.Shared
                 // Thread.Sleep(100);
                 // throw new Exception();
             }
+
+            await ElementService.ProcessJobs();
         }
     }
 }

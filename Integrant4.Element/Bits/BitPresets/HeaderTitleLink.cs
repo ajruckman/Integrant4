@@ -7,7 +7,7 @@ namespace Integrant4.Element.Bits.BitPresets
     {
         private readonly HeaderLink _headerLink;
 
-        public HeaderTitleLink(DynamicContent content, Callbacks.HREF? href = null)
+        public HeaderTitleLink(ContentRef content, Callbacks.HREF? href = null)
         {
             _headerLink = new HeaderLink(content, href ?? (() => "/"), new HeaderLink.Spec
             {

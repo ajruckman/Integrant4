@@ -12,12 +12,12 @@
 
 @for (var i = 0; i < 100000; i++)
 {
-    Button b = new(new IRenderable[]
+    Button b = new(ContentRef.Static(new IRenderable[]
     {
         "one".AsContent(),
         "two".AsContent(),
         "three".AsContent(),
-    });
+    }));
 
     @:@b.Renderer()
 }

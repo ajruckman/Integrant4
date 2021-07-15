@@ -43,9 +43,9 @@ namespace Integrant4.Element.Bits
 
     public partial class MonoBlock
     {
-        private readonly DynamicContent _content;
+        private readonly ContentRef _content;
 
-        public MonoBlock(DynamicContent content, Spec? spec = null)
+        public MonoBlock(ContentRef content, Spec? spec = null)
             : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(MonoBlock)))
         {
             _content = content;

@@ -35,7 +35,7 @@ namespace Integrant4.Element.Constructs.FileUploader
             {
                 return new EmptyResult();
             }
-            
+
             Guid guid = Guid.Parse(form["guid"][0]);
 
             foreach (IFormFile formFile in form.Files)
@@ -54,7 +54,7 @@ namespace Integrant4.Element.Constructs.FileUploader
                 _fileUploaderService.Add(guid, formFile.FileName, memoryStream, hashString);
             }
 
-            return Ok(new {success = true});
+            return Ok(new { success = true });
         }
 
         [HttpGet]

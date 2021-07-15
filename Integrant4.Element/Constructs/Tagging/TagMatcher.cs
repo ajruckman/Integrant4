@@ -19,8 +19,8 @@ namespace Integrant4.Element.Constructs.Tagging
                 { typeof(BoolTag), new List<ITag>() },
             };
             tagsByType.Add(typeof(AnyStringTag), tagsByType[typeof(StringTag)]);
-            tagsByType.Add(typeof(AnyIntTag), tagsByType[typeof(IntTag)]);
-            tagsByType.Add(typeof(AnyBoolTag), tagsByType[typeof(BoolTag)]);
+            tagsByType.Add(typeof(AnyIntTag),    tagsByType[typeof(IntTag)]);
+            tagsByType.Add(typeof(AnyBoolTag),   tagsByType[typeof(BoolTag)]);
 
             foreach (ITag tag in tags)
             {

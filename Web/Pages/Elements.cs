@@ -23,8 +23,8 @@ namespace Web.Pages
         private readonly List<Chip>   _chipsScaled   = new();
         private readonly List<Link>   _linksScaled   = new();
 
-        private Header         _header             = null!;
-        private DynamicContent _panelExpanderElems = null!;
+        private Header     _header             = null!;
+        private ContentRef _panelExpanderElems = null!;
 
         private TextInput _textInput                = null!;
         private TextInput _textInputHighlighted     = null!;
@@ -76,24 +76,24 @@ namespace Web.Pages
 
         protected override void OnInitialized()
         {
-            _header = new Header(new IRenderable[]
+            _header = new Header(ContentRef.Static(new IRenderable[]
             {
-                new HeaderLink("Secondary header",
+                new HeaderLink("Secondary header".AsStatic(),
                     () => "/elements", new HeaderLink.Spec { IsTitle = Always.True }),
                 new Filler(),
-                new TextBlock(DynamicContent.New("Test block 1")),
+                new TextBlock(ContentRef.Static("Test block 1")),
                 new Space(),
                 new VerticalLine(),
                 new Space(),
-                new TextBlock("Test block 2"),
+                new TextBlock("Test block 2".AsStatic()),
                 new Space(),
-                new HeaderLink("Normal link".AsContent(), () => "/elements"),
-            }, Header.Style.Secondary);
+                new HeaderLink("Normal link".AsStatic(), () => "/elements"),
+            }), Header.Style.Secondary);
 
-            _panelExpanderElems = new[]
+            _panelExpanderElems = ContentRef.Static(new[]
             {
-                new TextBlock("Number ID list".AsTextContent(size: 1.2).Renderer()),
-            };
+                new TextBlock(ContentRef.Static("Number ID list".AsTextContent(size: 1.2))),
+            });
 
             _intInput = new IntInput(JSRuntime, 0);
             _intInput0Null = new IntInput(JSRuntime, 0,
@@ -149,52 +149,52 @@ namespace Web.Pages
 
             //
 
-            _buttonNoIcon = new Button("asdf", new Button.Spec
+            _buttonNoIcon = new Button("asdf".AsStatic(), new Button.Spec
             {
                 Tooltip = () => new Tooltip("<strong>asdf</strong>"),
             });
 
-            _buttonOnlyIcon = new Button(new BootstrapIcon("caret-right-fill", 16).Renderer());
-            _buttonIconFirst = new Button(new IRenderable[]
+            _buttonOnlyIcon = new Button(ContentRef.Static(new BootstrapIcon("caret-right-fill", 16).Renderer()));
+            _buttonIconFirst = new Button(ContentRef.Static(new IRenderable[]
             {
                 new BootstrapIcon("caret-left-fill", 16),
                 "asdf left".AsContent(),
-            }, new Button.Spec
+            }), new Button.Spec
             {
                 HREF    = () => "/asdf/left",
                 Tooltip = () => new Tooltip("asdf left", placement: TooltipPlacement.Left),
             });
-            _buttonIconLast = new Button(new IRenderable[]
+            _buttonIconLast = new Button(ContentRef.Static(new IRenderable[]
             {
                 "asdf right".AsContent(),
                 new BootstrapIcon("caret-right-fill", 16),
-            }, new Button.Spec()
+            }), new Button.Spec()
             {
                 HREF    = () => "/asdf/left",
                 Tooltip = () => new Tooltip("asdf right", placement: TooltipPlacement.Right),
             });
-            _buttonIconAll = new Button(new IRenderable[]
+            _buttonIconAll = new Button(ContentRef.Static(new IRenderable[]
             {
-                new BootstrapIcon("caret-left-fill", 16),
+                new BootstrapIcon("caret-left-fill",  16),
                 new BootstrapIcon("caret-right-fill", 16),
-            });
-            _buttonStacked = new Button(new IRenderable[]
+            }));
+            _buttonStacked = new Button(ContentRef.Static(new IRenderable[]
             {
-                new FlexColumn(new IRenderable[]
+                new FlexColumn(ContentRef.Static(new IRenderable[]
                 {
                     "Top content/full name".AsContent(),
                     "Lower content".AsTextContent(size: 0.8, weight: FontWeight.Normal),
-                }),
+                })),
                 new BootstrapIcon("chevron-right"),
-            });
+            }));
 
             foreach (Button.Style style in Enum.GetValues<Button.Style>())
             {
-                var b = new Button(new IRenderable[]
+                var b = new Button(ContentRef.Static(new IRenderable[]
                     {
                         ("Color: " + style).AsContent(),
-                        new BootstrapIcon("caret-down-fill", 16),
-                    },
+                        ContentRef.Static(new BootstrapIcon("caret-down-fill", 16)),
+                    }),
                     new Button.Spec
                     {
                         Style = () => style,
@@ -205,11 +205,11 @@ namespace Web.Pages
                 b.OnClick += (_, _) => Console.WriteLine($"Click: {style}");
 
                 // TODO: Still works?
-                var b2 = new Button(new IRenderable[]
+                var b2 = new Button(ContentRef.Static(new IRenderable[]
                     {
                         ("Color: " + style).AsContent(),
                         new BootstrapIcon("slash-circle-fill", 16),
-                    },
+                    }),
                     new Button.Spec
                     {
                         Style      = () => style,
@@ -223,24 +223,24 @@ namespace Web.Pages
 
             //
 
-            _chip = new Chip("Chip 1".AsContent(), new Chip.Spec
+            _chip = new Chip("Chip 1".AsStatic(), new Chip.Spec
             {
                 Height  = () => 24,
                 Tooltip = () => new Tooltip("Tooltip"),
             });
 
-            _chipLink = new Chip("Chip 2".AsContent(), new Chip.Spec
+            _chipLink = new Chip("Chip 2".AsStatic(), new Chip.Spec
             {
                 HREF   = () => "/",
                 Height = () => 24,
             });
 
-            _chipWithIcon = new Chip(new IRenderable[]
+            _chipWithIcon = new Chip(ContentRef.Static(new IRenderable[]
             {
                 new BootstrapIcon("slash-circle-fill"),
                 "Text content".AsContent(),
                 new BootstrapIcon("slash-circle-fill"),
-            });
+            }));
 
             _checkbox = new Checkbox(new Checkbox.Spec
             {
@@ -249,90 +249,90 @@ namespace Web.Pages
             });
             _checkbox.OnToggle += (_, v) => PrintB(v);
 
-            _link1 = new Link("Link 1".AsContent(), new Link.Spec(() => "/"));
-            _link2 = new Link("Link 2".AsContent(), new Link.Spec(() => "/")
+            _link1 = new Link("Link 1".AsStatic(), new Link.Spec(() => "/"));
+            _link2 = new Link("Link 2".AsStatic(), new Link.Spec(() => "/")
             {
                 FontWeight = () => FontWeight.SemiBold,
             });
-            _link3 = new Link("Link 3".AsContent(), new Link.Spec(() => "/")
+            _link3 = new Link("Link 3".AsStatic(), new Link.Spec(() => "/")
             {
                 IsAccented = Always.True,
             });
-            _link4 = new Link("Link 4 (highlighted)".AsContent(), new Link.Spec(() => "/")
+            _link4 = new Link("Link 4 (highlighted)".AsStatic(), new Link.Spec(() => "/")
             {
                 IsHighlighted = Always.True,
             });
 
             _expander = new Expander
             (
-                "Show advanced options".AsContent(),
-                "Hide advanced options".AsContent()
+                "Show advanced options".AsStatic(),
+                "Hide advanced options".AsStatic()
             );
             _expander.Expand();
 
             _dropdown1 = new Dropdown
             (
-                new IRenderable[]
+                ContentRef.Static(new IRenderable[]
                 {
-                    new Link(new IRenderable[]
+                    new Link(ContentRef.Static(new IRenderable[]
                     {
                         "Dropdown 1".AsContent(),
                         new BootstrapIcon("chevron-down"),
-                    }, new Link.Spec(() => "/elements")),
-                },
-                new IRenderable[]
+                    }), new Link.Spec(() => "/elements")),
+                }),
+                ContentRef.Static(new IRenderable[]
                 {
                     "asdf".AsContent(),
                     new HorizontalLine(() => new Size(9, 0), () => Unit.Percentage(50)),
                     "asdf".AsContent(),
-                    new Button(new IRenderable[]
+                    new Button(ContentRef.Static(new IRenderable[]
                     {
                         "Settings".AsContent(),
                         new BootstrapIcon("gear"),
-                    }, new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
-                    new Button(new IRenderable[]
+                    }), new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
+                    new Button(ContentRef.Static(new IRenderable[]
                     {
                         "Settings 222".AsContent(),
                         new BootstrapIcon("gear-fill"),
-                    }, new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
+                    }), new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
                     new Button(new FlexRow(new IRenderable[]
                         {
                             "Settings".AsContent(),
                             new Space(() => 10),
                             new BootstrapIcon("gear"),
-                        }, () => FlexJustify.SpaceBetween).Renderer(),
+                        }.AsStatic(), () => FlexJustify.SpaceBetween).AsStatic(),
                         new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
                     new Button(new FlexRow(new IRenderable[]
                         {
                             "Settings 222".AsContent(),
                             new Space(() => 10),
                             new BootstrapIcon("gear-fill"),
-                        }, () => FlexJustify.SpaceBetween).Renderer(),
+                        }.AsStatic(), () => FlexJustify.SpaceBetween).AsStatic(),
                         new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
                     new HorizontalLine(),
                     new Dropdown
                     (
-                        new IRenderable[]
+                        ContentRef.Static(new IRenderable[]
                         {
-                            new Link(new IRenderable[]
+                            new Link(ContentRef.Static(new IRenderable[]
                             {
                                 "Dropdown 1".AsContent(),
                                 new BootstrapIcon("chevron-down"),
-                            }, new Link.Spec(() => "/elements")),
-                        },
-                        new IRenderable[]
+                            }), new Link.Spec(() => "/elements")),
+                        }),
+                            ContentRef.Static(new IRenderable[]
                         {
                             "asdf".AsContent(),
                             new HorizontalLine(),
                             "asdf".AsContent(),
                             new HorizontalLine(),
-                            new Button(new IRenderable[]
+                            new Button(ContentRef.Static(new IRenderable[]
                             {
                                 new BootstrapIcon("chevron-right"),
                                 "Chevron".AsContent(),
-                            }, new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
-                        }, new Dropdown.Spec { PlacementGetter = () => TooltipPlacement.RightStart }),
-                }
+                            }), new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
+                        }), new Dropdown.Spec { PlacementGetter = () => TooltipPlacement.RightStart }),
+                })
             );
 
             _spinnerNoTextNormal = new Spinner();
@@ -351,7 +351,7 @@ namespace Web.Pages
             _localModal1 = new LocalModal(new IRenderable[]
             {
                 _spinnerTextNormal,
-            });
+            }.AsStatic());
 
             //
 
@@ -361,7 +361,7 @@ namespace Web.Pages
                 _buttonsScaled.Add(new Button(new IRenderable[]
                 {
                     $"Button content {i1}".AsContent(),
-                }, new Button.Spec
+                }.AsStatic(), new Button.Spec
                 {
                     Scale = () => i1,
                     HREF  = () => "/elements",
@@ -369,7 +369,7 @@ namespace Web.Pages
                 _buttonsScaled.Add(new Button(new IRenderable[]
                 {
                     $"Button content {i1}".AsContent(),
-                }, new Button.Spec
+                }.AsStatic(), new Button.Spec
                 {
                     Scale   = () => i1,
                     IsSmall = () => true,
@@ -377,14 +377,14 @@ namespace Web.Pages
                 _chipsScaled.Add(new Chip(new IRenderable[]
                 {
                     $"Chip content {i1}".AsContent(),
-                }, new Chip.Spec
+                }.AsStatic(), new Chip.Spec
                 {
                     Scale = () => i1,
                 }));
                 _linksScaled.Add(new Link(new IRenderable[]
                 {
                     $"Link content {i1}".AsContent(),
-                }, new Link.Spec(() => "/elements")
+                }.AsStatic(), new Link.Spec(() => "/elements")
                 {
                     Scale = () => i1,
                 }));

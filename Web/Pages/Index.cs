@@ -77,11 +77,11 @@ namespace Web.Pages
 
             _header = new Header(new IRenderable[]
             {
-                new HeaderLink("Secondary header".AsContent(),
+                new HeaderLink("Secondary header".AsStatic(),
                     () => "/elements", new HeaderLink.Spec { IsTitle = Always.True }),
                 new Filler(),
-                new HeaderLink("Normal link".AsContent(), () => "/elements"),
-            }, Header.Style.Secondary);
+                new HeaderLink("Normal link".AsStatic(), () => "/elements"),
+            }.AsStatic(), Header.Style.Secondary);
 
             _overallValidationView = new ValidationView();
             _ageValidationView     = new ValidationView(nameof(DogState.Age));

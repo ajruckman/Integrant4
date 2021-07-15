@@ -23,9 +23,7 @@ namespace Integrant4.Element.Bits
     public partial class Filler
     {
         public Filler(Spec? spec = null)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-Filler"))
-        {
-        }
+            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-Filler")) { }
     }
 
     public partial class Filler

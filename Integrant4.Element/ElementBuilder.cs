@@ -131,16 +131,16 @@ namespace Integrant4.Element
         internal static string? ContentStyleAttribute(BaseSpec spec)
         {
             List<string> result = new(3);
-            
+
             if (spec.FontSize != null)
                 result.Add($"font-size: {spec.FontSize.Invoke()}rem;");
-            
+
             if (spec.FlexAlign != null)
                 result.Add($"align-items: {spec.FlexAlign.Invoke().Serialize()}");
 
             if (spec.FlexJustify != null)
                 result.Add($"justify-content: {spec.FlexJustify.Invoke().Serialize()}");
-            
+
             return result.Any() ? string.Join(' ', result) : null;
         }
     }

@@ -6,13 +6,13 @@ namespace Integrant4.Element.Constructs
 {
     public class FlexColumn : IConstruct
     {
-        private readonly DynamicContent         _content;
+        private readonly ContentRef             _content;
         private readonly Callbacks.FlexAlign?   _align;
         private readonly Callbacks.FlexJustify? _justify;
 
         public FlexColumn
         (
-            DynamicContent content,
+            ContentRef             content,
             Callbacks.FlexAlign?   align   = null,
             Callbacks.FlexJustify? justify = null
         )
