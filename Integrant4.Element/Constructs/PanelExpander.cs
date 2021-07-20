@@ -1,5 +1,7 @@
+using System;
 using Integrant4.API;
 using Integrant4.Element.Bits;
+using Integrant4.Element.Constructs.Headers;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
@@ -14,7 +16,7 @@ namespace Integrant4.Element.Constructs
         private static readonly BootstrapIcon DownIcon = new("caret-down-fill", 16);
         private static readonly BootstrapIcon UpIcon   = new("caret-up-fill", 16);
 
-        private Header _header = null!;
+        private SecondaryHeader _header = null!;
 
         [Parameter] public ContentRef     HeaderElements  { get; set; } = null!;
         [Parameter] public RenderFragment ChildContent    { get; set; } = null!;
@@ -63,7 +65,7 @@ namespace Integrant4.Element.Constructs
                 }
             );
 
-            _header = new Header(ContentRef.Static(button), Header.Style.Secondary);
+            _header = new SecondaryHeader(ContentRef.Static(button), Array.Empty<IRenderable>().AsStatic());
         }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)

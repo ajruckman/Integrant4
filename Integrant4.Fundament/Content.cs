@@ -145,11 +145,11 @@ namespace Integrant4.Fundament
         public static ContentRef AsStatic(this IRenderable              v) => ContentRef.Static(v);
         public static ContentRef AsStatic(this IEnumerable<IRenderable> v) => ContentRef.Static(v);
 
-        public static ContentRef AsStatic(this Func<string>                   v) => ContentRef.Dynamic(v);
-        public static ContentRef AsStatic(this Func<MarkupString>             v) => ContentRef.Dynamic(v);
-        public static ContentRef AsStatic(this Func<RenderFragment>           v) => ContentRef.Dynamic(v);
-        public static ContentRef AsStatic(this Func<Content>                  v) => ContentRef.Dynamic(v);
-        public static ContentRef AsStatic(this Func<IRenderable>              v) => ContentRef.Dynamic(v);
-        public static ContentRef AsStatic(this Func<IEnumerable<IRenderable>> v) => ContentRef.Dynamic(v);
+        public static ContentRef AsDynamic(this Func<string>                   v) => ContentRef.Dynamic(v);
+        public static ContentRef AsDynamic(this Func<MarkupString>             v) => ContentRef.Dynamic(v);
+        public static ContentRef AsDynamic(this Func<RenderFragment>           v) => ContentRef.Dynamic(v);
+        public static ContentRef AsDynamic(this Func<Content>                  v) => ContentRef.Dynamic(v);
+        public static ContentRef AsDynamic(this Func<IRenderable>              v) => ContentRef.Dynamic(v);
+        public static ContentRef AsDynamic(this Func<IEnumerable<IRenderable>> v) => ContentRef.Dynamic(v);
     }
 }

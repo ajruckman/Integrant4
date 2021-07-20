@@ -1,11 +1,11 @@
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Integrant4.API;
+using Integrant4.Element.Bits;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
-namespace Integrant4.Element.Bits
+namespace Integrant4.Element.Constructs.Headers
 {
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
@@ -13,7 +13,6 @@ namespace Integrant4.Element.Bits
     {
         public class Spec
         {
-            public Callbacks.Callback<bool>? IsTitle       { get; init; }
             public Callbacks.Callback<bool>? IsHighlighted { get; init; }
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
@@ -41,16 +40,14 @@ namespace Integrant4.Element.Bits
     {
         private readonly ContentRef                _content;
         private readonly Callbacks.HREF            _href;
-        private readonly Callbacks.Callback<bool>? _isTitle;
         private readonly Callbacks.Callback<bool>? _isHighlighted;
         private readonly bool                      _doAutoHighlight;
 
         public HeaderLink(ContentRef content, Callbacks.HREF href, Spec? spec = null)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(HeaderLink)))
+            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Construct", "I4E-Construct-" + nameof(HeaderLink)))
         {
             _content = content;
             _href    = href;
-            _isTitle = spec?.IsTitle;
 
             if (spec?.IsHighlighted == null)
             {
@@ -86,29 +83,26 @@ namespace Integrant4.Element.Bits
             {
                 string href = HeaderLink._href.Invoke();
 
-                List<string> ac = new();
-
-                if (HeaderLink._isTitle?.Invoke() == true)
-                    ac.Add("I4E-Bit-HeaderLink--Title");
-
-                if (HeaderLink._isHighlighted?.Invoke() == true)
-                    ac.Add("I4E-Bit-HeaderLink--Highlighted");
-
-                //
-
                 int seq = -1;
                 builder.OpenElement(++seq, "a");
                 builder.AddAttribute(++seq, "href", href);
 
-                BitBuilder.ApplyAttributes(HeaderLink, builder, ref seq, ac.ToArray(), null);
+                BitBuilder.ApplyAttributes(HeaderLink, builder, ref seq,
+                    HeaderLink._isHighlighted?.Invoke() == true
+                        ? new[] {"I4E-Construct-HeaderLink--Highlighted"}
+                        : null, null);
 
+                builder.OpenElement(++seq, "div");
+                builder.AddAttribute(++seq, "class", "I4E-Construct-HeaderLink-Contents");
                 foreach (IRenderable renderable in HeaderLink._content.GetAll())
                 {
                     builder.OpenElement(++seq, "span");
-                    builder.AddAttribute(++seq, "class", "I4E-Bit-HeaderLink-Content");
+                    builder.AddAttribute(++seq, "class", "I4E-Construct-HeaderLink-Content");
                     builder.AddContent(++seq, renderable.Renderer());
                     builder.CloseElement();
                 }
+
+                builder.CloseElement();
 
                 builder.CloseElement();
 

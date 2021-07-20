@@ -1,18 +1,21 @@
+:root {
+  --I4E-Base-Scale: 15;
+}
+
 html {
-    font-size: 15px;
+  font-size: calc(var(--I4E-Base-Scale) * 1px);
 }
 
 body {
-    background-color: var(--I4C-Main-Alias-PageBackground);
-    color:            var(--I4C-Main-Text-6);
-    font-size:        15px;
-    margin:           0;
-    overflow-y:       scroll;
-    padding:          0;
+  background-color: var(--I4C-Main-Alias-PageBackground);
+  color: var(--I4C-Main-Text-6);
+  font-size: calc(var(--I4E-Base-Scale) * 1px);
+  margin: 0;
+  overflow-y: scroll;
+  padding: 0;
 }
-
 body * {
-    font-family: var(--I4R-SansSerifFont);
+  font-family: var(--I4R-SansSerifFont);
 }
 
 /*# sourceMappingURL=I4App.css.map */

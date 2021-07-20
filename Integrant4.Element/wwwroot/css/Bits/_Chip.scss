@@ -11,8 +11,8 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
     box-sizing: border-box;
     display: inline-flex;
     font-weight: 600;
-    min-height: calc(1em * (24 / 15));
-    padding: calc(1em * (2 / 15)) calc(1em * (7 / 15));
+    min-height: calc(1em * (24 / var(--I4E-Base-Scale)));
+    padding: calc(1em * (2 / var(--I4E-Base-Scale))) calc(1em * (7 / var(--I4E-Base-Scale)));
     vertical-align: middle;
 
     &.I4E-Bit-Chip--Link {
@@ -29,11 +29,11 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
     }
 
     &.I4E-Bit-Chip--IconLeft {
-        padding-left: calc(1em * (4 / 15));
+        padding-left: calc(1em * (4 / var(--I4E-Base-Scale)));
     }
 
     &.I4E-Bit-Chip--IconRight {
-        padding-right: calc(1em * (4 / 15));
+        padding-right: calc(1em * (4 / var(--I4E-Base-Scale)));
     }
 
     > span.I4E-Bit-Chip-Contents {
@@ -45,7 +45,7 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
             display: inline-flex;
 
             &:not(:last-child) {
-                margin-right: calc(1em * (5 / 15));
+                margin-right: calc(1em * (5 / var(--I4E-Base-Scale)));
             }
         }
     }

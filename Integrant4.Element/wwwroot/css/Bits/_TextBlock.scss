@@ -3,7 +3,7 @@ div.I4E-Bit-TextBlock {
     border: none;
     border-radius: 4px;
     display: inline-flex;
-    height: 30px;
+    //height: calc(2 * var(I4E-Base-Scale));
     padding: 0;
 
     > span.I4E-Bit-TextBlock-Content {

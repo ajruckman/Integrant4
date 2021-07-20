@@ -1,0 +1,49 @@
+@page "/dynamictests"
+@using Integrant4.Fundament
+@using Integrant4.Element.Bits
+
+@code {
+
+    private Button _button1 = null!;
+    private Button _button2 = null!;
+    private Button.Style _buttonStyle;
+
+    protected override void OnInitialized()
+    {
+        List<Button.Style> styleValues = Enum.GetValues<Button.Style>().ToList();
+
+        _buttonStyle = Button.Style.Blue;
+
+        _button1 = new Button(_buttonStyle.ToString().AsStatic(), new Button.Spec
+        {
+            Style = () => _buttonStyle,
+            OnClick = (button, _) =>
+            {
+                int current = styleValues.IndexOf(_buttonStyle);
+                int next = (current + 1) % styleValues.Count;
+
+                _buttonStyle = styleValues[next];
+
+                button.Refresh();
+            },
+        });
+
+        _button2 = new Button(ContentRef.Dynamic(() => _buttonStyle.ToString()), new Button.Spec
+        {
+            Style = () => _buttonStyle,
+            OnClick = (button, _) =>
+            {
+                int current = styleValues.IndexOf(_buttonStyle);
+                int next = (current + 1) % styleValues.Count;
+
+                _buttonStyle = styleValues[next];
+
+                button.Refresh();
+            },
+        });
+    }
+
+}
+
+@_button1.Renderer()
+@_button2.Renderer()

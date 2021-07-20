@@ -12,7 +12,7 @@ a.I4E-Bit-Link {
             display: inline-flex;
 
             &:not(:last-child) {
-                margin-right: calc(1em * (5 / 15));
+                margin-right: calc(1em * (5 / var(--I4E-Base-Scale)));
             }
         }
     }

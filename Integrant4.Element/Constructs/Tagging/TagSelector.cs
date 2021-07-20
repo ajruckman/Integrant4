@@ -123,7 +123,7 @@ namespace Integrant4.Element.Constructs.Tagging
         private SelectInput<TagType>? _newTagTypeSelector;
         private TextInput?            _newTagNameInput;
         private TextInput?            _newTagStringInput;
-        private IntInput?             _newTagIntegerInput;
+        private LongInput?            _newTagIntegerInput;
         private CheckboxInput?        _newTagBooleanInput;
         private CheckboxInput?        _anyValueInput;
 
@@ -368,7 +368,7 @@ namespace Integrant4.Element.Constructs.Tagging
                 Scale      = _spec.Scale,
             });
 
-            _newTagIntegerInput = new IntInput(jsRuntime, null, new IntInput.Spec
+            _newTagIntegerInput = new LongInput(jsRuntime, null, new LongInput.Spec
             {
                 IsDisabled = _spec.IsDisabled,
                 Scale      = _spec.Scale,

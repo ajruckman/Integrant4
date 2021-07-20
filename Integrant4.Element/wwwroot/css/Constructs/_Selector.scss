@@ -34,7 +34,7 @@ div.I4E-Construct-Selector {
         cursor: pointer;
         display: inline-flex;
         justify-content: space-between;
-        min-height: calc(1em * (28 / 15));
+        min-height: calc(1em * (28 / var(--I4E-Base-Scale)));
         min-width: 250px;
         padding: 0 0 0 6px;
         width: 100%;
@@ -48,7 +48,7 @@ div.I4E-Construct-Selector {
         div.I4E-Construct-Selector-Selection {
             align-items: center;
             display: flex;
-            padding: calc(1em * (4 / 15)) 0;
+            padding: calc(1em * (4 / var(--I4E-Base-Scale))) 0;
         }
 
         div.I4E-Construct-Selector-Selection ~ div.I4E-Construct-Selector-ClearButtonWrapper {
@@ -61,12 +61,12 @@ div.I4E-Construct-Selector {
             cursor: pointer;
             display: none;
             flex-shrink: 0;
-            height: calc(1em * (12 / 15));
-            margin: 0 calc(1em * (6 / 15));
+            height: calc(1em * (12 / var(--I4E-Base-Scale)));
+            margin: 0 calc(1em * (6 / var(--I4E-Base-Scale)));
             outline: none;
             padding: 0;
             position: relative;
-            width: calc(1em * (12 / 15));
+            width: calc(1em * (12 / var(--I4E-Base-Scale)));
 
             span.I4R-BootstrapIcon {
             }
@@ -91,7 +91,7 @@ div.I4E-Construct-Selector {
 
     div.I4E-Construct-Selector-Dropdown {
         background-color: var(--I4C-Main-Background-6);
-        border-radius: calc(1em * (3 / 15));
+        border-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
         box-sizing: border-box;
         display: none;
         padding: $DropdownPadding;

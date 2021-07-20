@@ -1,9 +1,1 @@
-{
-	"version": 3,
-	"file": "I4App.css",
-	"sources": [
-		"I4App.scss"
-	],
-	"names": [],
-	"mappings": "AAAA,AAAA,IAAI,CAAC;EACD,SAAS,EAAE,IAAI,GAClB;;AAED,AAAA,IAAI,CAAC;EACD,gBAAgB,EAAE,oCAAoC;EACtD,KAAK,EAAE,sBAAsB;EAC7B,SAAS,EAAE,IAAI;EACf,MAAM,EAAE,CAAC;EACT,UAAU,EAAE,MAAM;EAClB,OAAO,EAAE,CAAC,GASb;EAfD,AAQI,IARA,CAQA,CAAC,CAAC;IACE,WAAW,EAAE,wBAAwB,GAExC"
-}
+{"version":3,"sourceRoot":"","sources":["I4App.scss"],"names":[],"mappings":"AAAA;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI","file":"I4App.css"}

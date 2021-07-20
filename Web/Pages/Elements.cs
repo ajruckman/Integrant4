@@ -7,6 +7,7 @@ using Integrant4.Colorant.Themes.Main;
 using Integrant4.Element;
 using Integrant4.Element.Bits;
 using Integrant4.Element.Constructs;
+using Integrant4.Element.Constructs.Headers;
 using Integrant4.Element.Inputs;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
@@ -23,8 +24,8 @@ namespace Web.Pages
         private readonly List<Chip>   _chipsScaled   = new();
         private readonly List<Link>   _linksScaled   = new();
 
-        private Header     _header             = null!;
-        private ContentRef _panelExpanderElems = null!;
+        private SecondaryHeader _header             = null!;
+        private ContentRef      _panelExpanderElems = null!;
 
         private TextInput _textInput                = null!;
         private TextInput _textInputHighlighted     = null!;
@@ -76,19 +77,19 @@ namespace Web.Pages
 
         protected override void OnInitialized()
         {
-            _header = new Header(ContentRef.Static(new IRenderable[]
-            {
-                new HeaderLink("Secondary header".AsStatic(),
-                    () => "/elements", new HeaderLink.Spec { IsTitle = Always.True }),
-                new Filler(),
-                new TextBlock(ContentRef.Static("Test block 1")),
-                new Space(),
-                new VerticalLine(),
-                new Space(),
-                new TextBlock("Test block 2".AsStatic()),
-                new Space(),
-                new HeaderLink("Normal link".AsStatic(), () => "/elements"),
-            }), Header.Style.Secondary);
+            _header = new SecondaryHeader
+            (
+                new HeaderLink("Secondary header".AsStatic(), () => "/elements").AsStatic(),
+                new IRenderable[]
+                {
+                    new TextBlock(ContentRef.Static("Test block 1")),
+                    new Space(),
+                    new VerticalLine(),
+                    new Space(),
+                    new TextBlock("Test block 2".AsStatic()),
+                    new Space(),
+                    new HeaderLink("Normal link".AsStatic(), () => "/elements"),
+                }.AsStatic());
 
             _panelExpanderElems = ContentRef.Static(new[]
             {
@@ -97,16 +98,16 @@ namespace Web.Pages
 
             _intInput = new IntInput(JSRuntime, 0);
             _intInput0Null = new IntInput(JSRuntime, 0,
-                new IntInput.Spec { Consider0Null = Always.True });
+                new IntInput.Spec {Consider0Null = Always.True});
             _decimalInput = new DecimalInput(JSRuntime, 0.0m);
             _decimalInput0Null = new DecimalInput(JSRuntime, 0.0m,
-                new DecimalInput.Spec { Consider0Null = Always.True, Min = () => -2.5m, Max = () => 2.5m });
+                new DecimalInput.Spec {Consider0Null = Always.True, Min = () => -2.5m, Max = () => 2.5m});
 
             decimal? decimalInputSteppedV = null;
             _decimalInputStepped =
                 new DecimalInput(JSRuntime, 0.0m,
                     new DecimalInput.Spec
-                        { Step = () => 0.01m, Tooltip = () => new Tooltip(decimalInputSteppedV?.ToString() ?? "") });
+                        {Step = () => 0.01m, Tooltip = () => new Tooltip(decimalInputSteppedV?.ToString() ?? "")});
             _decimalInputStepped.OnChange += v =>
             {
                 decimalInputSteppedV = v;
@@ -141,7 +142,7 @@ namespace Web.Pages
 
             //
 
-            _checkboxInput = new CheckboxInput(JSRuntime, false, new CheckboxInput.Spec { IsRequired = Always.True });
+            _checkboxInput = new CheckboxInput(JSRuntime, false, new CheckboxInput.Spec {IsRequired = Always.True});
 
             void PrintB(bool v) => Console.WriteLine($"bool -> {v}");
 
@@ -289,26 +290,26 @@ namespace Web.Pages
                     {
                         "Settings".AsContent(),
                         new BootstrapIcon("gear"),
-                    }), new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
+                    }), new Button.Spec {HREF = () => "/", Style = () => Button.Style.Transparent}),
                     new Button(ContentRef.Static(new IRenderable[]
                     {
                         "Settings 222".AsContent(),
                         new BootstrapIcon("gear-fill"),
-                    }), new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
+                    }), new Button.Spec {HREF = () => "/", Style = () => Button.Style.Transparent}),
                     new Button(new FlexRow(new IRenderable[]
                         {
                             "Settings".AsContent(),
                             new Space(() => 10),
                             new BootstrapIcon("gear"),
                         }.AsStatic(), () => FlexJustify.SpaceBetween).AsStatic(),
-                        new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
+                        new Button.Spec {HREF = () => "/", Style = () => Button.Style.Transparent}),
                     new Button(new FlexRow(new IRenderable[]
                         {
                             "Settings 222".AsContent(),
                             new Space(() => 10),
                             new BootstrapIcon("gear-fill"),
                         }.AsStatic(), () => FlexJustify.SpaceBetween).AsStatic(),
-                        new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
+                        new Button.Spec {HREF = () => "/", Style = () => Button.Style.Transparent}),
                     new HorizontalLine(),
                     new Dropdown
                     (
@@ -320,7 +321,7 @@ namespace Web.Pages
                                 new BootstrapIcon("chevron-down"),
                             }), new Link.Spec(() => "/elements")),
                         }),
-                            ContentRef.Static(new IRenderable[]
+                        ContentRef.Static(new IRenderable[]
                         {
                             "asdf".AsContent(),
                             new HorizontalLine(),
@@ -330,23 +331,23 @@ namespace Web.Pages
                             {
                                 new BootstrapIcon("chevron-right"),
                                 "Chevron".AsContent(),
-                            }), new Button.Spec { HREF = () => "/", Style = () => Button.Style.Transparent }),
-                        }), new Dropdown.Spec { PlacementGetter = () => TooltipPlacement.RightStart }),
+                            }), new Button.Spec {HREF = () => "/", Style = () => Button.Style.Transparent}),
+                        }), new Dropdown.Spec {PlacementGetter = () => TooltipPlacement.RightStart}),
                 })
             );
 
             _spinnerNoTextNormal = new Spinner();
             _spinnerTextNormal = new Spinner(new Spinner.Spec
-                { Text = () => "Spinner with text normal...", });
+                {Text = () => "Spinner with text normal...",});
 
-            _spinnerNoTextInline = new Spinner(new Spinner.Spec { Style = () => Spinner.Style.Inline });
+            _spinnerNoTextInline = new Spinner(new Spinner.Spec {Style = () => Spinner.Style.Inline});
             _spinnerTextInline = new Spinner(new Spinner.Spec
-                { Style = () => Spinner.Style.Inline, Text = () => "Spinner with text inline..." });
+                {Style = () => Spinner.Style.Inline, Text = () => "Spinner with text inline..."});
 
             _spinnerTextLarge = new Spinner(new Spinner.Spec
-                { Text = () => "Spinner with text large...", Scale = () => 3 });
+                {Text = () => "Spinner with text large...", Scale = () => 3});
             _spinnerTextLargeFont = new Spinner(new Spinner.Spec
-                { Text = () => "Spinner with text large font...", FontSize = () => 3 });
+                {Text = () => "Spinner with text large font...", FontSize = () => 3});
 
             _localModal1 = new LocalModal(new IRenderable[]
             {

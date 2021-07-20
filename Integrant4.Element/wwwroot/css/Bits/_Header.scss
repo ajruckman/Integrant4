@@ -21,48 +21,20 @@ div.I4E-Bit-Header {
         min-height: $HeightHeaderSecondary;
     }
 
-    > span.I4E-Bit-Header-Content {
-        display: contents;
+    div.I4E-Bit-Header-Contents {
+        position: relative;
 
-        > .I4E-Bit-HeaderLink--Title {
-            margin-right: 15px;
+        > span.I4E-Bit-Header-Content {
+            display: contents;
+
+            > .I4E-Bit-HeaderLink--Title {
+                margin-right: 15px;
+            }
         }
     }
 
     // Header link
 
-    a.I4E-Bit-HeaderLink {
-        align-items: center;
-        border-bottom: 4px solid transparent;
-        border-top: 4px solid transparent;
-        box-sizing: border-box;
-        color: var(--I4C-Main-PageText);
-        display: inline-flex;
-        text-decoration: none;
-
-        &:hover:not(#_) {
-            border-bottom-color: var(--I4C-Main-Accent-8);
-            color: var(--I4C-Main-Accent-8);
-        }
-
-        &:active:not(#_) {
-            border-bottom-color: var(--I4C-Main-Accent-9);
-            color: var(--I4C-Main-Accent-9);
-        }
-
-        &.I4E-Bit-HeaderLink--Highlighted, &[data-highlighted] {
-            border-bottom-color: var(--I4C-Main-Accent-7);
-        }
-
-        > span.I4E-Bit-HeaderLink-Content {
-            align-items: center;
-            display: inline-flex;
-
-            &:not(:last-child) {
-                margin-right: 5px;
-            }
-        }
-    }
 
     // Descendent overrides
 
@@ -71,13 +43,13 @@ div.I4E-Bit-Header {
             min-height: $HeightHeaderPrimary;
 
             &.I4E-Bit-HeaderLink--Title {
-                font-weight: 600;
                 font-size: 1.35rem;
+                font-weight: 600;
             }
 
             &:not(.I4E-Bit-HeaderLink--Title) {
-                font-weight: 600;
                 font-size: 1.2rem;
+                font-weight: 600;
             }
         }
 
@@ -101,8 +73,8 @@ div.I4E-Bit-Header {
             min-height: $HeightHeaderSecondary;
 
             &.I4E-Bit-HeaderLink--Title {
-                font-weight: 600;
                 font-size: 1.2rem;
+                font-weight: 600;
             }
 
             &:not(.I4E-Bit-HeaderLink--Title) {

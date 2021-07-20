@@ -89,12 +89,12 @@ div.I4E-Construct-TagSelector-Tag, div.I4E-Construct-TagSelector-AddableTag, div
     div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
         background-color: transparent;
         cursor: pointer;
-        height: calc(1em * (12 / 15));
-        margin: 0 0 0 calc(1em * (6 / 15));
+        height: calc(1em * (12 / var(--I4E-Base-Scale)));
+        margin: 0 0 0 calc(1em * (6 / var(--I4E-Base-Scale)));
         outline: none;
         padding: 0 3px 0 0;
         position: relative;
-        width: calc(1em * (12 / 15));
+        width: calc(1em * (12 / var(--I4E-Base-Scale)));
 
         svg {
             bottom: 0;

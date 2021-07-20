@@ -1,6 +1,20 @@
 @using Integrant4.Element.Bits.BitComponents
 @using Integrant4.Element.Bits
+@using Integrant4.Element
+@using Integrant4.Element.Constructs.Headers
 @page "/bitcomponents"
+
+@code {
+
+    [Inject]
+    public ElementService ElementService { get; set; } = null!;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await ElementService.ProcessJobs();
+    }
+
+}
 
 <LinkComponent HREF="http://localhost:5000/bitcomponents">
     Link to the Bit Components test page
@@ -9,17 +23,17 @@
 <br>
 <br>
 
-<HeaderComponent>
+<SecondaryHeaderComponent>
     A test Bit Component header
-</HeaderComponent>
+</SecondaryHeaderComponent>
 
 <br>
 <br>
 
 <div class="I4E-Layout-Panel">
-    <HeaderComponent Style="Header.Style.Secondary">
+    <SecondaryHeaderComponent>
         A test Bit Component header
-    </HeaderComponent>
+    </SecondaryHeaderComponent>
 
     <div class="I4E-Layout-Panel-Inner">
         <LinkComponent HREF="http://localhost:5000/bitcomponents">

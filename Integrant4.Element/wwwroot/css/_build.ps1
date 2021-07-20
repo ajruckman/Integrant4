@@ -9,7 +9,7 @@ foreach ($stylesheet in $( Get-ChildItem -Recurse . -Filter *.scss ))
     }
 
     Write-Output "Building stylesheet: $( $stylesheet.FullName )"
-    & sassc -m "$( $stylesheet.FullName )" "$( $stylesheet.DirectoryName )/$( $stylesheet.BaseName ).css"
+    & sass --no-source-map "$( $stylesheet.FullName )" "$( $stylesheet.DirectoryName )/$( $stylesheet.BaseName ).css"
     if (-not$?)
     {
         exit 2

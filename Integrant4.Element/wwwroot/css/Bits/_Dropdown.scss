@@ -13,14 +13,14 @@ div.I4E-Bit-Dropdown {
         margin: 17px;
         padding: 10px;
         position: absolute;
-        z-index: 250;
+        z-index: 110;
 
         &[data-show] {
             display: block;
         }
 
         div.I4E-Bit-Dropdown-Content {
-            z-index: 250;
+            z-index: 110;
 
             > * {
                 box-sizing: border-box;

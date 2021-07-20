@@ -1,0 +1,174 @@
+$HeightPrimaryHeader: calc(3px * var(--I4E-Base-Scale));
+$HeightSecondaryHeader: calc(2px * var(--I4E-Base-Scale));
+
+%HeaderBase {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 100;
+}
+
+div.I4E-Construct-PrimaryHeader {
+    @extend %HeaderBase;
+    
+    //box-shadow: var(--I4C-Main-Shadow-0);
+    min-height: $HeightPrimaryHeader;
+    padding: 0 10px 0 15px;
+    position: sticky;
+    top: 0;
+
+    div.I4E-Construct-PrimaryHeader-LeftElements {
+        align-items: center;
+        display: flex;
+        margin-right: 15px;
+        min-height: $HeightPrimaryHeader;
+    }
+
+    div.I4E-Construct-PrimaryHeader-RightElements {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        min-height: $HeightPrimaryHeader;
+    }
+
+    // Descendent overrides
+
+    div.I4E-Construct-PrimaryHeader-LeftElements {
+        a.I4E-Construct-HeaderLink,
+        span.I4E-Construct-PrimaryHeader-LeftElement > div.I4E-Bit-TextBlock,
+        span.I4E-Construct-PrimaryHeader-LeftElement div.I4E-Bit-Dropdown-Head div.I4E-Bit-Dropdown-Content > div.I4E-Bit-TextBlock {
+            font-size: 1.35rem;
+            font-weight: 600;
+            min-height: $HeightPrimaryHeader;
+        }
+    }
+
+    div.I4E-Construct-PrimaryHeader-RightElements {
+        a.I4E-Construct-HeaderLink,
+        span.I4E-Construct-PrimaryHeader-RightElement > div.I4E-Bit-TextBlock,
+        span.I4E-Construct-PrimaryHeader-RightElement div.I4E-Bit-Dropdown-Head div.I4E-Bit-Dropdown-Content > div.I4E-Bit-TextBlock {
+            font-size: 1.2rem;
+            font-weight: 600;
+            min-height: $HeightPrimaryHeader;
+        }
+    }
+
+    div.I4E-Bit-VerticalLine {
+        height: 20px;
+    }
+}
+
+
+div.I4E-Construct-SecondaryHeader {
+    @extend %HeaderBase;
+
+    min-height: $HeightSecondaryHeader;
+    padding: 0 10px 0 15px;
+
+    div.I4E-Construct-SecondaryHeader-LeftElements {
+        align-items: center;
+        display: flex;
+        margin-right: 15px;
+        min-height: $HeightSecondaryHeader;
+    }
+
+    div.I4E-Construct-SecondaryHeader-RightElements {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        min-height: $HeightSecondaryHeader;
+    }
+
+    // Descendent overrides
+
+    div.I4E-Construct-SecondaryHeader-LeftElements {
+        a.I4E-Construct-HeaderLink,
+        span.I4E-Construct-SecondaryHeader-LeftElement > div.I4E-Bit-TextBlock,
+        span.I4E-Construct-SecondaryHeader-LeftElement div.I4E-Bit-Dropdown-Head div.I4E-Bit-Dropdown-Content > div.I4E-Bit-TextBlock {
+            font-size: 1.2rem;
+            font-weight: 600;
+            min-height: $HeightSecondaryHeader;
+        }
+    }
+
+    div.I4E-Construct-SecondaryHeader-RightElements {
+        a.I4E-Construct-HeaderLink,
+        span.I4E-Construct-SecondaryHeader-RightElement > div.I4E-Bit-TextBlock,
+        span.I4E-Construct-SecondaryHeader-RightElement div.I4E-Bit-Dropdown-Head div.I4E-Bit-Dropdown-Content > div.I4E-Bit-TextBlock {
+            font-size: 1.1rem;
+            font-weight: 500;
+            min-height: $HeightSecondaryHeader;
+        }
+    }
+
+    div.I4E-Bit-VerticalLine {
+        height: 20px;
+    }
+}
+
+// HeaderLinks
+
+a.I4E-Construct-HeaderLink {
+    align-items: center;
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    box-sizing: border-box;
+    color: var(--I4C-Main-PageText);
+    display: inline-flex;
+    text-decoration: none;
+
+    &:hover:not(#_) {
+        border-bottom-color: var(--I4C-Main-Accent-8);
+        color: var(--I4C-Main-Accent-8);
+    }
+
+    &:active:not(#_) {
+        border-bottom-color: var(--I4C-Main-Accent-9);
+        color: var(--I4C-Main-Accent-9);
+    }
+
+    &.I4E-Construct-HeaderLink--Highlighted, &[data-highlighted] {
+        border-bottom-color: var(--I4C-Main-Accent-7);
+    }
+
+    div.I4E-Construct-HeaderLink-Contents {
+        > span.I4E-Construct-HeaderLink-Content {
+            align-items: center;
+            display: inline-flex;
+
+            &:not(:last-child) {
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+// Variable colors
+
+div.I4-App {
+    &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
+        div.I4E-Construct-PrimaryHeader {
+            background-color: var(--I4C-Main-Background-6);
+            border-bottom: 1px solid var(--I4C-Main-Border-6);
+        }
+
+        div.I4E-Construct-SecondaryHeader {
+            background-color: var(--I4C-Main-Background-7);
+            border-bottom: 1px solid var(--I4C-Main-Border-6);
+        }
+    }
+
+    &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
+        div.I4E-Construct-PrimaryHeader {
+            background-color: var(--I4C-Main-Background-0);
+            border-bottom: 1px solid var(--I4C-Main-Border-6);
+        }
+
+        div.I4E-Construct-SecondaryHeader {
+            background-color: var(--I4C-Main-Background-4);
+            border-bottom: 1px solid var(--I4C-Main-Border-6);
+        }
+    }
+}

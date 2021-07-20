@@ -9,7 +9,7 @@ using Integrant4.API;
 using Integrant4.Colorant.Themes.Solids;
 using Integrant4.Element;
 using Integrant4.Element.Bits;
-using Integrant4.Element.Constructs;
+using Integrant4.Element.Constructs.Headers;
 using Integrant4.Element.Constructs.Selectors;
 using Integrant4.Element.Inputs;
 using Integrant4.Fundament;
@@ -24,12 +24,9 @@ namespace Web.Pages
     {
         private StructureInstance<Dog, DogState> _structureInstance = null!;
 
-        private Header         _header                = null!;
-        private ValidationView _overallValidationView = null!;
-        private ValidationView _ageValidationView     = null!;
-
-        [Inject] public IJSRuntime     JSRuntime      { get; set; } = null!;
-        [Inject] public ElementService ElementService { get; set; } = null!;
+        private SecondaryHeader _header                = null!;
+        private ValidationView  _overallValidationView = null!;
+        private ValidationView  _ageValidationView     = null!;
 
         private DogState                _dogState       = null!;
         private CancellationTokenSource _ageThreadToken = null!;
@@ -38,6 +35,14 @@ namespace Web.Pages
         private Selector<User>      _selector         = null!;
         private bool                _selectorDisabled = false;
         private MultiSelector<User> _multiSelector    = null!;
+
+        [Inject] public IJSRuntime     JSRuntime      { get; set; } = null!;
+        [Inject] public ElementService ElementService { get; set; } = null!;
+
+        public void Dispose()
+        {
+            _ageThreadToken.Cancel();
+        }
 
         protected override void OnInitialized()
         {
@@ -75,13 +80,11 @@ namespace Web.Pages
 
             //
 
-            _header = new Header(new IRenderable[]
-            {
-                new HeaderLink("Secondary header".AsStatic(),
-                    () => "/elements", new HeaderLink.Spec { IsTitle = Always.True }),
-                new Filler(),
-                new HeaderLink("Normal link".AsStatic(), () => "/elements"),
-            }.AsStatic(), Header.Style.Secondary);
+            _header = new SecondaryHeader
+            (
+                new HeaderLink("Normal link".AsStatic(),      () => "/elements").AsStatic(),
+                new HeaderLink("Secondary header".AsStatic(), () => "/elements").AsStatic()
+            );
 
             _overallValidationView = new ValidationView();
             _ageValidationView     = new ValidationView(nameof(DogState.Age));
@@ -101,7 +104,7 @@ namespace Web.Pages
 
             Faker<User> b = new Faker<User>()
                .RuleFor(o => o.FirstName, f => f.Name.FirstName())
-               .RuleFor(o => o.LastName, f => f.Name.LastName());
+               .RuleFor(o => o.LastName,  f => f.Name.LastName());
 
             List<User> names = b.Generate(900);
 
@@ -150,11 +153,6 @@ namespace Web.Pages
 
             await ElementService.ProcessJobs();
         }
-
-        public void Dispose()
-        {
-            _ageThreadToken.Cancel();
-        }
     }
 
     internal class User : IEquatable<User>
@@ -175,7 +173,7 @@ namespace Web.Pages
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((User)obj);
+            return Equals((User) obj);
         }
 
         public override int GetHashCode()
@@ -187,30 +185,6 @@ namespace Web.Pages
     public partial class Index
     {
         private static readonly Structure<Dog, DogState> Structure;
-
-        private static IReadOnlyList<IValidation> DogValidations(StructureInstance<Dog, DogState> inst)
-        {
-            List<IValidation> result = new()
-            {
-                new Validation(ValidationResultType.Valid, "Valid"),
-                new Validation(ValidationResultType.Warning, "Warning"),
-            };
-
-            if (string.IsNullOrWhiteSpace(inst.State.NameFirst))
-                result.Add(new Validation(ValidationResultType.Invalid, "First name is required"));
-
-            if (string.IsNullOrWhiteSpace(inst.State.NameLast))
-                result.Add(new Validation(ValidationResultType.Invalid, "Last name is required"));
-
-            if (string.IsNullOrWhiteSpace(inst.State.Breed))
-                result.Add(new Validation(ValidationResultType.Invalid, "Breed is required"));
-
-            if (!string.IsNullOrWhiteSpace(inst.State.NameFirst) && !string.IsNullOrWhiteSpace(inst.State.NameLast))
-                if (inst.State.NameFirst.Trim() == inst.State.NameLast.Trim())
-                    result.Add(new Validation(ValidationResultType.Invalid, "First name cannot equal last name"));
-
-            return result;
-        }
 
         static Index()
         {
@@ -255,7 +229,7 @@ namespace Web.Pages
                     inst.StructureInstance.JSRuntime!,
                     inst.Value(),
                     new TextAreaInput.Spec
-                        { IsDisabled = () => inst.StructureInstance.State.NameFirst?.Contains("Z") == true }
+                        {IsDisabled = () => inst.StructureInstance.State.NameFirst?.Contains("Z") == true}
                 )
             );
 
@@ -299,15 +273,39 @@ namespace Web.Pages
                     null,
                     () => new List<SelectInput<string>.IOption>
                     {
-                        new SelectInput<string>.Option("Unknown", "Unknown"),
+                        new SelectInput<string>.Option("Unknown",     "Unknown"),
                         new SelectInput<string>.Option("Rat Terrier", "Rat Terrier"),
-                        new SelectInput<string>.Option("Boxer", "Boxer"),
-                        new SelectInput<string>.Option("Yorkie", "Yorkie"),
-                        new SelectInput<string>.Option("Chihuahua", "Chihuahua"),
-                        new SelectInput<string>.Option(null, "Other"),
+                        new SelectInput<string>.Option("Boxer",       "Boxer"),
+                        new SelectInput<string>.Option("Yorkie",      "Yorkie"),
+                        new SelectInput<string>.Option("Chihuahua",   "Chihuahua"),
+                        new SelectInput<string>.Option(null,          "Other"),
                     }
                 )
             );
+        }
+
+        private static IReadOnlyList<IValidation> DogValidations(StructureInstance<Dog, DogState> inst)
+        {
+            List<IValidation> result = new()
+            {
+                new Validation(ValidationResultType.Valid,   "Valid"),
+                new Validation(ValidationResultType.Warning, "Warning"),
+            };
+
+            if (string.IsNullOrWhiteSpace(inst.State.NameFirst))
+                result.Add(new Validation(ValidationResultType.Invalid, "First name is required"));
+
+            if (string.IsNullOrWhiteSpace(inst.State.NameLast))
+                result.Add(new Validation(ValidationResultType.Invalid, "Last name is required"));
+
+            if (string.IsNullOrWhiteSpace(inst.State.Breed))
+                result.Add(new Validation(ValidationResultType.Invalid, "Breed is required"));
+
+            if (!string.IsNullOrWhiteSpace(inst.State.NameFirst) && !string.IsNullOrWhiteSpace(inst.State.NameLast))
+                if (inst.State.NameFirst.Trim() == inst.State.NameLast.Trim())
+                    result.Add(new Validation(ValidationResultType.Invalid, "First name cannot equal last name"));
+
+            return result;
         }
     }
 
