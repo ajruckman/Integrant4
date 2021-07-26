@@ -44,7 +44,6 @@ button.I4E-Bit-Button > div.I4E-Bit-Button-Contents, a.I4E-Bit-Button > div.I4E-
   width: 100%;
 }
 button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content, a.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content {
-  align-items: center;
   display: inline-flex;
 }
 button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child), a.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child) {
@@ -463,7 +462,7 @@ div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents div.I4E-Bit-Dropdown-Content:
 div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents div.I4E-Bit-Dropdown-Content:only-child {
   flex-grow: 1;
 }
-div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Head[data-contents-shown] a.I4E-Bit-HeaderLink {
+div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Head[data-contents-shown] a.I4E-Construct-HeaderLink {
   color: var(--I4C-Main-Accent-8);
 }
 
@@ -493,88 +492,6 @@ div.I4-App[data-i4-theme-variant=Pink] div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown
 
 div.I4E-Bit-Filler {
   flex-grow: 100;
-}
-
-div.I4E-Bit-Header {
-  align-items: center;
-  box-shadow: var(--I4C-Main-Shadow-0);
-  box-sizing: border-box;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 10px 0 15px;
-  width: 100%;
-  z-index: 100;
-}
-div.I4E-Bit-Header--Primary {
-  min-height: 50px;
-  position: sticky;
-  top: 0;
-}
-div.I4E-Bit-Header--Secondary {
-  min-height: 36px;
-}
-div.I4E-Bit-Header div.I4E-Bit-Header-Contents {
-  position: relative;
-}
-div.I4E-Bit-Header div.I4E-Bit-Header-Contents > span.I4E-Bit-Header-Content {
-  display: contents;
-}
-div.I4E-Bit-Header div.I4E-Bit-Header-Contents > span.I4E-Bit-Header-Content > .I4E-Bit-HeaderLink--Title {
-  margin-right: 15px;
-}
-div.I4E-Bit-Header--Primary a.I4E-Bit-HeaderLink {
-  min-height: 50px;
-}
-div.I4E-Bit-Header--Primary a.I4E-Bit-HeaderLink.I4E-Bit-HeaderLink--Title {
-  font-size: 1.35rem;
-  font-weight: 600;
-}
-div.I4E-Bit-Header--Primary a.I4E-Bit-HeaderLink:not(.I4E-Bit-HeaderLink--Title) {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-div.I4E-Bit-Header--Primary div.I4E-Bit-TextBlock {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-div.I4E-Bit-Header--Primary div.I4E-Bit-Dropdown-Children div.I4E-Bit-TextBlock {
-  font-size: unset;
-  font-weight: unset;
-}
-div.I4E-Bit-Header--Primary div.I4E-Bit-VerticalLine {
-  height: 30px;
-}
-div.I4E-Bit-Header--Secondary a.I4E-Bit-HeaderLink {
-  min-height: 36px;
-}
-div.I4E-Bit-Header--Secondary a.I4E-Bit-HeaderLink.I4E-Bit-HeaderLink--Title {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-div.I4E-Bit-Header--Secondary a.I4E-Bit-HeaderLink:not(.I4E-Bit-HeaderLink--Title) {
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-div.I4E-Bit-Header--Secondary div.I4E-Bit-TextBlock {
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-div.I4E-Bit-Header--Secondary div.I4E-Bit-Dropdown-Children div.I4E-Bit-TextBlock {
-  font-size: unset;
-  font-weight: unset;
-}
-
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Bit-Header--Primary, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Bit-Header--Primary {
-  background-color: var(--I4C-Main-Background-6);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Bit-Header--Secondary, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Bit-Header--Secondary {
-  background-color: var(--I4C-Main-Background-7);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Bit-Header--Primary, div.I4-App[data-i4-theme-variant=White] div.I4E-Bit-Header--Primary {
-  background-color: var(--I4C-Main-Background-0);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Bit-Header--Secondary, div.I4-App[data-i4-theme-variant=White] div.I4E-Bit-Header--Secondary {
-  background-color: var(--I4C-Main-Background-4);
 }
 
 div.I4E-Bit-HorizontalLine {
@@ -871,7 +788,7 @@ span.I4E-Bit-Validation .I4R-BootstrapIcon svg {
   }
 }
 div.I4E-Bit-VerticalLine {
-  background-color: var(--I4C-Main-Background-14);
+  background-color: var(--I4C-Main-Border-6);
   height: 1em;
   margin: 0 9px;
   width: 1px;

@@ -1,5 +1,5 @@
-$HeightPrimaryHeader: calc(3px * var(--I4E-Base-Scale));
-$HeightSecondaryHeader: calc(2px * var(--I4E-Base-Scale));
+$HeightPrimaryHeader: calc(3.5px * var(--I4E-Base-Scale));
+$HeightSecondaryHeader: calc(2.5px * var(--I4E-Base-Scale));
 
 %HeaderBase {
     align-items: center;
@@ -12,7 +12,7 @@ $HeightSecondaryHeader: calc(2px * var(--I4E-Base-Scale));
 
 div.I4E-Construct-PrimaryHeader {
     @extend %HeaderBase;
-    
+
     //box-shadow: var(--I4C-Main-Shadow-0);
     min-height: $HeightPrimaryHeader;
     padding: 0 10px 0 15px;
@@ -35,31 +35,25 @@ div.I4E-Construct-PrimaryHeader {
 
     // Descendent overrides
 
-    div.I4E-Construct-PrimaryHeader-LeftElements {
-        a.I4E-Construct-HeaderLink,
-        span.I4E-Construct-PrimaryHeader-LeftElement > div.I4E-Bit-TextBlock,
-        span.I4E-Construct-PrimaryHeader-LeftElement div.I4E-Bit-Dropdown-Head div.I4E-Bit-Dropdown-Content > div.I4E-Bit-TextBlock {
-            font-size: 1.35rem;
-            font-weight: 600;
-            min-height: $HeightPrimaryHeader;
-        }
+    div.I4E-Construct-PrimaryHeader-LeftElements a.I4E-Construct-HeaderLink,
+    div.I4E-Construct-PrimaryHeader-LeftElements div.I4E-Bit-TextBlock,
+    {
+        font-size: 1.35rem;
+        font-weight: 600;
+        min-height: $HeightPrimaryHeader;
     }
 
-    div.I4E-Construct-PrimaryHeader-RightElements {
-        a.I4E-Construct-HeaderLink,
-        span.I4E-Construct-PrimaryHeader-RightElement > div.I4E-Bit-TextBlock,
-        span.I4E-Construct-PrimaryHeader-RightElement div.I4E-Bit-Dropdown-Head div.I4E-Bit-Dropdown-Content > div.I4E-Bit-TextBlock {
-            font-size: 1.2rem;
-            font-weight: 600;
-            min-height: $HeightPrimaryHeader;
-        }
+    div.I4E-Construct-PrimaryHeader-RightElements a.I4E-Construct-HeaderLink,
+    div.I4E-Construct-PrimaryHeader-RightElements div.I4E-Bit-TextBlock {
+        font-size: 1.2rem;
+        font-weight: 600;
+        min-height: $HeightPrimaryHeader;
     }
 
     div.I4E-Bit-VerticalLine {
         height: 20px;
     }
 }
-
 
 div.I4E-Construct-SecondaryHeader {
     @extend %HeaderBase;
@@ -83,24 +77,18 @@ div.I4E-Construct-SecondaryHeader {
 
     // Descendent overrides
 
-    div.I4E-Construct-SecondaryHeader-LeftElements {
-        a.I4E-Construct-HeaderLink,
-        span.I4E-Construct-SecondaryHeader-LeftElement > div.I4E-Bit-TextBlock,
-        span.I4E-Construct-SecondaryHeader-LeftElement div.I4E-Bit-Dropdown-Head div.I4E-Bit-Dropdown-Content > div.I4E-Bit-TextBlock {
-            font-size: 1.2rem;
-            font-weight: 600;
-            min-height: $HeightSecondaryHeader;
-        }
+    div.I4E-Construct-SecondaryHeader-LeftElements a.I4E-Construct-HeaderLink,
+    div.I4E-Construct-SecondaryHeader-LeftElements div.I4E-Bit-TextBlock {
+        font-size: 1.2rem;
+        font-weight: 600;
+        min-height: $HeightSecondaryHeader;
     }
 
-    div.I4E-Construct-SecondaryHeader-RightElements {
-        a.I4E-Construct-HeaderLink,
-        span.I4E-Construct-SecondaryHeader-RightElement > div.I4E-Bit-TextBlock,
-        span.I4E-Construct-SecondaryHeader-RightElement div.I4E-Bit-Dropdown-Head div.I4E-Bit-Dropdown-Content > div.I4E-Bit-TextBlock {
-            font-size: 1.1rem;
-            font-weight: 500;
-            min-height: $HeightSecondaryHeader;
-        }
+    div.I4E-Construct-SecondaryHeader-RightElements a.I4E-Construct-HeaderLink,
+    div.I4E-Construct-SecondaryHeader-RightElements div.I4E-Bit-TextBlock {
+        font-size: 1.1rem;
+        font-weight: 500;
+        min-height: $HeightSecondaryHeader;
     }
 
     div.I4E-Bit-VerticalLine {

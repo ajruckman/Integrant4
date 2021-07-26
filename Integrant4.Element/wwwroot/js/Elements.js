@@ -38,14 +38,6 @@ window.I4.Element.InitDropdown = window.I4.Element.InitDropdown || function (hea
     if (!head.hasOwnProperty("I4EBitDropdown")) {
         head.I4EBitDropdown = Popper.createPopper(head, contents, {
             placement: contents.getAttribute("data-popper-placement"),
-            modifiers: [
-                {
-                    name: "offset",
-                    options: {
-                        offset: [0, 25],
-                    },
-                },
-            ],
         });
 
         function show() {

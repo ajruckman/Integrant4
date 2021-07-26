@@ -4,6 +4,10 @@ div.I4E-Construct-FlexRow {
     flex-direction: row;
     justify-content: flex-start;
     width: 100%;
+
+    > span {
+        display: inline-flex;
+    }
 }
 
 div.I4E-Construct-FlexColumn {
@@ -12,4 +16,8 @@ div.I4E-Construct-FlexColumn {
     flex-direction: column;
     justify-content: center;
     width: 100%;
+
+    > span {
+        display: inline-flex;
+    }
 }

@@ -128,7 +128,7 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
         public async Task SetValue(string? value, bool invokeOnChange = true)
         {
             if (_editor == null) throw new Exception("Attempted to use SetValue() on uninitialized MarkdownEditor.");
-            await _editor.InvokeVoidAsync("I4ESetValue", (_value = value) ?? "");
+            await _editor.InvokeVoidAsync("I4ESetMarkdown", (_value = value) ?? "");
 
             if (invokeOnChange) OnChange?.Invoke(_value);
         }
@@ -136,7 +136,7 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
         public async Task Reset()
         {
             if (_editor == null) throw new Exception("Attempted to use Reset() on uninitialized MarkdownEditor.");
-            await _editor.InvokeVoidAsync("I4ESetValue", _value = _spec?.InitialValue?.Invoke());
+            await _editor.InvokeVoidAsync("I4ESetMarkdown", (_value = _spec?.InitialValue?.Invoke()) ?? "");
         }
     }
 

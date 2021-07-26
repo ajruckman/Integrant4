@@ -1,7 +1,11 @@
 div.I4E-Construct-PanelExpander {
-    div.I4E-Layout-Panel div.I4E-Bit-Header {
+    div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader {
         padding: 0 2px;
 
+        div.I4E-Construct-SecondaryHeader-RightElements {
+            flex: 1;
+            justify-content: end;
+        }
         button.I4E-Construct-PanelExpander-PanelButton {
             padding: 0 8px;
             width: 100%;

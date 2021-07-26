@@ -38,12 +38,13 @@ namespace Web.Pages
         private DecimalInput _decimalInput0Null   = null!;
         private DecimalInput _decimalInputStepped = null!;
 
-        private Button _buttonNoIcon    = null!;
-        private Button _buttonOnlyIcon  = null!;
-        private Button _buttonIconFirst = null!;
-        private Button _buttonIconLast  = null!;
-        private Button _buttonIconAll   = null!;
-        private Button _buttonStacked   = null!;
+        private Button _buttonNoIcon      = null!;
+        private Button _buttonOnlyIcon    = null!;
+        private Button _buttonIconFirst   = null!;
+        private Button _buttonIconLast    = null!;
+        private Button _buttonIconAll     = null!;
+        private Button _buttonStacked     = null!;
+        private Button _buttonWithFlexRow = null!;
 
         private Chip _chip         = null!;
         private Chip _chipLink     = null!;
@@ -82,6 +83,10 @@ namespace Web.Pages
                 new HeaderLink("Secondary header".AsStatic(), () => "/elements").AsStatic(),
                 new IRenderable[]
                 {
+                    new Chip("asdf".AsStatic()),
+                    new BootstrapIcon("chevron-right"),
+                    new Chip("asdf".AsStatic()),
+                    new BootstrapIcon("chevron-right"),
                     new TextBlock(ContentRef.Static("Test block 1")),
                     new Space(),
                     new VerticalLine(),
@@ -187,6 +192,14 @@ namespace Web.Pages
                     "Lower content".AsTextContent(size: 0.8, weight: FontWeight.Normal),
                 })),
                 new BootstrapIcon("chevron-right"),
+            }));
+            _buttonWithFlexRow = new Button(ContentRef.Static(new IRenderable[]
+            {
+                new FlexRow(ContentRef.Static(new IRenderable[]
+                {
+                    "asdf".AsStatic(),
+                    new BootstrapIcon("chevron-right"),
+                })),
             }));
 
             foreach (Button.Style style in Enum.GetValues<Button.Style>())

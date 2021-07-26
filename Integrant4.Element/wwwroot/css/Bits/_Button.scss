@@ -50,13 +50,12 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
         width: 100%;
 
         > span.I4E-Bit-Button-Content {
-            align-items: center;
             display: inline-flex;
 
             &:not(:last-child) {
                 margin-right: calc(1em * (5 / var(--I4E-Base-Scale)));
             }
-
+            
             &:only-child {
                 flex-grow: 1;
             }

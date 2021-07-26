@@ -26,8 +26,8 @@ namespace Integrant4.Element.Constructs
 
         protected override void OnInitialized()
         {
-            ExpandContent   ??= ContentRef.Dynamic(() => "Click to show");
-            ContractContent ??= ContentRef.Dynamic(() => "Click to hide");
+            ExpandContent   ??= ContentRef.Static("Click to show");
+            ContractContent ??= ContentRef.Static("Click to hide");
 
             Button button = new
             (
@@ -45,11 +45,7 @@ namespace Integrant4.Element.Constructs
                         right[1] = UpIcon;
                     }
 
-                    return new IRenderable[]
-                    {
-                        new RenderableArray(HeaderElements.GetAll()),
-                        new RenderableArray(right),
-                    };
+                    return right;
                 }),
                 new Button.Spec
                 {
@@ -65,7 +61,7 @@ namespace Integrant4.Element.Constructs
                 }
             );
 
-            _header = new SecondaryHeader(ContentRef.Static(button), Array.Empty<IRenderable>().AsStatic());
+            _header = new SecondaryHeader(HeaderElements, button.AsStatic());
         }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)

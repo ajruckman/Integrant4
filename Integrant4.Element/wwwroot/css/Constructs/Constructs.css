@@ -139,6 +139,9 @@ div.I4E-Construct-FlexRow {
   justify-content: flex-start;
   width: 100%;
 }
+div.I4E-Construct-FlexRow > span {
+  display: inline-flex;
+}
 
 div.I4E-Construct-FlexColumn {
   align-items: flex-start;
@@ -146,6 +149,9 @@ div.I4E-Construct-FlexColumn {
   flex-direction: column;
   justify-content: center;
   width: 100%;
+}
+div.I4E-Construct-FlexColumn > span {
+  display: inline-flex;
 }
 
 div.I4E-Construct-SecondaryHeader, div.I4E-Construct-PrimaryHeader {
@@ -158,7 +164,7 @@ div.I4E-Construct-SecondaryHeader, div.I4E-Construct-PrimaryHeader {
 }
 
 div.I4E-Construct-PrimaryHeader {
-  min-height: calc(3px * var(--I4E-Base-Scale));
+  min-height: calc(3.5px * var(--I4E-Base-Scale));
   padding: 0 10px 0 15px;
   position: sticky;
   top: 0;
@@ -167,61 +173,57 @@ div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-LeftElements {
   align-items: center;
   display: flex;
   margin-right: 15px;
-  min-height: calc(3px * var(--I4E-Base-Scale));
+  min-height: calc(3.5px * var(--I4E-Base-Scale));
 }
 div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-RightElements {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  min-height: calc(3px * var(--I4E-Base-Scale));
+  min-height: calc(3.5px * var(--I4E-Base-Scale));
 }
 div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-LeftElements a.I4E-Construct-HeaderLink,
-div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-LeftElements span.I4E-Construct-PrimaryHeader-LeftElement > div.I4E-Bit-TextBlock,
-div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-LeftElements span.I4E-Construct-PrimaryHeader-LeftElement div.I4E-Bit-Dropdown-Head div.I4E-Bit-Dropdown-Content > div.I4E-Bit-TextBlock {
+div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-LeftElements div.I4E-Bit-TextBlock {
   font-size: 1.35rem;
   font-weight: 600;
-  min-height: calc(3px * var(--I4E-Base-Scale));
+  min-height: calc(3.5px * var(--I4E-Base-Scale));
 }
 div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-RightElements a.I4E-Construct-HeaderLink,
-div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-RightElements span.I4E-Construct-PrimaryHeader-RightElement > div.I4E-Bit-TextBlock,
-div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-RightElements span.I4E-Construct-PrimaryHeader-RightElement div.I4E-Bit-Dropdown-Head div.I4E-Bit-Dropdown-Content > div.I4E-Bit-TextBlock {
+div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-RightElements div.I4E-Bit-TextBlock {
   font-size: 1.2rem;
   font-weight: 600;
-  min-height: calc(3px * var(--I4E-Base-Scale));
+  min-height: calc(3.5px * var(--I4E-Base-Scale));
 }
 div.I4E-Construct-PrimaryHeader div.I4E-Bit-VerticalLine {
   height: 20px;
 }
 
 div.I4E-Construct-SecondaryHeader {
-  min-height: calc(2px * var(--I4E-Base-Scale));
+  min-height: calc(2.5px * var(--I4E-Base-Scale));
   padding: 0 10px 0 15px;
 }
 div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-LeftElements {
   align-items: center;
   display: flex;
   margin-right: 15px;
-  min-height: calc(2px * var(--I4E-Base-Scale));
+  min-height: calc(2.5px * var(--I4E-Base-Scale));
 }
 div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-RightElements {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  min-height: calc(2px * var(--I4E-Base-Scale));
+  min-height: calc(2.5px * var(--I4E-Base-Scale));
 }
 div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-LeftElements a.I4E-Construct-HeaderLink,
-div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-LeftElements span.I4E-Construct-SecondaryHeader-LeftElement > div.I4E-Bit-TextBlock,
-div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-LeftElements span.I4E-Construct-SecondaryHeader-LeftElement div.I4E-Bit-Dropdown-Head div.I4E-Bit-Dropdown-Content > div.I4E-Bit-TextBlock {
+div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-LeftElements div.I4E-Bit-TextBlock {
   font-size: 1.2rem;
   font-weight: 600;
-  min-height: calc(2px * var(--I4E-Base-Scale));
+  min-height: calc(2.5px * var(--I4E-Base-Scale));
 }
 div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-RightElements a.I4E-Construct-HeaderLink,
-div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-RightElements span.I4E-Construct-SecondaryHeader-RightElement > div.I4E-Bit-TextBlock,
-div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-RightElements span.I4E-Construct-SecondaryHeader-RightElement div.I4E-Bit-Dropdown-Head div.I4E-Bit-Dropdown-Content > div.I4E-Bit-TextBlock {
+div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-RightElements div.I4E-Bit-TextBlock {
   font-size: 1.1rem;
   font-weight: 500;
-  min-height: calc(2px * var(--I4E-Base-Scale));
+  min-height: calc(2.5px * var(--I4E-Base-Scale));
 }
 div.I4E-Construct-SecondaryHeader div.I4E-Bit-VerticalLine {
   height: 20px;
@@ -314,7 +316,6 @@ button.I4E-Bit-Button > div.I4E-Bit-Button-Contents, a.I4E-Bit-Button > div.I4E-
   width: 100%;
 }
 button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content, a.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content {
-  align-items: center;
   display: inline-flex;
 }
 button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child), a.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child) {
@@ -963,14 +964,18 @@ div.I4-App[data-i4-theme-variant=Pink] button.I4E-Construct-PagedTable-SortIndic
   color: var(--I4C-Main-Accent-6);
 }
 
-div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Bit-Header {
+div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader {
   padding: 0 2px;
 }
-div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Bit-Header button.I4E-Construct-PanelExpander-PanelButton {
+div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-RightElements {
+  flex: 1;
+  justify-content: end;
+}
+div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader button.I4E-Construct-PanelExpander-PanelButton {
   padding: 0 8px;
   width: 100%;
 }
-div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Bit-Header button.I4E-Construct-PanelExpander-PanelButton span.I4R-BootstrapIcon svg {
+div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader button.I4E-Construct-PanelExpander-PanelButton span.I4R-BootstrapIcon svg {
   margin-left: 5px;
 }
 
