@@ -3,9 +3,9 @@ using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
-namespace Integrant4.Element.Bits.BitComponents
+namespace Integrant4.Element.Components
 {
-    public class SecondaryHeaderComponent : ComponentBase
+    public class I4ESecondaryHeader : ComponentBase
     {
         private SecondaryHeader? _header;
 

@@ -1,10 +1,11 @@
+using Integrant4.Element.Bits;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
-namespace Integrant4.Element.Bits.BitComponents
+namespace Integrant4.Element.Components
 {
-    public class LinkComponent : ComponentBase
+    public class I4ELink : ComponentBase
     {
         private Link? _link;
 

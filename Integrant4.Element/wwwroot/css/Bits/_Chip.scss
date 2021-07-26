@@ -39,6 +39,7 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
     > span.I4E-Bit-Chip-Contents {
         align-items: center;
         display: flex;
+        width: 100%;
 
         > span.I4E-Bit-Chip-Content {
             align-items: center;
@@ -46,6 +47,10 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
 
             &:not(:last-child) {
                 margin-right: calc(1em * (5 / var(--I4E-Base-Scale)));
+            }
+
+            &:only-child {
+                flex-grow: 1;
             }
         }
     }

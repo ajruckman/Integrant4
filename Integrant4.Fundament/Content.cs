@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Integrant4.Fundament
 {
-    public class ContentRef : IRenderable
+    public sealed class ContentRef : IRenderable
     {
         private readonly IRenderable?                    _rawSingle;
         private readonly IEnumerable<IRenderable>?       _rawMultiple;
