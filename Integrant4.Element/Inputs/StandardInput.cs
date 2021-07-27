@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
@@ -8,8 +7,14 @@ namespace Integrant4.Element.Inputs
 {
     public abstract class StandardInput<T> : InputBase<T>
     {
-        internal StandardInput(IJSRuntime jsRuntime, BaseSpec? spec, ClassSet classes)
-            : base(jsRuntime, spec, classes) { }
+        internal StandardInput(IJSRuntime jsRuntime, SpecSet? outerSpec, SpecSet? innerSpec)
+            : base(jsRuntime, outerSpec, innerSpec) { }
+
+        internal StandardInput(IJSRuntime jsRuntime, UnifiedSpec? spec)
+            : base(jsRuntime, spec) { }
+
+        internal StandardInput(IJSRuntime jsRuntime, DualSpec? spec)
+            : base(jsRuntime, spec) { }
 
         public override T? GetValue() => Value;
 

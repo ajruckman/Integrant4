@@ -10,7 +10,7 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec
+        public class Spec : UnifiedSpec
         {
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -30,8 +30,9 @@ namespace Integrant4.Element.Bits
             public Callbacks.Data?       Data            { get; init; }
             public Callbacks.Tooltip?    Tooltip         { get; init; }
 
-            internal BaseSpec ToBaseSpec() => new()
+            internal override SpecSet ToSpec() => new()
             {
+                BaseClasses     = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)),
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
                 Classes         = Classes,
@@ -57,8 +58,7 @@ namespace Integrant4.Element.Bits
     {
         private readonly ContentRef _content;
 
-        public TextBlock(ContentRef content, Spec? spec = null)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(TextBlock)))
+        public TextBlock(ContentRef content, Spec? spec = null) : base(spec)
         {
             _content = content;
         }
@@ -75,7 +75,7 @@ namespace Integrant4.Element.Bits
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-TextBlock-Contents");
 
-                BitBuilder.ApplyAttributes(this, builder, ref seq, null, null);
+                BitBuilder.ApplyOuterAttributes(this, builder, ref seq);
 
                 foreach (IRenderable renderable in _content.GetAll())
                 {

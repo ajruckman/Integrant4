@@ -13,15 +13,16 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec
+        public class Spec : UnifiedSpec
         {
             public StyleGetter? Style { get; init; }
 
             public Callbacks.IsVisible? IsVisible { get; init; }
 
-            internal BaseSpec ToBaseSpec() => new()
+            internal override SpecSet ToSpec() => new()
             {
-                IsVisible = IsVisible,
+                BaseClasses = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(ValidationView)),
+                IsVisible   = IsVisible,
             };
         }
     }
@@ -36,8 +37,7 @@ namespace Integrant4.Element.Bits
         private bool                        _isInProgress;
         private IReadOnlyList<IValidation>? _validations;
 
-        public ValidationView(Spec? spec = null)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(ValidationView)))
+        public ValidationView(Spec? spec = null) : base(spec)
         {
             _styleGetter = spec?.Style ?? DefaultStyleGetter;
         }
@@ -159,10 +159,10 @@ namespace Integrant4.Element.Bits
                 int seq = -1;
                 builder.OpenElement(++seq, "div");
 
-                BitBuilder.ApplyAttributes(ValidationView, builder, ref seq, new[]
+                BitBuilder.ApplyOuterAttributes(ValidationView, builder, ref seq, new[]
                 {
                     "I4E-Bit-ValidationView--" + ValidationView._styleGetter.Invoke(),
-                }, null);
+                });
 
                 //
 

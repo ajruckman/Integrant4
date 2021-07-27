@@ -14,16 +14,14 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec
+        public class Spec : DualSpec
         {
-            public StyleGetter? Style { get; init; }
-
+            public StyleGetter?               Style   { get; init; }
             public Callbacks.Callback<bool>?  IsSmall { get; init; }
             public Action<Button, ClickArgs>? OnClick { get; init; }
 
-            public Callbacks.IsVisible?  IsVisible  { get; init; }
-            public Callbacks.IsDisabled? IsDisabled { get; init; }
-
+            public Callbacks.IsVisible?   IsVisible   { get; init; }
+            public Callbacks.IsDisabled?  IsDisabled  { get; init; }
             public Callbacks.Classes?     Classes     { get; init; }
             public Callbacks.HREF?        HREF        { get; init; }
             public Callbacks.Unit?        Height      { get; init; }
@@ -38,8 +36,9 @@ namespace Integrant4.Element.Bits
             public Callbacks.Data?        Data        { get; init; }
             public Callbacks.Tooltip?     Tooltip     { get; init; }
 
-            internal BaseSpec ToBaseSpec() => new()
+            internal override SpecSet ToOuterSpec() => new()
             {
+                BaseClasses = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Button)),
                 Scaled      = true,
                 IsVisible   = IsVisible,
                 IsDisabled  = IsDisabled,
@@ -50,12 +49,16 @@ namespace Integrant4.Element.Bits
                 Margin      = Margin,
                 Padding     = Padding,
                 Scale       = Scale,
-                FontWeight  = FontWeight,
                 Display     = Display,
-                FlexAlign   = FlexAlign,
-                FlexJustify = FlexJustify,
                 Data        = Data,
                 Tooltip     = Tooltip,
+            };
+
+            internal override SpecSet ToInnerSpec() => new()
+            {
+                FontWeight  = FontWeight,
+                FlexAlign   = FlexAlign,
+                FlexJustify = FlexJustify,
             };
         }
     }
@@ -65,8 +68,7 @@ namespace Integrant4.Element.Bits
         private readonly ContentRef                _content;
         private readonly Callbacks.Callback<bool>? _isSmall;
 
-        public Button(ContentRef content, Spec? spec = null)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Button)))
+        public Button(ContentRef content, Spec? spec = null) : base(spec)
         {
             _content     = content;
             _styleGetter = spec?.Style ?? DefaultStyleGetter;
@@ -87,7 +89,7 @@ namespace Integrant4.Element.Bits
         {
             IRenderable[] contents = _content.GetAll().ToArray();
 
-            List<string> ac = new() { "I4E-Bit-Button--" + _styleGetter.Invoke() };
+            List<string> ac = new() {"I4E-Bit-Button--" + _styleGetter.Invoke()};
 
             if (contents.First() is IIcon) ac.Add("I4E-Bit-Button--IconLeft");
             if (contents.Last() is IIcon) ac.Add("I4E-Bit-Button--IconRight");
@@ -97,17 +99,17 @@ namespace Integrant4.Element.Bits
 
             int seq = -1;
 
-            if (BaseSpec.HREF == null)
+            if (OuterSpec?.HREF == null)
             {
                 builder.OpenElement(++seq, "button");
             }
             else
             {
                 builder.OpenElement(++seq, "a");
-                builder.AddAttribute(++seq, "href", BaseSpec.HREF.Invoke());
+                builder.AddAttribute(++seq, "href", OuterSpec?.HREF.Invoke());
             }
 
-            BitBuilder.ApplyAttributes(this, builder, ref seq, ac, null);
+            BitBuilder.ApplyOuterAttributes(this, builder, ref seq, ac);
 
             builder.AddAttribute(++seq, "onclick",
                 EventCallback.Factory.Create<MouseEventArgs>(this, Click));
@@ -115,7 +117,7 @@ namespace Integrant4.Element.Bits
             builder.OpenElement(++seq, "div");
             builder.AddAttribute(++seq, "class", "I4E-Bit-Button-Contents");
 
-            BitBuilder.ApplyContentAttributes(this, builder, ref seq);
+            BitBuilder.ApplyInnerAttributes(this, builder, ref seq);
 
             foreach (IRenderable renderable in contents)
             {
@@ -138,7 +140,7 @@ namespace Integrant4.Element.Bits
 
         private void Click(MouseEventArgs args)
         {
-            if (BaseSpec.IsDisabled?.Invoke() == true) return;
+            if (OuterSpec?.IsDisabled?.Invoke() == true) return;
 
             var c = new ClickArgs
             (

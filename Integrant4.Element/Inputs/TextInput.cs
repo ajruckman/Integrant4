@@ -35,7 +35,7 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Data?       Data            { get; init; }
             public Callbacks.Tooltip?    Tooltip         { get; init; }
 
-            internal BaseSpec ToBaseSpec() => new()
+            internal SpecSet ToBaseSpec() => new()
             {
                 Scaled = true,
 
@@ -105,7 +105,7 @@ namespace Integrant4.Element.Inputs
             if (_isClearable?.Invoke() == true)
             {
                 ushort  size  = 16;
-                double? scale = BaseSpec.Scale?.Invoke();
+                double? scale = SpecSet.Scale?.Invoke();
                 if (scale != null)
                     size = (ushort) (size * scale);
 

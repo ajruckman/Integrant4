@@ -9,7 +9,7 @@ namespace Integrant4.Element.Inputs
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec
+        public class Spec : DualSpec
         {
             public Callbacks.Callback<bool>? Consider0Null { get; init; }
             public Callbacks.Callback<int>?  Min           { get; init; }
@@ -33,13 +33,11 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Data?       Data            { get; init; }
             public Callbacks.Tooltip?    Tooltip         { get; init; }
 
-            internal BaseSpec ToBaseSpec() => new()
+            internal override SpecSet ToOuterSpec() => new()
             {
-                Scaled = true,
-
+                BaseClasses     = new ClassSet("I4E-Input", "I4E-Input-Integer"),
+                Scaled          = true,
                 IsVisible       = IsVisible,
-                IsDisabled      = IsDisabled,
-                IsRequired      = IsRequired,
                 Classes         = Classes,
                 Margin          = Margin,
                 Padding         = Padding,
@@ -50,10 +48,16 @@ namespace Integrant4.Element.Inputs
                 Width           = Width,
                 WidthMax        = WidthMax,
                 Scale           = Scale,
-                FontWeight      = FontWeight,
                 Display         = Display,
                 Data            = Data,
                 Tooltip         = Tooltip,
+            };
+
+            internal override SpecSet ToInnerSpec() => new()
+            {
+                IsDisabled = IsDisabled,
+                IsRequired = IsRequired,
+                FontWeight = FontWeight,
             };
         }
     }
@@ -69,8 +73,7 @@ namespace Integrant4.Element.Inputs
             IJSRuntime jsRuntime,
             int?       value,
             Spec?      spec = null
-        )
-            : base(jsRuntime, new ClassSet("I4E-Input", "I4E-Input-Integer"), spec?.ToBaseSpec())
+        ) : base(jsRuntime, spec)
         {
             _consider0Null = spec?.Consider0Null ?? (() => false);
             _min           = spec?.Min;
@@ -87,7 +90,7 @@ namespace Integrant4.Element.Inputs
             InputBuilder.ApplyOuterAttributes(this, builder, ref seq, null);
 
             builder.OpenElement(++seq, "input");
-            InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
+            InputBuilder.ApplyInputAttributes(this, builder, ref seq, null);
 
             builder.AddAttribute(++seq, "type",    "number");
             builder.AddAttribute(++seq, "value",   Serialize(Value));

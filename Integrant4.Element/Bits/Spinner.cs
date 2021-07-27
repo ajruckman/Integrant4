@@ -9,7 +9,7 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec
+        public class Spec : UnifiedSpec
         {
             public Callbacks.Callback<string>? Text  { get; init; }
             public StyleGetter?                Style { get; init; }
@@ -20,9 +20,10 @@ namespace Integrant4.Element.Bits
             public Callbacks.REM?        FontSize   { get; init; }
             public Callbacks.FontWeight? FontWeight { get; init; }
 
-            internal BaseSpec ToBaseSpec() => new()
+            internal override SpecSet ToSpec() => new()
             {
-                IsVisible = IsVisible,
+                BaseClasses = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Spinner)),
+                IsVisible   = IsVisible,
             };
         }
     }
@@ -37,8 +38,7 @@ namespace Integrant4.Element.Bits
         private readonly Callbacks.REM?        _fontSize;
         private readonly Callbacks.FontWeight? _fontWeight;
 
-        public Spinner(Spec? spec = null)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Spinner)))
+        public Spinner(Spec? spec = null) : base(spec)
         {
             _text  = spec?.Text;
             _style = spec?.Style ?? DefaultStyleGetter;
@@ -59,30 +59,30 @@ namespace Integrant4.Element.Bits
                 int seq = -1;
 
                 builder.OpenElement(++seq, "div");
-                BitBuilder.ApplyAttributes(this, builder, ref seq, new[]
+                BitBuilder.ApplyOuterAttributes(this, builder, ref seq, new[]
                 {
                     "I4E-Bit-Spinner--" + _style.Invoke(),
-                }, null);
+                });
 
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Spinner-Inner");
-                builder.AddAttribute(++seq, "style", ElementBuilder.StyleAttribute(new BaseSpec
+                builder.AddAttribute(++seq, "style", new SpecSet
                 {
                     Scaled = _scale != null,
                     Scale  = _scale,
                     Margin = _margin,
-                }, null));
+                }.StyleAttribute(null));
                 builder.CloseElement();
 
                 if (_text != null)
                 {
                     builder.OpenElement(++seq, "div");
                     builder.AddAttribute(++seq, "class", "I4E-Bit-Spinner-Text");
-                    builder.AddAttribute(++seq, "style", ElementBuilder.StyleAttribute(new BaseSpec
+                    builder.AddAttribute(++seq, "style", new SpecSet
                     {
                         FontSize   = _fontSize,
                         FontWeight = _fontWeight,
-                    }, null));
+                    }.StyleAttribute(null));
                     builder.AddContent(++seq, _text.Invoke());
                     builder.CloseElement();
                 }

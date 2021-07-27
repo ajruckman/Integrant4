@@ -13,7 +13,7 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec
+        public class Spec : DualSpec
         {
             public Callbacks.IsVisible? IsVisible { get; init; }
 
@@ -31,8 +31,12 @@ namespace Integrant4.Element.Bits
             public Callbacks.Data?       Data            { get; init; }
             public Callbacks.Tooltip?    Tooltip         { get; init; }
 
-            internal BaseSpec ToBaseSpec() => new()
+            internal override SpecSet ToOuterSpec() => new()
             {
+                BaseClasses = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Chip),
+                    HREF == null
+                        ? "I4E-Bit-" + nameof(Chip) + "--Static"
+                        : "I4E-Bit-" + nameof(Chip) + "--Link"),
                 Scaled          = true,
                 IsVisible       = IsVisible,
                 Classes         = Classes,
@@ -44,10 +48,14 @@ namespace Integrant4.Element.Bits
                 Height          = Height,
                 Width           = Width,
                 Scale           = Scale,
-                FontWeight      = FontWeight,
                 Display         = Display,
                 Data            = Data,
                 Tooltip         = Tooltip,
+            };
+
+            internal override SpecSet ToInnerSpec() => new()
+            {
+                FontWeight = FontWeight,
             };
         }
     }
@@ -56,12 +64,7 @@ namespace Integrant4.Element.Bits
     {
         private readonly ContentRef _content;
 
-        public Chip(ContentRef content, Spec? spec = null)
-            : base(spec?.ToBaseSpec(),
-                new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Chip),
-                    spec?.HREF == null
-                        ? "I4E-Bit-" + nameof(Chip) + "--Static"
-                        : "I4E-Bit-" + nameof(Chip) + "--Link"))
+        public Chip(ContentRef content, Spec? spec = null) : base(spec)
         {
             _content = content;
         }
@@ -84,22 +87,22 @@ namespace Integrant4.Element.Bits
 
                 int seq = -1;
 
-                if (BaseSpec.HREF == null)
+                if (OuterSpec?.HREF == null)
                 {
                     builder.OpenElement(++seq, "div");
                 }
                 else
                 {
                     builder.OpenElement(++seq, "a");
-                    builder.AddAttribute(++seq, "href", BaseSpec.HREF.Invoke());
+                    builder.AddAttribute(++seq, "href", OuterSpec?.HREF.Invoke());
                 }
 
-                BitBuilder.ApplyAttributes(this, builder, ref seq, ac, null);
+                BitBuilder.ApplyOuterAttributes(this, builder, ref seq, ac);
 
                 builder.OpenElement(++seq, "span");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Chip-Contents");
 
-                BitBuilder.ApplyContentAttributes(this, builder, ref seq);
+                BitBuilder.ApplyInnerAttributes(this, builder, ref seq);
 
                 foreach (IRenderable renderable in contents)
                 {

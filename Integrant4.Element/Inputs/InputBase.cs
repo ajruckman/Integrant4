@@ -14,14 +14,30 @@ namespace Integrant4.Element.Inputs
         protected ElementReference Reference;
         protected T?               Value;
 
-        internal InputBase(IJSRuntime jsRuntime, BaseSpec? spec, ClassSet classes)
+        internal InputBase(IJSRuntime jsRuntime, SpecSet? outerSpec, SpecSet? innerSpec)
         {
             JSRuntime = jsRuntime;
-
-            BaseSpec    = spec ?? new BaseSpec();
-            BaseClasses = classes;
-            ID          = RandomIDGenerator.Generate();
+            OuterSpec = outerSpec;
+            InnerSpec = innerSpec;
+            ID        = RandomIDGenerator.Generate();
         }
+
+        internal InputBase(IJSRuntime jsRuntime, UnifiedSpec? spec)
+        {
+            JSRuntime = jsRuntime;
+            OuterSpec = spec?.ToSpec();
+            ID        = RandomIDGenerator.Generate();
+        }
+
+        internal InputBase(IJSRuntime jsRuntime, DualSpec? spec)
+        {
+            JSRuntime = jsRuntime;
+            OuterSpec = spec?.ToOuterSpec();
+            InnerSpec = spec?.ToInnerSpec();
+            ID        = RandomIDGenerator.Generate();
+        }
+
+        protected WriteOnlyHook? Refresher { get; set; }
 
         public abstract RenderFragment Renderer();
 
@@ -30,15 +46,13 @@ namespace Integrant4.Element.Inputs
         public abstract Task              SetValue(T? value, bool invokeOnChange = true);
         public abstract event Action<T?>? OnChange;
 
-        protected WriteOnlyHook? Refresher { get; set; }
-
         public void Refresh() => Refresher?.Invoke();
     }
 
     public partial class InputBase<T>
     {
-        internal readonly BaseSpec BaseSpec;
-        internal readonly ClassSet BaseClasses;
+        internal readonly SpecSet? InnerSpec;
+        internal readonly SpecSet? OuterSpec;
         internal readonly string   ID;
     }
 }

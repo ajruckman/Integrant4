@@ -33,7 +33,7 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Data?       Data            { get; init; }
             public Callbacks.Tooltip?    Tooltip         { get; init; }
 
-            internal BaseSpec ToBaseSpec() => new()
+            internal SpecSet ToBaseSpec() => new()
             {
                 Scaled = true,
 

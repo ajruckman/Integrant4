@@ -11,7 +11,7 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec
+        public class Spec : UnifiedSpec
         {
             public Callbacks.Callback<ushort>? Size { get; init; }
 
@@ -31,8 +31,9 @@ namespace Integrant4.Element.Bits
             public Callbacks.Data?    Data            { get; init; }
             public Callbacks.Tooltip? Tooltip         { get; init; }
 
-            internal BaseSpec ToBaseSpec() => new()
+            internal override SpecSet ToSpec() => new()
             {
+                BaseClasses     = new ClassSet("I4E-Bit", "I4E-Bit-Checkbox"),
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
                 IsChecked       = IsChecked,
@@ -52,8 +53,7 @@ namespace Integrant4.Element.Bits
 
     public partial class Checkbox
     {
-        public Checkbox(Spec? spec = null)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-Checkbox"))
+        public Checkbox(Spec? spec = null) : base(spec)
         {
             _size     = spec?.Size                ?? (() => 25);
             IsChecked = spec?.IsChecked?.Invoke() ?? false;
@@ -76,8 +76,8 @@ namespace Integrant4.Element.Bits
             builder.AddAttribute(++seq, "onclick",
                 EventCallback.Factory.Create<MouseEventArgs>(this, OnClick));
 
-            string[] ac = { !IsChecked ? "I4E-Bit-Checkbox--Unchecked" : "I4E-Bit-Checkbox--Checked" };
-            BitBuilder.ApplyAttributes(this, builder, ref seq, ac, null);
+            string[] ac = {!IsChecked ? "I4E-Bit-Checkbox--Unchecked" : "I4E-Bit-Checkbox--Checked"};
+            BitBuilder.ApplyOuterAttributes(this, builder, ref seq, ac);
 
             builder.OpenComponent<BootstrapIcon>(++seq);
             builder.AddAttribute(++seq, "ID",   !IsChecked ? "square" : "check-square-fill");
@@ -91,7 +91,7 @@ namespace Integrant4.Element.Bits
 
         private void OnClick(MouseEventArgs args)
         {
-            if (BaseSpec.IsDisabled?.Invoke() == true)
+            if (OuterSpec?.IsDisabled?.Invoke() == true)
                 return;
 
             IsChecked = !IsChecked;
@@ -102,7 +102,7 @@ namespace Integrant4.Element.Bits
 
         public void Reset()
         {
-            IsChecked = BaseSpec.IsChecked?.Invoke() ?? false;
+            IsChecked = OuterSpec?.IsChecked?.Invoke() ?? false;
             (_refresher ?? throw new ArgumentNullException()).Invoke();
         }
     }

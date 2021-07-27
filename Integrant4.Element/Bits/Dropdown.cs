@@ -10,7 +10,7 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec
+        public class Spec : UnifiedSpec
         {
             public PlacementExtensions.PlacementGetter? PlacementGetter { get; init; }
 
@@ -18,11 +18,12 @@ namespace Integrant4.Element.Bits
             public Callbacks.Size?    Margin  { get; init; }
             public Callbacks.Size?    Padding { get; init; }
 
-            internal BaseSpec ToBaseSpec() => new()
+            internal override SpecSet ToSpec() => new()
             {
-                Classes = Classes,
-                Margin  = Margin,
-                Padding = Padding,
+                BaseClasses = new ClassSet("I4E-Bit", "I4E-Bit-Dropdown"),
+                Classes     = Classes,
+                Margin      = Margin,
+                Padding     = Padding,
             };
         }
     }
@@ -37,8 +38,7 @@ namespace Integrant4.Element.Bits
             ContentRef headContents,
             ContentRef childContents,
             Spec?      spec = null
-        ) : base(spec?.ToBaseSpec(),
-            new ClassSet("I4E-Bit", "I4E-Bit-Dropdown"))
+        ) : base(spec)
         {
             _headContents    = headContents;
             _childContents   = childContents;
@@ -77,7 +77,7 @@ namespace Integrant4.Element.Bits
 
                 builder.OpenElement(++seq, "div");
 
-                BitBuilder.ApplyAttributes(Dropdown, builder, ref seq, null, null);
+                BitBuilder.ApplyOuterAttributes(Dropdown, builder, ref seq);
 
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "id",    Dropdown.ID + ".Head");

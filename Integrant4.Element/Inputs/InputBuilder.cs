@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Integrant4.Element.Inputs
@@ -12,57 +10,25 @@ namespace Integrant4.Element.Inputs
             InputBase<T>         inputBase,
             RenderTreeBuilder    builder,
             ref int              seq,
-            IEnumerable<string>? additionalClasses
-        )
-        {
-            builder.AddAttribute(++seq, "id", inputBase.ID);
-            builder.AddAttribute(++seq, "class",
-                ElementBuilder.ClassAttribute(inputBase.BaseClasses, inputBase.BaseSpec, additionalClasses));
-            ++seq;
-            if (inputBase.BaseSpec.IsVisible?.Invoke() == false)
-                builder.AddAttribute(seq, "hidden", true);
+            IEnumerable<string>? additionalClasses = null,
+            IEnumerable<string>? additionalStyles  = null
+        ) => ElementBuilder.ApplyAttributes(inputBase.ID, inputBase.OuterSpec, builder, ref seq,
+            additionalClasses, additionalStyles);
 
-            ++seq;
-            if (inputBase.BaseSpec.HighlightColor != null)
-                builder.AddAttribute(seq, "style", $"--I4E-Highlight: {inputBase.BaseSpec.HighlightColor.Invoke()};");
-
-            ++seq;
-            if (inputBase.BaseSpec.Tooltip != null)
-                builder.AddAttribute(seq, "data-i4e.tooltip", inputBase.BaseSpec.Tooltip.Invoke());
-
-            if (inputBase.BaseSpec.Data != null)
-                foreach ((string name, Callbacks.DataValue getter) in inputBase.BaseSpec.Data.Invoke())
-                    builder.AddAttribute(++seq, "data-" + name, getter.Invoke());
-        }
-
-        internal static void ApplyInnerAttributes<T>
+        internal static void ApplyInputAttributes<T>
         (
             InputBase<T>         inputBase,
             RenderTreeBuilder    builder,
             ref int              seq,
-            IEnumerable<string>? additionalStyles
-        )
-        {
-            builder.AddAttribute(++seq, "id", $"{inputBase.ID}.Inner");
-
-            builder.AddAttribute(++seq, "disabled", inputBase.BaseSpec.IsDisabled?.Invoke());
-            builder.AddAttribute(++seq, "required", inputBase.BaseSpec.IsRequired?.Invoke());
-
-            builder.AddAttribute(++seq, "style",
-                ElementBuilder.StyleAttribute(inputBase.BaseSpec, additionalStyles));
-        }
+            IEnumerable<string>? additionalClasses = null,
+            IEnumerable<string>? additionalStyles  = null
+        ) => ElementBuilder.ApplyAttributes(inputBase.ID, inputBase.InnerSpec, builder, ref seq,
+            additionalClasses, additionalStyles);
 
         internal static void ScheduleElementJobs<T>(InputBase<T> inputBase, RenderTreeBuilder builder, ref int seq)
         {
-            if (inputBase.BaseSpec.Tooltip == null) return;
-
-            List<Action<ElementService>> jobs = new();
-
-            if (inputBase.BaseSpec.Tooltip != null)
-                jobs.Add(v => v.AddJob((j, t) => Interop.CreateTooltips(j, t, inputBase.ID)));
-
-            if (jobs.Count > 0)
-                ServiceInjector<ElementService>.Inject(builder, ref seq, jobs.ToArray());
+            ElementBuilder.ScheduleElementJobs(inputBase.ID, inputBase.OuterSpec, builder, ref seq);
+            ElementBuilder.ScheduleElementJobs(inputBase.ID, inputBase.InnerSpec, builder, ref seq);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Integrant4.Element.Constructs.Headers
     [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
     public partial class HeaderLink : BitBase
     {
-        public class Spec
+        public class Spec : UnifiedSpec
         {
             public Callbacks.Callback<bool>? IsHighlighted { get; init; }
 
@@ -23,28 +23,28 @@ namespace Integrant4.Element.Constructs.Headers
             public Callbacks.Data?       Data       { get; init; }
             public Callbacks.Tooltip?    Tooltip    { get; init; }
 
-            internal BaseSpec ToBaseSpec() => new()
+            internal override SpecSet ToSpec() => new()
             {
-                IsVisible  = IsVisible,
-                IsDisabled = IsDisabled,
-                Classes    = Classes,
-                Margin     = Margin,
-                Padding    = Padding,
-                Data       = Data,
-                Tooltip    = Tooltip,
+                BaseClasses = new ClassSet("I4E-Construct", "I4E-Construct-" + nameof(HeaderLink)),
+                IsVisible   = IsVisible,
+                IsDisabled  = IsDisabled,
+                Classes     = Classes,
+                Margin      = Margin,
+                Padding     = Padding,
+                Data        = Data,
+                Tooltip     = Tooltip,
             };
         }
     }
 
     public partial class HeaderLink
     {
-        private readonly ContentRef                _content;
-        private readonly Callbacks.HREF            _href;
+        private readonly ContentRef        _content;
+        private readonly Callbacks.HREF    _href;
         private readonly Callbacks.Callback<bool>? _isHighlighted;
-        private readonly bool                      _doAutoHighlight;
+        private readonly bool              _doAutoHighlight;
 
-        public HeaderLink(ContentRef content, Callbacks.HREF href, Spec? spec = null)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Construct", "I4E-Construct-" + nameof(HeaderLink)))
+        public HeaderLink(ContentRef content, Callbacks.HREF href, Spec? spec = null) : base(spec)
         {
             _content = content;
             _href    = href;
@@ -87,10 +87,10 @@ namespace Integrant4.Element.Constructs.Headers
                 builder.OpenElement(++seq, "a");
                 builder.AddAttribute(++seq, "href", href);
 
-                BitBuilder.ApplyAttributes(HeaderLink, builder, ref seq,
+                BitBuilder.ApplyOuterAttributes(HeaderLink, builder, ref seq,
                     HeaderLink._isHighlighted?.Invoke() == true
                         ? new[] {"I4E-Construct-HeaderLink--Highlighted"}
-                        : null, null);
+                        : null);
 
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "class", "I4E-Construct-HeaderLink-Contents");

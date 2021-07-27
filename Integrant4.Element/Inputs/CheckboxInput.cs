@@ -11,7 +11,7 @@ namespace Integrant4.Element.Inputs
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec
+        public class Spec : DualSpec
         {
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -31,11 +31,10 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Data?       Data            { get; init; }
             public Callbacks.Tooltip?    Tooltip         { get; init; }
 
-            internal BaseSpec ToBaseSpec() => new()
+            internal override SpecSet ToOuterSpec() => new()
             {
+                BaseClasses     = new ClassSet("I4E-Input", "I4E-Input-Checkbox"),
                 IsVisible       = IsVisible,
-                IsDisabled      = IsDisabled,
-                IsRequired      = IsRequired,
                 Classes         = Classes,
                 Margin          = Margin,
                 Padding         = Padding,
@@ -45,11 +44,16 @@ namespace Integrant4.Element.Inputs
                 HeightMax       = HeightMax,
                 Width           = Width,
                 WidthMax        = WidthMax,
-                FontSize        = FontSize,
-                FontWeight      = FontWeight,
                 Display         = Display,
                 Data            = Data,
                 Tooltip         = Tooltip,
+            };
+
+            internal override SpecSet ToInnerSpec() => new()
+            {
+                IsDisabled = IsDisabled,
+                IsRequired = IsRequired, FontSize = FontSize,
+                FontWeight = FontWeight,
             };
         }
     }
@@ -65,8 +69,7 @@ namespace Integrant4.Element.Inputs
             IJSRuntime jsRuntime,
             bool       value,
             Spec?      spec = null
-        )
-            : base(jsRuntime, spec?.ToBaseSpec(), new ClassSet("I4E-Input", "I4E-Input-Checkbox"))
+        ) : base(jsRuntime, spec)
         {
             _jsRuntime = jsRuntime;
             Value      = value;
@@ -77,10 +80,10 @@ namespace Integrant4.Element.Inputs
             int seq = -1;
 
             builder.OpenElement(++seq, "div");
-            InputBuilder.ApplyOuterAttributes(this, builder, ref seq, null);
+            InputBuilder.ApplyOuterAttributes(this, builder, ref seq);
 
             builder.OpenElement(++seq, "input");
-            InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
+            InputBuilder.ApplyInputAttributes(this, builder, ref seq);
 
             builder.AddAttribute(++seq, "type",    "checkbox");
             builder.AddAttribute(++seq, "checked", Value);

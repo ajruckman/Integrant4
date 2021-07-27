@@ -41,7 +41,7 @@ namespace Integrant4.Element.Inputs
 
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec
+        public class Spec : DualSpec
         {
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -61,13 +61,11 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Data?       Data            { get; init; }
             public Callbacks.Tooltip?    Tooltip         { get; init; }
 
-            internal BaseSpec ToBaseSpec() => new()
+            internal override SpecSet ToOuterSpec() => new()
             {
-                Scaled = true,
-
+                BaseClasses = new ClassSet("I4E-Input", "I4E-Input-SelectInput"),
+                Scaled          = true,
                 IsVisible       = IsVisible,
-                IsDisabled      = IsDisabled,
-                IsRequired      = IsRequired,
                 Classes         = Classes,
                 Margin          = Margin,
                 Padding         = Padding,
@@ -78,10 +76,16 @@ namespace Integrant4.Element.Inputs
                 Width           = Width,
                 WidthMax        = WidthMax,
                 Scale           = Scale,
-                FontWeight      = FontWeight,
                 Display         = Display,
                 Data            = Data,
                 Tooltip         = Tooltip,
+            };
+
+            internal override SpecSet ToInnerSpec() => new()
+            {
+                IsDisabled = IsDisabled,
+                IsRequired = IsRequired,
+                FontWeight = FontWeight,
             };
         }
     }
@@ -105,7 +109,7 @@ namespace Integrant4.Element.Inputs
             OptionGetter            optionGetter,
             OptionEqualityComparer? optionEqualityComparer = null,
             Spec?                   spec                   = null
-        ) : base(jsRuntime, spec?.ToBaseSpec(), new ClassSet("I4E-Input", "I4E-Input-SelectInput"))
+        ) : base(jsRuntime, spec)
         {
             _optionGetter = optionGetter;
 
@@ -146,8 +150,8 @@ namespace Integrant4.Element.Inputs
 
             builder.OpenElement(++seq, "select");
             builder.AddAttribute(++seq, "oninput",  EventCallback.Factory.Create(this, Change));
-            builder.AddAttribute(++seq, "disabled", BaseSpec.IsDisabled?.Invoke());
-            builder.AddAttribute(++seq, "required", BaseSpec.IsRequired?.Invoke());
+            builder.AddAttribute(++seq, "disabled", SpecSet.IsDisabled?.Invoke());
+            builder.AddAttribute(++seq, "required", SpecSet.IsRequired?.Invoke());
 
             lock (_optionCacheLock)
             {

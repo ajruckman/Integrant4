@@ -15,24 +15,25 @@ namespace Integrant4.Element.Bits
         private static readonly BootstrapIcon DownIcon = new("caret-down-fill", 16);
         private static readonly BootstrapIcon UpIcon   = new("caret-up-fill", 16);
 
-        private readonly Hook _hook;
-
-        private readonly Button? _button;
+        private readonly Hook                _hook;
+        private readonly Button?             _button;
+        private readonly Button.StyleGetter? _buttonStyle;
 
         private WriteOnlyHook? _refresher;
 
         public Expander
         (
-            ContentRef expandContent,
-            ContentRef contractContent,
-            Spec?      spec = null
+            ContentRef          expandContent,
+            ContentRef          contractContent,
+            Button.StyleGetter? buttonStyle = null
         )
         {
-            _hook = new Hook();
+            _buttonStyle = buttonStyle;
+            _hook        = new Hook();
 
             IRenderable[] Contents() => Expanded
-                ? new IRenderable[] { contractContent, UpIcon }
-                : new IRenderable[] { expandContent, DownIcon };
+                ? new IRenderable[] {contractContent, UpIcon}
+                : new IRenderable[] {expandContent, DownIcon};
 
             _button = new Button
             (
@@ -40,7 +41,7 @@ namespace Integrant4.Element.Bits
                 new Button.Spec
                 {
                     Style = () =>
-                        spec?.ButtonStyle?.Invoke() ??
+                        _buttonStyle?.Invoke() ??
                         (!Expanded ? Button.Style.Transparent : Button.Style.AccentTransparent),
                     IsSmall = null,
                     OnClick = (_, _) =>
@@ -103,20 +104,18 @@ namespace Integrant4.Element.Bits
 
         static Expander()
         {
-            DefaultExpandableHeaderNotice = new RenderableArray(new IRenderable[]
-            {
+            DefaultExpandableHeaderNotice = new RenderableArray
+            (
                 new Filler(),
-                new TextBlock(ContentRef.Static("Click to expand"), new TextBlock.Spec
-                {
-                    Padding         = () => new Size(0, 3),
-                    ForegroundColor = () => Constants.Text_2,
-                }),
-            });
-        }
-
-        public class Spec
-        {
-            public Button.StyleGetter? ButtonStyle { get; init; }
+                new TextBlock
+                (
+                    ContentRef.Static("Click to expand"), new TextBlock.Spec
+                    {
+                        Padding         = () => new Size(0, 3),
+                        ForegroundColor = () => Constants.Text_2,
+                    }
+                )
+            );
         }
     }
 }

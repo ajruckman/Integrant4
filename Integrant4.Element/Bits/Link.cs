@@ -11,7 +11,7 @@ namespace Integrant4.Element.Bits
     [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
     public partial class Link : BitBase
     {
-        public class Spec
+        public class Spec : DualSpec
         {
             public Spec(Callbacks.HREF href)
             {
@@ -23,25 +23,28 @@ namespace Integrant4.Element.Bits
             public Callbacks.Callback<bool>? IsAccented    { get; init; }
             public Callbacks.Callback<bool>? IsHighlighted { get; init; }
 
-            public Callbacks.IsVisible?  IsVisible       { get; init; }
-            public Callbacks.IsDisabled? IsDisabled      { get; init; }
-            public Callbacks.Classes?    Classes         { get; init; }
-            public Callbacks.Size?       Margin          { get; init; }
-            public Callbacks.Size?       Padding         { get; init; }
-            public Callbacks.Color?      BackgroundColor { get; init; }
-            public Callbacks.Color?      ForegroundColor { get; init; }
-            public Callbacks.Unit?       Height          { get; init; }
-            public Callbacks.Unit?       HeightMax       { get; init; }
-            public Callbacks.Unit?       Width           { get; init; }
-            public Callbacks.Unit?       WidthMax        { get; init; }
-            public Callbacks.Scale?      Scale           { get; init; }
-            public Callbacks.FontWeight? FontWeight      { get; init; }
-            public Callbacks.Display?    Display         { get; init; }
-            public Callbacks.Data?       Data            { get; init; }
-            public Callbacks.Tooltip?    Tooltip         { get; init; }
+            public Callbacks.IsVisible?   IsVisible       { get; init; }
+            public Callbacks.IsDisabled?  IsDisabled      { get; init; }
+            public Callbacks.Classes?     Classes         { get; init; }
+            public Callbacks.Size?        Margin          { get; init; }
+            public Callbacks.Size?        Padding         { get; init; }
+            public Callbacks.Color?       BackgroundColor { get; init; }
+            public Callbacks.Color?       ForegroundColor { get; init; }
+            public Callbacks.Unit?        Height          { get; init; }
+            public Callbacks.Unit?        HeightMax       { get; init; }
+            public Callbacks.Unit?        Width           { get; init; }
+            public Callbacks.Unit?        WidthMax        { get; init; }
+            public Callbacks.Scale?       Scale           { get; init; }
+            public Callbacks.FontWeight?  FontWeight      { get; init; }
+            public Callbacks.Display?     Display         { get; init; }
+            public Callbacks.FlexAlign?   FlexAlign       { get; init; }
+            public Callbacks.FlexJustify? FlexJustify     { get; init; }
+            public Callbacks.Data?        Data            { get; init; }
+            public Callbacks.Tooltip?     Tooltip         { get; init; }
 
-            internal BaseSpec ToBaseSpec() => new()
+            internal override SpecSet ToOuterSpec() => new()
             {
+                BaseClasses     = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Link)),
                 Scaled          = true,
                 IsVisible       = IsVisible,
                 IsDisabled      = IsDisabled,
@@ -56,10 +59,16 @@ namespace Integrant4.Element.Bits
                 Width           = Width,
                 WidthMax        = WidthMax,
                 Scale           = Scale,
-                FontWeight      = FontWeight,
                 Display         = Display,
                 Data            = Data,
                 Tooltip         = Tooltip,
+            };
+
+            internal override SpecSet ToInnerSpec() => new()
+            {
+                FontWeight  = FontWeight,
+                FlexAlign   = FlexAlign,
+                FlexJustify = FlexJustify,
             };
         }
     }
@@ -70,8 +79,7 @@ namespace Integrant4.Element.Bits
         private readonly Callbacks.Callback<bool>? _isAccented;
         private readonly Callbacks.Callback<bool>? _isHighlighted;
 
-        public Link(ContentRef content, Spec spec)
-            : base(spec.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Link)))
+        public Link(ContentRef content, Spec spec) : base(spec)
         {
             _content       = content;
             _isAccented    = spec.IsAccented;
@@ -97,14 +105,14 @@ namespace Integrant4.Element.Bits
 
                 int seq = -1;
                 builder.OpenElement(++seq, "a");
-                builder.AddAttribute(++seq, "href", BaseSpec.HREF!.Invoke());
+                builder.AddAttribute(++seq, "href", OuterSpec!.HREF!.Invoke());
 
-                BitBuilder.ApplyAttributes(this, builder, ref seq, ac.ToArray(), null);
+                BitBuilder.ApplyOuterAttributes(this, builder, ref seq, ac.ToArray());
 
                 builder.OpenElement(++seq, "span");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Link-Contents");
 
-                BitBuilder.ApplyContentAttributes(this, builder, ref seq);
+                BitBuilder.ApplyInnerAttributes(this, builder, ref seq);
 
                 foreach (IRenderable renderable in _content.GetAll())
                 {

@@ -9,15 +9,16 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec
+        public class Spec : UnifiedSpec
         {
             public Callbacks.IsVisible? IsVisible { get; init; }
             public Callbacks.Classes?   Classes   { get; init; }
             public Callbacks.Size?      Margin    { get; init; }
             public Callbacks.Unit?      Height    { get; init; }
 
-            internal BaseSpec ToBaseSpec() => new()
+            internal override SpecSet ToSpec() => new()
             {
+                BaseClasses = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Separator)),
                 IsVisible = IsVisible,
                 Classes   = Classes,
                 Margin    = Margin,
@@ -28,8 +29,7 @@ namespace Integrant4.Element.Bits
 
     public partial class Separator
     {
-        public Separator(Spec? spec = null)
-            : base(spec?.ToBaseSpec(), new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Separator))) { }
+        public Separator(Spec? spec = null) : base(spec) { }
     }
 
     public partial class Separator
@@ -41,7 +41,7 @@ namespace Integrant4.Element.Bits
                 int seq = -1;
                 builder.OpenElement(++seq, "div");
 
-                BitBuilder.ApplyAttributes(this, builder, ref seq, null, null);
+                BitBuilder.ApplyOuterAttributes(this, builder, ref seq);
 
                 builder.OpenElement(++seq, "span");
                 builder.CloseElement();

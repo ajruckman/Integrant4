@@ -1,147 +1,116 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Integrant4.Fundament;
+using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Integrant4.Element
 {
+    public abstract class UnifiedSpec
+    {
+        internal abstract SpecSet? ToSpec();
+    }
+
+    public abstract class DualSpec
+    {
+        internal abstract SpecSet? ToOuterSpec();
+        internal abstract SpecSet? ToInnerSpec();
+    }
+
     internal static class ElementBuilder
     {
-        internal static string ClassAttribute(ClassSet baseSet, BaseSpec spec, IEnumerable<string>? additional)
+        internal static void ApplyAttributes
+        (
+            string               id,
+            SpecSet?             spec,
+            RenderTreeBuilder    builder,
+            ref int              seq,
+            IEnumerable<string>? additionalClasses,
+            IEnumerable<string>? additionalStyles
+        )
         {
-            ClassSet c = baseSet.Clone();
+            builder.AddAttribute(++seq, "id",    id);
+            builder.AddAttribute(++seq, "class", spec?.ClassAttribute(additionalClasses));
+            builder.AddAttribute(++seq, "style", spec?.StyleAttribute(additionalStyles));
 
-            if (additional != null)
-                c.AddRange(additional);
-            if (spec.Classes != null)
-                c.AddRange(spec.Classes.Invoke());
+            ++seq;
+            if (spec?.IsVisible?.Invoke() == false)
+                builder.AddAttribute(seq, "hidden", true);
 
-            if (spec.IsDisabled?.Invoke() == true)
-                c.Add("I4E-Bit--Disabled");
-            if (spec.IsRequired?.Invoke() == true)
-                c.Add("I4E-Bit--Required");
-            if (!string.IsNullOrEmpty(spec.HighlightColor?.Invoke()))
-                c.Add("I4E-Bit--Highlighted");
+            builder.AddAttribute(++seq, "disabled", spec?.IsDisabled?.Invoke());
+            builder.AddAttribute(++seq, "required", spec?.IsRequired?.Invoke());
 
-            return c.ToString();
-        }
+            ++seq;
+            if (spec?.HighlightColor != null)
+                builder.AddAttribute(seq, "style", $"--I4E-Highlight: {spec.HighlightColor.Invoke()};");
 
-        internal static string? StyleAttribute(BaseSpec spec, IEnumerable<string>? additional)
-        {
-            List<string> result = new();
-
-            if (spec.Margin != null)
+            if (spec?.Tooltip == null)
             {
-                Size v = spec.Margin.Invoke();
-                result.Add($"margin: {v.Serialize()};");
-            }
-
-            if (spec.Padding != null)
-            {
-                Size v = spec.Padding.Invoke();
-                result.Add($"padding: {v.Serialize()};");
-            }
-
-            if (spec.BackgroundColor != null)
-            {
-                result.Add($"background-color: {spec.BackgroundColor.Invoke()};");
-            }
-
-            if (spec.ForegroundColor != null)
-            {
-                result.Add($"color: {spec.ForegroundColor.Invoke()};");
-            }
-
-            if (spec.Height != null)
-            {
-                result.Add($"height: {spec.Height.Invoke().Serialize()};");
-            }
-
-            if (spec.HeightMax != null)
-            {
-                result.Add($"max-height: {spec.HeightMax.Invoke().Serialize()};");
-            }
-
-            if (spec.Width != null)
-            {
-                result.Add($"width: {spec.Width.Invoke().Serialize()};");
-            }
-
-            if (spec.WidthMax != null)
-            {
-                result.Add($"max-width: {spec.WidthMax.Invoke().Serialize()};");
-            }
-
-            if (spec.FontWeight != null)
-            {
-                result.Add($"font-weight: {(int) spec.FontWeight.Invoke()};");
-            }
-
-            if (spec.TextAlign != null)
-            {
-                string align = spec.TextAlign.Invoke() switch
-                {
-                    TextAlign.Left   => "left",
-                    TextAlign.Center => "center",
-                    TextAlign.Right  => "right",
-                    _                => throw new ArgumentOutOfRangeException(),
-                };
-
-                result.Add($"text-align: {align};");
-            }
-
-            if (spec.Display != null)
-            {
-                string display = spec.Display.Invoke() switch
-                {
-                    Display.Undefined   => "unset",
-                    Display.Inline      => "inline",
-                    Display.InlineBlock => "inline-block",
-                    Display.Block       => "block",
-                    _                   => throw new ArgumentOutOfRangeException(),
-                };
-                result.Add($"display: {display};");
-            }
-
-            //
-
-            if (!spec.Scaled)
-            {
-                if (spec.FontSize != null)
-                {
-                    result.Add($"font-size: {spec.FontSize.Invoke()}rem;");
-                }
+                Console.Write($"SEQ {seq} += 4 -> ");
             }
             else
             {
-                if (spec.Scale != null)
+                Console.Write($"SEQ {seq} -> ");
+                Tooltip? t = spec.Tooltip.Invoke();
+                if (t != null)
                 {
-                    result.Add($"font-size: {spec.Scale.Invoke()}rem;");
+                    builder.AddAttribute(++seq, "data-i4e.tooltip-text",      t.Value.Text);
+                    builder.AddAttribute(++seq, "data-i4e.tooltip-delay",     t.Value.Delay ?? 0);
+                    builder.AddAttribute(++seq, "data-i4e.tooltip-follow",    t.Value.Follow.Map());
+                    builder.AddAttribute(++seq, "data-i4e.tooltip-placement", t.Value.Placement.Map());
                 }
+                else seq += 4;
             }
 
-            //
+            Console.WriteLine(seq);
 
-            if (additional != null)
-                result.AddRange(additional);
-
-            return result.Any() ? string.Join(' ', result) : null;
+            if (spec?.Data != null)
+                foreach ((string name, Callbacks.DataValue getter) in spec.Data.Invoke())
+                    builder.AddAttribute(++seq, "data-" + name, getter.Invoke());
         }
 
-        internal static string? ContentStyleAttribute(BaseSpec spec)
+        internal static void ScheduleElementJobs(string id, SpecSet? spec, RenderTreeBuilder builder, ref int seq)
         {
-            List<string> result = new(3);
+            if (spec?.Tooltip == null) return;
 
-            if (spec.FontSize != null)
-                result.Add($"font-size: {spec.FontSize.Invoke()}rem;");
+            List<Action<ElementService>> jobs = new()
+                {v => v.AddJob((j, t) => Interop.CreateTooltips(j, t, id))};
 
-            if (spec.FlexAlign != null)
-                result.Add($"align-items: {spec.FlexAlign.Invoke().Serialize()}");
-
-            if (spec.FlexJustify != null)
-                result.Add($"justify-content: {spec.FlexJustify.Invoke().Serialize()}");
-
-            return result.Any() ? string.Join(' ', result) : null;
+            ServiceInjector<ElementService>.Inject(builder, ref seq, jobs.ToArray());
         }
+
+        // internal static string ClassAttribute(ClassSet baseSet, SpecSet specSet, IEnumerable<string>? additional)
+        // {
+        //     ClassSet c = baseSet.Clone();
+        //
+        //     if (additional != null)
+        //         c.AddRange(additional);
+        //     if (specSet.Classes != null)
+        //         c.AddRange(specSet.Classes.Invoke());
+        //
+        //     if (specSet.IsDisabled?.Invoke() == true)
+        //         c.Add("I4E-Bit--Disabled");
+        //     if (specSet.IsRequired?.Invoke() == true)
+        //         c.Add("I4E-Bit--Required");
+        //     if (!string.IsNullOrEmpty(specSet.HighlightColor?.Invoke()))
+        //         c.Add("I4E-Bit--Highlighted");
+        //
+        //     return c.ToString();
+        // }
+        //
+        // internal static string? ContentStyleAttribute(SpecSet specSet)
+        // {
+        //     List<string> result = new(3);
+        //
+        //     if (specSet.FontSize != null)
+        //         result.Add($"font-size: {specSet.FontSize.Invoke()}rem;");
+        //
+        //     if (specSet.FlexAlign != null)
+        //         result.Add($"align-items: {specSet.FlexAlign.Invoke().Serialize()}");
+        //
+        //     if (specSet.FlexJustify != null)
+        //         result.Add($"justify-content: {specSet.FlexJustify.Invoke().Serialize()}");
+        //
+        //     return result.Any() ? string.Join(' ', result) : null;
+        // }
     }
 }
