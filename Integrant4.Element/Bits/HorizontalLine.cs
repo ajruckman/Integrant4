@@ -10,6 +10,8 @@ namespace Integrant4.Element.Bits
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec : UnifiedSpec
         {
+            internal static readonly Spec Default = new();
+
             public Callbacks.IsVisible? IsVisible { get; init; }
             public Callbacks.Size?      Margin    { get; init; }
             public Callbacks.Color?     Color     { get; init; }
@@ -31,7 +33,7 @@ namespace Integrant4.Element.Bits
     public partial class HorizontalLine
     {
         public HorizontalLine(Spec? spec = null)
-            : base(spec) { }
+            : base(spec ?? Spec.Default) { }
 
         public HorizontalLine(Callbacks.Size margin, Spec? spec = null)
             : base(TransformShorthand(spec, margin)) { }

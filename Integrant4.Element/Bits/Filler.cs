@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Integrant4.Element.Bits
 {
-    public partial class Filler : IBit
+    public class Filler : IBit
     {
         private readonly Callbacks.IsVisible? _isVisible;
 

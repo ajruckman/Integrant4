@@ -13,6 +13,8 @@ namespace Integrant4.Element.Bits
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec : UnifiedSpec
         {
+            internal static readonly Spec Default = new();
+
             public Callbacks.Callback<ushort>? Size { get; init; }
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
@@ -53,7 +55,7 @@ namespace Integrant4.Element.Bits
 
     public partial class Checkbox
     {
-        public Checkbox(Spec? spec = null) : base(spec)
+        public Checkbox(Spec? spec = null) : base(spec ?? Spec.Default)
         {
             _size     = spec?.Size                ?? (() => 25);
             IsChecked = spec?.IsChecked?.Invoke() ?? false;
@@ -76,11 +78,11 @@ namespace Integrant4.Element.Bits
             builder.AddAttribute(++seq, "onclick",
                 EventCallback.Factory.Create<MouseEventArgs>(this, OnClick));
 
-            string[] ac = {!IsChecked ? "I4E-Bit-Checkbox--Unchecked" : "I4E-Bit-Checkbox--Checked"};
+            string[] ac = { !IsChecked ? "I4E-Bit-Checkbox--Unchecked" : "I4E-Bit-Checkbox--Checked" };
             BitBuilder.ApplyOuterAttributes(this, builder, ref seq, ac);
 
             builder.OpenComponent<BootstrapIcon>(++seq);
-            builder.AddAttribute(++seq, "ID",   !IsChecked ? "square" : "check-square-fill");
+            builder.AddAttribute(++seq, "ID", !IsChecked ? "square" : "check-square-fill");
             builder.AddAttribute(++seq, "Size", _size.Invoke());
             builder.CloseComponent();
 

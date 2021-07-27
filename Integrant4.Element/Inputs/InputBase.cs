@@ -14,7 +14,7 @@ namespace Integrant4.Element.Inputs
         protected ElementReference Reference;
         protected T?               Value;
 
-        internal InputBase(IJSRuntime jsRuntime, SpecSet? outerSpec, SpecSet? innerSpec)
+        internal InputBase(IJSRuntime jsRuntime, SpecSet outerSpec, SpecSet innerSpec)
         {
             JSRuntime = jsRuntime;
             OuterSpec = outerSpec;
@@ -22,18 +22,18 @@ namespace Integrant4.Element.Inputs
             ID        = RandomIDGenerator.Generate();
         }
 
-        internal InputBase(IJSRuntime jsRuntime, UnifiedSpec? spec)
+        internal InputBase(IJSRuntime jsRuntime, UnifiedSpec spec)
         {
             JSRuntime = jsRuntime;
-            OuterSpec = spec?.ToSpec();
+            OuterSpec = spec.ToSpec();
             ID        = RandomIDGenerator.Generate();
         }
 
-        internal InputBase(IJSRuntime jsRuntime, DualSpec? spec)
+        internal InputBase(IJSRuntime jsRuntime, DualSpec spec)
         {
             JSRuntime = jsRuntime;
-            OuterSpec = spec?.ToOuterSpec();
-            InnerSpec = spec?.ToInnerSpec();
+            OuterSpec = spec.ToOuterSpec();
+            InnerSpec = spec.ToInnerSpec();
             ID        = RandomIDGenerator.Generate();
         }
 

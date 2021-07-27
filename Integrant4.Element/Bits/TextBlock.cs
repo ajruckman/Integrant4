@@ -12,6 +12,8 @@ namespace Integrant4.Element.Bits
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec : UnifiedSpec
         {
+            internal static readonly Spec Default = new();
+
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
             public Callbacks.Classes?    Classes         { get; init; }
@@ -58,7 +60,7 @@ namespace Integrant4.Element.Bits
     {
         private readonly ContentRef _content;
 
-        public TextBlock(ContentRef content, Spec? spec = null) : base(spec)
+        public TextBlock(ContentRef content, Spec? spec = null) : base(spec ?? Spec.Default)
         {
             _content = content;
         }

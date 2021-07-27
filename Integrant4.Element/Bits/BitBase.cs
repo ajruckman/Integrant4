@@ -9,27 +9,26 @@ namespace Integrant4.Element.Bits
         internal readonly SpecSet? OuterSpec;
         internal readonly string   ID;
 
-        internal BitBase(SpecSet? outerSpec, SpecSet? innerSpec)
+        internal BitBase(SpecSet outerSpec, SpecSet innerSpec)
         {
             OuterSpec = outerSpec;
             InnerSpec = innerSpec;
             ID        = RandomIDGenerator.Generate();
         }
 
-        internal BitBase(UnifiedSpec? spec)
+        internal BitBase(UnifiedSpec spec)
         {
-            OuterSpec = spec?.ToSpec();
+            OuterSpec = spec.ToSpec();
             ID        = RandomIDGenerator.Generate();
         }
 
-        internal BitBase(DualSpec? spec)
+        internal BitBase(DualSpec spec)
         {
-            OuterSpec = spec?.ToOuterSpec();
-            InnerSpec = spec?.ToInnerSpec();
+            OuterSpec = spec.ToOuterSpec();
+            InnerSpec = spec.ToInnerSpec();
             ID        = RandomIDGenerator.Generate();
         }
 
         public abstract RenderFragment Renderer();
     }
-
 }

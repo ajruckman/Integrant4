@@ -5,8 +5,12 @@ using Integrant4.Fundament;
 
 namespace Integrant4.Element
 {
-    internal partial class SpecSet
+    public partial class SpecSet
     {
+        internal SpecSet()
+        {
+        }
+
         internal ClassSet? BaseClasses { get; init; }
         internal bool      Scaled      { get; init; }
 
@@ -37,7 +41,7 @@ namespace Integrant4.Element
         internal Callbacks.Scale?       Scale           { get; init; }
     }
 
-    internal partial class SpecSet
+    public partial class SpecSet
     {
         internal string? ClassAttribute(IEnumerable<string>? additional)
         {
@@ -56,7 +60,7 @@ namespace Integrant4.Element
             if (additional != null)
                 c.AddRange(additional);
 
-            return c.ToString();
+            return c.Length > 0 ? c.ToString() : null;
         }
 
         internal string? StyleAttribute(IEnumerable<string>? additional)
@@ -107,7 +111,7 @@ namespace Integrant4.Element
 
             if (FontWeight != null)
             {
-                result.Add($"font-weight: {(int) FontWeight.Invoke()};");
+                result.Add($"font-weight: {(int)FontWeight.Invoke()};");
             }
 
             if (TextAlign != null)

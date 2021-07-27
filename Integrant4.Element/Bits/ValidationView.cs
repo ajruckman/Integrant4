@@ -15,6 +15,8 @@ namespace Integrant4.Element.Bits
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec : UnifiedSpec
         {
+            internal static readonly Spec Default = new();
+
             public StyleGetter? Style { get; init; }
 
             public Callbacks.IsVisible? IsVisible { get; init; }
@@ -37,7 +39,7 @@ namespace Integrant4.Element.Bits
         private bool                        _isInProgress;
         private IReadOnlyList<IValidation>? _validations;
 
-        public ValidationView(Spec? spec = null) : base(spec)
+        public ValidationView(Spec? spec = null) : base(spec ?? Spec.Default)
         {
             _styleGetter = spec?.Style ?? DefaultStyleGetter;
         }

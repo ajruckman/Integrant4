@@ -11,8 +11,10 @@ namespace Integrant4.Element.Inputs
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec
+        public class Spec : DualSpec
         {
+            internal static readonly Spec Default = new();
+
             public Callbacks.Callback<string>? Placeholder { get; init; }
             public Callbacks.Callback<bool>?   IsClearable { get; init; }
 
@@ -35,13 +37,11 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Data?       Data            { get; init; }
             public Callbacks.Tooltip?    Tooltip         { get; init; }
 
-            internal SpecSet ToBaseSpec() => new()
+            internal override SpecSet ToOuterSpec() => new()
             {
-                Scaled = true,
-
+                BaseClasses     = new ClassSet("I4E-Input", "I4E-Input-Text"),
+                Scaled          = true,
                 IsVisible       = IsVisible,
-                IsDisabled      = IsDisabled,
-                IsRequired      = IsRequired,
                 Classes         = Classes,
                 Margin          = Margin,
                 Padding         = Padding,
@@ -53,10 +53,16 @@ namespace Integrant4.Element.Inputs
                 Width           = Width,
                 WidthMax        = WidthMax,
                 Scale           = Scale,
-                FontWeight      = FontWeight,
                 Display         = Display,
                 Data            = Data,
                 Tooltip         = Tooltip,
+            };
+
+            internal override SpecSet ToInnerSpec() => new()
+            {
+                IsDisabled = IsDisabled,
+                IsRequired = IsRequired,
+                FontWeight = FontWeight,
             };
         }
     }
@@ -72,7 +78,7 @@ namespace Integrant4.Element.Inputs
             string?    value,
             Spec?      spec = null
         )
-            : base(jsRuntime, spec?.ToBaseSpec(), new ClassSet("I4E-Input", "I4E-Input-Text"))
+            : base(jsRuntime, spec ?? Spec.Default)
         {
             _placeholder = spec?.Placeholder;
             _isClearable = spec?.IsClearable;
@@ -92,11 +98,11 @@ namespace Integrant4.Element.Inputs
             );
 
             builder.OpenElement(++seq, "input");
-            InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
+            InputBuilder.ApplyInputAttributes(this, builder, ref seq);
 
-            builder.AddAttribute(++seq, "type",        "text");
-            builder.AddAttribute(++seq, "value",       Serialize(Value));
-            builder.AddAttribute(++seq, "oninput",     EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "type", "text");
+            builder.AddAttribute(++seq, "value", Serialize(Value));
+            builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
             builder.AddAttribute(++seq, "placeholder", _placeholder?.Invoke());
 
             builder.AddElementReferenceCapture(++seq, r => Reference = r);
@@ -105,12 +111,12 @@ namespace Integrant4.Element.Inputs
             if (_isClearable?.Invoke() == true)
             {
                 ushort  size  = 16;
-                double? scale = SpecSet.Scale?.Invoke();
+                double? scale = OuterSpec!.Scale?.Invoke();
                 if (scale != null)
-                    size = (ushort) (size * scale);
+                    size = (ushort)(size * scale);
 
                 builder.OpenElement(++seq, "button");
-                builder.AddAttribute(++seq, "class",   "I4E-Input-Text-ClearButton");
+                builder.AddAttribute(++seq, "class", "I4E-Input-Text-ClearButton");
                 builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, OnClearClick));
                 ++seq;
                 if (scale != null)

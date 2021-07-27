@@ -43,6 +43,8 @@ namespace Integrant4.Element.Inputs
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec : DualSpec
         {
+            internal static readonly Spec Default = new();
+
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
             public Callbacks.IsRequired? IsRequired      { get; init; }
@@ -109,7 +111,7 @@ namespace Integrant4.Element.Inputs
             OptionGetter            optionGetter,
             OptionEqualityComparer? optionEqualityComparer = null,
             Spec?                   spec                   = null
-        ) : base(jsRuntime, spec)
+        ) : base(jsRuntime, spec ?? Spec.Default)
         {
             _optionGetter = optionGetter;
 
@@ -150,8 +152,8 @@ namespace Integrant4.Element.Inputs
 
             builder.OpenElement(++seq, "select");
             builder.AddAttribute(++seq, "oninput",  EventCallback.Factory.Create(this, Change));
-            builder.AddAttribute(++seq, "disabled", SpecSet.IsDisabled?.Invoke());
-            builder.AddAttribute(++seq, "required", SpecSet.IsRequired?.Invoke());
+            builder.AddAttribute(++seq, "disabled", InnerSpec!.IsDisabled?.Invoke());
+            builder.AddAttribute(++seq, "required", InnerSpec!.IsRequired?.Invoke());
 
             lock (_optionCacheLock)
             {

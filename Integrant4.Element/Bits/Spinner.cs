@@ -11,6 +11,8 @@ namespace Integrant4.Element.Bits
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec : UnifiedSpec
         {
+            internal static readonly Spec Default = new();
+
             public Callbacks.Callback<string>? Text  { get; init; }
             public StyleGetter?                Style { get; init; }
 
@@ -38,7 +40,7 @@ namespace Integrant4.Element.Bits
         private readonly Callbacks.REM?        _fontSize;
         private readonly Callbacks.FontWeight? _fontWeight;
 
-        public Spinner(Spec? spec = null) : base(spec)
+        public Spinner(Spec? spec = null) : base(spec ?? Spec.Default)
         {
             _text  = spec?.Text;
             _style = spec?.Style ?? DefaultStyleGetter;

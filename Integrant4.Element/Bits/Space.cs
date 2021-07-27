@@ -10,6 +10,8 @@ namespace Integrant4.Element.Bits
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec : UnifiedSpec
         {
+            internal static readonly Spec Default = new();
+
             public Callbacks.IsVisible? IsVisible { get; init; }
             public Callbacks.Classes?   Classes   { get; init; }
             public Callbacks.Unit?      Height    { get; init; }
@@ -29,7 +31,7 @@ namespace Integrant4.Element.Bits
     public partial class Space
     {
         public Space(Spec? spec = null)
-            : base(spec) { }
+            : base(spec ?? Spec.Default) { }
 
         public Space(Callbacks.Unit width, Spec? spec = null)
             : base(TransformShorthand(spec, width)) { }

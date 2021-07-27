@@ -9,8 +9,10 @@ namespace Integrant4.Element.Inputs
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec
+        public class Spec : DualSpec
         {
+            internal static readonly Spec Default = new();
+
             public Callbacks.Callback<string>? Placeholder { get; init; }
             public Callbacks.Callback<int>?    Rows        { get; init; }
             public Callbacks.Callback<int>?    Columns     { get; init; }
@@ -33,13 +35,11 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Data?       Data            { get; init; }
             public Callbacks.Tooltip?    Tooltip         { get; init; }
 
-            internal SpecSet ToBaseSpec() => new()
+            internal override SpecSet ToOuterSpec() => new()
             {
-                Scaled = true,
-
+                BaseClasses     = new ClassSet("I4E-Input", "I4E-Input-TextArea"),
+                Scaled          = true,
                 IsVisible       = IsVisible,
-                IsDisabled      = IsDisabled,
-                IsRequired      = IsRequired,
                 Classes         = Classes,
                 Margin          = Margin,
                 Padding         = Padding,
@@ -50,10 +50,16 @@ namespace Integrant4.Element.Inputs
                 Width           = Width,
                 WidthMax        = WidthMax,
                 Scale           = Scale,
-                FontWeight      = FontWeight,
                 Display         = Display,
                 Data            = Data,
                 Tooltip         = Tooltip,
+            };
+
+            internal override SpecSet ToInnerSpec() => new()
+            {
+                IsDisabled = IsDisabled,
+                IsRequired = IsRequired,
+                FontWeight = FontWeight,
             };
         }
     }
@@ -70,7 +76,7 @@ namespace Integrant4.Element.Inputs
             string?    value,
             Spec?      spec = null
         )
-            : base(jsRuntime, spec?.ToBaseSpec(), new ClassSet("I4E-Input", "I4E-Input-TextArea"))
+            : base(jsRuntime, spec ?? Spec.Default)
         {
             _placeholder = spec?.Placeholder;
             _rows        = spec?.Rows;
@@ -84,12 +90,12 @@ namespace Integrant4.Element.Inputs
             int seq = -1;
 
             builder.OpenElement(++seq, "div");
-            InputBuilder.ApplyOuterAttributes(this, builder, ref seq, null);
+            InputBuilder.ApplyOuterAttributes(this, builder, ref seq);
 
             builder.OpenElement(++seq, "textarea");
-            InputBuilder.ApplyInnerAttributes(this, builder, ref seq, null);
+            InputBuilder.ApplyInputAttributes(this, builder, ref seq);
 
-            builder.AddAttribute(++seq, "oninput",     EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
             builder.AddAttribute(++seq, "placeholder", _placeholder?.Invoke());
 
             if (_rows    != null) builder.AddAttribute(++seq, "rows", _rows.Invoke());

@@ -11,6 +11,8 @@ namespace Integrant4.Element.Inputs
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec : DualSpec
         {
+            internal static readonly Spec Default = new();
+
             public Callbacks.Callback<bool>? Consider0Null { get; init; }
             public Callbacks.Callback<long>? Min           { get; init; }
             public Callbacks.Callback<long>? Max           { get; init; }
@@ -74,7 +76,7 @@ namespace Integrant4.Element.Inputs
             long?      value,
             Spec?      spec = null
         )
-            : base(jsRuntime, spec)
+            : base(jsRuntime, spec ?? Spec.Default)
         {
             _consider0Null = spec?.Consider0Null ?? (() => false);
             _min           = spec?.Min;

@@ -13,6 +13,8 @@ namespace Integrant4.Element.Inputs
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec : DualSpec
         {
+            internal static readonly Spec Default = new();
+
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
             public Callbacks.IsRequired? IsRequired      { get; init; }
@@ -69,7 +71,7 @@ namespace Integrant4.Element.Inputs
             IJSRuntime jsRuntime,
             bool       value,
             Spec?      spec = null
-        ) : base(jsRuntime, spec)
+        ) : base(jsRuntime, spec ?? Spec.Default)
         {
             _jsRuntime = jsRuntime;
             Value      = value;

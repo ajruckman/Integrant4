@@ -16,6 +16,8 @@ namespace Integrant4.Element.Bits
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec : DualSpec
         {
+            internal static readonly Spec Default = new();
+
             public StyleGetter?               Style   { get; init; }
             public Callbacks.Callback<bool>?  IsSmall { get; init; }
             public Action<Button, ClickArgs>? OnClick { get; init; }
@@ -68,7 +70,7 @@ namespace Integrant4.Element.Bits
         private readonly ContentRef                _content;
         private readonly Callbacks.Callback<bool>? _isSmall;
 
-        public Button(ContentRef content, Spec? spec = null) : base(spec)
+        public Button(ContentRef content, Spec? spec = null) : base(spec ?? Spec.Default)
         {
             _content     = content;
             _styleGetter = spec?.Style ?? DefaultStyleGetter;
@@ -89,7 +91,7 @@ namespace Integrant4.Element.Bits
         {
             IRenderable[] contents = _content.GetAll().ToArray();
 
-            List<string> ac = new() {"I4E-Bit-Button--" + _styleGetter.Invoke()};
+            List<string> ac = new() { "I4E-Bit-Button--" + _styleGetter.Invoke() };
 
             if (contents.First() is IIcon) ac.Add("I4E-Bit-Button--IconLeft");
             if (contents.Last() is IIcon) ac.Add("I4E-Bit-Button--IconRight");
@@ -144,9 +146,9 @@ namespace Integrant4.Element.Bits
 
             var c = new ClickArgs
             (
-                (ushort) args.Button,
-                (ushort) args.ClientX,
-                (ushort) args.ClientY,
+                (ushort)args.Button,
+                (ushort)args.ClientX,
+                (ushort)args.ClientY,
                 args.ShiftKey,
                 args.CtrlKey
             );

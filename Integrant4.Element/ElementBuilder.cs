@@ -7,13 +7,13 @@ namespace Integrant4.Element
 {
     public abstract class UnifiedSpec
     {
-        internal abstract SpecSet? ToSpec();
+        internal abstract SpecSet ToSpec();
     }
 
     public abstract class DualSpec
     {
-        internal abstract SpecSet? ToOuterSpec();
-        internal abstract SpecSet? ToInnerSpec();
+        internal abstract SpecSet ToOuterSpec();
+        internal abstract SpecSet ToInnerSpec();
     }
 
     internal static class ElementBuilder

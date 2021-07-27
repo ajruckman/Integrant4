@@ -12,6 +12,8 @@ namespace Integrant4.Element.Bits
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
         public class Spec : UnifiedSpec
         {
+            internal static readonly Spec Default = new();
+
             public PlacementExtensions.PlacementGetter? PlacementGetter { get; init; }
 
             public Callbacks.Classes? Classes { get; init; }
@@ -38,7 +40,7 @@ namespace Integrant4.Element.Bits
             ContentRef headContents,
             ContentRef childContents,
             Spec?      spec = null
-        ) : base(spec)
+        ) : base(spec ?? Spec.Default)
         {
             _headContents    = headContents;
             _childContents   = childContents;

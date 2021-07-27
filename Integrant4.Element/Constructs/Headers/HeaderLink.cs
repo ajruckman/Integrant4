@@ -13,6 +13,8 @@ namespace Integrant4.Element.Constructs.Headers
     {
         public class Spec : UnifiedSpec
         {
+            internal static readonly Spec Default = new();
+
             public Callbacks.Callback<bool>? IsHighlighted { get; init; }
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
@@ -44,7 +46,7 @@ namespace Integrant4.Element.Constructs.Headers
         private readonly Callbacks.Callback<bool>? _isHighlighted;
         private readonly bool              _doAutoHighlight;
 
-        public HeaderLink(ContentRef content, Callbacks.HREF href, Spec? spec = null) : base(spec)
+        public HeaderLink(ContentRef content, Callbacks.HREF href, Spec? spec = null) : base(spec ?? Spec.Default)
         {
             _content = content;
             _href    = href;

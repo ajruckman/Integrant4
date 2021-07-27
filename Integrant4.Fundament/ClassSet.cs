@@ -5,10 +5,12 @@ using System.Linq;
 
 namespace Integrant4.Fundament
 {
-    public struct ClassSet : IEnumerable<string>
+    public class ClassSet : IEnumerable<string>
     {
         private readonly List<string> _classes;
         private          string?      _formatted;
+
+        public int Length => _classes.Count;
 
         public ClassSet(params string[] classes)
         {
@@ -53,6 +55,6 @@ namespace Integrant4.Fundament
         public IEnumerator<string> GetEnumerator() => _classes.GetEnumerator();
         IEnumerator IEnumerable.   GetEnumerator() => GetEnumerator();
 
-        public readonly ClassSet Clone() => new(_classes.ToList());
+        public ClassSet Clone() => new(_classes.ToList());
     }
 }
