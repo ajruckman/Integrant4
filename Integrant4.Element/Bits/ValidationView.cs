@@ -177,7 +177,9 @@ namespace Integrant4.Element.Bits
                     builder.AddContent(++seq, "Validating...");
                     builder.CloseElement();
                 }
-                else if (validations == null) { }
+                else if (validations == null)
+                {
+                }
                 else
                 {
                     foreach (IValidation validation in validations)
@@ -222,8 +224,7 @@ namespace Integrant4.Element.Bits
 
         public enum Style
         {
-            Inline,
-            Block,
+            Inline, Block,
         }
 
         private readonly StyleGetter _styleGetter;

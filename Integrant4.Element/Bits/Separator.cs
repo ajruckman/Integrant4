@@ -21,17 +21,19 @@ namespace Integrant4.Element.Bits
             public SpecSet ToSpec() => new()
             {
                 BaseClasses = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Separator)),
-                IsVisible = IsVisible,
-                Classes   = Classes,
-                Margin    = Margin,
-                Height    = Height,
+                IsVisible   = IsVisible,
+                Classes     = Classes,
+                Margin      = Margin,
+                Height      = Height,
             };
         }
     }
 
     public partial class Separator
     {
-        public Separator(Spec? spec = null) : base(spec ?? Spec.Default) { }
+        public Separator(Spec? spec = null) : base(spec ?? Spec.Default)
+        {
+        }
     }
 
     public partial class Separator

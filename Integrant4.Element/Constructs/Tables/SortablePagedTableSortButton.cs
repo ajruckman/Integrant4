@@ -29,7 +29,7 @@ namespace Integrant4.Element.Constructs.Tables
                 EventCallback.Factory.Create(this, () => Table.NextSortDirection(ID)));
 
             builder.OpenComponent<BootstrapIcon>(3);
-            builder.AddAttribute(4, "Size", (ushort) 16);
+            builder.AddAttribute(4, "Size", (ushort)16);
 
             if (Table.ActiveSorter != ID)
             {

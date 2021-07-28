@@ -71,17 +71,17 @@ namespace Integrant4.Element.Constructs.FileUploader
 
                 int h  = image.Height;
                 int w  = image.Width;
-                var hf = (float) h;
-                var wf = (float) w;
+                var hf = (float)h;
+                var wf = (float)w;
 
                 if (h > w)
                 {
-                    w = (int) (wf / hf * ThumbnailSize);
+                    w = (int)(wf / hf * ThumbnailSize);
                     h = ThumbnailSize;
                 }
                 else
                 {
-                    h = (int) (hf / wf * ThumbnailSize);
+                    h = (int)(hf / wf * ThumbnailSize);
                     w = ThumbnailSize;
                 }
 

@@ -65,7 +65,7 @@ namespace Integrant4.Element.Inputs
 
             public SpecSet ToOuterSpec() => new()
             {
-                BaseClasses = new ClassSet("I4E-Input", "I4E-Input-SelectInput"),
+                BaseClasses     = new ClassSet("I4E-Input", "I4E-Input-SelectInput"),
                 Scaled          = true,
                 IsVisible       = IsVisible,
                 Classes         = Classes,

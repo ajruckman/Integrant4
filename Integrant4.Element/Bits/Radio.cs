@@ -91,7 +91,7 @@ namespace Integrant4.Element.Bits
                     builder.AddAttribute(++seq, "class", "I4E-Bit-Radio-Option-Button");
                     builder.OpenComponent<BootstrapIcon>(++seq);
                     builder.AddAttribute(++seq, "ID",   selected ? "record-circle-fill" : "circle");
-                    builder.AddAttribute(++seq, "Size", (ushort) 16);
+                    builder.AddAttribute(++seq, "Size", (ushort)16);
                     builder.CloseComponent();
                     builder.CloseElement();
 

@@ -15,8 +15,7 @@ namespace Integrant4.Element
 
         private enum Type
         {
-            Pixels,
-            Percentage,
+            Pixels, Percentage,
         }
 
         public static Unit Pixels(double     v) => new(v, Type.Pixels);

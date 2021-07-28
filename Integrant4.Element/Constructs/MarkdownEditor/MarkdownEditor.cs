@@ -165,8 +165,7 @@ namespace Integrant4.Element.Constructs.MarkdownEditor
 
         public enum InitialEditType
         {
-            Markdown,
-            WYSIWYG,
+            Markdown, WYSIWYG,
         }
 
         private static readonly Button[][] DefaultButtons;

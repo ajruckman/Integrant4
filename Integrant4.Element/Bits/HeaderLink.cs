@@ -40,10 +40,10 @@ namespace Integrant4.Element.Bits
 
     public partial class HeaderLink
     {
-        private readonly ContentRef        _content;
-        private readonly Callbacks.HREF    _href;
+        private readonly ContentRef                _content;
+        private readonly Callbacks.HREF            _href;
         private readonly Callbacks.Callback<bool>? _isHighlighted;
-        private readonly bool              _doAutoHighlight;
+        private readonly bool                      _doAutoHighlight;
 
         public HeaderLink(ContentRef content, Callbacks.HREF href, Spec? spec = null) : base(spec ?? Spec.Default)
         {
@@ -90,7 +90,7 @@ namespace Integrant4.Element.Bits
 
                 BitBuilder.ApplyOuterAttributes(HeaderLink, builder, ref seq,
                     HeaderLink._isHighlighted?.Invoke() == true
-                        ? new[] {"I4E-Construct-HeaderLink--Highlighted"}
+                        ? new[] { "I4E-Construct-HeaderLink--Highlighted" }
                         : null);
 
                 builder.OpenElement(++seq, "div");

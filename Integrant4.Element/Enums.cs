@@ -4,10 +4,7 @@ namespace Integrant4.Element
 {
     public enum Display
     {
-        Undefined,
-        Inline,
-        InlineBlock,
-        Block,
+        Undefined, Inline, InlineBlock, Block,
     }
 
     public enum FontWeight
@@ -25,28 +22,17 @@ namespace Integrant4.Element
 
     public enum TextAlign
     {
-        Left,
-        Center,
-        Right,
+        Left, Center, Right,
     }
 
     public enum FlexAlign
     {
-        Start,
-        Center,
-        End,
-        Stretch,
-        Baseline,
+        Start, Center, End, Stretch, Baseline,
     }
 
     public enum FlexJustify
     {
-        Start,
-        Center,
-        End,
-        SpaceBetween,
-        SpaceAround,
-        SpaceEvenly,
+        Start, Center, End, SpaceBetween, SpaceAround, SpaceEvenly,
     }
 
     public static class EnumExtensions

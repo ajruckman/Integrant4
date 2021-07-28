@@ -95,7 +95,7 @@ namespace Integrant4.Element.Inputs
             builder.OpenElement(++seq, "textarea");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq);
 
-            builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "oninput",     EventCallback.Factory.Create(this, Change));
             builder.AddAttribute(++seq, "placeholder", _placeholder?.Invoke());
 
             if (_rows    != null) builder.AddAttribute(++seq, "rows", _rows.Invoke());

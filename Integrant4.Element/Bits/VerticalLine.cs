@@ -32,13 +32,19 @@ namespace Integrant4.Element.Bits
 
     public partial class VerticalLine
     {
-        public VerticalLine(Spec? spec = null) : base(spec ?? Spec.Default) { }
+        public VerticalLine(Spec? spec = null) : base(spec ?? Spec.Default)
+        {
+        }
 
         public VerticalLine(Callbacks.Size margin, Spec? spec = null)
-            : base(TransformShorthand(spec, margin)) { }
+            : base(TransformShorthand(spec, margin))
+        {
+        }
 
         public VerticalLine(Callbacks.Size margin, Callbacks.Unit height, Spec? spec = null)
-            : base(TransformShorthand(spec, margin, height)) { }
+            : base(TransformShorthand(spec, margin, height))
+        {
+        }
 
         private static Spec TransformShorthand
         (

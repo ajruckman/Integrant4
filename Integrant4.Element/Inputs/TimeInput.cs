@@ -87,8 +87,8 @@ namespace Integrant4.Element.Inputs
             builder.OpenElement(++seq, "input");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq);
 
-            builder.AddAttribute(++seq, "type", "time");
-            builder.AddAttribute(++seq, "value", Serialize(Value));
+            builder.AddAttribute(++seq, "type",    "time");
+            builder.AddAttribute(++seq, "value",   Serialize(Value));
             builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
 
             builder.AddElementReferenceCapture(++seq, r => Reference = r);

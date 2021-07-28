@@ -82,7 +82,7 @@ namespace Integrant4.Element.Bits
             BitBuilder.ApplyOuterAttributes(this, builder, ref seq, ac);
 
             builder.OpenComponent<BootstrapIcon>(++seq);
-            builder.AddAttribute(++seq, "ID", !IsChecked ? "square" : "check-square-fill");
+            builder.AddAttribute(++seq, "ID",   !IsChecked ? "square" : "check-square-fill");
             builder.AddAttribute(++seq, "Size", _size.Invoke());
             builder.CloseComponent();
 

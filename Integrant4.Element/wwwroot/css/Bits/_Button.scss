@@ -55,7 +55,7 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
             &:not(:last-child) {
                 margin-right: calc(1em * (5 / var(--I4E-Base-Scale)));
             }
-            
+
             &:only-child {
                 flex-grow: 1;
             }

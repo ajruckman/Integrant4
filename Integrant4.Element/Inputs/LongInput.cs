@@ -37,9 +37,9 @@ namespace Integrant4.Element.Inputs
 
             public SpecSet ToOuterSpec() => new()
             {
-                BaseClasses = new ClassSet("I4E-Input", "I4E-Input-Long"),
-                Scaled      = true,
-                IsVisible   = IsVisible,
+                BaseClasses     = new ClassSet("I4E-Input", "I4E-Input-Long"),
+                Scaled          = true,
+                IsVisible       = IsVisible,
                 Classes         = Classes,
                 Margin          = Margin,
                 Padding         = Padding,

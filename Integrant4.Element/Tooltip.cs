@@ -26,10 +26,7 @@ namespace Integrant4.Element
 
     public enum TooltipFollow
     {
-        None,
-        Vertical,
-        Horizontal,
-        Initial,
+        None, Vertical, Horizontal, Initial,
     }
 
     public enum TooltipPlacement

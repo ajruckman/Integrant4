@@ -27,7 +27,7 @@ namespace Integrant4.Element.Bits
 
             public SpecSet ToSpec() => new()
             {
-                BaseClasses = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Heading)),
+                BaseClasses     = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Heading)),
                 IsVisible       = IsVisible,
                 Classes         = Classes,
                 Margin          = Margin,
@@ -58,7 +58,7 @@ namespace Integrant4.Element.Bits
             void Fragment(RenderTreeBuilder builder)
             {
                 int seq = -1;
-                builder.OpenElement(++seq, "h" + (int) _sizeGetter.Invoke());
+                builder.OpenElement(++seq, "h" + (int)_sizeGetter.Invoke());
 
                 BitBuilder.ApplyOuterAttributes(this, builder, ref seq);
 

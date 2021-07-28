@@ -6,13 +6,19 @@ namespace Integrant4.Element.Inputs
     public abstract partial class NumberInput<T> : StandardInput<T>
     {
         internal NumberInput(IJSRuntime jsRuntime, SpecSet outerSpec, SpecSet innerSpec)
-            : base(jsRuntime, outerSpec, innerSpec) { }
+            : base(jsRuntime, outerSpec, innerSpec)
+        {
+        }
 
         internal NumberInput(IJSRuntime jsRuntime, IUnifiedSpec spec)
-            : base(jsRuntime, spec) { }
+            : base(jsRuntime, spec)
+        {
+        }
 
         internal NumberInput(IJSRuntime jsRuntime, IDualSpec spec)
-            : base(jsRuntime, spec) { }
+            : base(jsRuntime, spec)
+        {
+        }
 
         protected override string Serialize(T? v) => v?.ToString() ?? "";
 

@@ -33,13 +33,19 @@ namespace Integrant4.Element.Bits
     public partial class HorizontalLine
     {
         public HorizontalLine(Spec? spec = null)
-            : base(spec ?? Spec.Default) { }
+            : base(spec ?? Spec.Default)
+        {
+        }
 
         public HorizontalLine(Callbacks.Size margin, Spec? spec = null)
-            : base(TransformShorthand(spec, margin)) { }
+            : base(TransformShorthand(spec, margin))
+        {
+        }
 
         public HorizontalLine(Callbacks.Size margin, Callbacks.Unit width, Spec? spec = null)
-            : base(TransformShorthand(spec, margin, width)) { }
+            : base(TransformShorthand(spec, margin, width))
+        {
+        }
 
         private static Spec TransformShorthand
         (

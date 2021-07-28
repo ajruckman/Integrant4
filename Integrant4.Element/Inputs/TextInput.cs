@@ -100,9 +100,9 @@ namespace Integrant4.Element.Inputs
             builder.OpenElement(++seq, "input");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq);
 
-            builder.AddAttribute(++seq, "type", "text");
-            builder.AddAttribute(++seq, "value", Serialize(Value));
-            builder.AddAttribute(++seq, "oninput", EventCallback.Factory.Create(this, Change));
+            builder.AddAttribute(++seq, "type",        "text");
+            builder.AddAttribute(++seq, "value",       Serialize(Value));
+            builder.AddAttribute(++seq, "oninput",     EventCallback.Factory.Create(this, Change));
             builder.AddAttribute(++seq, "placeholder", _placeholder?.Invoke());
 
             builder.AddElementReferenceCapture(++seq, r => Reference = r);
@@ -116,7 +116,7 @@ namespace Integrant4.Element.Inputs
                     size = (ushort)(size * scale);
 
                 builder.OpenElement(++seq, "button");
-                builder.AddAttribute(++seq, "class", "I4E-Input-Text-ClearButton");
+                builder.AddAttribute(++seq, "class",   "I4E-Input-Text-ClearButton");
                 builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, OnClearClick));
                 ++seq;
                 if (scale != null)

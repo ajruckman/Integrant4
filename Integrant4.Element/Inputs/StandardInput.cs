@@ -8,13 +8,19 @@ namespace Integrant4.Element.Inputs
     public abstract class StandardInput<T> : InputBase<T>
     {
         internal StandardInput(IJSRuntime jsRuntime, SpecSet outerSpec, SpecSet innerSpec)
-            : base(jsRuntime, outerSpec, innerSpec) { }
+            : base(jsRuntime, outerSpec, innerSpec)
+        {
+        }
 
         internal StandardInput(IJSRuntime jsRuntime, IUnifiedSpec spec)
-            : base(jsRuntime, spec) { }
+            : base(jsRuntime, spec)
+        {
+        }
 
         internal StandardInput(IJSRuntime jsRuntime, IDualSpec spec)
-            : base(jsRuntime, spec) { }
+            : base(jsRuntime, spec)
+        {
+        }
 
         public override T? GetValue() => Value;
 

@@ -16,7 +16,7 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Callback<bool>?    Consider0Null { get; init; }
             public Callbacks.Callback<decimal>? Min           { get; init; }
             public Callbacks.Callback<decimal>? Max           { get; init; }
-            public Callbacks.Callback<decimal>?         Step          { get; init; }
+            public Callbacks.Callback<decimal>? Step          { get; init; }
 
             public Callbacks.IsVisible?  IsVisible       { get; init; }
             public Callbacks.IsDisabled? IsDisabled      { get; init; }
@@ -73,7 +73,7 @@ namespace Integrant4.Element.Inputs
         private readonly Callbacks.Callback<bool>     _consider0Null;
         private readonly Callbacks.Callback<decimal>? _min;
         private readonly Callbacks.Callback<decimal>? _max;
-        private readonly Callbacks.Callback<decimal>          _step;
+        private readonly Callbacks.Callback<decimal>  _step;
 
         public DecimalInput
         (

@@ -28,7 +28,7 @@ namespace Integrant4.Element.Bits
 
             public SpecSet ToSpec() => new()
             {
-                BaseClasses = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(MonoBlock)),
+                BaseClasses     = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(MonoBlock)),
                 IsVisible       = IsVisible,
                 Classes         = Classes,
                 Margin          = Margin,

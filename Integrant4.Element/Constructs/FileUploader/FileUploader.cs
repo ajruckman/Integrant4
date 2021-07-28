@@ -25,7 +25,7 @@ namespace Integrant4.Element.Constructs.FileUploader
             _type = type;
             _spec = spec ?? new Spec();
 
-            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
+            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort)(12 * _spec.Scale?.Invoke() ?? 12));
         }
 
         public async ValueTask DisposeAsync()

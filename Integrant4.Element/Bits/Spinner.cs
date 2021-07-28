@@ -102,8 +102,7 @@ namespace Integrant4.Element.Bits
 
         public enum Style
         {
-            Block,
-            Inline,
+            Block, Inline,
         }
 
         private static StyleGetter DefaultStyleGetter => () => Style.Block;

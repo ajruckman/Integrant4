@@ -32,8 +32,8 @@ namespace Integrant4.Element.Bits
             _hook        = new Hook();
 
             IRenderable[] Contents() => Expanded
-                ? new IRenderable[] {contractContent, UpIcon}
-                : new IRenderable[] {expandContent, DownIcon};
+                ? new IRenderable[] { contractContent, UpIcon }
+                : new IRenderable[] { expandContent, DownIcon };
 
             _button = new Button
             (

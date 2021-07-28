@@ -38,7 +38,7 @@ namespace Integrant4.Element.Constructs.Selectors
 
             _selector.OnChange += Select;
 
-            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
+            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort)(12 * _spec.Scale?.Invoke() ?? 12));
         }
     }
 

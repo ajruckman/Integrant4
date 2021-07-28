@@ -46,7 +46,7 @@ namespace Integrant4.Element.Constructs.Selectors
                 _filterInput.OnChange += v => filterDebouncer.Reset(v);
             }
 
-            _clearValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
+            _clearValueButton = new BootstrapIcon("x-circle-fill", (ushort)(12 * _spec.Scale?.Invoke() ?? 12));
         }
 
         public async ValueTask DisposeAsync()

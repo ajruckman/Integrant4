@@ -35,7 +35,7 @@ namespace Integrant4.Element.Constructs.Tagging
                 OnClick    = async (_, _) => await AddTag(),
                 Scale      = _spec.Scale,
             });
-            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
+            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort)(12 * _spec.Scale?.Invoke() ?? 12));
 
             _tagNameDebouncer = new Debouncer<string?>(() =>
             {
@@ -440,9 +440,9 @@ namespace Integrant4.Element.Constructs.Tagging
 
                 _tags.Add(_newTagType switch
                 {
-                    TagType.String => new StringTag(_newTagName, (string) _newTagValue),
-                    TagType.Int    => new IntTag(_newTagName, (long) _newTagValue),
-                    TagType.Bool   => new BoolTag(_newTagName, (bool) _newTagValue),
+                    TagType.String => new StringTag(_newTagName, (string)_newTagValue),
+                    TagType.Int    => new IntTag(_newTagName, (long)_newTagValue),
+                    TagType.Bool   => new BoolTag(_newTagName, (bool)_newTagValue),
                     _              => throw new ArgumentOutOfRangeException(),
                 });
             }

@@ -20,10 +20,10 @@ namespace Integrant4.Element.Bits
             public SpecSet ToSpec() => new()
             {
                 BaseClasses = new("I4E-Bit", "I4E-Bit-" + nameof(Space)),
-                IsVisible = IsVisible,
-                Classes   = Classes,
-                Height    = Height,
-                Width     = Width,
+                IsVisible   = IsVisible,
+                Classes     = Classes,
+                Height      = Height,
+                Width       = Width,
             };
         }
     }
@@ -31,13 +31,19 @@ namespace Integrant4.Element.Bits
     public partial class Space
     {
         public Space(Spec? spec = null)
-            : base(spec ?? Spec.Default) { }
+            : base(spec ?? Spec.Default)
+        {
+        }
 
         public Space(Callbacks.Unit width, Spec? spec = null)
-            : base(TransformShorthand(spec, width)) { }
+            : base(TransformShorthand(spec, width))
+        {
+        }
 
         public Space(Callbacks.Unit width, Callbacks.Unit height, Spec? spec = null)
-            : base(TransformShorthand(spec, width, height)) { }
+            : base(TransformShorthand(spec, width, height))
+        {
+        }
 
         private static Spec TransformShorthand
         (
