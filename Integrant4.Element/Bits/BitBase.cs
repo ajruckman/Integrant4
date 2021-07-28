@@ -9,20 +9,13 @@ namespace Integrant4.Element.Bits
         internal readonly SpecSet? OuterSpec;
         internal readonly string   ID;
 
-        internal BitBase(SpecSet outerSpec, SpecSet innerSpec)
-        {
-            OuterSpec = outerSpec;
-            InnerSpec = innerSpec;
-            ID        = RandomIDGenerator.Generate();
-        }
-
-        internal BitBase(UnifiedSpec spec)
+        internal BitBase(IUnifiedSpec spec)
         {
             OuterSpec = spec.ToSpec();
             ID        = RandomIDGenerator.Generate();
         }
 
-        internal BitBase(DualSpec spec)
+        internal BitBase(IDualSpec spec)
         {
             OuterSpec = spec.ToOuterSpec();
             InnerSpec = spec.ToInnerSpec();

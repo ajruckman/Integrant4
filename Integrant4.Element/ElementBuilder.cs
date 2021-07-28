@@ -5,15 +5,19 @@ using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Integrant4.Element
 {
-    public abstract class UnifiedSpec
+    public interface ISpec
     {
-        internal abstract SpecSet ToSpec();
     }
 
-    public abstract class DualSpec
+    public interface IUnifiedSpec : ISpec
     {
-        internal abstract SpecSet ToOuterSpec();
-        internal abstract SpecSet ToInnerSpec();
+        SpecSet ToSpec();
+    }
+
+    public interface IDualSpec : ISpec
+    {
+        SpecSet ToOuterSpec();
+        SpecSet ToInnerSpec();
     }
 
     internal static class ElementBuilder
@@ -28,7 +32,7 @@ namespace Integrant4.Element
             IEnumerable<string>? additionalStyles
         )
         {
-            builder.AddAttribute(++seq, "id",    id);
+            builder.AddAttribute(++seq, "id", id);
             builder.AddAttribute(++seq, "class", spec?.ClassAttribute(additionalClasses));
             builder.AddAttribute(++seq, "style", spec?.StyleAttribute(additionalStyles));
 
@@ -53,9 +57,9 @@ namespace Integrant4.Element
                 Tooltip? t = spec.Tooltip.Invoke();
                 if (t != null)
                 {
-                    builder.AddAttribute(++seq, "data-i4e.tooltip-text",      t.Value.Text);
-                    builder.AddAttribute(++seq, "data-i4e.tooltip-delay",     t.Value.Delay ?? 0);
-                    builder.AddAttribute(++seq, "data-i4e.tooltip-follow",    t.Value.Follow.Map());
+                    builder.AddAttribute(++seq, "data-i4e.tooltip-text", t.Value.Text);
+                    builder.AddAttribute(++seq, "data-i4e.tooltip-delay", t.Value.Delay ?? 0);
+                    builder.AddAttribute(++seq, "data-i4e.tooltip-follow", t.Value.Follow.Map());
                     builder.AddAttribute(++seq, "data-i4e.tooltip-placement", t.Value.Placement.Map());
                 }
                 else seq += 4;
@@ -73,7 +77,7 @@ namespace Integrant4.Element
             if (spec?.Tooltip == null) return;
 
             List<Action<ElementService>> jobs = new()
-                {v => v.AddJob((j, t) => Interop.CreateTooltips(j, t, id))};
+                { v => v.AddJob((j, t) => Interop.CreateTooltips(j, t, id)) };
 
             ServiceInjector<ElementService>.Inject(builder, ref seq, jobs.ToArray());
         }

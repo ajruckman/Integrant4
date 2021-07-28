@@ -22,14 +22,14 @@ namespace Integrant4.Element.Inputs
             ID        = RandomIDGenerator.Generate();
         }
 
-        internal InputBase(IJSRuntime jsRuntime, UnifiedSpec spec)
+        internal InputBase(IJSRuntime jsRuntime, IUnifiedSpec spec)
         {
             JSRuntime = jsRuntime;
             OuterSpec = spec.ToSpec();
             ID        = RandomIDGenerator.Generate();
         }
 
-        internal InputBase(IJSRuntime jsRuntime, DualSpec spec)
+        internal InputBase(IJSRuntime jsRuntime, IDualSpec spec)
         {
             JSRuntime = jsRuntime;
             OuterSpec = spec.ToOuterSpec();

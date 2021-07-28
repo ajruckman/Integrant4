@@ -11,7 +11,7 @@ namespace Integrant4.Element.Bits
     [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
     public partial class Link : BitBase
     {
-        public class Spec : DualSpec
+        public class Spec : IDualSpec
         {
             public Spec(Callbacks.HREF href)
             {
@@ -42,7 +42,7 @@ namespace Integrant4.Element.Bits
             public Callbacks.Data?        Data            { get; init; }
             public Callbacks.Tooltip?     Tooltip         { get; init; }
 
-            internal override SpecSet ToOuterSpec() => new()
+            public SpecSet ToOuterSpec() => new()
             {
                 BaseClasses     = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Link)),
                 Scaled          = true,
@@ -64,7 +64,7 @@ namespace Integrant4.Element.Bits
                 Tooltip         = Tooltip,
             };
 
-            internal override SpecSet ToInnerSpec() => new()
+            public SpecSet ToInnerSpec() => new()
             {
                 FontWeight  = FontWeight,
                 FlexAlign   = FlexAlign,

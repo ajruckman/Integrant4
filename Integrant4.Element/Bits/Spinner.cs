@@ -9,7 +9,7 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec : UnifiedSpec
+        public class Spec : IUnifiedSpec
         {
             internal static readonly Spec Default = new();
 
@@ -22,7 +22,7 @@ namespace Integrant4.Element.Bits
             public Callbacks.REM?        FontSize   { get; init; }
             public Callbacks.FontWeight? FontWeight { get; init; }
 
-            internal override SpecSet ToSpec() => new()
+            public SpecSet ToSpec() => new()
             {
                 BaseClasses = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Spinner)),
                 IsVisible   = IsVisible,

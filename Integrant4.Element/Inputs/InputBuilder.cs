@@ -15,7 +15,7 @@ namespace Integrant4.Element.Inputs
         ) => ElementBuilder.ApplyAttributes(inputBase.ID, inputBase.OuterSpec, builder, ref seq,
             additionalClasses, additionalStyles);
 
-        internal static void ApplyInputAttributes<T>
+        internal static void ApplyInnerAttributes<T>
         (
             InputBase<T>         inputBase,
             RenderTreeBuilder    builder,

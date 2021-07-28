@@ -10,10 +10,10 @@ namespace Integrant4.Element.Inputs
         internal StandardInput(IJSRuntime jsRuntime, SpecSet outerSpec, SpecSet innerSpec)
             : base(jsRuntime, outerSpec, innerSpec) { }
 
-        internal StandardInput(IJSRuntime jsRuntime, UnifiedSpec spec)
+        internal StandardInput(IJSRuntime jsRuntime, IUnifiedSpec spec)
             : base(jsRuntime, spec) { }
 
-        internal StandardInput(IJSRuntime jsRuntime, DualSpec spec)
+        internal StandardInput(IJSRuntime jsRuntime, IDualSpec spec)
             : base(jsRuntime, spec) { }
 
         public override T? GetValue() => Value;

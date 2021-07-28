@@ -14,7 +14,7 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec : DualSpec
+        public class Spec : IDualSpec
         {
             internal static readonly Spec Default = new();
 
@@ -38,7 +38,7 @@ namespace Integrant4.Element.Bits
             public Callbacks.Data?        Data        { get; init; }
             public Callbacks.Tooltip?     Tooltip     { get; init; }
 
-            internal override SpecSet ToOuterSpec() => new()
+            public SpecSet ToOuterSpec() => new()
             {
                 BaseClasses = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Button)),
                 Scaled      = true,
@@ -56,7 +56,7 @@ namespace Integrant4.Element.Bits
                 Tooltip     = Tooltip,
             };
 
-            internal override SpecSet ToInnerSpec() => new()
+            public SpecSet ToInnerSpec() => new()
             {
                 FontWeight  = FontWeight,
                 FlexAlign   = FlexAlign,

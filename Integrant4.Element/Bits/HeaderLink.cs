@@ -1,17 +1,16 @@
 using System.Diagnostics.CodeAnalysis;
 using Integrant4.API;
-using Integrant4.Element.Bits;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
-namespace Integrant4.Element.Constructs.Headers
+namespace Integrant4.Element.Bits
 {
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
     public partial class HeaderLink : BitBase
     {
-        public class Spec : UnifiedSpec
+        public class Spec : IUnifiedSpec
         {
             internal static readonly Spec Default = new();
 
@@ -25,7 +24,7 @@ namespace Integrant4.Element.Constructs.Headers
             public Callbacks.Data?       Data       { get; init; }
             public Callbacks.Tooltip?    Tooltip    { get; init; }
 
-            internal override SpecSet ToSpec() => new()
+            public SpecSet ToSpec() => new()
             {
                 BaseClasses = new ClassSet("I4E-Construct", "I4E-Construct-" + nameof(HeaderLink)),
                 IsVisible   = IsVisible,

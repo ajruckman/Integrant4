@@ -8,7 +8,7 @@ namespace Integrant4.Element.Bits
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec : UnifiedSpec
+        public class Spec : IUnifiedSpec
         {
             internal static readonly Spec Default = new();
 
@@ -18,7 +18,7 @@ namespace Integrant4.Element.Bits
             public Callbacks.Unit?      Height    { get; init; }
             public Callbacks.Unit?      Width     { get; init; }
 
-            internal override SpecSet ToSpec() => new()
+            public SpecSet ToSpec() => new()
             {
                 BaseClasses     = new("I4E-Bit", "I4E-Bit-HorizontalLine"),
                 IsVisible       = IsVisible,

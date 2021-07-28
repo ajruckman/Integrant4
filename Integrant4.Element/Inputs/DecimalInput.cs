@@ -9,7 +9,7 @@ namespace Integrant4.Element.Inputs
     {
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-        public class Spec : DualSpec
+        public class Spec : IDualSpec
         {
             internal static readonly Spec Default = new();
 
@@ -36,7 +36,7 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Data?       Data            { get; init; }
             public Callbacks.Tooltip?    Tooltip         { get; init; }
 
-            internal override SpecSet ToOuterSpec() => new()
+            public SpecSet ToOuterSpec() => new()
             {
                 BaseClasses     = new ClassSet("I4E-Input", "I4E-Input-Decimal"),
                 Scaled          = true,
@@ -56,7 +56,7 @@ namespace Integrant4.Element.Inputs
                 Tooltip         = Tooltip,
             };
 
-            internal override SpecSet ToInnerSpec() => new()
+            public SpecSet ToInnerSpec() => new()
             {
                 IsDisabled = IsDisabled,
                 IsRequired = IsRequired,
@@ -99,7 +99,7 @@ namespace Integrant4.Element.Inputs
             InputBuilder.ApplyOuterAttributes(this, builder, ref seq);
 
             builder.OpenElement(++seq, "input");
-            InputBuilder.ApplyInputAttributes(this, builder, ref seq);
+            InputBuilder.ApplyInnerAttributes(this, builder, ref seq);
 
             builder.AddAttribute(++seq, "type",    "number");
             builder.AddAttribute(++seq, "value",   Serialize(Value));
