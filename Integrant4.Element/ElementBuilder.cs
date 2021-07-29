@@ -5,16 +5,12 @@ using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Integrant4.Element
 {
-    public interface ISpec
-    {
-    }
-
-    public interface IUnifiedSpec : ISpec
+    internal interface IUnifiedSpec
     {
         SpecSet ToSpec();
     }
 
-    public interface IDualSpec : ISpec
+    internal interface IDualSpec
     {
         SpecSet ToOuterSpec();
         SpecSet ToInnerSpec();
@@ -47,13 +43,8 @@ namespace Integrant4.Element
             if (spec?.HighlightColor != null)
                 builder.AddAttribute(seq, "style", $"--I4E-Highlight: {spec.HighlightColor.Invoke()};");
 
-            if (spec?.Tooltip == null)
+            if (spec?.Tooltip != null)
             {
-                Console.Write($"SEQ {seq} += 4 -> ");
-            }
-            else
-            {
-                Console.Write($"SEQ {seq} -> ");
                 Tooltip? t = spec.Tooltip.Invoke();
                 if (t != null)
                 {
@@ -65,8 +56,6 @@ namespace Integrant4.Element
                 else seq += 4;
             }
 
-            Console.WriteLine(seq);
-
             if (spec?.Data != null)
                 foreach ((string name, Callbacks.DataValue getter) in spec.Data.Invoke())
                     builder.AddAttribute(++seq, "data-" + name, getter.Invoke());
@@ -77,44 +66,9 @@ namespace Integrant4.Element
             if (spec?.Tooltip == null) return;
 
             List<Action<ElementService>> jobs = new()
-                { v => v.AddJob((j, t) => Interop.CreateTooltips(j, t, id)) };
+                {v => v.AddJob((j, t) => Interop.CreateTooltips(j, t, id))};
 
             ServiceInjector<ElementService>.Inject(builder, ref seq, jobs.ToArray());
         }
-
-        // internal static string ClassAttribute(ClassSet baseSet, SpecSet specSet, IEnumerable<string>? additional)
-        // {
-        //     ClassSet c = baseSet.Clone();
-        //
-        //     if (additional != null)
-        //         c.AddRange(additional);
-        //     if (specSet.Classes != null)
-        //         c.AddRange(specSet.Classes.Invoke());
-        //
-        //     if (specSet.IsDisabled?.Invoke() == true)
-        //         c.Add("I4E-Bit--Disabled");
-        //     if (specSet.IsRequired?.Invoke() == true)
-        //         c.Add("I4E-Bit--Required");
-        //     if (!string.IsNullOrEmpty(specSet.HighlightColor?.Invoke()))
-        //         c.Add("I4E-Bit--Highlighted");
-        //
-        //     return c.ToString();
-        // }
-        //
-        // internal static string? ContentStyleAttribute(SpecSet specSet)
-        // {
-        //     List<string> result = new(3);
-        //
-        //     if (specSet.FontSize != null)
-        //         result.Add($"font-size: {specSet.FontSize.Invoke()}rem;");
-        //
-        //     if (specSet.FlexAlign != null)
-        //         result.Add($"align-items: {specSet.FlexAlign.Invoke().Serialize()}");
-        //
-        //     if (specSet.FlexJustify != null)
-        //         result.Add($"justify-content: {specSet.FlexJustify.Invoke().Serialize()}");
-        //
-        //     return result.Any() ? string.Join(' ', result) : null;
-        // }
     }
 }

@@ -41,16 +41,9 @@ namespace Integrant4.Element.Inputs
                 Scaled          = true,
                 IsVisible       = IsVisible,
                 Classes         = Classes,
-                Margin          = Margin,
-                Padding         = Padding,
                 BackgroundColor = BackgroundColor,
                 ForegroundColor = ForegroundColor,
-                Height          = Height,
-                HeightMax       = HeightMax,
-                Width           = Width,
-                WidthMax        = WidthMax,
                 Scale           = Scale,
-                FontWeight      = FontWeight,
                 Display         = Display,
                 Data            = Data,
                 Tooltip         = Tooltip,
@@ -60,6 +53,13 @@ namespace Integrant4.Element.Inputs
             {
                 IsDisabled = IsDisabled,
                 IsRequired = IsRequired,
+                Margin     = Margin,
+                Padding    = Padding,
+                Height     = Height,
+                HeightMax  = HeightMax,
+                Width      = Width,
+                WidthMax   = WidthMax,
+                FontWeight = FontWeight,
             };
         }
     }
