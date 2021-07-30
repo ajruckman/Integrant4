@@ -214,7 +214,6 @@ namespace Web.Pages
                         Style = () => style,
                         Tooltip = () =>
                             new Tooltip($"{style} {_checked}", 10, TooltipFollow.Initial, TooltipPlacement.Right),
-                        LoggingID = $"Integrant4.Web.Pages.Element.StyleButton.{style}",
                     });
 
                 b.OnClick += (_, _) => Console.WriteLine($"Click: {style}");

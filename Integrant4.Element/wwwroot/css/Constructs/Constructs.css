@@ -965,7 +965,7 @@ div.I4-App[data-i4-theme-variant=Pink] button.I4E-Construct-PagedTable-SortIndic
 }
 
 div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader {
-  padding: 0 2px;
+  padding-right: 5px;
 }
 div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-RightElements {
   flex: 1;
@@ -974,6 +974,7 @@ div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-Secondary
 div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader button.I4E-Construct-PanelExpander-PanelButton {
   padding: 0 8px;
   width: 100%;
+  min-height: calc(calc(2.5px * var(--I4E-Base-Scale)) - 10px);
 }
 div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader button.I4E-Construct-PanelExpander-PanelButton span.I4R-BootstrapIcon svg {
   margin-left: 5px;
@@ -1452,3 +1453,5 @@ div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-Tag div.I4E
 div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-AddableTag:hover, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-AddableTag:hover {
   border: 1px solid var(--I4C-Main-Accent-7);
 }
+
+/*# sourceMappingURL=Constructs.css.map */

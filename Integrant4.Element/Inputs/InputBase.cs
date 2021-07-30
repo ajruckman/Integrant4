@@ -14,30 +14,27 @@ namespace Integrant4.Element.Inputs
         protected ElementReference Reference;
         protected T?               Value;
 
-        internal InputBase(IJSRuntime jsRuntime, SpecSet outerSpec, SpecSet innerSpec, string? loggingID = null)
+        internal InputBase(IJSRuntime jsRuntime, SpecSet outerSpec, SpecSet innerSpec)
         {
             JSRuntime = jsRuntime;
             OuterSpec = outerSpec;
             InnerSpec = innerSpec;
             ID        = RandomIDGenerator.Generate();
-            LoggingID = loggingID;
         }
 
-        internal InputBase(IJSRuntime jsRuntime, IUnifiedSpec spec, string? loggingID = null)
+        internal InputBase(IJSRuntime jsRuntime, IUnifiedSpec spec)
         {
             JSRuntime = jsRuntime;
             OuterSpec = spec.ToSpec();
             ID        = RandomIDGenerator.Generate();
-            LoggingID = loggingID;
         }
 
-        internal InputBase(IJSRuntime jsRuntime, IDualSpec spec, string? loggingID = null)
+        internal InputBase(IJSRuntime jsRuntime, IDualSpec spec)
         {
             JSRuntime = jsRuntime;
             OuterSpec = spec.ToOuterSpec();
             InnerSpec = spec.ToInnerSpec();
             ID        = RandomIDGenerator.Generate();
-            LoggingID = loggingID;
         }
 
         protected WriteOnlyHook? Refresher { get; set; }
@@ -57,6 +54,5 @@ namespace Integrant4.Element.Inputs
         internal readonly SpecSet? InnerSpec;
         internal readonly SpecSet? OuterSpec;
         internal readonly string   ID;
-        internal readonly string?  LoggingID;
     }
 }

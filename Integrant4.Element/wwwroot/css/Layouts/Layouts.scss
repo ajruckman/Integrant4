@@ -1,7 +1,6 @@
 @import "_ListTable.scss";
 
 div.I4E-Layout-Panel {
-    box-shadow: var(--I4C-Main-Shadow-2);
     position: relative;
 
     &:not(.I4E-Layout-Panel--NoMargin) {
@@ -21,10 +20,6 @@ div.I4E-Layout-Panel {
         display: inline-block;
     }
 
-    &--Contracted {
-        box-shadow: none;
-    }
-
     div.I4E-Layout-Panel-Inner {
         overflow: visible;
         padding: 7px;
@@ -38,7 +33,6 @@ div.I4E-Layout-Panel {
 
     > div.I4E-Construct-PrimaryHeader, > div.I4E-Construct-SecondaryHeader {
         border-bottom: 1px solid var(--I4C-Main-Border-4);
-        box-shadow: none;
         padding: 0 10px;
 
         &:not(:first-child) {
@@ -110,7 +104,6 @@ div.I4E-Layout-InfoTable {
 
     &:not(.I4E-Layout-InfoTable--NoBorder) {
         border: 1px solid var(--I4C-Main-Border-11);
-        box-shadow: var(--I4C-Main-Shadow-1);
     }
 
     table.I4E-Layout-InfoTable-Inner {
@@ -161,7 +154,6 @@ div.I4E-Layout-InfoTable {
 
     > div.I4E-Construct-PrimaryHeader, > div.I4E-Construct-SecondaryHeader {
         border-bottom: 1px solid var(--I4C-Main-Border-4);
-        box-shadow: none;
         padding: 0 10px;
 
         &:not(:first-child) {
@@ -176,11 +168,25 @@ div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
         div.I4E-Layout-Panel {
             background-color: var(--I4C-Main-Background-6);
+            box-shadow: var(--I4C-Main-Shadow-2);
+
+            > div.I4E-Construct-PrimaryHeader, > div.I4E-Construct-SecondaryHeader {
+                box-shadow: none;
+            }
+
+            &--Contracted {
+                box-shadow: none;
+            }
         }
 
         div.I4E-Layout-InfoTable {
             &:not(.I4E-Layout-InfoTable--NoBorder) {
                 background-color: var(--I4C-Main-Background-4);
+                box-shadow: var(--I4C-Main-Shadow-1);
+            }
+
+            > div.I4E-Construct-PrimaryHeader, > div.I4E-Construct-SecondaryHeader {
+                box-shadow: none;
             }
         }
     }
@@ -188,11 +194,25 @@ div.I4-App {
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
         div.I4E-Layout-Panel {
             background-color: var(--I4C-Main-Background-0);
+            box-shadow: var(--I4C-Main-Shadow-1);
+
+            > div.I4E-Construct-PrimaryHeader, > div.I4E-Construct-SecondaryHeader {
+                box-shadow: none;
+            }
+
+            &--Contracted {
+                box-shadow: none;
+            }
         }
 
         div.I4E-Layout-InfoTable {
             &:not(.I4E-Layout-InfoTable--NoBorder) {
                 background-color: var(--I4C-Main-Background-1);
+                box-shadow: var(--I4C-Main-Shadow-0);
+            }
+
+            > div.I4E-Construct-PrimaryHeader, > div.I4E-Construct-SecondaryHeader {
+                box-shadow: none;
             }
         }
     }

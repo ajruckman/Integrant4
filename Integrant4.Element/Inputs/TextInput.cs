@@ -100,9 +100,6 @@ namespace Integrant4.Element.Inputs
                     : null
             );
 
-            builder.AddAttribute(++seq, "onclick",
-                EventCallback.Factory.Create<MouseEventArgs>(this, Click));
-
             builder.OpenElement(++seq, "input");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq);
 
@@ -142,18 +139,6 @@ namespace Integrant4.Element.Inputs
             InputBuilder.ScheduleElementJobs(this, builder, ref seq);
         }, v => Refresher = v);
 
-        private void Click(MouseEventArgs args)
-        {
-            bool disabled = OuterSpec?.IsDisabled?.Invoke() == true;
-            var  c        = new ClickArgs(args);
-
-            _elementService?.LogInteraction(ElementService.InteractionType.Click, "Bit.Button", LoggingID, c);
-
-            if (disabled) return;
-
-            OnClick?.Invoke(this, c);
-        }
-        
         private async Task OnClearClick()
         {
             if (_isClearable?.Invoke() == true)

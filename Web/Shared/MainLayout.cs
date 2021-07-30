@@ -30,11 +30,6 @@ namespace Web.Shared
 
         protected override void OnInitialized()
         {
-            ElementService.UseInteractionLogger(interaction =>
-            {
-                Console.WriteLine($"INTERACTION: {JsonConvert.SerializeObject(interaction)}");
-            });
-            
             _stopwatch.Start();
 
             _defaultVariantLoader = new VariantLoader

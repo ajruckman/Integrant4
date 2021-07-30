@@ -196,7 +196,6 @@ div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-ListTable table.I4E-Layout
 }
 
 div.I4E-Layout-Panel {
-  box-shadow: var(--I4C-Main-Shadow-2);
   position: relative;
 }
 div.I4E-Layout-Panel:not(.I4E-Layout-Panel--NoMargin) {
@@ -212,9 +211,6 @@ div.I4E-Layout-Panel--Rounded {
 div.I4E-Layout-Panel--Inline {
   display: inline-block;
 }
-div.I4E-Layout-Panel--Contracted {
-  box-shadow: none;
-}
 div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner {
   overflow: visible;
   padding: 7px;
@@ -224,7 +220,6 @@ div.I4E-Layout-Panel div.I4E-Layout-Panel-Inner > h1, div.I4E-Layout-Panel div.I
 }
 div.I4E-Layout-Panel > div.I4E-Construct-PrimaryHeader, div.I4E-Layout-Panel > div.I4E-Construct-SecondaryHeader {
   border-bottom: 1px solid var(--I4C-Main-Border-4);
-  box-shadow: none;
   padding: 0 10px;
 }
 div.I4E-Layout-Panel > div.I4E-Construct-PrimaryHeader:not(:first-child), div.I4E-Layout-Panel > div.I4E-Construct-SecondaryHeader:not(:first-child) {
@@ -287,7 +282,6 @@ div.I4E-Layout-InfoTable--WithMargin {
 }
 div.I4E-Layout-InfoTable:not(.I4E-Layout-InfoTable--NoBorder) {
   border: 1px solid var(--I4C-Main-Border-11);
-  box-shadow: var(--I4C-Main-Shadow-1);
 }
 div.I4E-Layout-InfoTable table.I4E-Layout-InfoTable-Inner {
   border-collapse: collapse;
@@ -319,7 +313,6 @@ div.I4E-Layout-InfoTable--WithBorder table.I4E-Layout-InfoTable-Inner tr:not(:la
 }
 div.I4E-Layout-InfoTable > div.I4E-Construct-PrimaryHeader, div.I4E-Layout-InfoTable > div.I4E-Construct-SecondaryHeader {
   border-bottom: 1px solid var(--I4C-Main-Border-4);
-  box-shadow: none;
   padding: 0 10px;
 }
 div.I4E-Layout-InfoTable > div.I4E-Construct-PrimaryHeader:not(:first-child), div.I4E-Layout-InfoTable > div.I4E-Construct-SecondaryHeader:not(:first-child) {
@@ -328,13 +321,37 @@ div.I4E-Layout-InfoTable > div.I4E-Construct-PrimaryHeader:not(:first-child), di
 
 div.I4-App[data-i4-theme-variant=Dark] div.I4E-Layout-Panel, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Layout-Panel {
   background-color: var(--I4C-Main-Background-6);
+  box-shadow: var(--I4C-Main-Shadow-2);
+}
+div.I4-App[data-i4-theme-variant=Dark] div.I4E-Layout-Panel > div.I4E-Construct-PrimaryHeader, div.I4-App[data-i4-theme-variant=Dark] div.I4E-Layout-Panel > div.I4E-Construct-SecondaryHeader, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Layout-Panel > div.I4E-Construct-PrimaryHeader, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Layout-Panel > div.I4E-Construct-SecondaryHeader {
+  box-shadow: none;
+}
+div.I4-App[data-i4-theme-variant=Dark] div.I4E-Layout-Panel--Contracted, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Layout-Panel--Contracted {
+  box-shadow: none;
 }
 div.I4-App[data-i4-theme-variant=Dark] div.I4E-Layout-InfoTable:not(.I4E-Layout-InfoTable--NoBorder), div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Layout-InfoTable:not(.I4E-Layout-InfoTable--NoBorder) {
   background-color: var(--I4C-Main-Background-4);
+  box-shadow: var(--I4C-Main-Shadow-1);
+}
+div.I4-App[data-i4-theme-variant=Dark] div.I4E-Layout-InfoTable > div.I4E-Construct-PrimaryHeader, div.I4-App[data-i4-theme-variant=Dark] div.I4E-Layout-InfoTable > div.I4E-Construct-SecondaryHeader, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Layout-InfoTable > div.I4E-Construct-PrimaryHeader, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Layout-InfoTable > div.I4E-Construct-SecondaryHeader {
+  box-shadow: none;
 }
 div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-Panel, div.I4-App[data-i4-theme-variant=White] div.I4E-Layout-Panel {
   background-color: var(--I4C-Main-Background-0);
+  box-shadow: var(--I4C-Main-Shadow-1);
+}
+div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-Panel > div.I4E-Construct-PrimaryHeader, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-Panel > div.I4E-Construct-SecondaryHeader, div.I4-App[data-i4-theme-variant=White] div.I4E-Layout-Panel > div.I4E-Construct-PrimaryHeader, div.I4-App[data-i4-theme-variant=White] div.I4E-Layout-Panel > div.I4E-Construct-SecondaryHeader {
+  box-shadow: none;
+}
+div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-Panel--Contracted, div.I4-App[data-i4-theme-variant=White] div.I4E-Layout-Panel--Contracted {
+  box-shadow: none;
 }
 div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-InfoTable:not(.I4E-Layout-InfoTable--NoBorder), div.I4-App[data-i4-theme-variant=White] div.I4E-Layout-InfoTable:not(.I4E-Layout-InfoTable--NoBorder) {
   background-color: var(--I4C-Main-Background-1);
+  box-shadow: var(--I4C-Main-Shadow-0);
 }
+div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-InfoTable > div.I4E-Construct-PrimaryHeader, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-InfoTable > div.I4E-Construct-SecondaryHeader, div.I4-App[data-i4-theme-variant=White] div.I4E-Layout-InfoTable > div.I4E-Construct-PrimaryHeader, div.I4-App[data-i4-theme-variant=White] div.I4E-Layout-InfoTable > div.I4E-Construct-SecondaryHeader {
+  box-shadow: none;
+}
+
+/*# sourceMappingURL=Layouts.css.map */

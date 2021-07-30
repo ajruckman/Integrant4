@@ -8,21 +8,18 @@ namespace Integrant4.Element.Bits
         internal readonly SpecSet? InnerSpec;
         internal readonly SpecSet? OuterSpec;
         internal readonly string   ID;
-        internal readonly string?  LoggingID;
 
-        internal BitBase(IUnifiedSpec spec, string? loggingID = null)
+        internal BitBase(IUnifiedSpec spec)
         {
             OuterSpec = spec.ToSpec();
             ID        = RandomIDGenerator.Generate();
-            LoggingID = loggingID;
         }
 
-        internal BitBase(IDualSpec spec, string? loggingID = null)
+        internal BitBase(IDualSpec spec)
         {
             OuterSpec = spec.ToOuterSpec();
             InnerSpec = spec.ToInnerSpec();
             ID        = RandomIDGenerator.Generate();
-            LoggingID = loggingID;
         }
 
         public abstract RenderFragment Renderer();

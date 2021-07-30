@@ -19,7 +19,7 @@ namespace Integrant4.Element.Bits
             internal static readonly Spec Default = new();
 
             public StyleGetter?               Style   { get; init; }
-            public Callbacks.Callback<bool>?  IsSmall { get; init; }
+            public Callbacks.Callback<bool>?          IsSmall { get; init; }
             public Action<Button, ClickArgs>? OnClick { get; init; }
 
             public Callbacks.IsVisible?   IsVisible   { get; init; }
@@ -37,8 +37,6 @@ namespace Integrant4.Element.Bits
             public Callbacks.FlexJustify? FlexJustify { get; init; }
             public Callbacks.Data?        Data        { get; init; }
             public Callbacks.Tooltip?     Tooltip     { get; init; }
-
-            public string? LoggingID { get; init; }
 
             public SpecSet ToOuterSpec() => new()
             {
@@ -69,10 +67,10 @@ namespace Integrant4.Element.Bits
 
     public partial class Button
     {
-        private readonly ContentRef                _content;
+        private readonly ContentRef        _content;
         private readonly Callbacks.Callback<bool>? _isSmall;
 
-        public Button(ContentRef content, Spec? spec = null) : base(spec ?? Spec.Default, spec?.LoggingID)
+        public Button(ContentRef content, Spec? spec = null) : base(spec ?? Spec.Default)
         {
             _content     = content;
             _styleGetter = spec?.Style ?? DefaultStyleGetter;
@@ -147,14 +145,8 @@ namespace Integrant4.Element.Bits
 
         private void Click(MouseEventArgs args)
         {
-            bool disabled = OuterSpec?.IsDisabled?.Invoke() == true;
-            var  c        = new ClickArgs(args);
-
-            _elementService?.LogInteraction(ElementService.InteractionType.Click, "Bit.Button", LoggingID, c);
-
-            if (disabled) return;
-
-            OnClick?.Invoke(this, c);
+            if (OuterSpec?.IsDisabled?.Invoke() == true) return;
+            OnClick?.Invoke(this, new ClickArgs(args));
         }
     }
 
