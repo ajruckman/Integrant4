@@ -18,7 +18,7 @@
 %_InputBase {
     background-color: var(--I4E-InputBase-Background-Normal);
     border: 1px solid var(--I4E-InputBase-Border-Normal);
-    border-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
+    border-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
     box-sizing: border-box;
     color: var(--I4C-Main-Text-6);
     font-size: 1rem;
@@ -47,7 +47,7 @@
 
 div.I4E-Input-Checkbox, div.I4E-Input-Date, div.I4E-Input-Decimal, div.I4E-Input-Integer, div.I4E-Input-Text, div.I4E-Input-TextArea, div.I4E-Input-Time {
     input, textarea {
-        padding: calc(1em * (4 / var(--I4E-Base-Scale))) calc(1em * (6 / var(--I4E-Base-Scale)));
+        padding: calc(1em * (4 / var(--I4E-Base-Scale))) calc(6 * (1em / var(--I4E-Base-Scale)));
 
         &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
             color: green !important;
@@ -91,9 +91,9 @@ div.I4E-Input-Text {
             align-self: stretch;
             background-color: var(--I4E-InputBase-Background-Normal);
             border: 1px solid var(--I4E-InputBase-Border-Normal);
-            border-bottom-right-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
+            border-bottom-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
             border-left: none;
-            border-top-right-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
+            border-top-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
             color: var(--I4E-InputBase-ClearButton-Normal);
             cursor: pointer;
             display: flex;
@@ -110,8 +110,8 @@ div.I4E-Input-Text {
             }
 
             &::after {
-                border-bottom-right-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
-                border-top-right-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
+                border-bottom-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
+                border-top-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
                 bottom: 0;
                 content: '';
                 left: 6px;
@@ -145,7 +145,7 @@ div.I4E-Input-Text {
 
 div.I4E-Input-Select {
     select {
-        padding: calc(1em * (3 / var(--I4E-Base-Scale))) calc(1em * (2 / var(--I4E-Base-Scale)));
+        padding: calc(1em * (3 / var(--I4E-Base-Scale))) calc(2 * (1em / var(--I4E-Base-Scale)));
 
         @extend %_InputBase;
     }

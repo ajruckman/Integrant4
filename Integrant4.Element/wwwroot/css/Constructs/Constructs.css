@@ -160,7 +160,7 @@ div.I4E-Construct-SecondaryHeader, div.I4E-Construct-PrimaryHeader {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  z-index: 100;
+  z-index: 110;
 }
 
 div.I4E-Construct-PrimaryHeader {
@@ -277,7 +277,7 @@ div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-SecondaryHeader, div.I4
 button.I4E-Bit-Button, a.I4E-Bit-Button {
   align-items: center;
   border: none;
-  border-radius: calc(1em * (4 / var(--I4E-Base-Scale)));
+  border-radius: calc(4 * (1em / var(--I4E-Base-Scale)));
   box-sizing: border-box;
   display: inline-flex;
   font-size: 1rem;
@@ -319,42 +319,42 @@ button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Conten
   display: inline-flex;
 }
 button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child), a.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child) {
-  margin-right: calc(1em * (5 / var(--I4E-Base-Scale)));
+  margin-right: calc(5 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:only-child, a.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:only-child {
   flex-grow: 1;
 }
 button.I4E-Bit-Button:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small) {
-  padding-bottom: calc(1em * (6 / var(--I4E-Base-Scale)));
-  padding-top: calc(1em * (6 / var(--I4E-Base-Scale)));
+  padding-bottom: calc(6 * (1em / var(--I4E-Base-Scale)));
+  padding-top: calc(6 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft) {
-  padding-left: calc(1em * (10 / var(--I4E-Base-Scale)));
+  padding-left: calc(10 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft {
-  padding-left: calc(1em * (5 / var(--I4E-Base-Scale)));
+  padding-left: calc(5 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight) {
-  padding-right: calc(1em * (10 / var(--I4E-Base-Scale)));
+  padding-right: calc(10 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight {
-  padding-right: calc(1em * (5 / var(--I4E-Base-Scale)));
+  padding-right: calc(5 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button.I4E-Bit-Button--Small, a.I4E-Bit-Button.I4E-Bit-Button--Small {
-  padding-bottom: calc(1em * (2.5 / var(--I4E-Base-Scale)));
-  padding-top: calc(1em * (2.5 / var(--I4E-Base-Scale)));
+  padding-bottom: calc(2.5 * (1em / var(--I4E-Base-Scale)));
+  padding-top: calc(2.5 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconLeft) {
-  padding-left: calc(1em * (6 / var(--I4E-Base-Scale)));
+  padding-left: calc(6 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconLeft, a.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconLeft {
-  padding-left: calc(1em * (3 / var(--I4E-Base-Scale)));
+  padding-left: calc(3 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconRight), a.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconRight) {
-  padding-right: calc(1em * (6 / var(--I4E-Base-Scale)));
+  padding-right: calc(6 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconRight, a.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconRight {
-  padding-right: calc(1em * (3 / var(--I4E-Base-Scale)));
+  padding-right: calc(3 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button:focus, a.I4E-Bit-Button:focus {
   outline: none;
@@ -772,12 +772,12 @@ div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I
 }
 div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
   background-color: transparent;
-  height: calc(1em * (12 / var(--I4E-Base-Scale)));
-  margin: 0 0 0 calc(1em * (6 / var(--I4E-Base-Scale)));
+  height: calc(12 * (1em / var(--I4E-Base-Scale)));
+  margin: 0 0 0 calc(6 * (1em / var(--I4E-Base-Scale)));
   outline: none;
   padding: 0 3px 0 0;
   position: relative;
-  width: calc(1em * (12 / var(--I4E-Base-Scale)));
+  width: calc(12 * (1em / var(--I4E-Base-Scale)));
 }
 div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper svg {
   bottom: 0;
@@ -842,18 +842,18 @@ div.I4E-Construct-PagedTable-PagedTableButtons {
 }
 div.I4E-Construct-PagedTable-PagedTableButtons button {
   border: none;
-  border-radius: calc(1em * (4 / var(--I4E-Base-Scale)));
+  border-radius: calc(4 * (1em / var(--I4E-Base-Scale)));
   font-size: 1rem;
   font-weight: 600;
   height: 2em;
   margin: 2px;
-  padding: 0 calc(1em * (10 / var(--I4E-Base-Scale)));
+  padding: 0 calc(10 * (1em / var(--I4E-Base-Scale)));
   text-decoration: none;
   transition: background-color 75ms ease-in, border 75ms ease-in;
   user-select: none;
 }
 div.I4E-Construct-PagedTable-PagedTableButtons button.I4E-Construct-PagedTable-Ellipses {
-  padding: 0 calc(1em * (7 / var(--I4E-Base-Scale)));
+  padding: 0 calc(7 * (1em / var(--I4E-Base-Scale)));
 }
 div.I4E-Construct-PagedTable-PagedTableButtons button:hover {
   transition: none;
@@ -1000,7 +1000,7 @@ div.I4E-Input-Text--Clearable input:not(#_)[data-focused]:not(:disabled):not([da
 div.I4E-Construct-Selector div.I4E-Construct-Selector-Head, div.I4E-Input-Select select, div.I4E-Input-Checkbox input, div.I4E-Input-Checkbox textarea, div.I4E-Input-Date input, div.I4E-Input-Date textarea, div.I4E-Input-Decimal input, div.I4E-Input-Decimal textarea, div.I4E-Input-Integer input, div.I4E-Input-Integer textarea, div.I4E-Input-Text input, div.I4E-Input-Text textarea, div.I4E-Input-TextArea input, div.I4E-Input-TextArea textarea, div.I4E-Input-Time input, div.I4E-Input-Time textarea {
   background-color: var(--I4E-InputBase-Background-Normal);
   border: 1px solid var(--I4E-InputBase-Border-Normal);
-  border-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
+  border-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
   box-sizing: border-box;
   color: var(--I4C-Main-Text-6);
   font-size: 1rem;
@@ -1016,7 +1016,7 @@ div.I4E-Construct-Selector div.I4E-Construct-Selector-Head:focus:not(:disabled):
 }
 
 div.I4E-Input-Checkbox input, div.I4E-Input-Checkbox textarea, div.I4E-Input-Date input, div.I4E-Input-Date textarea, div.I4E-Input-Decimal input, div.I4E-Input-Decimal textarea, div.I4E-Input-Integer input, div.I4E-Input-Integer textarea, div.I4E-Input-Text input, div.I4E-Input-Text textarea, div.I4E-Input-TextArea input, div.I4E-Input-TextArea textarea, div.I4E-Input-Time input, div.I4E-Input-Time textarea {
-  padding: calc(1em * (4 / var(--I4E-Base-Scale))) calc(1em * (6 / var(--I4E-Base-Scale)));
+  padding: calc(1em * (4 / var(--I4E-Base-Scale))) calc(6 * (1em / var(--I4E-Base-Scale)));
 }
 div.I4E-Input-Checkbox input::-webkit-inner-spin-button, div.I4E-Input-Checkbox input::-webkit-outer-spin-button, div.I4E-Input-Checkbox textarea::-webkit-inner-spin-button, div.I4E-Input-Checkbox textarea::-webkit-outer-spin-button, div.I4E-Input-Date input::-webkit-inner-spin-button, div.I4E-Input-Date input::-webkit-outer-spin-button, div.I4E-Input-Date textarea::-webkit-inner-spin-button, div.I4E-Input-Date textarea::-webkit-outer-spin-button, div.I4E-Input-Decimal input::-webkit-inner-spin-button, div.I4E-Input-Decimal input::-webkit-outer-spin-button, div.I4E-Input-Decimal textarea::-webkit-inner-spin-button, div.I4E-Input-Decimal textarea::-webkit-outer-spin-button, div.I4E-Input-Integer input::-webkit-inner-spin-button, div.I4E-Input-Integer input::-webkit-outer-spin-button, div.I4E-Input-Integer textarea::-webkit-inner-spin-button, div.I4E-Input-Integer textarea::-webkit-outer-spin-button, div.I4E-Input-Text input::-webkit-inner-spin-button, div.I4E-Input-Text input::-webkit-outer-spin-button, div.I4E-Input-Text textarea::-webkit-inner-spin-button, div.I4E-Input-Text textarea::-webkit-outer-spin-button, div.I4E-Input-TextArea input::-webkit-inner-spin-button, div.I4E-Input-TextArea input::-webkit-outer-spin-button, div.I4E-Input-TextArea textarea::-webkit-inner-spin-button, div.I4E-Input-TextArea textarea::-webkit-outer-spin-button, div.I4E-Input-Time input::-webkit-inner-spin-button, div.I4E-Input-Time input::-webkit-outer-spin-button, div.I4E-Input-Time textarea::-webkit-inner-spin-button, div.I4E-Input-Time textarea::-webkit-outer-spin-button {
   color: green !important;
@@ -1047,9 +1047,9 @@ div.I4E-Input-Text--Clearable button {
   align-self: stretch;
   background-color: var(--I4E-InputBase-Background-Normal);
   border: 1px solid var(--I4E-InputBase-Border-Normal);
-  border-bottom-right-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
+  border-bottom-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
   border-left: none;
-  border-top-right-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
+  border-top-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
   color: var(--I4E-InputBase-ClearButton-Normal);
   cursor: pointer;
   display: flex;
@@ -1064,8 +1064,8 @@ div.I4E-Input-Text--Clearable button:active {
   color: var(--I4E-InputBase-ClearButton-Focus) !important;
 }
 div.I4E-Input-Text--Clearable button::after {
-  border-bottom-right-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
-  border-top-right-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
+  border-bottom-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
+  border-top-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
   bottom: 0;
   content: "";
   left: 6px;
@@ -1083,7 +1083,7 @@ div.I4E-Input-Text--Clearable input:not(#_)[data-focused]:not(:disabled):not([da
 }
 
 div.I4E-Input-Select select {
-  padding: calc(1em * (3 / var(--I4E-Base-Scale))) calc(1em * (2 / var(--I4E-Base-Scale)));
+  padding: calc(1em * (3 / var(--I4E-Base-Scale))) calc(2 * (1em / var(--I4E-Base-Scale)));
 }
 
 div.I4-App[data-i4-theme-variant=Dark], div.I4-App[data-i4-theme-variant=Matrix] {
@@ -1131,7 +1131,7 @@ div.I4E-Construct-Selector div.I4E-Construct-Selector-Head {
   cursor: pointer;
   display: inline-flex;
   justify-content: space-between;
-  min-height: calc(1em * (28 / var(--I4E-Base-Scale)));
+  min-height: calc(28 * (1em / var(--I4E-Base-Scale)));
   min-width: 250px;
   padding: 0 0 0 6px;
   width: 100%;
@@ -1155,12 +1155,12 @@ div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Sel
   cursor: pointer;
   display: none;
   flex-shrink: 0;
-  height: calc(1em * (12 / var(--I4E-Base-Scale)));
-  margin: 0 calc(1em * (6 / var(--I4E-Base-Scale)));
+  height: calc(12 * (1em / var(--I4E-Base-Scale)));
+  margin: 0 calc(6 * (1em / var(--I4E-Base-Scale)));
   outline: none;
   padding: 0;
   position: relative;
-  width: calc(1em * (12 / var(--I4E-Base-Scale)));
+  width: calc(12 * (1em / var(--I4E-Base-Scale)));
 }
 div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-ClearButtonWrapper svg {
   bottom: 0;
@@ -1177,12 +1177,12 @@ div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Sel
 }
 div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
   background-color: var(--I4C-Main-Background-6);
-  border-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
+  border-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
   box-sizing: border-box;
   display: none;
   padding: 3.5px;
   position: absolute;
-  z-index: 10;
+  z-index: 105;
 }
 div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown[data-open] {
   display: block;
@@ -1363,12 +1363,12 @@ div.I4E-Construct-TagSelector-Tag div:nth-child(2), div.I4E-Construct-TagSelecto
 div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
   background-color: transparent;
   cursor: pointer;
-  height: calc(1em * (12 / var(--I4E-Base-Scale)));
-  margin: 0 0 0 calc(1em * (6 / var(--I4E-Base-Scale)));
+  height: calc(12 * (1em / var(--I4E-Base-Scale)));
+  margin: 0 0 0 calc(6 * (1em / var(--I4E-Base-Scale)));
   outline: none;
   padding: 0 3px 0 0;
   position: relative;
-  width: calc(1em * (12 / var(--I4E-Base-Scale)));
+  width: calc(12 * (1em / var(--I4E-Base-Scale)));
 }
 div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper svg, div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper svg, div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper svg {
   bottom: 0;

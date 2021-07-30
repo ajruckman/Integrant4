@@ -338,5 +338,3 @@ div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-Panel, div.I4-App[data-i4-
 div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-InfoTable:not(.I4E-Layout-InfoTable--NoBorder), div.I4-App[data-i4-theme-variant=White] div.I4E-Layout-InfoTable:not(.I4E-Layout-InfoTable--NoBorder) {
   background-color: var(--I4C-Main-Background-1);
 }
-
-/*# sourceMappingURL=Layouts.css.map */

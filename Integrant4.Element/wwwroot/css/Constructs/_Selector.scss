@@ -34,7 +34,7 @@ div.I4E-Construct-Selector {
         cursor: pointer;
         display: inline-flex;
         justify-content: space-between;
-        min-height: calc(1em * (28 / var(--I4E-Base-Scale)));
+        min-height: calc(28 * (1em / var(--I4E-Base-Scale)));
         min-width: 250px;
         padding: 0 0 0 6px;
         width: 100%;
@@ -61,12 +61,12 @@ div.I4E-Construct-Selector {
             cursor: pointer;
             display: none;
             flex-shrink: 0;
-            height: calc(1em * (12 / var(--I4E-Base-Scale)));
-            margin: 0 calc(1em * (6 / var(--I4E-Base-Scale)));
+            height: calc(12 * (1em / var(--I4E-Base-Scale)));
+            margin: 0 calc(6 * (1em / var(--I4E-Base-Scale)));
             outline: none;
             padding: 0;
             position: relative;
-            width: calc(1em * (12 / var(--I4E-Base-Scale)));
+            width: calc(12 * (1em / var(--I4E-Base-Scale)));
 
             span.I4R-BootstrapIcon {
             }
@@ -91,12 +91,12 @@ div.I4E-Construct-Selector {
 
     div.I4E-Construct-Selector-Dropdown {
         background-color: var(--I4C-Main-Background-6);
-        border-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
+        border-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
         box-sizing: border-box;
         display: none;
         padding: $DropdownPadding;
         position: absolute;
-        z-index: 10;
+        z-index: 105;
 
         &[data-open] {
             display: block;

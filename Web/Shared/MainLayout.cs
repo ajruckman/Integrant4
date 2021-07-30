@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Integrant4.API;
@@ -11,6 +12,7 @@ using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using Newtonsoft.Json;
 
 namespace Web.Shared
 {
@@ -28,6 +30,11 @@ namespace Web.Shared
 
         protected override void OnInitialized()
         {
+            ElementService.UseInteractionLogger(interaction =>
+            {
+                Console.WriteLine($"INTERACTION: {JsonConvert.SerializeObject(interaction)}");
+            });
+            
             _stopwatch.Start();
 
             _defaultVariantLoader = new VariantLoader

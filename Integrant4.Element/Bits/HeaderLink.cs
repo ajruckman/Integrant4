@@ -1,8 +1,10 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
 using Integrant4.API;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace Integrant4.Element.Bits
 {
@@ -14,7 +16,8 @@ namespace Integrant4.Element.Bits
         {
             internal static readonly Spec Default = new();
 
-            public Callbacks.Callback<bool>? IsHighlighted { get; init; }
+            public Callbacks.Callback<bool>?      IsHighlighted { get; init; }
+            public Action<HeaderLink, ClickArgs>? OnClick       { get; init; }
 
             public Callbacks.IsVisible?  IsVisible  { get; init; }
             public Callbacks.IsDisabled? IsDisabled { get; init; }
@@ -59,6 +62,11 @@ namespace Integrant4.Element.Bits
                 _isHighlighted   = spec.IsHighlighted;
                 _doAutoHighlight = false;
             }
+
+            if (spec?.OnClick != null)
+            {
+                OnClick += spec.OnClick;
+            }
         }
     }
 
@@ -68,15 +76,26 @@ namespace Integrant4.Element.Bits
         {
             builder.OpenComponent<Component>(0);
             builder.AddAttribute(1, "HeaderLink", this);
+
             builder.CloseComponent();
         };
+
+        public event Action<HeaderLink, ClickArgs>? OnClick;
+
+        private void Click(ClickArgs args)
+        {
+            if (OuterSpec?.IsDisabled?.Invoke() == true) return;
+
+            OnClick?.Invoke(this, args);
+        }
     }
 
     public partial class HeaderLink
     {
         private class Component : ComponentBase
         {
-            [Parameter] public HeaderLink HeaderLink { get; set; } = null!;
+            [Parameter] public HeaderLink        HeaderLink { get; set; } = null!;
+            [Parameter] public Action<ClickArgs> OnClick    { get; set; } = null!;
 
             [Inject] public ElementService ElementService { get; set; } = null!;
 
@@ -90,8 +109,11 @@ namespace Integrant4.Element.Bits
 
                 BitBuilder.ApplyOuterAttributes(HeaderLink, builder, ref seq,
                     HeaderLink._isHighlighted?.Invoke() == true
-                        ? new[] { "I4E-Construct-HeaderLink--Highlighted" }
+                        ? new[] {"I4E-Construct-HeaderLink--Highlighted"}
                         : null);
+
+                builder.AddAttribute(2, "Click",
+                    EventCallback.Factory.Create<MouseEventArgs>(this, Click));
 
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "class", "I4E-Construct-HeaderLink-Contents");
@@ -111,6 +133,20 @@ namespace Integrant4.Element.Bits
 
                 if (HeaderLink._doAutoHighlight)
                     ElementService.RegisterLink(HeaderLink.ID, href);
+            }
+
+            private void Click(MouseEventArgs args)
+            {
+                var c = new ClickArgs
+                (
+                    (ushort) args.Button,
+                    (ushort) args.ClientX,
+                    (ushort) args.ClientY,
+                    args.ShiftKey,
+                    args.CtrlKey
+                );
+
+                OnClick?.Invoke(c);
             }
         }
     }

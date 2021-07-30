@@ -9,7 +9,7 @@ using Microsoft.JSInterop;
 
 namespace Integrant4.Element
 {
-    public class ElementService : IDisposable
+    public partial class ElementService : IDisposable
     {
         public delegate Task Job(IJSRuntime jsRuntime, CancellationToken token);
 
@@ -89,6 +89,50 @@ namespace Integrant4.Element
             {
                 // ignored
             }
+        }
+    }
+
+    public partial class ElementService
+    {
+        public enum InteractionType
+        {
+            Click,
+        }
+
+        private Action<Interaction>? _interactionLogger;
+
+        internal void LogInteraction<TData>
+        (
+            InteractionType type,
+            string          elementType,
+            string?         loggingID,
+            TData           data
+        ) where TData : notnull
+        {
+            if (loggingID == null) return;
+
+            _interactionLogger?.Invoke(new Interaction(type, elementType, loggingID, data));
+        }
+
+        public void UseInteractionLogger(Action<Interaction> logger)
+        {
+            _interactionLogger = logger;
+        }
+
+        public class Interaction
+        {
+            public Interaction(InteractionType type, string elementType, string loggingID, object data)
+            {
+                Type        = type;
+                ElementType = elementType;
+                LoggingID   = loggingID;
+                Data        = data;
+            }
+
+            public InteractionType Type        { get; }
+            public string          ElementType { get; }
+            public string          LoggingID   { get; }
+            public object          Data        { get; }
         }
     }
 }

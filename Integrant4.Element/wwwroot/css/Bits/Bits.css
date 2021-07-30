@@ -5,7 +5,7 @@
 button.I4E-Bit-Button, a.I4E-Bit-Button {
   align-items: center;
   border: none;
-  border-radius: calc(1em * (4 / var(--I4E-Base-Scale)));
+  border-radius: calc(4 * (1em / var(--I4E-Base-Scale)));
   box-sizing: border-box;
   display: inline-flex;
   font-size: 1rem;
@@ -47,42 +47,42 @@ button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Conten
   display: inline-flex;
 }
 button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child), a.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child) {
-  margin-right: calc(1em * (5 / var(--I4E-Base-Scale)));
+  margin-right: calc(5 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:only-child, a.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:only-child {
   flex-grow: 1;
 }
 button.I4E-Bit-Button:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small) {
-  padding-bottom: calc(1em * (6 / var(--I4E-Base-Scale)));
-  padding-top: calc(1em * (6 / var(--I4E-Base-Scale)));
+  padding-bottom: calc(6 * (1em / var(--I4E-Base-Scale)));
+  padding-top: calc(6 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft) {
-  padding-left: calc(1em * (10 / var(--I4E-Base-Scale)));
+  padding-left: calc(10 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft {
-  padding-left: calc(1em * (5 / var(--I4E-Base-Scale)));
+  padding-left: calc(5 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight) {
-  padding-right: calc(1em * (10 / var(--I4E-Base-Scale)));
+  padding-right: calc(10 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight {
-  padding-right: calc(1em * (5 / var(--I4E-Base-Scale)));
+  padding-right: calc(5 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button.I4E-Bit-Button--Small, a.I4E-Bit-Button.I4E-Bit-Button--Small {
-  padding-bottom: calc(1em * (2.5 / var(--I4E-Base-Scale)));
-  padding-top: calc(1em * (2.5 / var(--I4E-Base-Scale)));
+  padding-bottom: calc(2.5 * (1em / var(--I4E-Base-Scale)));
+  padding-top: calc(2.5 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconLeft) {
-  padding-left: calc(1em * (6 / var(--I4E-Base-Scale)));
+  padding-left: calc(6 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconLeft, a.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconLeft {
-  padding-left: calc(1em * (3 / var(--I4E-Base-Scale)));
+  padding-left: calc(3 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconRight), a.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconRight) {
-  padding-right: calc(1em * (6 / var(--I4E-Base-Scale)));
+  padding-right: calc(6 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconRight, a.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconRight {
-  padding-right: calc(1em * (3 / var(--I4E-Base-Scale)));
+  padding-right: calc(3 * (1em / var(--I4E-Base-Scale)));
 }
 button.I4E-Bit-Button:focus, a.I4E-Bit-Button:focus {
   outline: none;
@@ -379,8 +379,8 @@ div.I4E-Bit-Chip, a.I4E-Bit-Chip {
   box-sizing: border-box;
   display: inline-flex;
   font-weight: 600;
-  min-height: calc(1em * (24 / var(--I4E-Base-Scale)));
-  padding: calc(1em * (2 / var(--I4E-Base-Scale))) calc(1em * (7 / var(--I4E-Base-Scale)));
+  min-height: calc(24 * (1em / var(--I4E-Base-Scale)));
+  padding: calc(1em * (2 / var(--I4E-Base-Scale))) calc(7 * (1em / var(--I4E-Base-Scale)));
   vertical-align: middle;
 }
 div.I4E-Bit-Chip.I4E-Bit-Chip--Link, a.I4E-Bit-Chip.I4E-Bit-Chip--Link {
@@ -394,10 +394,10 @@ div.I4E-Bit-Chip.I4E-Bit-Chip--Link:visited, a.I4E-Bit-Chip.I4E-Bit-Chip--Link:v
   color: var(--I4C-Main-PageText);
 }
 div.I4E-Bit-Chip.I4E-Bit-Chip--IconLeft, a.I4E-Bit-Chip.I4E-Bit-Chip--IconLeft {
-  padding-left: calc(1em * (4 / var(--I4E-Base-Scale)));
+  padding-left: calc(4 * (1em / var(--I4E-Base-Scale)));
 }
 div.I4E-Bit-Chip.I4E-Bit-Chip--IconRight, a.I4E-Bit-Chip.I4E-Bit-Chip--IconRight {
-  padding-right: calc(1em * (4 / var(--I4E-Base-Scale)));
+  padding-right: calc(4 * (1em / var(--I4E-Base-Scale)));
 }
 div.I4E-Bit-Chip > span.I4E-Bit-Chip-Contents, a.I4E-Bit-Chip > span.I4E-Bit-Chip-Contents {
   align-items: center;
@@ -409,7 +409,7 @@ div.I4E-Bit-Chip > span.I4E-Bit-Chip-Contents > span.I4E-Bit-Chip-Content, a.I4E
   display: inline-flex;
 }
 div.I4E-Bit-Chip > span.I4E-Bit-Chip-Contents > span.I4E-Bit-Chip-Content:not(:last-child), a.I4E-Bit-Chip > span.I4E-Bit-Chip-Contents > span.I4E-Bit-Chip-Content:not(:last-child) {
-  margin-right: calc(1em * (5 / var(--I4E-Base-Scale)));
+  margin-right: calc(5 * (1em / var(--I4E-Base-Scale)));
 }
 div.I4E-Bit-Chip > span.I4E-Bit-Chip-Contents > span.I4E-Bit-Chip-Content:only-child, a.I4E-Bit-Chip > span.I4E-Bit-Chip-Contents > span.I4E-Bit-Chip-Content:only-child {
   flex-grow: 1;
@@ -520,7 +520,7 @@ a.I4E-Bit-Link > span.I4E-Bit-Link-Contents > span.I4E-Bit-Link-Content {
   display: inline-flex;
 }
 a.I4E-Bit-Link > span.I4E-Bit-Link-Contents > span.I4E-Bit-Link-Content:not(:last-child) {
-  margin-right: calc(1em * (5 / var(--I4E-Base-Scale)));
+  margin-right: calc(5 * (1em / var(--I4E-Base-Scale)));
 }
 a.I4E-Bit-Link:not(.I4E-Bit-Link--Accented):not(.I4E-Bit-Link--Highlighted) {
   color: var(--I4C-Main-PageText);
@@ -554,7 +554,7 @@ div.I4E-Bit-LocalModal {
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 5;
+  z-index: 105;
 }
 div.I4E-Bit-LocalModal--Hide {
   display: none;
@@ -624,9 +624,9 @@ div.I4E-Bit-Spinner--Inline {
   flex-direction: row;
 }
 div.I4E-Bit-Spinner div.I4E-Bit-Spinner-Inner {
-  height: calc(1em * (20 / var(--I4E-Base-Scale)));
+  height: calc(20 * (1em / var(--I4E-Base-Scale)));
   position: relative;
-  width: calc(1em * (20 / var(--I4E-Base-Scale)));
+  width: calc(20 * (1em / var(--I4E-Base-Scale)));
 }
 div.I4E-Bit-Spinner div.I4E-Bit-Spinner-Inner::before {
   animation: spinner 0.6s linear infinite;
@@ -635,11 +635,11 @@ div.I4E-Bit-Spinner div.I4E-Bit-Spinner-Inner::before {
   border-top-color: var(--I4C-Main-Accent-6);
   box-sizing: border-box;
   content: "";
-  height: calc(1em * (20 / var(--I4E-Base-Scale)));
+  height: calc(20 * (1em / var(--I4E-Base-Scale)));
   left: 0;
   position: absolute;
   top: 0;
-  width: calc(1em * (20 / var(--I4E-Base-Scale)));
+  width: calc(20 * (1em / var(--I4E-Base-Scale)));
 }
 div.I4E-Bit-Spinner div.I4E-Bit-Spinner-Text {
   margin-top: 5px;

@@ -38,6 +38,8 @@ namespace Integrant4.Element.Bits
             public Callbacks.Data?        Data        { get; init; }
             public Callbacks.Tooltip?     Tooltip     { get; init; }
 
+            public string? LoggingID { get; init; }
+
             public SpecSet ToOuterSpec() => new()
             {
                 BaseClasses = new ClassSet("I4E-Bit", "I4E-Bit-" + nameof(Button)),
@@ -70,7 +72,7 @@ namespace Integrant4.Element.Bits
         private readonly ContentRef                _content;
         private readonly Callbacks.Callback<bool>? _isSmall;
 
-        public Button(ContentRef content, Spec? spec = null) : base(spec ?? Spec.Default)
+        public Button(ContentRef content, Spec? spec = null) : base(spec ?? Spec.Default, spec?.LoggingID)
         {
             _content     = content;
             _styleGetter = spec?.Style ?? DefaultStyleGetter;
@@ -85,13 +87,14 @@ namespace Integrant4.Element.Bits
 
     public partial class Button
     {
-        private WriteOnlyHook? _refresher;
+        private WriteOnlyHook?  _refresher;
+        private ElementService? _elementService;
 
         public override RenderFragment Renderer() => Latch.Create(builder =>
         {
             IRenderable[] contents = _content.GetAll().ToArray();
 
-            List<string> ac = new() { "I4E-Bit-Button--" + _styleGetter.Invoke() };
+            List<string> ac = new() {"I4E-Bit-Button--" + _styleGetter.Invoke()};
 
             if (contents.First() is IIcon) ac.Add("I4E-Bit-Button--IconLeft");
             if (contents.Last() is IIcon) ac.Add("I4E-Bit-Button--IconRight");
@@ -100,6 +103,8 @@ namespace Integrant4.Element.Bits
             //
 
             int seq = -1;
+
+            ServiceInjector<ElementService>.Inject(builder, ref seq, s => _elementService = s);
 
             if (OuterSpec?.HREF == null)
             {
@@ -142,16 +147,12 @@ namespace Integrant4.Element.Bits
 
         private void Click(MouseEventArgs args)
         {
-            if (OuterSpec?.IsDisabled?.Invoke() == true) return;
+            bool disabled = OuterSpec?.IsDisabled?.Invoke() == true;
+            var  c        = new ClickArgs(args);
 
-            var c = new ClickArgs
-            (
-                (ushort)args.Button,
-                (ushort)args.ClientX,
-                (ushort)args.ClientY,
-                args.ShiftKey,
-                args.CtrlKey
-            );
+            _elementService?.LogInteraction(ElementService.InteractionType.Click, "Bit.Button", LoggingID, c);
+
+            if (disabled) return;
 
             OnClick?.Invoke(this, c);
         }

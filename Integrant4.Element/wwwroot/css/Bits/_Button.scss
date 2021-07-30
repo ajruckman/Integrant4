@@ -5,7 +5,7 @@
 button.I4E-Bit-Button, a.I4E-Bit-Button {
     align-items: center;
     border: none;
-    border-radius: calc(1em * (4 / var(--I4E-Base-Scale)));
+    border-radius: calc(4 * (1em / var(--I4E-Base-Scale)));
     box-sizing: border-box;
     display: inline-flex;
     font-size: 1rem;
@@ -53,7 +53,7 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
             display: inline-flex;
 
             &:not(:last-child) {
-                margin-right: calc(1em * (5 / var(--I4E-Base-Scale)));
+                margin-right: calc(5 * (1em / var(--I4E-Base-Scale)));
             }
 
             &:only-child {
@@ -65,44 +65,44 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
     //
 
     &:not(.I4E-Bit-Button--Small) {
-        padding-bottom: calc(1em * (6 / var(--I4E-Base-Scale)));
-        padding-top: calc(1em * (6 / var(--I4E-Base-Scale)));
+        padding-bottom: calc(6 * (1em / var(--I4E-Base-Scale)));
+        padding-top: calc(6 * (1em / var(--I4E-Base-Scale)));
 
         &:not(.I4E-Bit-Button--IconLeft) {
-            padding-left: calc(1em * (10 / var(--I4E-Base-Scale)));
+            padding-left: calc(10 * (1em / var(--I4E-Base-Scale)));
         }
 
         &.I4E-Bit-Button--IconLeft {
-            padding-left: calc(1em * (5 / var(--I4E-Base-Scale)));
+            padding-left: calc(5 * (1em / var(--I4E-Base-Scale)));
         }
 
         &:not(.I4E-Bit-Button--IconRight) {
-            padding-right: calc(1em * (10 / var(--I4E-Base-Scale)));
+            padding-right: calc(10 * (1em / var(--I4E-Base-Scale)));
         }
 
         &.I4E-Bit-Button--IconRight {
-            padding-right: calc(1em * (5 / var(--I4E-Base-Scale)));
+            padding-right: calc(5 * (1em / var(--I4E-Base-Scale)));
         }
     }
 
     &.I4E-Bit-Button--Small {
-        padding-bottom: calc(1em * (2.5 / var(--I4E-Base-Scale)));
-        padding-top: calc(1em * (2.5 / var(--I4E-Base-Scale)));
+        padding-bottom: calc(2.5 * (1em / var(--I4E-Base-Scale)));
+        padding-top: calc(2.5 * (1em / var(--I4E-Base-Scale)));
 
         &:not(.I4E-Bit-Button--IconLeft) {
-            padding-left: calc(1em * (6 / var(--I4E-Base-Scale)));
+            padding-left: calc(6 * (1em / var(--I4E-Base-Scale)));
         }
 
         &.I4E-Bit-Button--IconLeft {
-            padding-left: calc(1em * (3 / var(--I4E-Base-Scale)));
+            padding-left: calc(3 * (1em / var(--I4E-Base-Scale)));
         }
 
         &:not(.I4E-Bit-Button--IconRight) {
-            padding-right: calc(1em * (6 / var(--I4E-Base-Scale)));
+            padding-right: calc(6 * (1em / var(--I4E-Base-Scale)));
         }
 
         &.I4E-Bit-Button--IconRight {
-            padding-right: calc(1em * (3 / var(--I4E-Base-Scale)));
+            padding-right: calc(3 * (1em / var(--I4E-Base-Scale)));
         }
     }
 

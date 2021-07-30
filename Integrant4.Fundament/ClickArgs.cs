@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Components.Web;
+
 namespace Integrant4.Fundament
 {
     public readonly struct ClickArgs
@@ -9,6 +11,15 @@ namespace Integrant4.Fundament
             Y       = y;
             Shift   = shift;
             Control = control;
+        }
+
+        public ClickArgs(MouseEventArgs args)
+        {
+            Button  = (ushort) args.Button;
+            X       = (ushort) args.ClientX;
+            Y       = (ushort) args.ClientY;
+            Shift   = args.ShiftKey;
+            Control = args.CtrlKey;
         }
 
         public readonly ushort Button;

@@ -7,7 +7,7 @@ namespace Integrant4.Fundament
 {
     public class ServiceInjector<T> : ComponentBase where T : class
     {
-        [Inject] public T ElementService { get; set; } = null!;
+        [Inject] public T Service { get; set; } = null!;
 
         [Parameter] public Action<T>[] OnInject { get; set; } = null!;
 
@@ -15,7 +15,7 @@ namespace Integrant4.Fundament
         {
             foreach (Action<T> action in OnInject)
             {
-                action.Invoke(ElementService);
+                action.Invoke(Service);
             }
         }
 

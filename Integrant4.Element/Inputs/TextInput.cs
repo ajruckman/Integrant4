@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
 
 namespace Integrant4.Element.Inputs
@@ -36,6 +37,8 @@ namespace Integrant4.Element.Inputs
             public Callbacks.Display?    Display         { get; init; }
             public Callbacks.Data?       Data            { get; init; }
             public Callbacks.Tooltip?    Tooltip         { get; init; }
+
+            public string? LoggingID { get; init; }
 
             public SpecSet ToOuterSpec() => new()
             {
@@ -93,9 +96,12 @@ namespace Integrant4.Element.Inputs
             builder.OpenElement(++seq, "div");
             InputBuilder.ApplyOuterAttributes(this, builder, ref seq,
                 _isClearable?.Invoke() == true
-                    ? new[] { "I4E-Input-Text--Clearable" }
+                    ? new[] {"I4E-Input-Text--Clearable"}
                     : null
             );
+
+            builder.AddAttribute(++seq, "onclick",
+                EventCallback.Factory.Create<MouseEventArgs>(this, Click));
 
             builder.OpenElement(++seq, "input");
             InputBuilder.ApplyInnerAttributes(this, builder, ref seq);
@@ -113,7 +119,7 @@ namespace Integrant4.Element.Inputs
                 ushort  size  = 16;
                 double? scale = OuterSpec!.Scale?.Invoke();
                 if (scale != null)
-                    size = (ushort)(size * scale);
+                    size = (ushort) (size * scale);
 
                 builder.OpenElement(++seq, "button");
                 builder.AddAttribute(++seq, "class",   "I4E-Input-Text-ClearButton");
@@ -136,6 +142,18 @@ namespace Integrant4.Element.Inputs
             InputBuilder.ScheduleElementJobs(this, builder, ref seq);
         }, v => Refresher = v);
 
+        private void Click(MouseEventArgs args)
+        {
+            bool disabled = OuterSpec?.IsDisabled?.Invoke() == true;
+            var  c        = new ClickArgs(args);
+
+            _elementService?.LogInteraction(ElementService.InteractionType.Click, "Bit.Button", LoggingID, c);
+
+            if (disabled) return;
+
+            OnClick?.Invoke(this, c);
+        }
+        
         private async Task OnClearClick()
         {
             if (_isClearable?.Invoke() == true)

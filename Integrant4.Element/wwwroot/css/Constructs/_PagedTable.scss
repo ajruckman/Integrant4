@@ -4,18 +4,18 @@ div.I4E-Construct-PagedTable-PagedTableButtons {
 
     button {
         border: none;
-        border-radius: calc(1em * (4 / var(--I4E-Base-Scale)));
+        border-radius: calc(4 * (1em / var(--I4E-Base-Scale)));
         font-size: 1rem;
         font-weight: 600;
         height: 2em;
         margin: 2px;
-        padding: 0 calc(1em * (10 / var(--I4E-Base-Scale)));
+        padding: 0 calc(10 * (1em / var(--I4E-Base-Scale)));
         text-decoration: none;
         transition: background-color 75ms ease-in, border 75ms ease-in;
         user-select: none;
 
         &.I4E-Construct-PagedTable-Ellipses {
-            padding: 0 calc(1em * (7 / var(--I4E-Base-Scale)));
+            padding: 0 calc(7 * (1em / var(--I4E-Base-Scale)));
         }
 
         &:hover {

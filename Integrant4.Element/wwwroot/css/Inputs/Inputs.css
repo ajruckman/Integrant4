@@ -19,7 +19,7 @@ div.I4E-Input-Text--Clearable input:not(#_)[data-focused]:not(:disabled):not([da
 div.I4E-Input-Select select, div.I4E-Input-Checkbox input, div.I4E-Input-Checkbox textarea, div.I4E-Input-Date input, div.I4E-Input-Date textarea, div.I4E-Input-Decimal input, div.I4E-Input-Decimal textarea, div.I4E-Input-Integer input, div.I4E-Input-Integer textarea, div.I4E-Input-Text input, div.I4E-Input-Text textarea, div.I4E-Input-TextArea input, div.I4E-Input-TextArea textarea, div.I4E-Input-Time input, div.I4E-Input-Time textarea {
   background-color: var(--I4E-InputBase-Background-Normal);
   border: 1px solid var(--I4E-InputBase-Border-Normal);
-  border-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
+  border-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
   box-sizing: border-box;
   color: var(--I4C-Main-Text-6);
   font-size: 1rem;
@@ -35,7 +35,7 @@ div.I4E-Input-Select select:focus:not(:disabled):not([data-disabled]), div.I4E-I
 }
 
 div.I4E-Input-Checkbox input, div.I4E-Input-Checkbox textarea, div.I4E-Input-Date input, div.I4E-Input-Date textarea, div.I4E-Input-Decimal input, div.I4E-Input-Decimal textarea, div.I4E-Input-Integer input, div.I4E-Input-Integer textarea, div.I4E-Input-Text input, div.I4E-Input-Text textarea, div.I4E-Input-TextArea input, div.I4E-Input-TextArea textarea, div.I4E-Input-Time input, div.I4E-Input-Time textarea {
-  padding: calc(1em * (4 / var(--I4E-Base-Scale))) calc(1em * (6 / var(--I4E-Base-Scale)));
+  padding: calc(1em * (4 / var(--I4E-Base-Scale))) calc(6 * (1em / var(--I4E-Base-Scale)));
 }
 div.I4E-Input-Checkbox input::-webkit-inner-spin-button, div.I4E-Input-Checkbox input::-webkit-outer-spin-button, div.I4E-Input-Checkbox textarea::-webkit-inner-spin-button, div.I4E-Input-Checkbox textarea::-webkit-outer-spin-button, div.I4E-Input-Date input::-webkit-inner-spin-button, div.I4E-Input-Date input::-webkit-outer-spin-button, div.I4E-Input-Date textarea::-webkit-inner-spin-button, div.I4E-Input-Date textarea::-webkit-outer-spin-button, div.I4E-Input-Decimal input::-webkit-inner-spin-button, div.I4E-Input-Decimal input::-webkit-outer-spin-button, div.I4E-Input-Decimal textarea::-webkit-inner-spin-button, div.I4E-Input-Decimal textarea::-webkit-outer-spin-button, div.I4E-Input-Integer input::-webkit-inner-spin-button, div.I4E-Input-Integer input::-webkit-outer-spin-button, div.I4E-Input-Integer textarea::-webkit-inner-spin-button, div.I4E-Input-Integer textarea::-webkit-outer-spin-button, div.I4E-Input-Text input::-webkit-inner-spin-button, div.I4E-Input-Text input::-webkit-outer-spin-button, div.I4E-Input-Text textarea::-webkit-inner-spin-button, div.I4E-Input-Text textarea::-webkit-outer-spin-button, div.I4E-Input-TextArea input::-webkit-inner-spin-button, div.I4E-Input-TextArea input::-webkit-outer-spin-button, div.I4E-Input-TextArea textarea::-webkit-inner-spin-button, div.I4E-Input-TextArea textarea::-webkit-outer-spin-button, div.I4E-Input-Time input::-webkit-inner-spin-button, div.I4E-Input-Time input::-webkit-outer-spin-button, div.I4E-Input-Time textarea::-webkit-inner-spin-button, div.I4E-Input-Time textarea::-webkit-outer-spin-button {
   color: green !important;
@@ -66,9 +66,9 @@ div.I4E-Input-Text--Clearable button {
   align-self: stretch;
   background-color: var(--I4E-InputBase-Background-Normal);
   border: 1px solid var(--I4E-InputBase-Border-Normal);
-  border-bottom-right-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
+  border-bottom-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
   border-left: none;
-  border-top-right-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
+  border-top-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
   color: var(--I4E-InputBase-ClearButton-Normal);
   cursor: pointer;
   display: flex;
@@ -83,8 +83,8 @@ div.I4E-Input-Text--Clearable button:active {
   color: var(--I4E-InputBase-ClearButton-Focus) !important;
 }
 div.I4E-Input-Text--Clearable button::after {
-  border-bottom-right-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
-  border-top-right-radius: calc(1em * (3 / var(--I4E-Base-Scale)));
+  border-bottom-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
+  border-top-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
   bottom: 0;
   content: "";
   left: 6px;
@@ -102,7 +102,7 @@ div.I4E-Input-Text--Clearable input:not(#_)[data-focused]:not(:disabled):not([da
 }
 
 div.I4E-Input-Select select {
-  padding: calc(1em * (3 / var(--I4E-Base-Scale))) calc(1em * (2 / var(--I4E-Base-Scale)));
+  padding: calc(1em * (3 / var(--I4E-Base-Scale))) calc(2 * (1em / var(--I4E-Base-Scale)));
 }
 
 div.I4-App[data-i4-theme-variant=Dark], div.I4-App[data-i4-theme-variant=Matrix] {

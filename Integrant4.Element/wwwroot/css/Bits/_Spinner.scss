@@ -21,9 +21,9 @@ div.I4E-Bit-Spinner {
     }
 
     div.I4E-Bit-Spinner-Inner {
-        height: calc(1em * (20 / var(--I4E-Base-Scale)));
+        height: calc(20 * (1em / var(--I4E-Base-Scale)));
         position: relative;
-        width: calc(1em * (20 / var(--I4E-Base-Scale)));
+        width: calc(20 * (1em / var(--I4E-Base-Scale)));
 
         &::before {
             animation: spinner .6s linear infinite;
@@ -32,11 +32,11 @@ div.I4E-Bit-Spinner {
             border-top-color: var(--I4C-Main-Accent-6);
             box-sizing: border-box;
             content: '';
-            height: calc(1em * (20 / var(--I4E-Base-Scale)));
+            height: calc(20 * (1em / var(--I4E-Base-Scale)));
             left: 0;
             position: absolute;
             top: 0;
-            width: calc(1em * (20 / var(--I4E-Base-Scale)));
+            width: calc(20 * (1em / var(--I4E-Base-Scale)));
         }
     }
 
