@@ -160,7 +160,6 @@ div.I4E-Construct-SecondaryHeader, div.I4E-Construct-PrimaryHeader {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  z-index: 110;
 }
 
 div.I4E-Construct-PrimaryHeader {
@@ -168,6 +167,7 @@ div.I4E-Construct-PrimaryHeader {
   padding: 0 10px 0 15px;
   position: sticky;
   top: 0;
+  z-index: 110;
 }
 div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-LeftElements {
   align-items: center;
@@ -276,7 +276,7 @@ div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-SecondaryHeader, div.I4
 
 button.I4E-Bit-Button, a.I4E-Bit-Button {
   align-items: center;
-  border: none;
+  border: 1px solid transparent;
   border-radius: calc(4 * (1em / var(--I4E-Base-Scale)));
   box-sizing: border-box;
   display: inline-flex;
@@ -1183,7 +1183,7 @@ div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
   display: none;
   padding: 3.5px;
   position: absolute;
-  z-index: 105;
+  z-index: 115;
 }
 div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown[data-open] {
   display: block;
@@ -1453,5 +1453,3 @@ div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-Tag div.I4E
 div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-AddableTag:hover, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-AddableTag:hover {
   border: 1px solid var(--I4C-Main-Accent-7);
 }
-
-/*# sourceMappingURL=Constructs.css.map */

@@ -1,6 +1,6 @@
 button.I4E-Bit-Button, a.I4E-Bit-Button {
   align-items: center;
-  border: none;
+  border: 1px solid transparent;
   border-radius: calc(4 * (1em / var(--I4E-Base-Scale)));
   box-sizing: border-box;
   display: inline-flex;

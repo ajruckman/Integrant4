@@ -1,7 +1,7 @@
 @import "_ListTable.scss";
 
 div.I4E-Layout-Panel {
-    position: relative;
+    position: static;
 
     &:not(.I4E-Layout-Panel--NoMargin) {
         margin: 7px;

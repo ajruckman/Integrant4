@@ -38,7 +38,7 @@ namespace Integrant4.Element.Constructs.Selectors
 
             _selector.OnChange += Select;
 
-            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort)(12 * _spec.Scale?.Invoke() ?? 12));
+            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
         }
     }
 
@@ -64,6 +64,7 @@ namespace Integrant4.Element.Constructs.Selectors
             public Callbacks.IsVisible?  IsVisible  { get; init; }
             public Callbacks.IsDisabled? IsDisabled { get; init; }
             public Callbacks.Unit?       Width      { get; init; }
+            public Callbacks.Unit?       MinWidth   { get; init; }
             public Callbacks.Scale?      Scale      { get; init; }
 
             internal Selector<TValue>.Spec SubSpec() => new()
@@ -79,6 +80,7 @@ namespace Integrant4.Element.Constructs.Selectors
                 IsVisible             = IsVisible,
                 IsDisabled            = IsDisabled,
                 Width                 = Width,
+                MinWidth              = MinWidth,
                 Scale                 = Scale,
             };
         }

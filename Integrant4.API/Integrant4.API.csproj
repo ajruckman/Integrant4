@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <VersionPrefix>1.33.0</VersionPrefix>
+        <VersionPrefix>1.33.1</VersionPrefix>
         <VersionSuffix>alpha</VersionSuffix>
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>

@@ -46,7 +46,7 @@ namespace Integrant4.Element.Constructs.Selectors
                 _filterInput.OnChange += v => filterDebouncer.Reset(v);
             }
 
-            _clearValueButton = new BootstrapIcon("x-circle-fill", (ushort)(12 * _spec.Scale?.Invoke() ?? 12));
+            _clearValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
         }
 
         public async ValueTask DisposeAsync()
@@ -83,12 +83,13 @@ namespace Integrant4.Element.Constructs.Selectors
             public Callbacks.Callback<string>? NoOptionsText         { get; init; }
             public Callbacks.Callback<string>? FilterTooShortText    { get; init; }
             public Callbacks.Callback<string>? NoResultsText         { get; init; }
-            public Callbacks.Callback<int>?    MinFilterLength       { get; init; }
+            public Callbacks.Callback<int>?            MinFilterLength       { get; init; }
 
             public Callbacks.IsVisible?  IsVisible      { get; init; }
             public Callbacks.IsDisabled? IsDisabled     { get; init; }
             public Callbacks.Color?      HighlightColor { get; init; }
             public Callbacks.Unit?       Width          { get; init; }
+            public Callbacks.Unit?       MinWidth       { get; init; }
             public Callbacks.Scale?      Scale          { get; init; }
         }
     }
@@ -343,9 +344,13 @@ namespace Integrant4.Element.Constructs.Selectors
                 builder.AddAttribute(++seq, "data-disabled", disabled);
                 builder.AddAttribute(++seq, "tabindex",      0);
 
-                ++seq;
+                var styles = new List<string>(2);
                 if (highlight != null)
-                    builder.AddAttribute(seq, "style", $"--I4E-Highlight: {highlight};");
+                    styles.Add($"--I4E-Highlight: {highlight};");
+                if (_spec.MinWidth != null)
+                    styles.Add($"min-width: {_spec.MinWidth.Invoke().Serialize()};");
+
+                builder.AddAttribute(seq, "style", string.Join(" ", styles));
 
                 builder.OpenElement(++seq, "div");
 

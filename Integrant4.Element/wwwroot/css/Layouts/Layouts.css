@@ -1,6 +1,5 @@
 div.I4E-Layout-ListTable {
   border-radius: 4px;
-  box-shadow: var(--I4C-Main-Shadow-1);
   overflow: hidden;
 }
 div.I4E-Layout-ListTable--WithPadding {
@@ -170,6 +169,9 @@ div.I4E-Layout-ListTable.StripeInterval2 tbody tr.Red:nth-child(4n+3):hover td, 
   background-color: var(--I4C-Main-TableRow-Red-3);
 }
 
+div.I4-App[data-i4-theme-variant=Dark] div.I4E-Layout-ListTable:not(div.I4-App[data-i4-theme-variant=Dark] div.I4E-Layout-ListTable--NoShadow, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Layout-ListTable--NoShadow), div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Layout-ListTable:not(div.I4-App[data-i4-theme-variant=Dark] div.I4E-Layout-ListTable--NoShadow, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Layout-ListTable--NoShadow) {
+  box-shadow: var(--I4C-Main-Shadow-1);
+}
 div.I4-App[data-i4-theme-variant=Dark] div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner thead tr th, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner thead tr th {
   background-color: var(--I4C-Main-Background-6);
 }
@@ -181,6 +183,9 @@ div.I4-App[data-i4-theme-variant=Dark] div.I4E-Layout-ListTable table.I4E-Layout
 }
 div.I4-App[data-i4-theme-variant=Dark] div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tfoot tr.ForPaginationInfoAndButtons td, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner tfoot tr.ForPaginationInfoAndButtons td {
   background-color: var(--I4C-Main-Background-4);
+}
+div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-ListTable:not(div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-ListTable--NoShadow, div.I4-App[data-i4-theme-variant=White] div.I4E-Layout-ListTable--NoShadow), div.I4-App[data-i4-theme-variant=White] div.I4E-Layout-ListTable:not(div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-ListTable--NoShadow, div.I4-App[data-i4-theme-variant=White] div.I4E-Layout-ListTable--NoShadow) {
+  box-shadow: var(--I4C-Main-Shadow-0);
 }
 div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner thead tr th, div.I4-App[data-i4-theme-variant=White] div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner thead tr th {
   background-color: var(--I4C-Main-Background-4);
@@ -196,7 +201,7 @@ div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-ListTable table.I4E-Layout
 }
 
 div.I4E-Layout-Panel {
-  position: relative;
+  position: static;
 }
 div.I4E-Layout-Panel:not(.I4E-Layout-Panel--NoMargin) {
   margin: 7px;
@@ -353,5 +358,3 @@ div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-InfoTable:not(.I4E-Layout-
 div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-InfoTable > div.I4E-Construct-PrimaryHeader, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Layout-InfoTable > div.I4E-Construct-SecondaryHeader, div.I4-App[data-i4-theme-variant=White] div.I4E-Layout-InfoTable > div.I4E-Construct-PrimaryHeader, div.I4-App[data-i4-theme-variant=White] div.I4E-Layout-InfoTable > div.I4E-Construct-SecondaryHeader {
   box-shadow: none;
 }
-
-/*# sourceMappingURL=Layouts.css.map */

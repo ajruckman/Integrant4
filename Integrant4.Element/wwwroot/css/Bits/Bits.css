@@ -4,7 +4,7 @@
 
 button.I4E-Bit-Button, a.I4E-Bit-Button {
   align-items: center;
-  border: none;
+  border: 1px solid transparent;
   border-radius: calc(4 * (1em / var(--I4E-Base-Scale)));
   box-sizing: border-box;
   display: inline-flex;
@@ -448,13 +448,13 @@ div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents {
   margin: 17px;
   padding: 10px;
   position: absolute;
-  z-index: 110;
+  z-index: 115;
 }
 div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents[data-show] {
   display: block;
 }
 div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents div.I4E-Bit-Dropdown-Content {
-  z-index: 110;
+  z-index: 115;
 }
 div.I4E-Bit-Dropdown div.I4E-Bit-Dropdown-Contents div.I4E-Bit-Dropdown-Content > * {
   box-sizing: border-box;
@@ -554,7 +554,7 @@ div.I4E-Bit-LocalModal {
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 105;
+  z-index: 115;
 }
 div.I4E-Bit-LocalModal--Hide {
   display: none;

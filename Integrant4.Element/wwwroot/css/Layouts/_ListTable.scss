@@ -1,6 +1,5 @@
 div.I4E-Layout-ListTable {
     border-radius: 4px;
-    box-shadow: var(--I4C-Main-Shadow-1);
     overflow: hidden;
 
     &--WithPadding {
@@ -303,27 +302,33 @@ div.I4E-Layout-ListTable.StripeInterval2 tbody tr {
 
 div.I4-App {
     &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
-        div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner {
-            thead tr {
-                th {
-                    background-color: var(--I4C-Main-Background-6);
-                }
-
-                &.ForPaginationButtons, &.ForColumnControls {
-                    th {
-                        background-color: var(--I4C-Main-Background-4);
-                    }
-                }
+        div.I4E-Layout-ListTable {
+            &:not(&--NoShadow) {
+                box-shadow: var(--I4C-Main-Shadow-1);
             }
 
-            tfoot tr {
-                td {
-                    background-color: var(--I4C-Main-Background-6);
+            table.I4E-Layout-ListTable-Inner {
+                thead tr {
+                    th {
+                        background-color: var(--I4C-Main-Background-6);
+                    }
+
+                    &.ForPaginationButtons, &.ForColumnControls {
+                        th {
+                            background-color: var(--I4C-Main-Background-4);
+                        }
+                    }
                 }
 
-                &.ForPaginationInfoAndButtons {
+                tfoot tr {
                     td {
-                        background-color: var(--I4C-Main-Background-4);
+                        background-color: var(--I4C-Main-Background-6);
+                    }
+
+                    &.ForPaginationInfoAndButtons {
+                        td {
+                            background-color: var(--I4C-Main-Background-4);
+                        }
                     }
                 }
             }
@@ -331,27 +336,33 @@ div.I4-App {
     }
 
     &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
-        div.I4E-Layout-ListTable table.I4E-Layout-ListTable-Inner {
-            thead tr {
-                th {
-                    background-color: var(--I4C-Main-Background-4);
-                }
-
-                &.ForPaginationButtons, &.ForColumnControls {
-                    th {
-                        background-color: var(--I4C-Main-Background-1);
-                    }
-                }
+        div.I4E-Layout-ListTable {
+            &:not(&--NoShadow) {
+                box-shadow: var(--I4C-Main-Shadow-0);
             }
 
-            tfoot tr {
-                td {
-                    background-color: var(--I4C-Main-Background-0);
+            table.I4E-Layout-ListTable-Inner {
+                thead tr {
+                    th {
+                        background-color: var(--I4C-Main-Background-4);
+                    }
+
+                    &.ForPaginationButtons, &.ForColumnControls {
+                        th {
+                            background-color: var(--I4C-Main-Background-1);
+                        }
+                    }
                 }
 
-                &.ForPaginationInfoAndButtons {
+                tfoot tr {
                     td {
-                        background-color: var(--I4C-Main-Background-1);
+                        background-color: var(--I4C-Main-Background-0);
+                    }
+
+                    &.ForPaginationInfoAndButtons {
+                        td {
+                            background-color: var(--I4C-Main-Background-1);
+                        }
                     }
                 }
             }
