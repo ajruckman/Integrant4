@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <VersionPrefix>1.33.2</VersionPrefix>
+        <VersionPrefix>1.34</VersionPrefix>
         <VersionSuffix>alpha</VersionSuffix>
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
@@ -24,6 +24,7 @@
     <ItemGroup>
       <Folder Include="wwwroot\Libraries\Dropzone" />
       <Folder Include="wwwroot\Libraries\OverlayScrollbars" />
+      <Folder Include="wwwroot\Libraries\uPlot" />
     </ItemGroup>
 
 </Project>

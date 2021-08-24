@@ -23,6 +23,7 @@ namespace Web
 
                     ResourceSets.Inputs,
                     ResourceSets.Bits,
+                    ResourceSets.Charts,
                     ResourceSets.Constructs,
                     ResourceSets.Layouts,
 

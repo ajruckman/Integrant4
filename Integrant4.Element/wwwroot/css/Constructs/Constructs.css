@@ -2,232 +2,193 @@
   flex-direction: column;
   margin: 5px;
   max-width: 100%;
-  position: relative;
-}
-.I4E-Construct-FileUploader--Block {
-  border-radius: 5px;
-  display: block;
-}
-.I4E-Construct-FileUploader--Inline {
-  border-radius: 15px;
-  display: inline-block;
-  vertical-align: top;
-}
-.I4E-Construct-FileUploader--Multiple .I4E-Construct-FileUploader-Region {
-  overflow-x: auto;
-}
-.I4E-Construct-FileUploader > input {
-  bottom: 16px;
-  cursor: pointer;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-  z-index: 2;
-}
-.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator {
-  border-radius: 10px;
-  border-style: dashed;
-  border-width: 5px;
-  bottom: 12px;
-  display: none;
-  left: 12px;
-  position: absolute;
-  right: 12px;
-  top: 12px;
-  z-index: 1;
-}
-.I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region {
-  display: flex;
-  height: calc(96px + 38px + 24px);
-  padding: 0 16px;
-  position: relative;
-}
-.I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File {
-  flex-shrink: 0;
-  margin: 5px;
-  position: relative;
-  z-index: 3;
-}
-.I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File:hover > span {
-  opacity: 1;
-  transition: opacity 150ms;
-}
-.I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > div {
-  align-items: center;
-  display: flex;
-  height: 96px;
-  justify-content: center;
-  width: 96px;
-}
-.I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > div > img {
-  max-height: 100%;
-  max-width: 100%;
-}
-.I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > div > img:not([Fallback]) {
-  border: 2px solid var(--I4C-Main-Border-3);
-}
-.I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > div > img[Fallback] {
-  color: var(--I4C-Main-Text-6);
-  height: 64px;
-  width: 64px;
-}
-.I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > p {
-  -webkit-box-orient: vertical;
-  color: unset;
-  display: -webkit-box;
-  font-weight: normal;
-  height: 38px;
-  -webkit-line-clamp: 2;
-  margin: 0;
-  overflow: hidden;
-  text-align: center;
-  width: 96px;
-}
-.I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > span {
-  cursor: pointer;
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transition: opacity 150ms;
-}
-.I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-EmptyContent {
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 100%;
-}
-.I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-EmptyContent div.I4E-Construct-FileUploader-PlaceholderContent, .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-EmptyContent div.I4E-Construct-FileUploader-SizeLimitContent {
-  color: var(--I4C-Main-Text-3);
-  font-style: italic;
-  font-weight: 600;
-}
-.I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-EmptyContent div.I4E-Construct-FileUploader-SizeLimitContent {
-  margin-top: 15px;
-}
+  position: relative; }
+  .I4E-Construct-FileUploader--Block {
+    border-radius: 5px;
+    display: block; }
+  .I4E-Construct-FileUploader--Inline {
+    border-radius: 15px;
+    display: inline-block;
+    vertical-align: top; }
+  .I4E-Construct-FileUploader--Multiple .I4E-Construct-FileUploader-Region {
+    overflow-x: auto; }
+  .I4E-Construct-FileUploader > input {
+    bottom: 16px;
+    cursor: pointer;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2; }
+  .I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator {
+    border-radius: 10px;
+    border-style: dashed;
+    border-width: 5px;
+    bottom: 12px;
+    display: none;
+    left: 12px;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    z-index: 1; }
+  .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region {
+    display: flex;
+    height: calc(96px + 38px + 24px);
+    padding: 0 16px;
+    position: relative; }
+    .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File {
+      flex-shrink: 0;
+      margin: 5px;
+      position: relative;
+      z-index: 3; }
+      .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File:hover > span {
+        opacity: 1;
+        transition: opacity 150ms; }
+      .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > div {
+        align-items: center;
+        display: flex;
+        height: 96px;
+        justify-content: center;
+        width: 96px; }
+        .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > div > img {
+          max-height: 100%;
+          max-width: 100%; }
+          .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > div > img:not([Fallback]) {
+            border: 2px solid var(--I4C-Main-Border-3); }
+          .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > div > img[Fallback] {
+            color: var(--I4C-Main-Text-6);
+            height: 64px;
+            width: 64px; }
+      .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > p {
+        -webkit-box-orient: vertical;
+        color: unset;
+        display: -webkit-box;
+        font-weight: normal;
+        height: 38px;
+        -webkit-line-clamp: 2;
+        margin: 0;
+        overflow: hidden;
+        text-align: center;
+        width: 96px; }
+      .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File > span {
+        cursor: pointer;
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: opacity 150ms; }
+    .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-EmptyContent {
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      width: 100%; }
+      .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-EmptyContent div.I4E-Construct-FileUploader-PlaceholderContent, .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-EmptyContent div.I4E-Construct-FileUploader-SizeLimitContent {
+        color: var(--I4C-Main-Text-3);
+        font-style: italic;
+        font-weight: 600; }
+      .I4E-Construct-FileUploader .I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-EmptyContent div.I4E-Construct-FileUploader-SizeLimitContent {
+        margin-top: 15px; }
 
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-FileUploader, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-FileUploader {
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-FileUploader, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-FileUploader {
   background-color: var(--I4C-Main-Background-4);
   border: 1px solid var(--I4C-Main-Border-5);
-  box-shadow: inset var(--I4C-Main-Shadow-0);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File img:not([Fallback]), div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File img:not([Fallback]) {
-  box-shadow: var(--I4C-Main-Shadow-1);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator {
-  background-color: var(--I4C-Main-Background-7);
-  border-color: var(--I4C-Main-Border-7);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-FileUploader, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-FileUploader {
+  box-shadow: inset var(--I4C-Main-Shadow-0); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File img:not([Fallback]), div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-Region div.I4E-Construct-FileUploader-File img:not([Fallback]) {
+    box-shadow: var(--I4C-Main-Shadow-1); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator {
+    background-color: var(--I4C-Main-Background-7);
+    border-color: var(--I4C-Main-Border-7); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-FileUploader, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-FileUploader {
   background-color: var(--I4C-Main-Background-2);
   border: 1px solid var(--I4C-Main-Border-5);
-  box-shadow: inset var(--I4C-Main-Shadow-0);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator {
-  background-color: white;
-  border-color: var(--I4C-Main-Border-10);
-}
+  box-shadow: inset var(--I4C-Main-Shadow-0); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-FileUploader div.I4E-Construct-FileUploader-DropIndicator {
+    background-color: white;
+    border-color: var(--I4C-Main-Border-10); }
 
 div.I4E-Construct-FlexRow {
   align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  width: 100%;
-}
-div.I4E-Construct-FlexRow > span {
-  display: inline-flex;
-}
+  width: 100%; }
+  div.I4E-Construct-FlexRow > span {
+    display: inline-flex; }
 
 div.I4E-Construct-FlexColumn {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
-}
-div.I4E-Construct-FlexColumn > span {
-  display: inline-flex;
-}
+  width: 100%; }
+  div.I4E-Construct-FlexColumn > span {
+    display: inline-flex; }
 
 div.I4E-Construct-SecondaryHeader, div.I4E-Construct-PrimaryHeader {
   align-items: center;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  width: 100%;
-}
+  width: 100%; }
 
 div.I4E-Construct-PrimaryHeader {
   min-height: calc(3.5px * var(--I4E-Base-Scale));
   padding: 0 10px 0 15px;
   position: sticky;
   top: 0;
-  z-index: 110;
-}
-div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-LeftElements {
-  align-items: center;
-  display: flex;
-  margin-right: 15px;
-  min-height: calc(3.5px * var(--I4E-Base-Scale));
-}
-div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-RightElements {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  min-height: calc(3.5px * var(--I4E-Base-Scale));
-}
-div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-LeftElements a.I4E-Construct-HeaderLink,
-div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-LeftElements div.I4E-Bit-TextBlock {
-  font-size: 1.35rem;
-  font-weight: 600;
-  min-height: calc(3.5px * var(--I4E-Base-Scale));
-}
-div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-RightElements a.I4E-Construct-HeaderLink,
-div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-RightElements div.I4E-Bit-TextBlock {
-  font-size: 1.2rem;
-  font-weight: 600;
-  min-height: calc(3.5px * var(--I4E-Base-Scale));
-}
-div.I4E-Construct-PrimaryHeader div.I4E-Bit-VerticalLine {
-  height: 20px;
-}
+  z-index: 110; }
+  div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-LeftElements {
+    align-items: center;
+    display: flex;
+    margin-right: 15px;
+    min-height: calc(3.5px * var(--I4E-Base-Scale)); }
+  div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-RightElements {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: calc(3.5px * var(--I4E-Base-Scale)); }
+  div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-LeftElements a.I4E-Construct-HeaderLink,
+  div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-LeftElements div.I4E-Bit-TextBlock {
+    font-size: 1.35rem;
+    font-weight: 600;
+    min-height: calc(3.5px * var(--I4E-Base-Scale)); }
+  div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-RightElements a.I4E-Construct-HeaderLink,
+  div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-RightElements div.I4E-Bit-TextBlock {
+    font-size: 1.2rem;
+    font-weight: 600;
+    min-height: calc(3.5px * var(--I4E-Base-Scale)); }
+  div.I4E-Construct-PrimaryHeader div.I4E-Bit-VerticalLine {
+    height: 20px; }
 
 div.I4E-Construct-SecondaryHeader {
   min-height: calc(2.5px * var(--I4E-Base-Scale));
-  padding: 0 10px 0 15px;
-}
-div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-LeftElements {
-  align-items: center;
-  display: flex;
-  margin-right: 15px;
-  min-height: calc(2.5px * var(--I4E-Base-Scale));
-}
-div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-RightElements {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  min-height: calc(2.5px * var(--I4E-Base-Scale));
-}
-div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-LeftElements a.I4E-Construct-HeaderLink,
-div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-LeftElements div.I4E-Bit-TextBlock {
-  font-size: 1.2rem;
-  font-weight: 600;
-  min-height: calc(2.5px * var(--I4E-Base-Scale));
-}
-div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-RightElements a.I4E-Construct-HeaderLink,
-div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-RightElements div.I4E-Bit-TextBlock {
-  font-size: 1.1rem;
-  font-weight: 500;
-  min-height: calc(2.5px * var(--I4E-Base-Scale));
-}
-div.I4E-Construct-SecondaryHeader div.I4E-Bit-VerticalLine {
-  height: 20px;
-}
+  padding: 0 10px 0 15px; }
+  div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-LeftElements {
+    align-items: center;
+    display: flex;
+    margin-right: 15px;
+    min-height: calc(2.5px * var(--I4E-Base-Scale)); }
+  div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-RightElements {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: calc(2.5px * var(--I4E-Base-Scale)); }
+  div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-LeftElements a.I4E-Construct-HeaderLink,
+  div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-LeftElements div.I4E-Bit-TextBlock {
+    font-size: 1.2rem;
+    font-weight: 600;
+    min-height: calc(2.5px * var(--I4E-Base-Scale)); }
+  div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-RightElements a.I4E-Construct-HeaderLink,
+  div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-RightElements div.I4E-Bit-TextBlock {
+    font-size: 1.1rem;
+    font-weight: 500;
+    min-height: calc(2.5px * var(--I4E-Base-Scale)); }
+  div.I4E-Construct-SecondaryHeader div.I4E-Bit-VerticalLine {
+    height: 20px; }
 
 a.I4E-Construct-HeaderLink {
   align-items: center;
@@ -236,43 +197,36 @@ a.I4E-Construct-HeaderLink {
   box-sizing: border-box;
   color: var(--I4C-Main-PageText);
   display: inline-flex;
-  text-decoration: none;
-}
-a.I4E-Construct-HeaderLink:hover:not(#_) {
-  border-bottom-color: var(--I4C-Main-Accent-8);
-  color: var(--I4C-Main-Accent-8);
-}
-a.I4E-Construct-HeaderLink:active:not(#_) {
-  border-bottom-color: var(--I4C-Main-Accent-9);
-  color: var(--I4C-Main-Accent-9);
-}
-a.I4E-Construct-HeaderLink.I4E-Construct-HeaderLink--Highlighted, a.I4E-Construct-HeaderLink[data-highlighted] {
-  border-bottom-color: var(--I4C-Main-Accent-7);
-}
-a.I4E-Construct-HeaderLink div.I4E-Construct-HeaderLink-Contents > span.I4E-Construct-HeaderLink-Content {
-  align-items: center;
-  display: inline-flex;
-}
-a.I4E-Construct-HeaderLink div.I4E-Construct-HeaderLink-Contents > span.I4E-Construct-HeaderLink-Content:not(:last-child) {
-  margin-right: 5px;
-}
+  text-decoration: none; }
+  a.I4E-Construct-HeaderLink:hover:not(#_) {
+    border-bottom-color: var(--I4C-Main-Accent-8);
+    color: var(--I4C-Main-Accent-8); }
+  a.I4E-Construct-HeaderLink:active:not(#_) {
+    border-bottom-color: var(--I4C-Main-Accent-9);
+    color: var(--I4C-Main-Accent-9); }
+  a.I4E-Construct-HeaderLink.I4E-Construct-HeaderLink--Highlighted, a.I4E-Construct-HeaderLink[data-highlighted] {
+    border-bottom-color: var(--I4C-Main-Accent-7); }
+  a.I4E-Construct-HeaderLink div.I4E-Construct-HeaderLink-Contents > span.I4E-Construct-HeaderLink-Content {
+    align-items: center;
+    display: inline-flex; }
+    a.I4E-Construct-HeaderLink div.I4E-Construct-HeaderLink-Contents > span.I4E-Construct-HeaderLink-Content:not(:last-child) {
+      margin-right: 5px; }
 
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-PrimaryHeader, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-PrimaryHeader {
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-PrimaryHeader, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-PrimaryHeader {
   background-color: var(--I4C-Main-Background-6);
-  border-bottom: 1px solid var(--I4C-Main-Border-6);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-SecondaryHeader, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-SecondaryHeader {
+  border-bottom: 1px solid var(--I4C-Main-Border-6); }
+
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-SecondaryHeader, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-SecondaryHeader {
   background-color: var(--I4C-Main-Background-7);
-  border-bottom: 1px solid var(--I4C-Main-Border-6);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-PrimaryHeader, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-PrimaryHeader {
+  border-bottom: 1px solid var(--I4C-Main-Border-6); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-PrimaryHeader, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-PrimaryHeader {
   background-color: var(--I4C-Main-Background-0);
-  border-bottom: 1px solid var(--I4C-Main-Border-6);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-SecondaryHeader, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-SecondaryHeader {
+  border-bottom: 1px solid var(--I4C-Main-Border-6); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-SecondaryHeader, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-SecondaryHeader {
   background-color: var(--I4C-Main-Background-4);
-  border-bottom: 1px solid var(--I4C-Main-Border-6);
-}
+  border-bottom: 1px solid var(--I4C-Main-Border-6); }
 
 button.I4E-Bit-Button, a.I4E-Bit-Button {
   align-items: center;
@@ -285,463 +239,366 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
   padding: 0;
   text-decoration: none;
   transition: background-color 75ms ease-in, border 75ms ease-in;
-  user-select: none;
-}
-button.I4E-Bit-Button:hover, a.I4E-Bit-Button:hover {
-  transition: none;
-}
-a {
-  outline: none;
-}
-a:hover {
-  text-decoration: underline;
-}
+  user-select: none; }
+  button.I4E-Bit-Button:hover, a.I4E-Bit-Button:hover {
+    transition: none; }
+  a {
+    outline: none; }
+    a:hover {
+      text-decoration: underline; }
+  button.I4E-Bit-Button:not(.I4E-Bit--Disabled), a.I4E-Bit-Button:not(.I4E-Bit--Disabled) {
+    cursor: pointer;
+    transition: none; }
+    button.I4E-Bit-Button:not(.I4E-Bit--Disabled):hover, a.I4E-Bit-Button:not(.I4E-Bit--Disabled):hover {
+      background-color: var(--I4C-Main-Opaque-White-3); }
+    button.I4E-Bit-Button:not(.I4E-Bit--Disabled):active, a.I4E-Bit-Button:not(.I4E-Bit--Disabled):active {
+      background-color: var(--I4C-Main-Opaque-White-2); }
+  button.I4E-Bit-Button.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit--Disabled {
+    cursor: not-allowed; }
+  button.I4E-Bit-Button > div.I4E-Bit-Button-Contents, a.I4E-Bit-Button > div.I4E-Bit-Button-Contents {
+    align-items: center;
+    display: flex;
+    width: 100%; }
+    button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content, a.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content {
+      display: inline-flex; }
+      button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child), a.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child) {
+        margin-right: calc(5 * (1em / var(--I4E-Base-Scale))); }
+      button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:only-child, a.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:only-child {
+        flex-grow: 1; }
+  button.I4E-Bit-Button:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small) {
+    padding-bottom: calc(6 * (1em / var(--I4E-Base-Scale)));
+    padding-top: calc(6 * (1em / var(--I4E-Base-Scale))); }
+    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft) {
+      padding-left: calc(10 * (1em / var(--I4E-Base-Scale))); }
+    button.I4E-Bit-Button.I4E-Bit-Button--IconLeft:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button.I4E-Bit-Button--IconLeft:not(.I4E-Bit-Button--Small) {
+      padding-left: calc(5 * (1em / var(--I4E-Base-Scale))); }
+    button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight) {
+      padding-right: calc(10 * (1em / var(--I4E-Base-Scale))); }
+    button.I4E-Bit-Button.I4E-Bit-Button--IconRight:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button.I4E-Bit-Button--IconRight:not(.I4E-Bit-Button--Small) {
+      padding-right: calc(5 * (1em / var(--I4E-Base-Scale))); }
+  button.I4E-Bit-Button.I4E-Bit-Button--Small, a.I4E-Bit-Button.I4E-Bit-Button--Small {
+    padding-bottom: calc(2.5 * (1em / var(--I4E-Base-Scale)));
+    padding-top: calc(2.5 * (1em / var(--I4E-Base-Scale))); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconLeft) {
+      padding-left: calc(6 * (1em / var(--I4E-Base-Scale))); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconLeft, a.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconLeft {
+      padding-left: calc(3 * (1em / var(--I4E-Base-Scale))); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconRight), a.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconRight) {
+      padding-right: calc(6 * (1em / var(--I4E-Base-Scale))); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconRight, a.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconRight {
+      padding-right: calc(3 * (1em / var(--I4E-Base-Scale))); }
+  button.I4E-Bit-Button:focus, a.I4E-Bit-Button:focus {
+    outline: none; }
+  button.I4E-Bit-Button:focus-visible, a.I4E-Bit-Button:focus-visible {
+    box-shadow: 0 0 1px 0 var(--I4C-Main-Accent-5); }
+  button.I4E-Bit-Button.I4E-Bit-Button--Default.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit-Button--Default.I4E-Bit--Disabled {
+    opacity: 0.5; }
+  button.I4E-Bit-Button.I4E-Bit-Button--Accent, a.I4E-Bit-Button.I4E-Bit-Button--Accent {
+    background-color: var(--I4C-Main-Accent-5);
+    color: var(--I4C-Main-Accent-6-Text); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Accent:visited, a.I4E-Bit-Button.I4E-Bit-Button--Accent:visited {
+      color: var(--I4C-Main-Accent-6-Text); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Accent:hover:not(.I4E-Bit--Disabled), a.I4E-Bit-Button.I4E-Bit-Button--Accent:hover:not(.I4E-Bit--Disabled) {
+      background-color: var(--I4C-Main-Accent-4); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Accent:active:not(.I4E-Bit--Disabled), a.I4E-Bit-Button.I4E-Bit-Button--Accent:active:not(.I4E-Bit--Disabled) {
+      background-color: var(--I4C-Main-Accent-3); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Accent.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit-Button--Accent.I4E-Bit--Disabled {
+      opacity: 0.5; }
+  button.I4E-Bit-Button.I4E-Bit-Button--Transparent, a.I4E-Bit-Button.I4E-Bit-Button--Transparent {
+    background-color: transparent;
+    color: var(--I4C-Main-PageText); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Transparent:visited, a.I4E-Bit-Button.I4E-Bit-Button--Transparent:visited {
+      color: var(--I4C-Main-PageText); }
+    button.I4E-Bit-Button.I4E-Bit-Button--Transparent.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit-Button--Transparent.I4E-Bit--Disabled {
+      opacity: 0.5; }
+  button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent {
+    background-color: transparent;
+    color: var(--I4C-Main-PageText); }
+    button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:visited, a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:visited {
+      color: var(--I4C-Main-PageText); }
+    button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent.I4E-Bit--Disabled {
+      opacity: 0.5; }
 
-button.I4E-Bit-Button:not(.I4E-Bit--Disabled), a.I4E-Bit-Button:not(.I4E-Bit--Disabled) {
-  cursor: pointer;
-  transition: none;
-}
-button.I4E-Bit-Button:not(.I4E-Bit--Disabled):hover, a.I4E-Bit-Button:not(.I4E-Bit--Disabled):hover {
-  background-color: var(--I4C-Main-Opaque-White-3);
-}
-button.I4E-Bit-Button:not(.I4E-Bit--Disabled):active, a.I4E-Bit-Button:not(.I4E-Bit--Disabled):active {
-  background-color: var(--I4C-Main-Opaque-White-2);
-}
-button.I4E-Bit-Button.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit--Disabled {
-  cursor: not-allowed;
-}
-button.I4E-Bit-Button > div.I4E-Bit-Button-Contents, a.I4E-Bit-Button > div.I4E-Bit-Button-Contents {
-  align-items: center;
-  display: flex;
-  width: 100%;
-}
-button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content, a.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content {
-  display: inline-flex;
-}
-button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child), a.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:not(:last-child) {
-  margin-right: calc(5 * (1em / var(--I4E-Base-Scale)));
-}
-button.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:only-child, a.I4E-Bit-Button > div.I4E-Bit-Button-Contents > span.I4E-Bit-Button-Content:only-child {
-  flex-grow: 1;
-}
-button.I4E-Bit-Button:not(.I4E-Bit-Button--Small), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small) {
-  padding-bottom: calc(6 * (1em / var(--I4E-Base-Scale)));
-  padding-top: calc(6 * (1em / var(--I4E-Base-Scale)));
-}
-button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconLeft) {
-  padding-left: calc(10 * (1em / var(--I4E-Base-Scale)));
-}
-button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconLeft {
-  padding-left: calc(5 * (1em / var(--I4E-Base-Scale)));
-}
-button.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight), a.I4E-Bit-Button:not(.I4E-Bit-Button--Small):not(.I4E-Bit-Button--IconRight) {
-  padding-right: calc(10 * (1em / var(--I4E-Base-Scale)));
-}
-button.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight, a.I4E-Bit-Button:not(.I4E-Bit-Button--Small).I4E-Bit-Button--IconRight {
-  padding-right: calc(5 * (1em / var(--I4E-Base-Scale)));
-}
-button.I4E-Bit-Button.I4E-Bit-Button--Small, a.I4E-Bit-Button.I4E-Bit-Button--Small {
-  padding-bottom: calc(2.5 * (1em / var(--I4E-Base-Scale)));
-  padding-top: calc(2.5 * (1em / var(--I4E-Base-Scale)));
-}
-button.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconLeft), a.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconLeft) {
-  padding-left: calc(6 * (1em / var(--I4E-Base-Scale)));
-}
-button.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconLeft, a.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconLeft {
-  padding-left: calc(3 * (1em / var(--I4E-Base-Scale)));
-}
-button.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconRight), a.I4E-Bit-Button.I4E-Bit-Button--Small:not(.I4E-Bit-Button--IconRight) {
-  padding-right: calc(6 * (1em / var(--I4E-Base-Scale)));
-}
-button.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconRight, a.I4E-Bit-Button.I4E-Bit-Button--Small.I4E-Bit-Button--IconRight {
-  padding-right: calc(3 * (1em / var(--I4E-Base-Scale)));
-}
-button.I4E-Bit-Button:focus, a.I4E-Bit-Button:focus {
-  outline: none;
-}
-button.I4E-Bit-Button:focus-visible, a.I4E-Bit-Button:focus-visible {
-  box-shadow: 0 0 1px 0 var(--I4C-Main-Accent-5);
-}
-button.I4E-Bit-Button.I4E-Bit-Button--Default.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit-Button--Default.I4E-Bit--Disabled {
-  opacity: 0.5;
-}
-button.I4E-Bit-Button.I4E-Bit-Button--Accent, a.I4E-Bit-Button.I4E-Bit-Button--Accent {
-  background-color: var(--I4C-Main-Accent-5);
-  color: var(--I4C-Main-Accent-6-Text);
-}
-button.I4E-Bit-Button.I4E-Bit-Button--Accent:visited, a.I4E-Bit-Button.I4E-Bit-Button--Accent:visited {
-  color: var(--I4C-Main-Accent-6-Text);
-}
-button.I4E-Bit-Button.I4E-Bit-Button--Accent:hover:not(.I4E-Bit--Disabled), a.I4E-Bit-Button.I4E-Bit-Button--Accent:hover:not(.I4E-Bit--Disabled) {
-  background-color: var(--I4C-Main-Accent-4);
-}
-button.I4E-Bit-Button.I4E-Bit-Button--Accent:active:not(.I4E-Bit--Disabled), a.I4E-Bit-Button.I4E-Bit-Button--Accent:active:not(.I4E-Bit--Disabled) {
-  background-color: var(--I4C-Main-Accent-3);
-}
-button.I4E-Bit-Button.I4E-Bit-Button--Accent.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit-Button--Accent.I4E-Bit--Disabled {
-  opacity: 0.5;
-}
-button.I4E-Bit-Button.I4E-Bit-Button--Transparent, a.I4E-Bit-Button.I4E-Bit-Button--Transparent {
-  background-color: transparent;
-  color: var(--I4C-Main-PageText);
-}
-button.I4E-Bit-Button.I4E-Bit-Button--Transparent:visited, a.I4E-Bit-Button.I4E-Bit-Button--Transparent:visited {
-  color: var(--I4C-Main-PageText);
-}
-button.I4E-Bit-Button.I4E-Bit-Button--Transparent.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit-Button--Transparent.I4E-Bit--Disabled {
-  opacity: 0.5;
-}
-button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent {
-  background-color: transparent;
-  color: var(--I4C-Main-PageText);
-}
-button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:visited, a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:visited {
-  color: var(--I4C-Main-PageText);
-}
-button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent.I4E-Bit--Disabled, a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent.I4E-Bit--Disabled {
-  opacity: 0.5;
-}
-
-div.I4-App[data-i4-theme-variant=Dark] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant=Dark] a.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant=Matrix] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant=Matrix] a.I4E-Bit-Button.I4E-Bit-Button--Default {
+div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Default {
   background-color: var(--I4C-Main-Opaque-White-2);
   box-shadow: var(--I4C-Main-Shadow-0);
-  color: var(--I4C-Main-Text-6);
-}
-div.I4-App[data-i4-theme-variant=Dark] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant=Dark] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant=Matrix] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant=Matrix] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited {
-  color: var(--I4C-Main-Text-6);
-}
-div.I4-App[data-i4-theme-variant=Dark] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Dark] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Matrix] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Matrix] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled) {
+  color: var(--I4C-Main-Text-6); }
+  div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited {
+    color: var(--I4C-Main-Text-6); }
+  div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C-Main-Opaque-White-3);
+    color: var(--I4C-Main-Text-6); }
+  div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C-Main-Opaque-White-2);
+    color: var(--I4C-Main-Text-6); }
+
+div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled) {
   background-color: var(--I4C-Main-Opaque-White-3);
-  color: var(--I4C-Main-Text-6);
-}
-div.I4-App[data-i4-theme-variant=Dark] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Dark] a.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Matrix] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Matrix] a.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled) {
+  color: var(--I4C-Main-Accent-8); }
+
+div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled) {
   background-color: var(--I4C-Main-Opaque-White-2);
-  color: var(--I4C-Main-Text-6);
-}
-div.I4-App[data-i4-theme-variant=Dark] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Dark] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Matrix] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Matrix] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled) {
-  background-color: var(--I4C-Main-Opaque-White-3);
-  color: var(--I4C-Main-Accent-8);
-}
-div.I4-App[data-i4-theme-variant=Dark] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Dark] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Matrix] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Matrix] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled) {
-  background-color: var(--I4C-Main-Opaque-White-2);
-  color: var(--I4C-Main-Accent-8);
-}
-div.I4-App[data-i4-theme-variant=Dark] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant=Dark] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant=Matrix] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant=Matrix] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent {
-  color: var(--I4C-Main-Accent-7);
-}
-div.I4-App[data-i4-theme-variant=Dark] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Dark] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Matrix] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Matrix] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled) {
-  background-color: var(--I4C-Main-Opaque-White-3);
-  color: var(--I4C-Main-Accent-8);
-}
-div.I4-App[data-i4-theme-variant=Dark] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Dark] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Matrix] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Matrix] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled) {
-  background-color: var(--I4C-Main-Opaque-White-2);
-  color: var(--I4C-Main-Accent-8);
-}
-div.I4-App[data-i4-theme-variant=Pink] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant=Pink] a.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant=White] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant=White] a.I4E-Bit-Button.I4E-Bit-Button--Default {
+  color: var(--I4C-Main-Accent-8); }
+
+div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent {
+  color: var(--I4C-Main-Accent-7); }
+  div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C-Main-Opaque-White-3);
+    color: var(--I4C-Main-Accent-8); }
+  div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Dark"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Matrix"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C-Main-Opaque-White-2);
+    color: var(--I4C-Main-Accent-8); }
+
+div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default, div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--Default {
   background-color: var(--I4C-Main-Opaque-Black-2);
-  color: var(--I4C-Main-Text-6);
-}
-div.I4-App[data-i4-theme-variant=Pink] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant=Pink] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant=White] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant=White] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited {
-  color: var(--I4C-Main-Text-6);
-}
-div.I4-App[data-i4-theme-variant=Pink] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Pink] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=White] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=White] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled) {
-  background-color: var(--I4C-Main-Opaque-Black-3);
-  color: var(--I4C-Main-Text-6);
-}
-div.I4-App[data-i4-theme-variant=Pink] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Pink] a.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=White] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=White] a.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled) {
-  background-color: var(--I4C-Main-Opaque-Black-2);
-  color: var(--I4C-Main-Text-6);
-}
-div.I4-App[data-i4-theme-variant=Pink] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Pink] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=White] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=White] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled) {
+  color: var(--I4C-Main-Text-6); }
+  div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default:visited, div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--Default:visited {
+    color: var(--I4C-Main-Text-6); }
+  div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--Default:hover:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C-Main-Opaque-Black-3);
+    color: var(--I4C-Main-Text-6); }
+  div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--Default:active:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C-Main-Opaque-Black-2);
+    color: var(--I4C-Main-Text-6); }
+
+div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:hover:not(.I4E-Bit--Disabled) {
   background-color: var(--I4C-Main-Opaque-Black-1);
-  color: var(--I4C-Main-Accent-6);
-}
-div.I4-App[data-i4-theme-variant=Pink] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Pink] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=White] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=White] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled) {
+  color: var(--I4C-Main-Accent-6); }
+
+div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--Transparent:active:not(.I4E-Bit--Disabled) {
   background-color: var(--I4C-Main-Opaque-Black-0);
-  color: var(--I4C-Main-Accent-6);
-}
-div.I4-App[data-i4-theme-variant=Pink] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant=Pink] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant=White] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant=White] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent {
-  color: var(--I4C-Main-Accent-5);
-}
-div.I4-App[data-i4-theme-variant=Pink] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Pink] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=White] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=White] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled) {
-  background-color: var(--I4C-Main-Opaque-Black-1);
-  color: var(--I4C-Main-Accent-6);
-}
-div.I4-App[data-i4-theme-variant=Pink] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=Pink] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=White] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant=White] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled) {
-  background-color: var(--I4C-Main-Opaque-Black-0);
-  color: var(--I4C-Main-Accent-6);
-}
+  color: var(--I4C-Main-Accent-6); }
+
+div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent, div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent {
+  color: var(--I4C-Main-Accent-5); }
+  div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:hover:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C-Main-Opaque-Black-1);
+    color: var(--I4C-Main-Accent-6); }
+  div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="Pink"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] button.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled), div.I4-App[data-i4-theme-variant="White"] a.I4E-Bit-Button.I4E-Bit-Button--AccentTransparent:active:not(.I4E-Bit--Disabled) {
+    background-color: var(--I4C-Main-Opaque-Black-0);
+    color: var(--I4C-Main-Accent-6); }
 
 button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled) {
   background-color: var(--I4C-Solids-Blue-6);
   box-shadow: var(--I4C-Main-Shadow-0);
   border: 1px solid var(--I4C-Solids-Blue-6);
-  color: white;
-}
-button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):visited {
-  color: white;
-}
-button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):focus {
-  background-color: var(--I4C-Solids-Blue-8);
-  border: 1px solid var(--I4C-Solids-Blue-8);
-  color: white;
-}
-button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):active {
-  background-color: var(--I4C-Solids-Blue-10);
-  border: 1px solid var(--I4C-Solids-Blue-0);
-  color: white;
-}
+  color: white; }
+  button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):visited {
+    color: white; }
+  button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):focus {
+    background-color: var(--I4C-Solids-Blue-8);
+    border: 1px solid var(--I4C-Solids-Blue-8);
+    color: white; }
+  button.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Blue:not(.I4E-Bit--Disabled):not(:disabled):active {
+    background-color: var(--I4C-Solids-Blue-10);
+    border: 1px solid var(--I4C-Solids-Blue-0);
+    color: white; }
+
 button.I4E-Bit-Button--Blue.I4E-Bit--Disabled, button.I4E-Bit-Button--Blue:disabled, a.I4E-Bit-Button--Blue.I4E-Bit--Disabled, a.I4E-Bit-Button--Blue:disabled {
   background-color: transparent;
   border: 1px solid var(--I4C-Main-Border-4);
-  color: var(--I4C-Main-Text-0);
-}
+  color: var(--I4C-Main-Text-0); }
 
 button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled) {
   background-color: var(--I4C-Solids-Green-9);
   box-shadow: var(--I4C-Main-Shadow-0);
   border: 1px solid var(--I4C-Solids-Green-9);
-  color: white;
-}
-button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):visited {
-  color: white;
-}
-button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):focus {
-  background-color: var(--I4C-Solids-Green-7);
-  border: 1px solid var(--I4C-Solids-Green-7);
-  color: white;
-}
-button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):active {
-  background-color: var(--I4C-Solids-Green-5);
-  border: 1px solid var(--I4C-Solids-Green-4);
-  color: white;
-}
+  color: white; }
+  button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):visited {
+    color: white; }
+  button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):focus {
+    background-color: var(--I4C-Solids-Green-7);
+    border: 1px solid var(--I4C-Solids-Green-7);
+    color: white; }
+  button.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Green:not(.I4E-Bit--Disabled):not(:disabled):active {
+    background-color: var(--I4C-Solids-Green-5);
+    border: 1px solid var(--I4C-Solids-Green-4);
+    color: white; }
+
 button.I4E-Bit-Button--Green.I4E-Bit--Disabled, button.I4E-Bit-Button--Green:disabled, a.I4E-Bit-Button--Green.I4E-Bit--Disabled, a.I4E-Bit-Button--Green:disabled {
   background-color: transparent;
   border: 1px solid var(--I4C-Main-Border-4);
-  color: var(--I4C-Main-Text-0);
-}
+  color: var(--I4C-Main-Text-0); }
 
 button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled) {
   background-color: var(--I4C-Solids-Orange-7);
   box-shadow: var(--I4C-Main-Shadow-0);
   border: 1px solid var(--I4C-Solids-Orange-7);
-  color: white;
-}
-button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):visited {
-  color: white;
-}
-button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):focus {
-  background-color: var(--I4C-Solids-Orange-5);
-  border: 1px solid var(--I4C-Solids-Orange-5);
-  color: white;
-}
-button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):active {
-  background-color: var(--I4C-Solids-Orange-4);
-  border: 1px solid var(--I4C-Solids-Orange-3);
-  color: white;
-}
+  color: white; }
+  button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):visited {
+    color: white; }
+  button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):focus {
+    background-color: var(--I4C-Solids-Orange-5);
+    border: 1px solid var(--I4C-Solids-Orange-5);
+    color: white; }
+  button.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Orange:not(.I4E-Bit--Disabled):not(:disabled):active {
+    background-color: var(--I4C-Solids-Orange-4);
+    border: 1px solid var(--I4C-Solids-Orange-3);
+    color: white; }
+
 button.I4E-Bit-Button--Orange.I4E-Bit--Disabled, button.I4E-Bit-Button--Orange:disabled, a.I4E-Bit-Button--Orange.I4E-Bit--Disabled, a.I4E-Bit-Button--Orange:disabled {
   background-color: transparent;
   border: 1px solid var(--I4C-Main-Border-4);
-  color: var(--I4C-Main-Text-0);
-}
+  color: var(--I4C-Main-Text-0); }
 
 button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled) {
   background-color: var(--I4C-Solids-Purple-9);
   box-shadow: var(--I4C-Main-Shadow-0);
   border: 1px solid var(--I4C-Solids-Purple-9);
-  color: white;
-}
-button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):visited {
-  color: white;
-}
-button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):focus {
-  background-color: var(--I4C-Solids-Purple-7);
-  border: 1px solid var(--I4C-Solids-Purple-7);
-  color: white;
-}
-button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):active {
-  background-color: var(--I4C-Solids-Purple-5);
-  border: 1px solid var(--I4C-Solids-Purple-4);
-  color: white;
-}
+  color: white; }
+  button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):visited {
+    color: white; }
+  button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):focus {
+    background-color: var(--I4C-Solids-Purple-7);
+    border: 1px solid var(--I4C-Solids-Purple-7);
+    color: white; }
+  button.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Purple:not(.I4E-Bit--Disabled):not(:disabled):active {
+    background-color: var(--I4C-Solids-Purple-5);
+    border: 1px solid var(--I4C-Solids-Purple-4);
+    color: white; }
+
 button.I4E-Bit-Button--Purple.I4E-Bit--Disabled, button.I4E-Bit-Button--Purple:disabled, a.I4E-Bit-Button--Purple.I4E-Bit--Disabled, a.I4E-Bit-Button--Purple:disabled {
   background-color: transparent;
   border: 1px solid var(--I4C-Main-Border-4);
-  color: var(--I4C-Main-Text-0);
-}
+  color: var(--I4C-Main-Text-0); }
 
 button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled) {
   background-color: var(--I4C-Solids-Red-9);
   box-shadow: var(--I4C-Main-Shadow-0);
   border: 1px solid var(--I4C-Solids-Red-9);
-  color: white;
-}
-button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):visited {
-  color: white;
-}
-button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):focus {
-  background-color: var(--I4C-Solids-Red-7);
-  border: 1px solid var(--I4C-Solids-Red-7);
-  color: white;
-}
-button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):active {
-  background-color: var(--I4C-Solids-Red-5);
-  border: 1px solid var(--I4C-Solids-Red-4);
-  color: white;
-}
+  color: white; }
+  button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):visited {
+    color: white; }
+  button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):focus {
+    background-color: var(--I4C-Solids-Red-7);
+    border: 1px solid var(--I4C-Solids-Red-7);
+    color: white; }
+  button.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Red:not(.I4E-Bit--Disabled):not(:disabled):active {
+    background-color: var(--I4C-Solids-Red-5);
+    border: 1px solid var(--I4C-Solids-Red-4);
+    color: white; }
+
 button.I4E-Bit-Button--Red.I4E-Bit--Disabled, button.I4E-Bit-Button--Red:disabled, a.I4E-Bit-Button--Red.I4E-Bit--Disabled, a.I4E-Bit-Button--Red:disabled {
   background-color: transparent;
   border: 1px solid var(--I4C-Main-Border-4);
-  color: var(--I4C-Main-Text-0);
-}
+  color: var(--I4C-Main-Text-0); }
 
 button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled), a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled) {
   background-color: var(--I4C-Solids-Yellow-6);
   box-shadow: var(--I4C-Main-Shadow-0);
   border: 1px solid var(--I4C-Solids-Yellow-6);
-  color: black;
-}
-button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):visited {
-  color: black;
-}
-button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):focus {
-  background-color: var(--I4C-Solids-Yellow-5);
-  border: 1px solid var(--I4C-Solids-Yellow-5);
-  color: black;
-}
-button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):active {
-  background-color: var(--I4C-Solids-Yellow-3);
-  border: 1px solid var(--I4C-Solids-Yellow-2);
-  color: black;
-}
+  color: black; }
+  button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):visited, a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):visited {
+    color: black; }
+  button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):hover, button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):focus, a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):hover, a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):focus {
+    background-color: var(--I4C-Solids-Yellow-5);
+    border: 1px solid var(--I4C-Solids-Yellow-5);
+    color: black; }
+  button.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):active, a.I4E-Bit-Button--Yellow:not(.I4E-Bit--Disabled):not(:disabled):active {
+    background-color: var(--I4C-Solids-Yellow-3);
+    border: 1px solid var(--I4C-Solids-Yellow-2);
+    color: black; }
+
 button.I4E-Bit-Button--Yellow.I4E-Bit--Disabled, button.I4E-Bit-Button--Yellow:disabled, a.I4E-Bit-Button--Yellow.I4E-Bit--Disabled, a.I4E-Bit-Button--Yellow:disabled {
   background-color: transparent;
   border: 1px solid var(--I4C-Main-Border-4);
-  color: var(--I4C-Main-Text-0);
-}
+  color: var(--I4C-Main-Text-0); }
 
 div.toastui-editor-defaultUI {
   border-color: var(--I4E-TUIEditor-OuterBorder);
   border-radius: 7px;
-  overflow: hidden;
-}
-div.toastui-editor-defaultUI div.toastui-editor-toolbar div.tab-item, div.toastui-editor-defaultUI div.toastui-editor-mode-switch div.tab-item {
-  background-color: var(--I4E-TUIEditor-TabItem-Inactive);
-  border-color: var(--I4E-TUIEditor-InnerBorder);
-  color: var(--I4C-Main-Text-6);
-}
-div.toastui-editor-defaultUI div.toastui-editor-toolbar div.tab-item.active, div.toastui-editor-defaultUI div.toastui-editor-mode-switch div.tab-item.active {
-  background-color: var(--I4E-TUIEditor-TabItem-Active);
-  border-color: var(--I4C-Main-Accent-5);
-  color: var(--I4C-Main-Text-6);
-}
-div.toastui-editor-defaultUI div.toastui-editor-toolbar {
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
-  overflow: hidden;
-}
-div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-md-tab-container {
-  background-color: var(--I4E-TUIEditor-HeaderBackground);
-  border-bottom-color: var(--I4E-TUIEditor-InnerBorder);
-  overflow: hidden;
-}
-div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-md-tab-container div.tab-item {
-  margin-right: 2px;
-}
-div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-md-tab-container div.tab-item.active {
-  border-bottom-color: var(--I4E-TUIEditor-InnerBorder);
-  border-left-color: var(--I4C-Main-Accent-5);
-  border-right-color: var(--I4C-Main-Accent-5);
-  border-top-color: var(--I4C-Main-Accent-5);
-}
-div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-defaultUI-toolbar {
-  background-color: var(--I4E-TUIEditor-HeaderBackground);
-  border-bottom-color: var(--I4E-TUIEditor-InnerBorder);
-  box-shadow: var(--I4C-Main-Shadow-0);
-}
-div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons {
-  border-radius: 4px;
-}
-div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons[disabled] {
-  cursor: not-allowed;
-}
-div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-popup {
-  background-color: var(--I4E-TUIEditor-PopupBackground);
-  border-color: var(--I4E-TUIEditor-PopupBorder);
-  border-radius: 5px;
-  box-shadow: var(--I4C-Main-Shadow-1);
-}
-div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-popup ul li:hover {
-  background-color: var(--I4C-Main-Opaque-White-4);
-}
-div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-popup div.toastui-editor-popup-body {
-  padding: 5px;
-}
-div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-popup div.toastui-editor-popup-body label {
-  margin: 5px;
-}
-div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container {
-  background-color: var(--I4E-InputBase-Background-Focus);
-}
-div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container div.toastui-editor-md-splitter {
-  background-color: red;
-}
-div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-ww-container {
-  background-color: var(--I4E-InputBase-Background-Focus);
-}
-div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container div.ProseMirror, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-ww-container div.ProseMirror {
-  color: var(--I4C-Main-Text-6);
-  font-family: var(--I4R-SansSerifFont);
-}
-div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container div.ProseMirror .toastui-editor-md-code, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container div.ProseMirror .toastui-editor-md-code-block, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-ww-container div.ProseMirror .toastui-editor-md-code, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-ww-container div.ProseMirror .toastui-editor-md-code-block {
-  background-color: var(--I4C-Main-Opaque-White-4);
-  color: var(--I4C-Main-Text-6);
-  font-family: var(--I4R-MonoFont);
-}
-div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container div.ProseMirror .toastui-editor-md-code-block-line-background, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-ww-container div.ProseMirror .toastui-editor-md-code-block-line-background {
-  background-color: var(--I4C-Main-Opaque-White-4);
-  padding: 0 3px;
-}
-div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container div.ProseMirror .toastui-editor-md-code-block-line-background .toastui-editor-md-code, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container div.ProseMirror .toastui-editor-md-code-block-line-background .toastui-editor-md-code-block, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-ww-container div.ProseMirror .toastui-editor-md-code-block-line-background .toastui-editor-md-code, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-ww-container div.ProseMirror .toastui-editor-md-code-block-line-background .toastui-editor-md-code-block {
-  background-color: transparent;
-}
-div.toastui-editor-defaultUI div.toastui-editor-mode-switch {
-  background-color: var(--I4E-TUIEditor-HeaderBackground);
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
-  border-top-color: var(--I4E-TUIEditor-InnerBorder);
-  overflow: hidden;
-}
-div.toastui-editor-defaultUI div.toastui-editor-mode-switch div.tab-item {
-  margin-right: 1px;
-}
-div.toastui-editor-defaultUI div.toastui-editor-mode-switch div.tab-item.active {
-  border-bottom-color: var(--I4C-Main-Accent-5);
-  border-left-color: var(--I4C-Main-Accent-5);
-  border-right-color: var(--I4C-Main-Accent-5);
-  border-top-color: var(--I4E-TUIEditor-InnerBorder);
-}
+  overflow: hidden; }
+  div.toastui-editor-defaultUI div.toastui-editor-toolbar div.tab-item, div.toastui-editor-defaultUI div.toastui-editor-mode-switch div.tab-item {
+    background-color: var(--I4E-TUIEditor-TabItem-Inactive);
+    border-color: var(--I4E-TUIEditor-InnerBorder);
+    color: var(--I4C-Main-Text-6); }
+    div.toastui-editor-defaultUI div.toastui-editor-toolbar div.tab-item.active, div.toastui-editor-defaultUI div.toastui-editor-mode-switch div.tab-item.active {
+      background-color: var(--I4E-TUIEditor-TabItem-Active);
+      border-color: var(--I4C-Main-Accent-5);
+      color: var(--I4C-Main-Text-6); }
+  div.toastui-editor-defaultUI div.toastui-editor-toolbar {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    overflow: hidden; }
+    div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-md-tab-container {
+      background-color: var(--I4E-TUIEditor-HeaderBackground);
+      border-bottom-color: var(--I4E-TUIEditor-InnerBorder);
+      overflow: hidden; }
+      div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-md-tab-container div.tab-item {
+        margin-right: 2px; }
+        div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-md-tab-container div.tab-item.active {
+          border-bottom-color: var(--I4E-TUIEditor-InnerBorder);
+          border-left-color: var(--I4C-Main-Accent-5);
+          border-right-color: var(--I4C-Main-Accent-5);
+          border-top-color: var(--I4C-Main-Accent-5); }
+    div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-defaultUI-toolbar {
+      background-color: var(--I4E-TUIEditor-HeaderBackground);
+      border-bottom-color: var(--I4E-TUIEditor-InnerBorder);
+      box-shadow: var(--I4C-Main-Shadow-0); }
+      div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons {
+        border-radius: 4px; }
+        div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons[disabled] {
+          cursor: not-allowed; }
+    div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-popup {
+      background-color: var(--I4E-TUIEditor-PopupBackground);
+      border-color: var(--I4E-TUIEditor-PopupBorder);
+      border-radius: 5px;
+      box-shadow: var(--I4C-Main-Shadow-1); }
+      div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-popup ul li:hover {
+        background-color: var(--I4C-Main-Opaque-White-4); }
+      div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-popup div.toastui-editor-popup-body {
+        padding: 5px; }
+        div.toastui-editor-defaultUI div.toastui-editor-toolbar div.toastui-editor-popup div.toastui-editor-popup-body label {
+          margin: 5px; }
+  div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container {
+    background-color: var(--I4E-InputBase-Background-Focus); }
+    div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container div.toastui-editor-md-splitter {
+      background-color: red; }
+  div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-ww-container {
+    background-color: var(--I4E-InputBase-Background-Focus); }
+  div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container div.ProseMirror, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-ww-container div.ProseMirror {
+    color: var(--I4C-Main-Text-6);
+    font-family: var(--I4R-SansSerifFont); }
+    div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container div.ProseMirror .toastui-editor-md-code, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container div.ProseMirror .toastui-editor-md-code-block, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-ww-container div.ProseMirror .toastui-editor-md-code, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-ww-container div.ProseMirror .toastui-editor-md-code-block {
+      background-color: var(--I4C-Main-Opaque-White-4);
+      color: var(--I4C-Main-Text-6);
+      font-family: var(--I4R-MonoFont); }
+    div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container div.ProseMirror .toastui-editor-md-code-block-line-background, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-ww-container div.ProseMirror .toastui-editor-md-code-block-line-background {
+      background-color: var(--I4C-Main-Opaque-White-4);
+      padding: 0 3px; }
+      div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container div.ProseMirror .toastui-editor-md-code-block-line-background .toastui-editor-md-code, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-md-container div.ProseMirror .toastui-editor-md-code-block-line-background .toastui-editor-md-code-block, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-ww-container div.ProseMirror .toastui-editor-md-code-block-line-background .toastui-editor-md-code, div.toastui-editor-defaultUI div.toastui-editor-main div.toastui-editor-ww-container div.ProseMirror .toastui-editor-md-code-block-line-background .toastui-editor-md-code-block {
+        background-color: transparent; }
+  div.toastui-editor-defaultUI div.toastui-editor-mode-switch {
+    background-color: var(--I4E-TUIEditor-HeaderBackground);
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-top-color: var(--I4E-TUIEditor-InnerBorder);
+    overflow: hidden; }
+    div.toastui-editor-defaultUI div.toastui-editor-mode-switch div.tab-item {
+      margin-right: 1px; }
+      div.toastui-editor-defaultUI div.toastui-editor-mode-switch div.tab-item.active {
+        border-bottom-color: var(--I4C-Main-Accent-5);
+        border-left-color: var(--I4C-Main-Accent-5);
+        border-right-color: var(--I4C-Main-Accent-5);
+        border-top-color: var(--I4E-TUIEditor-InnerBorder); }
 
-div.I4-App[data-i4-theme-variant=Dark], div.I4-App[data-i4-theme-variant=Matrix] {
+div.I4-App[data-i4-theme-variant="Dark"], div.I4-App[data-i4-theme-variant="Matrix"] {
   --I4E-TUIEditor-HeaderBackground: var(--I4C-Main-Background-7);
   --I4E-TUIEditor-InnerBorder: var(--I4C-Main-Border-6);
   --I4E-TUIEditor-OuterBorder: var(--I4C-Main-Border-11);
   --I4E-TUIEditor-PopupBackground: var(--I4C-Main-Background-8);
   --I4E-TUIEditor-PopupBorder: var(--I4C-Main-Border-11);
   --I4E-TUIEditor-TabItem-Active: var(--I4C-Main-Background-6);
-  --I4E-TUIEditor-TabItem-Inactive: var(--I4C-Main-Background-0);
-}
-div.I4-App[data-i4-theme-variant=Pink], div.I4-App[data-i4-theme-variant=White] {
+  --I4E-TUIEditor-TabItem-Inactive: var(--I4C-Main-Background-0); }
+
+div.I4-App[data-i4-theme-variant="Pink"], div.I4-App[data-i4-theme-variant="White"] {
   --I4E-TUIEditor-HeaderBackground: var(--I4C-Main-Background-4);
   --I4E-TUIEditor-InnerBorder: var(--I4C-Main-Border-6);
   --I4E-TUIEditor-OuterBorder: var(--I4C-Main-Border-5);
   --I4E-TUIEditor-PopupBackground: var(--I4C-Main-Background-0);
   --I4E-TUIEditor-PopupBorder: var(--I4C-Main-Border-11);
   --I4E-TUIEditor-TabItem-Active: var(--I4C-Main-Background-0);
-  --I4E-TUIEditor-TabItem-Inactive: var(--I4C-Main-Background-5);
-}
+  --I4E-TUIEditor-TabItem-Inactive: var(--I4C-Main-Background-5); }
 
 div.I4E-Construct-MultiSelector {
   border-radius: 4px;
@@ -749,132 +606,102 @@ div.I4E-Construct-MultiSelector {
   display: inline-flex;
   flex-direction: column;
   padding: 3px;
-  width: 100%;
-}
-div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-  cursor: pointer;
-}
-div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-Selection {
-  opacity: 0.6;
-}
-div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-  cursor: not-allowed;
-}
-div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections:not(:empty) {
-  margin-top: 4px;
-}
-div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection {
-  align-items: center;
-  border-radius: 15px;
-  display: inline-flex;
-  margin: 1px;
-  padding: 1px 2px 1px 9px;
-}
-div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-  background-color: transparent;
-  height: calc(12 * (1em / var(--I4E-Base-Scale)));
-  margin: 0 0 0 calc(6 * (1em / var(--I4E-Base-Scale)));
-  outline: none;
-  padding: 0 3px 0 0;
-  position: relative;
-  width: calc(12 * (1em / var(--I4E-Base-Scale)));
-}
-div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper svg {
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
+  width: 100%; }
+  div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+    cursor: pointer; }
+  div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-Selection {
+    opacity: 0.6; }
+  div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+    cursor: not-allowed; }
+  div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections:not(:empty) {
+    margin-top: 4px; }
+  div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection {
+    align-items: center;
+    border-radius: 15px;
+    display: inline-flex;
+    margin: 1px;
+    padding: 1px 2px 1px 9px; }
+    div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+      background-color: transparent;
+      height: calc(12 * (1em / var(--I4E-Base-Scale)));
+      margin: 0 0 0 calc(6 * (1em / var(--I4E-Base-Scale)));
+      outline: none;
+      padding: 0 3px 0 0;
+      position: relative;
+      width: calc(12 * (1em / var(--I4E-Base-Scale))); }
+      div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection div.I4E-Construct-MultiSelector-DeselectButtonWrapper svg {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0; }
 
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-MultiSelector, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-MultiSelector {
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-MultiSelector, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-MultiSelector {
   background-color: var(--I4C-Main-Background-4);
   border: 1px solid var(--I4C-Main-Border-11);
-  box-shadow: var(--I4C-Main-Shadow-1);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection {
-  background-color: var(--I4C-Main-Background-7);
-  border: 1px solid var(--I4C-Main-Border-7);
-  box-shadow: var(--I4C-Main-Shadow-1);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-  color: var(--I4C-Main-Opaque-White-4);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover {
-  color: var(--I4C-Main-Opaque-White-7);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
-  color: var(--I4C-Main-Accent-7);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-  color: var(--I4C-Main-Opaque-White-2);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
-  color: var(--I4C-Main-Opaque-White-2);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-MultiSelector, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-MultiSelector {
+  box-shadow: var(--I4C-Main-Shadow-1); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection {
+    background-color: var(--I4C-Main-Background-7);
+    border: 1px solid var(--I4C-Main-Border-7);
+    box-shadow: var(--I4C-Main-Shadow-1); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+    color: var(--I4C-Main-Opaque-White-4); }
+    div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover {
+      color: var(--I4C-Main-Opaque-White-7); }
+    div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
+      color: var(--I4C-Main-Accent-7); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+    color: var(--I4C-Main-Opaque-White-2); }
+    div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
+      color: var(--I4C-Main-Opaque-White-2); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-MultiSelector, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-MultiSelector {
   background-color: var(--I4C-Main-Background-2);
-  border: 1px solid var(--I4C-Main-Border-5);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection {
-  background-color: white;
-  border: 1px solid var(--I4C-Main-Border-10);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-  color: var(--I4C-Main-Opaque-Black-4);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover {
-  color: var(--I4C-Main-Opaque-Black-7);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
-  color: var(--I4C-Main-Accent-7);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-  color: var(--I4C-Main-Opaque-Black-2);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
-  color: var(--I4C-Main-Opaque-Black-2);
-}
+  border: 1px solid var(--I4C-Main-Border-5); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-MultiSelector div.I4E-Construct-MultiSelector-Selections div.I4E-Construct-MultiSelector-Selection {
+    background-color: white;
+    border: 1px solid var(--I4C-Main-Border-10); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+    color: var(--I4C-Main-Opaque-Black-4); }
+    div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover {
+      color: var(--I4C-Main-Opaque-Black-7); }
+    div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-MultiSelector:not([data-disabled]) div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
+      color: var(--I4C-Main-Accent-7); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+    color: var(--I4C-Main-Opaque-Black-2); }
+    div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-MultiSelector[data-disabled] div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
+      color: var(--I4C-Main-Opaque-Black-2); }
 
 div.I4E-Construct-PagedTable-PagedTableButtons {
   display: flex;
-  justify-content: flex-end;
-}
-div.I4E-Construct-PagedTable-PagedTableButtons button {
-  border: none;
-  border-radius: calc(4 * (1em / var(--I4E-Base-Scale)));
-  font-size: 1rem;
-  font-weight: 600;
-  height: 2em;
-  margin: 2px;
-  padding: 0 calc(10 * (1em / var(--I4E-Base-Scale)));
-  text-decoration: none;
-  transition: background-color 75ms ease-in, border 75ms ease-in;
-  user-select: none;
-}
-div.I4E-Construct-PagedTable-PagedTableButtons button.I4E-Construct-PagedTable-Ellipses {
-  padding: 0 calc(7 * (1em / var(--I4E-Base-Scale)));
-}
-div.I4E-Construct-PagedTable-PagedTableButtons button:hover {
-  transition: none;
-}
-div.I4E-Construct-PagedTable-PagedTableButtons button:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
-  cursor: pointer;
-}
-div.I4E-Construct-PagedTable-PagedTableButtons button:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button):hover {
-  background-color: var(--I4C-Main-Opaque-White-3);
-}
-div.I4E-Construct-PagedTable-PagedTableButtons button:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button):active {
-  background-color: var(--I4C-Main-Opaque-White-2);
-}
-div.I4E-Construct-PagedTable-PagedTableButtons button:disabled, div.I4E-Construct-PagedTable-PagedTableButtons button.I4E-Construct-PagedTable-Ellipses {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
+  justify-content: flex-end; }
+  div.I4E-Construct-PagedTable-PagedTableButtons button {
+    border: none;
+    border-radius: calc(4 * (1em / var(--I4E-Base-Scale)));
+    font-size: 1rem;
+    font-weight: 600;
+    height: 2em;
+    margin: 2px;
+    padding: 0 calc(10 * (1em / var(--I4E-Base-Scale)));
+    text-decoration: none;
+    transition: background-color 75ms ease-in, border 75ms ease-in;
+    user-select: none; }
+    div.I4E-Construct-PagedTable-PagedTableButtons button.I4E-Construct-PagedTable-Ellipses {
+      padding: 0 calc(7 * (1em / var(--I4E-Base-Scale))); }
+    div.I4E-Construct-PagedTable-PagedTableButtons button:hover {
+      transition: none; }
+    div.I4E-Construct-PagedTable-PagedTableButtons button:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
+      cursor: pointer; }
+      div.I4E-Construct-PagedTable-PagedTableButtons button:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button):hover {
+        background-color: var(--I4C-Main-Opaque-White-3); }
+      div.I4E-Construct-PagedTable-PagedTableButtons button:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button):active {
+        background-color: var(--I4C-Main-Opaque-White-2); }
+    div.I4E-Construct-PagedTable-PagedTableButtons button:disabled, div.I4E-Construct-PagedTable-PagedTableButtons button.I4E-Construct-PagedTable-Ellipses {
+      cursor: not-allowed;
+      opacity: 0.5; }
 
 div.I4E-Construct-PagedTable-PageInfo {
-  user-select: none;
-}
+  user-select: none; }
 
 tr.I4E-Construct-PagedTable-NoValuesMessage td {
   color: var(--I4C-Main-Text-4);
@@ -882,8 +709,7 @@ tr.I4E-Construct-PagedTable-NoValuesMessage td {
   font-weight: bold;
   padding: 7px;
   text-align: center;
-  user-select: none;
-}
+  user-select: none; }
 
 button.I4E-Construct-PagedTable-SortIndicator {
   background: none;
@@ -892,111 +718,88 @@ button.I4E-Construct-PagedTable-SortIndicator {
   height: 24px;
   margin: 0;
   padding: 0;
-  width: 24px;
-}
+  width: 24px; }
 
 div.I4E-Construct-PagedTable-FilterInput div.I4E-Input-Text {
-  width: 100%;
-}
-div.I4E-Construct-PagedTable-FilterInput div.I4E-Input-Text input {
-  width: 100%;
-}
+  width: 100%; }
+  div.I4E-Construct-PagedTable-FilterInput div.I4E-Input-Text input {
+    width: 100%; }
 
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-PagedTable-PagedTableButtons button, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-PagedTable-PagedTableButtons button {
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-PagedTable-PagedTableButtons button, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-PagedTable-PagedTableButtons button {
   background-color: var(--I4C-Main-Opaque-White-2);
   box-shadow: var(--I4C-Main-Shadow-0);
-  color: var(--I4C-Main-Text-6);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-PagedTable-PagedTableButtons button:hover:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button), div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-PagedTable-PagedTableButtons button:hover:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
-  background-color: var(--I4C-Main-Opaque-White-3);
-  color: var(--I4C-Main-Text-6);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-PagedTable-PagedTableButtons button:active:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button), div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-PagedTable-PagedTableButtons button:active:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
-  background-color: var(--I4C-Main-Opaque-White-2);
-  color: var(--I4C-Main-Text-6);
-}
-div.I4-App[data-i4-theme-variant=Dark] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive, div.I4-App[data-i4-theme-variant=Matrix] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive {
-  color: var(--I4C-Main-Opaque-White-5);
-}
-div.I4-App[data-i4-theme-variant=Dark] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:hover, div.I4-App[data-i4-theme-variant=Matrix] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:hover {
-  color: var(--I4C-Main-Opaque-White-7);
-}
-div.I4-App[data-i4-theme-variant=Dark] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:active, div.I4-App[data-i4-theme-variant=Matrix] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:active {
-  color: var(--I4C-Main-Opaque-White-5);
-}
-div.I4-App[data-i4-theme-variant=Dark] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active, div.I4-App[data-i4-theme-variant=Matrix] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active {
-  color: var(--I4C-Main-Accent-6);
-}
-div.I4-App[data-i4-theme-variant=Dark] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:hover, div.I4-App[data-i4-theme-variant=Matrix] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:hover {
-  color: var(--I4C-Main-Accent-7);
-}
-div.I4-App[data-i4-theme-variant=Dark] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:active, div.I4-App[data-i4-theme-variant=Matrix] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:active {
-  color: var(--I4C-Main-Accent-6);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-PagedTable-PagedTableButtons button, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-PagedTable-PagedTableButtons button {
+  color: var(--I4C-Main-Text-6); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-PagedTable-PagedTableButtons button:hover:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button), div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-PagedTable-PagedTableButtons button:hover:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
+    background-color: var(--I4C-Main-Opaque-White-3);
+    color: var(--I4C-Main-Text-6); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-PagedTable-PagedTableButtons button:active:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button), div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-PagedTable-PagedTableButtons button:active:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
+    background-color: var(--I4C-Main-Opaque-White-2);
+    color: var(--I4C-Main-Text-6); }
+
+div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive {
+  color: var(--I4C-Main-Opaque-White-5); }
+  div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:hover, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:hover {
+    color: var(--I4C-Main-Opaque-White-7); }
+  div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:active, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:active {
+    color: var(--I4C-Main-Opaque-White-5); }
+
+div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active {
+  color: var(--I4C-Main-Accent-6); }
+  div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:hover, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:hover {
+    color: var(--I4C-Main-Accent-7); }
+  div.I4-App[data-i4-theme-variant="Dark"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:active, div.I4-App[data-i4-theme-variant="Matrix"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:active {
+    color: var(--I4C-Main-Accent-6); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-PagedTable-PagedTableButtons button, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-PagedTable-PagedTableButtons button {
   background-color: var(--I4C-Main-Opaque-Black-2);
-  color: var(--I4C-Main-Text-6);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-PagedTable-PagedTableButtons button:hover:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button), div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-PagedTable-PagedTableButtons button:hover:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
-  background-color: var(--I4C-Main-Opaque-Black-3);
-  color: var(--I4C-Main-Text-6);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-PagedTable-PagedTableButtons button:active:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button), div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-PagedTable-PagedTableButtons button:active:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
-  background-color: var(--I4C-Main-Opaque-Black-2);
-  color: var(--I4C-Main-Text-6);
-}
-div.I4-App[data-i4-theme-variant=Pink] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive, div.I4-App[data-i4-theme-variant=White] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive {
-  color: var(--I4C-Main-Opaque-Black-7);
-}
-div.I4-App[data-i4-theme-variant=Pink] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:hover, div.I4-App[data-i4-theme-variant=White] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:hover {
-  color: var(--I4C-Main-Opaque-Black-10);
-}
-div.I4-App[data-i4-theme-variant=Pink] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:active, div.I4-App[data-i4-theme-variant=White] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:active {
-  color: var(--I4C-Main-Opaque-Black-7);
-}
-div.I4-App[data-i4-theme-variant=Pink] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active, div.I4-App[data-i4-theme-variant=White] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active {
-  color: var(--I4C-Main-Accent-6);
-}
-div.I4-App[data-i4-theme-variant=Pink] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:hover, div.I4-App[data-i4-theme-variant=White] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:hover {
-  color: var(--I4C-Main-Accent-7);
-}
-div.I4-App[data-i4-theme-variant=Pink] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:active, div.I4-App[data-i4-theme-variant=White] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:active {
-  color: var(--I4C-Main-Accent-6);
-}
+  color: var(--I4C-Main-Text-6); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-PagedTable-PagedTableButtons button:hover:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button), div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-PagedTable-PagedTableButtons button:hover:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
+    background-color: var(--I4C-Main-Opaque-Black-3);
+    color: var(--I4C-Main-Text-6); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-PagedTable-PagedTableButtons button:active:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button), div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-PagedTable-PagedTableButtons button:active:not(:disabled):not(.I4E-Construct-PagedTable-Ellipses):not(.I4E-Bit-Button) {
+    background-color: var(--I4C-Main-Opaque-Black-2);
+    color: var(--I4C-Main-Text-6); }
+
+div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive, div.I4-App[data-i4-theme-variant="White"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive {
+  color: var(--I4C-Main-Opaque-Black-7); }
+  div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:hover, div.I4-App[data-i4-theme-variant="White"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:hover {
+    color: var(--I4C-Main-Opaque-Black-10); }
+  div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:active, div.I4-App[data-i4-theme-variant="White"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Inactive:active {
+    color: var(--I4C-Main-Opaque-Black-7); }
+
+div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active, div.I4-App[data-i4-theme-variant="White"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active {
+  color: var(--I4C-Main-Accent-6); }
+  div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:hover, div.I4-App[data-i4-theme-variant="White"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:hover {
+    color: var(--I4C-Main-Accent-7); }
+  div.I4-App[data-i4-theme-variant="Pink"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:active, div.I4-App[data-i4-theme-variant="White"] button.I4E-Construct-PagedTable-SortIndicator.I4E-Construct-PagedTable-SortIndicator--Active:active {
+    color: var(--I4C-Main-Accent-6); }
 
 div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader {
-  padding-right: 5px;
-}
-div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-RightElements {
-  flex: 1;
-  justify-content: end;
-}
-div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader button.I4E-Construct-PanelExpander-PanelButton {
-  padding: 0 8px;
-  width: 100%;
-  min-height: calc(calc(2.5px * var(--I4E-Base-Scale)) - 10px);
-}
-div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader button.I4E-Construct-PanelExpander-PanelButton span.I4R-BootstrapIcon svg {
-  margin-left: 5px;
-}
+  padding-right: 5px; }
+  div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader div.I4E-Construct-SecondaryHeader-RightElements {
+    flex: 1;
+    justify-content: end; }
+  div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader button.I4E-Construct-PanelExpander-PanelButton {
+    padding: 0 8px;
+    width: 100%;
+    min-height: calc(calc(2.5px * var(--I4E-Base-Scale)) - 10px); }
+    div.I4E-Construct-PanelExpander div.I4E-Layout-Panel div.I4E-Construct-SecondaryHeader button.I4E-Construct-PanelExpander-PanelButton span.I4R-BootstrapIcon svg {
+      margin-left: 5px; }
 
-div.I4E-Input-Text--Clearable input:not(#_):disabled ~ button, div.I4E-Input-Text--Clearable input:not(#_)[data-disabled] ~ button, div.I4E-Construct-Selector div.I4E-Construct-Selector-Head:disabled, div.I4E-Input-Select select:disabled, div.I4E-Input-Checkbox input:disabled, div.I4E-Input-Checkbox textarea:disabled, div.I4E-Input-Date input:disabled, div.I4E-Input-Date textarea:disabled, div.I4E-Input-Decimal input:disabled, div.I4E-Input-Decimal textarea:disabled, div.I4E-Input-Integer input:disabled, div.I4E-Input-Integer textarea:disabled, div.I4E-Input-Text input:disabled, div.I4E-Input-Text textarea:disabled, div.I4E-Input-TextArea input:disabled, div.I4E-Input-TextArea textarea:disabled, div.I4E-Input-Time input:disabled, div.I4E-Input-Time textarea:disabled, div.I4E-Construct-Selector div[data-disabled].I4E-Construct-Selector-Head, div.I4E-Input-Select select[data-disabled], div.I4E-Input-Checkbox input[data-disabled], div.I4E-Input-Checkbox textarea[data-disabled], div.I4E-Input-Date input[data-disabled], div.I4E-Input-Date textarea[data-disabled], div.I4E-Input-Decimal input[data-disabled], div.I4E-Input-Decimal textarea[data-disabled], div.I4E-Input-Integer input[data-disabled], div.I4E-Input-Integer textarea[data-disabled], div.I4E-Input-Text input[data-disabled], div.I4E-Input-Text textarea[data-disabled], div.I4E-Input-TextArea input[data-disabled], div.I4E-Input-TextArea textarea[data-disabled], div.I4E-Input-Time input[data-disabled], div.I4E-Input-Time textarea[data-disabled] {
+div.I4E-Input-Text--Clearable input:not(#_):disabled ~ button, div.I4E-Input-Text--Clearable input[data-disabled]:not(#_) ~ button, div.I4E-Construct-Selector div.I4E-Construct-Selector-Head:disabled, div.I4E-Input-Select select:disabled, div.I4E-Input-Checkbox input:disabled, div.I4E-Input-Checkbox textarea:disabled, div.I4E-Input-Date input:disabled, div.I4E-Input-Date textarea:disabled, div.I4E-Input-Decimal input:disabled, div.I4E-Input-Decimal textarea:disabled, div.I4E-Input-Integer input:disabled, div.I4E-Input-Integer textarea:disabled, div.I4E-Input-Text input:disabled, div.I4E-Input-Text textarea:disabled, div.I4E-Input-TextArea input:disabled, div.I4E-Input-TextArea textarea:disabled, div.I4E-Input-Time input:disabled, div.I4E-Input-Time textarea:disabled, div.I4E-Construct-Selector div.I4E-Construct-Selector-Head[data-disabled], div.I4E-Input-Select select[data-disabled], div.I4E-Input-Checkbox input[data-disabled], div.I4E-Input-Checkbox textarea[data-disabled], div.I4E-Input-Date input[data-disabled], div.I4E-Input-Date textarea[data-disabled], div.I4E-Input-Decimal input[data-disabled], div.I4E-Input-Decimal textarea[data-disabled], div.I4E-Input-Integer input[data-disabled], div.I4E-Input-Integer textarea[data-disabled], div.I4E-Input-Text input[data-disabled], div.I4E-Input-Text textarea[data-disabled], div.I4E-Input-TextArea input[data-disabled], div.I4E-Input-TextArea textarea[data-disabled], div.I4E-Input-Time input[data-disabled], div.I4E-Input-Time textarea[data-disabled] {
   cursor: not-allowed;
-  opacity: 0.5;
-}
+  opacity: 0.5; }
 
 div.I4E-Input-Text--Clearable input:not(#_):hover:not(:disabled):not([data-disabled]) ~ button, div.I4E-Construct-Selector div.I4E-Construct-Selector-Head:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Select select:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Date input:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Text input:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea:hover:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input:hover:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Time input:hover:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea:hover:not(:disabled):not([data-disabled]) {
   background-color: var(--I4E-InputBase-Background-Hover);
   border-color: var(--I4E-InputBase-Border-Hover);
-  transition: background-color 75ms ease-in, border 75ms ease-in;
-}
+  transition: background-color 75ms ease-in, border 75ms ease-in; }
 
 div.I4E-Input-Text--Clearable input:not(#_):focus:not(:disabled):not([data-disabled]) ~ button,
-div.I4E-Input-Text--Clearable input:not(#_)[data-focused]:not(:disabled):not([data-disabled]) ~ button, div.I4E-Construct-Selector div.I4E-Construct-Selector-Head:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Select select:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Construct-Selector div[data-focused].I4E-Construct-Selector-Head:not(:disabled):not([data-disabled]), div.I4E-Input-Select select[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea[data-focused]:not(:disabled):not([data-disabled]) {
+div.I4E-Input-Text--Clearable input[data-focused]:not(#_):not(:disabled):not([data-disabled]) ~ button, div.I4E-Construct-Selector div.I4E-Construct-Selector-Head:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Select select:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Construct-Selector div.I4E-Construct-Selector-Head[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Select select[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea[data-focused]:not(:disabled):not([data-disabled]) {
   background-color: var(--I4E-InputBase-Background-Focus);
   border-color: var(--I4E-InputBase-Border-Focus);
-  transition: background-color 75ms ease-in, border 75ms ease-in;
-}
+  transition: background-color 75ms ease-in, border 75ms ease-in; }
 
 div.I4E-Construct-Selector div.I4E-Construct-Selector-Head, div.I4E-Input-Select select, div.I4E-Input-Checkbox input, div.I4E-Input-Checkbox textarea, div.I4E-Input-Date input, div.I4E-Input-Date textarea, div.I4E-Input-Decimal input, div.I4E-Input-Decimal textarea, div.I4E-Input-Integer input, div.I4E-Input-Integer textarea, div.I4E-Input-Text input, div.I4E-Input-Text textarea, div.I4E-Input-TextArea input, div.I4E-Input-TextArea textarea, div.I4E-Input-Time input, div.I4E-Input-Time textarea {
   background-color: var(--I4E-InputBase-Background-Normal);
@@ -1006,88 +809,73 @@ div.I4E-Construct-Selector div.I4E-Construct-Selector-Head, div.I4E-Input-Select
   color: var(--I4C-Main-Text-6);
   font-size: 1rem;
   outline: none;
-  transition: background-color 75ms ease-in, border 75ms ease-in;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Head::placeholder, div.I4E-Input-Select select::placeholder, div.I4E-Input-Checkbox input::placeholder, div.I4E-Input-Checkbox textarea::placeholder, div.I4E-Input-Date input::placeholder, div.I4E-Input-Date textarea::placeholder, div.I4E-Input-Decimal input::placeholder, div.I4E-Input-Decimal textarea::placeholder, div.I4E-Input-Integer input::placeholder, div.I4E-Input-Integer textarea::placeholder, div.I4E-Input-Text input::placeholder, div.I4E-Input-Text textarea::placeholder, div.I4E-Input-TextArea input::placeholder, div.I4E-Input-TextArea textarea::placeholder, div.I4E-Input-Time input::placeholder, div.I4E-Input-Time textarea::placeholder {
-  font-style: italic;
-  opacity: 0.5;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Head:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Select select:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Construct-Selector div[data-focused].I4E-Construct-Selector-Head:not(:disabled):not([data-disabled]), div.I4E-Input-Select select[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea[data-focused]:not(:disabled):not([data-disabled]) {
-  box-shadow: var(--I4C-Main-Shadow-0);
-}
+  transition: background-color 75ms ease-in, border 75ms ease-in; }
+  div.I4E-Construct-Selector div.I4E-Construct-Selector-Head::placeholder, div.I4E-Input-Select select::placeholder, div.I4E-Input-Checkbox input::placeholder, div.I4E-Input-Checkbox textarea::placeholder, div.I4E-Input-Date input::placeholder, div.I4E-Input-Date textarea::placeholder, div.I4E-Input-Decimal input::placeholder, div.I4E-Input-Decimal textarea::placeholder, div.I4E-Input-Integer input::placeholder, div.I4E-Input-Integer textarea::placeholder, div.I4E-Input-Text input::placeholder, div.I4E-Input-Text textarea::placeholder, div.I4E-Input-TextArea input::placeholder, div.I4E-Input-TextArea textarea::placeholder, div.I4E-Input-Time input::placeholder, div.I4E-Input-Time textarea::placeholder {
+    font-style: italic;
+    opacity: 0.5; }
+  div.I4E-Construct-Selector div.I4E-Construct-Selector-Head:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Select select:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time input:focus:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea:focus:not(:disabled):not([data-disabled]), div.I4E-Construct-Selector div.I4E-Construct-Selector-Head[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Select select[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Checkbox textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Date textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Decimal textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Integer textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Text textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-TextArea textarea[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time input[data-focused]:not(:disabled):not([data-disabled]), div.I4E-Input-Time textarea[data-focused]:not(:disabled):not([data-disabled]) {
+    box-shadow: var(--I4C-Main-Shadow-0); }
 
 div.I4E-Input-Checkbox input, div.I4E-Input-Checkbox textarea, div.I4E-Input-Date input, div.I4E-Input-Date textarea, div.I4E-Input-Decimal input, div.I4E-Input-Decimal textarea, div.I4E-Input-Integer input, div.I4E-Input-Integer textarea, div.I4E-Input-Text input, div.I4E-Input-Text textarea, div.I4E-Input-TextArea input, div.I4E-Input-TextArea textarea, div.I4E-Input-Time input, div.I4E-Input-Time textarea {
-  padding: calc(1em * (4 / var(--I4E-Base-Scale))) calc(6 * (1em / var(--I4E-Base-Scale)));
-}
-div.I4E-Input-Checkbox input::-webkit-inner-spin-button, div.I4E-Input-Checkbox input::-webkit-outer-spin-button, div.I4E-Input-Checkbox textarea::-webkit-inner-spin-button, div.I4E-Input-Checkbox textarea::-webkit-outer-spin-button, div.I4E-Input-Date input::-webkit-inner-spin-button, div.I4E-Input-Date input::-webkit-outer-spin-button, div.I4E-Input-Date textarea::-webkit-inner-spin-button, div.I4E-Input-Date textarea::-webkit-outer-spin-button, div.I4E-Input-Decimal input::-webkit-inner-spin-button, div.I4E-Input-Decimal input::-webkit-outer-spin-button, div.I4E-Input-Decimal textarea::-webkit-inner-spin-button, div.I4E-Input-Decimal textarea::-webkit-outer-spin-button, div.I4E-Input-Integer input::-webkit-inner-spin-button, div.I4E-Input-Integer input::-webkit-outer-spin-button, div.I4E-Input-Integer textarea::-webkit-inner-spin-button, div.I4E-Input-Integer textarea::-webkit-outer-spin-button, div.I4E-Input-Text input::-webkit-inner-spin-button, div.I4E-Input-Text input::-webkit-outer-spin-button, div.I4E-Input-Text textarea::-webkit-inner-spin-button, div.I4E-Input-Text textarea::-webkit-outer-spin-button, div.I4E-Input-TextArea input::-webkit-inner-spin-button, div.I4E-Input-TextArea input::-webkit-outer-spin-button, div.I4E-Input-TextArea textarea::-webkit-inner-spin-button, div.I4E-Input-TextArea textarea::-webkit-outer-spin-button, div.I4E-Input-Time input::-webkit-inner-spin-button, div.I4E-Input-Time input::-webkit-outer-spin-button, div.I4E-Input-Time textarea::-webkit-inner-spin-button, div.I4E-Input-Time textarea::-webkit-outer-spin-button {
-  color: green !important;
-}
-div.I4E-Input-Checkbox input[type=text], div.I4E-Input-Checkbox textarea, div.I4E-Input-Date input[type=text], div.I4E-Input-Date textarea, div.I4E-Input-Decimal input[type=text], div.I4E-Input-Decimal textarea, div.I4E-Input-Integer input[type=text], div.I4E-Input-Integer textarea, div.I4E-Input-Text input[type=text], div.I4E-Input-Text textarea, div.I4E-Input-TextArea input[type=text], div.I4E-Input-TextArea textarea, div.I4E-Input-Time input[type=text], div.I4E-Input-Time textarea {
-  white-space: pre-wrap;
-}
+  padding: calc(1em * (4 / var(--I4E-Base-Scale))) calc(6 * (1em / var(--I4E-Base-Scale))); }
+  div.I4E-Input-Checkbox input::-webkit-inner-spin-button, div.I4E-Input-Checkbox input::-webkit-outer-spin-button, div.I4E-Input-Checkbox textarea::-webkit-inner-spin-button, div.I4E-Input-Checkbox textarea::-webkit-outer-spin-button, div.I4E-Input-Date input::-webkit-inner-spin-button, div.I4E-Input-Date input::-webkit-outer-spin-button, div.I4E-Input-Date textarea::-webkit-inner-spin-button, div.I4E-Input-Date textarea::-webkit-outer-spin-button, div.I4E-Input-Decimal input::-webkit-inner-spin-button, div.I4E-Input-Decimal input::-webkit-outer-spin-button, div.I4E-Input-Decimal textarea::-webkit-inner-spin-button, div.I4E-Input-Decimal textarea::-webkit-outer-spin-button, div.I4E-Input-Integer input::-webkit-inner-spin-button, div.I4E-Input-Integer input::-webkit-outer-spin-button, div.I4E-Input-Integer textarea::-webkit-inner-spin-button, div.I4E-Input-Integer textarea::-webkit-outer-spin-button, div.I4E-Input-Text input::-webkit-inner-spin-button, div.I4E-Input-Text input::-webkit-outer-spin-button, div.I4E-Input-Text textarea::-webkit-inner-spin-button, div.I4E-Input-Text textarea::-webkit-outer-spin-button, div.I4E-Input-TextArea input::-webkit-inner-spin-button, div.I4E-Input-TextArea input::-webkit-outer-spin-button, div.I4E-Input-TextArea textarea::-webkit-inner-spin-button, div.I4E-Input-TextArea textarea::-webkit-outer-spin-button, div.I4E-Input-Time input::-webkit-inner-spin-button, div.I4E-Input-Time input::-webkit-outer-spin-button, div.I4E-Input-Time textarea::-webkit-inner-spin-button, div.I4E-Input-Time textarea::-webkit-outer-spin-button {
+    color: green !important; }
+
+div.I4E-Input-Checkbox input[type='text'], div.I4E-Input-Checkbox textarea, div.I4E-Input-Date input[type='text'], div.I4E-Input-Date textarea, div.I4E-Input-Decimal input[type='text'], div.I4E-Input-Decimal textarea, div.I4E-Input-Integer input[type='text'], div.I4E-Input-Integer textarea, div.I4E-Input-Text input[type='text'], div.I4E-Input-Text textarea, div.I4E-Input-TextArea input[type='text'], div.I4E-Input-TextArea textarea, div.I4E-Input-Time input[type='text'], div.I4E-Input-Time textarea {
+  white-space: pre-wrap; }
+
 div.I4E-Input-Checkbox.I4E-Bit--Highlighted input, div.I4E-Input-Checkbox.I4E-Bit--Highlighted textarea, div.I4E-Input-Date.I4E-Bit--Highlighted input, div.I4E-Input-Date.I4E-Bit--Highlighted textarea, div.I4E-Input-Decimal.I4E-Bit--Highlighted input, div.I4E-Input-Decimal.I4E-Bit--Highlighted textarea, div.I4E-Input-Integer.I4E-Bit--Highlighted input, div.I4E-Input-Integer.I4E-Bit--Highlighted textarea, div.I4E-Input-Text.I4E-Bit--Highlighted input, div.I4E-Input-Text.I4E-Bit--Highlighted textarea, div.I4E-Input-TextArea.I4E-Bit--Highlighted input, div.I4E-Input-TextArea.I4E-Bit--Highlighted textarea, div.I4E-Input-Time.I4E-Bit--Highlighted input, div.I4E-Input-Time.I4E-Bit--Highlighted textarea {
-  border: 1px solid var(--I4E-Highlight);
-}
+  border: 1px solid var(--I4E-Highlight); }
 
 div.I4E-Input-Text--Clearable {
   align-items: center;
   display: inline-flex;
-  justify-content: center;
-}
-div.I4E-Input-Text--Clearable.I4E-Bit--Highlighted button {
-  border: 1px solid var(--I4E-Highlight);
-  border-left: none;
-}
-div.I4E-Input-Text--Clearable input:not(#_) {
-  border-bottom-right-radius: 0;
-  border-right: 0;
-  border-top-right-radius: 0;
-}
-div.I4E-Input-Text--Clearable button {
-  align-items: center;
-  align-self: stretch;
-  background-color: var(--I4E-InputBase-Background-Normal);
-  border: 1px solid var(--I4E-InputBase-Border-Normal);
-  border-bottom-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
-  border-left: none;
-  border-top-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
-  color: var(--I4E-InputBase-ClearButton-Normal);
-  cursor: pointer;
-  display: flex;
-  outline: none !important;
-  padding: 0 calc(1em * (5 / var(--I4E-Base-Scale))) 0 0;
-  transition: background-color 75ms ease-in, border 75ms ease-in;
-}
-div.I4E-Input-Text--Clearable button:hover {
-  color: var(--I4E-InputBase-ClearButton-Hover) !important;
-}
-div.I4E-Input-Text--Clearable button:active {
-  color: var(--I4E-InputBase-ClearButton-Focus) !important;
-}
-div.I4E-Input-Text--Clearable button::after {
-  border-bottom-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
-  border-top-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
-  bottom: 0;
-  content: "";
-  left: 6px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: -1;
-}
-div.I4E-Input-Text--Clearable input:not(#_):disabled ~ button, div.I4E-Input-Text--Clearable input:not(#_)[data-disabled] ~ button {
-  cursor: not-allowed;
-}
-div.I4E-Input-Text--Clearable input:not(#_):focus:not(:disabled):not([data-disabled]) ~ button::after,
-div.I4E-Input-Text--Clearable input:not(#_)[data-focused]:not(:disabled):not([data-disabled]) ~ button::after {
-  box-shadow: var(--I4C-Main-Shadow-0);
-}
+  justify-content: center; }
+  div.I4E-Input-Text--Clearable.I4E-Bit--Highlighted button {
+    border: 1px solid var(--I4E-Highlight);
+    border-left: none; }
+  div.I4E-Input-Text--Clearable input:not(#_) {
+    border-bottom-right-radius: 0;
+    border-right: 0;
+    border-top-right-radius: 0; }
+  div.I4E-Input-Text--Clearable button {
+    align-items: center;
+    align-self: stretch;
+    background-color: var(--I4E-InputBase-Background-Normal);
+    border: 1px solid var(--I4E-InputBase-Border-Normal);
+    border-bottom-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
+    border-left: none;
+    border-top-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
+    color: var(--I4E-InputBase-ClearButton-Normal);
+    cursor: pointer;
+    display: flex;
+    outline: none !important;
+    padding: 0 calc(1em * (5 / var(--I4E-Base-Scale))) 0 0;
+    transition: background-color 75ms ease-in, border 75ms ease-in; }
+    div.I4E-Input-Text--Clearable button:hover {
+      color: var(--I4E-InputBase-ClearButton-Hover) !important; }
+    div.I4E-Input-Text--Clearable button:active {
+      color: var(--I4E-InputBase-ClearButton-Focus) !important; }
+    div.I4E-Input-Text--Clearable button::after {
+      border-bottom-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
+      border-top-right-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
+      bottom: 0;
+      content: '';
+      left: 6px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: -1; }
+  div.I4E-Input-Text--Clearable input:not(#_):disabled ~ button, div.I4E-Input-Text--Clearable input[data-disabled]:not(#_) ~ button {
+    cursor: not-allowed; }
+  div.I4E-Input-Text--Clearable input:not(#_):focus:not(:disabled):not([data-disabled]) ~ button::after,
+  div.I4E-Input-Text--Clearable input[data-focused]:not(#_):not(:disabled):not([data-disabled]) ~ button::after {
+    box-shadow: var(--I4C-Main-Shadow-0); }
 
 div.I4E-Input-Select select {
-  padding: calc(1em * (3 / var(--I4E-Base-Scale))) calc(2 * (1em / var(--I4E-Base-Scale)));
-}
+  padding: calc(1em * (3 / var(--I4E-Base-Scale))) calc(2 * (1em / var(--I4E-Base-Scale))); }
 
-div.I4-App[data-i4-theme-variant=Dark], div.I4-App[data-i4-theme-variant=Matrix] {
+div.I4-App[data-i4-theme-variant="Dark"], div.I4-App[data-i4-theme-variant="Matrix"] {
   --I4E-InputBase-Background-Focus: var(--I4C-Main-Background-0);
   --I4E-InputBase-Background-Hover: var(--I4C-Main-Background-8);
   --I4E-InputBase-Background-Normal: var(--I4C-Main-Background-10);
@@ -1096,9 +884,9 @@ div.I4-App[data-i4-theme-variant=Dark], div.I4-App[data-i4-theme-variant=Matrix]
   --I4E-InputBase-Border-Normal: var(--I4C-Main-Border-11);
   --I4E-InputBase-ClearButton-Focus: var(--I4C-Main-Accent-7);
   --I4E-InputBase-ClearButton-Hover: var(--I4C-Main-Opaque-White-3);
-  --I4E-InputBase-ClearButton-Normal: var(--I4C-Main-Opaque-White-2);
-}
-div.I4-App[data-i4-theme-variant=Pink], div.I4-App[data-i4-theme-variant=White] {
+  --I4E-InputBase-ClearButton-Normal: var(--I4C-Main-Opaque-White-2); }
+
+div.I4-App[data-i4-theme-variant="Pink"], div.I4-App[data-i4-theme-variant="White"] {
   --I4E-InputBase-Background-Focus: var(--I4C-Main-Background-0);
   --I4E-InputBase-Background-Hover: var(--I4C-Main-Background-2);
   --I4E-InputBase-Background-Normal: var(--I4C-Main-Background-5);
@@ -1107,349 +895,280 @@ div.I4-App[data-i4-theme-variant=Pink], div.I4-App[data-i4-theme-variant=White] 
   --I4E-InputBase-Border-Normal: var(--I4C-Main-Border-5);
   --I4E-InputBase-ClearButton-Focus: var(--I4C-Main-Accent-7);
   --I4E-InputBase-ClearButton-Hover: var(--I4C-Main-Opaque-Black-3);
-  --I4E-InputBase-ClearButton-Normal: var(--I4C-Main-Opaque-Black-2);
-}
+  --I4E-InputBase-ClearButton-Normal: var(--I4C-Main-Opaque-Black-2); }
 
 div.I4E-Construct-Selector {
   display: none;
   font-size: 1rem;
-  width: 100%;
-}
-div.I4E-Construct-Selector[data-visible] {
-  display: inline-block;
-}
-div.I4E-Construct-Selector[data-disabled] * {
-  cursor: not-allowed !important;
-}
-div.I4E-Construct-Selector[data-open] div.I4E-Construct-Selector-Head {
-  background-color: var(--I4E-InputBase-Background-Focus);
-  border-color: var(--I4E-InputBase-Border-Focus);
-  box-shadow: var(--I4C-Main-Shadow-0);
-  transition: background-color 75ms ease-in, border 75ms ease-in;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Head {
-  align-items: center;
-  cursor: pointer;
-  display: inline-flex;
-  justify-content: space-between;
-  min-height: calc(28 * (1em / var(--I4E-Base-Scale)));
-  min-width: 250px;
-  padding: 0 0 0 6px;
-  width: 100%;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-NoSelection {
-  font-style: italic;
-  opacity: 0.5;
-  user-select: none;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-Selection {
-  align-items: center;
-  display: flex;
-  padding: calc(1em * (4 / var(--I4E-Base-Scale))) 0;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-Selection ~ div.I4E-Construct-Selector-ClearButtonWrapper {
-  display: inline-block;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-ClearButtonWrapper {
-  background-color: transparent;
-  color: var(--I4C-Main-Text-4);
-  cursor: pointer;
-  display: none;
-  flex-shrink: 0;
-  height: calc(12 * (1em / var(--I4E-Base-Scale)));
-  margin: 0 calc(6 * (1em / var(--I4E-Base-Scale)));
-  outline: none;
-  padding: 0;
-  position: relative;
-  width: calc(12 * (1em / var(--I4E-Base-Scale)));
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-ClearButtonWrapper svg {
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-ClearButtonWrapper:hover {
-  color: var(--I4C-Main-Accent-7);
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-ClearButtonWrapper:focus {
-  color: var(--I4C-Main-Accent-6);
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
-  background-color: var(--I4C-Main-Background-6);
-  border-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
-  box-sizing: border-box;
-  display: none;
-  padding: 3.5px;
-  position: absolute;
-  z-index: 115;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown[data-open] {
-  display: block;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text {
-  margin: 3.5px;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input {
-  width: 100%;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller {
-  padding: 3.5px;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options {
-  border-radius: 4px;
-  margin-right: 1px;
-  max-height: 250px;
-  width: calc(100% - 7px);
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p {
-  color: var(--I4C-Main-Text-3);
-  font-style: italic;
-  font-weight: 500;
-  margin: 0;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-LimitMessage, div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-NoResults {
-  padding-top: 7px;
-  text-align: center;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-LimitMessage:not([data-shown]), div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-NoResults:not([data-shown]) {
-  display: none;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-LimitMessage {
-  border-top: 1px solid var(--I4C-Main-Border-12);
-  margin-top: 3px;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div {
-  align-items: center;
-  border: 1px solid transparent;
-  border-radius: 0.4em;
-  cursor: pointer;
-  display: flex;
-  margin: 1px 0;
-  padding: 3px 4px;
-  transition: background-color 75ms ease-in, border 75ms ease-in;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:hover {
-  transition: none;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:focus {
-  border: 1px solid var(--I4E-InputBase-Border-Focus);
-  outline: none;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-selected] {
-  background-color: var(--I4C-Main-Accent-6);
-  color: var(--I4C-Main-Accent-6-Text);
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-selected]:hover {
-  background-color: var(--I4C-Main-Accent-5);
-  color: var(--I4C-Main-Accent-6-Text);
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled] {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-placeholder] {
-  font-weight: 700;
-}
-div.I4E-Construct-Selector--Filterable div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-shown]) {
-  display: none;
-}
+  width: 100%; }
+  div.I4E-Construct-Selector[data-visible] {
+    display: inline-block; }
+  div.I4E-Construct-Selector[data-disabled] * {
+    cursor: not-allowed !important; }
+  div.I4E-Construct-Selector[data-open] div.I4E-Construct-Selector-Head {
+    background-color: var(--I4E-InputBase-Background-Focus);
+    border-color: var(--I4E-InputBase-Border-Focus);
+    box-shadow: var(--I4C-Main-Shadow-0);
+    transition: background-color 75ms ease-in, border 75ms ease-in; }
+  div.I4E-Construct-Selector div.I4E-Construct-Selector-Head {
+    align-items: center;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: space-between;
+    min-height: calc(28 * (1em / var(--I4E-Base-Scale)));
+    min-width: 250px;
+    padding: 0 0 0 6px;
+    width: 100%; }
+    div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-NoSelection {
+      font-style: italic;
+      opacity: 0.5;
+      user-select: none; }
+    div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-Selection {
+      align-items: center;
+      display: flex;
+      padding: calc(1em * (4 / var(--I4E-Base-Scale))) 0; }
+    div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-Selection ~ div.I4E-Construct-Selector-ClearButtonWrapper {
+      display: inline-block; }
+    div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-ClearButtonWrapper {
+      background-color: transparent;
+      color: var(--I4C-Main-Text-4);
+      cursor: pointer;
+      display: none;
+      flex-shrink: 0;
+      height: calc(12 * (1em / var(--I4E-Base-Scale)));
+      margin: 0 calc(6 * (1em / var(--I4E-Base-Scale)));
+      outline: none;
+      padding: 0;
+      position: relative;
+      width: calc(12 * (1em / var(--I4E-Base-Scale))); }
+      div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-ClearButtonWrapper svg {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0; }
+      div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-ClearButtonWrapper:hover {
+        color: var(--I4C-Main-Accent-7); }
+      div.I4E-Construct-Selector div.I4E-Construct-Selector-Head div.I4E-Construct-Selector-ClearButtonWrapper:focus {
+        color: var(--I4C-Main-Accent-6); }
+  div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
+    background-color: var(--I4C-Main-Background-6);
+    border-radius: calc(3 * (1em / var(--I4E-Base-Scale)));
+    box-sizing: border-box;
+    display: none;
+    padding: 3.5px;
+    position: absolute;
+    z-index: 115; }
+    div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown[data-open] {
+      display: block; }
+    div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text {
+      margin: 3.5px; }
+      div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input {
+        width: 100%; }
+    div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller {
+      padding: 3.5px; }
+      div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options {
+        border-radius: 4px;
+        margin-right: 1px;
+        max-height: 250px;
+        width: calc(100% - 7px); }
+        div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p {
+          color: var(--I4C-Main-Text-3);
+          font-style: italic;
+          font-weight: 500;
+          margin: 0; }
+          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-LimitMessage, div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-NoResults {
+            padding-top: 7px;
+            text-align: center; }
+            div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-LimitMessage:not([data-shown]), div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-NoResults:not([data-shown]) {
+              display: none; }
+          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > p.I4E-Construct-Options-LimitMessage {
+            border-top: 1px solid var(--I4C-Main-Border-12);
+            margin-top: 3px; }
+        div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div {
+          align-items: center;
+          border: 1px solid transparent;
+          border-radius: 0.4em;
+          cursor: pointer;
+          display: flex;
+          margin: 1px 0;
+          padding: 3px 4px;
+          transition: background-color 75ms ease-in, border 75ms ease-in; }
+          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:hover {
+            transition: none; }
+          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:focus {
+            border: 1px solid var(--I4E-InputBase-Border-Focus);
+            outline: none; }
+          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-selected] {
+            background-color: var(--I4C-Main-Accent-6);
+            color: var(--I4C-Main-Accent-6-Text); }
+            div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-selected]:hover {
+              background-color: var(--I4C-Main-Accent-5);
+              color: var(--I4C-Main-Accent-6-Text); }
+          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled] {
+            cursor: not-allowed;
+            opacity: 0.5; }
+          div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-placeholder] {
+            font-weight: 700; }
+  div.I4E-Construct-Selector--Filterable div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-shown]) {
+    display: none; }
 
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
   background-color: var(--I4C-Main-Background-8);
   border: 1px solid var(--I4C-Main-Border-11);
-  box-shadow: var(--I4C-Main-Shadow-0), var(--I4C-Main-Shadow-1), var(--I4C-Main-Shadow-2);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus), div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus) {
-  background-color: var(--I4C-Main-Background-6);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover {
-  background-color: var(--I4C-Main-Background-4);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-bar, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-bar {
-  background-color: var(--I4C-Main-Background-16);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):not([data-disabled]):not([data-placeholder]):hover, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):not([data-disabled]):not([data-placeholder]):hover {
-  background-color: var(--I4C-Main-Background-16);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled], div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled] {
-  background-color: rgba(0, 0, 0, 0.25);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
+  box-shadow: var(--I4C-Main-Shadow-0), var(--I4C-Main-Shadow-1), var(--I4C-Main-Shadow-2); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus), div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus) {
+    background-color: var(--I4C-Main-Background-6); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover {
+    background-color: var(--I4C-Main-Background-4); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-bar, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-bar {
+    background-color: var(--I4C-Main-Background-16); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):not([data-disabled]):not([data-placeholder]):hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):not([data-disabled]):not([data-placeholder]):hover {
+    background-color: var(--I4C-Main-Background-16); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled], div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled] {
+    background-color: rgba(0, 0, 0, 0.25); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown {
   background-color: var(--I4C-Main-Background-0);
   border: 1px solid var(--I4C-Main-Border-11);
-  box-shadow: var(--I4C-Main-Shadow-1), var(--I4C-Main-Shadow-2);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus), div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus) {
-  background-color: var(--I4C-Main-Background-6);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover {
-  background-color: var(--I4C-Main-Background-4);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-bar, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-bar {
-  background-color: var(--I4C-Main-Background-8);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):not([data-disabled]):not([data-placeholder]):hover, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):not([data-disabled]):not([data-placeholder]):hover {
-  background-color: var(--I4C-Main-Background-8);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled], div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled] {
-  background-color: rgba(0, 0, 0, 0.05);
-}
+  box-shadow: var(--I4C-Main-Shadow-1), var(--I4C-Main-Shadow-2); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus), div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus) {
+    background-color: var(--I4C-Main-Background-6); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Input-Text input:not(:focus):hover {
+    background-color: var(--I4C-Main-Background-4); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-bar, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller .mb-bar {
+    background-color: var(--I4C-Main-Background-8); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):not([data-disabled]):not([data-placeholder]):hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div:not([data-selected]):not([data-disabled]):not([data-placeholder]):hover {
+    background-color: var(--I4C-Main-Background-8); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled], div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-Selector div.I4E-Construct-Selector-Dropdown div.I4E-Construct-Selector-Scroller div.I4E-Construct-Selector-Options > div[data-disabled] {
+    background-color: rgba(0, 0, 0, 0.05); }
 
 div.I4E-Construct-TagSelector {
   border-radius: 4px;
   display: inline-flex;
-  padding: 3px;
-}
-div.I4E-Construct-TagSelector h3 {
-  margin: 5px;
-  width: 100%;
-}
-div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags {
-  align-content: flex-start;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  min-height: 60px;
-}
-div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Inputs button {
-  float: right;
-}
-div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags {
-  align-content: flex-start;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button {
-  align-items: center;
-  border: none;
-  border-radius: 15px;
-  color: var(--I4C-Main-Alias-PageText);
-  cursor: pointer;
-  display: inline-flex;
-  font-size: 1em;
-  margin: 1px;
-  outline: none;
-  padding: 1px 5px 1px 7px;
-  transition: background-color 75ms ease-in, border 75ms ease-in;
-  user-select: none;
-  white-space: nowrap;
-}
-div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover {
-  transition: none;
-}
-div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:focus {
-  outline: none;
-}
-div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button span {
-  color: var(--I4C-Main-Text-2);
-  font-size: 0.75em;
-  font-weight: 500;
-  margin-left: 5px;
-}
+  padding: 3px; }
+  div.I4E-Construct-TagSelector h3 {
+    margin: 5px;
+    width: 100%; }
+  div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Tags {
+    align-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    min-height: 60px; }
+  div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Inputs button {
+    float: right; }
+  div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags {
+    align-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; }
+    div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button {
+      align-items: center;
+      border: none;
+      border-radius: 15px;
+      color: var(--I4C-Main-Alias-PageText);
+      cursor: pointer;
+      display: inline-flex;
+      font-size: 1em;
+      margin: 1px;
+      outline: none;
+      padding: 1px 5px 1px 7px;
+      transition: background-color 75ms ease-in, border 75ms ease-in;
+      user-select: none;
+      white-space: nowrap; }
+      div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover {
+        transition: none; }
+      div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:focus {
+        outline: none; }
+      div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button span {
+        color: var(--I4C-Main-Text-2);
+        font-size: 0.75em;
+        font-weight: 500;
+        margin-left: 5px; }
+
 div.I4E-Construct-TagSelector-Tag, div.I4E-Construct-TagSelector-AddableTag, div.I4E-Construct-TagSelector-RemovableTag {
   align-items: center;
   border-radius: 15px;
   display: inline-flex;
   margin: 1px;
   user-select: none;
-  white-space: nowrap;
-}
-div.I4E-Construct-TagSelector-Tag div:nth-child(2), div.I4E-Construct-TagSelector-AddableTag div:nth-child(2), div.I4E-Construct-TagSelector-RemovableTag div:nth-child(2) {
-  font-weight: 500;
-  margin-left: 3px;
-}
-div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-  background-color: transparent;
-  cursor: pointer;
-  height: calc(12 * (1em / var(--I4E-Base-Scale)));
-  margin: 0 0 0 calc(6 * (1em / var(--I4E-Base-Scale)));
-  outline: none;
-  padding: 0 3px 0 0;
-  position: relative;
-  width: calc(12 * (1em / var(--I4E-Base-Scale)));
-}
-div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper svg, div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper svg, div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper svg {
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
+  white-space: nowrap; }
+  div.I4E-Construct-TagSelector-Tag div:nth-child(2), div.I4E-Construct-TagSelector-AddableTag div:nth-child(2), div.I4E-Construct-TagSelector-RemovableTag div:nth-child(2) {
+    font-weight: 500;
+    margin-left: 3px; }
+  div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+    background-color: transparent;
+    cursor: pointer;
+    height: calc(12 * (1em / var(--I4E-Base-Scale)));
+    margin: 0 0 0 calc(6 * (1em / var(--I4E-Base-Scale)));
+    outline: none;
+    padding: 0 3px 0 0;
+    position: relative;
+    width: calc(12 * (1em / var(--I4E-Base-Scale))); }
+    div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper svg, div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper svg, div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper svg {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0; }
 
 div.I4E-Construct-TagSelector-Tag {
-  padding: 1px 9px;
-}
+  padding: 1px 9px; }
 
 div.I4E-Construct-TagSelector-AddableTag {
   cursor: pointer;
   padding: 1px 9px;
-  transition: background-color 75ms ease-in, border 75ms ease-in;
-}
-div.I4E-Construct-TagSelector-AddableTag:hover {
-  transition: none;
-}
+  transition: background-color 75ms ease-in, border 75ms ease-in; }
+  div.I4E-Construct-TagSelector-AddableTag:hover {
+    transition: none; }
 
 div.I4E-Construct-TagSelector-RemovableTag {
-  padding: 1px 2px 1px 9px;
-}
+  padding: 1px 2px 1px 9px; }
 
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector {
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector {
   background-color: var(--I4C-Main-Background-4);
   border: 1px solid var(--I4C-Main-Border-11);
-  box-shadow: var(--I4C-Main-Shadow-1);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button {
+  box-shadow: var(--I4C-Main-Shadow-1); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button {
+    background-color: var(--I4C-Main-Background-7);
+    border: 1px solid var(--I4C-Main-Border-7);
+    box-shadow: var(--I4C-Main-Shadow-1); }
+    div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover, div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current], div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current] {
+      border: 1px solid var(--I4C-Main-Accent-7); }
+
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector-Tag, div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector-AddableTag, div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector-RemovableTag, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector-Tag, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector-AddableTag, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector-RemovableTag {
   background-color: var(--I4C-Main-Background-7);
   border: 1px solid var(--I4C-Main-Border-7);
-  box-shadow: var(--I4C-Main-Shadow-1);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover, div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current], div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current] {
-  border: 1px solid var(--I4C-Main-Accent-7);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-Tag, div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-AddableTag, div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-RemovableTag, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-Tag, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-AddableTag, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-RemovableTag {
-  background-color: var(--I4C-Main-Background-7);
-  border: 1px solid var(--I4C-Main-Border-7);
-  box-shadow: var(--I4C-Main-Shadow-1);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-  color: var(--I4C-Main-Opaque-White-4);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover {
-  color: var(--I4C-Main-Opaque-White-7);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
-  color: var(--I4C-Main-Accent-7);
-}
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-AddableTag:hover, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-AddableTag:hover {
-  border: 1px solid var(--I4C-Main-Accent-7);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector {
+  box-shadow: var(--I4C-Main-Shadow-1); }
+  div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+    color: var(--I4C-Main-Opaque-White-4); }
+    div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover {
+      color: var(--I4C-Main-Opaque-White-7); }
+    div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
+      color: var(--I4C-Main-Accent-7); }
+
+div.I4-App[data-i4-theme-variant="Dark"] div.I4E-Construct-TagSelector-AddableTag:hover, div.I4-App[data-i4-theme-variant="Matrix"] div.I4E-Construct-TagSelector-AddableTag:hover {
+  border: 1px solid var(--I4C-Main-Accent-7); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector {
   background-color: var(--I4C-Main-Background-2);
-  border: 1px solid var(--I4C-Main-Border-5);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button {
+  border: 1px solid var(--I4C-Main-Border-5); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button {
+    background-color: white;
+    border: 1px solid var(--I4C-Main-Border-10); }
+    div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover, div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current], div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current] {
+      border: 1px solid var(--I4C-Main-Accent-7); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector-Tag, div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector-AddableTag, div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector-RemovableTag, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector-Tag, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector-AddableTag, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector-RemovableTag {
   background-color: white;
-  border: 1px solid var(--I4C-Main-Border-10);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current], div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current] {
-  border: 1px solid var(--I4C-Main-Accent-7);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-Tag, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-AddableTag, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-RemovableTag, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-Tag, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-AddableTag, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-RemovableTag {
-  background-color: white;
-  border: 1px solid var(--I4C-Main-Border-10);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
-  color: var(--I4C-Main-Opaque-Black-4);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover {
-  color: var(--I4C-Main-Opaque-Black-7);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
-  color: var(--I4C-Main-Accent-7);
-}
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-AddableTag:hover, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-AddableTag:hover {
-  border: 1px solid var(--I4C-Main-Accent-7);
-}
+  border: 1px solid var(--I4C-Main-Border-10); }
+  div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper {
+    color: var(--I4C-Main-Opaque-Black-4); }
+    div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:hover {
+      color: var(--I4C-Main-Opaque-Black-7); }
+    div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector-Tag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector-AddableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector-RemovableTag div.I4E-Construct-MultiSelector-DeselectButtonWrapper:active {
+      color: var(--I4C-Main-Accent-7); }
+
+div.I4-App[data-i4-theme-variant="Pink"] div.I4E-Construct-TagSelector-AddableTag:hover, div.I4-App[data-i4-theme-variant="White"] div.I4E-Construct-TagSelector-AddableTag:hover {
+  border: 1px solid var(--I4C-Main-Accent-7); }

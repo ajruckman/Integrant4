@@ -52,6 +52,17 @@ namespace Integrant4.Element
             scriptsInternal: new HashSet<string> { "js/Elements.js" }
         );
 
+        public static readonly ResourceSet Charts = new
+        (
+            $"{nameof(Integrant4)}.{nameof(Element)}",
+            nameof(Charts),
+            dependencies: new[]
+            {
+                Resources.Resources.Libraries.UPlot,
+            },
+            scriptsInternal: new HashSet<string> { "js/Charts.js" }
+        );
+
         public static readonly ResourceSet Inputs = new
         (
             $"{nameof(Integrant4)}.{nameof(Element)}",

@@ -144,6 +144,20 @@ namespace Integrant4.Resources
                     "Libraries/TUIEditor/toastui-editor-all.min.js",
                 }
             );
+
+            public static readonly ResourceSet UPlot = new
+            (
+                $"{nameof(Integrant4)}.{nameof(Resources)}",
+                $"{nameof(Libraries)}.{nameof(UPlot)}",
+                stylesheetsInternal: new HashSet<string>
+                {
+                    "Libraries/uPlot/uPlot.min.css",
+                },
+                scriptsInternal: new HashSet<string>
+                {
+                    "Libraries/uPlot/uPlot.iife.min.js",
+                }
+            );
         }
     }
 }
