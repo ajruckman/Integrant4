@@ -36,7 +36,7 @@ namespace Integrant4.Element.Constructs.Tables
                 if (string.IsNullOrEmpty(v))
                     Table.ClearFilter(ID);
                 else
-                    Table.SetFilter(ID, v, false);
+                    Table.SetFilter(ID, v, true);
 
                 _input.Refresh();
             }, /*Table.GetFilter(ID),*/ 250, e =>
@@ -49,7 +49,7 @@ namespace Integrant4.Element.Constructs.Tables
 
             Table.OnFilterChange += async (key, value) =>
             {
-                if (key == ID) await _input.SetValue(value);
+                if (key == ID && value != _input.GetValue()) await _input.SetValue(value);
             };
         }
 

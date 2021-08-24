@@ -1,3 +1,4 @@
+using System;
 using Integrant4.API;
 using Integrant4.Colorant.Themes.Main;
 using Integrant4.Element.Constructs;
@@ -32,8 +33,8 @@ namespace Integrant4.Element.Bits
             _hook        = new Hook();
 
             IRenderable[] Contents() => Expanded
-                ? new IRenderable[] { contractContent, UpIcon }
-                : new IRenderable[] { expandContent, DownIcon };
+                ? new IRenderable[] {contractContent, UpIcon}
+                : new IRenderable[] {expandContent, DownIcon};
 
             _button = new Button
             (
@@ -49,6 +50,7 @@ namespace Integrant4.Element.Bits
                         Expanded = !Expanded;
                         _refresher?.Invoke();
                         _hook.Invoke();
+                        OnChange?.Invoke(Expanded);
                     },
                     Classes = () => new ClassSet("I4E-Bit-Expander-PanelButton"),
                 }
@@ -82,6 +84,8 @@ namespace Integrant4.Element.Bits
             v => _refresher = v);
 
         public void Refresh() => _refresher?.Invoke();
+
+        public event Action<bool>? OnChange;
 
         public void Expand()
         {

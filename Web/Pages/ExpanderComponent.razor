@@ -1,0 +1,19 @@
+@page "/expander"
+
+@using Integrant4.Element.Components
+
+<I4EExpander>
+    <ExpandContent>
+        <span>Show</span>
+    </ExpandContent>
+    <ContractContent>
+        <span>Hide</span>
+    </ContractContent>
+    <Content>
+        <p>Content</p>
+        
+        @{
+            Console.WriteLine(1);
+        }
+    </Content>
+</I4EExpander>
