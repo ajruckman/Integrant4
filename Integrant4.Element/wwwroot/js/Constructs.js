@@ -28,14 +28,20 @@ window.I4.Element.NextSiblingSelector = window.I4.Element.NextSiblingSelector ||
 
 const ScrollbarSpace = "7px";
 
-window.addEventListener("focusin", event => {
-    if (document.I4EActiveElement === undefined) {
-        document.I4EActiveElement = document.activeElement;
-    } else {
-        document.I4EActiveElementPrev = document.I4EActiveElement;
-        document.I4EActiveElement = document.activeElement;
-    }
-});
+// window.addEventListener("focusin", event => {
+//     if (document.I4EActiveElement === undefined) {
+//         console.log("1 Setting document.I4EActiveElement: ");
+//         console.log(document.activeElement);
+//         document.I4EActiveElement = document.activeElement;
+//     } else {
+//         console.log("2 Setting document.I4EActiveElementPrev: ");
+//         console.log(document.I4EActiveElement);
+//         document.I4EActiveElementPrev = document.I4EActiveElement;
+//         console.log("2 Setting document.I4EActiveElement: ");
+//         console.log(document.activeElement);
+//         document.I4EActiveElement = document.activeElement;
+//     }
+// });
 
 window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (element, dotnetHelper, filterable) {
     if (element == null) {
@@ -95,7 +101,7 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
             //
 
             if (filterable) {
-                element.PrevFocus = document.I4EActiveElementPrev;
+                // element.PrevFocus = document.activeElement;
                 filterInput.focus();
             }
 
@@ -110,11 +116,11 @@ window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (ele
             head.removeAttribute("data-focused");
             dropdown.removeAttribute("data-open");
 
-            window.setTimeout(function () {
-                if (filterable && element.PrevFocus !== undefined) {
-                    element.PrevFocus.focus();
-                }
-            }, 0);
+            // window.setTimeout(function () {
+            //     if (filterable && element.PrevFocus !== undefined) {
+            //         element.PrevFocus.focus();
+            //     }
+            // }, 100);
 
             element.I4EOptionsDropdown.setOptions({
                 modifiers: [{name: "eventListeners", enabled: false}, {name: "offset", options: {offset: [0, 1]}}],

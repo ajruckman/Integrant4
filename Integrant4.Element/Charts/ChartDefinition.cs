@@ -12,7 +12,7 @@ namespace Integrant4.Element.Charts
 {
     public class Chart : IConstruct
     {
-        public delegate Task<IChartDataType> ChartDataGetter();
+        public delegate Task<IChartDataSet?> ChartDataGetter();
 
         private readonly ChartDefinition _chartDefinition;
         private readonly ChartDataGetter _dataGetter;
@@ -37,7 +37,7 @@ namespace Integrant4.Element.Charts
             _chartDefinition.Series.Insert(0, new ChartSeriesDefinition());
 
             if (axes != null) _chartDefinition.Axes.AddRange(axes);
-            _chartDefinition.Axes.Insert(0, new ChartAxisDefinition());
+            // _chartDefinition.Axes.Insert(0, new ChartAxisDefinition());
 
             if (scales != null)
                 foreach (var (k, v) in scales)
@@ -95,7 +95,7 @@ namespace Integrant4.Element.Charts
 
         public async Task LoadData()
         {
-            _data = (await _dataGetter.Invoke()).Serialize();
+            _data = (await _dataGetter.Invoke())?.Serialize();
             await Init();
         }
     }
@@ -126,14 +126,14 @@ namespace Integrant4.Element.Charts
         }
     }
 
-    public interface IChartDataType
+    public interface IChartDataSet
     {
         public object Serialize();
     }
 
-    public class TimeIntChartDataType : IChartDataType
+    public class TimeIntChartDataSet : IChartDataSet
     {
-        public TimeIntChartDataType(IEnumerable<TimeIntChartDataPoint> values)
+        public TimeIntChartDataSet(IEnumerable<TimeIntChartDataPoint> values)
         {
             Values = values.ToArray();
         }
@@ -189,6 +189,9 @@ namespace Integrant4.Element.Charts
         public string? Scale { get; init; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Value { get; init; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? Stroke { get; init; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
@@ -235,6 +238,9 @@ namespace Integrant4.Element.Charts
         public int? Gap { get; init; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public int? Space { get; init; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public int? Size { get; init; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
@@ -242,23 +248,73 @@ namespace Integrant4.Element.Charts
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? Scale { get; init; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("incrs")]
+        public int[]? Increments { get; init; }
+
+        [JsonIgnore]
+        public ChartAxisValueFormatRule[]? Values { get; init; }
+
+        [JsonPropertyName("values")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public object?[][]? ValuesSerialized
+        {
+            get
+            {
+                if (Values == null) return null;
+
+                object?[][] result = new object?[Values.Length][];
+                for (var i = 0; i < Values.Length; i++)
+                {
+                    ChartAxisValueFormatRule row = Values[i];
+                    result[i] = new object?[]
+                    {
+                        row.Increment, row.Primary,
+                        row.Year, row.Month, row.Day, row.Hour, row.Minute, row.Second,
+                        row.Mode,
+                    };
+                }
+
+                return result;
+            }
+        }
+    }
+
+    public class ChartAxisValueFormatRule
+    {
+        public ChartAxisValueFormatRule(double increment, string primary)
+        {
+            Increment = increment;
+            Primary   = primary;
+        }
+
+        public double  Increment { get; }
+        public string  Primary   { get; }
+        public string? Year      { get; init; }
+        public string? Month     { get; init; }
+        public string? Day       { get; init; }
+        public string? Hour      { get; init; }
+        public string? Minute    { get; init; }
+        public string? Second    { get; init; }
+        public int     Mode      { get; init; } = 1;
     }
 
     [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
     public class ChartScaleDefinition
     {
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public bool? Auto { get; set; }
+        public bool? Auto { get; init; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public bool? Time { get; set; }
+        public bool? Time { get; init; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public int[]? Range { get; set; }
+        public int[]? Range { get; init; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [JsonPropertyName("distr")]
-        public int? Distribution { get; set; }
+        public int? Distribution { get; init; }
     }
 
     public static class ChartExtensions
@@ -267,7 +323,7 @@ namespace Integrant4.Element.Charts
 
         public static int AsUnixTime(this DateTime v)
         {
-            return (int)v.Subtract(UnixStart).TotalSeconds;
+            return (int) v.Subtract(UnixStart).TotalSeconds;
         }
     }
 }
