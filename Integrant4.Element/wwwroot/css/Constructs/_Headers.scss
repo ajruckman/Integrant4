@@ -145,6 +145,10 @@ div.I4-App {
         div.I4E-Construct-SecondaryHeader {
             background-color: var(--I4C-Main-Background-7);
             border-bottom: 1px solid var(--I4C-Main-Border-6);
+
+            &.I4E-Construct-SecondaryHeader--BorderTop {
+                border-top: 1px solid var(--I4C-Main-Border-6);
+            }
         }
     }
 
@@ -157,6 +161,10 @@ div.I4-App {
         div.I4E-Construct-SecondaryHeader {
             background-color: var(--I4C-Main-Background-4);
             border-bottom: 1px solid var(--I4C-Main-Border-6);
+
+            &.I4E-Construct-SecondaryHeader--BorderTop {
+                border-top: 1px solid var(--I4C-Main-Border-6);
+            }
         }
     }
 }

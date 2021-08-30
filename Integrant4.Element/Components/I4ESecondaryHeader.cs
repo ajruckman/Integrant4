@@ -10,10 +10,12 @@ namespace Integrant4.Element.Components
         private SecondaryHeader? _header;
 
         [Parameter] public RenderFragment ChildContent { get; set; } = null!;
+        [Parameter] public bool?          BorderTop    { get; set; }
 
         protected override void OnParametersSet()
         {
-            _header = new SecondaryHeader(ContentRef.Dynamic(() => ChildContent), null);
+            _header = new SecondaryHeader(ContentRef.Dynamic(() => ChildContent), null,
+                borderTop: BorderTop == null ? null : () => BorderTop.Value);
         }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
