@@ -1,0 +1,61 @@
+@page "/modals"
+@using Integrant4.Element.Constructs
+@using System.Threading
+@using Integrant4.Element
+@using Integrant4.Element.Bits
+@using Integrant4.Fundament
+
+@code {
+
+    private Modal _m1 = new();
+    private Modal _m2 = new();
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Thread.Sleep(100);
+            _m1.Show();
+        }
+    }
+
+}
+
+<ModalContent Modal="@_m1" MinWidth="500">
+    <h1>Some modal content</h1>
+    <p>Are you sure you want to delete this?</p>
+    
+    @{
+        Button cancel = new Button("Cancel".AsStatic(), new Button.Spec
+        {
+            Style = () => Button.Style.TransparentBordered,
+            OnClick = (_, _) =>
+            {
+                Console.WriteLine("Cancel");
+                _m1.Hide();
+            },
+            Margin = () => new Size(0, 5, 0, 0),
+        });
+        
+        Button yes = new Button("Yes".AsStatic(), new Button.Spec
+        {
+            Style = () => Button.Style.Red,
+            OnClick = (_, _) =>
+            {
+                Console.WriteLine("Yes");
+                _m1.Hide();
+            },
+        });
+    }
+    
+    <div class="I4E-Layout-Row I4E-Layout-Row--JustifyEnd">
+        @cancel.Renderer()
+        @yes.Renderer()
+    </div>
+    
+</ModalContent>
+
+<ModalContent Modal="@_m2">
+    <h1>Some modal content</h1>
+    <p>A paragraph</p>
+</ModalContent>

@@ -59,6 +59,10 @@ div.I4E-Layout-Row {
     &--JustifyCenter {
         justify-content: center;
     }
+
+    &--JustifyEnd {
+        justify-content: flex-end;
+    }
 }
 
 div.I4E-Layout-Column {
@@ -71,6 +75,10 @@ div.I4E-Layout-Column {
 
     &--JustifyCenter {
         justify-content: center;
+    }
+
+    &--JustifyEnd {
+        justify-content: flex-end;
     }
 }
 

@@ -48,7 +48,7 @@ namespace Integrant4.Element
             ClassSet c = BaseClasses?.Clone() ?? new ClassSet();
 
             if (Classes != null)
-                c.AddRange(Classes.Invoke());
+                c.AddRange(Classes.Invoke().Values());
 
             if (IsDisabled?.Invoke() == true)
                 c.Add("I4E-Bit--Disabled");

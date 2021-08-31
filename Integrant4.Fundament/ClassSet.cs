@@ -1,16 +1,13 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Integrant4.Fundament
 {
-    public class ClassSet : IEnumerable<string>
+    public class ClassSet
     {
         private readonly List<string> _classes;
         private          string?      _formatted;
-
-        public int Length => _classes.Count;
 
         public ClassSet(params string[] classes)
         {
@@ -23,6 +20,8 @@ namespace Integrant4.Fundament
             _classes   = classes;
             _formatted = null;
         }
+
+        public int Length => _classes.Count;
 
         //
 
@@ -52,8 +51,7 @@ namespace Integrant4.Fundament
 
         public override string ToString() => _formatted ??= string.Join(' ', _classes);
 
-        public IEnumerator<string> GetEnumerator() => _classes.GetEnumerator();
-        IEnumerator IEnumerable.   GetEnumerator() => GetEnumerator();
+        public IEnumerable<string> Values() => _classes.AsReadOnly();
 
         public ClassSet Clone() => new(_classes.ToList());
     }

@@ -1,0 +1,57 @@
+div.I4E-Construct-ModalContent {
+    //left: 50%;
+    //position: absolute;
+    //top: 50%;
+    //transform: translate(-50%, -50%);
+
+    border-radius: 7px;
+    padding: 7px 11px 11px 11px;
+    z-index: 130;
+
+    //
+
+    > h1, h2, h3 {
+        margin: 0 0 5px 0;
+    }
+
+    > p {
+        margin: 0;
+    }
+}
+
+div.I4E-Construct-ModalBackground {
+    background-color: #000;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 129;
+}
+
+div.I4-App {
+    &[data-i4-theme-variant="Dark"], &[data-i4-theme-variant="Matrix"] {
+        div.I4E-Construct-ModalContent {
+            background-color: var(--I4C-Main-Background-8);
+            box-shadow: var(--I4C-Main-Shadow-0), var(--I4C-Main-Shadow-1), var(--I4C-Main-Shadow-2);
+        }
+
+        div.I4E-Construct-ModalBackground {
+            opacity: 0.75;
+        }
+    }
+
+
+    &[data-i4-theme-variant="Pink"], &[data-i4-theme-variant="White"] {
+        div.I4E-Construct-ModalContent {
+            background-color: var(--I4C-Main-Background-0);
+            box-shadow: var(--I4C-Main-Shadow-1), var(--I4C-Main-Shadow-2);
+        }
+
+        div.I4E-Construct-ModalBackground {
+            opacity: 0.25;
+        }
+    }
+}

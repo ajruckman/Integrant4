@@ -265,7 +265,7 @@ namespace Integrant4.Element.Constructs.FileUploader
 
                 await _elementService.JSInvokeVoidAsync
                 (
-                    "I4.Element.FileUploaderInit", _guid, _elementRef
+                    "I4.Element.FileUploaderInit", _guid, _elementRef.Value
                 );
 
                 if (_isPasteHandler && !_hasActivatedPastHandler)

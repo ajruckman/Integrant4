@@ -9,7 +9,7 @@ namespace Integrant4.Element.Bits
         private readonly ContentRef      _content;
         private readonly InnerDirection? _innerDirection;
 
-        private bool           _show;
+        private bool           _visible;
         private WriteOnlyHook? _refresher;
 
         public LocalModal
@@ -35,7 +35,7 @@ namespace Integrant4.Element.Bits
 
             builder.OpenElement(++seq, "div");
             builder.AddAttribute(++seq, "class",
-                "I4E-Bit-LocalModal I4E-Bit-LocalModal" + (_show ? "--Show" : "--Hide"));
+                "I4E-Bit-LocalModal I4E-Bit-LocalModal" + (_visible ? "--Visible" : "--Hidden"));
 
             builder.OpenElement(++seq, "div");
             builder.AddAttribute(++seq, "class",
@@ -55,13 +55,13 @@ namespace Integrant4.Element.Bits
 
         public void Show()
         {
-            _show = true;
+            _visible = true;
             Refresh();
         }
 
         public void Hide()
         {
-            _show = false;
+            _visible = false;
             Refresh();
         }
     }

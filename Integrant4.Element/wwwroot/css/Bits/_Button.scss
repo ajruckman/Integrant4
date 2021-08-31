@@ -19,14 +19,6 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
         transition: none;
     }
 
-    @at-root a {
-        outline: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
     &:not(.I4E-Bit--Disabled) {
         cursor: pointer;
         transition: none;
@@ -145,7 +137,7 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
         }
     }
 
-    &.I4E-Bit-Button--Transparent {
+    &.I4E-Bit-Button--Transparent, &.I4E-Bit-Button--TransparentBordered {
         background-color: transparent;
         color: var(--I4C-Main-PageText);
 
@@ -155,6 +147,10 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
 
         &.I4E-Bit--Disabled {
             opacity: 0.5;
+        }
+        
+        &.I4E-Bit-Button--TransparentBordered {
+            border: 1px solid var(--I4C-Main-Border-5);
         }
     }
 
@@ -169,6 +165,14 @@ button.I4E-Bit-Button, a.I4E-Bit-Button {
         &.I4E-Bit--Disabled {
             opacity: 0.5;
         }
+    }
+}
+
+a.I4E-Bit-Button {
+    outline: none;
+
+    &:hover {
+        text-decoration: underline;
     }
 }
 
@@ -197,7 +201,7 @@ div.I4-App {
                 }
             }
 
-            &.I4E-Bit-Button--Transparent {
+            &.I4E-Bit-Button--Transparent, &.I4E-Bit-Button--TransparentBordered {
                 &:hover:not(.I4E-Bit--Disabled) {
                     background-color: var(--I4C-Main-Opaque-White-3);
                     color: var(--I4C-Main-Accent-8);
@@ -246,7 +250,7 @@ div.I4-App {
                 }
             }
 
-            &.I4E-Bit-Button--Transparent {
+            &.I4E-Bit-Button--Transparent, &.I4E-Bit-Button--TransparentBordered {
                 &:hover:not(.I4E-Bit--Disabled) {
                     background-color: var(--I4C-Main-Opaque-Black-1);
                     color: var(--I4C-Main-Accent-6);

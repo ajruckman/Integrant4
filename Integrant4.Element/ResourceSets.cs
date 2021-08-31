@@ -24,15 +24,10 @@ namespace Integrant4.Element
             {
                 Resources.Resources.Icons.Bootstrap,
                 Resources.Resources.Libraries.Dropzone,
-                // Resources.Resources.Libraries.MiniBar,
-                // Resources.Resources.Libraries.SimpleBar,
                 Resources.Resources.Libraries.OverlayScrollbars,
                 Resources.Resources.Libraries.TUIEditor,
             },
-            stylesheetsInternal: new HashSet<string>
-            {
-                "css/Constructs/Constructs.css",
-            },
+            stylesheetsInternal: new HashSet<string> { "Style/Constructs.css" },
             scriptsInternal: new HashSet<string>
             {
                 "js/Constructs.js",
@@ -48,7 +43,7 @@ namespace Integrant4.Element
             {
                 Resources.Resources.Libraries.Tippy,
             },
-            stylesheetsInternal: new HashSet<string> { "css/Bits/Bits.css" },
+            stylesheetsInternal: new HashSet<string> { "css/Style.css" },
             scriptsInternal: new HashSet<string> { "js/Elements.js" }
         );
 
@@ -67,7 +62,7 @@ namespace Integrant4.Element
         (
             $"{nameof(Integrant4)}.{nameof(Element)}",
             nameof(Inputs),
-            stylesheetsInternal: new HashSet<string> { "css/Inputs/Inputs.css" },
+            stylesheetsInternal: new HashSet<string> { "css/Style.css" },
             scriptsInternal: new HashSet<string> { "js/Elements.js", "js/Inputs.js" }
         );
 
@@ -75,7 +70,7 @@ namespace Integrant4.Element
         (
             $"{nameof(Integrant4)}.{nameof(Element)}",
             nameof(Layouts),
-            stylesheetsInternal: new HashSet<string> { "css/Layouts/Layouts.css" }
+            stylesheetsInternal: new HashSet<string> { "css/Style.css" }
         );
 
         public static class Overrides

@@ -159,6 +159,7 @@ namespace Integrant4.Element.Bits
             Default,
             Accent,
             Transparent,
+            TransparentBordered,
             AccentTransparent,
             Blue,
             Green,

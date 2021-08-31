@@ -28,20 +28,32 @@ window.I4.Element.NextSiblingSelector = window.I4.Element.NextSiblingSelector ||
 
 const ScrollbarSpace = "7px";
 
-// window.addEventListener("focusin", event => {
-//     if (document.I4EActiveElement === undefined) {
-//         console.log("1 Setting document.I4EActiveElement: ");
-//         console.log(document.activeElement);
-//         document.I4EActiveElement = document.activeElement;
-//     } else {
-//         console.log("2 Setting document.I4EActiveElementPrev: ");
-//         console.log(document.I4EActiveElement);
-//         document.I4EActiveElementPrev = document.I4EActiveElement;
-//         console.log("2 Setting document.I4EActiveElement: ");
-//         console.log(document.activeElement);
-//         document.I4EActiveElement = document.activeElement;
-//     }
-// });
+window.I4.Element.CenterModal = window.I4.Element.CenterModal || function (element) {
+    if (element == null) {
+        window.removeEventListener('resize', Resize);
+        return;
+    }
+
+    const widthM = element.offsetWidth;
+    const heightM = element.offsetHeight;
+    const widthW = window.innerWidth;
+    const heightW = window.innerHeight;
+
+    element.style.position = "absolute";
+    element.style.top = ((heightW - heightM) / 2 + window.pageYOffset) + "px";
+    element.style.left = ((widthW - widthM) / 2 + window.pageXOffset) + "px";
+    element.style.display = 'block';
+
+    function Resize() {
+        window.I4.Element.CenterModal(element);
+    }
+
+    if (!element.hasOwnProperty("I4EResizeMonitored")) {
+        element.I4EResizeMonitored = true;
+
+        window.addEventListener('resize', Resize);
+    }
+};
 
 window.I4.Element.InitSelector = window.I4.Element.InitSelector || function (element, dotnetHelper, filterable) {
     if (element == null) {
@@ -273,8 +285,12 @@ window.I4.Element.HideSelector = window.I4.Element.HideSelector || function (ele
 };
 
 window.I4.Element.UpdateSelector = window.I4.Element.UpdateSelector || function (element) {
-    element.I4EOptionsDropdown.update();
-    element.Scrollbar.update();
+    if (element.hasOwnProperty("I4EOptionsDropdown")) {
+        element.I4EOptionsDropdown.update();
+    }
+    if (element.hasOwnProperty("Scrollbar")) {
+        element.Scrollbar.update();
+    }
 };
 
 window.I4.Element.DeactivateSelector = window.I4.Element.DeactivateSelector || function (element) {

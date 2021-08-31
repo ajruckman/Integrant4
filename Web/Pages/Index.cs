@@ -9,6 +9,7 @@ using Integrant4.API;
 using Integrant4.Colorant.Themes.Solids;
 using Integrant4.Element;
 using Integrant4.Element.Bits;
+using Integrant4.Element.Constructs;
 using Integrant4.Element.Constructs.Headers;
 using Integrant4.Element.Constructs.Selectors;
 using Integrant4.Element.Inputs;
@@ -35,6 +36,9 @@ namespace Web.Pages
         private Selector<User>      _selector         = null!;
         private bool                _selectorDisabled = false;
         private MultiSelector<User> _multiSelector    = null!;
+
+        private readonly Modal  _m1 = new();
+        private          Button _showModal;
 
         [Inject] public IJSRuntime     JSRuntime      { get; set; } = null!;
         [Inject] public ElementService ElementService { get; set; } = null!;
@@ -135,6 +139,11 @@ namespace Web.Pages
                 IsDisabled = () => _selectorDisabled,
             });
 
+            _showModal = new("Show modal".AsStatic(), new Button.Spec
+            {
+                OnClick = (_, _) => _m1.Show(),
+            });
+
             Task.Run(() =>
             {
                 Thread.Sleep(1000);
@@ -173,7 +182,7 @@ namespace Web.Pages
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((User) obj);
+            return Equals((User)obj);
         }
 
         public override int GetHashCode()
@@ -229,7 +238,7 @@ namespace Web.Pages
                     inst.StructureInstance.JSRuntime!,
                     inst.Value(),
                     new TextAreaInput.Spec
-                        {IsDisabled = () => inst.StructureInstance.State.NameFirst?.Contains("Z") == true}
+                        { IsDisabled = () => inst.StructureInstance.State.NameFirst?.Contains("Z") == true }
                 )
             );
 

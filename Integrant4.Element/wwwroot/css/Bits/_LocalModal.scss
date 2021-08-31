@@ -11,11 +11,11 @@ div.I4E-Bit-LocalModal {
     top: 0;
     z-index: 115;
 
-    &--Show {
+    &--Visible {
 
     }
 
-    &--Hide {
+    &--Hidden {
         display: none;
     }
 
