@@ -1,9 +1,1 @@
-{
-	"version": 3,
-	"file": "Tippy.css",
-	"sources": [
-		"Tippy.scss"
-	],
-	"names": [],
-	"mappings": "AAAA,AAAA,UAAU,CAAC;EACP,gBAAgB,EAAE,8BAA8B;EAChD,UAAU,EAAE,wBAAwB,EAAE,wBAAwB;EAC9D,KAAK,EAAE,oCAAoC;EAC3C,WAAW,EAAE,wBAAwB;EACrC,WAAW,EAAE,GAAG;EAChB,OAAO,EAAE,IAAI,GAKhB;EAXD,AAQI,UARM,CAQN,YAAY,CAAC;IACT,KAAK,EAAE,8BAA8B,GACxC"
-}
+{"version":3,"sourceRoot":"","sources":["Tippy.scss"],"names":[],"mappings":"AAAA;EACI;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI","file":"Tippy.css"}

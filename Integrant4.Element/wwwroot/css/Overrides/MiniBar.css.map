@@ -1,9 +1,1 @@
-{
-	"version": 3,
-	"file": "MiniBar.css",
-	"sources": [
-		"MiniBar.scss"
-	],
-	"names": [],
-	"mappings": ""
-}
+{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"MiniBar.css"}
