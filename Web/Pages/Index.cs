@@ -11,6 +11,7 @@ using Integrant4.Element;
 using Integrant4.Element.Bits;
 using Integrant4.Element.Constructs;
 using Integrant4.Element.Constructs.Headers;
+using Integrant4.Element.Constructs.Modals;
 using Integrant4.Element.Constructs.Selectors;
 using Integrant4.Element.Inputs;
 using Integrant4.Fundament;

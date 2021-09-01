@@ -4,7 +4,7 @@ using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
-namespace Integrant4.Element.Constructs
+namespace Integrant4.Element.Constructs.Modals
 {
     public class Modal
     {

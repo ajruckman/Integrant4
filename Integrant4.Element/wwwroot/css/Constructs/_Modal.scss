@@ -1,12 +1,8 @@
 div.I4E-Construct-ModalContent {
-    //left: 50%;
-    //position: absolute;
-    //top: 50%;
-    //transform: translate(-50%, -50%);
-
     border-radius: 7px;
-    padding: 7px 11px 11px 11px;
+    padding: 9px 11px 11px 11px;
     z-index: 130;
+    font-weight: 500;
 
     //
 
@@ -16,6 +12,13 @@ div.I4E-Construct-ModalContent {
 
     > p {
         margin: 0;
+    }
+
+    > div.I4E-Construct-ModalContent-Row {
+        margin-top: 15px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
 }
 

@@ -1,0 +1,71 @@
+#blazor-error-ui {
+  display: none; }
+  #blazor-error-ui .Background {
+    background-color: rgba(255, 0, 0, 0.5);
+    height: 100%;
+    left: 0;
+    opacity: 0.75;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 120; }
+  #blazor-error-ui .Content {
+    background-color: #0d0c0e;
+    border: 1px solid #e91616;
+    border-radius: 4px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5), 0 0 4px rgba(0, 0, 0, 0.4);
+    color: white;
+    font-family: var(--I4R-SansSerifFont);
+    font-size: 15px;
+    left: 50%;
+    padding: 7px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    z-index: 120; }
+    #blazor-error-ui .Content .Buttons {
+      display: flex;
+      justify-content: flex-end; }
+      #blazor-error-ui .Content .Buttons button {
+        margin: 3px; }
+
+#components-reconnect-modal {
+  background: rgba(0, 0, 0, 0.65) !important;
+  font-size: 19px;
+  opacity: 1 !important; }
+  #components-reconnect-modal h5 {
+    background: var(--I4C-Main-Accent-5);
+    border-radius: 5000px;
+    box-shadow: var(--I4C-Main-Shadow-3);
+    color: white;
+    display: inline-block;
+    margin: 20px 0 5px 0;
+    padding: 7px 11px; }
+    #components-reconnect-modal h5 a {
+      color: #dddddd;
+      font-size: 12pt; }
+  #components-reconnect-modal div {
+    border-color: var(--I4C-Main-Accent-5) var(--I4C-Main-Border-0) var(--I4C-Main-Border-0) !important;
+    margin: 0 auto; }
+    #components-reconnect-modal div[style*="display: inline-block;"] {
+      display: block !important; }
+  #components-reconnect-modal button {
+    background-color: var(--I4C-Main-Background-9);
+    border: none;
+    border-radius: 4px;
+    box-shadow: var(--I4C-Main-Shadow-0);
+    color: var(--I4C-Main-Text-6);
+    cursor: pointer;
+    font-weight: 600;
+    height: 30px;
+    outline: none;
+    padding: 0 10px;
+    user-select: none; }
+    #components-reconnect-modal button:hover {
+      background-color: var(--I4C-Main-Background-12); }
+    #components-reconnect-modal button:active {
+      background-color: var(--I4C-Main-Background-9); }
+
+/*# sourceMappingURL=Blazor.css.map */
