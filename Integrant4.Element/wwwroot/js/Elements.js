@@ -29,24 +29,46 @@ window.I4.Element.InitTooltip = window.I4.Element.InitTooltip || function (id) {
 
 //
 
-window.I4.Element.InitDropdown = window.I4.Element.InitDropdown || function (head, contents) {
+window.I4.Element.InitDropdown = window.I4.Element.InitDropdown || function (head, contents, offset) {
     if (head == null) {
         console.log("Head passed to InitDropdown is null; exiting");
         return;
     }
 
+    console.log(head);
+
     if (!head.hasOwnProperty("I4EBitDropdown")) {
-        head.I4EBitDropdown = Popper.createPopper(head, contents, {
-            placement: contents.getAttribute("data-popper-placement"),
-        });
+        
+        function genOps(shown) {
+            let opts = {
+                placement: head.getAttribute("data-popper-placement"),
+                modifiers: [],
+            };
+
+            opts.modifiers.push({name: "eventListeners", enabled: shown});
+
+            let offset = head.getAttribute("data-popper-offset");
+            if (offset != null) {
+                opts.modifiers.push({
+                    name: "offset",
+                    options: {
+                        offset: [0, parseInt(offset)],
+                    },
+                })
+            }
+            
+            return opts;
+        }
+
+        head.I4EBitDropdown = Popper.createPopper(head, contents, genOps(false));
 
         function show() {
             head.setAttribute("data-contents-open", "");
             contents.setAttribute("data-show", "");
 
-            head.I4EBitDropdown.setOptions({
-                modifiers: [{name: "eventListeners", enabled: true}],
-            });
+            head.I4EBitDropdown.setOptions(genOps(true));
+
+            console.log(head.I4EBitDropdown.state.options.modifiers);
 
             contents.style.minWidth = (head.clientWidth - 4) + "px";
 
@@ -57,9 +79,9 @@ window.I4.Element.InitDropdown = window.I4.Element.InitDropdown || function (hea
             head.removeAttribute("data-contents-open");
             contents.removeAttribute("data-show");
 
-            head.I4EBitDropdown.setOptions({
-                modifiers: [{name: "eventListeners", enabled: false}],
-            });
+            head.I4EBitDropdown.setOptions(genOps(false));
+
+            console.log(head.I4EBitDropdown.state.options.modifiers);
         }
 
         window.I4.Element.DropdownShowEvents.forEach(event => {

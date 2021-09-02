@@ -15,6 +15,7 @@ namespace Integrant4.Element.Bits
             internal static readonly Spec Default = new();
 
             public PlacementExtensions.PlacementGetter? PlacementGetter { get; init; }
+            public Callbacks.Callback<int>?             OffsetDistance  { get; init; }
 
             public Callbacks.Classes? Classes { get; init; }
             public Callbacks.Size?    Margin  { get; init; }
@@ -32,8 +33,10 @@ namespace Integrant4.Element.Bits
 
     public partial class Dropdown
     {
-        private readonly ContentRef _headContents;
-        private readonly ContentRef _childContents;
+        private readonly ContentRef                           _headContents;
+        private readonly ContentRef                           _childContents;
+        private readonly PlacementExtensions.PlacementGetter? _placementGetter;
+        private readonly Callbacks.Callback<int>?             _offsetDistance;
 
         public Dropdown
         (
@@ -45,6 +48,7 @@ namespace Integrant4.Element.Bits
             _headContents    = headContents;
             _childContents   = childContents;
             _placementGetter = spec?.PlacementGetter;
+            _offsetDistance  = spec?.OffsetDistance ?? (() => -1);
         }
     }
 
@@ -84,6 +88,9 @@ namespace Integrant4.Element.Bits
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "id",    Dropdown.ID + ".Head");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Head");
+                builder.AddAttribute(++seq, "data-popper-placement",
+                    (Dropdown._placementGetter?.Invoke() ?? TooltipPlacement.Bottom).Map());
+                builder.AddAttribute(++seq, "data-popper-offset", Dropdown._offsetDistance?.Invoke());
                 builder.AddElementReferenceCapture(++seq, r => _headRef = r);
 
                 foreach (IRenderable renderable in Dropdown._headContents.GetAll())
@@ -101,8 +108,6 @@ namespace Integrant4.Element.Bits
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "id",    Dropdown.ID + ".Contents");
                 builder.AddAttribute(++seq, "class", "I4E-Bit-Dropdown-Contents");
-                builder.AddAttribute(++seq, "data-popper-placement",
-                    (Dropdown._placementGetter?.Invoke() ?? TooltipPlacement.Bottom).Map());
                 builder.AddElementReferenceCapture(++seq, r => _contentRef = r);
 
                 foreach (IRenderable renderable in Dropdown._childContents.GetAll())
@@ -128,13 +133,9 @@ namespace Integrant4.Element.Bits
             {
                 if (firstRender)
                     _elementService!.AddJob((j, t) =>
-                        Interop.CallVoid(j, t, "I4.Element.InitDropdown", _headRef!.Value, _contentRef!.Value));
+                        Interop.CallVoid(j, t, "I4.Element.InitDropdown", _headRef!.Value, _contentRef!.Value,
+                            new[] {0, -15}));
             }
         }
-    }
-
-    public partial class Dropdown
-    {
-        private readonly PlacementExtensions.PlacementGetter? _placementGetter;
     }
 }

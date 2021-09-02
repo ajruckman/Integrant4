@@ -79,7 +79,7 @@ namespace Web.Shared
                     new DropdownLinkButton("Radios".AsStatic(),           () => "/radios"),
                     new DropdownLinkButton("Selectors".AsStatic(),        () => "/selectors"),
                     new DropdownLinkButton("Tables".AsStatic(),           () => "/tables"),
-                }.AsStatic()),
+                }.AsStatic(), new Dropdown.Spec{OffsetDistance = () => -15}),
                 new VerticalLine(),
                 new HeaderLink(new IRenderable[]
                 {
@@ -128,7 +128,7 @@ namespace Web.Shared
                         new DropdownLinkButton("Radios".AsStatic(),           () => "/radios"),
                         new DropdownLinkButton("Selectors".AsStatic(),        () => "/selectors"),
                         new DropdownLinkButton("Tables".AsStatic(),           () => "/tables"),
-                    }.AsStatic()),
+                    }.AsStatic(), new Dropdown.Spec{OffsetDistance = () => -1}),
                     new VerticalLine(),
                     new HeaderLink("Elements".AsStatic(), () => "/elements"),
                     new VerticalLine(),
