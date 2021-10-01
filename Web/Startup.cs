@@ -26,6 +26,8 @@ namespace Web
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
+            services.AddHttpContextAccessor();
+
             services.AddFileUploaderService();
 
             services.AddBlazoredLocalStorage();

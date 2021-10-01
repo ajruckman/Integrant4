@@ -1,7 +1,14 @@
 ﻿@page "/"
 @using Integrant4.Element.Components
+@using Integrant4.Element.LegacySupport
+@using Microsoft.AspNetCore.Http
+
 @namespace Web.Pages
+
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@inject IHttpContextAccessor HttpContextAccessor
+
 @{
     Layout = null;
 }
@@ -13,16 +20,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Web</title>
     <base href="~/"/>
+    <link rel="stylesheet" href="@UnsupportedBrowserSupport.StylesheetPath"/>
 </head>
 <body>
 
 @Html.Raw(Configuration.ResourceSet.RenderInvariableResourcesAsHTML())
 
-<component type="typeof(App)" render-mode="ServerPrerendered"/>
+@if (HttpContextAccessor.HttpContext == null || UnsupportedBrowserSupport.IsIE(HttpContextAccessor.HttpContext.Request))
+{
+    <div class="I4E-UnsupportedBrowserNotice">
+        <div>
+            <h1>Internet Explorer detected!</h1>
+            <p>This app cannot run in your browser.</p>
+            <p>Please use a supported browser, like Google Chrome, which may already be installed on your computer.</p>
+            <p>If you need more help, please contact the Help Desk.</p>
+        </div>
+    </div>
+}
+else
+{
+    <component type="typeof(App)" render-mode="ServerPrerendered"/>
 
-<div id="blazor-error-ui">
-    <component type="typeof(I4EBlazorErrorUI)" render-mode="Static"/>
-</div>
+    <div id="blazor-error-ui">
+        <component type="typeof(I4EBlazorErrorUI)" render-mode="Static"/>
+    </div>
+}
 
 @* <div id="blazor-error-ui"> *@
 @*     <environment include="Staging,Production"> *@

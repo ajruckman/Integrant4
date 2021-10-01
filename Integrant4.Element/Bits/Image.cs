@@ -1,7 +1,6 @@
 using System;
 using Integrant4.Fundament;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Integrant4.Element.Bits
 {
@@ -49,37 +48,37 @@ namespace Integrant4.Element.Bits
         }
     }
 
-    public partial class Image : BitBase
+    public partial class Image : BitBase, IRefreshableBit
     {
         private readonly Callbacks.Callback<ObjectFit>? _objectFit;
+
+        private WriteOnlyHook? _refresher;
 
         public Image(Spec spec) : base(spec)
         {
             _objectFit = spec.ObjectFit;
         }
 
-        public override RenderFragment Renderer()
+        public override RenderFragment Renderer() => Latch.Create(builder =>
         {
-            void Fragment(RenderTreeBuilder builder)
+            int seq = -1;
+            builder.OpenElement(++seq, "img");
+            builder.AddAttribute(++seq, "style", _objectFit?.Invoke() switch
             {
-                int seq = -1;
-                builder.OpenElement(++seq, "img");
-                builder.AddAttribute(++seq, "style", _objectFit?.Invoke() switch
-                {
-                    null                => null,
-                    ObjectFit.None      => null,
-                    ObjectFit.Fill      => "fill",
-                    ObjectFit.Contain   => "contain",
-                    ObjectFit.Cover     => "cover",
-                    ObjectFit.ScaleDown => "scale-down",
-                    _                   => throw new ArgumentOutOfRangeException()
-                });
-                builder.AddAttribute(++seq, "src", OuterSpec!.HREF!.Invoke());
-                builder.CloseElement();
-            }
+                null                => null,
+                ObjectFit.None      => null,
+                ObjectFit.Fill      => "fill",
+                ObjectFit.Contain   => "contain",
+                ObjectFit.Cover     => "cover",
+                ObjectFit.ScaleDown => "scale-down",
+                _                   => throw new ArgumentOutOfRangeException(),
+            });
+            builder.AddAttribute(++seq, "src", OuterSpec!.HREF!.Invoke());
+            BitBuilder.ApplyOuterAttributes(this, builder, ref seq);
+            builder.CloseElement();
+        }, v => _refresher = v);
 
-            return Fragment;
-        }
+        public void Refresh() => _refresher?.Invoke();
     }
 
     public partial class Image : BitBase

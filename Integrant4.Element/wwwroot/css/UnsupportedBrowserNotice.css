@@ -1,0 +1,19 @@
+div.I4E-UnsupportedBrowserNotice {
+  font-family: sans-serif;
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+}
+div.I4E-UnsupportedBrowserNotice > div {
+  background-color: pink;
+  border: 3px solid red;
+  padding: 15px;
+}
+div.I4E-UnsupportedBrowserNotice > div > h1 {
+  margin: 0;
+}
+div.I4E-UnsupportedBrowserNotice > div > p:last-child {
+  margin-bottom: 0;
+}
+
+/*# sourceMappingURL=UnsupportedBrowserNotice.css.map */

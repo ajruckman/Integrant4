@@ -122,6 +122,9 @@ a.I4E-Construct-HeaderLink {
     }
 
     div.I4E-Construct-HeaderLink-Contents {
+        display: flex;
+        align-items: center;
+
         > span.I4E-Construct-HeaderLink-Content {
             align-items: center;
             display: inline-flex;

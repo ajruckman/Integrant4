@@ -7,6 +7,9 @@ Write-Output "Building stylesheet: Style.scss"
 Write-Output "Building stylesheet: I4App.scss"
 & sass I4App.scss I4App.css
 
+Write-Output "Building stylesheet: UnsupportedBrowserNotice.scss"
+& sass UnsupportedBrowserNotice.scss UnsupportedBrowserNotice.css
+
 foreach ($stylesheet in $( Get-ChildItem -Recurse 'Overrides/' -Filter *.scss ))
 {
     if ( $stylesheet.Name.StartsWith("_"))
