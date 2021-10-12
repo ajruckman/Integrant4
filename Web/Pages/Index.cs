@@ -13,6 +13,7 @@ using Integrant4.Element.Constructs;
 using Integrant4.Element.Constructs.Headers;
 using Integrant4.Element.Constructs.Modals;
 using Integrant4.Element.Constructs.Selectors;
+using Integrant4.Element.Constructs.Tagging;
 using Integrant4.Element.Inputs;
 using Integrant4.Fundament;
 using Integrant4.Resources.Icons;
@@ -183,7 +184,7 @@ namespace Web.Pages
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((User)obj);
+            return Equals((User) obj);
         }
 
         public override int GetHashCode()
@@ -239,7 +240,7 @@ namespace Web.Pages
                     inst.StructureInstance.JSRuntime!,
                     inst.Value(),
                     new TextAreaInput.Spec
-                        { IsDisabled = () => inst.StructureInstance.State.NameFirst?.Contains("Z") == true }
+                        {IsDisabled = () => inst.StructureInstance.State.NameFirst?.Contains("Z") == true}
                 )
             );
 
@@ -291,6 +292,30 @@ namespace Web.Pages
                         new SelectInput<string>.Option(null,          "Other"),
                     }
                 )
+            );
+
+            Structure.Register<IReadOnlyList<ITag>>
+            (
+                "Tags",
+                inst => new List<ITag>(),
+                (inst, v) => { },
+                inst => new TagSelectorInput(new TagSelector(
+                    new HashSet<(TagType, string)>()
+                    {
+                        (TagType.String, "asdf"),
+                        (TagType.Bool, "334"),
+                    },
+                    false,
+                    new TagSelector.Spec
+                    {
+                        Value = () => new List<ITag>()
+                        {
+                            new IntTag("asdf", 1),
+                            new StringTag("bcd", "cas"),
+                            new BoolTag("33", false),
+                        },
+                    }
+                ))
             );
         }
 

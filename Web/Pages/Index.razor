@@ -1,6 +1,7 @@
 ﻿@page "/"
 @using System.Security.Cryptography
 @using Integrant4.Element.Constructs
+@using Integrant4.Element.Constructs.Tagging
 
 <style>
     li {
@@ -53,6 +54,11 @@
                 <tr>
                     <td>Breed</td>
                     <td>@(_structureInstance.GetTyped<string?>(nameof(Dog.Breed)).Input!.Renderer())</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Tags</td>
+                    <td>@(_structureInstance.GetTyped<IReadOnlyList<ITag>>("Tags").Input!.Renderer())</td>
                     <td></td>
                 </tr>
                 <tr>

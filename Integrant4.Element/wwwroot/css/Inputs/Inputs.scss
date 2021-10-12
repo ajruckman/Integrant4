@@ -45,7 +45,7 @@
     }
 }
 
-div.I4E-Input-Checkbox, div.I4E-Input-Date, div.I4E-Input-Decimal, div.I4E-Input-Integer, div.I4E-Input-Text, div.I4E-Input-TextArea, div.I4E-Input-Time {
+div.I4E-Input-Checkbox, div.I4E-Input-Date, div.I4E-Input-Decimal, div.I4E-Input-Integer, div.I4E-Input-Long, div.I4E-Input-Text, div.I4E-Input-TextArea, div.I4E-Input-Time {
     input, textarea {
         padding: calc(1em * (4 / var(--I4E-Base-Scale))) calc(6 * (1em / var(--I4E-Base-Scale)));
 

@@ -1,36 +1,31 @@
 div.I4E-Construct-TagSelector {
     border-radius: 4px;
     display: inline-flex;
+    flex-wrap: wrap;
     padding: 3px;
+    width: 100%;
 
     h3 {
+        color: var(--I4C-Main-Text-6);
         margin: 5px;
         width: 100%;
     }
 
+    //
+
     div.I4E-Construct-TagSelector-Tags {
         align-content: flex-start;
         display: flex;
+        flex: 1;
         flex-wrap: wrap;
         justify-content: flex-start;
         min-height: 60px;
     }
 
-    div.I4E-Construct-TagSelector-Inputs {
-        select {
-        }
-
-        input {
-        }
-
-        button {
-            float: right;
-        }
-    }
-
     div.I4E-Construct-TagSelector-KnownTags {
         align-content: flex-start;
         display: flex;
+        flex: 1;
         flex-wrap: wrap;
         justify-content: flex-start;
 
@@ -67,6 +62,52 @@ div.I4E-Construct-TagSelector {
             &[data-current] {
             }
         }
+    }
+
+    div.I4E-Construct-TagSelector-Inputs {
+        width: 100%;
+
+        table {
+            width: 100%;
+
+            tr td {
+                padding: 3px;
+
+                .I4E-Construct-TagSelector-ValueContainer {
+                    align-items: center;
+                    display: flex;
+
+                    .I4E-Construct-TagSelector-ValueInput {
+                        flex: 1;
+                    }
+
+                    .I4E-Construct-TagSelector-AddButton {
+                        justify-self: flex-end;
+                        margin-left: 5px;
+                    }
+                }
+
+                &:first-child {
+                    color: var(--I4C-Main-Text-2);
+                    font-weight: 700;
+                    padding-left: 7px;
+                    padding-right: 7px;
+                    white-space: nowrap;
+                    width: 0;
+                }
+            }
+        }
+
+        select {
+        }
+
+        input[type='text'] {
+            width: 100%;
+        }
+
+        //button {
+        //    float: right;
+        //}
     }
 }
 

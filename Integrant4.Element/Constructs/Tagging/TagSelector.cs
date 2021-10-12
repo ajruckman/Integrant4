@@ -34,8 +34,9 @@ namespace Integrant4.Element.Constructs.Tagging
                 IsDisabled = () => !CanAddTag(),
                 OnClick    = async (_, _) => await AddTag(),
                 Scale      = _spec.Scale,
+                Height     = () => 30,
             });
-            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort)(12 * _spec.Scale?.Invoke() ?? 12));
+            _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
 
             _tagNameDebouncer = new Debouncer<string?>(() =>
             {
@@ -65,7 +66,7 @@ namespace Integrant4.Element.Constructs.Tagging
             //
 
             _tagsListHeaderText = !isForFiltering
-                ? "Tags"
+                ? "Selected tags"
                 : "Tag filters";
 
             _tagsAddHeaderText = !isForFiltering
@@ -88,11 +89,12 @@ namespace Integrant4.Element.Constructs.Tagging
     {
         public class Spec
         {
-            public Callbacks.Callback<IReadOnlyList<ITag>>? Value      { get; init; }
-            public Callbacks.IsDisabled?                    IsDisabled { get; init; }
-            public Callbacks.Unit?                          LeftWidth  { get; init; }
-            public Callbacks.Unit?                          RightWidth { get; init; }
-            public Callbacks.Scale?                         Scale      { get; init; }
+            public Callbacks.Callback<IReadOnlyList<ITag>>? Value             { get; init; }
+            public Callbacks.IsDisabled?                    IsDisabled        { get; init; }
+            public Callbacks.Unit?                          MaxTotalWidth     { get; init; }
+            public Callbacks.Unit?                          SelectedTagsWidth { get; init; }
+            public Callbacks.Unit?                          KnownTagsWidth    { get; init; }
+            public Callbacks.Scale?                         Scale             { get; init; }
         }
     }
 
@@ -138,10 +140,14 @@ namespace Integrant4.Element.Constructs.Tagging
 
                 builder.OpenElement(++seq, "div");
                 builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector");
+                builder.AddAttribute(++seq, "style",
+                    $"max-width: {_spec.MaxTotalWidth?.Invoke().Serialize() ?? "600px"}");
 
                 // Left
 
-                builder.OpenElement(++seq, "section");
+                // builder.OpenElement(++seq, "section");
+                // builder.AddAttribute(++seq, "style",
+                // $"width: {_spec.MaxTotalWidth?.Invoke().Serialize() ?? "300px"}");
 
                 {
                     // Tags
@@ -149,7 +155,7 @@ namespace Integrant4.Element.Constructs.Tagging
                     builder.OpenElement(++seq, "div");
                     builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-Tags");
                     builder.AddAttribute(++seq, "style",
-                        $"width: {_spec.LeftWidth?.Invoke().Serialize() ?? "300px"}");
+                        $"width: {_spec.SelectedTagsWidth?.Invoke().Serialize() ?? "unset"}");
 
                     builder.OpenElement(++seq, "h3");
                     builder.AddContent(++seq, _tagsListHeaderText);
@@ -190,6 +196,46 @@ namespace Integrant4.Element.Constructs.Tagging
                 }
 
                 {
+                    // Known tags
+
+                    builder.OpenElement(++seq, "div");
+                    builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-KnownTags");
+                    builder.AddAttribute(++seq, "style",
+                        $"width: {_spec.KnownTagsWidth?.Invoke().Serialize() ?? "unset"}");
+
+                    builder.OpenElement(++seq, "h3");
+                    builder.AddContent(++seq, _tagsPreviousHeaderText);
+                    builder.CloseElement();
+
+                    foreach ((TagType tagType, string tagName) in _knownTags)
+                    {
+                        builder.OpenElement(++seq, "span");
+                        builder.OpenElement(++seq, "button");
+                        ++seq;
+                        if (_newTagType == tagType && _newTagName == tagName)
+                            builder.AddAttribute(seq, "data-current");
+                        builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this,
+                            async () => await UseKnownTag(tagType, tagName)));
+
+                        builder.AddContent(++seq, tagName);
+                        builder.OpenElement(++seq, "span");
+                        builder.AddContent(++seq, tagType switch
+                        {
+                            TagType.String => "Text",
+                            TagType.Int    => "Number",
+                            TagType.Bool   => "Truthy",
+                            _              => throw new ArgumentOutOfRangeException(),
+                        });
+                        builder.CloseElement();
+
+                        builder.CloseElement();
+                        builder.CloseElement();
+                    }
+
+                    builder.CloseElement();
+                }
+
+                {
                     // Inputs
 
                     builder.OpenElement(++seq, "div");
@@ -201,9 +247,9 @@ namespace Integrant4.Element.Constructs.Tagging
 
                     {
                         builder.OpenElement(++seq, "table");
-                        builder.OpenElement(++seq, "tr");
                         {
                             // Type
+                            builder.OpenElement(++seq, "tr");
                             builder.OpenElement(++seq, "td");
                             builder.AddContent(++seq, "Type");
                             builder.CloseElement();
@@ -246,81 +292,51 @@ namespace Integrant4.Element.Constructs.Tagging
                                 builder.AddContent(++seq, "Value");
                                 builder.CloseElement();
                                 builder.OpenElement(++seq, "td");
-                                builder.OpenElement(++seq, "span");
-                                builder.AddAttribute(++seq, "hidden", _newTagType != TagType.String);
-                                builder.AddContent(0, _newTagStringInput?.Renderer());
+
+                                builder.OpenElement(++seq, "div");
+                                builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-ValueContainer");
+                                {
+                                    builder.OpenElement(++seq, "div");
+                                    builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-ValueInput");
+                                    builder.OpenElement(++seq, "span");
+                                    builder.AddAttribute(++seq, "hidden", _newTagType != TagType.String);
+                                    builder.AddContent(0, _newTagStringInput?.Renderer());
+                                    builder.CloseElement();
+                                    builder.OpenElement(++seq, "span");
+                                    builder.AddAttribute(++seq, "hidden", _newTagType != TagType.Int);
+                                    builder.AddContent(1, _newTagIntegerInput?.Renderer());
+                                    builder.CloseElement();
+                                    builder.OpenElement(++seq, "span");
+                                    builder.AddAttribute(++seq, "hidden", _newTagType != TagType.Bool);
+                                    builder.AddContent(2, _newTagBooleanInput?.Renderer());
+                                    builder.CloseElement();
+                                    builder.CloseElement();
+
+                                    builder.OpenElement(++seq, "div");
+                                    builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-AddButton");
+                                    builder.AddContent(++seq, _addButton.Renderer());
+                                    builder.CloseElement();
+                                }
                                 builder.CloseElement();
-                                builder.OpenElement(++seq, "span");
-                                builder.AddAttribute(++seq, "hidden", _newTagType != TagType.Int);
-                                builder.AddContent(1, _newTagIntegerInput?.Renderer());
-                                builder.CloseElement();
-                                builder.OpenElement(++seq, "span");
-                                builder.AddAttribute(++seq, "hidden", _newTagType != TagType.Bool);
-                                builder.AddContent(2, _newTagBooleanInput?.Renderer());
-                                builder.CloseElement();
+
                                 builder.CloseElement();
                                 builder.CloseElement();
                             }
                         }
-                        {
-                            // Add button
-                            builder.OpenElement(++seq, "tr");
-                            builder.OpenElement(++seq, "td");
-                            builder.AddAttribute(++seq, "colspan", 2);
-                            builder.AddContent(++seq, _addButton.Renderer());
-                            builder.CloseElement();
-                            builder.CloseElement();
-                        }
+                        // {
+                        //     // Add button
+                        //     builder.OpenElement(++seq, "tr");
+                        //     builder.OpenElement(++seq, "td");
+                        //     builder.AddAttribute(++seq, "colspan", 2);
+                        //     builder.CloseElement();
+                        //     builder.CloseElement();
+                        // }
                         // Close table
                         builder.CloseElement();
                     }
 
                     builder.CloseElement();
                 }
-
-                builder.CloseElement();
-
-                // Right
-
-                builder.OpenElement(++seq, "div");
-                builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-KnownTags");
-                builder.AddAttribute(++seq, "style",
-                    $"width: {_spec.RightWidth?.Invoke().Serialize() ?? "300px"}");
-
-                {
-                    // Known tags
-
-                    builder.OpenElement(++seq, "h3");
-                    builder.AddContent(++seq, _tagsPreviousHeaderText);
-                    builder.CloseElement();
-
-                    foreach ((TagType tagType, string tagName) in _knownTags)
-                    {
-                        builder.OpenElement(++seq, "span");
-                        builder.OpenElement(++seq, "button");
-                        ++seq;
-                        if (_newTagType == tagType && _newTagName == tagName)
-                            builder.AddAttribute(seq, "data-current");
-                        builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this,
-                            async () => await UseKnownTag(tagType, tagName)));
-
-                        builder.AddContent(++seq, tagName);
-                        builder.OpenElement(++seq, "span");
-                        builder.AddContent(++seq, tagType switch
-                        {
-                            TagType.String => "Text",
-                            TagType.Int    => "Number",
-                            TagType.Bool   => "Truthy",
-                            _              => throw new ArgumentOutOfRangeException(),
-                        });
-                        builder.CloseElement();
-
-                        builder.CloseElement();
-                        builder.CloseElement();
-                    }
-                }
-
-                builder.CloseElement();
 
                 //
 
@@ -440,9 +456,9 @@ namespace Integrant4.Element.Constructs.Tagging
 
                 _tags.Add(_newTagType switch
                 {
-                    TagType.String => new StringTag(_newTagName, (string)_newTagValue),
-                    TagType.Int    => new IntTag(_newTagName, (long)_newTagValue),
-                    TagType.Bool   => new BoolTag(_newTagName, (bool)_newTagValue),
+                    TagType.String => new StringTag(_newTagName, (string) _newTagValue),
+                    TagType.Int    => new IntTag(_newTagName, (long) _newTagValue),
+                    TagType.Bool   => new BoolTag(_newTagName, (bool) _newTagValue),
                     _              => throw new ArgumentOutOfRangeException(),
                 });
             }
