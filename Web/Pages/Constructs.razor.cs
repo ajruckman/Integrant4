@@ -98,7 +98,10 @@ namespace Web.Pages
                 (TagType.Bool, "Is full time"),
                 (TagType.String, "Birthday month"),
                 (TagType.Int, "Start year"),
-            }, true);
+            }, true, spec: new TagSelector.Spec
+            {
+                DefaultFilterByNameOnly = false,
+            });
 
             // _tagSelector.AddTag(new StringTag("Name", "John"));
             // _tagSelector.AddTag(new IntTag("Shift", 1));

@@ -1,4 +1,4 @@
-$HeightPrimaryHeader: calc(3.5px * var(--I4E-Base-Scale));
+$HeightPrimaryHeader: calc(3.5px * var(--I4E-Base-Scale) - 8px);
 $HeightSecondaryHeader: calc(2.5px * var(--I4E-Base-Scale));
 
 %HeaderBase {

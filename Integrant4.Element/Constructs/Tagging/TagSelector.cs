@@ -17,11 +17,17 @@ namespace Integrant4.Element.Constructs.Tagging
         private readonly Spec                       _spec;
         private readonly List<ITag>                 _tags = new();
 
-        public TagSelector(HashSet<(TagType, string)> knownTags, bool isForFiltering, Spec? spec = null)
+        public TagSelector
+        (
+            HashSet<(TagType, string)> knownTags,
+            bool                       isForFiltering,
+            Spec?                      spec = null
+        )
         {
             _knownTags      = knownTags;
             _isForFiltering = isForFiltering;
             _spec           = spec ?? new Spec();
+            _acceptAnyValue = isForFiltering ? _spec.DefaultFilterByNameOnly : null;
 
             if (_spec.Value != null)
             {
@@ -34,7 +40,7 @@ namespace Integrant4.Element.Constructs.Tagging
                 IsDisabled = () => !CanAddTag(),
                 OnClick    = async (_, _) => await AddTag(),
                 Scale      = _spec.Scale,
-                Height     = () => 30,
+                Height     = () => 27,
             });
             _deselectValueButton = new BootstrapIcon("x-circle-fill", (ushort) (12 * _spec.Scale?.Invoke() ?? 12));
 
@@ -76,8 +82,6 @@ namespace Integrant4.Element.Constructs.Tagging
             _tagsPreviousHeaderText = !isForFiltering
                 ? "Apply previous tag"
                 : "Tags in use";
-
-            _acceptAnyValue = isForFiltering ? true : null;
         }
 
         public IReadOnlyList<ITag> GetValue() => _tags;
@@ -89,6 +93,8 @@ namespace Integrant4.Element.Constructs.Tagging
     {
         public class Spec
         {
+            public bool DefaultFilterByNameOnly { get; init; } = true;
+
             public Callbacks.Callback<IReadOnlyList<ITag>>? Value             { get; init; }
             public Callbacks.IsDisabled?                    IsDisabled        { get; init; }
             public Callbacks.Unit?                          MaxTotalWidth     { get; init; }
@@ -278,7 +284,24 @@ namespace Integrant4.Element.Constructs.Tagging
                                 builder.AddContent(++seq, "Match any value");
                                 builder.CloseElement();
                                 builder.OpenElement(++seq, "td");
-                                builder.AddContent(++seq, _anyValueInput?.Renderer());
+
+                                builder.OpenElement(++seq, "div");
+                                builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-RowContainer");
+                                {
+                                    builder.OpenElement(++seq, "div");
+                                    builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-ValueInput");
+                                    builder.AddContent(++seq, _anyValueInput?.Renderer());
+                                    builder.CloseElement();
+
+                                    if (_acceptAnyValue == true)
+                                    {
+                                        builder.OpenElement(++seq, "div");
+                                        builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-AddButton");
+                                        builder.AddContent(++seq, _addButton.Renderer());
+                                        builder.CloseElement();
+                                    }
+                                }
+                                builder.CloseElement();
                                 builder.CloseElement();
                                 builder.CloseElement();
                             }
@@ -294,7 +317,7 @@ namespace Integrant4.Element.Constructs.Tagging
                                 builder.OpenElement(++seq, "td");
 
                                 builder.OpenElement(++seq, "div");
-                                builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-ValueContainer");
+                                builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-RowContainer");
                                 {
                                     builder.OpenElement(++seq, "div");
                                     builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-ValueInput");
@@ -405,7 +428,7 @@ namespace Integrant4.Element.Constructs.Tagging
 
             if (_isForFiltering)
             {
-                _anyValueInput = new CheckboxInput(jsRuntime, true, new CheckboxInput.Spec
+                _anyValueInput = new CheckboxInput(jsRuntime, _spec.DefaultFilterByNameOnly, new CheckboxInput.Spec
                 {
                     IsDisabled = _spec.IsDisabled,
                 });

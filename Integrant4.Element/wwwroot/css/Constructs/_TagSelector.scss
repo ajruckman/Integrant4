@@ -73,12 +73,16 @@ div.I4E-Construct-TagSelector {
             tr td {
                 padding: 3px;
 
-                .I4E-Construct-TagSelector-ValueContainer {
+                .I4E-Construct-TagSelector-RowContainer {
                     align-items: center;
                     display: flex;
+                    //min-height: 29px;
 
                     .I4E-Construct-TagSelector-ValueInput {
+                        min-height: 27px;
                         flex: 1;
+                        display: flex;
+                        align-items: center;
                     }
 
                     .I4E-Construct-TagSelector-AddButton {

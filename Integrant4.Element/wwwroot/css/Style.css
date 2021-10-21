@@ -987,7 +987,7 @@ div.I4E-Construct-SecondaryHeader, div.I4E-Construct-PrimaryHeader {
 }
 
 div.I4E-Construct-PrimaryHeader {
-  min-height: calc(3.5px * var(--I4E-Base-Scale));
+  min-height: calc(3.5px * var(--I4E-Base-Scale) - 8px);
   padding: 0 10px 0 15px;
   position: sticky;
   top: 0;
@@ -997,25 +997,25 @@ div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-LeftElements {
   align-items: center;
   display: flex;
   margin-right: 15px;
-  min-height: calc(3.5px * var(--I4E-Base-Scale));
+  min-height: calc(3.5px * var(--I4E-Base-Scale) - 8px);
 }
 div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-RightElements {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  min-height: calc(3.5px * var(--I4E-Base-Scale));
+  min-height: calc(3.5px * var(--I4E-Base-Scale) - 8px);
 }
 div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-LeftElements a.I4E-Construct-HeaderLink,
 div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-LeftElements div.I4E-Bit-TextBlock {
   font-size: 1.35rem;
   font-weight: 600;
-  min-height: calc(3.5px * var(--I4E-Base-Scale));
+  min-height: calc(3.5px * var(--I4E-Base-Scale) - 8px);
 }
 div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-RightElements a.I4E-Construct-HeaderLink,
 div.I4E-Construct-PrimaryHeader div.I4E-Construct-PrimaryHeader-RightElements div.I4E-Bit-TextBlock {
   font-size: 1.2rem;
   font-weight: 600;
-  min-height: calc(3.5px * var(--I4E-Base-Scale));
+  min-height: calc(3.5px * var(--I4E-Base-Scale) - 8px);
 }
 div.I4E-Construct-PrimaryHeader div.I4E-Bit-VerticalLine {
   height: 20px;
@@ -2243,14 +2243,17 @@ div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Inputs table {
 div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Inputs table tr td {
   padding: 3px;
 }
-div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Inputs table tr td .I4E-Construct-TagSelector-ValueContainer {
+div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Inputs table tr td .I4E-Construct-TagSelector-RowContainer {
   align-items: center;
   display: flex;
 }
-div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Inputs table tr td .I4E-Construct-TagSelector-ValueContainer .I4E-Construct-TagSelector-ValueInput {
+div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Inputs table tr td .I4E-Construct-TagSelector-RowContainer .I4E-Construct-TagSelector-ValueInput {
+  min-height: 27px;
   flex: 1;
+  display: flex;
+  align-items: center;
 }
-div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Inputs table tr td .I4E-Construct-TagSelector-ValueContainer .I4E-Construct-TagSelector-AddButton {
+div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Inputs table tr td .I4E-Construct-TagSelector-RowContainer .I4E-Construct-TagSelector-AddButton {
   justify-self: flex-end;
   margin-left: 5px;
 }
