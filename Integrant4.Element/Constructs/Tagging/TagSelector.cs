@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Integrant4.Element.Bits;
 using Integrant4.Element.Inputs;
@@ -94,6 +95,7 @@ namespace Integrant4.Element.Constructs.Tagging
         public class Spec
         {
             public bool DefaultFilterByNameOnly { get; init; } = true;
+            public bool BasicMode               { get; init; } = false;
 
             public Callbacks.Callback<IReadOnlyList<ITag>>? Value             { get; init; }
             public Callbacks.IsDisabled?                    IsDisabled        { get; init; }
@@ -176,12 +178,15 @@ namespace Integrant4.Element.Constructs.Tagging
                         builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-RemovableTag");
 
                         builder.OpenElement(++seq, "div");
-                        builder.AddContent(++seq, $"{tag.Name}:");
+                        builder.AddContent(++seq, $"{tag.Name}" + (_spec.BasicMode ? "" : ":"));
                         builder.CloseElement();
 
-                        builder.OpenElement(++seq, "div");
-                        builder.AddContent(++seq, tag.Content());
-                        builder.CloseElement();
+                        if (!_spec.BasicMode)
+                        {
+                            builder.OpenElement(++seq, "div");
+                            builder.AddContent(++seq, tag.Content());
+                            builder.CloseElement();
+                        }
 
                         // builder.OpenElement(++seq, "button");
                         // builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this, () => RemoveTag(i1)));
@@ -224,15 +229,19 @@ namespace Integrant4.Element.Constructs.Tagging
                             async () => await UseKnownTag(tagType, tagName)));
 
                         builder.AddContent(++seq, tagName);
-                        builder.OpenElement(++seq, "span");
-                        builder.AddContent(++seq, tagType switch
+
+                        if (!_spec.BasicMode)
                         {
-                            TagType.String => "Text",
-                            TagType.Int    => "Number",
-                            TagType.Bool   => "Truthy",
-                            _              => throw new ArgumentOutOfRangeException(),
-                        });
-                        builder.CloseElement();
+                            builder.OpenElement(++seq, "span");
+                            builder.AddContent(++seq, tagType switch
+                            {
+                                TagType.String => "Text",
+                                TagType.Int    => "Number",
+                                TagType.Bool   => "Truthy",
+                                _              => throw new ArgumentOutOfRangeException(),
+                            });
+                            builder.CloseElement();
+                        }
 
                         builder.CloseElement();
                         builder.CloseElement();
@@ -254,85 +263,116 @@ namespace Integrant4.Element.Constructs.Tagging
                     {
                         builder.OpenElement(++seq, "table");
                         {
-                            // Type
-                            builder.OpenElement(++seq, "tr");
-                            builder.OpenElement(++seq, "td");
-                            builder.AddContent(++seq, "Type");
-                            builder.CloseElement();
-                            builder.OpenElement(++seq, "td");
-                            builder.AddContent(++seq, _newTagTypeSelector?.Renderer());
-                            builder.CloseElement();
-                            builder.CloseElement();
-                        }
-                        {
-                            // Name
-                            builder.OpenElement(++seq, "tr");
-                            builder.OpenElement(++seq, "td");
-                            builder.AddContent(++seq, "Name");
-                            builder.CloseElement();
-                            builder.OpenElement(++seq, "td");
-                            builder.AddContent(++seq, _newTagNameInput?.Renderer());
-                            builder.CloseElement();
-                            builder.CloseElement();
-                        }
-                        {
-                            // Any value checkbox
-                            if (_isForFiltering)
+                            if (!_spec.BasicMode)
                             {
-                                builder.OpenElement(++seq, "tr");
-                                builder.OpenElement(++seq, "td");
-                                builder.AddContent(++seq, "Match any value");
-                                builder.CloseElement();
-                                builder.OpenElement(++seq, "td");
-
-                                builder.OpenElement(++seq, "div");
-                                builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-RowContainer");
                                 {
-                                    builder.OpenElement(++seq, "div");
-                                    builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-ValueInput");
-                                    builder.AddContent(++seq, _anyValueInput?.Renderer());
+                                    // Type
+                                    builder.OpenElement(++seq, "tr");
+                                    builder.OpenElement(++seq, "td");
+                                    builder.AddContent(++seq, "Type");
                                     builder.CloseElement();
+                                    builder.OpenElement(++seq, "td");
+                                    builder.AddContent(++seq, _newTagTypeSelector?.Renderer());
+                                    builder.CloseElement();
+                                    builder.CloseElement();
+                                }
+                                {
+                                    // Name
+                                    builder.OpenElement(++seq, "tr");
+                                    builder.OpenElement(++seq, "td");
+                                    builder.AddContent(++seq, "Name");
+                                    builder.CloseElement();
+                                    builder.OpenElement(++seq, "td");
+                                    builder.AddContent(++seq, _newTagNameInput?.Renderer());
+                                    builder.CloseElement();
+                                    builder.CloseElement();
+                                }
 
-                                    if (_acceptAnyValue == true)
+                                if (_isForFiltering)
+                                {
+                                    // Any value checkbox
+                                    builder.OpenElement(++seq, "tr");
+                                    builder.OpenElement(++seq, "td");
+                                    builder.AddContent(++seq, "Match any value");
+                                    builder.CloseElement();
+                                    builder.OpenElement(++seq, "td");
+
+                                    builder.OpenElement(++seq, "div");
+                                    builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-RowContainer");
                                     {
                                         builder.OpenElement(++seq, "div");
-                                        builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-AddButton");
-                                        builder.AddContent(++seq, _addButton.Renderer());
+                                        builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-ValueInput");
+                                        builder.AddContent(++seq, _anyValueInput?.Renderer());
+                                        builder.CloseElement();
+
+                                        if (_acceptAnyValue == true)
+                                        {
+                                            builder.OpenElement(++seq, "div");
+                                            builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-AddButton");
+                                            builder.AddContent(++seq, _addButton.Renderer());
+                                            builder.CloseElement();
+                                        }
+                                    }
+                                    builder.CloseElement();
+                                    builder.CloseElement();
+                                    builder.CloseElement();
+                                }
+
+                                {
+                                    // Value
+                                    if (!_isForFiltering || _isForFiltering && _acceptAnyValue == false)
+                                    {
+                                        builder.OpenElement(++seq, "tr");
+                                        builder.OpenElement(++seq, "td");
+                                        builder.AddContent(++seq, "Value");
+                                        builder.CloseElement();
+                                        builder.OpenElement(++seq, "td");
+
+                                        builder.OpenElement(++seq, "div");
+                                        builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-RowContainer");
+                                        {
+                                            builder.OpenElement(++seq, "div");
+                                            builder.AddAttribute(++seq, "class",
+                                                "I4E-Construct-TagSelector-ValueInput");
+                                            builder.OpenElement(++seq, "span");
+                                            builder.AddAttribute(++seq, "hidden", _newTagType != TagType.String);
+                                            builder.AddContent(0, _newTagStringInput?.Renderer());
+                                            builder.CloseElement();
+                                            builder.OpenElement(++seq, "span");
+                                            builder.AddAttribute(++seq, "hidden", _newTagType != TagType.Int);
+                                            builder.AddContent(1, _newTagIntegerInput?.Renderer());
+                                            builder.CloseElement();
+                                            builder.OpenElement(++seq, "span");
+                                            builder.AddAttribute(++seq, "hidden", _newTagType != TagType.Bool);
+                                            builder.AddContent(2, _newTagBooleanInput?.Renderer());
+                                            builder.CloseElement();
+                                            builder.CloseElement();
+
+                                            builder.OpenElement(++seq, "div");
+                                            builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-AddButton");
+                                            builder.AddContent(++seq, _addButton.Renderer());
+                                            builder.CloseElement();
+                                        }
+                                        builder.CloseElement();
+
+                                        builder.CloseElement();
                                         builder.CloseElement();
                                     }
                                 }
-                                builder.CloseElement();
-                                builder.CloseElement();
-                                builder.CloseElement();
                             }
-                        }
-                        {
-                            // Value
-                            if (!_isForFiltering || _isForFiltering && _acceptAnyValue == false)
+                            else
                             {
                                 builder.OpenElement(++seq, "tr");
                                 builder.OpenElement(++seq, "td");
                                 builder.AddContent(++seq, "Value");
                                 builder.CloseElement();
                                 builder.OpenElement(++seq, "td");
-
                                 builder.OpenElement(++seq, "div");
                                 builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-RowContainer");
                                 {
                                     builder.OpenElement(++seq, "div");
                                     builder.AddAttribute(++seq, "class", "I4E-Construct-TagSelector-ValueInput");
-                                    builder.OpenElement(++seq, "span");
-                                    builder.AddAttribute(++seq, "hidden", _newTagType != TagType.String);
-                                    builder.AddContent(0, _newTagStringInput?.Renderer());
-                                    builder.CloseElement();
-                                    builder.OpenElement(++seq, "span");
-                                    builder.AddAttribute(++seq, "hidden", _newTagType != TagType.Int);
-                                    builder.AddContent(1, _newTagIntegerInput?.Renderer());
-                                    builder.CloseElement();
-                                    builder.OpenElement(++seq, "span");
-                                    builder.AddAttribute(++seq, "hidden", _newTagType != TagType.Bool);
-                                    builder.AddContent(2, _newTagBooleanInput?.Renderer());
-                                    builder.CloseElement();
+                                    builder.AddContent(++seq, _newTagNameInput?.Renderer());
                                     builder.CloseElement();
 
                                     builder.OpenElement(++seq, "div");
@@ -341,11 +381,11 @@ namespace Integrant4.Element.Constructs.Tagging
                                     builder.CloseElement();
                                 }
                                 builder.CloseElement();
-
                                 builder.CloseElement();
                                 builder.CloseElement();
                             }
                         }
+
                         // {
                         //     // Add button
                         //     builder.OpenElement(++seq, "tr");
@@ -464,16 +504,16 @@ namespace Integrant4.Element.Constructs.Tagging
         }
 
         private bool CanAddTag() =>
-            !_busy                                                                   &&
-            _newTagName != null                                                      &&
-            (_newTagValue     != null || _isForFiltering && _acceptAnyValue == true) &&
+            !_busy                                                                                          &&
+            _newTagName != null                                                                             &&
+            (_newTagValue     != null || ((_isForFiltering && _acceptAnyValue == true) || _spec.BasicMode)) &&
             (_spec.IsDisabled == null || _spec.IsDisabled.Invoke() == false);
 
         private async Task AddTag()
         {
             if (_newTagName == null) return;
 
-            if (!_isForFiltering || _acceptAnyValue == false)
+            if ((!_isForFiltering || _acceptAnyValue == false) && !_spec.BasicMode)
             {
                 if (_newTagValue == null) return;
 
@@ -494,6 +534,12 @@ namespace Integrant4.Element.Constructs.Tagging
                     TagType.Bool   => new AnyBoolTag(_newTagName),
                     _              => throw new ArgumentOutOfRangeException(),
                 });
+            }
+            else if (_spec.BasicMode)
+            {
+                if (_tags.Any(v => v.Name == _newTagName))
+                    return;
+                _tags.Add(new AnyStringTag(_newTagName));
             }
 
             _knownTags.Add((_newTagType, _newTagName));
@@ -525,10 +571,13 @@ namespace Integrant4.Element.Constructs.Tagging
 
             _knownTags.Add(tag switch
             {
-                StringTag => (TagType.String, tag.Name),
-                IntTag    => (TagType.Int, tag.Name),
-                BoolTag   => (TagType.Bool, tag.Name),
-                _         => throw new ArgumentOutOfRangeException(nameof(tag), tag, null),
+                StringTag    => (TagType.String, tag.Name),
+                IntTag       => (TagType.Int, tag.Name),
+                BoolTag      => (TagType.Bool, tag.Name),
+                AnyStringTag => (TagType.String, tag.Name),
+                AnyIntTag    => (TagType.Int, tag.Name),
+                AnyBoolTag   => (TagType.Bool, tag.Name),
+                _            => throw new ArgumentOutOfRangeException(nameof(tag), tag, null),
             });
 
             if (invokeOnChange) OnChange?.Invoke(_tags.Count == 0 ? null : _tags);
@@ -544,10 +593,13 @@ namespace Integrant4.Element.Constructs.Tagging
             {
                 _knownTags.Add(tag switch
                 {
-                    StringTag => (TagType.String, tag.Name),
-                    IntTag    => (TagType.Int, tag.Name),
-                    BoolTag   => (TagType.Bool, tag.Name),
-                    _         => throw new ArgumentOutOfRangeException(nameof(tags), tags, null),
+                    StringTag    => (TagType.String, tag.Name),
+                    IntTag       => (TagType.Int, tag.Name),
+                    BoolTag      => (TagType.Bool, tag.Name),
+                    AnyStringTag => (TagType.String, tag.Name),
+                    AnyIntTag    => (TagType.Int, tag.Name),
+                    AnyBoolTag   => (TagType.Bool, tag.Name),
+                    _            => throw new ArgumentOutOfRangeException(nameof(tags), tags, null),
                 });
             }
 

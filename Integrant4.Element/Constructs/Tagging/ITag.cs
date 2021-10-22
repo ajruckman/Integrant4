@@ -53,6 +53,11 @@ namespace Integrant4.Element.Constructs.Tagging
         TValue Value { get; }
     }
 
+    // public class BasicTag : ITag
+    // {
+        
+    // }
+
     public class StringTag : ITag<string>
     {
         public StringTag(string name, string value)

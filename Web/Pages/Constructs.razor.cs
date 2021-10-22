@@ -35,6 +35,7 @@ namespace Web.Pages
         }
 
         private TagSelector          _tagSelector = null!;
+        private TagSelector          _basicTagSelector = null!;
         private List<User>           _users       = null!;
         private IReadOnlyList<ITag>? _filters;
         private Selector<User>       _selector = null!;
@@ -100,6 +101,21 @@ namespace Web.Pages
                 (TagType.Int, "Start year"),
             }, true, spec: new TagSelector.Spec
             {
+                DefaultFilterByNameOnly = false,
+            });
+
+            _basicTagSelector = new TagSelector(new HashSet<(TagType, string)>
+            {
+                (TagType.String, "Work area"),
+                (TagType.Bool, "Is contractor"),
+                (TagType.Bool, "Has gone through training"),
+                (TagType.Int, "Shift"),
+                (TagType.Bool, "Is full time"),
+                (TagType.String, "Birthday month"),
+                (TagType.Int, "Start year"),
+            }, true, spec: new TagSelector.Spec
+            {
+                BasicMode = true,
                 DefaultFilterByNameOnly = false,
             });
 
