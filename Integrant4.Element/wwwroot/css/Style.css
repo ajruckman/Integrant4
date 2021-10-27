@@ -2234,6 +2234,10 @@ div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button spa
   font-weight: 500;
   margin-left: 5px;
 }
+div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
 div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Inputs {
   width: 100%;
 }
@@ -2248,10 +2252,10 @@ div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Inputs table tr td .
   display: flex;
 }
 div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Inputs table tr td .I4E-Construct-TagSelector-RowContainer .I4E-Construct-TagSelector-ValueInput {
-  min-height: 27px;
-  flex: 1;
-  display: flex;
   align-items: center;
+  display: flex;
+  flex: 1;
+  min-height: 27px;
 }
 div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-Inputs table tr td .I4E-Construct-TagSelector-RowContainer .I4E-Construct-TagSelector-AddButton {
   justify-self: flex-end;
@@ -2326,7 +2330,7 @@ div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector div.I4E-Con
   border: 1px solid var(--I4C-Main-Border-7);
   box-shadow: var(--I4C-Main-Shadow-1);
 }
-div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover, div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current], div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current] {
+div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover:not(:disabled), div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current]:not(:disabled), div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover:not(:disabled), div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current]:not(:disabled) {
   border: 1px solid var(--I4C-Main-Accent-7);
 }
 div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-Tag, div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-AddableTag, div.I4-App[data-i4-theme-variant=Dark] div.I4E-Construct-TagSelector-RemovableTag, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-Tag, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-AddableTag, div.I4-App[data-i4-theme-variant=Matrix] div.I4E-Construct-TagSelector-RemovableTag {
@@ -2354,7 +2358,7 @@ div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector div.I4E-Con
   background-color: white;
   border: 1px solid var(--I4C-Main-Border-10);
 }
-div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current], div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current] {
+div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover:not(:disabled), div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current]:not(:disabled), div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button:hover:not(:disabled), div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector div.I4E-Construct-TagSelector-KnownTags button[data-current]:not(:disabled) {
   border: 1px solid var(--I4C-Main-Accent-7);
 }
 div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-Tag, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-AddableTag, div.I4-App[data-i4-theme-variant=Pink] div.I4E-Construct-TagSelector-RemovableTag, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-Tag, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-AddableTag, div.I4-App[data-i4-theme-variant=White] div.I4E-Construct-TagSelector-RemovableTag {

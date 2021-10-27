@@ -9,14 +9,15 @@ namespace Integrant4.Element.Constructs.Tagging
         public static bool Matches
         (
             IReadOnlyList<ITag> tags,
-            IReadOnlyList<ITag> filters
+            IReadOnlyList<ITag> filters,
+            bool                caseInsensitive = false
         )
         {
             Dictionary<Type, List<ITag>> tagsByType = new()
             {
-                { typeof(StringTag), new List<ITag>() },
-                { typeof(IntTag), new List<ITag>() },
-                { typeof(BoolTag), new List<ITag>() },
+                {typeof(StringTag), new List<ITag>()},
+                {typeof(IntTag), new List<ITag>()},
+                {typeof(BoolTag), new List<ITag>()},
             };
             tagsByType.Add(typeof(AnyStringTag), tagsByType[typeof(StringTag)]);
             tagsByType.Add(typeof(AnyIntTag),    tagsByType[typeof(IntTag)]);
@@ -26,6 +27,10 @@ namespace Integrant4.Element.Constructs.Tagging
             {
                 tagsByType[tag.GetType()].Add(tag);
             }
+
+            StringComparison comp = caseInsensitive
+                ? StringComparison.OrdinalIgnoreCase
+                : StringComparison.Ordinal;
 
             foreach (ITag filter in filters)
             {
@@ -37,10 +42,8 @@ namespace Integrant4.Element.Constructs.Tagging
                     case StringTag stringTag:
                         foreach (StringTag tag in toCheck.Cast<StringTag>())
                         {
-                            if (tag.Name == filter.Name && tag.Value == stringTag.Value)
-                            {
+                            if (tag.Name.Equals(filter.Name, comp) && tag.Value.Equals(stringTag.Value, comp))
                                 goto Next;
-                            }
                         }
 
                         matched = false;
@@ -49,10 +52,8 @@ namespace Integrant4.Element.Constructs.Tagging
                     case IntTag intTag:
                         foreach (IntTag tag in toCheck.Cast<IntTag>())
                         {
-                            if (tag.Name == filter.Name && tag.Value == intTag.Value)
-                            {
+                            if (tag.Name.Equals(filter.Name, comp) && tag.Value == intTag.Value)
                                 goto Next;
-                            }
                         }
 
                         matched = false;
@@ -62,9 +63,7 @@ namespace Integrant4.Element.Constructs.Tagging
                         foreach (BoolTag tag in toCheck.Cast<BoolTag>())
                         {
                             if (tag.Name == filter.Name && tag.Value == boolTag.Value)
-                            {
                                 goto Next;
-                            }
                         }
 
                         matched = false;
@@ -75,7 +74,7 @@ namespace Integrant4.Element.Constructs.Tagging
                     case AnyBoolTag:
                         foreach (ITag tag in toCheck)
                         {
-                            if (tag.Name == filter.Name)
+                            if (tag.Name.Equals(filter.Name, comp))
                             {
                                 goto Next;
                             }

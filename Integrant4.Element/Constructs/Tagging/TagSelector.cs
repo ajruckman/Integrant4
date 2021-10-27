@@ -16,7 +16,8 @@ namespace Integrant4.Element.Constructs.Tagging
         private readonly HashSet<(TagType, string)> _knownTags;
         private readonly bool                       _isForFiltering;
         private readonly Spec                       _spec;
-        private readonly List<ITag>                 _tags = new();
+        private readonly List<ITag>                 _tags     = new();
+        private readonly List<(TagType, string)>    _tagsUsed = new();
 
         public TagSelector
         (
@@ -222,9 +223,14 @@ namespace Integrant4.Element.Constructs.Tagging
                     {
                         builder.OpenElement(++seq, "span");
                         builder.OpenElement(++seq, "button");
+
                         ++seq;
                         if (_newTagType == tagType && _newTagName == tagName)
                             builder.AddAttribute(seq, "data-current");
+
+                        bool used = _tagsUsed.Contains((tagType, tagName));
+                        builder.AddAttribute(++seq, "disabled", used);
+
                         builder.AddAttribute(++seq, "onclick", EventCallback.Factory.Create(this,
                             async () => await UseKnownTag(tagType, tagName)));
 
@@ -485,9 +491,16 @@ namespace Integrant4.Element.Constructs.Tagging
             _hasInitInputs = true;
         }
 
+        private void RefreshUsedTags()
+        {
+            _tagsUsed.Clear();
+            _tagsUsed.AddRange(_tags.Select(MapTag));
+        }
+
         private void RemoveTag(int i)
         {
             _tags.RemoveAt(i);
+            RefreshUsedTags();
             OnChange?.Invoke(_tags.Count == 0 ? null : _tags);
             _refresher?.Invoke();
         }
@@ -543,6 +556,7 @@ namespace Integrant4.Element.Constructs.Tagging
             }
 
             _knownTags.Add((_newTagType, _newTagName));
+            RefreshUsedTags();
 
             _newTagName  = null;
             _newTagValue = _newTagType == TagType.Bool ? false : null;
@@ -569,16 +583,8 @@ namespace Integrant4.Element.Constructs.Tagging
         {
             _tags.Add(tag);
 
-            _knownTags.Add(tag switch
-            {
-                StringTag    => (TagType.String, tag.Name),
-                IntTag       => (TagType.Int, tag.Name),
-                BoolTag      => (TagType.Bool, tag.Name),
-                AnyStringTag => (TagType.String, tag.Name),
-                AnyIntTag    => (TagType.Int, tag.Name),
-                AnyBoolTag   => (TagType.Bool, tag.Name),
-                _            => throw new ArgumentOutOfRangeException(nameof(tag), tag, null),
-            });
+            _knownTags.Add(MapTag(tag));
+            RefreshUsedTags();
 
             if (invokeOnChange) OnChange?.Invoke(_tags.Count == 0 ? null : _tags);
             _refresher?.Invoke();
@@ -591,21 +597,25 @@ namespace Integrant4.Element.Constructs.Tagging
 
             foreach (ITag tag in tags)
             {
-                _knownTags.Add(tag switch
-                {
-                    StringTag    => (TagType.String, tag.Name),
-                    IntTag       => (TagType.Int, tag.Name),
-                    BoolTag      => (TagType.Bool, tag.Name),
-                    AnyStringTag => (TagType.String, tag.Name),
-                    AnyIntTag    => (TagType.Int, tag.Name),
-                    AnyBoolTag   => (TagType.Bool, tag.Name),
-                    _            => throw new ArgumentOutOfRangeException(nameof(tags), tags, null),
-                });
+                _knownTags.Add(MapTag(tag));
             }
+
+            RefreshUsedTags();
 
             if (invokeOnChange) OnChange?.Invoke(_tags.Count == 0 ? null : _tags);
             _refresher?.Invoke();
         }
+
+        private (TagType, string Name) MapTag(ITag tag) => tag switch
+        {
+            StringTag    => (TagType.String, tag.Name),
+            IntTag       => (TagType.Int, tag.Name),
+            BoolTag      => (TagType.Bool, tag.Name),
+            AnyStringTag => (TagType.String, tag.Name),
+            AnyIntTag    => (TagType.Int, tag.Name),
+            AnyBoolTag   => (TagType.Bool, tag.Name),
+            _            => throw new ArgumentOutOfRangeException(nameof(tag), tag, null),
+        };
 
         private async Task UseKnownTag(TagType type, string name)
         {
